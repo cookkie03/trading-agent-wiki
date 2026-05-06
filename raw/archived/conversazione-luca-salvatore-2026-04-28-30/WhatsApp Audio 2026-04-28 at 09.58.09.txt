@@ -1,0 +1,91 @@
+Allora King ti faccio un audio perché sono in macchina, praticamente ieri nella sim che sono andato a visitare ho conosciuto tra le tante persone, insomma c'erano gente che faceva M&A, gente che faceva private banking, roba strana, un trader, cioè loro avevano una sala mercati con tipo 30 trading proprietari che tradavano i soldi dell'azienda insomma
+E così per curiosità poi alla fine ci sono andato a parlare e faccio scolta ma io ho una curiosità un pochino di cui non abbiamo parlato, cioè dell'intelligenza artificiale, tu come la usi? Nel senso la usi per fare solo brainstorming, la usi per scrivere due righe di codice, la usi per fare questo piuttosto che quello
+Insomma cioè volevo sapere e lui mi ha detto che, allora, dipende da cosa sta tradando nel senso, lui mi ha detto che per deformazione sua lui non tratta crypto e fa pochissime commodities perché sono molto volatili
+Poi lui lavora intraday, ok, quindi cerca magari variazioni piccole da fare in leva magari 10 volte e guadagnare un pochino, no? Tipo cerca un bips su un'obbligazione e per guadagnarci alla fine magari, che ne so, l'1% del portafoglio
+Ti faccio un esempio, e lui mi diceva che con i bond l'intelligenza artificiale è pressoché inutile, perché? Perché nella linea teorica tutto ciò che coincide, che fa coincidere l'intelligenza artificiale con i bond funziona
+Il problema è che il 90% dei bond si negozia ancora sui mercati OTC, quindi lui mi diceva quando poi sviluppi la strategia e vuoi effettivamente automatizzare la cosa, quindi fare in modo che il programma in automatico compri il bond quando è vantaggioso e lo venda, non riesce a farlo
+Perché dovrebbe chiamare il trader, negoziare il prezzo e insomma fare la trade, cosa che non sa fare
+E quindi mi diceva che i bond è pressoché inutile, come anche con strategie complesse di derivati, perché sempre sul mercato over the counter viene fatto tutto
+E quindi diciamo serve comunque una persona che faccia l'execution, per quanto poi la strategia, lui mi diceva io riesco anche a backtestarle con un magari 60% di win rate
+E però non la puoi eseguire in automatico, quindi l'unica cosa con cui tu puoi fare questa cosa è con azioni o ETF molto liquidi
+Quindi il secondo problema che mi diceva lui è la liquidità, cioè che quando tu studi nella teoria le azioni il broker te la vende e tu la compri al prezzo di mercato
+In realtà non è così mi diceva lui, perché c'è il problema del bidask spread, cioè la strategia può essere vincente, l'idea sotto il trade può essere vincente
+Quindi che ne so, che l'azione Eni oggi abbia un rialzo positivo
+Il problema qual è? Che se il broker è quello sbagliato, cioè il carry che ha la trade te lo mette in culo
+Perché? Perché il costo magari del bidask tu lo vai a pagare, quindi anche se la trade è vincente ci vai a perdere
+Quindi lui mi diceva, ancora l'intelligenza artificiale non riesce a capire, cioè non riesce ad avere una moltitudine esagerata di broker
+A confrontare tutti i prezzi in un millesecondo e a trovare il miglior broker e a eseguire l'operazione del miglior broker
+O meglio, lui mi diceva, i market maker, quindi quelli che lavorano nelle grandissime banche, JP Morgan eccetera
+Hanno dei computer tali per cui questa cosa è possibile per loro, ma sono market maker per l'appunto
+Lavorano con i computer della NASA e riescono a stare dietro a questa velocità
+I trader normali dicevano come me, noi non riusciamo a stare dietro a questa cosa
+Quindi per cosa la usavano? Lui mi diceva, io uso l'EI per scrivere il codice
+Quindi io ho una strategia in mente
+Scrivo il codice, quindi provo se la strategia ha senso
+Faccio backtesting mille, mille, mille, mille, mille, mille, mille, mille, mille, mille, mille volte
+Dopo che ho fatto backtesting la eseguo io
+E poi mi diceva anche lui, per una deformazione sempre mia professionale
+Io preferisco metterci dieci minuti in più, ma metterci la testa io
+E non lasciare fare tutto in automatico perché, insomma, non sono soldi del monopole
+Sono soldi veri, magari lui va in leva dieci e ci mette dieci milioni
+Cioè, perde tutto il portafoglio in una sola trade, quindi insomma, non gli va bene
+Secondo me, si può fare
+Nel senso, si può fare più che un bot che trada in automatico
+Perché mi diceva che, cioè, puoi provarci, ma non c'è, cioè, è pressoché impossibile
+Soprattutto se non hai degli strumenti folli
+Tra l'altro questo qui è PhD in matematica, è non l'ultimo di scappare di casa
+Proprio c'è uno che spinge peso
+E, diciamo, puoi provarci
+Però quello che ti consiglio è, piuttosto che fare un, per esempio, automatic trading bot
+O qualcosa del genere
+Usa l'AI per sviluppare strategie
+Mi diceva, fai brainstorming, magari, no?
+Tu da solo
+Non so, hai un mercato che ti interessa
+Ti piacciono di più i bond, ti piacciono di più gli equity
+Io sarei più quelli dei equity perché ti piace di più
+Poi definisci la tua strategia
+Quindi, vuoi fare trading intraday
+Vuoi fare trading medio termine
+Vuoi fare trading sulla volatilità
+Insomma, definisci una bella strategia
+Scrivi il codice e te la backtest
+Quindi usi l'AI e in generale Python
+La programmazione per provare strategie
+Per fare simulazioni, per backtestare
+E poi tu da solo ti cerchi il broker e esegui l'operazione
+Perché se fai fare tutto l'AI
+Una trade vincente te la trasforma in una trade di merda
+Perché non è ancora in grado di selezionare il broker migliore
+O comunque non è in grado di telefonare al broker e farti fare il prezzaccio
+Come magari so fare io, mi diceva lui
+Funziona ancora molto come al mercato
+Anche se non sembra
+Chiamo il broker e gli dico
+Dai fammi questo prezzo
+Mi ha interrotto l'audio
+Mi sono accorto che è di 6 minuti
+Mi diceva
+Che chiamava il broker e diceva
+Dai fammi il prezzaccio
+Che ho il P&L che è una merda
+E lui diceva
+Va bene ti faccio il prezzaccio
+Ma la prossima volta
+No, anzi
+Quando devi rivendere l'operazione
+La fai sempre da me
+Insomma
+Purtroppo
+Mi diceva lui
+Per quanto poi il mercato sia liquido
+Ci sono mille e mille piattaforme
+Se vuoi fare la trade giusta
+Poi a livelli ovviamente
+Cioè non se io voglio comprarmi 10 azioni eni
+E fare 100 euro
+Cioè a livelli come lo fa lui
+Cioè devi ancora sentire i broker
+Devi ancora alzare il telefono
+E chiamare queste cose qui
+Quindi questo

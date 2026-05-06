@@ -1,0 +1,373 @@
+Allora, ti spiego meglio la mia idea.
+Allora, grazie che mi hai sollevato questi spunti, hanno molto senso.
+Provo a risponderti in modo abbastanza ordinato.
+Il punto è avere una...
+Cioè il mio obiettivo, bro, adesso parliamoci chiaro,
+è avere un qualcosa che io posso lasciare completamente autonomo, ok?
+Perché adesso l'intelligenza artificiale è in grado di fare i ragionamenti con gli strumenti giusti, ok?
+Anche il trader, quando negozia, deve avere appunto delle strategie da backtestare,
+deve individuare quelle cose, al di là del fatto che magari ha le call, gli advice,
+quelli un po' sotto banco, ok?
+Nell'ipotesi in cui lui queste cose non ce le abbia, deve backtestare,
+deve guardare il mercato, deve studiarlo.
+Ci sono diversi studi, c'è diversi tipi di studio,
+quindi magari ti guardi le news, poi magari ti guardi i grafici,
+ti guardi questo, ti guardi quest'altro.
+E quindi il mio obiettivo è quello di creare un qualcosa
+che sia in grado di...
+Ah, ti guardi anche chiaramente la liquidità del prodotto,
+il B-DASK, ti guardi tutto.
+Il mio obiettivo è quello di replicare la...
+Cioè, quello che fa un trader, il trader sceglie anche, non so,
+la frequenza di trade, la leva e tutto il resto, no?
+Decide proprio tutto, bro.
+Ora, il mio obiettivo è quello di replicare questo lavoro.
+Qual è il vantaggio dell'intelligenza artificiale?
+Non è solo di avere qualcosa che mi scriva il codice per backtestare le cose.
+È...
+La potenza del codice, dell'intelligenza artificiale e del codice
+è che, per esempio,
+vabbè, sulle cripto, teoricamente, è tutto pubblico
+e è tutto digitale.
+Quindi c'è già l'infrastruttura
+che ti consente di ottenere tutte le informazioni che ti servono,
+quindi liquidità, grafici, B-DASK, prezzi,
+in modo tale che tu possa, da quei dati grezzi,
+calcolare con proprio operazioni deterministiche, bro.
+Cioè, le robe che il computer fa in un niente,
+perché sono sottrazioni, addizioni, sono operazioni semplici.
+Le fai in un nanosecondo, bro.
+E magari l'intelligenza artificiale,
+che deve ragionare sul trade da fare, perché è autonoma,
+non gli arriva il prezzo BID e il prezzo ASK,
+gli arriva direttamente tipo un pacchettino di informazioni
+che viene elaborato dai dati grezzi che estrai
+per fare, cioè per dargli informazioni utili, ok?
+Cioè, non i dati grezzi che poi devi analizzare,
+tu devi dare all'EI tutti gli strumenti possibili
+per facilitargli il lavoro.
+E quindi pensare tu stesso alle problematiche che servono per,
+cioè, alle problematiche che ci sono per automatizzare la cosa.
+Non so se mi sono spiegato.
+Cioè, se tu hai un potenziale trade, ok?
+E ti rendi conto di questa cosa,
+ma perché magari hai, appunto, delle strategie
+e ti vai, apri il mercato, lo guardi e dici
+cazzo, mi sembra questa azione in particolare
+spicca perché ha un prezzo che io pensavo fosse tot.
+E pensavo che quel prezzo fosse tot
+perché dai miei calcoli, dalle mie strategie,
+era così e invece c'è un disallineamento.
+E quindi quella potrebbe essere un'opportunità.
+Queste cose sono tutte deterministiche, bro.
+Adesso è...
+Perlomeno, io mi immagino che siano deterministiche.
+Che siano date da una strategia.
+La strategia ha dei valori, dei principi, delle caratteristiche
+che tu scegli a monte, ok?
+Però anche lì, una volta che tu hai la strategia
+o le strategie, perché poi, una volta che tu fai un bot,
+il bot lo puoi replicare, ce lo puoi duplicare
+e modificare le configurazioni
+e magari hai un bot che segue una strategia
+e un bot che ne segue un'altra.
+Con backtesting, ovviamente, e tutto il resto.
+Puoi integrare algoritmi di machine learning
+che stimano i prezzi.
+Adesso anche con un computer del cazzo
+puoi fare queste cose, io te lo assicuro
+perché le ho fatte sul mio computer di casa
+quando devo fare la tesi.
+Quindi ti dico, si possono...
+Cioè, si può fare tutto, però.
+Con un computer consumer si può fare tutto.
+Ovviamente, se tu vai a cercarti
+le opportunità su grafici da, però, 30 secondi,
+cioè, ovvio che c'hai il delay, capito?
+È normale che ci sia un delay.
+Però se tu ragioni su strategie
+con frequenza un po' più ampia,
+mi immagino, per esempio, una strategia
+che ogni giorno va a vedere lo stato del mercato
+e ribilancia il portafogli, ok?
+Oppure, tipo, mi immagino,
+con un orizzonte magari di tot tempo,
+comunque cerca di ottimizzare il rendimento
+con operazioni one shot single day.
+Cioè, una volta al giorno lui ribilancia
+tutto il portafogli, ok?
+E questo, secondo me, lo puoi fare tranquillamente.
+Puoi anche, volendo, secondo me,
+cercare delle operazioni tipo dei day trade,
+che invece magari hanno stop loss e take profit,
+quindi proprio trading puro,
+in cui, invece di ribilanciare,
+tu fai, tu, ogni tot, magari ore,
+magari una volta all'ora,
+lui fa una scansione intera del mercato, ok?
+Si fa tutti i suoi calcoli.
+Ovviamente tu devi far,
+devi dargli gli strumenti per fare i calcoli.
+Cioè, se tipo tu,
+adesso per questo volevo ragionarci con te,
+perché tu sicuramente ne sai di più,
+perché adesso non la mastico da un bel po',
+e soprattutto non le competenze magistrali.
+Però, se tu dai all'intelligenza artificiale
+tutti gli strumenti e tutte le informazioni
+ben impacchettate, ben disposte,
+lui poi può ragionare
+e fare il ragionamento che faresti tu con quei dati.
+Ma è ovvio che tu non puoi dare dei dati grezzi,
+perché i dati grezzi tu nella tua testa
+in maniera estremamente veloce
+o magari anche ad occhio
+li elabori.
+Allora, tu non puoi dire
+intelligenza artificiale, elabora li.
+Devi elaborarli tu per lei
+o perlomeno devi dargli gli strumenti
+che gli permettano di elaborarla deterministicamente
+in modo tale da aumentare la velocità.
+Ok?
+E una volta allora lui scansiona
+e dice
+adesso non ho trovato niente.
+Oppure tipo dopo un'ora dice
+questo trade secondo me ha senso
+nel momento in cui tu metti
+piazzi un ordine a questo prezzo.
+E quindi magari fa un ordine
+come che si chiamano?
+Quelli
+tipo gli ordini che partono
+quando l'azione o la cripto
+arriva a un determinato prezzo.
+E quindi a quel punto l'ordine
+cioè l'intelligenza artificiale piazza l'ordine
+ma l'ordine parte solamente se raggiunge il prezzo target.
+Ok?
+Se raggiunge il prezzo target
+poi l'ordine magari parte
+però lui ha già stop loss e take profit.
+Ok?
+La roba figa quale sarebbe potenzialmente?
+Sarebbe che
+l'intelligenza artificiale
+facendo tutte queste operazioni
+può essere addestrata
+o perlomeno può avere accesso
+a tutte le operazioni che lei ha fatto.
+Ok?
+Una volta che tu hai tutte le operazioni
+che l'intelligenza artificiale ha fatto
+puoi sviluppare anche lì
+degli ulteriori strumenti
+che elaborano queste informazioni
+magari anche tramite
+dell'intelligenza artificiale stessa
+elaborano queste informazioni
+elaborano tutti i trade
+che sono falliti
+che hanno avuto successo
+che non sono stati fatti
+con tutte le informazioni
+che sono state analizzate
+e utilizzate per
+realizzare questo trade
+che può essere fallito
+o andato in porto
+capire cosa è andato bene
+perché è andato bene
+se le news
+sono qualcosa
+che in una determinata situazione
+è valida
+se l'analisi tecnica
+è qualcosa
+che in una determinata situazione
+è valida
+e insomma
+costruire piano piano
+tutti questi moduli
+di strumenti
+che permettono
+all'intelligenza artificiale
+di avere delle informazioni
+utili
+per fare il trading
+per fare il trading
+però questa è la mia idea
+adesso io devo sicuramente
+metterla giù
+quindi mi salverò questo audio
+lo trascriverò
+e me lo appunterò
+però insomma
+questa è la mia idea
+quindi se ti va
+la possiamo fare
+questo con le cripto
+cioè con le cripto
+è tutto pubblico
+ok
+è veramente
+è tutto pubblico
+se tu poi vai su
+su Binance
+per esempio
+Binance ha le API
+le API sono tipo
+quando tu con Python
+estrai il prezzo delle azioni
+con Yahoo Finance
+ok
+stessa identica cosa
+solo che tu invece di
+oltre a poter estrarre
+le informazioni
+e su Binance
+puoi estrarre tutto bro
+puoi estrarre prezzo
+puoi estrarre prezzo di mercato
+prezzo di offerta
+prezzo di domanda
+BDASK
+liquidità
+tutti gli ordini
+che sono stati piazzati
+quindi quanto sono grossi
+potenzialmente puoi fare un modulo
+che indaga
+quali sono
+gli ordini
+che hanno un volume
+o perlomeno
+un ammontare
+esageratamente alto
+e quindi magari
+seguire gli ordini
+che hanno dei
+cioè mettere tipo
+degli alert
+all'intelligenza artificiale
+che gli dice
+oh guarda che in questo caso
+c'è anche un ordine
+piazzato estremamente grande
+un unico ordine
+vuol dire che magari
+qualcuno
+lo sa già
+e ha già piazzato veramente
+tanti soldi
+quindi potrebbe essere
+che è un segnale
+da seguire
+e quindi tu crei
+crei potenzialmente
+anche tutti questi moduli
+che danno
+l'intelligenza artificiale
+a tutti degli alert
+ok
+con tutto lo storico
+degli ordini
+tu fai back test
+e ti rendi conto
+di quali informazioni
+quali alert
+quali news
+quali analisi
+vanno bene
+quali vanno male
+quali vanno bene
+in determinate situazioni
+avere il riconoscimento
+dei pattern
+perché l'intelligenza artificiale
+è bravissima
+nel riconoscimento
+dei pattern
+e quindi capire
+magari
+in determinate situazioni
+di mercato
+è meglio utilizzare
+le news
+piuttosto che
+gli alert
+degli ordini grossi
+oppure viceversa
+per quanto riguarda
+le azioni
+invece
+anche lì
+esistono
+e questo lo so
+da JECAT
+esistono
+dei provider
+perché siccome
+anche le azioni
+teoricamente
+dovrebbero essere pubbliche
+esistono dei provider
+che mettono a disposizione
+le API
+esattamente come
+finance
+esattamente come
+Yahoo Finance
+in cui tu non solo
+puoi estrarre le informazioni
+ma puoi anche
+piazzare degli ordini
+ok
+ha senso per esempio
+mettere anche un modulo
+che va
+per esempio
+un modulo
+mettere uno strumento
+che riesce a calcolare
+questo spread
+ok
+lo spread magari
+dell'ordine
+scaricando
+i prezzi
+da Yahoo Finance
+in tempo reale
+è il prezzo
+che mi offre
+il broker
+in tempo reale
+vedendo lo spread
+calcolando poi
+cioè
+lui magari ha già
+anche calcolato
+quale sia
+il prezzo target
+e si rende conto
+se vale la pena o meno
+perché ha già
+tutte le percentuali
+di tutti i potenziali
+rendimenti
+metti
+già in pancia
+perché tu sviluppi
+il modulo
+o lo strumento
+da dargli
+per fare questi calcoli
+capito?
+cioè
+è una roba
+che potenzialmente
+è super complessa
+ma secondo me
+ha troppo senso farla
+grazie a tutti

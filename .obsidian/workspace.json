@@ -1,0 +1,269 @@
+{
+  "main": {
+    "id": "da431f11963efd5c",
+    "type": "split",
+    "children": [
+      {
+        "id": "fca4e99403dd57aa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c5f4bf2e26f2f4cb",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "raw/notes/Trading Floor.canvas",
+                "viewState": {
+                  "x": -20,
+                  "y": 250,
+                  "zoom": -0.32244050655706774
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Trading Floor"
+            }
+          },
+          {
+            "id": "09b54829b0dd8b68",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "raw/notes/Trading Floor.canvas",
+                "viewState": {
+                  "x": 6.9700000000000015,
+                  "y": 448.09000000000003,
+                  "zoom": 0
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Trading Floor"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b5bc52506d6bfb65",
+    "type": "split",
+    "children": [
+      {
+        "id": "6ce700d6fd6bf9ed",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "168c1cbc86e15b94",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Esplora risorse"
+            }
+          },
+          {
+            "id": "c079800e17a9ee71",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Ricerca"
+            }
+          },
+          {
+            "id": "2e5051338e8aa55b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Segnalibri"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "29fabff42699a85e",
+    "type": "split",
+    "children": [
+      {
+        "id": "1639b2a36c575cec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6b1397e899958f8b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "wiki/_meta/index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Riferimenti a index"
+            }
+          },
+          {
+            "id": "d61f438b6ccd7a5b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "wiki/_meta/index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Collegamenti in uscita da index"
+            }
+          },
+          {
+            "id": "b949bceea94639e3",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etichette"
+            }
+          },
+          {
+            "id": "7f21782d81552354",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Tutte le proprietà"
+            }
+          },
+          {
+            "id": "005e838512ad227b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "wiki/_meta/index.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Struttura di index"
+            }
+          },
+          {
+            "id": "ad28379376be2da7",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "obsidian-kanban:Create new board": false,
+      "switcher:Apri selezione rapida": false,
+      "graph:Apri vista grafo": false,
+      "canvas:Crea nuova lavagna": false,
+      "daily-notes:Apri nota del giorno": false,
+      "templates:Inserisci modello": false,
+      "command-palette:Apri riquadro comandi": false,
+      "bases:Crea nuova Base": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "168c1cbc86e15b94",
+  "lastOpenFiles": [
+    "raw/notes/Trading Floor.canvas",
+    "Senza nome 1.md",
+    "raw/notes/Trading Agent — Architecture Overview.jpg",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/indi-680x309-1.jpeg",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/PAT-680x256-1.jpeg",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Position Sizing/Immagine_2022-02-05_143504.png",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Position Sizing 7e601b2c68ba45eaaa15f56670b8ca38.md",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Trading Journal cf886ab0dd82437eb9f1d9bc39a5b174.md",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Rendita Passiva CeFi, DeFi/Staking f4e589b35dd34cf4870a139062775c9d.md",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Rendita Passiva CeFi, DeFi/Impermanent Loss 0a454820e4dc4646bb9d3f360eeae366.md",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici 0ce01d27c7b745ce9ee86d8df5ec1c5c.md",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Analsi Fondamentale e3eb2c0dd85c4ce292b1b301862d0d10.md",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/pat12.jpg",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Glossario/Untitled.png",
+    "raw/articles/Private & Shared/Trading Agent 3192e441b0e580d5921bf33f9b559735.md",
+    "raw/articles/Private & Shared/Trading Agent/Pensieri 3292e441b0e5807494fcf72e1e197edc.md",
+    "Senza nome.md",
+    "raw/papers/2412.20138v7.pdf",
+    "Clippings/Cali voluminoso.md",
+    "Clippings/Gambe - Addome.md",
+    "Clippings",
+    "wiki/build/system-map.md",
+    "wiki/build/build.md",
+    "wiki/ops/kanban-project-status.md",
+    "wiki/ops/dashboard.md",
+    "wiki/_meta/index.md",
+    "raw/audio/videochimata 30 apri.m4a",
+    "raw/audio/videochimata 20 apri.m4a",
+    "raw/audio/Nuova registrazione.m4a",
+    "AGENTS.md",
+    "wiki/syntheses/syntheses.md",
+    "wiki/concepts/modular-trading-agent-architecture.md",
+    "Senza nome.canvas",
+    "wiki/_meta/log.md",
+    "wiki/ops/backlog.md",
+    "Senza nome.base",
+    "raw/articles/dashboard starting finance streamlit.md",
+    "raw/papers/Non confermato 825723.crdownload",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist)/Untitled a1d60f974cb2446a8aeeb7fb46ec1d9a.md",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist)/26 12 2021 e0f4d7fa831c4fec827bccbb5502c07a.md",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist) d07ff53b4b534f31b42906851597ee7a_all.csv",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist) d07ff53b4b534f31b42906851597ee7a.csv",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist)",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Position Sizing/Immagine_2022-02-05_143149.png",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Operatività/indi8.jpg",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/sd4.jpg",
+    "raw/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/sd1.jpg"
+  ]
+}

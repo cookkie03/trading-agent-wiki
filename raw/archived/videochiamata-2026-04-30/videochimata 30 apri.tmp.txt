@@ -1,0 +1,3234 @@
+Invece Obsidian, cioè quando creo un nuovo volt, creo un nuovo cervello, cioè una nuova mappina?
+Quando creo un nuovo volt, creo una nuova cartella
+Ok, quindi un volt, per esempio io ho un volt che l'ho chiamato capire come funziona Obsidian
+E ci metterò le cose stupide, no?
+Quindi, cioè le cose che devo capire
+Ok, se ne creo uno nuovo, gestisci volt, crea un nuovo volt, faccio crea e lo chiamo prova
+Che cazzo faccio?
+Fammi vedere
+No, facciamo così, vediamo cosa c'è
+A scegliere posizione, sfoglio
+Deo, ma me lo metti in locale, cioè posso metterlo anche sul desktop
+Certo, puoi caricarlo su Google Drive, bro
+Fuck
+Ma puoi metterlo anche nella caccia, cioè tu puoi creare un volt che ha la tua cartella uni, bro
+Deo, bro
+Quindi cioè, ogni, ogni cosa è un, ogni cosa che faccio su Obsidian è un pezzetto
+Cioè si chiama Obsidian, bro, perché è tipo un mattoncino
+E ogni mattoncino è una cosa diversa
+No, allora Obsidian devi immaginartelo come un app, bro
+Come se fosse il blocco note
+Ok, immaginatelo come un blocco note con gli steroidi potenti
+Ok
+Ok
+È un blocco note con gli steroidi
+Cioè, completo però, capito?
+In modo tale che è un blocco note, un esplore di risorse, messi insieme, fatti bene
+Perché adesso ti sento bassissimo?
+Ok
+Non lo so
+No, no, va bene, va bene
+Obsidian app
+È ancora buono
+Il problema dell'Obsidian app, per esempio, su iOS è che puoi creare volt solo su Google Drive
+Cioè solo su iCloud
+Oppure li puoi sincronizzare, però non mi ricordo, cioè non so come funziona
+Quindi finché ci lavori solo dal PC è stra easy, è super libero
+Tu immagina, io vorrei fare una wiki, per esempio, su tutta la mia triennale
+Ok
+Ok
+È come avere un cervello sempre prontato di un triennale
+Ah, è un'altra cosa che vorrei chiederti, probabilmente saranno i materiali della magistrale
+Non tanto solo per farci una wiki, ma proprio per averli, cioè per saperli se voglio guardarmeli, leggermeli, cose
+Ma i PDF?
+Sì, sì
+La cartella uni
+Cioè le unizioni?
+Sì, la cartella uni
+Ok
+Se hai voglia, se ti va, se non ti dà fastidio
+Sì, sì
+Ma in realtà ne ho, vabbè, ce l'ho su GoodNotes
+Che è quello che sto usando dall'iPad per le note, ti carico, cioè ho le dispense e le...
+In qualsiasi formato tu voglia, davvero
+In qualsiasi formato tu voglia
+Comunque, tu non vedi, vedi ancora il mio schermo, vero?
+King
+Sì
+Ok
+Sto cercando di capire qual è che è
+Cioè tipo qua
+Sembra che il Vault sta utilizzando OneDrive come servizio di sincronizzazione di terza parte
+Utilizzare la psichiatria in questo Vault potrebbe causare conflitti, fare daleggiato e perdere di dati
+Eh bro, niente, semplicemente se tu...
+Allora siccome la sincronizzazione non è originale di Obsidian ma è data dalla sincronizzazione di OneDrive
+Se tu modifichi delle cose su OneDrive contemporaneamente c'è il rischio e magari hai aperta qualcosa su Obsidian
+E cioè stai modificando su Obsidian, su due computer diversi, stai modificando con Obsidian la stessa cartella
+Ok
+Nello stesso identico momento
+È probabile che se tu stai guardando la stessa cosa, stai modificando la stessa cosa contemporaneamente
+Proprio la stessa pagina magari
+Vai in conflitto e non sa cosa fare e si sputtana
+Però quello è il rischio principale
+Ok, ma perché non me l'ha salvato sul desktop questo figlio di mille puttane?
+Figlio di mille troie di un Obsidian
+King, potremmo continuare poi col Trading Agent
+Vai avanti, sì sì, vai avanti
+Sto stai dimenticando con questo
+No, no, dimmi tu quello che stavi dicendo sul prima che me lo sono anche dimenticato
+Eravamo partiti dal
+Di quantificare tutti questi bias numericamente
+Cioè di dare dei valori che sono delle costanti
+Quindi dai alle dimissioni di Jerome Powell
+Che quindi viene categorizzata in una cartella più grande
+Dimissioni, presidenti, banche centrali
+Un valore di 0-1
+Perché capiamo che nel momento delle dimissioni
+Tutti i titoli, cioè in media, scendono di top
+Ok?
+E quindi dai a quello valore che
+E lo fa per magari una volta, due volte, tre volte, dieci volte
+E capisce che tutti gli ultimi dieci
+I oratori delle banche centrali
+Quando sono dimessi hanno causato un effetto
+Trovi la correlazione in quelli
+Così riesci a quantificare un effetto
+Capito?
+Cioè quindi il punto è quantificare degli effetti
+Che non sono stati quantificati
+Che nessuno quantifica
+Cioè
+Non so se si può fare
+Però la mia idea era, per esempio
+Una notizia
+Impatta il mercato
+Sì, lo sappiamo
+Il trader lo sa
+Anticipa la notizia
+Cavalca l'onda
+E si mette un take profit
+Ok?
+Questa è l'idea
+La mia idea invece è
+La mia notizia
+E anziché capire l'onda
+Se va su o va giù
+E mettere un take profit
+Stop loss
+Quindi per pararsi il culo
+O comprare una call
+O comprare una put
+È quantificare il valore
+Che può avere quella notizia
+Inserirlo in un cervello
+Di notizie
+Dello stesso settore
+Ok?
+Dello stesso gruppo
+Fare una media
+E dire
+In media
+Notizia del genere
+Impatta X
+E dove X è un valore concreto però
+Capito?
+Poi
+Cioè
+Farlo per ogni tipologia
+Di cosa
+Che potrebbe essere indirente
+E a quel punto tu hai
+Tutto che è quantificato
+È come se fosse un modello econometrico
+Cioè
+Ogni cosa
+Impatta di X
+Solamente che è un modello econometrico
+Dove tu non calcoli
+Ma hai tutti i dati a monte
+Capito?
+In che senso
+In che senso
+Non calcoli
+Ma hai tutti i dati a monte?
+Quindi insomma
+Quando tu fai la regressione
+Di un modello econometrico lunghissimo
+Noi abbiamo fatto tipo
+Economia 2
+Puoi avere un modello econometrico
+Lunghissimo
+Tieni serviti tutti i valori
+E ne calcoli uno specifico
+Ok?
+Ma calcoli il coefficiente del valore
+Cioè il parametro
+Sì il coefficiente del valore
+Esatto
+E ti dici che
+La variazione di 1
+Comporta
+Sì
+In questo modo
+Cambia
+Perché noi avremmo
+Una media
+Settoriale
+Di tutti i valori
+Avremmo che ne so
+Azione Eni
+Faccio l'esempio
+E la gente capisce
+Può essere influenzata da
+Prezzi del petrolio
+Variazioni del prezzi del petrolio
+Bond italiani
+Interestrette europee
+C'è una serie di valori
+Ok?
+E lui sa che per
+I prezzi del petrolio
+In media
+Quando il prezzo del petrolio
+Sale di X
+I titoli delle compagnie
+Petrolifere
+Salgono di X
+E quindi
+Primo fattore
+Secondo fattore che analizza
+È
+In media
+Ogni volta che
+Giorgio Averoni parla
+O comunque
+Il presidente dello stato
+Dove l'azione è residente
+Il titolo varia a X
+E lo fa
+Tutto questo basato
+Sui dati passati
+Ok?
+Nel Gito
+A prendere tutte le serie storiche
+E calcolarsi
+Quelle sono correlazioni
+Variazioni
+Cioè
+Tutte le derivate
+Però penso che lo possa fare
+Anche lui
+Non penso che dobbiamo fare
+La gamma
+Questo
+E poi metti tutti insieme
+L'unico cervello
+Non so se si può fare
+Ma questa è la linea
+Allora
+Quello di cui tu stai parlando
+Potenzialmente
+È quello che io
+Ho fatto in tesi
+Ok
+Ok
+Perché è
+Factor investing puro
+Con una componente
+Di news
+Quindi di dati
+Non strutturati
+Ok?
+Perché finché tu
+Mi vieni a dire
+Dimissioni
+Del
+Del presidente
+La banca centrale
+Quella è una dam
+Quella è già quantificabile
+Ok
+Perché mette uno a zero
+Sì
+Esatto
+Mette uno a zero
+E calcola il coefficiente
+Di quel valore
+Ok?
+Ok
+Le news
+Sono questi dati
+Non strutturati
+Non quantificabili
+Sì
+Ok
+Bene
+Ora
+Tu puoi
+Potenzialmente
+È quello che avevo già pensato io
+Ma già sulle crypto
+Avere
+Un modello
+In cui
+Tu raccogli
+Le news
+Allora
+Facciamo così
+Ti presento
+Ti presento il modulo
+Ok
+Ti presento i moduli
+Così poi
+Da lì partiamo
+Va bene?
+Sì
+Guardami
+Guardami
+Questo
+Questo
+Questo
+Questo qui
+Lo vedi?
+Sì
+Questo è il DB
+Ok?
+Il DB
+È il database
+Deve contenere
+È la fonte
+Di dati
+Qualsiasi tipo di dato
+Qualsiasi
+Qualsiasi
+Trade
+Fatti
+Risultati
+Dei moduli
+Regole
+Tutto
+Per essere storiche
+Tutto
+Ok?
+Tutti
+Tutissimo
+Qua c'è una piccola
+C'è l'idea
+Di una divisione
+Che ho fatto io
+Per varie componenti
+Del DB
+Ok?
+Quindi ci sarà una componente
+Con lo storico dei trade
+Nostri
+Una componente
+Con la situazione del mercato
+Ok?
+Quindi tipo prezzi
+Volumi
+Eccetera
+Una componente
+Sui factor
+Una componente
+Sulla situazione
+Di portafogli
+Che si basa
+Sullo storico dei trade
+Vediamo se riesco a farti
+Una piccola freccia
+Che si basa
+Su
+Sulla situazione
+Di portafogli
+C'è una situazione
+Di portafogli
+Che è costruita
+Dallo storico
+Dei trade
+Ok?
+Sì
+Quindi questa immaginati
+È un DB
+Poi vabbè
+La composizione
+La realizziamo dopo
+Torniamo all'LM
+L'LLM
+Il trader
+Ok?
+Come puoi costruire
+Tu
+Questo
+Questo agente
+Che fa trading
+Dandogli tutte le informazioni
+Allora innanzitutto
+Ci sono una serie di domande aperte
+Che dobbiamo stabilire
+Ok?
+Come ad esempio
+Per esempio
+Per esempio
+La frequenza
+Di trade
+Posto che
+Abbiamo scelto
+Di avere una strategia
+Di trading
+E non di
+Lungo periodo
+Ok?
+In cui devi semplicemente
+Fare dei
+Non possiamo fare
+Value investing
+Cioè questo è chiaro
+Se non lo faremmo
+Senza
+AI
+Non c'è bisogno
+Di fare value investing
+Puoi utilizzarla
+Però
+Però a questo punto
+Cioè
+Ci risulta più facile
+Fare trading
+Ok?
+Quindi
+Però tu devi scegliere
+Un time frame
+Non un time frame
+Scusami
+Un time period
+E ogni dot
+Time period
+Fai un trade
+Non è che fai un trade
+Tu semplicemente
+Mandi il prompt
+All'LLM
+Ok?
+Domanda
+Domanda
+Potenzialmente
+E poi
+Questo non lo so
+Sicuramente
+Ad esempio
+Quanto velocemente
+Può operare?
+Devi considerare
+Il tempo necessario
+Per
+Permettergli
+Di avere
+Tutte le informazioni
+Dei moduli
+E non è facile
+A seconda di quanto
+Sono complessi
+Potrebbero durare
+Anche qualche minuto
+Il ragionamento
+Dell'LLM
+E passaggi intermedi
+Che però durano
+Qualche secondo
+Su
+Per esempio
+Questo security module
+E questo modulo
+Binance
+Ok
+Cioè
+Può durare
+Da
+Boh
+Bro
+Un minuto
+Perché fa un minuto
+Di ragionamento
+A
+Dieci minuti
+Perché
+Deve calcolarsi
+L'algoritmo
+Di deep learning
+Noi lo forziamo
+A ragionare tanto
+Cioè
+Capito?
+Sì
+Ma può durare
+Anche un'ora
+Bro
+Volendo
+A seconda di
+Quante informazioni
+Tu gli dai
+E come
+Quindi
+Io mi ero immaginato
+Tu devi costruire
+Un prompt
+Da dare
+All'LLM
+Neanche magari un prompt
+Lui semplicemente
+Si prende il prompt
+Comunque il prompt
+È caricato sul db
+Ok?
+Cioè
+Ogni tot
+Ogni tot
+Viene creato
+Proprio deterministicamente
+Viene calcolato
+Viene creato
+Un prompt qui
+Basato su questi moduli
+Viene caricato
+Un prompt
+Nel db
+Lui
+Con la stessa
+Con la stessa
+Periodicità
+Prende l'ultimo prompt
+Che vede disponibile
+Nel database
+E lo utilizza
+Come system prompt
+Proprio
+Ok?
+I moduli
+Come li ho immaginati
+Io ho immaginato
+Un modulo di news
+Ok?
+Quindi per esempio
+Tu ti agganci
+A dei provider
+Di news
+Vediamo se
+Non riesco a fartelo
+Ti agganci
+A dei provider
+Di news
+Che
+Raccolgono
+Le news
+Le pre
+Elaborano
+Ok?
+Nel modulo di news
+Le news elaborate
+Vanno a finire poi
+Dentro il db
+A far parte
+Di fatto
+Del prompt
+Che viene mandato
+Ok?
+Sì
+Un altro modulo
+È quello di analisi tecnica
+Io l'avevo ragionata
+Nel senso di
+Cioè non sapendo
+Perlomeno
+Ignorando il fatto
+Che potenzialmente
+L'analisi tecnica
+È inutile
+Però un qualcosa
+Molto semplice
+Di analisi tecnica
+Quindi individuare
+Di fatto
+Quelle che sono
+E che secondo me
+Hanno
+Sono le uniche
+Che hanno
+Un fondamento logico
+Le soglie di prezzo
+Più toccate
+Ok?
+Hanno
+Le soglie di prezzo
+Più toccate
+Nel senso che tu magari
+Hai un grafico
+Che sale e scende
+Sale e scende
+Poi sale di nuovo
+E si ferma
+In una certa soglia
+In un certo intervallo
+Di prezzo
+È molto probabile
+Che
+C'è proprio
+A livello di
+Anche di bias
+Ok?
+Mentalmente
+Si pensa
+Per esempio
+Che l'oro
+Ha cento
+O mille
+Vale mille
+Ok?
+Quando
+Tu hai l'oro
+Che supera
+Mille
+Di tot
+È molto probabile
+Che tu sia
+In un trend positivo
+Facciamolo al contrario
+Che ha ancora più senso
+Immaginati che tu hai l'oro
+Che prezza mille
+Ok?
+E scende a
+Nove e novanta
+Ok?
+Finché è nove e novantuno
+Ci sta
+Perché è nell'intervallo
+Quando scende a nove e novanta
+A nove e ottantanove
+Potenzialmente
+Si sta
+Innescando un trend
+Negativo
+Perché
+Sia per una questione
+Di bias
+Mentali
+Cioè
+Cazzo
+L'oro è sceso
+Sotto il mille
+Vendo
+Sia
+Perché
+Gli investitori
+Istituzionali
+Hanno degli ordini
+O comunque
+Delle strategie
+Che impongono
+Dei
+Trade
+Che devono fare
+A seconda del prezzo
+Che raggiunge
+Una determinata
+Un determinato strumento
+Quindi
+Se le istituzioni
+Hanno
+Per esempio
+Gli stop loss
+Classici
+Però per ordini
+Giganti
+Se
+Scatta lo stop loss
+C'è una vendita
+C'è un selling
+Pazzesco bro
+Perché se tu
+Se scatta
+Uno stop loss
+Il prezzo scende
+Ulteriormente
+Facendo scattare
+Tutti gli stop loss
+Di tutti gli istituzionali
+A domino
+Ok
+Capito
+Capito il senso
+Però scusami
+In quel caso
+Non si attivano
+I
+Come si chiamano
+I limitanti
+Come si chiamano
+Che sono dei meccanismi
+Che limitano
+Questa cosa
+Si l'ha fatto
+Quello
+Intesi
+Ho capito
+Cosa intende
+Il
+Come si chiamano
+I lull
+Come si chiamassero
+Non so come si chiamano
+I limitanti
+I limitanti
+Che bloccano
+Per esempio
+L'innesco
+Di tutti i stop loss
+Per evitare
+Che ti trovi
+Crolli a picco
+Si certo
+Ma infatti
+Tu non devi
+Raccogliere
+Dei crolli a picco
+Devi raccogliere
+Delle variazioni
+Che sono
+Al di sotto
+Di quelle soglie
+Ma abbastanza
+Per
+Appunto
+Innescare
+Dei trend
+Ok
+E poi
+Infatti c'è
+Il punto
+Focale
+Della questione
+E
+Infatti così facendo
+Stiamo dicendo
+E siamo convinti
+Del fatto che
+Un'analisi
+Della serie storica
+Può essere utile
+A valutare
+Il prezzo futuro
+Adesso ci arrivo
+Aspetta
+Che
+Che è l'opposto
+Di
+Tutto ciò
+Che si studia
+In qualsiasi libro
+Di finanza
+Cos'è che è l'opposto?
+Per definizione
+Il passato
+Non è il concetto
+Nelle azioni
+Nelle obbligazioni
+Nella commanda
+Non funziona
+L'analisi tecnica
+Sostiene questa cosa
+E se tu parli
+L'analisi tecnica
+A un trader
+Ti viene in faccia
+Giusto
+Cioè
+I cont
+Usano
+Il passato
+Per modellare
+Il futuro
+Ma usano
+Il passato
+Sommando
+Cioè
+Per avere
+Dei pattern
+Cioè
+Salito il prezzo
+Per questo
+Faccio un
+Back test
+Per una strategia
+Un milione di volte
+Ok
+Però non è che
+Dicono
+Il prezzo
+Anche se
+Effettivamente
+Ha senso
+Questa cosa
+Cioè
+Il prezzo
+In una serie storica
+Più toccato
+Dell'oro
+È quello
+E quindi
+Io scommetto
+Che rifernerà
+Quel valore
+Cioè
+Ha senso
+Come cosa
+Allora
+Non è
+Cioè
+Posso darti
+Posso darti
+Allora
+Vedila in un'ottica
+Molto più ampia
+Ok
+Il trading
+Secondo me
+È la capacità
+Siccome tu devi
+Non solo
+Non devi individuare
+Solo il prezzo di entrata
+Tu devi individuare
+Il prezzo di entrata
+Il prezzo di uscita
+In entrambi i casi
+Nel caso in cui ti va bene
+Nel caso in cui ti va male
+Mi sta chiamando
+La tipo
+Un secondo
+Mi muto due minuti
+Che non mi chiamano mai
+Quindi
+Mi chiamano
+Stanno amore
+Perché la vita è successo
+Grazie a tutti
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Non mi serve che indovini il prezzo, a me serve che tu indovini il prezzo e delle soglie, ok?
+Più che il prezzo delle soglie, diversi tipi di soglie.
+L'analisi tecnica potrebbe essere molto utile per individuare queste soglie, quindi è un pezzo di tutto il ragionamento. Capito?
+L'analisi tecnica ti serve per individuare il range in cui si può muovere.
+Io non sto dicendo che potrebbe, non sto dicendo che serve a quello, sto dicendo che potrebbe esserlo, quindi ha senso includerlo nelle valutazioni.
+Perché è di questo che è la mia paura riguarda la mia paura riguarda la mia paura riguarda il tecnica è che includendola ti rovini la valutazione.
+Ma poi lo vediamo.
+Sei un gelataio, fai un gelato della madonna e poi ci metti sopra una panna che è una strozzata, che sei già quella strozzata.
+E quindi sei un gelato della madonna con la panna. Adesso, se la panna può essere utile, non lo so.
+Ma noi lo possiamo valutare, perché se noi abbiamo i trade, possiamo valutare...
+No, fammi finire i moduli. Ci ho pensato a tutto. Ok, fammi finire i moduli.
+Il modulo Prevision è un modulo che consiste nel trainare un algoritmo di deep learning per trovare quelle relazioni, tipo un modello econometrico, ma di deep learning.
+Ok? Quindi che coglie quelle relazioni non lineari.
+Come, ad esempio, il fatto che un rating che vale tot può essere positivo in certe situazioni e negativo in altre.
+Ok.
+Ok?
+Come un fatturato in crescita può essere positivo in certi casi e mid in altri, a seconda delle condizioni di mercato, a seconda delle news, a seconda di tutto quello che vuoi.
+Ok?
+Sì.
+Delle news no, perché si tratta comunque sempre di dati strutturali, cioè di dati quantificabili che sono i factor.
+Ok.
+Quindi una sfida, per esempio, qui sarà capire...
+Aspetta.
+Aspetta.
+Questo potenzialmente potrebbe essere un altro agent, quindi un altro agent che si collega al database.
+Ok?
+E che di fatto ha come lavoro quello di studiare quali potenzialmente potrebbero essere i fattori che potrebbe avere senso utilizzare.
+Ok?
+Li studia, fa i test con il modulo di previsioni, perché tanto il modulo di previsioni genera delle previsioni, bro.
+Quindi tu lo puoi usare sia per fare trading, sia per fare testing.
+Un modulo invece di risk management.
+Il modulo di risk management definisce tipo le commissioni, quindi tiene conto e fornisce le informazioni che servono per ragionare sulle metriche potenziali di guadagno incluse le commissioni.
+Oppure includendo, per esempio, il nostro... la nostra esposizione al rischio.
+Insomma, tutte queste... tutte quelle informazioni che riguardano il risk management, ok?
+In cui sicuramente tu mi puoi dare una mano in più.
+Questo include le formule che servono.
+Cioè, le informazioni restanti.
+Ok.
+Questo modulo di reinforcement learning, invece, che non è collegato...
+Ok.
+È collegato da sotto perché non fa parte del prompt.
+O perlomeno si...
+Ho un'acqua questione, King.
+Sì.
+Sì.
+Sì.
+Perdonami se ti interrompo.
+Sì.
+Il modulo di risk management, noi possiamo farlo, secondo me, ma non possiamo farlo come andrebbe fatto.
+Cioè?
+Cioè, noi possiamo dargli la parte teorica, ma lui non può eseguirlo nel senso di, per esempio,
+noi sappiamo che non potrà mai comprare i derivati.
+Perché sono tutti...
+Eh, ma sono tutti i C.
+Deve apprezzare il telefono, chiamare il broker...
+Ah, beh, certo, tu devi considerare solamente dei titoli che sono negoziabili con strumenti digitali.
+Eh, ma il problema dei derivati, però, lo so.
+Eh, ma sti cazzi, bro.
+Evitiamo dei derivati, sono troppo complessi.
+Eh, però, il...
+Il lì c'è il...
+Per esempio, studiando, no?
+Quello che si studiava adesso.
+Se tu vuoi coprirti da...
+Che non so...
+Vuoi coprire il tuo portafoglio da X.
+Ok?
+I compri dei features opposti.
+Che se ti va bene, ti va bene.
+Se ti va male, non perdi tutto.
+Ok.
+Funzionando così...
+Sì, ma non i features, quindi.
+Le opzioni.
+Opzioni, puoi comprare i features, puoi comprarti uno swap.
+Anche uno swap ti puoi comprare, non so, hai comprato un bond, per cui ti paga un fisso,
+ma tu hai idea che, lo so, sia meglio il variabile a sei mesi della BCE, quindi scambi il tuo fisso col variabile.
+Ok.
+Però, King, questo me lo vedo molto di più come strategia nel caso dei ribilanciamenti, non nel caso del trading.
+Però secondo me non possiamo, cioè, dobbiamo, nel risk management possiamo solamente magari mettere dei concetti di variata rischio.
+Anche quelli che è su di te, perché hai fatto anche te in produzione.
+Sì, ma possiamo inserire anche, per esempio, se noi ci rendiamo conto, se lui si rende conto che...
+Vabbè, però facciamo così, il modulo di risk management lo dobbiamo guardare in un secondo momento insieme per capire se serve o meno.
+Perché magari può non servire, non è importante.
+Il reinforcement learning, cioè, più andiamo avanti, più i moduli sono solo concettuali.
+Il reinforcement learning, e in realtà è una... cioè, non si chiama reinforcement learning, ok?
+È semplicemente che l'ho chiamato così per ricordarmelo.
+Si collega molto a questo, quindi al modulo di studio dei factor.
+Non è vero, micchiata, non è vero, non si collega al modulo dei factor per niente.
+Il modulo di reinforcement learning è un modulo che potenzialmente può essere un ulteriore agente,
+il cui scopo è quello di capire quale sia il giusto peso da dare ad ogni modulo.
+Quale sia... ok, ok.
+Cioè, quanto un modulo impatta sul trade.
+Ok.
+Quindi se hai due moduli con due opinioni contrastanti, quale sogno?
+No.
+Io potrei dire no.
+Se tu hai quattro moduli, e li usi tutti e quattro per capire che trade fare,
+e ti rendi conto che alla fine i moduli che hanno avuto,
+che hanno deciso di...
+Cioè, i moduli che confermavano la tesi del trade riuscito bene,
+sono dei moduli che vanno, diciamo, premiati.
+Ok?
+Ok.
+E che nel prompt successivo, potenzialmente, possono avere come indicazione ulteriore,
+guarda che questo modulo ha dimostrato di funzionare.
+Ok.
+Ok.
+Più volte lo fai, più... non è più... più... quell'indicazione non è più una dummy, per esempio,
+quindi 1, 0, 1, ma un coefficiente.
+Ok.
+Ok.
+Credo che l'ho capito, sì.
+Ok.
+Sì.
+Come lo fa il reinforcement learning?
+Basandoti sugli storici.
+Ok.
+La cosa figa è che tu puoi salvarti anche tutta la catena di ragionamento che fa l'LLM
+e farla analizzare da un modulo, da un altro agente specifico
+che analizza i ragionamenti,
+confronta i ragionamenti, le news, l'analisi tecnica, l'LSTM, il portfolio management,
+li guarda tutti e dice, ok, magari fa una sintesi, prende un trade, ok, raccoglie tutte
+le informazioni che ha dato quel trade, il risultato del trade e sviluppa magari una
+sintesi, anche strutturata, quindi con specifiche categorie di informazioni che deve raccogliere,
+che utilizza per capire la prossima volta quali moduli utilizzare di più e quali di meno.
+Ok.
+Una volta che tu hai magari quelli che funzionano di meno, li possiamo analizzare,
+ce li può salvare da una determinata parte, ci può dire perché non funzionano, ok,
+o perlomeno cosa non ha funzionato e quindi tu magari ti scervelli e dici,
+vediamo se lo cambiamo così cosa succede.
+Capito?
+Ok.
+Questa è un po' l'idea, qui mi sono immaginato una dashboard, quindi semplicemente un qualcosa
+di anche pubblico, quindi non, cioè che non contiene tasti che modificano l'agent, solo
+visualizzazione, perché non ho sbatti onestamente di fare un meccanismo di autenticazione, quindi
+se ci sgamano il link al massimo vedo i nostri risultati, senza collegarli a noi, o perlomeno
+sì perché nel link ci sarà il mio nome, però non possono agire, ok?
+volendo, volendo, possiamo mettere una cosa molto semplice da fare, avere un bot telegram
+che ci avvisa ogni volta che fai trade, con tutte le informazioni che seguono, ok?
+o un canale telegram, sti cazzi, tipo sala segnali.
+Sì, sì.
+Questa è l'idea.
+Mi sono dimenticato il security module, anche questo è molto astratto, però di base il
+concetto è fai in modo che, questo è il modulo più deterministico, ok?
+fai in modo che il trade che sviluppa rispetti una serie di regole che noi diamo, per esempio
+di appunto esposizione al rischio o di, sì di esposizione al rischio, perché ovviamente
+tutti i trade andranno fatti in leva, se vuoi guadagnare, per forza.
+Cioè tutti, vanno fatti in leva.
+Un'altra cosa che mi sta venendo un po' di più sulla concretizzazione, per esempio,
+di questo modulo, e che poi si collega alla parte del DB in cui si parla di metriche di
+portafoglio, è capire e dire, e questo sarà tutto studio economico da fare, sarà capire
+e per esempio, insomma, calcolarsi una serie di metriche di portafoglio, ok?
+Del nostro portafoglio, di andamento proprio, cioè di rendimento magari annuale, di drawdown,
+di esposizioni ai margini, cioè cose del genere, ok?
+Che contribuiscono.
+Aspetta, tu sai cos'è Streamlit?
+Sì.
+Ok.
+Cerca di su Streamlit, SFC Fund, e vedi come la… perché noi abbiamo fatto, faccio vedere,
+noi abbiamo fatto per Startin Finance la dashboard, esatto quello lì, SFC Investment Fund,
+e secondo me può esserci utile in tutto quello che mi stai dicendo ora, cioè noi abbiamo
+fatto una specie di dashboard con tutte le metriche, tutte le indicazioni, e l'ha fatto
+un ragazzo che ha lavorato a Monaco, lui ha fatto il trader da Anzimut a Monaco, e l'ha
+la grafica, secondo me.
+Cosa fa questo?
+Lui ha fatto lo stage a Monaco, e è semplicemente la dashboard, ma se tu vai sotto i suoi, tutti
+gli indicatori, su c'è tutto, e potremmo prenderne spunto, ecco.
+Strafigo, ma non è che possiamo prendere spunto, cioè, bro, se tu vai qua, questo è
+lo Streamlit, cioè, puoi scaricare e lo puoi integrare come modulo.
+Non è bene su qua, no, ma se torno indietro, posso vedere anche il, vai sull'alto, guarda,
+vai su the investment fund, se vai su, non mi ricordo qual era, vai su performance,
+ok, ecco, queste mette che potremmo, ci sono solo le mette che più utilizzate.
+Eh, possiamo capire a cosa, a cosa, cioè, a cosa possono servire.
+Anche Analytics avanzate, non so cosa cazzo, non mi ricordo, il sotto performance, che cazzo,
+è lo stesso, ah, no, le, sopra, sopra, sopra, guarda, puoi cambiare sopra le tendine
+sopra, metti, quindi, rischi, rolling stats, questo di qua.
+Ok.
+L'altro, da un'analisi, possiamo leggermente riprendere tutto.
+Sì, ma questo è facile da fare, eh.
+Sì, però secondo me è un ottimo...
+È un'ottima dashboard.
+Sì, è un'ottima dashboard.
+Va bene, ce lo salviamo.
+Io faccio così, articles, no.
+Canva, copio indirizzo link, voglio crearne uno nuovo, ok.
+Dashboard starting finance stream lit, e incollo il link.
+E questo dove me l'ha salvato qua, quindi, noi lo spostiamo nei row, negli articles tipo,
+sì.
+Da utilizzare, da utilizzare, da utilizzare, da utilizzare, da utilizzare.
+Perfetto.
+Quindi io mi sono immaginato questa cosa.
+Ora, riprendendo il tuo discorso sullo stimare qualcosa che non è stimabile,
+e noi praticamente faremo questa cosa includendo potenzialmente nel modulo di reinforcement learning un caso, un LLM, un ulteriore LLM,
+che è in grado di ragionare sia su, per esempio, questi moduli che sono un po' più deterministici, sia sul modulo news.
+Ok?
+Che è in grado di individuare le correlazioni tra queste cose, cioè questi modelli deterministici, come il modello di previsione di learning, come quello di analisi tecnica, eccetera, con le news.
+Eh, ma non mi viene in mente come potrebbe farlo.
+Allora.
+Cioè, questo è il fatto.
+Pensandolo anche a livello economico, non mi viene in mente come potrebbe farlo.
+Ma, in che senso come? Perché penso che la domanda principale sia cosa vuoi come output.
+Eh, allora, noi vogliamo creare un modulo di RISC, giusto?
+Questa è la nostra idea, sottostante di base.
+Dammi la tua idea.
+E il modulo di RISC, cioè a parte che la teoria del RISC va di pari passo con, cioè, tutta la teoria di posto di matematica.
+Ok, sono tutte idee matematiche, formula che può fare, ma quello che ti dicevo prima è stato detto a me, ma non può applicarle.
+In che senso? Fammi un esempio.
+E per coprirti da un'azione della Eni, tu o ti compri la put, o ti compri la call, o ti compri una call e una put, o fai un butterfly, o cioè puoi fare tante cose.
+Ma perché?
+Ma perché?
+Perché non esistono solo le cose.
+No, ma chi se ne frega? No, bro, ma non parla del modulo di RISC.
+No, ma quello sti cazzi, fra, cioè, io sto parlando dell'idea della tua strategia.
+La strategia di trading.
+Ah, strategia di trading è un'altra roba.
+Ma quello ci interessa.
+Bro, ma il modulo di RISC, cioè.
+Non è spesso dal modulo di RISC.
+Bro, ma il modulo di RISC, cioè, valutiamo se tenerlo meno questo.
+Stiamo pisciando tranquillamente.
+Ma certo, fra, possiamo anche aggiungerne di nuovi.
+Io ti sto chiedendo, come facciamo a stimare quello che tu credi che non riusciamo a stimare?
+Eh, King.
+Questo è il vero problema che se risolviamo, secondo me possiamo candidarci al Nobel.
+Ma te lo dico proprio sinceramente, cioè, riuscire a quantificare tutta quella parte di...
+Cioè, tu cos'è che vuoi quantificare?
+Bias?
+Non è tanto incertezza.
+Tutto.
+Cioè, il mercato, ok?
+Qual è l'idea che io ho dimettato?
+Perché ti dicevo, ieri, qual è andata?
+Perché è stato di operatori, ok?
+Gli operatori siamo io, siamo te, Quero, che operiamo tutti in un contesto di mercato efficiente,
+quindi di informazioni pari per tutti.
+Sì.
+Perché in caso di un cyber, ovviamente non c'è troppo, ok?
+Ma giochiamo tutti quanti allo stesso gioco, guardando tutti le stesse cose, interrogando
+tutti la stessa intercettura artificiale, ok?
+Interrogando, guardando le stesse metriche, ok?
+Quindi ti dico che è correlata perché?
+E perché quando tu vai su 3D View e ti guardi le opinioni degli analisti sono 30 in un verso
+e l'una in un altro?
+Perché tutti guardano la stessa cosa?
+Cioè, hanno tutti la stessa opinione perché tutti guardano le stesse metri?
+Quindi l'idea di 3D View non è tanto guardare le stesse metriche e arrivare alla stessa opinione,
+ma anziché farlo noi persone lo fa il bot.
+Perché quello lo so fare anch'io per solo.
+Non mi serve un bot che lo faccio, lo so fare anch'io.
+La mia idea è un bot che legge il sentiment, cioè capisce il perché quei 30 analisti in quella situazione
+sono per il rialzo, sono bullish, ok?
+Trova un pattern e le dice a riprodurlo su un'altra azione, ok?
+Quindi capisce il perché un analista deve essere bullish e lo usa a suo vantaggio.
+Quindi deve riconoscere le metriche, deve ragionare con la lista e poi anziché analizzare,
+guardare da sopra e dire ok, bene, tradare in base alle idee, non tradare in base ai numeri.
+tradare in base al fatto che tutti gli analisti penseranno questa cosa,
+quindi tutti gli analisti compreranno, se tutti compreranno ci sarà un rialzo del prezzo,
+un rialzo del prezzo comporterà qualcuno che venderà e quindi ci sarà un minuto esatto
+in cui quel prezzo scederà di tot, utilizziamo quel minuto e dopodiché vendiamo subito,
+per un rialzo di nuovo.
+Cioè capito come...
+No, questo è inimmaginabile.
+Però secondo me è ad oggi l'unico modo per battere un trader senza essere un trader,
+perché altrimenti facciamo prima fare il trader noi due.
+E ma che sbatti fare il trader?
+Sì, è sbattere il trader, però il rendimento è molto più alto fare il trader.
+Cioè se il bot deve, cioè secondo me è il bot, cioè possiamo fare o come diciamo un bot che sia un trader
+e che lavora in automatico come un trader, che faccia, insomma, passivamente faccia da solo,
+senza che gli devo stare dietro ogni giorno.
+Quella era la mia idea.
+Per fare i dati, ok?
+Oppure fare uno strumento, non dico che lega la mente, però che lega il sentiment dei trader.
+Cioè è molto più psicologico.
+Ho capito, ho capito.
+Un trader è psicologico, non è un trader.
+Ho capito, ho capito.
+In una struttura di questo genere, ti immagineresti potenzialmente quello che mi hai appena descritto come un modulo?
+Cioè un modulo di input?
+Ma sì, sicuramente si può fare.
+Allora, a questo punto...
+Potremmo fare un'analisi dei volumi.
+Quindi il bot che in un momento X vede un picco di volumi e analizza il mercato, capisce a cosa è dovuto il picco di volumi
+e si fa un idea sul futuro, sul perché, però poi deve, secondo me, fare farlo tot volte
+in modo tale che riesce a farlo anche in un momento in cui il volume ancora non c'è.
+Cioè si immagina domani quale sarà il volume, basato su il riflesso delle informazioni che ha dato sul volume di un titolo X.
+Allora, questa cosa è molto difficile, io non l'ho mai fatta e non so quanto possa essere veloce tenerla attiva costantemente.
+Si chiama fine tuning.
+Ok.
+Il fine tuning è quando tu prendi un LLM
+Si
+E lo addestri su una serie di dati.
+Ok.
+Ci sono vari...
+Allora, qui, bro, se qui stiamo parlando di addestramento di intelligenza artificiale, vere e proprie, ok?
+Ok.
+Qui ci siamo allo step successivo.
+Cioè, questo è...
+È un po' troppo.
+Bro, stai scendendo...
+Cioè, stai scendendo nel tecnico.
+Ok.
+Nel tecnico di intelligenza artificiale, non più di economia.
+Ci sono diversi metodi che vengono utilizzati per trainare gli LLLM.
+Ci sono diversi metodi.
+Vengono utilizzati tutti.
+Ok.
+Tutti vengono utilizzati.
+Ok.
+Due di questi.
+Allora, un metodo è il fine tuning.
+Ok.
+Il fine tuning cosa consiste?
+È un metodo di addestramento che avviene post creazione dell'LLM.
+Ed è un ulteriore addestramento su dei dati specifici.
+Ok.
+Immaginati, Revolut ti risponde all'intelligenza artificiale.
+Quello è un modello, un LLLM.
+Un LLM che è stato addestrato su tutta la conoscenza di Revolut, su tutte le pratiche che Revolut ha gestito di persona,
+come le ha risolte, se le ha risolte, se non le ha risolte.
+Lui ha preso quei dati e ha detto all'LLM, tu impara su questi dati.
+In questo modo, lui è riuscito a rispondere direttamente con tutte le risposte che servono all'utente,
+perché ha in pancia ed è stato addestrato su tutti gli storici di conversazioni che sono state fatte tra operatore Revolut e cliente Revolut.
+Il cliente Revolut dice, l'operatore Revolut chiede, ti ho risolto il problema?
+L'utente dice, sì, no.
+Ok.
+Quindi dai anche delle metriche a questo LLM, in questo database per fare fine tuning.
+Io non so cosa, cioè, se volessimo fare qualcosa in real time, ok, andrebbe fatta una cosa che si chiama continuous learning.
+Io non so come farlo, un fine tuning ci posso arrivare.
+Il continuous learning, secondo me è ancora una domanda aperta della comunità scientifica.
+Cioè, lui continua a imparare, ma...
+È come se fosse un fine tuning in real time.
+Ok.
+Dici, stiamo scelendo troppo nel complesso, nell'inrealizzabile.
+No, il fine tuning lo so fare.
+Cioè, non l'ho mai fatto, ma teoricamente lo so fare.
+Possiamo provarci.
+Perché anche se per fare del fine tuning ci mettiamo tot tempo, ci mettiamo magari tot ore o tot giorni,
+lo possiamo testare, lo possiamo testare, cioè lo possiamo mandare in play come un trader.
+Cioè, noi sviluppiamo il trader.
+Ok.
+Il trader classico.
+Bot di trader.
+Poi aggiungiamo un modulo che magari periodicamente su un time period molto più ampio fa un fine tuning.
+Ok.
+E lì abbiamo un piccolissimo LLM che cresce nel tempo perché mano a mano lo fine tuning sempre su più dati.
+Come modulo al trader.
+Quindi devi immaginarti che questo bot deve essere la replica di un trader.
+Immaginati tu un trader che ha un LLM che gli dice e gli identifica tutti i pattern che lui non vede.
+Ci sei?
+Cioè, figurati proprio la situazione normale.
+Tu, come trader, se volessi guadagnare avresti bisogno di uno strumento che risolve e ti dà questi pattern.
+Giusto?
+Ok.
+Se volessi farlo.
+Cioè, adotti una strategia che sei verso quello.
+Ok.
+Tu persona.
+Ora immaginati che non sei più tu persona, ma è tu agente di trading.
+Che ha uno strumento che chiama potenzialmente al bisogno o che riceve le informazioni dal system prompt.
+Quindi, proprio, ogni volta riceve le informazioni da questo LLM con una richiesta specifica.
+Quindi, per esempio, la richiesta...
+Vabbè, ti faccio il disegno.
+Fine tuning.
+Oddio.
+Ok.
+Che è un LLM.
+Questo fine tuning mod...
+Un addestratore, cioè l'addestrato interno.
+Lui, lui, cosa fa?
+Lui cosa fa?
+Lui trae le...
+Fa fine tuning...
+Anzi, aspetta, facciamo così tanto, non serve.
+Lui prende queste informazioni...
+Lui prende lo storico dei trade.
+Ok.
+Prende lo storico dei trade.
+Prende...
+Tutto...
+Facciamo così.
+Prende tutto, ok.
+Prende dal database.
+Lui prende dal database.
+Tutte le informazioni.
+E le informazioni includono, chiaramente, le news.
+Include tutto, bro.
+Ok.
+Include anche i nostri trade.
+Con tutto il ragionamento che ha fatto l'LLM di trading.
+Quindi, lui raccoglie non solo le informazioni sul mercato.
+Raccoglie l'esito dei trade.
+Quindi, quelli che sono falliti e quelli che non sono falliti.
+Ed è facile distinguerlo.
+Perché se tu adotti una strategia di trading con ordine a limite,
+Stop Loss e Take Profit.
+Se va a Stop Loss, è fallito.
+Se va a Take Profit, si è andato bene.
+Non ci sono altri cazzi.
+Ok.
+Ok.
+Un'altra cosa del modulo di Risk Management, per esempio,
+può essere uno trailing Stop Loss.
+C'è un modulo che lui ha...
+che fa in modo di analizzare i trade aperti.
+E quando si rende conto che, per esempio, il prezzo non ha raggiunto il Take Profit,
+ma ha superato il prezzo di Order Limit,
+può spostare lo Stop Loss all'Order Limit.
+In questo modo, qualsiasi cosa succeda, noi al massimo non abbiamo perso niente.
+Ok.
+Sai cos'è un trailing Stop Loss?
+Cioè, hai capito cos'è un trailing Stop Loss?
+Si sposta.
+Praticamente, se tu ordini...
+Tu immagini un ordine a 100,
+hai un Take Profit a 115
+e uno Stop Loss a 95.
+E uno Stop Loss a 14.
+Aspetta.
+Il Profit, ma...
+Hai uno Stop Loss a 115.
+A 95.
+E il titolo è a 100.
+Tu apri la posizione.
+Se il prezzo, dopo un giorno, dopo il time period che decidiamo,
+arriva a 105,
+non ha toccato il Take Profit.
+Magari lo toccherà.
+Però nel frattempo,
+lo Stop Loss lo sposta da 95 a 100,
+che era il prezzo iniziale.
+Quindi non...
+Cioè, se cadi...
+Hai azzeccato...
+Nel momento in cui tu ti rendi conto che hai azzeccato il trend,
+il Take Profit scatta se il trend...
+Se hai azzeccato non solo l'andamento,
+quindi se bullish o bearish,
+ma anche se hai azzeccato la soglia in cui si fermerà,
+lì raggiungi il Take Profit.
+Se magari non hai azzeccato la soglia,
+quantomeno hai azzeccato il trend,
+quindi mano a mano alzi lo Stop Loss.
+Ok.
+Si, si, ho capito.
+Questo potenzialmente è una cosa che mi è venuta in mente adesso
+per il modulo di Risk Management.
+Potrebbe farci...
+La mia...
+Io non mi intendo di AI.
+Ok?
+Poco.
+Quello che penso è...
+Cioè, aggiungere sempre più funzioni è sempre più complicata,
+perché questo vuol dire che deve monitorare costantemente,
+deve essere coscienti in ogni momento,
+di ogni posizione dove ha lo Stop Loss,
+e per ogni posizione valutare se il caso di alzare Stop Loss,
+abbassare,
+chiudere la posizione è,
+non diviene troppo pesante poi?
+Cioè non è troppa roba per lui?
+Con quanto può riuscire la mia domanda?
+Cioè quanto può essere potente?
+Allora, l'LLM può essere potente tanto quanto il modello che scegli.
+Ok?
+Cioè ci sono modelli tipo Cloud, tipo Gemini, tipo Chat,
+che hanno un milione di token input.
+Un milione di token vuol dire tipo tutta la biografia di Shakespeare tot volte.
+Ok.
+Ok.
+Ok.
+Lui può andare in crisi quando si deve rendere conto,
+quindi cioè tu potenzialmente puoi ingestargli dentro nel system prompt,
+tipo bro, una valanga di informazioni,
+cioè puoi insergli tipo dieci libri come informazioni di prompt.
+Ok?
+Volendo.
+Ok.
+Però poi ci sono tutta una serie di bias,
+di problemi che hanno questi LLM.
+Uno di questi è per esempio il lago nel pagliaio,
+cioè si sono resi conto studiandoli gli LLM,
+che si comportano esattamente come noi umani,
+perché sono stati addestrati su di noi,
+cioè sui dati che noi abbiamo messo su internet,
+quindi sono stati addestrati su di noi.
+C'è un benchmark che si chiama ago nel pagliaio
+e che praticamente sfida l'LLM a trovare in un prompt enorme
+un'informazione specifica.
+Si sono resi conto che non è in grado,
+o perlomeno è in grado,
+ma dipende da quanto l'informazione si trova all'inizio o alla fine.
+Cioè lui legge benissimo l'inizio e la fine delle informazioni.
+Quando trova qualcosa in mezzo,
+che magari di molto specifico, va in crisi.
+Come farebbe un umano?
+Allo stesso modo, quindi ci sono questi problemi.
+Il tuo obiettivo è dare all'LLM le informazioni
+quanto più trattate possibili.
+Come faresti?
+Puoi delegare determinati problemi a più agenti.
+Quindi immaginati un agente che fa il trader,
+immaginati un agente che fa i ribilanciamenti
+e si occupa di risk management,
+quindi il risk manager.
+Immaginati un multiagente,
+cioè un ecosistema multiagente.
+Immaginati l'agente che fa fine tuning,
+immaginati un agente che fa uno studio economico sui paper
+e quindi si rende conto che magari può trovare dei nuovi factor,
+quindi puoi fare l'agente economista.
+Cioè praticamente stiamo creando un ufficio.
+Ogni agente, se tu ogni agente lo pensi come una persona,
+stiamo cercherando un ufficio che sta a zero.
+Esatto.
+Cioè ogni agente king, ma porco Dio,
+se questa cosa si può fare davvero possiamo fare tutto.
+Certo che si può fare,
+ci sono progetti che già l'hanno fatto.
+Io voglio farlo meglio.
+Cioè tu hai un agente...
+Guarda, ti faccio vedere questa...
+Tu puoi trovare un'azienda e fare la divisione legale,
+la divisione marketing,
+la divisione...
+Sì.
+Che comunichi un tra di loro
+e poi tu esegui o che esegue il capo agente.
+Cioè una roba simile.
+Sì.
+Ma ognuno può prendere decisioni...
+Cioè ma se tu immaginati una situazione gerarchica
+come un ufficio in cui c'è il capo
+e poi ci sono tanti dipendenti.
+Sì.
+Però cioè il singolo dipendente
+può prendere una decisione per il capo.
+O per esempio può andare a cercarsi altre informazioni,
+può agire anche lui,
+può avere una sua gerarchia,
+un suo workspace in cui lavorare,
+degli strumenti esterni da cui prendere informazioni,
+informazioni,
+in cui inserire informazioni.
+Capito?
+Guarda questo progetto.
+Questo è stato sviluppato da un centro di ricerca.
+Ok?
+Guarda.
+Guarda bro.
+Lui ha fatto...
+Loro hanno utilizzato questa strategia qua.
+Hanno preso i moduli che ti dicevo,
+quindi le informazioni di mercato,
+le informazioni sul sentiment,
+le news,
+e i dati fondamentali.
+Ok?
+Poi hanno un research team,
+quindi un agente che individua
+le opportunità bearish
+e un agente che individua le opportunità bullish,
+che discutono tra di loro
+per aggiungere un'informazione,
+cioè per aggiungere un verdetto.
+il trader le analizza,
+cioè analizza tutte queste cose,
+passa ad una transaction proposal
+che va in un risk management team,
+quindi un agente che si occupa di risk management,
+che se valida la proposta,
+passa al manager che di fatto
+si occupa semplicemente di eseguire il trade.
+E questo funziona, eh?
+Cioè, fa soldi?
+No, fa soldi non lo so,
+però se lo carichi,
+cioè se lo installi funziona.
+Cosa è installabile?
+Certo.
+Cioè è open source, è usabile?
+Sì, c'è tutto il codice.
+Guarda, qui ci sono tutte le cartelle di codice.
+E perché nessuno lo usa?
+Ma bro, certo che viene usato, bro.
+a 50.000 stelle.
+50.000 stelle, bro, è tantissimo.
+È come se avesse...
+Come se avesse tipo mezzo milione...
+È come se avesse mezzo milione di like su YouTube.
+Ok, folle.
+E 10.000 fork.
+10.000 fork vuol dire che ci sono 10.000 progetti
+che sono partiti da questo.
+Quindi loro...
+Cioè immaginate una persona, tipo noi,
+noi creiamo un fork.
+Praticamente il fork è...
+Scarica questo progetto
+e da questo progetto cominciamo a lavorare sul tuo.
+10.000 progetti sono stati fatti in questo modo.
+10.000, bro.
+Ci sono 20 persone che hanno contribuito al progetto,
+tra cui Claude.
+Questo è letteralmente Claude.
+È Claude Claude.
+È Claude Code.
+Quindi gente che utilizza Claude
+è Claude quando fa i push verso il codice,
+cioè quando fa delle modifiche al codice
+si mette come autore.
+Ok.
+Ed è il quarto contributore.
+Cioè, sì, i contributori, i contributors,
+sono in ordine di quanto hanno impattato sul progetto.
+Claude è il quarto.
+Di 20.
+Quindi, comunque, una buona percentuale.
+E sì, bro, ma non serve neanche
+che ti metti lì a guardare il codice,
+perché tu basta che esegui queste operazioni qua.
+Questa è la copia della cartella.
+Questa è la creazione di un ambiente virtuale Python,
+che vabbè, magari sai anche cosa sia.
+Poi lanci questo comando sul terminale Trading Agents,
+ti compare questa schermata in cui tu tradi.
+Vedi?
+C'è la news analysis,
+message and tools,
+progress.
+Capito?
+Ora, secondo me,
+noi potremmo potenzialmente partire da questo
+perché ci dà una buona infrastruttura.
+Però tutta questa questione di bullish, bearish,
+poi c'è il trader che le valuta,
+poi c'è il risk management team che le valuta.
+Diciamo che loro hanno copiato
+sicuramente la struttura di un fondo,
+cioè di una trading room,
+perché c'è l'equity researcher,
+l'analyst,
+anche se è un po' diverso,
+però c'è l'equity research
+che si passa i dati all'analyst,
+l'analyst che fa l'analisi,
+poi passa il trader e il trader esegue.
+Sì.
+Questo è il fatto.
+Oppure,
+tipo dove sono stato io la settimana scorsa,
+c'erano solo trader,
+quindi facevano tutto,
+tutti.
+Quindi erano tutti quanti,
+ricercavano,
+analista,
+e è ancora meglio secondo me.
+Però non è.
+Figo,
+cioè l'avrà fatto un cinese o un indiano,
+perché per forza...
+Ma questo?
+Eh, sì.
+No, no, questo è un laboratorio.
+È un laboratorio di ricerca.
+Qui ci sono i paper.
+Sì, però ma deve essere per forza...
+Non ho detto bene.
+A Cornell University?
+Sì, ma guarda i nomi.
+Anche se mi si rispettate qualche indiano.
+Comunque questo è il pdf.
+38 pagine.
+Di articolo scientifico.
+Salvato.
+Adesso lo salvo sui paper della nostra wiki.
+Allora,
+quindi io ti dico che...
+Non so quando,
+ma tra oggi e settimana prossima
+vado subito a comprare un nuovo pc.
+E scarico...
+Obsidio adesso su questo pc vecchio
+mi serve un canto, essenzialmente.
+Di tanto verrà cambiato.
+E lo scarico sul nuovo pc.
+Dobbiamo capire questa cosa
+di collegare iOS e drive.
+E poi possiamo lavorare.
+Ma tra l'altro,
+domanda un po' più concreta.
+Da dove partiresti tu?
+Dalla progettazione.
+Cioè se dovessi...
+Dalla progettazione.
+Dalla progettazione.
+Quindi partiresti subito a...
+A ragionare.
+Adesso dici moduli si possono già aggiungere
+e iniziamo a fare.
+Allora,
+io di base non so come cominciare.
+Ok.
+Cioè,
+lo stiamo facendo insieme apposta.
+Noi abbiamo buttato delle idee.
+Sì.
+Abbiamo una base
+da cui partire.
+Oggettivamente.
+Sì.
+Perché poi io non conosco mica solo questo, eh.
+Cioè,
+questo è quello più famoso.
+Però se io vado su...
+Ci vado perché così me li salvo anche.
+Se io vado su...
+Rizzo Trading.
+Rizzo Trading.
+Eccolo qua.
+Lui è un tipo che seguo su...
+Su TikTok, su YouTube.
+Praticamente...
+Ah, sì.
+Sono chiesto.
+Lui?
+Lui ha fatto un Trading Agent, anche lui.
+Però secondo me non ha funzionato.
+Sicuramente non lo sta mantenendo.
+e si è basato su un progetto open source
+che è Alpha Arena
+in cui loro hanno messo...
+Loro hanno fatto quello che ti ho spiegato prima.
+Quindi loro avevano un agente,
+gli ingestavano dentro delle informazioni.
+Lui ragionava, faceva il Trade
+e l'hanno fatto tipo con 5...
+Come vedi qua.
+L'hanno fatto...
+Io non so se farlo vedere meglio.
+L'hanno fatto con Grok, con Dipsick, con Claude, con Cohen.
+Questo è il pazzo di Bitcoin perché l'hanno fatto sulle cripto.
+C'ha GPT e Gemini
+e hanno visto quale tradava meglio.
+Ok, lui ha fatto il suo.
+Un altro, per esempio...
+A parte che ce li ho qua.
+Un altro è...
+No, questi sono i miei.
+Aspetta.
+Scusa, no.
+Ti...
+Te li faccio vedere perché...
+Vabbè, lui...
+Lui a un certo punto di fatto ha fatto la stessa cosa che ti ho fatto vedere io.
+Quindi ha creato proprio i moduli per estrazione delle news.
+E poi...
+E ha fatto, vabbè, ha fatto una serie di video su YouTube
+che dovremmo guardarci
+e che volevo riguardarmi.
+Lui...
+Lui, invece...
+Optimizer, Silvio Baratto,
+ha un profilo di Instagram che si chiama NeuroEspresso.
+Ha fatto la stessa cosa.
+Cioè, ha detto...
+Io non sono benestante, però vorrei esserlo.
+Quindi ho deciso di iniziare questo progetto
+in cui noi creiamo un trading agent.
+Lui è partito...
+Adesso vediamo se riesco a fartelo vedere in qualche modo.
+Fatto sta che lui ha avuto...
+Ha scelto un'architettura molto più...
+Molto più...
+Multi-agentica.
+Ok?
+Cioè, lui ha fatto l'economista,
+ha fatto l'analista,
+ha fatto questo,
+ha fatto quest'altro,
+che si...
+Che comunicano tra di loro e fanno un trade.
+Questa cosa qua,
+secondo me,
+lui l'ha cominciata,
+ma non l'ha finita.
+Semplicemente ha detto,
+ragazzi,
+ho cominciato questa cosa,
+sono estremamente aperto
+a qualsiasi tipo di persona
+che è interessato al progetto
+e vuole contribuire.
+Ok.
+Quindi ci sono le basi da cui partire.
+Vediamo se...
+Vediamo se io vado qui.
+Ah, guarda,
+qui ha fatto la documentazione della sua repository.
+Tipo questi?
+No.
+Moments?
+Qui penso stia...
+Registrando,
+vedi?
+Prende 17 fattori,
+che sono il book to price,
+learning yields,
+cash flow yield,
+yield price.
+Non so poi come li tratta,
+però li prende e li analizza.
+Li fa analizzare, anzi.
+Questo è un altro gruppo di fattori.
+Vediamo tipo il tuning.
+Grid research.
+Cioè, ce n'è di roba.
+Ce n'è parecchia di roba.
+Quindi,
+quindi,
+io da dove partirei?
+Il mio obiettivo è quello di
+magari prendere pezzi su pezzi,
+però non fare dei fork,
+quindi non partire da una base,
+avere una base nostra.
+Ok?
+Si dice from scratch,
+quindi da zero.
+Secondo me,
+si può ottimizzare,
+non ottimizzare,
+si può efficientare molto.
+Ok?
+Soprattutto rispetto al progetto
+che ti ho fatto vedere all'inizio,
+il primo progetto,
+quello famoso.
+Sì.
+Sì.
+Si può tanto efficientare, bro.
+Quindi,
+il mio obiettivo attualmente,
+allora,
+il concetto è,
+soprattutto data la LLM,
+wiki,
+gli agenti di coding
+e tutto il resto.
+Il coding non è un problema.
+Cioè,
+non devi saperlo fare.
+Il tuo obiettivo è sapere,
+al 200%,
+cosa vuoi e come lo vuoi.
+Quindi,
+è molto,
+molto,
+molto importante.
+Anzi,
+facciamo,
+mettiamola così.
+tu,
+ok,
+tu,
+più informazioni riesci ad avere,
+cioè,
+più consapevolezza riesci ad avere sul progetto,
+più casisti che copri,
+meglio è,
+perché poi lui,
+il codice lo sviluppa basandosi su quello.
+Il mio obiettivo,
+quindi,
+è quello di progettare,
+progettare,
+progettare,
+progettare,
+progettare,
+progettare.
+Partiamo dall'alto,
+ok,
+magari facciamo un po' di studio anche.
+lo studio adesso è molto facile da fare,
+perché io prendo tutti i progetti,
+prendo tutte le documentazioni,
+le carico nella wiki
+e lui me le ordina.
+Quindi,
+poi mi studio la wiki.
+Magari,
+gli dico di raccogliermi anche diversi approcci,
+cioè,
+mando delle query in cui gli dico,
+fammi un report in cui mi parli dei diversi approcci,
+che sono stati utilizzati nei progetti che abbiamo raccolto.
+Quindi,
+insomma,
+attui questo meccanismo di studio,
+scegli un file,
+o una cartella magari di file,
+in cui
+metti l'architettura,
+tutta l'architettura,
+e la tieni come file da compilare tu stesso,
+ok?
+Cioè,
+noi la teniamo come se fosse un MVP.
+Ok.
+È presente cosa intendo per MVP?
+Non c'è un MVP,
+no.
+Adesso,
+non so la definizione,
+quindi
+la cercheremo.
+MVP,
+most valuable player.
+Eh,
+lo so,
+most valuable player,
+aspetta,
+in business.
+In business vuol dire,
+minimal viable product.
+Minimal viable product.
+Ok.
+Business versus a new product with just an ad-core feature to satisfy earlier.
+Ok,
+ok,
+ok.
+No,
+no,
+scusami,
+scusami,
+scusami,
+scusami.
+Non un MVP.
+Questo.
+Performance developer review.
+Questo.
+Questo dobbiamo fare.
+Quanto più completo possibile.
+dobbiamo avere un documento o una cartella di documenti in cui noi mettiamo lì il nostro
+progetto e lo svisceriamo come mai potremmo fare nella teoria.
+Ok.
+Poi un giorno,
+io ti assicuro che un giorno ti verrà naturale cominciare a fare il coding.
+Naturale.
+Però secondo me adesso c'è da fare progettazione.
+Potenzialmente noi possiamo utilizzare su Codex, per esempio.
+Ah,
+vedi che li ho esauriti,
+però vediamo se me l'ha creato.
+No,
+non me l'ha creato.
+Vediamo.
+Ah,
+sì,
+questo.
+Sì,
+sì,
+sì,
+sì,
+sì,
+sì,
+sì,
+sì,
+sì,
+sì,
+ops,
+su wiki ops.
+Vediamo se riesco ad aprirtelo.
+wiki,
+ops,
+eccolo.
+No,
+perché non me lo fa?
+No way,
+aspetta,
+aspetta,
+aspetta,
+aspetta.
+Progetti in terze parti.
+Attiva,
+ah,
+devo attivarli,
+fuck.
+Andiamo.
+Abilità.
+Scusa,
+eh.
+Eccolo.
+Guarda,
+questo è un artifact,
+per esempio,
+questa è una kanban board.
+Qui c'è lo stato del progetto,
+tutti i task eseguiti,
+tutti i task in progress,
+tutti i task con decisioni da prendere,
+i prossimi.
+C'è,
+capito?
+Possiamo creare questi artifact qua,
+oppure un altro artifact è la lavagna,
+che è il figma che ti ho fatto vedere prima.
+Anche questo,
+un file di testo,
+praticamente,
+che però è strutturato in modo tale che riesca a diventare uno schema.
+Ok.
+E le I lo può fare perché ha del testo che deve trattare.
+un'altra cosa che possiamo fare è la base,
+che però non so cosa sia.
+Ah,
+la tabella.
+Ok.
+che è quella che vedevi tu anche prima all'inizio.
+Insomma,
+ci facciamo una cartella in cui decidiamo l'architettura,
+sempre nella wiki comunque,
+o perlomeno,
+anzi,
+la wiki in realtà potremmo renderla,
+cioè possiamo organizzarla in questo modo qua,
+ok?
+Ma ci sono anche più cartelle,
+chi se ne frega.
+Insomma,
+facciamo tutta una progettazione,
+seria,
+importante,
+ci aiutiamo con gli artifact,
+quindi magari per tenere il passo nella sezione Ops ci sarà la Kanban
+che ci ricorderà tutto quello che dobbiamo fare,
+tutto quello che abbiamo fatto,
+tutte le decisioni che dobbiamo prendere ancora prima di cominciare a fare degli altri task.
+Ovviamente noi ne parliamo,
+registriamo le nostre conversazioni,
+le carichiamo
+e l'LLM fa tutto.
+Ok?
+Quindi ci gestisce le Kanban board,
+ci crea le architetture,
+ci gestisce tutto.
+Tutto.
+E alzare l'automatico per esempio è anche la board?
+Cioè,
+non è che hai fatto una cosa?
+Se ci pensi,
+qui c'è scritto
+DON,
+che sono i task fatti,
+inizializzare la struttura base,
+l'abbiamo fatto.
+Ingestare il primo source reale,
+queste sono le nostre conversazioni,
+l'abbiamo fatto.
+Formalizzare gli snapshot,
+aprire il backlog in progress,
+chiarire il framing iniziale del prodotto,
+dashboard di augmentazione
+versus l'agente autonomo,
+queste sono le informazioni che gli ho dato io.
+Capito?
+Decidere il mercato iniziale,
+crypto versus equity,
+cioè sono tutte robe di cui abbiamo parlato.
+Capito?
+Trasformare i moduli nominati
+in una mappa software più concreta,
+in...
+Capito?
+Sì.
+Mi si era spiegato le cuffie,
+mi sono tolte.
+Vabbè,
+bisogna definire il mercato iniziale del prodotto.
+Ah, ecco, sì,
+questo qua, secondo me,
+è...
+Decisione da chiudere.
+Eh, sì.
+Capito?
+Capito?
+Sì.
+Sì.
+Sì.
+Sì.
+No, ma bro,
+ma lui adesso se li ha inventati
+basandosi sugli audio
+che gli ho inviato ieri.
+Però sono abbastanza
+Abbastanza coerenti
+Cioè il bro ne sa
+Frate tu non hai idea di cosa puoi fare
+Ma come cazzo fa ad analizzare
+Magari una conversazione di
+Porco due, mezz'ora
+Ed essere così puntuale
+Capito se ti dico
+Cioè essere sensato
+Perché adesso gli LLM fanno questo
+Sono in grado di fare
+Sono follia
+Cioè ma quindi banalmente
+Potrebbero mettere
+Pauroso
+Microfoni in pubblico
+Analizzare tutto quello che dice la gente
+Tu credi che in Cina
+Questa cosa non avvenga già?
+C'è che già avviene?
+Parese
+Follia
+Dove cazzo io voglio andare a vivere
+Nel bosco lontano da internet?
+Io ti do questa piccola
+Ti do questa piccola
+Ci stanno ascoltando
+Che è che stacca?
+No Apple no
+Ci stanno ascoltando
+Apple si focalizza una marea
+Sulla privacy bro
+FaceTime gira su server criptatico
+E non può leggerne anche Apple
+Ok
+A una allora
+Però io non
+Non voglio darti questa piccola
+Forse te l'ho anche già detto
+Però in Cina ci sono i fiscal credit
+Cioè in base a quanto tu ti comporti bene
+Hai delle agevolazioni fiscali
+Non è vero
+Cioè se non butto le cartacce per terra
+Pago per tasse
+Ah è una farming incredibile
+La mia sorella Cina
+La metro
+La metro
+La metro
+Certe metro in Cina
+Le metro statali
+Si pagano col Face ID
+Lo follia
+Si pagano col Face ID
+Sai cosa vuol dire
+Che si pagano col Face ID?
+Cioè c'hai ragionato?
+Ok
+Loro hanno la scansionata
+La tua faccia
+E accesso ai tuoi conti
+Eh è abbastanza greve questa cosa
+Si
+Comunque follia
+Ecco
+Cioè
+Cioè
+Cioè
+Cioè
+Cioè
+Deve andare a vivere in Cina
+Cioè
+È il tuo però
+Ecco cosa volevo farti vedere
+Ecco
+Ecco cosa volevo farti vedere
+Ecco l'unica cosa che forse ti chiederei bro
+Non so se tu usi Codex
+Però se paghi chat
+Ti prego dammi Codex
+Eh bro
+Aura quello si
+Guarda
+Guarda cosa può fare Codex
+Adesso io non posso farlo perché
+Perché non va
+Però
+Lo vedi cosa c'è scritto?
+Si
+Browser use
+Ok
+Eh adesso io non posso usarlo
+Cos'è che posso usare per fartelo vedere?
+Vediamo
+Terminale
+Allora
+Aspetta
+Questo è Cloud Code
+Modello abbastanza leggero
+Gemma 4
+No perché Gemma 4 è locale
+Quindi non va bene
+Aspetta
+Aspetta
+Scegliamo questo
+No perché questo non è il
+Vaffanculo
+Vaffanculo
+Vaffanculo
+Kimi
+Sei diventato
+Sei diventato Tony Stark
+Bro ho visto
+Agli occhiali
+Agli occhiali
+Tony Stark
+Il capello a tendina come Johnny Depp
+E sai fare le cose pazze con il computer
+Però sei Tony Stark
+Ti manca il cuore di latta
+Sei tu
+Il rattore Ark bro
+Sì
+Ti manca il rattore Ark bro
+Allora
+Vedi su Codex
+Io ho fatto slash browser use
+Ok
+Browser
+Browser use
+Vabbè sti cazzi
+Ok me l'ha preso
+Use browser for Codex
+Adesso vi faccio vedere
+Aspetta aspetta aspetta
+Su Cloud Code è uguale
+Ok io metto browser
+Agent browser
+Così
+Agent browser
+Ok
+E dico
+Apri il progetto
+GitHub
+Trading
+Agents
+Vai
+Clicca sul
+Loro paper
+Raggiungi il PDF
+Scaricalo
+Dentro il desktop
+Questo lo può fare anche Codex
+Adesso è molto lento
+Perché ho l'ama
+È molto lento
+Però
+Ok
+Ok
+Lui adesso sta leggendo
+La skill
+Dell'agent browser
+L'agent browser
+È
+Praticamente
+Come se fosse
+Un insieme di comandi
+Da terminale
+Che lui può utilizzare
+Per navigare su Google Chrome
+Sul tuo PC
+Quindi
+Mi sento male
+Lui è
+Adesso
+Non ha senso
+Lui in background
+Ok
+Sta
+Praticamente
+Sta
+Vedi
+È scritto
+Agent browser
+Click
+Agent browser
+Click vuol dire che sta cliccando
+Snapshot
+Snapshot
+Vuol dire che sta facendo uno screenshot
+Ok
+Agent browser
+Open
+Sito
+Lui apre il sito
+Lui apre il sito
+In background
+Fa tutte queste cose
+Poi adesso farà lo snapshot
+Ma King
+Una domanda
+Una domanda
+Ma
+Arrivano prima su Mac
+Perché i programmatori usano Mac
+Bella domanda
+Allora
+Arrivano prima su Mac
+Perché
+Mac è basato su Unix
+Unix
+Unix
+Deve essere
+Un
+Presente Linux
+Sì
+Sai cos'è Linux?
+È un sistema operativo
+Non so usarlo
+Ma so cos'è
+Sì
+È un sistema operativo
+Ok
+È stato creato da un tipo
+Che l'ha pubblicato
+Cioè se tu vai su
+Che si è dato il caso di Microsoft
+E ha fatto Linux
+Tipo
+Lui ha detto
+Insomma lui voleva
+Siccome Windows era chiuso
+Ok
+Era chiuso
+Era di proprietà di Microsoft
+Non era disponibile al pubblico
+Lui ha creato
+Questo sistema operativo
+Cioè
+Sistema operativo bro
+È quella
+Quella cosa
+Che comunica
+Lui non ha sviluppato
+Solo un sistema operativo
+Scusami
+Lui non ha sviluppato
+Un sistema operativo
+Lui ha sviluppato
+Un kernel
+Ok
+Il kernel
+È
+L'interfaccia
+Che c'è
+Tra
+I pezzi di metallo
+Di un computer
+E il sistema operativo
+Lui è in mezzo
+Cioè
+Fa comunicare le due cose
+Quindi i pezzi di metallo
+Con
+Le cose
+Ok
+Con il sistema operativo
+Lui ha creato questo
+E però è su GitHub
+Cioè
+È la cartella
+Di codice
+Con più stelle su GitHub
+Ne ha tipo
+300.000
+Una roba simile
+Tantissimi
+Lui ha creato Linux
+Su Linux
+Poi
+Si sono basati
+Ubuntu
+Debian
+Evidentemente
+Lui ha creato Linux
+O ha creato Unix
+Unix deve essere una roba
+Tipo Linux
+Sempre open source
+Sul quale anche Mac si è basata
+Per creare il suo software
+Il suo software
+Il suo sistema operativo
+Il suo
+Apple
+Apple
+Catarina
+Quel cazzo che è
+Si si si
+Fatto ciò
+Ci ha detto ciò
+Al di là del fatto che sia proprietario
+Che sia open source
+Unix
+Al contrario di Linux
+È come se
+Passasse
+Quasi la maggior parte
+Delle informazioni
+Sul terminale
+Non so se mi sono spiegato
+Unix
+Passa
+Ok
+A differenza di Linux
+Che non lo fa
+A differenza di Windows
+Sto dicendo
+Per quello che non arrivano su Windows
+Perché Windows
+A
+È proprietario
+Quindi tu
+Puoi arrivare in fondo
+Ma non fino a
+Cioè fino a
+Tot
+Ok
+In fondo
+Nella gestione del PC
+Seria
+Ok
+Gestione dell'hardware
+Uno
+Due
+Non è basato su Unix
+Quindi non è standard
+Ok
+Magari
+Perché però io ti spiego
+Ti dico questa cosa
+I server
+I data center
+Funzionano con Linux
+Ok
+Questo
+Forse è la componente
+Ci sto ragionando insieme a te
+Questa probabilmente è la componente
+Poi importante
+I data center
+Si basano su Linux
+Gli LLM
+Vengono addestrati
+Su Linux
+Vengono fatti girare
+Su Linux
+Non su Windows
+Ok
+Questo per una questione di
+Malleabilità
+Si
+Perché devono modificare
+Devono poter modificare tutto
+Ma io volendo
+Posso cambiare il sistema
+Di archivio del mio computer
+Dall'oggi al domani
+Da Windows o Linux
+Certo
+Ti dirò di più
+Tu puoi avere sia Windows
+Che Linux
+E ogni volta che c'è nel PC
+Ti chiedi di scegliere
+Se Windows o Linux
+Ok
+Gente installa Windows
+Sul Mac
+Per esempio
+Però non serve a niente Windows
+Cioè non serve a niente Linux
+Anzi Linux è
+Cioè bro
+Io ti lo dico sincero
+Non fare Linux
+Perché non usare Linux
+Perché è troppo da
+Da developer
+Cioè da tecnico informatico
+Troppo
+Ok
+Non ha senso usare Linux
+Io ho preso Mac OS
+Perché arrivano prima
+Perché evidentemente
+Ha i vantaggi di Linux
+Ma con
+Con il sistema operativo
+Di Apple
+Che è tipo
+Infinitamente comodo
+Ma comunque
+Lui nel frattempo
+Sta facendo
+Vedi è andato sul sito
+Adesso sta facendo
+Quello che ti dicevo prima
+Ovvero lo snapshot
+Cioè
+Lo screenshot
+Lui scarica
+Scarica tutti i documenti
+Quindi volendo
+Possiamo fare anche questa cosa
+Che posso anche dirgli
+Prendi tutte le informazioni
+Mettile nel
+Vai su internet
+Cerca le informazioni
+Scaricale
+Mettile dentro il row
+E poi ingestale
+Vedi
+E mi si rinnova
+Il 4 maggio
+Quindi niente
+King
+Per me
+L'unica cosa
+Che si deve fare
+Adesso è progettare
+Anzi
+Ti dirò di più
+Adesso che ci stiamo registrando
+Questa cosa
+Sarà molto importante
+Perché sarà la base
+Su cui partiremo
+Per il trading agent
+Io ti direi
+Prima
+Sviluppiamo
+Anzi
+Decidiamo
+Come vogliamo
+Visualizzare le informazioni
+Quindi con quali
+Artifact
+E decidiamo
+Gli artifact
+Che vogliamo avere
+Ok
+Quindi decidiamo
+Per esempio
+Le mappe mentali
+Di cui abbiamo bisogno
+Cioè questo è proprio
+Il task 1
+Decidiamo le mappe mentali
+Di cui abbiamo bisogno
+Decidiamo tutte
+Le campan
+La campan
+Di cui abbiamo bisogno
+Quindi quella
+Quella sorta di
+Lavagna
+Che ci tiene traccia
+Di tutte le istruzioni
+Che dobbiamo fare
+Una volta fatto ciò
+Secondo me
+Noi dovremmo avere
+Come task 2
+Per esempio
+Tutta una fase
+Di raccolta
+Delle informazioni
+Ok
+Quindi raccolta
+Raccolta
+Ed elaborazione
+Di tutti i dati
+A disposizione
+Su persone
+Che hanno fatto
+Una cosa simile
+Ok
+Da lì
+Da lì per esempio
+Possiamo trarre
+Decisioni
+Cioè da quelle informazioni
+Potenzialmente
+Potremmo trarre
+Infinite decisioni
+Tra cui
+Una decisione
+Che dovremmo prendere
+Sicuramente
+Sarà quella
+Di partire
+Da un fork
+Oppure
+La decisione
+Di partire
+Da scratch
+Quindi da zero
+Ok
+Non solo
+Chiaramente
+Avendo tutte quelle informazioni
+Dopo la raccolta
+Ci sarà
+Chiaramente
+L'elaborazione
+Perché
+Purtroppo
+Non possiamo leggere
+Tutti
+O perlomeno
+Non è detto
+Che riusciamo a leggere
+Se usiamo chat
+Sì
+Però se usiamo altri modelli
+Per esempio
+E pdf
+Dobbiamo trasformarli
+In file di testo
+Le immagini uguali
+Dobbiamo trasformarli
+In file di testo
+Gli audio
+Dobbiamo trascriverli
+Però quello è già
+Tutto automatizzato
+Teoricamente
+Cioè nel senso
+Che se tu metti
+Dei file audio
+E mandi
+L'ingest
+Quindi la skill di ingest
+Che ho fatto
+Nella skill di ingest
+Se c'è scritto
+Se trovi degli audio
+C'è già il
+Traduce
+Ok
+Utilizza
+C'è scritto
+Utilizza quest'altra skill
+Per trascriverli
+Quindi lui carica l'ingest
+Si rende conto
+Che deve usare un'altra skill
+Prende l'altra skill
+Ok
+Quindi
+Ok
+Come task 3
+Lì
+Parte la progettazione
+Cioè lì
+Noi dobbiamo dire
+Dobbiamo capire
+Dobbiamo prendere
+Una serie di decisioni
+Che ci portano
+Ad avere
+Il primo
+Diciamo
+MVP
+In questo caso MVP
+Quindi è abbastanza generico
+Sulla gente
+Cioè sul progetto
+Fatto ciò
+Lì ci dovrà essere
+Un lavoro
+Granulare
+In cui
+Dobbiamo
+Diciamo
+Upgradare
+Tutto questo schema
+Essendo quanto più
+Dettagliati possibili
+Potenzialmente
+Nello schema
+Noi mettiamo
+Invece di mettere
+Dei blocchi
+Di scritte
+Che sono limitati
+Oggettivamente
+Perché o scrivi
+Un papiro
+In un blocco
+E non ha più senso
+Allora usare lo schema
+Oppure scrivi troppo poco
+E non c'è
+Non ci sono abbastanza informazioni
+Mettiamo i riferimenti
+Alle pagine
+Nei blocchi
+Noi mettiamo i riferimenti
+Alle pagine
+Che dobbiamo leggerci
+Potenzialmente
+Qui ci sarà un altro problema
+Qui ci sarà un altro problema
+C'è un'altra cosa
+Da cui pensare
+Quindi
+Che
+Come dire
+Non mi viene la parola
+Che
+Non architettura
+Ma
+Quale
+Modo di ragionare
+Utilizziamo
+Cioè
+Punto di vista
+Utilizziamo
+Un punto di vista
+Per esempio
+È quello di
+Guardare
+L'input
+E l'output
+Di ogni cosa
+Per esempio
+L'input
+In questo caso
+L'input dei moduli
+Quindi per esempio
+Noi dobbiamo
+Prendendo il caso
+Più base
+Ok
+Noi dobbiamo capire
+Cosa vogliamo
+Come output finale
+Cosa abbiamo come input
+Immaginarci tutti i moduli
+Poi per ogni modulo
+Tipo quello del trading agent
+Effettivamente che crea
+I trade
+Dobbiamo capire
+Che output ci aspettiamo
+Da quell'output
+Che input abbiamo
+O che input
+Non che abbiamo
+Che vogliamo
+Che lui abbia
+Una volta che noi abbiamo
+L'input e l'output
+Sviluppare il modulo
+Di conseguenza
+È molto facile
+Perché noi abbiamo l'input
+Sappiamo che vogliamo un output
+Chiediamo alle AI
+Di tradurre l'input in output
+Ok
+E lo facciamo per tutti i moduli
+È un bel lavorone
+King
+Eh sì
+Se vuoi farlo
+Se vuoi farlo serio
+Sì
+E soprattutto se vuoi farlo da zero
+Sì
+Altrimenti
+È meglio farlo da zero
+È meglio farlo da zero
+Per una questione di
+Cioè secondo me
+Sai cosa hai creato
+Leggi tutto quello che hai creato
+E c'è qualcosa che non funziona
+Sai cosa cambiare
+Le modifiche che fai
+Sai cosa
+Diciamo che partire
+Partire da un fork
+È un'opzione
+Ti avvantaggia all'inizio
+Ma ti svantaggia dopo
+Sul lungo termine
+Perché
+O ti studi
+Prima
+Il prodotto che stai utilizzando
+A tal punto
+Che è come se l'avessi creato tu
+E quindi a quel punto
+Creato tu
+Secondo me è meglio crearlo
+Partiamo da uno scratch
+Perché hai detto tu
+Perché quando cerchi di studiarlo
+Devi capire cosa c'era nella testa
+Di quella gente
+Che l'ha fatto
+Capito?
+Quindi comunque
+In ogni caso
+In ogni caso è difficile
+Cioè
+È una scelta che dobbiamo
+Che valuteremo sicuramente
+Una volta stavo dicendo
+Riprendo il discorso dei moduli
+E della metodologia input output
+Che potenzialmente è una
+Ma ce ne saranno altre
+Che magari dobbiamo seguire
+Anche in parallelo
+Una volta che noi abbiamo l'input
+E che abbiamo l'output
+Capiamo cosa vogliamo
+Sappiamo cosa vogliamo
+Chiediamo alle AI di farlo
+Questa è un possibile approccio
+Un altro potenziale approccio
+Anzi
+Più che approccio
+Una decisione che dobbiamo prendere
+È
+Una decisione sull'architettura
+Che forse va fatta prima
+Dello sviluppo
+Del canvas
+Della mappa mentale
+Prima dobbiamo capire
+L'architettura che vogliamo dare
+E tutte queste cose
+Chiaramente avranno diversi approcci
+Cioè scusami
+Diverse proposte
+Magari noi creiamo più proposte
+Ok
+Cioè
+L'architettura per esempio
+Può avere più proposte
+L'input
+Output
+Possono avere più proposte
+Nel senso che
+Noi potremmo avere come input
+Dei dati fatti in un certo modo
+O dei dati fatti in un altro modo
+Come output
+Potremmo avere sia uno che l'altro
+E ci facciamo una serie di proposte
+Poi scegliamo la migliore
+O magari le mescoliamo
+Eccetera
+Idem per l'architettura
+Agente singolo
+O multiagente
+Quali agenti
+Se un agente
+Noi dobbiamo fare
+Una fase un po' più
+Che ci sta all'inizio
+Più di
+Non è
+Cioè per il storming
+Alla fine abbiamo già fatto
+Più una fase di
+Scelte decisionali
+Cioè
+Approccio
+Prendiamo approccio X
+Prendiamo approccio Y
+Non si è capito cosa intendi
+Cioè sì dobbiamo
+Ci sta secondo me
+Prima analizzare
+Cosa hanno fatto gli altri
+Come dicevi
+Tutto quanto
+Farci la nostra idea
+E poi ci confrontiamo
+Vediamo secondo me
+Le cose meglio
+Magari non ci piace
+L'approccio di nessuno
+O magari c'è uno
+Che ha avuto un approccio fantastico
+Che è replicabile
+O magari
+Da uno prende una cosa
+Da uno prende un'altra
+Sì
+Allora tu
+Pensi di aver capito
+Quanto meno come navigare
+La wiki
+Però
+No
+Però ti posso dire che
+Penso che esisterà
+Un tutorial su YouTube
+Come si usa Obsidian
+Cioè tu non sei usato Obsidian
+Bruno
+Cioè l'ho aperto prima
+Però scusate
+E' un po'
+E' un po'
+E' un po'
+E' un po'
+Scusate
+Ho capito che
+È un
+Queste sono cartelle
+Dentro le cartelle
+Metti le cose
+Ok vabbè ci siamo
+Cioè fino a lì
+È easy
+Non ho capito
+Cioè la wiki
+Ok
+Cioè
+Obsidian
+Perdonami
+Perdonami
+E fa
+Cioè ha già dentro
+Un modello
+Un modello
+No
+Tu devi usare il codex
+No
+Ok
+Sei tu
+Che per esempio
+Cioè l'hai creato tu
+Internamente
+Nel senso che
+Carichi le cose del raw
+Poi
+Codex
+Prende le cose del raw
+E le
+Categorizza nella wiki
+Ok
+Quindi
+Questo è semplicemente
+Un blocco note
+Cioè un coso che organizza
+Com'è l'applicazione
+Per prendere gli appunti
+Ok
+Ok è un blocco
+Ok
+Adesso ho capito
+Solo che
+Comunque no
+Non lo so navigare bene
+Non so
+Ok
+Vabbè comunque
+Questa qua
+Cioè è abbastanza facile
+Te lo dico sincero
+Per quello
+Te l'ho chiesto
+In questo modo
+Ti do dei
+Allora facciamo così
+Ti dico
+Da dove devi partire
+Cioè mi guardo da un paio
+Di tutorial
+Penso che
+Ti dico da dove devi partire
+Guarda la roba figa
+Che è sicuramente
+Prevista in giro
+Sì
+Questa qua è la roba
+Prevista in giro
+Questo è figo eh
+Praticamente
+Questi sono tutti i riferimenti
+Tutte le parole in blu
+Che ci sono
+Tipo qui
+In questa pagina
+Investimento e trading
+Ci sono una serie di parole
+In blu
+Che collegano ad altre pagine
+Guarda qua
+Questa
+Questa qui
+È la nostra wiki
+Guarda quanto sono collegate
+Hai visto?
+Sì sì sì
+Puoi basarti anche su questo
+Bro
+Cioè se tu prendi
+I pallini più grossi
+Tipo questo
+Questo è quello dei log
+Forse non ha senso
+Perché è difficilmente navigabile
+Però
+Sempre nella vista grafo
+Se tu vai
+Questo cos'è?
+L'index
+L'index è la pagina da cui devi partire
+In realtà
+Vediamo se la trovo
+La pesco da qui
+No
+Allora
+Il punto da cui devi partire
+È l'unico file
+Che all'inizio
+Non è una cartella
+Ed è l'agent
+Lo vedi?
+Sì
+Apri l'agent
+Qui
+C'è quello che viene
+Ingestato
+Dentro
+Dentro
+Codex
+Ogni volta che tu poni una domanda
+Ogni volta che tu poni una domanda
+È come se a system prompt
+Ci sia questo
+Quindi
+Lo puoi utilizzare anche tu
+Qui ci sono le regole fondamentali
+Qui gli adattamenti
+Con le skill da utilizzare
+Regole pratiche
+Questo è il front matter
+Che è una cosa
+Che tu vedrai
+In ogni file
+In ogni file della wiki
+Qui
+Vabbè
+Ti puoi leggere questo
+Ancora meglio
+Magari anche solo l'inizio
+Ok
+Che te lo spiega
+Con la struttura
+Anche
+Ok
+Una volta che tu leggi questo
+Devi andare
+Qui
+Vedi wiki
+Meta
+L'index
+Devi leggerti l'index
+L'index
+Ma questo devo farlo anch'io eh
+L'index
+È il collegamento
+A tutte le pagine
+Quindi
+Qui c'è l'overview
+Ovvero
+Cos'è l'ingresso principale
+Qui ci sono le sources
+Le sources cos'è?
+Lab delle fonti
+Ok
+Poi ti dice
+Sources
+Conversazione
+Questa è la nostra conversazione
+C'è stata
+Ok
+Qui concept quindi
+Lab dei concept
+Qui modular trading agent architecture
+Quindi un inizio di architettura
+Ok
+Con i moduli che abbiamo citato
+Durante
+La nostra conversazione di ieri
+Più alcuni appunti
+Che mi ero preso in questi giorni
+Qui i punti aperti
+Ok
+E intanto
+Magari torni indietro
+Qui c'è il nuovo l'index
+Qui ci sono le sintesi
+Quindi sintesi
+Analisi
+Qui
+Ci saranno tutti i riferimenti
+Alle domande
+Che noi gli facciamo
+E che decidiamo di salvare
+Insomma
+Gli unici file che devi guardare
+Sono
+All'inizio questo
+Neanche tutto
+Ok
+Ok
+Poi se hai domande
+Me le fai
+E questo
+L'index
+L'index è la struttura
+Della nostra wiki
+Ok
+Il resto sono tutte cose
+Che verranno compilate
+Cioè che devono
+Sono tutte improgative
+Sono informazioni
+Allora
+Se tu installi codex
+E gli
+Gli dici di guardare
+Dentro quella cartella
+Su codex
+Quando tu
+Mandi
+Adesso
+Vabbè
+Prendiamo anche una nuova chat
+Così
+Questo è codex
+Come appare
+Appena lo apri
+La prima cosa che ti dico di fare
+È metterti
+Su qui
+Su questo tasto
+Per dirgli che
+Quale cartella
+Su che cartella
+Deve lavorare
+In questo caso
+Deve lavorare
+Sulla nostra wiki
+Sì
+Una volta che tu
+Scegli la cartella
+Qui c'è già
+Nel momento in cui
+Dentro il messaggio
+Metti
+Uno slash
+Ti apre questo
+Questo pannellino
+Ok
+Sotto
+Sotto le cose principali
+Quindi feedback
+NCP
+Memoria
+Questi sti cazzi
+Fa un po'
+Lash lì
+Ti comparirà
+Questo elenco qua
+Ok
+Non ti comparirà
+Così lungo
+Perché io ne ho
+Un bel po'
+Ti comparirà
+Un elenco
+Piccolissimo
+Ok
+Che conterrà dentro
+Principalmente
+Quelle che vedi qua
+Quindi
+Obsidian Basis
+Obsidian Klee
+Markdown
+Dogs
+Queste sono
+Skills per usare
+Come se fossero
+I manuali di istruzione
+Di Obsidian
+E poi vedrai
+Oh abbiamo finito eh
+Sì
+La mia madre
+Aspetta che rispondo
+Un attimo
+La mia madre
+Vai
+No
+Mi devo mutare
+Non so
+Come stiamo
+Eccomi
+Eccomi vuoto
+Allora
+Niente
+Semplicemente vedrai
+Queste cose qua
+Quindi
+Wiki
+Artifact
+Wiki
+Ingest
+Wiki
+Init
+Wiki
+Lint
+Wiki
+Query
+Wiki
+Save
+Li vedrai anche tu
+Dentro
+Sì
+Però se tu gli dici
+Se tu mandi
+Wiki
+Query
+Ok
+Scrivo
+Wiki
+Query
+E gli chiedi
+Come funziona
+Questa cartella
+E come funziona Obsidian
+Lui te lo spiega
+Ok
+Non serve che cerchi i tutorial
+O perlomeno cercateli
+Però
+Diciamo non sono necessari
+Magari ci sono quei
+Quei tutorial tipo su Youtube
+In cui ti fanno semplicemente
+Tipo la lezione zero
+In cui ti dicono come funziona Obsidian
+Nel senso che come è strutturato
+Quindi il pannello a sinistra
+C'è tutti i file con tutte le cartelle
+Poi ci sono i pulsantini ancora più a sinistra
+Cosa servono?
+Li puoi imparare anche da solo
+Se vuoi guardarti i video
+Se vuoi guardarti un video su Youtube
+Guardati un video su Youtube
+Qua c'è una playlist di 13 video
+Su come funziona Obsidian
+E ogni video ha un'ora
+E
+Eh capito
+Evitali bro
+Cioè io quelli li eviterei
+Ti fanno solo perdere tempo
+Cercati i video brevi
+Da un quarto d'ora
+In cui ti spiegano semplicemente
+Cosa sia Obsidian
+Ok
+Obsidian e cercati anche Codex
+Un video breve su Codex
+Sì
+Sì è un'applicazione guarda
+Sì
+Dov'è qua?
+Codex
+Ma guarda che Codex bro è clamoroso eh
+Se tu vieni alla stazione plugin
+Guarda quanti plugin c'hai
+Questo fa le presentazioni
+Questo fa gli spreadsheet
+Questo si collega a Notion
+Gmail
+Google Drive
+Tutto bro
+Puoi collegare tutto bro
+Superbase
+Come Cloud Code
+Sì come Cloud Code
+Superbase
+Sì è il competitor diretto
+Qui
+Weather
+Secondo te
+Cioè non ha limiti
+Giusto?
+Eh bro io non lo so
+Io i limiti ce li ho
+Perché c'ho il piano free
+E non so come funziona
+Solo il tuo
+Se ci sono o meno
+Secondo me ci sono
+Vediamo
+Vediamo
+Perché poi loro
+Quando vai sul pricing
+Di chat
+Sono super generali
+Cioè ti dicono
+Almeno Cloud
+Te lo dice
+Ti dice
+Ti dice quanto ti dai in più di token
+Ok?
+Ti dice tipo
+Cioè vedi
+Tu paghi 11 euro
+E hai
+More messages and uploads
+Che cazzo vuol dire?
+Su quello che paghi tu
+C'è scritto
+Codex coding agent
+Generico
+Non hai detto che
+Cioè non so bro
+Non so onestamente come funziona
+Perché tu qui hai
+Codex
+Poi magari
+E di là invece
+Maximum access to codex
+Vedi?
+Dove?
+Eh capito?
+Cioè quindi non so come funziona
+Quindi vuol dire che
+Ci sarà comunque un limite
+Boh non è detto
+Magari è come chat
+In cui tu paghi il max
+Anzi scusa
+Tu paghi il pro
+E su chat hai semplicemente
+Ancora più messaggi
+Ti funziona ancora meglio
+Magari su chat
+Invece che funzionare a limiti
+Funziona la performance
+Cioè una volta che tu
+Vai avanti
+Più vai avanti
+Più le performance degradano
+Non so come funziona
+Diciamo che se
+Se così fosse
+Mi farebbe molto piacere
+Se mi riuscissi a dare
+Il tuo codex bro
+Perché
+Solo codex
+Non chat
+Solo codex
+Perché chat non mi piace
+Non lo utilizzo
+Ma anche perché chat
+Lo usa principalmente
+La mia fidanzata
+Cioè
+Ma tant'è che
+In realtà
+Io pensavo di
+Per quanto bene le voglio
+Di sdirlo
+Chat
+E di
+E di fare
+Cloud code
+Bru
+Per esempio
+Alla fine io
+Vabbè
+Bru abbiamo finito
+Aspetta
+Abbiamo finito
+Di parlare
+Bru abbiamo finito
+Di parlare
+Di trading agent
+Giusto?
+Sì sì sì sì
+Grazie a tutti

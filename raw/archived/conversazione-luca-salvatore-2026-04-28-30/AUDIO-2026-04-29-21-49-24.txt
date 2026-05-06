@@ -1,0 +1,14 @@
+Qual è l'idea vincente sull'equity secondo me? Siccome tu non puoi battere il mercato,
+non puoi battere le istituzioni, utilizzi un software che più che basarsi sui indicatori,
+sui vari indici, sui movimenti di dire dei prezzi, estrapoli dai numeri il sentiment e
+tradi in base al sentiment, cioè qualcosa che anziché tradare sui numeri, e non so se
+lei lo puoi fare perché è comunque un computer, deve capire cosa pensano le istituzioni e dove
+vanno i mercati, cioè non deve predirne il prezzo, ma mi interessa che azzecchi di un decimano
+preciso il prezzo farà ogni domani, mi interessa che capisca guardando quello che ho spesso
+oggi, se domani salirà o scenderà, non in base a una predizione numerica, ma in base
+a una predizione del sentiment del mercato, del sentiment sul titolo, e questo è quello
+che secondo me potrebbe essere la svolta in un nuovo modello di prezziare ad azioni, cioè
+includere tutti i bias in tutte le parti emotive, e non so se si può fare, cioè non so se
+le AI può imparare a capire l'uomo fino a questo punto, cioè deve diventare una specie
+di psicologo, una psichiatra, deve capirlo, deve capire il pensiero, non so se può farlo,
+però secondo me un modello che va in quella direzione può essere svolto.

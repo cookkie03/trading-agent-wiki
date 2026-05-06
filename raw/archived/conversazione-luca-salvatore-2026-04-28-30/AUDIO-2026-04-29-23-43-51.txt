@@ -1,0 +1,21 @@
+No King, allora ti dico ci sta a farlo con le azioni, ti do qualche idea comunque in più che mi viene in mente adesso, comunque l'idea di base è quella di, secondo me, una cosa che è possibile fare, è sicuramente sfruttare appunto le capacità di ragionamento di questi agenti
+per appunto simulare i ragionamenti che farebbe un superumano, ok, chiaramente il ragionamento non è da superumano, il ragionamento è un ragionamento anche quasi stupido, ok, abbastanza, non dico elementare però, insomma, dipende dal modello che ci mette dentro, nel senso che se ci mette dentro Claude, Claude magari è un po' più intelligente e ti fa dei ragionamenti un po' più sensati.
+Il concetto è, come fa a diventare un superuomo veramente?
+E' immaginati un superuomo che ad ogni trade ha tutte le informazioni che gli servono su richiesta, quindi di qualsiasi genere, che possono essere di news, che possono essere di pattern passati, che possono essere di simulazioni con algoritmi di deep learning,
+che possono essere di stime di qualsiasi cosa, di costo, di stime statistiche, qualsiasi cosa, al momento, e utilizza queste cose per fare un trade, ok?
+Cioè per fare trading.
+Secondo me un'altra cosa fondamentale da decidere, questo lo decideremo un po' in chiamata, è capire se avere una strategia fissa di ribilanciamento con, ti ripeto, magari dei cash out,
+c'è una strategia anche per i cash out, per una parte per la rendita effettiva, la liquidazione della rendita.
+Bello, mi piace perché tu hai tutte le cose che io ormai ho dimenticato di economia, mi piace un sacco che tu, appunto, vabbè, aspetta, prima finisco questa roba del progetto.
+Cos'era?
+Vabbè, niente.
+Comunque queste sono le idee principali.
+Ah, ecco, una strategia di ribilanciamento, oppure, idealmente, questa è già delle prime domande che dovremmo porci, è se invece avere una strategia di trading tipo quelli ad alta frequenza,
+in cui, semplicemente, ogni tot, l'agente, l'agent, inserisce un trade, fa, inserisce un trade complesso, chiaramente, quindi un trade non a mercato, magari un order limit,
+con stop loss take profit, e poi, tipo, possiamo ragionare lì, si può, per esempio, ragionare più concretamente su un modulo di learning, ok?
+quasi di reinforcement learning, cioè, con questo concetto qua, che adesso io ti sto dicendo, ma solo perché così me lo ricordo,
+in cui, praticamente, possiamo molto più agilmente individuare i trade che sono andati bene e i trade che sono andati male.
+Questo è indicatore, quindi, per esempio, gli ordini falliti sono un indicatore di un ordine andato male, degli ordini andati in take profit sono degli ordini andati bene.
+Questo ci dà un estremo vantaggio nell'interpretazione dei vari fattori del modello, anzi, dei vari fattori che compongono la strategia del bot,
+del agent. Per esempio, lì, poi, si può andare su frontiere, come quello del fine tuning, quindi avere dei modelli, magari locali, che però sono trainati su uno storico,
+e quindi è tipo come se mischiassi degli algoritmi di deep learning, è come se applicassi, no, non c'entra un cazzo, vabbè, comunque fare fine tuning, solo per ricordarci.

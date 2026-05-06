@@ -1,0 +1,25 @@
+Allora, ti rispondo ai messaggi di testo?
+Sì, ti sarebbe una strategia, però capiamo, ok?
+Perché secondo me il vantaggio di avere l'intelligenza artificiale e il software
+è che tu puoi replicare il lavoro umano, ok?
+Ok, immaginati quindi un agente di intelligenza artificiale che agisce esattamente come un umano,
+come agirebbe un umano, ok?
+L'umano quando deve scambiare utilizza degli strumenti.
+In caso di cosa fare? Può utilizzare il backtesting di una roba, può guardarsi le news,
+può guardarsi, farsi le stime dei costi, eccetera.
+Il mio, la mia idea era quella di appunto replicare tutto il processo
+utilizzando un agente di intelligenza artificiale
+che di fatto abbia accesso a, poi capiamo come, a tutti gli strumenti che avrebbe un trader.
+Tutti gli strumenti possono essere sia strumenti che già esistono, sia strumenti che creiamo noi.
+Quindi gli strumenti sono anche la definizione della strategia, chiaramente.
+Se tu rendi questa cosa sufficientemente modulare, una volta che tu vuoi cambiare strategia,
+quindi non so, immagina tu sviluppi la strategia per lavorare sulle cripto,
+che secondo me può essere tranquillamente identica a quella per cui tu lavori sull'equity
+se non con qualche accorgimento, vuoi cambiare la strategia?
+Prendi il modulo che dà all'intelligenza artificiale le conoscenze sulla strategia,
+lo cambi e cambia la strategia.
+Io devo andare, quindi questi audio riesco ad ascoltarli in macchina,
+però tu tutte le cose che ti vengono in mente, anche le più stupide,
+fammi un audio, ok?
+Io me li ascolto dopo, ma non solo me li ascolto, servirà anche per domani, ok?
+Quindi mandami audio.

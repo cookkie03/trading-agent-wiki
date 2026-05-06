@@ -1,0 +1,11 @@
+Comunque questa tua intraprendenza mi piace molto, quindi io adesso sto lavorando, però se mi rendo conto, se ci rendiamo conto che questa cosa può diventare seria, io bro ci metto tutto, tutto il tempo, chiaramente tutto il tempo che ho a disposizione, non posso darti quello che non ho a disposizione, però di solito non è tantissimo.
+Però mi ci metto, cioè lo faccio bro, quindi niente, fammi sapere bro, perché le idee ci sono, secondo me, da lavorare c'è, le prospettive ci sono, fammi sapere fra perché sta diventando molto più serio di quanto pensassi.
+Ora io ti ripeto, insisto molto sulla questione della modularità, cioè il mio obiettivo attualmente è semplicemente replicare il lavoro di un trader e renderlo automatizzato.
+Quindi se tu mi puoi dare una mano dicendomi come opera un trader, siamo a cavallo.
+Poi spingiamo tanto sulla modularità, su un'architettura fatta come Dio comanda, in modo tale che quando tu mi dici, guarda, c'è questa strategia in mente che dovrebbe quantificare l'inquantificabile,
+noi, avendo un'architettura di questo genere, possiamo staccare e attaccare pezzi.
+Ok, non è quello il problema. Io per quello ti dico, ragioniamo sulle robe semplici, tu salvati tutte le idee che ti vengono in mente, mandami degli audio, non ti preoccupare.
+Il processo razionale sul cui scrivere il codice, non ho capito bene cosa intendi, se non ho capito bene cosa intendi per processo razionale.
+Però l'obiettivo è questo qua, ok? Cioè prima fare le cose semplici e trasformare quello che succede nel mondo reale su un algoritmo, cioè su, non su un algoritmo, scusa, su uno strumento automatizzato.
+Poi possiamo lavorarci sopra, ok? Fammi sapere se sei anche tu di quest'idea.
+Alla prossima!

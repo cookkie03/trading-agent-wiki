@@ -1,0 +1,18 @@
+So che ti sembra una cosa un po' pazza, ma adesso ti spiego esattamente perché io lo farei sull'equity.
+Lo farei sull'equity per un principale motivo, ed è forse il più folle,
+ed è che secondo me possiamo sviluppare un metodo nostro per immaginare il prezzo dell'azione domani,
+cioè per prezzare l'azione domani. In che senso?
+Cioè i modelli in cui si prezzano le azioni, ad eccezione degli hedge fund, sono quelli.
+E la gente usa quelli e guarda quelli.
+Tutto il mercato guarda gli stessi indicatori, guardano tutti gli stessi formuli, gli stessi modelli,
+i vari standard French, i black and shorts, cioè il punto qual è?
+Secondo me possiamo fare un modello che anziché guardare una singola formula per prezzare l'azione domani,
+le guarda tutte e cerca di integrare anche i bias, cioè come si attivano i bias quando una somma di indici prezza in quel modo il titolo,
+quando il price earning delle aziende tech su 3,25, perché alla fine il punto qual è?
+Le azioni, per quanto si parla di diversificazione, se io ho una visione un po' antitetica della cosa,
+ormai i mercati sono tutti correlati a uno, anche se si dice diversificando, correlli, abbassare la correlazione,
+secondo me è tutto correlato a uno, nel senso che se tutti guardiamo le stesse cose,
+se tutti usiamo gli stessi modelli e li mettiamo nella stessa AI, l'output che riceviamo è sempre il stesso.
+Quindi secondo me è il fulcro della cosa, questo è sviluppare un nuovo modello,
+non so come sembra folle, perché oggettivamente non credo che nessuno lo faccia,
+però secondo me è il modo giusto, poi non sbaglierò.

@@ -1,0 +1,1114 @@
+Così ce l'abbiamo
+Va bene
+Allora King
+Dovresti vedere il mio
+Coso
+Ok
+Dovresti vedere il mio Obsidian
+Ce l'hai?
+È relativamente bene lo vedi?
+Allora il concetto è
+Subsidian questa è la mia cartella
+Ok
+Purtroppo è su iCloud
+Io non riesco a condividertela su Google Drive
+Ancora
+Però ci provo
+Ok
+Cosa succede?
+Sai come funziona una wiki?
+L'LM
+Ok
+Ricordati
+Ricordati che sono dei file di testo
+Ricordati che di base
+Ricordati che esatto
+Che di base sono dei file di testo
+Ma anche tu puoi leggerli
+Cioè
+Se tu li apri col blocco note
+Li vedi
+Sono scritti
+È un file di testo
+Obsidian te li fa vedere in modo più carino
+Dopo ti faccio vedere come
+La wiki
+Secondo Andrew Carpati
+Che è l'inventore
+Si basa su due cartelle
+Ok
+La cartella row
+E la cartella wiki
+Ci sei?
+Nella cartella row
+Tu metti tutti i file da ingestare
+Da ingestare vuol dire
+Da inserire nella wiki
+Quelli
+Tipo
+I paper di ricerca
+Tipo
+Io oggi ci ho messo
+Tutti gli audio
+Che ci siamo mandati ieri
+E volevo metterci anche
+Questa nostra conversazione
+Tutti
+Quindi tutti i paper
+Tutto
+Tutto quello che noi abbiamo a disposizione
+Lo mettiamo qui
+Ok
+Ha delle sottocartelle
+Quindi tipo
+Qua mi ha salvato
+Vedi
+Conversazione
+Salvatore Luca
+Perché è quello che ho già fatto
+Che ho già ingestato
+Qua possiamo mettere gli articoli
+Qui i file audio
+Qui le note
+Qui i paper
+Trascrizioni
+Eccetera
+Ok
+Lui
+Li prende
+Tu dovresti usare un agente
+Ok
+Un agente IDO
+Ti faccio vedere quale
+E gli devi dire
+Prendili dal row
+E mettili dentro la wiki
+Lui cosa fa?
+Legge tutte le informazioni
+E li mette dentro la wiki
+In modo ordinato
+Ok
+In questa cartella
+Serve a lui
+Sono delle informazioni sue
+Questa cartella
+L'ho creata
+Io sono delle
+Gli artefatti
+Sono tipo delle
+Non so
+Tutto quello che non è solo file di testo
+Cioè tu puoi creare anche
+Delle mappe mentali
+Puoi creare
+Cioè
+Delle database
+Delle tabelle
+Puoi creare
+Puoi creare una serie di artefatti
+Ok
+Quindi se nel momento in cui
+Noi creiamo
+Gli chiediamo di fare degli artefatti
+Li mette qua
+Build
+È
+L'ho creata
+Cioè
+Sotto ci sono tutte le
+Categorie
+Per utilità
+Ok
+Build sarà la cartella
+In cui io metterò
+Metteremo
+Le informazioni sul software
+Cioè prettamente software
+Ok
+Qui i concetti
+Quindi
+Quello che effettivamente
+Farebbe una wiki
+Ok
+Darti tutte le spiegazioni
+Di ogni concetto
+Qui le decisioni
+Che prendiamo
+Qui le entities
+Non mi ricordo cosa sia
+Entità rilevanti per il progetto
+Strumenti
+Aziende
+Broker
+Librerie
+Provide
+Datasette
+O persone
+Ok
+Ops invece
+È la cartella
+Non è la cartella degli ops
+È la cartella
+In cui noi
+Salviamo
+O perlomeno lui
+Tiene traccia
+Di tutto quello che facciamo
+Di tutti gli stati di avanzamento
+Del progetto
+Di tutte quelle che
+Sono magari
+Le nostre task
+Le nostre milestone
+Tutto quello che riguarda
+La cosa
+Qui
+Delle sources
+A livello di sources
+Io mi immagino
+Che lui magari
+Ti metti direttamente
+I pdf
+Che li prendo dal raw
+E li mette qua
+Quelli utili
+Importanti da leggere
+Le sintesi
+Sono
+Praticamente
+Dei
+Casi
+Te li spiego
+Dopo le sintesi
+O le que
+Sì
+Sì
+Sì
+E io gli ho caricato
+Gli audio
+Basta
+Che lui ha letto
+Dai nostri audio
+Qui le questioni
+Le domande aperte
+Bro
+Qui
+Qui le question
+Quindi il registro
+Dei gap aperti
+Del progetto
+Ok
+Le domande aperte
+Bro
+Quelle che dobbiamo risolvere
+Qui le sintesi
+Il vantaggio
+Di questa
+LLM wiki
+È che la può gestire
+Automaticamente
+Cioè Andrew Carpati
+Proprio ha scritto
+Le wiki sono strautili
+Da consultare
+Il problema
+Delle wiki
+È che la gente
+Non ha voglia
+Di mantenerle
+Cioè di tenerle
+Aggiornate
+LLM
+Non ha
+Problemi di voglia
+Se tu glielo dici
+Lui lo fa
+Quindi lui la mantiene
+Questo è il concetto
+Alla base
+Quindi il concetto
+Alla base
+È che
+Ci sarà
+Un trading
+Un agent
+Ok
+Che è Codex
+Poi ti faccio vedere
+Che manterrà
+Questa wiki
+Obsidian
+È un visualizzatore
+Ha puntato tanto
+Sul fatto
+Di avere
+Innanzitutto
+Delle proprietà
+Ok
+Queste qua davanti
+Che vedi
+Un'altra cosa
+Che a lui
+È strautile
+È l'index
+Anzi
+Aspettate
+Scusa
+Andiamo con ordine
+Lui punta
+Tanto
+Su
+I collegamenti
+Tu hai presente
+Quando su wikipedia
+Vai
+Ci sono delle parole
+Sottolineate in blu
+Che magari
+Che ti aprono
+Altre pagine wikipedia
+Stessa identica cosa
+Qui
+Con
+Le cose
+Le cose
+Viola
+Ok
+Cioè quello che vedi
+Viola
+È il collegamento
+A un'altra pagina
+Capito
+Il vantaggio
+Di questa cosa
+È che
+È che ha sfruttato
+Andrew Carpati
+Per creare le wiki
+È questo bro
+Sono questi file di meta
+C'è file nella cartella meta
+Perché questo
+Sarà l'index
+L'lm wiki
+L'lm
+La gente
+Non sa
+Dove
+Se tu gli dai un'informazione
+O si riguarda
+Tutta la wiki
+Oppure
+Non sa dove andare
+A mettere le cose
+Neanche a chiedere
+Cioè neanche a
+A pescarle di nuovo
+Quindi tu gli crei l'indice
+Con tutti i collegamenti
+Alle pagine
+In modo tale
+Che lui va
+Diretto
+Sulla pagina
+Che gli serve
+In cui deve inserire
+Informazione
+E deve richiederle
+Ok
+Immagina
+Devi fare una query
+Devi fare una query
+All'lm
+Alla wiki
+Complessa
+Lui
+Legge l'index
+Magari vede che
+È nella dashboard
+Quindi apre la dashboard
+Si legge la dashboard
+E dice
+Ok
+Nella dashboard
+Ho trovato un po' di contesto
+Però non c'è la risposta
+La risposta è dentro qui
+Quindi si apre questo
+Perché lo vede
+C'è collegamento
+Quindi lo apre
+Lo legge
+E poi ti dà la risposta
+Nelle sintesi
+Nelle sintesi
+Qua
+Nella carta di sintesi
+Che ti ho detto
+Che ti spiegavo dopo
+Ci sarebbero
+Ci saranno
+Le domande
+Utili
+Che noi facciamo
+Che vogliamo salvare
+Quindi noi magari
+Facciamo una domanda
+Sappiamo che questa cosa
+Ci serve come informazione
+E quindi la salviamo lì
+Come altro pezzo della wiki
+In modo tale che
+Sia noi che lui
+Possiamo
+Noi possiamo consultare la wiki
+Perché è una wiki
+Ok?
+È super facile anche per noi
+Leggerla
+Navigarla
+Eccetera
+E lui è uguale
+Esatto
+Esattamente
+Ok?
+Chi lo fa
+Questa cosa?
+Io ho provato
+Oggi
+A usare codex
+Ti faccio vedere
+Tu vedevi il mio schermo
+Tu vedi obsidian
+Guarda
+Però questo è codex
+Ok?
+Codex quando lo apri
+È così
+Ti appare così
+Eh sì
+È quello di chat
+Ha una versione gratuita
+Che io sto provando a utilizzare
+E
+Vediamo se riesco a farlo vedere
+Io ho limiti tarifari residui
+6%
+Per tutta la settimana
+Cioè oggi
+In un'ora
+Ho lavorato
+Ho inizializzato questa wiki
+Ho consumato praticamente
+Tutto il piano gratuito
+Della settimana
+Però
+Appunto
+Tu quando apri i codex
+La prima cosa che devi fare
+È scegliere la cartella
+Quindi
+Tu fai
+Tipo
+Aggiungi nuovo progetto
+Prendi il vault
+Cioè vai nell'esplorare risorse
+Li selezioni la cartella del vault
+E in questo momento
+A quel momento in poi
+Codex
+È un agente
+Che è installato
+Dentro la wiki
+È l'agente installato
+Dentro la wiki
+Bro
+Andiamo abbastanza
+Andiamo abbastanza veloci
+Ok?
+Io ho sviluppato
+Delle skills
+Le skills sono
+Quei file di testo
+Di istruzione
+Di cui ti parlavo l'altro giorno
+Ok?
+Ti ricordi cosa sono le skills
+Che te lo spiegate?
+Sono
+Sono delle istruzioni
+Esatto
+Sono dei
+Sì esatto
+Ma non è che sono degli
+Advin
+Veri e propri
+Sono dei file di testo
+Di istruzioni
+Per utilizzare degli strumenti
+Cioè immaginati come
+Un
+Come quando tu compri un prodotto
+E oltre al prodotto
+C'è il manuale di istruzioni
+Per usarlo
+Queste sono le skills
+Cioè la gente
+Quando tu
+Gli fai una domanda
+Se
+Deve usare uno strumento
+Se deve fare qualcosa
+Se deve utilizzare
+Della conoscenza
+Che può essere anche
+Può non essere
+Un manuale di istruzioni
+Può essere per esempio
+Un libro
+Sul design
+Se tu gli chiedi
+Un task di design
+Lui si va a leggere
+La skill del design
+Così lo sa fare
+Io ho creato
+Questi strumenti
+Queste skills
+Che fanno
+Tutto quello che serve
+Per la wiki
+E sono queste
+Se tu schiacci
+Dov'è?
+Qua
+Questa
+Questa
+Questa barra
+La barra del diviso
+Non mi ricordo come si chiama
+Comunque
+Se tu usi
+Slash
+Ecco
+Slash wiki
+Qui dentro
+Vedrai
+Wiki init
+Che serve per inizializzare
+La LLM wiki
+Poi c'è wiki link
+Che è un health check
+L'health check è quando
+Tipo la wiki
+Comincia a diventare grossa
+E magari ci sono
+Delle informazioni duplicate
+Oppure ci sono dei file
+Che non hanno più senso
+Avrebbe senso spostarli
+Crearne di nuovi
+Eccetera
+C'è
+È un comando che magari
+Possiamo eseguire
+Ogni tot
+Wiki save
+Per cui salva
+La risposta
+Nelle sintesi
+Che ti dicevo
+Wiki query
+Per fare domande
+Alla wiki
+Wiki ingest
+Wiki ingest
+È quando lui prende i file
+Dalla cartella row
+E li mette dentro la wiki
+C'è quando tu hai bisogno
+Di questa cosa
+E wiki artifact
+Che è quando noi vogliamo
+Creare degli artifact
+Ok
+Quindi canvas map
+Data view query
+Delle kanban board
+Che non so se
+Sai cosa sono
+Le kanban
+Poi magari proviamo
+A crearne una
+Quindi per esempio
+Facciamo così
+Wiki artifact
+Ok
+Creami
+Una
+Kanban
+Board
+Sullo stato
+Attuale
+Del progetto
+Tu lo mandi
+Lui ragiona
+Adesso mi
+Mi si sputtanerà
+Perché avrò finito i crediti
+Lui insomma
+Legge
+Legge il vault
+Vedi si legge
+Tutte le cose
+Legge la competenza
+Obsidian
+Markdown
+Legge
+Lot
+Cache
+Log
+Overview
+Dashboard
+Ho raccolto il quadro
+Adesso in posto
+C'è già un primo inge
+Sinali centrali
+Fa tutte le sue operazioni
+Del caso
+Ok
+Teoricamente
+A lavoro finito
+Dentro Obsidian
+Che tu non vedi
+Perché io dovrei
+Condividerti lo schermo
+Invece
+Della finestra
+Troveremo
+Una kanban board
+Sì
+È un
+Bro
+Le AI
+È un nuovo modo
+Di usare i pc
+Cioè
+Non c'è
+Non è che c'è
+Molto altro
+Bro
+È un nuovo modo
+Di utilizzare internet
+E i pc
+Niente di che
+Se prima per usare i pc
+Dovevi imparare
+Adesso per usare i pc
+Cioè devi imparare
+A usare il pc
+Cioè dovevi imparare
+Le regole del pc
+Adesso il pc
+Riesce
+A leggere
+Le tue
+Le tue cose
+Cioè riesce a leggerti
+Riesce a capirti
+In linguaggio umano
+Capito
+È come se fosse
+Un livello di complessità
+In meno
+Per comunicare
+Per farci comunicare
+Con i pc
+E con internet
+Di fatto è questo
+Insomma
+Vabbè
+Lui ragionerà
+Adesso probabilmente
+Non ce la farà nemmeno
+A farmi l'artifact
+Perché
+Insomma
+Un po' così
+Quindi niente
+King
+Io adesso
+Ti volevo far vedere
+Uno schemino
+Che mi pare
+Di aver costruito
+Da qualche parte
+Vediamo se riesco
+A trovartelo
+Allora
+Obsidian
+No
+Obsidian
+Perché tu adesso
+Vedi tutto il mio schermo
+No
+Vediamo se riesco
+A beccartelo
+Da qui
+Oddio
+No
+No
+Sicuro qua
+Non ce l'ho
+Cali potente
+No
+Le denotes
+No
+Però
+Nemmeno
+Anche qui
+Aspetta
+Perché l'ho
+Fatta su Figma
+Ecco perché
+Ecco perché
+Allora aspetta
+Vado un attimo
+Su Figma
+Al volo ti faccio vedere
+Figa
+Figma bro
+Ma mi hai detto
+Che sai cos'è
+Ah non sai cosa sia
+È la piattaforma
+Per fare design
+È una piattaforma
+Per fare design
+Per creare web app
+Per creare presentazioni
+Per farsi schemi
+La utilizzano
+Per creare
+Tipo il layout
+Delle applicazioni
+Di base
+Ed è tipo
+Tipo
+Notion
+Tipo
+Cioè super collaborativo
+Super improntato
+Per fare collaborazione
+Io l'ho utilizzato
+La prima volta
+Perché
+Perché c'era
+Il connettore
+Con Claude
+E quindi
+Potevo fargli
+Creare le robe
+Però adesso
+Onestamente
+Mi sposterò
+Su Obsidian
+Questo è lo schermino
+Che avevo creato
+Che avevo provato a creare
+Questo l'ho fatto a mano
+Secondo me
+Noi
+Ok
+Vediamo se riesco a
+Ok
+Perfetto
+No
+Non mi fa spostare
+Non mi fa spostare
+Non mi fa spostare
+L'uso del trackpad
+Ok
+Allora
+Allora
+Da dove partiamo?
+Possiamo partire
+Da
+Da qui
+Io me l'ero immaginato
+A moduli
+Ok
+Mi ero immaginato
+Un sistema
+Per cui
+Tu hai qui
+Un modulo
+LLM
+Che di fatto
+Riceve
+In input
+Un prompt
+Ok
+Come se tu cominciassi
+La conversazione
+Con una nuova chat
+Ok
+Tu cominci la conversazione
+Con una nuova chat
+E lui si mette lì
+Ragiona
+Su questa cosa
+E ti tira fuori
+Un trade
+C'è un trade
+Da fare
+Ok
+Una roba
+Tipo
+Quello che ti dicevo
+Ieri
+Sul
+Sul
+Sulla distinzione
+Non mi ricordo se te l'ho fatta
+Sulla distinzione
+Se te l'ho detta
+Tra
+Una strategia
+Di ribilanciamento
+Costante
+Con una
+Metodologia
+Di cash out
+Cioè quindi di
+Di cash out
+Ok
+Di sfruttamento
+Della rendita
+Oppure
+Se un insieme
+Cioè
+Se periodicamente
+Invece di fare
+Un ribilanciamento
+Lui controlla
+Lo stato del mercato
+Controlla lo stato
+Delle posizioni
+Che abbiamo aperte
+E gestisce
+Quelle posizioni
+Quelle posizioni
+Sono prettamente
+Di trading
+Quindi
+Idealmente
+Ad alta frequenza
+E a
+Un
+A medio periodo
+Ok
+Breve medio periodo
+Con
+Un ordine
+Limit
+Per cui lui stima
+Che se il prezzo
+Dell'azione
+Arriva a tot prezzo
+E potrebbe arrivarci
+Quello è un prezzo
+In cui ha senso comprare
+Però poi allo stesso tempo
+Oltre a fare
+Oltre a stimare
+Il prezzo del mercato
+O perlomeno
+A cui ha senso
+Entrare nel mercato
+Lui
+Prende direttamente
+Si calcola direttamente
+Il prezzo
+Di take profit
+Corretto
+Ok
+E uno stop loss
+Per evitare
+Le perdite
+Te l'avevo detto
+Questa cosa
+Te l'avevo raccontata
+Negli audio
+Hai capito
+Il concetto?
+Sì
+Binance
+Certo
+Binance
+Fare tutto
+Binance
+Eh
+Bro
+Hai mai avuto a che fare
+Con un qualsiasi broker
+Di azioni?
+Ah ok
+Quello è easy
+Ok
+Ti ricordi
+Quando abbiamo fatto
+Mercati e prodotti finanziari
+Con Banfi
+Che ci davano
+Di diversi tipi di ordini?
+Quello bro
+Ti ricordi
+Dove sono i future
+Sì
+Certo
+Per quello
+Ma Binance
+Sono sicuro che lo fa fare
+Trova
+Io non so se esistono
+Dei broker gratis
+Che fanno questa cosa
+Perché Bin
+È
+Capito?
+Capito perché volevo testarlo
+Sulle cripto prima
+Quindi
+Vabbè
+Adesso lasciamo stare
+Cripto azioni
+Sti cazzi
+Cioè forse c'è
+Interactive brokers
+Che fa questa cosa
+Però devi
+Secondo me devi pagarlo
+Eh
+Capito?
+Quindi
+Sni
+Cioè se devo fare dei test
+Non mi va di pagare
+Per dei test bro
+Quindi Binance fa tutto
+Ma Binance è fondamentale
+Anche per l'estrazione
+Dei dati bro
+Perché tu da Binance
+Puoi scaricare
+L'order book
+Di tutte le cripto
+L'order book
+È peso eh
+Cioè l'order book
+Tutti i prezzi storici
+E
+Chi se ne frega bro
+Sì
+Però eh sì
+Capito?
+Cioè Binance ha tutto
+Binance è anche
+L'exchange più liquido
+Cioè è proprio
+Non di gran lunga
+Però è quello più liquido
+Non è decentralizzato
+Nel senso che
+Se noi cominciamo
+Effettivamente a guadagnarci
+Per sbaglio
+E superiamo certe soglie
+Ci vengono a costare a casa
+Perché devi mettere
+Devi mettere i tuoi documenti
+Esistono dei broker
+Decentralizzati
+Completamente anonimi
+Però
+È una cosa che si valuterà dopo
+La cosa figa
+È
+L'architettura a moduli
+Ok?
+Cioè immaginati
+Un LLM
+Che riceve in input
+Tutta una serie di robe
+Ok?
+Cioè tutte le informazioni
+Di cui ha bisogno
+Per ragionare
+Sulla realizzazione
+Di un trade
+Finita
+Finita questa cosa
+Lui passa
+A un
+Al
+Saltiamo questo per ora
+Passa al modulo Binance
+Che di fatto
+È la realizzazione del trade
+Ok?
+Cioè
+Il piazzamento dell'ordine
+L'ordine
+Viene salvato
+All'interno del database
+Ok?
+Ad ogni
+Ad ogni periodicamente
+Poi noi magari scarichiamo
+Lo stato
+Del
+Del nostri trade
+Ok?
+Adesso non mi ricordo
+Se l'avevo inserito
+Però
+Il vantaggio di tutto questo
+Tutto questo sistema
+È che è modulare
+Quindi se io voglio sostituire
+Binance
+Con un exchange
+Di azioni
+Lo faccio
+Cioè prendo Binance
+Non deve rifare
+Esattamente
+Ok?
+L'architettura moduli
+È molto bella
+Anche perché
+Tu puoi scegliere
+I moduli
+Che creano
+Le informazioni
+Da dare
+All'LLM
+Prevision
+È un algoritmo
+Di deep learning
+Immagino un algoritmo
+Di deep learning
+Che fa le previsioni
+Sui prezzi
+Quello che ho fatto
+In tesi
+Sì
+Se le storie
+Che è factors
+No
+È analisi
+Di fattori
+Factor investing
+Il factor investing
+Non so se hai cos'è
+Ce l'ha spiegato
+Trezzi una volta
+Perché lui non lo sapeva
+Quindi non ce l'ha spiegato
+Era quella cosa
+Ti ricordi che hai detto
+Esiste questo
+Questo
+E quest'altro
+Il terzo
+Era il factor investing
+Che hai detto
+Io non lo so
+Quindi se volete
+Bravissimo
+Esatto
+Quindi
+Il factor investing
+Devi immaginartelo come
+Io prendo
+Allora
+Abbiamo tutti la distinzione
+Tra analisi
+Scusami
+Tra strategie quantitative
+E qualitative
+Giusto?
+Quello lì
+È un miscuglio
+Delle cose
+Il factor investing
+Di fatto
+La
+La
+La domanda
+Che si pone
+Il factor investing
+È quella
+Di trovare
+Quelle metriche
+Generali
+Che influenzano
+Il prezzo
+Di un titolo
+Ok
+I fattori
+Possono essere
+Di qualsiasi genere
+Possono essere
+Fattori di mercato
+Quindi
+Per esempio
+Tassi di interesse
+Possono essere
+Metriche aziendali
+Quindi
+Non so
+Il fatturato
+Possono essere
+Metriche
+Di
+Possono essere
+Dei ratio
+Quindi price earning
+Possono essere
+Tutto
+Cioè tutto
+Quello che può essere
+Reso numero
+Esattamente
+Però tu mi stai chiedendo
+Di stimare dei bias
+Bro
+Ok
+Ok
+Mmm
+aspetta un secondo
+però non mi ha
+parla
+si io ti sento però sto cercando di registrare
+la schermo, cioè di registrare
+il tuo audio
+aspetta
+senti facciamo una roba
+perché questa idea era
+cioè è quello da cui dobbiamo partire
+aspetta un secondo
+e questo è un'altra cosa
+a me
+a me
+a me
+a me
+a me
+a me
+a me
+a me
+a me
+a me
+a me
+a me
