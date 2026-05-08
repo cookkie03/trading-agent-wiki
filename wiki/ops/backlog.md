@@ -1,5 +1,5 @@
 ---
-title: "Backlog"
+title: Backlog
 type: ops
 tags:
   - ops
@@ -9,7 +9,7 @@ updated: 2026-04-30
 status: active
 related:
   - "[[ops/dashboard]]"
-  - "[[ops/kanban-project-status]]"
+  - "[[kanban-project-status]]"
 confidence: high
 priority: high
 area: ops

@@ -1,5 +1,5 @@
 ---
-title: "Videochiamata Luca-Salvatore (2026-04-30)"
+title: Videochiamata Luca-Salvatore (2026-04-30)
 type: source
 tags:
   - source
@@ -7,7 +7,7 @@ tags:
   - strategy
   - architecture
 sources: []
-raw_source_path: "raw/audio/videochimata 30 apri.m4a"
+raw_source_path: raw/audio/videochimata 30 apri.m4a
 created: 2026-04-30
 updated: 2026-04-30
 confidence: high
@@ -15,7 +15,7 @@ status: reviewed
 related:
   - "[[sources/conversazione-luca-salvatore-2026-04-28-30]]"
   - "[[concepts/modular-trading-agent-architecture]]"
-  - "[[ops/kanban-project-status]]"
+  - "[[kanban-project-status]]"
   - "[[build/system-map]]"
 ---
 

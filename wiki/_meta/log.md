@@ -35,12 +35,21 @@
 - **Notes**: ordinato un bundle di audio, trascrizioni e appunti tra Luca e Salvatore; escluse le parti strettamente personali non rilevanti
 
 ## [2026-04-30] artifact | kanban | Stato Progetto
-- **File**: [[ops/kanban-project-status]]
+- **File**: [[kanban-project-status]]
 - **Based on**: [[ops/dashboard]], [[ops/current-state]], [[ops/backlog]], [[build/system-map]], [[decisions/decision-log]], [[questions/open-questions]], [[sources/conversazione-luca-salvatore-2026-04-28-30]]
 
 ## [2026-04-30] ingest | Videochiamata Luca-Salvatore (2026-04-30)
 - **Type**: video-call
 - **Pages created**: [[sources/videochiamata-luca-salvatore-2026-04-30]]
-- **Pages updated**: [[concepts/modular-trading-agent-architecture]], [[build/system-map]], [[ops/kanban-project-status]], [[ops/backlog]], [[_meta/index]]
+- **Pages updated**: [[concepts/modular-trading-agent-architecture]], [[build/system-map]], [[kanban-project-status]], [[ops/backlog]], [[_meta/index]]
 - **Contradictions**: nessuna
 - **Notes**: Ingestiti i due transcript della videochiamata odierna. Definita l'architettura multi-agente e la roadmap verso la dashboard di augmentazione.
+
+## [2026-05-06] artifact | kanban | Kanban — Stato Progetto
+- **File**: [[kanban-project-status]]
+- **Based on**: aggiornamenti di sessione
+
+## [2026-05-06] update | Correzione file allucinati
+- **Change**: Rimossi output AI allucinati da `raw/archived/articles/Private & Shared/Trading Agent 3192e441b0e580d5921bf33f9b559735.md` e riscritta la pagina `[[sources/videochiamata-luca-salvatore-2026-05-06]]` basata sul vero transcript `raw/transcripts/2026-05-06 13-29-25.txt`.
+- **Pages updated**: [[sources/videochiamata-luca-salvatore-2026-05-06]], [[raw/archived/articles/Private & Shared/Trading Agent 3192e441b0e580d5921bf33f9b559735]]
+- **Notes**: Il file della fonte originariamente conteneva allucinazioni dell'agente che sono state eliminate.

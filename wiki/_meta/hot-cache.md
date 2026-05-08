@@ -3,32 +3,26 @@
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
 ## Sessione Corrente
-- **Data**: 2026-04-30
+- **Data**: 2026-05-06
 - **Agent**: Antigravity
-- **Operazioni**: Ingest dei transcript della videochiamata del 30 aprile (due parti). Consolidamento architettura Multi-Agente e Roadmap di Augmentazione. Aggiornamento Kanban e Backlog.
+- **Operazioni**: Correzione di file allucinati. Ingest reale del transcript `2026-05-06 13-29-25.txt` focalizzato su Analisi Tecnica, workflow per indicatori e uso di Obsidian come wiki.
 
 ## Pagine toccate
-- [[sources/videochiamata-luca-salvatore-2026-04-30]]
-- [[concepts/modular-trading-agent-architecture]]
-- [[build/system-map]]
-- [[ops/kanban-project-status]]
-- [[ops/backlog]]
-- [[_meta/index]]
+- [[sources/videochiamata-luca-salvatore-2026-05-06]]
+- [[raw/archived/articles/Private & Shared/Trading Agent 3192e441b0e580d5921bf33f9b559735]]
 - [[_meta/log]]
 - [[_meta/hot-cache]]
 
 ## Pending ingest
-- Spostare i transcript in `raw/archived/` per pulizia.
-- Verificare se ci sono altri messaggi o note residue in `raw/`.
+- Nessuno. I transcript e l'audio sono stati archiviati in `raw/archived/videochiamata-2026-05-06`.
 
 ## Next steps
-- [ ] Registrare ufficialmente la decisione "Dashboard di Augmentazione" in [[decisions/decision-log]].
-- [ ] Iniziare la ricerca sui progetti citati: Alfa Arena, NeuroEspresso, Cornell Paper.
-- [ ] Definire I/O dei moduli News, TA e Risk.
+- [ ] Implementare le prime funzioni Python per l'Analisi Tecnica (es. Medie Mobili, Fibonacci) come stabilito durante l'ultima videochiamata.
+- [ ] Iniziare la raccolta degli indicatori validati da Luca e ingest nel knowledge base tramite Daily Notes o file raw.
 - [ ] Scegliere mercato iniziale (Crypto vs Equity) per lo scratch build.
 
 ## Note sessione
-- La videochiamata ha chiarito la roadmap: Fase 1 Dashboard -> Fase 2 Augmentazione -> Fase 3 Autonomia.
+- La videochiamata ha chiarito la roadmap e il modo di operare sull'analisi tecnica.
 - Definita l'architettura Multi-Agente con moduli specializzati (News, TA, Risk, RL, Fine-tuning).
 - Si è deciso di procedere "From Scratch" per evitare la complessità tecnica del debattimento di codice altrui.
-- Salvatore ha ricevuto una spiegazione completa della LLM Wiki e degli strumenti (Obsidian, Codex).
+- L'analisi tecnica non verrà eseguita tramite "visione" del grafico, ma tramite indicatori quantificati in Python che genereranno i segnali.

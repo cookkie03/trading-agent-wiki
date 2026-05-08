@@ -11,38 +11,17 @@
             "id": "c5f4bf2e26f2f4cb",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "raw/notes/Trading Floor.canvas",
-                "viewState": {
-                  "x": -20,
-                  "y": 250,
-                  "zoom": -0.32244050655706774
-                }
+                "file": "wiki/sources/notion-export-investimento-trading.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Trading Floor"
-            }
-          },
-          {
-            "id": "09b54829b0dd8b68",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "raw/notes/Trading Floor.canvas",
-                "viewState": {
-                  "x": 6.9700000000000015,
-                  "y": 448.09000000000003,
-                  "zoom": 0
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Trading Floor"
+              "icon": "lucide-file",
+              "title": "notion-export-investimento-trading"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -201,11 +180,10 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 349.5
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-kanban:Create new board": false,
       "switcher:Apri selezione rapida": false,
       "graph:Apri vista grafo": false,
       "canvas:Crea nuova lavagna": false,
@@ -213,57 +191,60 @@
       "templates:Inserisci modello": false,
       "command-palette:Apri riquadro comandi": false,
       "bases:Crea nuova Base": false,
+      "obsidian-kanban:Create new board": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "168c1cbc86e15b94",
+  "active": "c5f4bf2e26f2f4cb",
   "lastOpenFiles": [
-    "raw/notes/Trading Floor.canvas",
-    "Senza nome 1.md",
-    "raw/notes/Trading Agent — Architecture Overview.jpg",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/indi-680x309-1.jpeg",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/PAT-680x256-1.jpeg",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Position Sizing/Immagine_2022-02-05_143504.png",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Position Sizing 7e601b2c68ba45eaaa15f56670b8ca38.md",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Trading Journal cf886ab0dd82437eb9f1d9bc39a5b174.md",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Rendita Passiva CeFi, DeFi/Staking f4e589b35dd34cf4870a139062775c9d.md",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Rendita Passiva CeFi, DeFi/Impermanent Loss 0a454820e4dc4646bb9d3f360eeae366.md",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici 0ce01d27c7b745ce9ee86d8df5ec1c5c.md",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Analsi Fondamentale e3eb2c0dd85c4ce292b1b301862d0d10.md",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/pat12.jpg",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Glossario/Untitled.png",
-    "raw/articles/Private & Shared/Trading Agent 3192e441b0e580d5921bf33f9b559735.md",
-    "raw/articles/Private & Shared/Trading Agent/Pensieri 3292e441b0e5807494fcf72e1e197edc.md",
-    "Senza nome.md",
-    "raw/papers/2412.20138v7.pdf",
-    "Clippings/Cali voluminoso.md",
-    "Clippings/Gambe - Addome.md",
-    "Clippings",
+    "wiki/sources/sources.md",
+    "wiki/sources/conversazione-luca-salvatore-2026-04-28-30.md",
+    "wiki/syntheses/syntheses.md",
+    "wiki/questions/questions.md",
+    "wiki/questions/open-questions.md",
+    "wiki/ops/dashboard.md",
+    "wiki/ops/current-state.md",
+    "wiki/ops/backlog.md",
+    "wiki/entities/entities.md",
+    "wiki/decisions/decisions.md",
+    "wiki/decisions/decision-log.md",
+    "wiki/concepts/trader-workflow-automation.md",
+    "wiki/concepts/modular-trading-agent-architecture.md",
     "wiki/build/system-map.md",
     "wiki/build/build.md",
-    "wiki/ops/kanban-project-status.md",
-    "wiki/ops/dashboard.md",
-    "wiki/_meta/index.md",
-    "raw/audio/videochimata 30 apri.m4a",
-    "raw/audio/videochimata 20 apri.m4a",
-    "raw/audio/Nuova registrazione.m4a",
-    "AGENTS.md",
-    "wiki/syntheses/syntheses.md",
-    "wiki/concepts/modular-trading-agent-architecture.md",
-    "Senza nome.canvas",
-    "wiki/_meta/log.md",
-    "wiki/ops/backlog.md",
-    "Senza nome.base",
-    "raw/articles/dashboard starting finance streamlit.md",
-    "raw/papers/Non confermato 825723.crdownload",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist)/Untitled a1d60f974cb2446a8aeeb7fb46ec1d9a.md",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist)/26 12 2021 e0f4d7fa831c4fec827bccbb5502c07a.md",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist) d07ff53b4b534f31b42906851597ee7a_all.csv",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist) d07ff53b4b534f31b42906851597ee7a.csv",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist)",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Position Sizing/Immagine_2022-02-05_143149.png",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Operatività/indi8.jpg",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/sd4.jpg",
-    "raw/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/sd1.jpg"
+    "wiki/artifacts/trading-floor.canvas",
+    "wiki/artifacts/kanban-project-status.md",
+    "wiki/artifacts/artifacts.md",
+    "wiki/artifacts/artifact-workbench.md",
+    "raw/papers/2412.20138v7.pdf",
+    "raw/archived/articles/dashboard starting finance streamlit.md",
+    "raw/archived/videochiamata-2026-04-30/videochimata 30 apri.m4a.transcription.md",
+    "wiki/sources/videochiamata-luca-salvatore-2026-05-06.md",
+    "raw/archived/videochiamata-2026-04-30/videochimata 30 apri.m4a",
+    "raw/archived/videochiamata-2026-04-30/2026-04-30 11-15-40.m4a",
+    "wiki/ops/ops.md",
+    "Senza nome 1.md",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist)/Untitled a1d60f974cb2446a8aeeb7fb46ec1d9a.md",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist)/26 12 2021 e0f4d7fa831c4fec827bccbb5502c07a.md",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist) d07ff53b4b534f31b42906851597ee7a_all.csv",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist) d07ff53b4b534f31b42906851597ee7a.csv",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist)",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Rendita Passiva CeFi, DeFi/Staking f4e589b35dd34cf4870a139062775c9d.md",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Position Sizing/Immagine_2022-02-05_143504.png",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Position Sizing/Immagine_2022-02-05_143149.png",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Operatività/indi8.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Glossario/Untitled.png",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/sd4.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/sd1.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/rsi1.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/rsi-3.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/pat5.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/pat4.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Trading Journal",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Rendita Passiva CeFi, DeFi",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Position Sizing",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Operatività",
+    "raw/notes/Trading Floor.canvas",
+    "Senza nome.canvas"
   ]
 }

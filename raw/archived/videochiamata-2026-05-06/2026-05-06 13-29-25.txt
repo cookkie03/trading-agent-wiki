@@ -1,0 +1,5610 @@
+come stai tutto bene sto mettendo il polletto in fregistrice d'aria il pollettino oggi e via
+allora king per quanto riguarda la nostra idea o una buona una cattiva notizia la buona notizia
+è che tu sei molto intelligente la cattiva notizia è che non so se quello che dobbiamo fare si può fare
+ho studiato ho letto come i trader di cripto chiamoli così trader di cripto fanno trading
+di cripto ed essenzialmente ci sono due metodi c'è chi fa analisi fondamentale quindi quelli
+che provano a copiare quello che si fa con le azioni quindi cercano di capire chi c'è dietro
+la cripto tipo che non so l'aetherium c'è quel pazzo scatenato insomma cerca di capire l'azienda
+se lo passo i termini che c'è dietro come tether con arduino cioè insomma in tutti i casi c'è
+un'azienda esatto e quelli che fanno analisi tecnica che è quello che fanno per la maggior parte adesso
+analisi tecnica è tutta una roba basata su lettura di grafico quindi fanno tipo sai le medie mobili
+che si fanno anche con le azioni le medie mobili a 52 settimane per qualche mese l'ho fatto
+analisi tecnica anche serio esatto però fanno letteralmente solo quello quindi il punto è
+molto schiccio non so se lei ai può farlo cioè io non me ne intendo fino a quel punto cioè lei hai
+secondo me finché deve analizzarti tutti i price earning che sono dei dati numerici quindi non deve
+calcolarseli se le analizza tutti quanti trova l'azione sottovalutata perché ha il price earning
+magari minore rispetto agli utili quindi riesce a fare dei rapporti delle operazioni matematiche
+secondo me può farlo nel momento in cui deve prendere un grafico disegnare delle linee e capire
+delle linee magari confrontare con altre mille grafici su cui deve disegnare perché la tecnica
+non è già fatta questo devi dirmi tu se lo può fare io non so se può fare quello allora questo
+che sto dicendo allora prima cosa aspetta che metto la roba in friggitrice arrivo dunque prima cosa
+a parte che io mi sono fatto anche degli appunti sul ai tempi quando mi feci scammare dagli dai
+classici cripto guru perché mi feci scammare palesemente mi insegnarono come si fa l'analisi
+tecnica tra le altre cose ok ma io dico c'è l'analisi tecnica disegno due linee cioè quella avanzata
+quella proprio peso seria ho trovato un botto di articoli e avevo tipo 52 indicatori ho trovato
+eh bro allora il concetto dell'analisi tecnica il concetto dell'analisi tecnica è che tu devi
+trovare quegli indicatori cioè già l'analisi tecnica è un po' è un po' così cioè ok è un po' aria
+fugazzi fugazzi sì sono d'accordo sì lo so cioè già è questo se tu poi metti indicatori a cazzo è ancora
+peggio è ancora più inutile secondo me devi trovare quegli indicatori che sono cioè un minimo un minimo
+devi trovarne non non puoi non puoi tenerli tutti bro devi avere delle cose tipo per esempio
+l'analisi tecnica studiai che esistono dei pattern ok nel grafico esistono dei pattern tipo i pattern
+piramidali tipo i trend tipo vabbè dei pattern ok quindi quello è quella è una cosa quindi
+l'individuazione dei pattern la seconda cosa è la questione di supporti e resistenze quindi individuare
+quelle linee immaginarie quelle soglie di prezzo che diciamo mentalmente toccano dei punti caldi in
+cui se il grafico può prendere decisioni che poi possono diventare trend quindi che supporti
+resistenze che poi diventano trend e ti aiuta le medie mobili ci sono c'è un'altra che si chiama c'è un'altra
+un altro un altro pezzo che si chiama fibonacci ecco il ritrasciamento di fibonacci
+ah si si ho letto ho letto ho letto ho letto ho letto ho letto ho letto ho letto ho letto ho
+capito cioè prendi queste cose qua fondamentali secondo me è una lista tecnica basata su queste
+cose fondamentali ci sta ok sì ora ogni cosa è a sé nel senso che
+individuare delle soglie di prezzo come supporti resistenze ipoteticamente lo puoi fare anche
+deterministicamente ok cioè proprio programmaticamente il resto per quanto mi riguarda io adesso non so
+darti un si può fare non si può fare perché le opzioni sono tante bisogna capire quale sia la
+migliore bisogna capire quale funziona più che quale sia la migliore perché per esempio i modelli di
+google sanno leggere le immagini ok però il punto è per cioè quanto potentemente possono farlo
+che possono leggere mille grafici disegnarci sopra allo stesso momento e farlo per tutto il giorno
+tutti i giorni in maniera continuativa allora capito cosa ti dico esatto cioè ti dico le opzioni che
+le cose che tu puoi fare con gli ai sono tante ok sono veramente parecchi fare analisi tecnica potrebbe
+diventare una cozzaglia di cose non so se la può fare bene noi la possiamo ottenere come modulo e
+poi capiamo singolarmente come svilupparlo cioè una volta che non so poi una volta che scegliamo tutti
+i moduli che vogliamo dare e noi magari ce ne scegliamo prendiamo tutti quelli che potremmo
+costruire e poi partiamo magari dal più semplice lo facciamo uno per uno quindi possiamo pensarci
+dopo eventualmente così nel frattempo la tecnologia cambia e ok secondo me la strada migliore proprio a
+livello di cioè istintivamente quello che direi è che la strada migliore è quella di dare a un agente
+le istruzioni per farla ok e poi cercare di rendere quanto più e ai friendly i meccani cioè in quello che
+tu dice rendere ai friendly quello che tu disegni sul grafico e ai friendly vuol dire per quanto
+possibile per quanto possibile trasformarlo in numeri ok cioè trasformarlo in numeri in metodi
+metodi vuol dire tipo funzioni su python cioè trasformarle in funzioni python ok tra invece
+praticamente trasformare ti faccio un esempio la linea dei volumi in un numero cioè una cosa numerica
+si trasformare in modo tale che lui che lui anziché disegnare la linea sappia che la serie
+storica del volume è stata quella magari l'analizza come media della serie storica del volume si può
+essere una cosa così avere degli indicatori cioè trasformarli in indicatori allora faccio questo
+cioè praticamente dobbiamo trasformare quelli che ci sono in indicatori numerici ti do quest'altro
+punto di vista che magari un po più concreto un punto di vista è un esempio per fare analisi tecnica
+ci sono dei passaggi da seguire ok il primo passaggio per esempio o uno dei passaggi ok può
+essere per esempio l'analisi di lungo periodo quindi tu cambi le candele ok cambi il time frame
+delle candele vai a vedere qual è il trend macro per poi spostarti sul piccolo tu immaginati una situazione
+una situazione in cui l'intelligenza artificiale ha dei metodi python che gli danno un prospetto numerico
+del grafico che vogliono analizzare e in input queste funzioni ricevono il time frame
+l'intervallo temporale a cui sono interessati e l'intelligenza artificiale chiama queste funzioni
+più volte per ottenere prospetti diversi e farsi sulla base di quelli cioè mettere su quei prospetti
+gli strumenti che noi in realtà disegniamo dentro il grafico
+ok quindi semplicemente anziché leggere il grafico la serie storica
+trasformi il grafico in sì ma non hai detto la serie storica perché tu magari trovi il metodo per
+diciamo
+trasformare il grafico la serie storica
+in una cosa che è molto più simile a quella che tu poi realisticamente vedi
+ok cioè se tu vedi spesso magari il grafico a candele invece che a linea
+cerchi trovi il modo di adesso io non so neanche come ok però trovi il modo di adottare delle
+semplificazioni che non danno all'intelligenza artificiale la serie storica gli danno come se
+veramente fosse qualcosa di numerico di tokenizzabile queste candele cioè tu non gli dai il prezzo quel
+giorno non gli dai il prezzo di chiusura scusami non gli dai il prezzo del giorno
+non gli dai il prezzo di apertura di chiusura gli dai quanto sono ampie le candele cioè gli dai in input
+più delle caratteristiche le caratteristiche poi che tu vai a guardare quando fai analisi tecnica
+perché tu quando fai analisi tecnica ok ho capito cosa dici
+per me sono cioè è è un data set molto più ampio perché tipo se tu pensi a un'azione
+un'azione quando guardi il prezzo ti dà il prezzo di chiusura del giorno che è facile ogni candela ti
+dà il minimo il massimo l'apertura la chiusura qui sai che hanno tipo la candela e poi hanno una riga
+la riga è il massimo il minimo la chiusura l'apertura e il corpo della candela cioè il
+punto è sono molti più dati per esempio di una serie storica l'impresa azionario c'è molto più
+un'altra cosa che mi è venuta in mente per esempio che in analisi tecnica di cui mi hanno parlato è
+l'analisi degli spike adesso tu mi hai descritto come sono fatte le candele in cui ti danno prezzo di
+apertura chiusura minimo e massimo se tu hai degli spike forti quelli sono segnali però tu non serve che dai
+all'intelligenza artificiale l'immagine lei si rende conto che c'è lo spike tu semplicemente
+hai un metodo una funzione python dentro un'altra funzione python che gli dà il prospetto cioè
+magari una funzione madre che analizza il grafico dentro la funzione madre sono delle piccole
+funzioni che analizzano il trend quindi il punto più alto il punto più basso quanto è distante quanto è
+distante il punto più alto dal dalla fine dell'intervallo temporale quindi se tu hai un
+grafico che è così e poi scende tu hai massimo e devi guardare l'intervallo temporale che c'è tra il
+massimo e poi l'ultima candela dice anche quanto per quanto velocemente quella roba c'è il si arriva
+dal massimo al minimo se tu se tu guardando il grafico vedi gli spike vedi la velocità con cui il
+e però il punto l'altro punto king al quale pensavo è questa cosa per esempio se la fai con su una
+faccio esempio un'altra set class per di un'azione ha senso nel senso che guardi che ne so rispetto alla
+media del settore guardi rispetto alla media di delle azioni che hanno perso maggiormente nel settore
+utilisi per esempio nella cripto che oggi mi scende che il prezzo cioè ha avuto un drawdown in
+un giorno elevatissimo rispetto a cosa lo confronto alle ad cripto cioè tutte le altre che lo confronti
+come faccio a quando studiai analisi tecnica io facevo analisi non facevo analisi comparate cioè
+io studiavo un grafico uno solo di città sì a parte che facevo facevo se si affermavano sul grafico io
+facevo in realtà loro facevano analisi tecnica sul forex ok analisi tecnica sul forex cioè sulle
+valute sì cioè se tu operi tipo in leva 100 sulle valute e alla fine quelli che fanno non penso
+arbitraggio però quelli che vogliono appunto guadagnare sulle valute siccome le valute sono
+estremamente liquide ma tipo c'è sono il mercato più liquido che tu possa mai immaginare perché ogni
+cosa che si trada tra due paesi con una valuta diversa necessita del forex e viene registrato sul forex
+tu lì secondo me non puoi andare a vedere il fondo a parte che non esiste però non ha senso andare a vedere il fondamentale della valuta
+devi andare a vedere queste puttanate qua cioè l'analisi tecnica cioè quanto si sposta il grafico perché poi lì le persone che fanno trading ad alta frequenza e lì è pieno perché la gente ha trading ad alta frequenza sul forex non è che ci sono altri modi per investire
+la gente che fa trading ad alta frequenza ha dei suoi metodi che tu devi cercare di catturare per portarti nel tuo favore
+ok perché così come tu vuoi fare trading sul forex anche altri stanno facendo trading sul forex nel mentre il mercato del forex agisce per conto suo perché la maggior parte dei volumi non sono fatti da quelli che fanno trading
+sono fatti da quelli che devono scambiare per forza queste valute
+ok
+tu lì puoi giocare eventualmente
+sui bias puoi giocarti perché lì bro c'è lì c'è una marea di roba immaginati tutti gli strumenti derivati con tutti gli strike price con tutti i livelli
+le soglie di prezzo per le per le call
+cioè bro è una roba devastante potenzialmente lì veramente ci sono dei trend
+capito?
+tu vuoi guardare poche news vabbè adesso a parte il forex sti cazzi bro il forex
+tu comunque il concetto è che se vuoi fare analisi tecnica secondo me puoi tranquillamente innanzitutto fornire all'intelligenza artificiale un manuale di istruzioni su come si fa analisi tecnica
+ok perché noi adesso abbiamo parlato cioè io adesso ti ho parlato di sogni di prezzo di spike di trend di pattern
+se tu gli dici come individuare tutti questi cioè cosa guardare e poi gli crei le funzioni apposta per andare a vedere per andare a individuare nel grafico queste cose
+quindi se tu hai nella guida l'intelligenza artificiale nella guida a che deve andare a guardarsi se ci sono dei pattern tu devi avere al tempo stesso una funzione python che è in grado di
+uno semplificare il grafico ok cioè proprio semplificarlo al massimo come se lo dovesse guardare un umano ok che guarda dall'alto senza guardare i numeri devi trasformare i numeri in
+perché alla fine il grafico è una facilizzazione per noi ma non per il computer cioè per il computer è più facile avere la serie storica è per noi che è più facile vederlo a grafico
+quello è senso è un ottimo aggregatore di dati se ci pensi il grafico a candele è un ottimo aggregatore di dati perché tu vedi in un'unica interfaccia in un'unica schermata tu vedi una marea di dati potenzialmente
+capito come li vedi perché ad occhio nudo il tuo il tuo occhio quando guarda il grafico semplifica ok individua quelli che sono i pattern di alto livello
+quelli che chiaramente con i numeri non puoi vedere realisticamente se tu riuscissi ad adottare ad avere delle funzioni che riescono a imitare la semplificazione che tu fai con l'occhio umano
+lì puoi fare analisi tecnica ok quindi c'è di utile da fare adesso secondo me di utile da fare adesso non c'è l'analisi tecnica no secondo me invece c'è capire quali sono tutti gli indicatori dell'analisi tecnica
+scegliere quelli utili ok e capire come trasformarli in un modello alla fine c'è in un non una formula ma in un qualcosa che lui possa dire in un secondo bombo
+cioè anziché la media mobile 52 settimane l'idea sul grafico la media che ne so è numerica quindi fai la media
+esatto però devi considerare per esempio che vuoi guardare le medie mobili magari medie mobili diverse
+una cosa che faceva un'analisi tecnica è andare a vedere l'incrocio delle medie mobili
+bro individuare l'incrocio di due medie mobili in funzione python è una putta verità
+cioè lo fai in niente bro lo fai in nulla e lì hai un dato istantaneo praticamente da dargli
+tu non serve che vai a vedere a quanto sta la media mobile e dirgli guarda la media mobile sta qui
+la media mobile 1 sta qui la media mobile 2 sta qui e l'intelligenza artificiale deve capire ah allora si sono incrociate
+no bro è una funzione python semplicissima devi renderti conto di quando in in un intervallo
+di tempo c'è un'inversione dei non degli ordini di grandezza c'è un'inversione nel nell'ordine
+ok cioè se prima numero 1 è più è maggiore di numero 2 e poi in un altro momento numero
+2 è maggiore di numero 1 c'è stata un'inversione si sono toccate le medie mobili
+qua è una minchiata bro ok è una puttanata quindi secondo me ci vado per fare analisi
+lì poi lì poi perché poi l'analisi tecnica è come se fosse tu devi vederla come se fosse
+un aiuto ok è come se fosse un insieme di segnali più segnali hai sull'analisi tecnica
+più segnali hai che confermano la tua teoria più è probabile che effettivamente questo segnale
+e questi segnali che questa teoria sia valida per esempio se tu hai un incrocio di medie mobili
+che adesso poniamo il caso l'incrocio di medie mobili di soico significa inversione di trend
+ok poi hai un pattern che hai disegnato magari che carne lo invento è un pattern piramidale
+che vuol dire anch'esso inversione di trend ok sei sul punto di rottura cioè sei su una soglia di prezzo
+vuol dire che il trend è vicino se tu hai tutta questa serie di segnali più il segnale è coerente
+con tutti i metodi che tu utilizzi l'analisi tecnica più è probabile che il segnale sia valido
+se tu hai segnali contrastanti allora vuol dire che c'è qualcosa che stai sbagliando
+o eventualmente che in questo momento non si sta seguendo l'analisi tecnica
+perché ci sono delle cose che non ti permettono di seguire l'analisi tecnica
+ok e quindi devi vederla come una cozzaglia di segnali
+ora se tu cioè l'importante a questo punto adesso io sto ragionando insieme a te
+l'importante a questo punto è semplicemente cominciare
+se tu metti periodicamente magari ti puoi mettere lì e aggiungere nuove funzioni
+aggiungere nuovi strumenti da dare all'intelligenza
+aggiungere nuovi punti alla guida
+quindi strutturarla come se fosse una guida
+nell'utilizzo degli strumenti
+per l'analisi tecnica
+cioè praticamente una specie di
+guida su come si fa l'analisi tecnica
+ma cioè
+coi concetti uguali identici a quelli che usiamo noi
+ma tradotta per essere letta da lei
+allora immaginati veramente una guida nel senso di un foglio di testo
+si si manca una guida un pdf contenente come si fa l'analisi tecnica
+è un sistema
+solamente che deve essere ottimizzato per essere letto da lei e non da noi
+quindi non mi serve che ci siano testi lunghissimi così mancherebbe che sia efficiente per lei
+giusto?
+un elenco bro un elenco numerato che ti dice
+un elenco numerato gerarchico con dei sottopunti ok
+quindi elenco primo elenco quindi massima gerarchia
+cioè gerarchia più alta elenco numerato
+segui 1 2 3 4 e 5
+e poi in fondo metti come conclusione gli dici
+se hai tot
+tot segnali
+è valido tot
+ok
+oppure come punto numerato
+gli dici adesso utilizza questa funzione
+mettici dentro tutti i risultati che hai ottenuto dai punti precedenti
+e calcola lo score di validità della tua idea
+quindi adesso che possiamo fare per esempio
+possiamo fare
+io mi trovo che ne so
+ogni giorno cioè mi guardo quanto tempo
+un indicatore
+capisco da solo se secondo me è valido o no
+oppure possiamo farlo insieme come vuoi lungamente
+se per esempio
+se lo ritengo però
+cioè io voglio studiarmi
+devo studiarmi
+cioè se no non ci metto neanche un euro
+se non capisco ogni cosa che sto mettendo dentro
+se è valido o no non ci metto bene
+no ma io ho degli appunti che puoi consultare
+ok
+mi guardo tutti i
+cioè quelli che mi sembrano gli indicatori validi
+te li posso girare
+e tu puoi tradurli in modello
+oppure posso farlo io se mi dici che basta
+che scrivo il testo della formula
+devi inserire
+allora l'unica cosa che devi fare King
+è tutto quello che trovi
+devi salvarlo nei raw della wiki
+e basta
+pensieri
+pdf
+anche le immagini va bene
+ok
+quindi per esempio trovo
+anzi no scrivo
+perché pur che lo trovo lo riscrivo io
+scrivo sul word
+cioè preparo un word
+meglio word o pdf
+in realtà sarebbe meglio foglio di testo
+perché
+foglio tipo blocco note?
+sì
+tipo blocco note
+ok
+senza immagini
+allora
+se tu vai su obsidian
+obsidian non ragiona
+né per word
+né per pdf
+però se tu lo guardi
+è abbastanza simile
+a livello di interfaccia
+cioè a livello di quello che tu vedi
+perché è formattato
+in modo tale che tu possa
+trattarlo come un word
+sono proprio gli strumenti
+adesso fammi aprire obsidian al volo
+per capire se effettivamente
+ci sono anche i pulsantini
+per mettere sai
+magari il titolo
+magari le cose
+eccetera
+no?
+aspetta
+di crea nuovo file
+ok no
+non ci sono
+però
+aspetta se io faccio doppio click
+ah no
+sì sì sì
+ci sono
+è un plugin
+poi te lo metto
+è un plugin
+che sopra ti dai i tastini
+per mettere qui il titolo
+qui l'elenco numerato
+e lo tratti come se fosse un word
+solo che obsidian
+per obsidian
+quello è un foglio di testo
+che semplicemente
+è
+che obsidian
+ti sta formattando per te
+ma in realtà
+è semplicemente
+un foglio di testo
+quindi
+ottimo per le AI
+è ottimo per la tua visualizzazione
+ok
+ok ma se io devo
+generarlo
+quindi lo scrivo direttamente
+su obsidian
+è certo
+ok
+allora puoi caricare
+non mi fa intendere
+puoi caricare
+però scusami
+una cosa
+puoi caricare
+l'IDF
+ok
+però se devi appuntarti
+delle robe
+non usare word
+usa direttamente obsidian
+però il fatto è
+che mi viene in mente a meno
+se io
+studio magari
+un indicatore alla volta
+sì
+ok
+magari oggi
+il primo che guardo
+mi sembra valido
+fra dieci giorni
+ne trovo uno
+che è simile
+e reputo più valido
+sì
+se l'ho già inserito
+su obsidian
+lui non l'ha già imparato
+sì
+o poi se io lo cancello
+lo disimparo
+e posso mettere quello nuovo
+no allora tu puoi dirgli
+la cosa migliore da fare
+secondo me
+sarebbe
+lui teoricamente
+teoricamente
+poi basta che glielo scrivi
+di far
+di tenerli
+lui teoricamente
+tiene tutto
+ok
+perché quando finisci di
+cioè tu
+carichi i dati
+ok
+su row
+sì
+poi li devi ingestare
+questa cosa la posso fare io
+altrimenti ti insegno come si fa
+perché è una roba molto semplice
+basta usare un coding agent
+tipo codex
+ok
+tu li ingesti
+e lui teoricamente
+teoricamente
+in automatico
+li sposta
+nella sottocartella
+row
+che si chiama archivio
+ok
+che sia su archivio
+che sia fuori
+che sia stato eliminato
+completamente
+lui teoricamente
+non elimina nulla
+però se tu gli dici
+e gli spieghi tutto
+cioè gli dici
+dopo dieci giorni
+gli scrivi proprio
+ho trovato questo nuovo indicatore
+potrebbe il scritto proprio
+potrebbe essere
+un'alternativa
+a
+per questi motivi
+ho scoperto
+tra l'altro
+che l'indicatore vecchio
+aveva queste
+criticità
+te lo scrivi
+lui lo impara
+ok
+e tiene tutto
+ok
+ok
+ma
+perché poi ho visto
+che per esempio
+sono indicatori
+che si dividono
+per cosa vuoi fare
+ok
+sì
+mi è venuta in idea
+cioè io
+potrei fare così
+secondo me
+scelgo un
+una macro area
+passamela così
+quindi che ne so
+analisi volumetrica
+ok
+mi leggo il studio
+prima io
+da solo
+senza puntare niente
+le cose che mi sembrano valide
+le cose che non mi sembrano valide
+le cose che potremmo inserire
+le cose che non potremmo inserire
+questo è valido perché
+questo è valido perché non
+e li faccio tutti
+sia che sono validi
+sia che non sono validi
+e mi scrivo un blocco note
+un testo così
+che chiamo magari
+titolo
+analisi dei volumi
+ok
+quando l'ho finito
+te lo giro
+gli dai una lettura anche tu
+così abbiamo un doppio feedback
+che non viene sotto la mia testa
+se è fatto bene
+dobbiamo correggere cose
+lo correggiamo
+quando è pronto
+inseriamo il primo blocco
+su obsidian
+in modo tale che
+qui è il primo blocco
+analisi dei volumi
+poi intanto io faccio il secondo
+ok
+faccio una scrivatura
+di tutte le cose inutili
+utile
+ma mi segno anche le cose stupide
+che penso io con la mia testa
+prima di inserirla però le accorreggiamo
+così la inseriamo già
+corretta
+passami il termine
+sì
+il vantaggio
+sì
+della LLM wiki
+è che non hai bisogno
+di metterli a posto
+perché è l'intelligenza artificiale
+che lo fa per te
+nel senso
+ok
+se tu
+allora su obsidian
+esiste una cosa
+che io sto cercando di utilizzare
+poi non riesco mai
+a utilizzare questa LLM wiki
+perché non ho
+un coding agent
+allora innanzitutto
+non sto riuscendo molto
+a lavorare
+ti dico la verità
+però
+perché poi magari
+cioè
+o sbatti
+oppure mi concentro sul lavoro
+quindi ok
+se tu hai voglia
+se tu hai questa voglia
+perché altrimenti
+non ci metti un euro
+e ti dico ok
+ci sta
+cioè perfettamente d'accordo
+se tu hai voglia
+di studiarti
+tutte queste robe
+io ecco
+da questo punto di vista
+magari faccio un po' fatica
+anche perché
+magari preferisco
+di mio
+proprio per divertimento
+concentrarmi su altro
+su altre specifiche
+sì sì
+vabbè ci sta che
+magari proprio
+siamo in due
+e ognuno si
+cioè ci dividiamo il lavoro
+sì che io non potrei mai
+fare quello che fai tu
+cioè
+non ce la farei neanche
+ma ci vorrebbero tre anni
+in cui devo fare ogni giorno
+quello per capire
+quello che fai
+capito
+cioè il vantaggio
+magari è anche questo
+spero che anche per te
+sia
+ovvero il suo ruolo
+dà il suo contributo
+per quello che gli piace fare
+sì sì sì sì
+cioè
+sono d'accordo su questo
+sì sì sì
+top
+ok
+allora il vantaggio
+è che per esempio
+su Obsidian esiste
+una cosa che si chiama
+Daily Notes
+e fondamentalmente
+se tu la apri
+lui ti crea
+da solo
+ti crea un nuovo
+un nuovo
+foglio di testo
+in cui tu prendi appunti
+semplicemente
+il vantaggio è che
+a te basta prendere appunti
+cioè tu non è che devi creare
+il nuovo
+il nuovo file
+già messo bene
+già ben strutturato
+con più fogli di testo
+cioè se tu
+crea la tua cartellina
+di analisi volumetrica
+con tutti i tuoi file di testo
+eccetera
+con tutti i tuoi pdf
+eccetera
+e li carichi sul raw
+non serve bro
+basta che prendi
+cioè puoi farlo
+e a lui
+per lui è un vantaggio
+perché tu gli
+lo indirizzi
+nel metodo
+in cui tu vuoi poi
+vedere i dati
+cioè
+il metodo con cui tu
+poi vuoi leggerli
+questi dati
+ma puoi anche
+banalmente scrivergli
+se tu gli dici
+io voglio fare
+un'analisi volumetrica
+negli appunti
+proprio gli dici
+io voglio fare
+adesso comincio
+con l'analisi volumetrica
+e vorrei avere
+una cartella apposta
+per l'analisi volumetrica
+nella sezione
+di analisi tecnica
+lui lo fa
+ok
+negli appunti
+tu gli scrivi
+lui lo fa
+nella wiki
+poi tu puoi modificare
+la wiki
+nessun problema
+però è molto comodo
+per questo motivo qua
+perché tu non hai bisogno
+di strutturare bene i dati
+l'importante è che li prendi
+perché poi la struttura lui la cosa
+se tu poi ti rendi conto
+che ti sei concentrato
+prima sull'analisi volumetrica
+poi sull'analisi
+dei grafici a candele
+poi sull'analisi
+degli indicatori
+quelli un po' più
+crudi
+raw
+mettiamola così
+e poi ti rendi conto
+che in realtà
+vuoi un'altra configurazione
+cioè nella wiki
+in realtà non vuoi più
+analisi volumetrica
+o questa roba qua
+vuoi semplicemente
+vuoi una suddivisione
+che si basa
+sul tipo di segnale
+di cui stiamo parlando
+quindi segnali di inversione di trend
+segnali di
+soglia di prezzo
+in cui entrare e uscire
+e te lo fa
+ok
+ok
+capito?
+si
+quindi rimane il fatto di
+allora io
+ti dico
+quello che posso fare
+molto vabbè
+lentamente
+con i tempi
+con i tempi che ho
+è quello che ti dicevo
+cioè guardarmi
+tutti gli indicatori
+capire quali sono utili
+quali sono inutili
+quali sono una merda
+poi ovviamente mi confronto con te
+cioè non è che a caso
+diciamo
+dico metto questo
+dico in questo qua
+mi sembra valido
+ho trovato questo
+rispetto a quelli che sono simili a lui
+mi sembra più valido
+in questo di su di giù
+tu non è che
+non dico che devi studiare
+gli dai un'occhiata
+dici vabbè
+si può avere senso
+no non può avere senso
+esatto sì
+e basta
+e poi lo inseriamo
+per esempio
+senza magari stare a inserire
+il blocco
+analisi volumetrica
+come dici tu
+tanto poi se lui lo sa fare
+lo farà lui
+vaffanculo
+cioè capito se ti intendo
+lui da solo
+da quello che mi ha detto
+lui da solo capisce
+che fa parte dell'analisi volumetrica
+e da solo lo metti insieme
+a quelli lì
+a quel gruppo lì
+giusto
+cioè quello che sa fare
+questa è la comodità
+quindi sì
+ti direi che
+va benissimo
+guarda
+allora poi ecco
+da questo punto di vista
+a me piacerebbe
+lavorarci insieme
+c'è anche in chiamare volendo
+ma me l'hai condiviso Obsidian?
+è una cartella drive
+adesso te la condivido
+non so se te l'ho già condivido
+no perché ho
+non so se può funzionare
+ma
+sul nuovo computer
+mi sono messo
+iCloud
+cioè la mail è sempre
+un outlook
+però
+sono riuscito a scaricarmi
+iCloud
+e a farmelo funzionare
+quindi non so
+se adesso puoi condividere
+nella cloud
+io posso entrare
+come fai dai cloud
+faccio due copie
+una su drive
+una su iCloud
+e valutiamo
+se riusciamo ad avere iCloud
+un po' top
+sì
+perché
+ho drive
+ho sia OneDrive
+sopra che iCloud
+che mi funziona
+non so come sia
+cioè
+non so se
+tutti i computer Windows
+lo fanno
+penso che sì
+sì è un'applicazione
+è un programma
+che scarica
+sì è un programma
+buon scarico
+e niente
+ho usato quello
+come drive secondario
+tipo delle foto
+quelle cose lì
+allora
+ecco
+lo vedi?
+sì
+cioè
+su qua
+per esempio
+qui nella sezione
+questa è row
+ok
+io ho caricato
+private shared 2
+era una pagina
+notion
+che io avevo creato
+quando creai notion
+che mi feci scammare
+e
+in cui mi segnavo tutto
+cioè io ho preso appunto
+non solo quando mi feci scammare
+in realtà
+mi ero preso per le crypto
+e ho cominciato a seguire
+non so se ti è mai capitato
+il crypto gateway
+il crypto gateway
+no
+non so che sia
+no
+è un tipo
+esperto di crypto
+che ti fa magari i corsi
+ok
+su youtube
+ti fai i classici corsi
+con i video da mezz'oretta
+un'oretta
+in cui ti spiega
+categoricamente
+cacciacato e quadrizzati
+cosa devi fare
+cosa devi pensare
+ok
+ok
+e io ho caricato tutto
+perché io ho fatto
+l'export di notion
+e questo l'ha caricato
+e questi sono tutti i miei appunti
+che io ho preso
+poi non c'è solo
+analisi tecnica
+c'è proprio
+c'è quasi tutta una guida
+per investire
+perché per esempio
+qui
+vi parlo di rendita passiva
+quindi
+permanent loss
+che adesso in un momento
+non mi ricordo cosa sia
+la perd
+che potremmo subire
+fornendo liquidità
+rispetto al semplice hold
+il prezzo dei singoli token
+che in questo caso
+sono i token crypto
+quindi le criptovalute
+il token è la criptovaluta
+sì
+nel periodo di retenzione
+da quando facciamo stake
+a unstake
+ah vabbè stake
+vabbè sì
+useless
+per noi useless
+cioè cos'è
+alla base di criptovalute
+la blockchain
+spiega blockchain
+smart contract
+da qualche parte
+sicuramente
+trading journal
+no
+position sizing
+qua ti dai
+position sizing
+che non so
+non mi ricordo
+onestamente cosa sia
+però
+insomma si può
+adesso magari io la ingesto
+e poi ce la possiamo leggere
+è importante
+che ci sono delle immagini
+di
+metterle bene
+però vedi tipo
+qui nella sezione
+di elementi grafici
+ti fa vedere
+proprio gli elementi grafici
+vedi
+tutte le
+tutte le
+i blocchi
+i blocchi
+con ritracciamenti
+questi qua
+adesso
+vedi il mio cursore
+questi qua
+quindi
+quelli che ci sono
+di intermezzo
+tra i due blocchi
+verdi
+sono dei
+ritracciamenti
+se tu hai un trend
+crescente
+è praticamente
+quasi scontato
+quasi ovvio
+che a una certa
+ci sia un ritracciamento
+ok
+perché il trend
+di natura
+è duraturo
+il punto è che
+dei trend
+potrebbero
+essere duraturi
+ma non validati
+o per lo meno
+possono essere validi
+ma poi una persona
+seguendo il trend
+con una sua strategia
+a un certo punto
+fa l'exit
+ok
+allora Kim
+questa cosa potrebbe essere
+una figata
+ma mi sa che non la possiamo fare
+cioè
+sarebbe fighissimo
+questa cosa
+se riusciamo a fargli
+capire il momento
+in cui sta
+scendendo il tracciamento
+potremmo shortare
+per
+con uno
+con un profit limit
+di poco
+il problema è che
+non si possono shortare
+le cripto
+certo che si può shortare
+le cripto
+ma sono tutti sintetici
+cioè su Binance
+non sono persone vere
+che ti prestano la cripto
+e tu la rivendi
+e poi la ricompri
+capire che ti vuoi dire
+sono contratti sintetici
+non so se
+quando tu shorti una cosa
+ok
+cosa fai
+la prendi in prestito
+da qualcuno
+la vendi
+e poi la ricompri
+quando sarà più bassa
+questo è un short
+ok
+con la cripto
+tu non puoi
+non puoi trovare qualcuno
+che te la vende
+la presti
+perché no
+perché
+la persona che te la presta
+è una persona
+quindi devi chiamare il telefono
+e fartela prestare
+capito cosa ti dico
+ma lì c'è Binance
+ma Binance
+non so se permette
+di fare derivati
+sulle cripto
+derivati no
+ma ti permette
+di shortare
+aspetta
+vediamo
+vediamo se
+aspetta
+fammi cercare
+su Binance
+posso shortare
+cripto
+valute
+cioè a meno che
+non te li presti
+oh che cazzo
+si su Binance
+puoi shortare
+cripto valute
+ma non nello spot
+classico
+in pratica
+lo fai tramite
+margin o futures
+ah ok
+cioè cosa fai
+tramite margin
+o futures
+ok
+quindi compri
+un futures
+al ribasso
+tipo
+Binance
+spiega
+che nello short
+in margin
+prendi in prestito
+l'asset
+lo vendi
+e poi lo ricompri
+al prestito
+per restituirlo
+nei futures
+invece apri
+direttamente
+una posizione
+short sul contratto
+aspetta
+fammi accedere
+su Binance
+al vuole
+tra l'altro
+mi devo anche fare
+Binance
+serve che mi scarico
+Binance
+e che mi faccio
+un profilo
+ma in realtà
+ne basta uno
+mi basta il mio
+ma dico
+per trovare
+degli indicatori carini
+per quelle cose
+di su Binance
+ci sono
+o sono solamente
+non serve Binance
+ma su TradingView
+ci sono i grafici
+non ci sono gli indicatori
+ma va zio
+certo
+ci sono anche gli indicatori
+ma certo bro
+ma sai che non l'ho mai usato
+si bro
+no
+TradingView è lo standard
+se devi fare
+analisi tecnica
+TradingView è lo standard
+cioè la gente
+quando devi fare
+analisi tecnica
+la fa su
+TradingView
+va su TradingView
+ok
+guarda aspetta
+adesso ti faccio vedere
+cioè vediamo insieme tutto
+vedi che qua
+nella sezione trading
+tu puoi fare spot
+e poi puoi fare margin
+quindi operazioni con leva
+poi puoi fare
+le API
+sono quelle che ci servono
+per collegarci
+per collegarlo
+aspetta
+aspetta
+contract sell
+vabbè aspetta
+proviamo a shortare
+proviamo a shortare
+la crypto
+adesso io non le ho le crypto
+tra l'altro su Binance
+quindi
+non mi permetterà di farlo
+sicuramente
+però
+proviamo
+allora
+mentre qua
+TradingView
+inizi
+ti prego
+non farmi
+non farmi fare il login
+che non c'ho sbarco
+però secondo me
+si puoi vendere
+Bruno
+ah ti va a vendere
+il prezzo eseguito
+sarà superiore
+no
+questo non penso
+ci interessa
+sai
+boh
+ero
+disabilizzazione
+no
+ma perché
+probabilmente
+vede che non c'ho soldi
+oppure perché
+esatto
+c'è un prezzo
+c'è un prezzo
+a zero
+no si
+Bruno
+secondo me
+puoi vendere
+di brutto
+puoi vendere
+di brutto
+vendi bitcoin
+si no
+ti prendete
+cioè ti fa
+il
+te lo fa bro
+future
+su Binance
+è fatto a merda
+bro
+io non userai Binance
+onestamente
+piuttosto
+uso quello
+scrivo
+scrivo
+la gaffa
+la gaffa
+la gaffa
+la gaffa
+la gaffa
+la gaffa
+la gaffa
+la gaffa
+la gaffa
+ok
+vediamo
+guarda
+capito
+le lati piccate
+con il leggero
+si
+è fuori
+fuori
+tu la fai
+è fuori
+tu la fai
+sbalzi
+dormi
+come sbalzi
+dormi
+c'è un modulo
+che ti faccia
+rischia
+ma
+cioè
+gestis
+che
+io
+carai
+guarda
+che noi siamo andati
+così
+a questo punto
+di stare
+adesso
+cioè
+rendersi
+serva
+per rendersi conto
+di quando può
+spingere
+e invece
+quando deve
+andare l'auto
+detto ciò
+quando tu apri
+questo qua
+di
+itin più
+punto
+chart
+il simbol
+di questo qui
+su binance
+qui
+qui
+mi chiami
+rallentando
+di molto piccini
+qui
+qui
+per esempio
+vediamo
+qui
+ti darei
+i ritracciamenti
+ti metti
+qua
+allora
+si può dare
+magari
+sb
+no
+ma
+secondo me
+non dobbiamo
+necessariamente
+ragionare
+noi dobbiamo
+andare in termini
+di cip
+cerni
+se chiamiamo
+di cosa
+per creare
+le strutture
+ok
+che può
+riempire
+in un certo modo
+certi strumenti
+come una crau
+dobbiamo pensare
+fra tu
+diciamo
+pensare
+c'è una
+operazione
+ragione
+poi
+c'è
+non insieme
+però
+c'è
+insieme
+poi
+i contatti
+i trader
+che
+dobbiamo
+sapere
+per esempio
+quale
+con cui
+fa
+il trade
+l'odica
+per usare
+un
+c'è
+l'unico
+c'è
+l'unico
+perché
+vi fai
+nei video
+da studi
+modi
+di
+sin
+di
+nas
+più
+secondo me
+scoppia
+la guerra
+però
+è facile
+non è
+che
+non è
+tipo
+a
+scatti
+è
+un
+problema
+si
+si
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Grazie a tutti.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+
+Ok.
+
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+Ok.
+strumento investibile, ha anche altre
+5 crypto
+ok
+allora devi massimizzare il profitto
+con quelle 5 crypto lì disponibili
+e allora magari sai che
+una non ha news, l'altra ha una news
+negativa, l'altra ha una news
+positiva e allora sai che
+comunque devi andare long su quelle crypto
+o sulle crypto in generale
+però poi magari ti rendi
+conto che dalla news
+della crypto che va male, lì puoi
+o non investire o shortare
+addirittura se ti rendi conto che la news
+è veramente pessima
+e per questa cosa qua
+tu devi avere un modulo fatto talmente tanto bene
+che non devi dargli solo la news
+devi anche dirgli
+o in passato cos'è successo
+o avere
+un meccanismo mezzo deterministico
+che gli da un peso, cioè da una
+ponderazione alla news
+ok, da una valutazione di peso alla news
+lui sulla base di questo
+poi dà tutto da ottimizzare, per questo ti dico
+che noi non possiamo, cioè noi
+a monte
+non possiamo avere un
+non possiamo essere sicuri del fatto che il metodo
+che noi stiamo usando per ponderare una news
+è giusto o meno
+dobbiamo avere per forza necessariamente
+un meccanismo che ci permette di fare validazione
+per forza
+ok
+ma
+per esempio
+adesso io non mi intendo
+l'intelligente artificiale no?
+riceve una news
+ok
+adesso
+stupidamente uno pensa
+beh l'intelligenza artificiale
+è un cervello
+ragiona
+capisce se la news è buona o cattiva
+ok
+poi ragioni meglio
+l'intelligenza artificiale non è un cervello
+no
+ok
+quindi non è che ragiona
+su quello che pensa
+sia sensato
+ha un dataset
+che gli dice
+news di questo tipo
+sono giuste
+news di questo tipo
+sono sbagliate
+cioè funziona così?
+quello è tutto un altro discorso
+a cui dobbiamo pensare
+e quindi
+io insieme a te
+magari ti do qualche opzione
+tu mi dici quella che ha più senso fare
+perché
+ok
+non è che possiamo farle entrambe
+capito?
+cioè dobbiamo scegliere
+la forza
+un approccio
+l'approccio potrebbe
+cioè come fai il nostro
+a dire
+questa news
+può avere un impatto positivo
+o questa news negativo?
+cioè questo che non
+perché non è un cervello che ragiona
+è un qualcosa
+che ha un dataset
+fa una regressione del dataset
+e ti dà la cosa più probabile
+giusto?
+immaginati
+immaginati
+innanzitutto io partirei
+da una cosa fondamentale
+ovvero
+il fatto è che
+devono esserci
+più agenti
+che collaborano tra di loro
+necessariamente
+ok
+ok
+in modo tale che tu isoli
+una determinata
+categoria di compiti
+ok
+una categoria di compito
+è il trading effettivo
+con tutte le informazioni
+che ti servono
+l'altra categoria di compito
+è l'analisi delle news
+ora tu
+quindi puoi
+focalizzarti
+sull'analisi delle news
+eliminando
+la parte
+di trading
+questo modulo
+tu lo isoli
+isoli il problema
+isoli il task
+il task
+da quel punto
+in quel momento lì
+tu cominci a pensare
+agli input
+agli output
+poi può esserci
+un analista delle news
+che collabora
+con un analista
+dello storico
+ok
+posto che ci sia
+ci possa essere
+questa questione
+multiagentica
+immaginati
+un'analisi delle news
+che
+prima cosa che mi viene in mente
+ha
+una serie di news
+ok
+poi ha
+un dataset
+di news
+sintetizzate
+AI friendly
+e
+a queste
+a queste news
+corrisponde
+poi
+siccome le news
+hanno un momento
+in cui vengono
+analizzate
+necessariamente
+in quel momento
+tu non hai solo la news
+passata
+dico
+quando tu devi andare
+a vedere quali
+siccome tu non puoi sapere
+a priori
+quanto è valida
+una news
+devi avere
+un passato
+storico
+in cui
+noti
+verifichi
+validi
+che effettivamente
+determinate tipologie di news
+hanno un determinato impatto
+e allora devi andare
+a vedere la parte storica
+nella parte storica
+tu non hai solo
+la news
+devi avere un dataset
+un database
+quindi non è un dataset
+devi avere un database
+ovviamente
+multi
+multi
+tipo
+indicizzato
+per momenti
+ok
+indicizzato per
+non per momentum
+ma proprio per
+attimi di tempo
+cioè istanti temporali
+nel momento in cui
+tu vai ad analizzare
+lo storico
+vai ad analizzare
+gli istanti temporali
+negli istanti temporali
+tu non hai solo la news
+hai anche il trade
+che è stato fatto
+hai anche la valutazione
+la valutazione
+che è stata fatta
+su quella news
+ora tu
+puoi incrociare
+il tipo di news
+la valutazione
+che ha fatto
+l'intelligenza artificiale
+trader
+o analista di news
+in quel momento
+e l'andamento del trader
+cioè se il trade
+è andato a buon fine
+se è andato male
+se è andato così così
+in questo modo
+tu puoi fare
+una regressione
+già molto
+molto più agevolmente
+perché hai tutta una serie
+di eventi
+che ti permettono
+di farlo
+ok
+cioè
+la parte difficile
+è che noi stiamo ragionando
+non stiamo più ragionando
+sull'opera
+noi stiamo ragionando
+anche col testo
+con il linguaggio naturale
+quindi
+la regressione
+da questo punto di vista
+potrebbe essere
+molto complicata
+molto complicata
+non è detto che
+serva necessariamente
+una regressione
+cioè tu puoi avere
+anche semplicemente
+un
+un sistema
+cosiddetto
+rag
+ok
+il punto
+l'altra cosa
+l'altra cosa fondamentale
+è che tu più aggiungi cose
+più
+sacrifici efficienza
+sacrificare efficienza
+vuol dire
+tempi più lunghi
+ok
+costo computazionale maggiore
+quindi costo di analisi
+proprio maggiore
+però
+ok
+inevitabilmente più efficace
+tu puoi avere
+un sistema rag
+che
+fatta una richiesta
+può trovare
+le similitudini
+anche in linguaggio naturale
+può trovare
+tutte le
+le cose simili
+hai presente
+il notebook LM?
+immagina
+un notebook LM
+per le news
+in cui tu hai
+per ogni
+ogni ponte
+è
+un istante temporale
+in cui tu hai
+il trade
+la votazione
+e la news effettiva
+o le news
+tu hai una news
+devi analizzarla
+se la vuoi analizzare
+quello che ti serve
+fondamentalmente
+è capire
+oltre alle altre cose
+perché poi
+chiaramente
+essere un'intelligenza artificiale
+lui può fare le sue valutazioni
+tu gli stai semplicemente
+dando un modulo
+come se gli stessi dando
+un notebook LM
+che lui può utilizzare
+per aiutarsi
+a fare la valutazione
+ok
+cioè praticamente
+ogni
+cioè noi
+è come
+è come se dovessimo
+non è solo
+un'analisi storica
+cioè non è solo
+un'analisi storica
+sì sì
+capito
+ok
+ma tu dici
+che per farlo
+il più efficiente possibile
+dovremmo
+separare gli agenti
+cioè uno che fa
+per esempio
+questa cosa
+che si chiama
+tipo una specie
+di equity research
+e quindi
+analizza le news
+uno che fa
+l'analisi
+tecnica
+che cazzo ne so
+o l'analisi
+volumetri
+uno che fa l'analisi
+tutti e due
+parlano
+con
+ipoteticamente
+col trader
+ok
+che al contempo
+a un livello sopra
+magari
+parla con il risk manager
+che sta a fianco al trader
+immagino
+ok
+se il risk manager approva
+il trader
+esegue
+e nel momento che esegue
+ti manda
+messaggio su telegram
+e aggiornare la dashboard
+o magari
+un altro agent
+che
+ha ricevuto
+quello che ha fatto il trader
+aggiornare la dashboard
+e ti manda il messaggio
+un comunicatore
+lì non serve un agente
+cioè una volta che tu
+il trader l'ha inserito
+il trader è registrato
+nel tuo database
+quindi devi semplicemente
+mostrare
+il tuo database
+quello è
+cioè quello
+bro
+ok
+non serve AI
+ok
+quindi potremmo scendere
+in quattro grossi moduli
+ricerca
+analisi
+trader
+e risk management
+giusto?
+cioè in quattro dipendenti
+bro alla fine
+in quattro persone
+che non sono persone
+in quattro
+come cazzo si chiama?
+in quattro agenti
+cioè dividiamo il lavoro
+in quattro agenti
+per ognuno dei quali
+noi dobbiamo studiare
+le metriche
+cioè dargli
+delle indicazioni
+una volta che tu individui
+gli agenti
+e questo è un ottimo punto
+di partenza
+da cui possiamo direttamente
+partire perché
+se no non ci muoviamo più
+ok
+quello che secondo me
+è fondamentale fare
+è pensare all'input output
+ok
+input output
+e strumenti
+ok
+immagina
+semplicemente un cervello
+che non è collegato
+a un corpo umano
+è collegato a
+come se fosse
+una voragine
+in cui entrano
+le informazioni
+poi dei tool
+dei tool
+che sono tipo
+delle braccia robotiche
+che si aggrappano
+a determinati strumenti
+e le utilizzano
+a suo favore
+e poi
+una pistola
+che spara
+l'output
+ok
+tipo un neurone
+un neurone
+che riceve le informazioni
+dai
+mi pare si chiamano
+dendriti
+si
+e le spara
+sulla sioma
+si
+le spara
+ok
+ok
+questo è
+ora
+ora
+un altro modulo
+per esempio
+un altro agente
+non so se può essere un agente
+però sicuramente un altro modulo
+è quello di fare
+deep learning
+il deep learning
+è tanta roba
+perché tu
+allora
+si
+il deep learning
+il deep learning
+è tanta roba
+perché tu puoi fare
+sei presente
+factory investing
+si
+tu puoi fare
+factory investing
+con deep learning
+che secondo me
+è la cosa migliore
+ok
+non perché
+perché l'ho fatto in tesi
+quindi sono estremamente
+bayassato
+però è
+effettivamente
+efficace
+cioè
+è il metodo
+che ipotetica
+sulla carta
+ok
+secondo me
+è il più efficace
+perché tu riesci a
+quindi hai un altro
+agente
+che però non è solo un agente
+può anche non essere un agente
+ok
+semplicemente
+dei modelli matematici
+che restituiscono
+appunto
+delle
+dei prospetti
+sì
+delle
+scusa
+non dei prospetti
+delle previsioni
+restituiscono delle previsioni
+cioè tu puoi avere
+delle previsioni
+poi
+sì
+puoi avere delle previsioni
+questo è tutto
+separiamolo con un altro agente
+ok
+come se fosse davvero
+come se fosse davvero
+un fondo di investimenti
+c'è anche il matematico
+e lo separiamo
+lo mettiamo che fa
+questa analisi previsionale
+e la passa
+ipoteticamente
+al trader
+allora più che agente
+ok
+chiamalo
+modulo
+perché io
+l'agente
+non me lo immagino
+come qualcuno
+che utilizza
+lo strumento
+o
+sì
+non me lo immagino
+come uno
+un qualcosa
+che utilizza
+lo strumento
+deep learning
+su factory investing
+e poi lo restituisci
+al trader
+perché quella
+è una perdita
+di inefficienza
+a questo punto
+tu dai
+direttamente
+le previsioni
+del deep learning
+al trader
+al massimo
+sotto
+sotto
+scollegato
+dal trader
+puoi avere
+un agente AI
+che mantiene
+aggiornato
+il modello
+di deep learning
+ok
+quindi che per esempio
+lo valuta
+ok
+lo valida
+ok
+ok
+ok
+ok
+dimmi se possiamo fare
+la roba
+cioè
+io mi immagino
+un tavolo
+che immaginano proprio
+umani
+c'è un tavolo
+ok
+fermati
+fermati
+fermati
+ok
+ok
+allora
+perché così
+mettiamo qualcosa
+su carbo
+cioè altrimenti
+facciamo
+ma
+poi
+come cazzo
+si chiama
+obsidian
+non ti mette
+dentro
+queste cose
+si
+queste cose
+che ci stanno
+dicendo
+si perché
+sto registrando
+la chiamata
+ok
+top
+faccio la
+trascrizione
+poi
+gliela
+butto
+dentro
+ok
+top
+notes
+qui
+ci facciamo
+nuova
+lavagna
+cioè
+immaginati
+una scala
+gerarchica
+degli agent
+ok
+ok
+come te li immagini
+gli agent
+tipo dei blocchettini
+così
+ok
+io immagino
+delle persone
+esatto
+ok
+ok
+proprio delle persone
+vero e proprio
+alla base
+della
+immagina una piramide
+alla base
+della piramide
+non posso mettere
+le formine
+quindi devi ragionare
+a
+ci ragioniamo
+a cubi
+e frecce
+sui cubi
+ok
+immaginati una piramide
+cioè
+più basso il livello
+tu hai
+quello che fa
+research
+research
+news research
+possiamo chiamarlo
+news research agent
+che è
+quello che
+come dicevamo prima
+analizza tutte le news
+e ne elabora
+una propria
+un proprio sentiment
+cioè il suo sentiment
+ok
+e lo restituisce
+al trader
+quindi si collega sopra
+al trader
+trader che
+raccoglie le informazioni
+ed esegue il trade
+questo fa il trader
+e poi esegue il trade
+alla miglior condizione
+possibile
+esatto
+sempre collegato
+al trader
+da sotto
+ok
+c'è un altro cubo
+che è l'analista
+è quello che fa
+analisi
+analisi
+analisi finanziaria
+analizza
+tutte le asset class
+analizza l'asset class
+qualsiasi poi decidiamo
+che essa sia
+ancora la vediamo
+analizza l'asset class
+in che senso analizza
+l'asset class?
+analizza
+il price earning
+quanto costa
+quanto
+quanto hanno scambiato
+i volumi
+questo
+ma su un singolo strumento?
+sì
+la singola asset class
+analizza
+cioè
+analizza
+nel senso di
+analizza
+anche il mercato
+deve analizzare
+analizza
+l'intero mercato
+analizza
+i trend di mercato
+o analizza
+quello analizza
+entrambi
+deve fare tutto
+lui prende
+uno snapshot
+del mercato
+e individua
+le opportunità
+sì
+deve essere
+deve essere
+tipo una specie
+di arbitragista
+secondo me
+cioè non può essere
+un
+deve essere
+una specie di
+cioè un
+un ricercatore
+di opportunità
+questo mi viene in mente
+cioè che deve
+comunicare
+in maniera orizzontale
+con la news research
+agent
+cioè le due
+comunicano
+ad un primo livello
+lì in basso
+avanti e indietro
+le due della freccia
+secondo me
+deve essere la doppia freccia
+e
+comunicano
+a primo livello
+ok
+e quando hanno
+un referto
+cioè quando insieme
+hanno individuato
+magari un'opportunità
+che proviene
+da la news
+ok
+il news research agent
+la collega
+l'analista
+l'analizza
+l'analista
+l'analizza
+ok
+cioè
+il news research agent
+trova magari
+un'opportunità
+dovuta a
+fattore x
+macro
+per esempio
+ok
+lo comunica
+all'analista
+ok
+l'analista
+cioè come se
+le due
+parlassero
+se lavorassero insieme
+l'analista
+anziché
+ricercare la news
+passa ad analizzare
+lo strumento
+fisicamente
+quindi
+il news research agent
+gli dice
+il bitcoin
+secondo me
+potrebbe essere interessante
+perché
+motivazione x
+chiude lo stretto
+di ormuz
+ok
+l'analista dice
+bene
+andiamo a vedere
+in maniera finanziaria
+se questa cosa ha senso
+cioè
+ci sono stati
+volumi
+in acquisto
+in aumento
+c'è qualcuno
+che sa di più
+controlliamo i market maker
+cosa fanno
+controlliamo le quotazioni
+degli ultimi tempi
+controlliamo
+quanto è il prezzo
+di chiusura ieri sera
+e a quanto ha aperto
+stamattina
+controlliamo se
+il broker ha alzato
+lo spread
+perché prevede che
+faremo più operazioni
+quindi controlla
+l'analisi finanziaria
+ok
+quello è proprio
+l'analista
+fa l'analisi tecnica
+l'analista finanziaria
+è quello lì
+ok
+insieme
+quando hanno un referto
+con una risposta
+sensata
+la comunicano
+io in mezzo
+ci metterei
+al risk analyst
+sopra di loro
+ok
+il risk analyst
+risk agent
+fa la parte
+di analisi
+del rischio
+quindi
+se la trade è fattibile
+quant'è
+l'aspective shortfall
+quant'è il value at risk
+tutte quelle cose
+che abbiamo studiato
+ok
+quindi
+quanto va male
+se va male
+quanto vogliamo limitare
+perché magari
+l'analista
+si fa un'idea
+e dice
+boh
+dobbiamo comprare
+100 bitcoin
+ti faccio un esempio
+e il risk analyst
+dice beh
+se compriamo 100 bitcoin
+però ci esponiamo
+di tutto il portafoglio
+compriamone magari 20
+così mal che va
+ci resta 80%
+il portafoglio
+ipotesi
+che non è così
+ma stupida
+non so se mi spiego
+se il risk analyst
+approva
+quindi
+V
+verde
+se il risk analyst
+è d'accordo
+e questo risk analyst
+secondo me
+deve essere molto critico
+cioè dobbiamo farlo
+molto molto critico
+ok
+perché
+sono soldi veri
+cioè finché facciamo
+su white paper
+cioè
+facciamo demo
+prima ci sarà demo
+sappilo
+cioè finché demo
+ok
+ma se ci mettiamo
+i cazzo di soldi nostri
+quel bastardo
+deve essere molto
+molto molto
+molto molto
+molto critico
+perché preferisco
+non guadagnare
+non perdere
+che perdere
+senza aver guadagnato niente
+se approva
+comunica
+al trader agent
+ok
+e qual è l'obiettivo
+del trader agent
+scusa
+il trader agent
+cioè perché
+la strategia
+è già stata fatta
+ok
+è già stata pensata
+ed è già stata validata
+quindi la strategia
+per noi
+e per come l'abbiamo pensata
+è già valida
+è già vincente
+lui deve farla
+al minor costo possibile
+quindi secondo me
+analizza
+che ne so
+tutti i broker
+che gli diamo
+e trova quello che è
+lo spread
+minore superazione
+trova
+il broker
+dove la cripto
+è più liquida
+ok
+quindi fa analisi
+di questo tipo
+essenzialmente
+ha fatto tools
+quindi di
+commissioni per esempio
+commissioni
+liquidità dello strumento
+sì
+cose di questo tipo
+e esegue l'operazione
+quindi una volta
+che ha trovato
+il best as possible
+lui boom
+e io butto l'operazione
+dentro
+e la fa
+la fa
+e la chiude
+con
+cioè
+dei paletti
+che gli ha messo
+il risk analyst
+secondo me
+cioè qui abbiamo
+due vie
+o facciamo
+in modo tale
+che prima
+il risk analyst
+gli da dei paletti
+o che
+mentre
+tipo che ne so
+stop loss
+faccio un esempio
+o
+che il risk analyst
+può
+tipo
+come si dice
+può intervenire
+sul suo operato
+e bloccare l'operazione
+se va male
+no bro
+quindi
+due vie
+mi sono immaginato
+ok
+allora
+il risk analyst
+a priori
+deve dare i paletti
+deve dare la strategia
+completa
+con tutte le info
+cioè
+take profit
+stop loss
+se c'è un drawdown
+eccessivo
+inaspettato
+deve chiudere
+insomma
+deve dare
+i paletti
+cioè
+deve dire tutto
+il risk analyst
+cioè forse
+è il più importante
+deve dare tutto
+deve essere
+deve fare in modo
+che il trader
+deve solo eseguire
+quello che è stato detto
+alla migliore condizione possibile
+certo
+ok
+e basta
+e poi il trader agent
+parla con noi
+e ci comunica
+quello che ha fatto
+cosa è stato fatto
+eccetera eccetera
+e anzi
+se vai giù
+vai giù
+io
+il research agent
+e l'analista
+li metterei
+sullo stesso piano
+che comunicano tra di loro
+sì
+più o meno
+sono sullo stesso piano
+ok
+e che la freccia
+parte dal mezzo
+cioè deve essere
+una decisione congiunta
+tra di loro
+ok
+quindi
+non so se si può fare
+sì
+no non si può fare
+però
+adottiamo
+il nostro montage
+fuck
+ok
+dimmi se secondo te
+ha senso questa struttura
+king
+perché
+sì
+adesso
+adesso la parliamo
+allora
+mi sembra
+ottima
+la divisione
+dei
+cioè
+mi sembra ottimo
+il ragionamento
+sulla divisione
+dei compiti
+cioè fondamentale
+prima
+insieme
+all'individuazione
+degli agent
+addetti
+sì
+è fondamentale
+capire
+quali sono
+tutte le cose
+che caratterizzano
+aspetta
+ti metto
+dall'altro lato
+così
+me lo ti guardo
+in faccia
+come ti guardo
+allora
+cioè
+la struttura
+è pressoché
+quella dei trading floor
+mancano
+quelli che fanno
+il trading floor
+c'è letteralmente
+i fondi di investimento
+ok
+che fanno trading
+magari anche intraday
+hanno
+è un piano
+noi dobbiamo fare
+un piano di un ufficio
+ok
+dove
+nel primo tavolo
+ci sono
+gli equity research
+ok
+nei fondi
+adesso noi lo facciamo
+i research agent news
+perché non è equity
+la nostra
+ma ci sono gli equity research
+accanto
+hanno i
+quant
+quindi gli equity research
+parlano con i quant
+ma così
+cioè
+non è che li chiamano
+ce li hanno lì a fianco
+gli dicono
+oh bro
+ho trovato questa informazione macro
+back test
+e il conto
+la back test
+cioè una volta che hanno fatto
+questa roba
+parlano anche con l'analista
+che dice
+eh sì
+bello tutto
+bello il back test
+ma il price earning
+è una merda
+quindi c'è
+capito
+secondo me ci sta
+anche un conto
+che faccia una parte
+un po' più matematica
+insieme a loro due
+e
+quando loro tre
+hanno
+pensato l'idea
+sul trading floor
+vanno
+dalla parte
+del gestione rischio
+che gli dice
+bella lì
+abbiamo questa idea
+è valida
+e non valida
+e la gestione rischio
+solitamente è sempre in contrasto
+dice no
+non si può fare
+e non si può fare mai
+cioè questa è
+la gestione rischio
+funziona così
+è sempre così
+no
+poi cosa succede però
+trovano una quadra
+perché alla fine
+devono fare soldi
+quindi la gestione rischio
+può dire di no
+mille volte
+ma alla fine dell'anno
+vuoi un trade
+deve averlo fatto
+no
+ce ne possono stare a zero
+no
+quindi a qualcosa
+dovrà dire sì
+quel qualcosa
+qui dice sì
+deve essere la migliore opzione
+che gli hanno presentato
+ok
+quando sono d'accordo
+vanno dai trader
+che sono tutti impizzati
+pippano ogni giorno
+e bom bom bom
+chiamano in esempio
+l'operazione
+che è quello che farà
+il nostro trader
+ok
+cerca tutti i broker
+comunica
+di fatto comunica
+con i broker
+esatto
+solamente quella è la differenza
+i trader veri
+alzano la cornetta
+chiamano i broker
+e fanno l'operazione
+no
+e magari hanno quel rapporto
+personale
+quindi io compro da te
+tu compri da me
+io lo compro da te
+mi fai lo sconto
+ma perché poi lo rivendo
+sempre a te
+noi non avremo questo vantaggio
+cioè avremo
+dei trader oggettivi
+cioè che operano
+è meglio
+dal punto di vista
+delle valutazioni
+e del fatto che
+non è una persona reale
+che deve fare le valutazioni
+ma non è ai
+sì però
+un buon trader
+ti fa ottenere
+un trader a sconto
+eh beh certo
+cioè il trader
+perché prendono
+250.000 dollari all'anno
+perché il trader
+conosce tutti i broker
+è amico di tutti i broker
+e riesce a trattare
+il trader tratta
+cioè chiama
+tratta
+e ti ottiene
+il miglior prezzo
+inoltre non può chiamare
+ma deve ottenere
+il miglior prezzo
+possibile
+essenzialmente
+quello che deve fare
+il trader
+e basta
+e poi
+speriamo di aver guadagnato
+cioè questa
+come struttura
+deve fare
+secondo me
+quindi tu dici questo
+ma il quant
+come fa il backtest
+scusa
+eh
+immagino
+la banalissima
+simulazione di Monte Carlo
+banalmente
+per esempio
+quanto può essere
+il prezzo
+del bitcoin
+domani
+fa 10.000 simulazioni
+le rete
+tutte quante
+log normali
+fa una media
+più stupido
+che esista
+più stupido
+poi vabbè
+il con
+cioè
+per stimare
+il prezzo
+per esempio
+dell'equity
+ci sono miliardi
+di modelli
+cioè
+la maggior parte
+studiava adesso
+i derivati
+dalla meccanica
+dei fluidi
+ok
+prendono i modelli
+fisici
+della meccanica
+dei fluidi
+e non so
+per quale motivo
+ci sono stati
+dei bastardi
+che le hanno
+tipo
+viner
+tutti quei processi
+di viner
+quelle robe lì
+le hanno tramutati
+in previsione
+di prestitazione
+perché hanno trovato
+delle cose
+congruenti
+che potevano
+trasformare
+e secondo me
+è questo
+che dovrebbe fare
+il nostro conto
+cioè un'analisi
+un po' più
+previsionale
+chiaramente
+l'analista finanziario
+fa una parte
+di analisi
+dei dati
+oggettiva
+quindi boom
+noi abbiamo
+questo
+la media mobile
+è questa
+il drawdown
+a 12 mesi
+è stato questo
+il price earning
+è questo
+gli utili
+sono questi
+se hai un'azienda
+la distribuzione
+dei dividendi
+è questa
+il conto dice
+bella lì
+i dati sono belli
+ma domani
+quale è il prezzo
+dell'azione?
+capito?
+cioè
+aspetta
+il news researcher
+o l'analista
+dice bello tutto
+no il cont
+il cont
+cioè comunicano
+tra di loro
+e hanno tre ruoli
+diversi
+il cont
+le frecce sono giuste?
+si manca una freccia
+orizzontale
+tra l'analista
+e il cont
+e tra l'analista
+e il news researcher
+cioè
+loro tre
+immaginano
+sì
+come un tavolo
+esatto
+loro tre
+stanno parlando
+in mezzo
+ci metti
+l'output
+e quando
+questi tre
+bastardi
+arrivano
+ad un output
+buttano sopra
+cioè
+non so come
+sì
+vabbè
+ok
+cioè
+nel senso
+crea gruppo
+tavolo
+esatto
+quando dal tavolo
+esce un output
+cioè il tavolo
+da fuori un output
+e boom
+viene mandato sopra
+in questo modo
+è bello gerarchico
+ecco
+ok
+ok
+allora
+prova
+togli il collegamento
+output
+con i singoli
+e metti tavolo
+e output
+soltanto
+secondo me
+così
+è come se
+loro tre
+pensano
+tra di loro
+devono spremersi
+al massimo
+e dare fuori
+la best idea
+che magari
+quel bastardo
+di sopra
+boccia
+cioè può anche
+essere semplicemente
+questo
+e lei
+boccia
+e gli rimanda indietro
+gli dice
+boom
+l'ho bocciata
+non si fa
+capito
+cioè
+a me deve essere
+anche quella bidirezionale
+e ma
+ok bidirezionale
+ma concretamente
+cioè tipo
+il risk analyst
+torna
+e fa un'altra richiesta
+no
+il risk analyst
+torna
+e gli dice
+non va bene
+per questo motivo
+loro
+lavorano
+cioè
+non lavorano
+perché
+l'esposizione
+è troppo alta
+ok
+loro
+loro
+prendono
+l'info
+che gli da lui
+ok
+e capiscono
+possiamo risolverla
+non possiamo risolverla
+cioè
+ma questo
+nello stesso momento
+cioè
+allora
+quello che mi chiedo è
+il risk analyst
+da
+un output
+o al trader
+o al tavolo
+ma
+lo dà
+come informazione
+per le valutazioni successive
+o dà
+informazioni
+che potenzialmente
+possono essere
+riutilizzate
+per fare ulteriori
+valutazioni
+sempre
+nello stesso istante
+di tempo
+sì
+minchia
+sì
+cioè
+io
+quello lì sopra
+me lo immagino
+come
+non un esperto
+di nessuna
+delle tre cose
+questo qui
+sì
+non è un esperto
+di analista
+quant o research
+però capisce
+tutte e tre
+ok
+e una volta
+che gli comunicano
+un output
+ok
+lui lo analizza
+secondo le sue
+metriche
+ok
+e rimanda giù
+e dice
+non va bene
+per
+x parametro
+ok
+mentre
+ad esempio
+il trader
+ha una freccia
+unidirezionale
+perché semplicemente
+deve eseguire
+cioè
+se arriva lui
+un'informazione
+va solo eseguita
+lui non deve pensare
+lui deve solo fare
+ok
+il nostro cervello
+vero e proprio
+secondo me
+è risk analyst
+cioè loro
+gli diano le idee
+lui le approva
+nel caso
+ok
+quindi se
+hanno senso
+o se non hanno senso
+e se non hanno senso
+non è che deve bocciarla
+deve dirgli
+perché non ha senso
+in modo tale
+che loro possano ragionarci
+se è risolvibile
+perché magari è un trade valido
+ma hanno sbagliato
+a
+che cazzo ne so
+a prevedere la quantità
+di acquisto
+ok
+che supera
+il limite
+che abbiamo noi
+imposto al risk analyst
+il risk analyst
+si deve dire
+è una buona strategia
+ma
+per
+nostra proxy
+non possiamo superare
+questo valore
+e allora lo dicono
+vabbè
+ha senso farla
+con un valore più piccolo
+oppure non ha più senso
+perché non ci guadagna più abbastanza
+cioè
+non so se si può fare
+questa cosa
+forse è sbatti
+a livello di token
+di costo
+sì
+no ma
+allora bro
+è una cosa che si può efficientare
+ma di brutto
+ok
+perché se tu
+se tu
+invece di
+allora
+pensare in questo modo
+immagina
+il
+il tavolo
+dà una valutazione
+che perché
+perché qui bro
+bisogna pensare
+veramente agli input
+e agli output
+cioè al di là
+dei moduli
+in sé
+veramente agli input
+e agli output
+gli input e gli output
+devono essere
+concreti
+cioè che tipo di dato
+vuoi dare
+ok
+e quindi io mi dico
+che tipo di dato
+vuoi dare al fiscal analyst
+gli vuoi dare
+una proposta completa
+che poi lui analizza
+oppure gli dai
+cosa che secondo me
+è molto più efficiente
+gli dai
+una serie
+gli hai un prospetto
+ok
+in cui dai
+in cui il tavolo
+dà una sua valutazione
+che prescinde
+totalmente
+da numeri assoluti
+quali
+quantità di trade
+previsioni
+mettiamola così
+specifiche
+o perlomeno
+tanto specifiche
+magari quella del prezzo
+cioè la specifica
+di previsione del prezzo
+ha senso
+però devi cercare
+di dare le informazioni
+generali
+in modo tale che
+le valutazioni
+le fai una volta
+ok
+cioè non è che
+loro il tavolo
+mi fa la valutazione
+sul
+quanto è buono un trade
+e mi fa la valutazione
+anche
+di quanto dovrei investire
+su quel trade
+cioè del volume
+del trade
+che dovrei dare
+perché poi
+se tanto il risk analyst
+deve valutarla
+questa proposta
+di volume
+a sto punto
+non ha un cazzo di senso
+che la fanno in due
+la fa lui
+cioè la fa il risk analyst
+la valutazione di volume
+e basta
+tu come tavolo
+dai semplicemente
+degli
+come degli score
+ok
+dei punteggi
+dei ranking
+cioè tu dici
+il tavolo
+dall'idea
+il risk analyst
+la trasforma
+in fattibilità
+per il nostro fondo
+esatto
+e se
+trova una quadra
+insomma che è fattibile
+la manda al trader
+si puoi avere
+delle regole
+delle regole
+un po'
+un po'
+statiche
+nel senso che
+se tu hai
+un
+un
+ipotizzai
+una policy
+che ti dice
+che a lui
+dice
+gli dai come policy
+gli dici
+esegui il trade
+solo se hai
+tot
+capito
+però secondo me
+king
+è troppo
+cioè
+ci vorrebbe
+allora
+forse
+un'altra persona
+ok
+che
+che stia sempre
+nel tavolo
+secondo me
+che faccia questo
+lavoro
+cioè
+noi possiamo avere
+una strategia
+noi noi facciamo
+trading
+abbiamo una strategia
+ok
+ma parte della
+strategia
+può essere
+vado lungo
+sul bitcoin
+e vado corto
+sull'etherium
+per una quantità
+che mi posso
+permettere
+ok
+e
+il risk analyst
+secondo me
+ha un altro
+compito
+cioè il risk analyst
+ha il compito
+di
+mi arriva la strategia
+fatta
+con le quantità
+finite
+io devo solo
+analizzare
+la mia posizione
+in metto
+cioè
+rischio troppo
+non la faccio
+rischio
+che mi posso
+permettere
+la faccio
+ok
+la parte
+della
+della quantità
+secondo me
+rientra
+sempre nella strategia
+cioè
+rientra
+cioè io per esempio
+posso voler
+comprare un'azione
+ok
+e parliamo di azioni
+in questo caso
+e per farlo
+semplicemente posso
+comprarmi
+10 put
+e 9 call
+idea
+capito cosa
+voglio dire
+idea
+sempre nell'ottica
+di non dare
+gli valori assoluti
+ok
+i bro
+nel prospetto
+danno
+un'idea
+cioè
+danno
+la strategia
+concreta
+completa
+ovviamente però
+non gli danno
+il valore
+ok
+non gli danno
+il valore assoluto
+gli danno
+le proporzioni
+ok
+cioè gli danno
+un'idea
+di proporzione
+quindi se tu hai
+5
+10 cripto
+su cui investire
+loro ti dicono
+vai
+tot su bitcoin
+tot su ethereum
+sappi che
+devi andare
+tot su bitcoin
+tre volte
+rispetto a quanto
+di andare
+short su ethereum
+questa potrebbe
+essere una strategia
+completa
+perché poi
+il risk analyst
+trasforma
+questi numeri
+relativi
+in valori assoluti
+comunicando
+col portafoglio
+ok
+il portafoglio
+non è un agent
+cioè proprio
+valuta la situazione
+nostra di portafoglio
+ok
+ha senso?
+la domanda
+cioè
+questo è una cosa
+abbastanza complessa
+secondo me
+cioè perché
+dobbiamo decidere
+quali funzioni
+dobbiamo
+dobbiamo implementare
+non è che
+casomai è modificabile
+basta che
+aggiungiamo una freccia
+ma voglia bro
+tanto noi stiamo
+facendo solo
+chat
+ma a livello
+di
+a livello
+di codice
+ok
+cioè
+la cosa
+che dovremmo
+fare
+è
+li programmiamo
+ognuno
+separatamente
+e poi
+li programmiamo
+un collegamento
+come funziona?
+cioè
+devi farli
+tutti e
+cinque
+a se stanti
+e poi
+li metti insieme
+oppure
+devi fare
+un unico codice
+diviso in pezzi
+che c'è il pezzo
+che è questo
+il primo
+come funziona?
+ti faccio vedere
+quello su cui sto lavorando
+ok
+te lo spiega
+abbastanza bene
+perché anche quello
+è diviso in moduli
+cioè io ho il modulo
+che replica la metodologia
+con la propria
+deterministica
+poi ho il modulo
+di agente
+AI
+che fa
+ricerca
+sui documenti
+ne ho un altro
+che fa
+ricerca
+dei documenti
+non sui documenti
+fa ricerca
+dei documenti
+da mettere
+ok
+io attualmente
+ho fatto solo
+il modulo
+di replica
+della metodologia
+deterministica
+ok
+già la metodologia
+deterministica
+come puoi notare
+la metodologia
+deterministica
+vedi
+allora
+questi sono i moduli
+ok
+il modulo core
+è il modulo
+della metodologia
+deterministica
+knowledge
+è l'agente AI
+poi c'è tipo
+la web app
+questa qua
+la web app
+è la trasformazione
+del modulo core
+in un'interfaccia web
+e poi dov'è
+che cazzo è
+vabbè
+c'è un altro
+penso sia scratch
+no non è scratch
+vabbè
+c'è un'altra cartella
+che adesso
+non vedo
+probabilmente
+non l'ho ancora creata
+che fa
+cioè fa estrazione
+ok
+se tu guardi
+il modulo core
+solo il modulo core
+ok
+c'è input output
+e questi sono i file python
+di input
+di input output
+quindi
+quello che fa
+l'import di excel
+quello che fa
+il report
+quindi il pdf
+come output
+quello che fa
+l'excel di output
+che comunica
+con
+in realtà
+comunica
+con
+dov'è questo
+l'engine
+ok
+l'engine
+ragiona
+cioè è un file
+è un python
+che ragiona
+estrae
+e utilizza
+i metodi
+questo non potresti
+vederlo
+quindi non ti ci soffermare
+troppo
+ma anche perché
+sei bloccato
+prova a uscire
+entrare
+ma tu vedi il mio schermo
+io sto vedendo
+il vecchio
+no bro
+è vero
+non vedo
+la vecchia roba bro
+dove si vedono le frecce
+e poi ogni tanto
+mi si flasha
+un'altra schermata
+scusa bro
+quindi io
+tipo lo avevo a scatti
+e dico
+che cazzo
+è successo
+facciamo così
+facciamo così
+ah ora lo vedo forse
+eh certo
+sì ora
+sì sì
+aspetta
+aspetta
+aspetta
+cioè questa qua
+ti confonde
+eh ombra
+non si capisce un cazzo
+non devi leggerlo
+non devi leggerlo
+ma che cazzo
+ma poi che cazzo
+di programma è
+questa roba
+è un codice di python
+questo è
+quello che vedi davanti
+nella pagina principale
+centrale
+è un codice python
+e
+la
+tipo
+l'applicazione
+cosa è un'applicazione
+aspetta
+aspetta
+che cazzo
+guarda
+o da qua
+andiamo
+ok
+è tipo il mio
+esplora risorse
+ok
+ok
+la cosa comoda di me
+è che l'esplora risorse
+ha una modalità
+che è molto carina
+ed eccola qua
+allora
+è presente
+più o meno
+come sta funzionando
+ok
+questa è la cartella
+vpa
+dentro la cartella
+vpa
+ci sono queste
+quattro
+sottocartelle
+dentro questa cartella
+ci sono queste cartelle
+ok
+ok
+ok
+come noti
+ci sono diverse
+cartelle
+ok
+questo è il codice
+che funziona
+il modulo per esempio
+core
+questo qua
+cioè
+è il meccanismo deterministico
+poi c'è per esempio
+quello dei
+quello dei
+della web app
+che
+il cui compito è
+comunicare col core
+e con tutti gli altri
+e trasformare
+in un'interfaccia web
+poi c'è
+la parte
+di
+perché me lo riperdo
+c'è la parte di
+ah ecco
+di knowledge
+no non di knowledge
+scusa
+o di knowledge
+sì penso di knowledge
+c'è la parte di knowledge
+che adesso ovviamente
+deve essere ancora cominciata
+queste cartelle ignorale
+che è la parte di
+agente AI
+che lavora sui documenti
+poi ce ne sarà un'altra
+ci sarà un'altra cartella
+che comunica
+cioè che
+che
+che fa la ricerca sui documenti
+anche solo guardando
+il modulo core
+che è quello che è
+l'unico fatto
+come puoi notare
+sono tutta una
+qui c'è un'altra serie di cartelle
+quindi c'è la cartella
+input output
+la cartella input output
+si occupa del
+importer
+quindi dell'importazione
+dell'excel di configurazione
+poi c'è l'exporter
+di excel
+quindi il report
+fatto
+finito
+e poi c'è il report
+generator
+il report generator
+non è l'excel
+è il pdf
+fatto
+ok
+poi c'è la sezione
+c'è la sezione
+scoring
+che si
+la sezione scoring
+contiene un file python
+che è l'engine
+l'engine
+è il file principale
+quindi il file principale
+cosa fa?
+prende gli strumenti
+innanzitutto
+prende
+dai config
+lui qui
+prende questi
+questi sono i file
+di configurazione
+quelli che
+vengono creati
+per gestire
+quali sono i kpi
+da valutare
+quali sono i tipi
+di scoring
+quindi indicatori lineari
+indicatori piramidali
+indicatori di razzi e mazzi
+cioè tutti i pesi
+da dare
+eccetera
+quindi lui prende
+l'engine
+che ti ho fatto vedere prima
+prende dalle configurazioni
+calcola le cose
+come sfruttando
+gli strumenti
+che vede negli altri
+file python
+quindi è tutta una cartella
+cioè nel nostro caso
+e qui torno
+perché tanto quello
+che dovevo farti vedere
+te l'ho fatto vedere
+noi nel nostro caso
+avremo sicuramente
+un'unica cartella
+che poi io mi immagino
+ha moduli
+ok
+quindi come tu vedi
+il modulo core
+il modulo knowledge
+il modulo cazzi e mazzi
+ci sarà
+un modulo analyst
+poi ci sarà
+un modulo quant agent
+poi ci sarà
+un modulo news
+research
+un modulo
+che è una cartella
+una sottocartella
+un modulo trader agent
+un modulo risk analyst
+capito
+un modulo tools
+un modulo tools
+specifico
+cioè dentro la sottocartella
+dell'analista
+ci sarà
+non solo l'agente in sé
+ma ci sarà magari
+un ulteriore sottocartella
+che darà
+a sua volta
+tutti i tool
+che lui deve utilizzare
+come rispettare
+cioè capito
+ok
+si si
+una gerarchica
+basata su cartelle
+almeno così ho capito
+come dovremmo impostarlo
+cioè
+a livello
+programma
+programmatore
+ecco
+ok
+King
+io non so fare queste cose
+tranquillo
+non sarei mai capace
+in grado di fare una roba
+del genere
+te lo dico
+allora io ti dico
+sincero
+noi più
+più ragioniamo
+su questa cosa
+più poi lui fa da solo
+cioè lui più informazioni ha
+più segue le tue indicazioni
+quindi se noi diamo a lui
+abbia sufficienti indicazioni
+tecnico finanziari
+tecniche di programmazione
+lui fa da solo
+non dobbiamo farlo noi
+ok
+capito?
+quindi la parte di programmazione
+non ti preoccupare
+la discutiamo insieme
+ti do io
+le cose che servono
+una cosa che serve
+per esempio
+è
+dove vuoi salvare
+sti cazzo di dati
+vuoi avere un database
+centrale
+vuoi avere un database
+di news
+vuoi avere
+scorda
+cioè è più efficiente
+avere diversi database
+o averne uno unico?
+allora il database
+immaginatelo come
+non un contenitore
+cioè non è
+il database
+immaginatelo
+non come un cassetto
+ma come una cassettiera
+la cassettiera
+ha diversi cassetti
+ok
+e quindi
+esempio
+ogni membro del tavolo
+ha il suo cassetto
+e ha preso il suo
+o tutti e tre
+hanno
+no ma poi
+l'altra cosa bella
+è che i cassetti
+comunicano tra di loro
+ok
+quindi semplicemente
+immaginazione
+in mezzo al tavolo
+mettiamo la cassettiera
+e aprono quello
+che cazzo vogliono
+certo
+tutti aprono
+quello che vogliono
+ok
+tutti aprono
+quello che vogliono
+poi puoi mettergli
+dei limiti
+non è un problema
+cioè tu puoi dirgli
+tu devi
+non solo dei limiti
+proprio delle indicazioni
+tu gli dici
+apri questa cartella
+vabbè ma facendo cose diverse
+ognuno aprirà
+la cosa che gli serve
+che saranno cose diverse
+però per esempio
+immaginati
+io però
+perché mi ero immaginato
+anche questa cosa
+poi magari ne parliamo
+però io mi ero immaginato
+un modulo
+o perlomeno
+una
+un tool
+ok
+abbiamo presente
+cioè hai per me in mente
+cosa intendo
+quando parlo di modulo
+di tool
+gerarchicamente proprio
+di modulo di tool
+no ma di tool
+si
+il tool
+è principalmente
+un
+uno strumento
+deterministico
+che tu dai
+a un agente
+un codice
+si
+ok
+il modulo
+è
+più concettuale
+cioè molto spesso
+è un agente
+però per esempio
+per fare deep learning
+non serve un agente
+cioè
+allora principalmente
+è un agente
+cioè il modulo
+è l'agente
+un agente
+ok
+ok
+cosa che stavo dicendo
+immaginati
+un modulo
+che deve fare
+valutazione
+e validazione
+dei pesi
+che tu dai
+alle cose
+adesso
+questa cosa
+poi ne parliamo bene
+perché nella tua
+cioè non saprei come
+includerla
+questa cosa
+però immaginati
+una situazione
+in cui c'è
+uno che analizza
+le news
+immaginati
+una situazione
+in cui c'è
+un tipo che analizza
+le news
+poi un tipo
+che fa analizza tecnica
+un tipo che fa
+la previsione
+con deep learning
+io poi vorrei
+un modulo
+di reinforcement learning
+che non è reinforcement learning
+è solo per dirlo
+che valuta
+quanto effettivamente
+stanno performando bene
+questi altri moduli
+questi tre moduli qua
+e allora lui
+deve avere accesso
+a tutto il database
+ben fatto
+quindi ci sta
+cioè
+il database
+è estremamente
+bro
+io ti assicuro
+finché
+fin tanto che rispetti
+la sintassi
+il tipo di dato
+lo
+i meccanismi
+degli strumenti
+poi gli strumenti
+tu li puoi spingere
+verso
+l'infinito
+bro
+cioè tu
+puoi fare tutto
+bro
+tutto
+l'unica cosa
+che devi rispettare
+è la sintassi
+cioè come scrivi le cose
+e la struttura
+del meccanismo
+vuol dire
+se un database
+per avere
+cioè se tu per
+accedere a un database
+e utilizzare determinati strumenti
+tu puoi utilizzare
+quegli strumenti
+tutte le volte che vuoi
+come vuoi
+perché poi
+dipendendo dai parametri
+nella programmazione
+i parametri
+sono infiniti
+sono letteralmente
+infiniti
+perché tu puoi
+costruirti
+degli strumenti
+che trasformano
+parametri
+in altri parametri
+bro
+puoi fare tutto
+cioè realisticamente
+tu puoi fare
+qualsiasi cosa
+con la programmazione
+qualsiasi
+fottutissima
+cosa
+qualsiasi cosa
+gasa
+qualsiasi cosa
+it
+però ma io non so
+la sintassi
+cioè non
+non so
+ma non dobbiamo saperla
+bro
+noi dobbiamo semplicemente
+dare al modello
+al coding
+e a cloud code
+noi dobbiamo dare
+tutte le informazioni
+di cui lui ha bisogno
+noi dobbiamo dire
+anche se tu gli dici
+non mi serve
+cioè tu non gli devi dire
+per forza
+voglio un database
+di questo genere
+tu gli devi dire cosa fa
+poi lui trova quello migliore
+ok
+non è importante bro
+l'importante è
+avere le idee
+chiare
+cioè
+in una situazione del genere
+l'importante è avere le idee
+chiare
+ma chiare bro
+chiare sul serio
+adesso aspetta che vado
+allora innanzitutto
+ti condivido la cartella
+ti condivido la cartella
+google drive
+dammi la cartella
+salvatore.gulisano
+chioccioloutlook.com
+condividimela su questo
+che quindi aspetta
+perché adesso
+ok no
+devo andare in palestra
+ascoltami
+salvatore.gulisano
+chioccioloutlook.com
+dammi la commenta
+su quella di outlook
+outlook.com
+non .it
+è .com
+salvatore.gulisano
+si salvatore.gulisano
+chioccioloutlook.com
+si
+allora
+per darmi
+un'indicazione
+su cosa partire a fare
+ok
+così almeno parto
+a fare qualcosa
+concretamente
+perché ho voglia
+di farla concretamente
+posso partire da
+secondo me
+come si chiamano
+i dati
+gli indicatori
+mettiamola così
+o quelli dell'analista
+o quelli del risk analyst
+o quelli del quant
+o anche quelli del
+news research agent
+però sincero
+ma quali sono gli indicatori
+del news research agent
+scusa
+eh non lo so
+cioè
+dargli una quadra
+di come può essere
+il suo sentiment
+rispetto alla notizia
+king
+fai quello che senti
+sincero
+eh
+mi gasa così
+mi gasa
+fai quello che ti senti di fare
+ok
+cioè fai quello che
+che
+io di solito
+per capirlo
+parto da quello che
+vabbè
+o mi gasa di più
+oppure parto da quello
+in cui
+idealmente
+ho già qualcosa
+da scrivere
+ok
+capito
+cioè che so già
+che determinate informazioni
+le ho e le devo appuntare
+io di solito parto da quelli
+capito
+e poi la seconda cosa
+che devo capire
+devo capirla subito
+prima di mettermi
+a fare
+perché io voglio partire
+dall'analista
+che è la cosa
+che è più vicina a me
+cioè
+è vicina a quello
+che faccio
+nell'associazione
+ed è quello
+che so fare
+idealmente
+se vogliamo farlo
+solo crypto
+devo adottare una strada
+se vogliamo farlo
+multi asset
+adottare un'altra strada
+se vogliamo farlo
+solo bond
+un'altra strada
+se vogliamo farlo
+solo equity
+quindi devo sapere
+prima
+cosa vogliamo fare
+cioè
+o faccio tutto
+o faccio una sola cosa
+cioè dobbiamo deciderlo
+ora
+così io so
+cosa fare
+perché se devo fare tutto
+comunque devo partire da una cosa
+quindi al massimo
+al massimo posso partire
+dalla cosa
+tipo dalla cripto
+e poi eventualmente
+aggiungo altre cose
+però
+devo sapere se vogliamo fare una cosa
+se vogliamo fare una cosa
+solo crypto
+sarò molto più specifico
+su quelli
+se vogliamo fare una cosa
+multi asset
+sarò molto più specifico
+su altre cose magari
+ma tipo
+se vogliamo analizzare solo crypto
+cioè crypto è un mondo a parte
+cioè funziona in un altro mondo
+ok
+è una cosa a parte
+non c'entra niente
+né col bitcoin
+cioè né col
+scusami
+con le eco equity
+né con le eco multis
+né col bond
+non c'entra niente con nulla
+ok
+è una cosa a parte
+ma perché qui ogni cosa
+ha un suo
+metodo di analisi
+sì però per esempio
+puoi trovare delle cose
+molto comuni
+tra i etf
+e le equity
+puoi trovare delle cose comuni
+con i bond
+puoi trovare
+anche le commodities
+alla fine con le equity
+delle volte
+sono cose comuni
+cioè reagiscono allo stesso modo
+al sentiment
+cosa che per esempio
+le crypto non fanno
+ho capito
+quindi è tutto
+un altro filone di analisi
+cioè analizzare le crypto
+è una cosa
+analizzare le asset class
+quelle tradizionali
+è un altro mondo
+cioè sono due cose
+che vanno
+diversamente
+se vogliamo farle entrambi
+se vuoi parto da uno
+e faccio quello
+se vogliamo farle uno solo
+faccio solo quello
+e lo faccio molto più
+approfondito
+di solito
+non so se mi senti
+ma di solito
+io cerco
+di adottare
+o perlomeno
+di seguire
+un approccio
+che sia
+quanto più versatile
+possibile
+ok
+ok
+versatile vuol dire
+che è
+indipendente
+indipendente
+da dove lo applico
+se poi
+tu devi
+scegliere
+eh
+io ti dico
+a priori
+non può esserlo
+va bene
+va bene
+tra le due cose
+almeno per la mia
+conoscenza
+non può esserlo
+però prendi
+prendi il più
+versatile
+nel senso che
+per esempio
+se io sono limitato
+allora questo non c'entra
+con quello che devo
+però per esempio
+se io so che
+determinate cose
+sono utili
+solo per le cripto
+e poi ce ne sono altre
+che sono utili
+per le azioni
+dei commonti
+sugli etf
+tutte queste puntate qua
+quelle più versatile
+l'ultima è più versatile
+i volumi
+sono utili
+in tutte e quattro
+ad esempio
+esatto
+uno
+no ma uno
+uno
+a quel punto
+se dobbiamo
+prendere per forza
+una scelta
+prendiamo
+molto
+egoisticamente
+prendiamo
+quella
+potenzialmente
+più profittevole
+minchia
+ok
+oppure
+oppure
+puoi seguire
+quest'altro metodo qua
+questo
+perché sto cercando
+di capirlo insieme a te
+perché neanch'io so
+dare la risposta
+neanch'io so dire
+solo cripto
+su azioni
+e altri
+un altro criterio
+un altro criterio
+sicuramente
+potrebbe essere
+quello della disponibilità
+dei dati
+ora
+io so
+che sulle cripto
+tu puoi estrarre
+la qualsiasi
+sulle azioni
+magari un po' meno
+anche se si trova
+cioè
+nel senso
+quello lì
+non è
+non è discriminante
+tanto quanto
+gli altri
+no vabbè
+sull'azione
+alla fine
+cioè
+dovrebbe cercare
+un po' più a fondo
+però per esempio
+dentro i prospetti
+informativi
+c'è tutto
+basta che
+se tu vuoi
+tutte le info
+su LVMatch
+basta che
+apri il sito di LVMatch
+apri la sezione investitoria
+e trovi tutto quello che ti serve
+cioè sono obbligati
+a pubblicarlo
+quelle grosse
+ok
+terza cosa
+allora
+terzo approccio
+non la disponibilità
+dei dati
+ecco
+quello con i metodi
+più consolidati
+quindi ok
+il contrario
+della cripto
+ok
+allora puoi provare così
+posto che
+la cripto
+se vogliamo
+magari la facciamo
+ma
+come side
+ok
+cioè tipo come spinocco
+si
+parti
+dalle cose
+più
+basi
+più base
+degli asset
+più facili
+ok
+devo partire dal capital asset
+pricing mod
+praticamente
+boh
+partire da
+se vuoi
+sincero
+cioè
+quello che tu
+mi dai
+allora il fatto è
+che tu
+puoi darmi
+delle informazioni
+molto più economiche
+io sarai
+in grado
+di
+sfruttare le informazioni
+tradurre le informazioni
+economiche
+in strumenti
+da poi mettere
+in piedi
+ok
+quindi
+parti da quello che vuoi
+tu qualsiasi informazione
+mi dai
+io
+troverò insieme a te
+il modo migliore
+per gestirla
+mettiamola in questo modo
+ok
+ok
+va bene
+king
+cos'altro devo dirti
+eh beh niente
+questo
+quindi questo
+cioè parti dal
+dalla parte più
+più easy bro
+parte da
+il tempo della pp
+vabbè
+cioè
+allora
+parte da
+mettiamo
+asset class tradizionali
+e poi
+cioè io comunque
+il modulo cripto
+lo metterai
+perché non è una cosa
+da sottovalutare
+cioè comunque
+il modulo rischio
+ma è quello che ti dicevo
+no il modulo cripto
+dico bro
+comunque
+cioè
+la cripto valuta
+per quanto
+io le odi
+perché le odio
+king
+eh
+alla fine
+anche per esempio
+nel portafoglio
+che abbiamo noi
+starting finance
+fanno
+cioè fanno il
+quei 10k
+a mese
+se la metti in leva
+cioè fanno
+cioè oggettivamente
+è diversità
+quindi sì
+non so bro
+però
+ecco minchia
+questo bro
+dobbiamo capirlo
+cioè secondo me
+è il prima possibile
+dobbiamo avere
+dobbiamo capire se
+o avere un portafoglio
+da debilanciare
+o dei trade da fare
+tipo trader
+e se abbiamo dei trade
+se sono dei trade semplici
+che poi dobbiamo chiudere
+manualmente
+oppure se sono dei trade
+automatici
+cioè che tu li inserisci
+e quelli lì
+vanno
+e poi alla fine
+vedi se sono andati bene o male
+cioè con
+se vogliamo fare trade singoli
+sicuramente automatici
+non ha senso che
+dobbiamo stargli dietro
+no manualmente
+se vogliamo fare
+qual è l'altro tema
+ah
+le AI chiude manualmente
+dici
+ok
+no sì
+le AI chiude manualmente
+sì sì sì
+ok
+quindi AI
+che decide
+se aprire o chiudere trade
+sì
+però non può fare
+override
+di quello che gli dice
+la parte rischio
+ma poi ti
+c'è capito
+non c'è un problema
+da quel punto di vista
+non ti preoccupare
+ok
+e no
+la cosa che volevo dire è
+se vogliamo fare con un portafoglio
+che si ribilancia
+qual è il punto
+che dobbiamo espandere
+l'inizio temporale
+cioè a quel punto
+non è più
+non è più
+intraday
+ecco
+sincero
+sono molto
+quello è problematico
+secondo me
+no è problematicissimo
+a parte che è problematico
+proprio da gestire
+cioè da
+non da gestire
+da valutare
+questo è il grande problema
+è difficile da valutare
+non da valutare
+da far valutare
+a qualcosa che non è umana
+ok
+o perlomeno
+magari tu lo sai
+perché magari ci sono
+degli indicatori
+che ti dicono
+se il portafoglio
+sta andando bene o male
+però è difficile
+far valutare
+sì ci sono
+però tu riesci
+con queste metriche
+non solo a valutare
+l'andamento del portafoglio
+ma l'andamento
+delle singole asset class
+in modo approfondito
+sì ma quello lì
+dai tuoi paletti
+cioè quello lì
+quello lì
+che ne so
+ti faccio un esempio
+quelli lì
+sono delle regole
+ok
+che ogni fondo
+ha a priori
+e che sono ineluttabili
+ok
+per esempio
+il fondo
+che noi abbiamo costratti
+in finance
+ci dice
+nessuna asset class
+qualsiasi sia
+può superare
+il 5%
+questo cosa vuol dire
+che noi
+in automatico
+no
+però c'è una persona
+che appena
+un asset class
+si apprezza così tanto
+che supera il 5%
+la vende
+e fa scendere sotto
+ok
+e con quella liquidità
+compra un'altra cosa
+ok
+quindi quella
+è una prima informazione
+cioè nessun asset class
+per diversificare
+non supera quello
+oppure
+abbiamo altre regole
+per esempio
+quando una singola
+posizione
+supera il
+100%
+di profit
+si vende
+ok
+cioè
+indipendentemente
+è la mia stock
+preferita
+io ci sono affezionato
+ok
+per eliminare
+la parte di
+sentimento
+si di bias cognitivi
+io ti sento
+ti sento
+non ti vedo
+ora ti vedo
+ok
+aspetta
+ripeti
+per superare
+i bias cognitivi
+esatto
+per superare i bias
+ci diamo delle regole
+che dobbiamo seguire
+a priori
+a prescindere
+ok
+quindi
+nessuna stock
+viene comprata
+senza che ci siamo
+consultati tutti
+nessuna stock
+viene comprata
+senza l'approvazione
+per esempio
+del led
+o
+nessuna stock
+viene comprata
+senza averci fatto
+sopra il pitch
+cioè insomma
+delle regole
+ok
+che dobbiamo seguire
+e secondo me
+nell'ottica
+di una gestione
+del portafoglio
+poi cosa si fa
+cioè cosa abbiamo fatto
+noi per esempio
+noi ci siamo dati
+un tipo di fondo
+cioè noi non vogliamo
+fare trading intraday
+per esempio
+nel fondo della cattolica
+noi facciamo
+value investing
+per modo di dire
+nel senso
+ci buttiamo su cose
+in cui crediamo
+e crediamo
+che siano sottovalutate
+e compriamo
+holdiamo
+fino a che non raggiungi
+il profit
+se non raggiungi
+il profit
+abbiamo
+che la fine
+siamo ad una parte
+di rischio
+che dice
+bom
+vendiamo
+mediamo il prezzo
+cioè
+che ne so
+compriamo un paio
+per medare il prezzo
+di carico
+facciamo un po' di cose
+come fai
+il cash out
+vendi
+no però
+io mi immagino
+un cash out
+periodico
+cioè nel senso
+il punto è che
+se tu hai una strategia
+di portafoglio
+tu vendi
+e acquisti
+un'altra cosa
+sì
+cioè scambi
+praticamente
+non sempre
+ma sì
+ah ok
+quindi tu hai una parte
+di liquidità
+però comunque
+sì sempre
+ma quella di liquidità
+vale come asset
+sul portafoglio
+è una parte
+la sezione
+del nostro
+portafoglio excel
+è liquidità
+a me piace
+che sul numerino
+io veda
+delle cose
+che crescono
+però poi voglio
+il cash
+cioè quanto
+ogni posizione
+mi è andata bene
+vuoi?
+no voglio il cash
+bro
+cioè voglio guadagnarci
+da questa cosa
+periodicamente
+ah ok
+beh però
+in quel caso
+possiamo fare una cosa
+sempre un'altra regola
+nostra
+ok
+ti faccio un esempio
+noi nel fondo
+di starting
+siamo partiti
+che erano 10 milioni
+siamo arrivati a 12
+in due anni
+ok
+quindi abbiamo fatto
+di media un milione
+l'anno
+tu puoi decidere
+a monte
+che il 10%
+di tutto quello
+che si guadagna
+viene tirato fuori
+ok
+o il 20%
+il 30%
+e il restante 70%
+rimane
+per essere investito
+per altre robe
+insomma
+anche come capitale
+perché se noi partiamo
+ipoteticamente
+con 200 euro
+100 da testa
+ti faccio un esempio
+stupido
+e in un anno
+arriviamo
+non succede
+arriviamo a 500
+ok
+in quel caso
+secondo me
+è stupido
+vedere lì fuori
+perché
+non ci cambia la vita
+distribuiti in un anno
+400 euro
+sono 4
+questo sono 4 euro al mese
+cioè capito
+40 euro al mese a testa
+quindi
+ci cambia poco
+certo è che
+se da 100 euro a testa
+diventano 10.000 a testa
+ok
+in quel caso
+secondo me ha senso
+ti metti
+a priori
+una regola
+che è il 10%
+lo tiro fuori
+tiri fuori 1000 euro
+e poi l'anno dopo
+anziché fare
+fare le trade
+con 1000 euro di capitale
+e le fare con 10.000
+che è come operare
+in leva 10
+ma senza aver usato la leva
+c'è la stessa roba
+no?
+e quello è il senso
+cioè
+queste sono delle regole
+che dobbiamo stabilire
+noi
+è come se ci dovessimo fare
+uno statuto
+cioè immaginino
+come una cosa professionale
+ci facciamo uno statuto
+e seguiamo le regole
+anche se poi
+fra un anno
+non siamo d'accordo
+dobbiamo seguirle
+perché le abbiamo scelte
+e firmate a monte
+secondo me è questo
+che dobbiamo fare
+ok allora
+un'altra cosa
+che puoi cercare di capire
+magari me lo puoi dire
+anche adesso
+istintivamente
+lavati i denti
+con calma
+è
+quindi
+dato che abbiamo
+valide entrambe le opzioni
+allora
+avere una strategia
+che invece di fare
+trade singoli
+si basa
+sul bilanciamento
+di portafoglio
+magari è più difficile
+da valutare
+quindi un portafoglio
+magari è più difficile
+da valutare
+poi mi spiegherai tu
+come si fa
+e quindi diventerà
+anche semplice
+ma è più difficile
+da valutare
+ma hai i suoi pro
+cioè
+che adesso
+mi sono dimenticato
+dio santo
+vabbè
+hai i suoi pro
+comunque
+ok
+perché è molto
+più facile
+appunto
+per l'intelligenza
+artificiale
+fare i
+ribilanciamenti
+allora
+il portafoglio
+ha
+il vantaggio
+stupido
+del
+non si mettono
+le uova
+tutte nello stesso paniere
+cioè
+quello è
+l'utilità del portafoglio
+essenzialmente
+numero uno
+il numero due
+per esempio
+i fondi
+come anche il nostro
+hanno dentro
+così tante persone
+che
+è possibile
+a questi fondi
+che
+ognuno
+lavora su una singola cosa
+ok
+e si possono investire
+su tante asset class
+quindi
+ti faccio un esempio
+nel nostro fondo
+perché alla fine
+stiamo costruendo una specie
+di fondo di investimento
+questo stiamo facendo
+non è più un trading bot
+cioè
+è diventata una cosa
+bella complicata
+è un AI investment fund
+alla fine
+è un AI investment factory
+esatto bro
+il punto qual è
+che
+noi
+tra virgolette
+siamo limitati
+passami adesso il termine
+anche se poi
+non so
+quanto siamo limitati
+perché
+perché in un fondo
+come ad esempio il nostro
+noi abbiamo
+tre persone che seguono
+l'equity
+tre persone che seguono
+il fix
+tre persone che seguono
+le commodities
+e quindi
+poi tutti quanti
+siamo più o meno
+competenti in tutto
+e riusciamo ad avere
+dialogo
+tra tutto quanto
+però ci sono delle persone
+che hanno un focus
+così specifico
+su una cosa
+che riescono a tirare fuori
+delle buonissime idee
+che magari
+uno che guarda
+una volta ogni tanto
+non riesce a tirare fuori
+ok
+adesso non so
+se il nostro bot
+per esempio
+che fa
+news research
+riesce ad essere meglio
+di 15 cristiani
+che singolarmente
+cercano una cosa diversa
+cioè
+non so se lui
+facendo una cosa globale
+riesce ad essere meglio
+di 15 cristiani
+ognuno che fa una cosa
+specifica
+allora
+che questo non te lo so dire
+magari sì
+perché è potentissimo
+ma tu puoi averne
+può esserci
+bro
+ok
+e qui mi zettisco
+e quindi
+cioè possiamo mettere
+per esempio banalmente
+immagina il tavolo
+king
+che abbiamo fatto
+ok
+i tre componenti del tavolo
+sono i tre head
+della loro area
+e ogni area
+è fatto di
+10 agent
+per esempio
+king
+ma diventiamo
+c'è bro
+city bank
+ci fa un pompino
+poi
+no bro
+ma guarda cosa
+che questa roba
+costa
+costa bro
+a livello di token
+dici proprio
+costa bro
+quindi
+ma di più
+di avere 15 dipendenti
+eh sì
+dipende
+dalle performance
+che hai
+capito che ti dico
+cioè
+adesso lascia stare
+che è solamente un'idea
+no
+ma city bank
+li da 250 mila euro
+on trader ogni anno
+250 mila dollari
+sì
+cioè
+ogni agent
+ci costa più di 250 mila dollari
+bro
+ma dipende
+secondo me no
+eh
+ma se un agent
+riesce a essere
+tanto efficiente
+quanto un umano
+che fa quella cosa
+ok
+se riusciamo a portare
+l'agent
+a pari livello
+alla persona fisica
+che fa la cosa
+e tra la logica
+ritorna lo stesso
+eh sì
+però
+anche che sopra
+anche che sopra
+metti un trader fisico
+che riesce a farti
+il prezzaccio
+che possiamo essere io e tu
+ad esempio
+sì bro
+ma a monte
+tu hai un rischio
+cioè ti stai mettendo
+un rischio bro
+perché il token
+costa
+anche se tu vuoi fare
+backtest
+anche se tu vuoi fare
+il demo
+costa
+quindi il tuo obiettivo
+è efficientare
+al massimo
+io sono d'accordo
+su quello che dici bro
+però concretamente
+noi
+dobbiamo mettere
+soldi
+per token
+che testano
+questo bot
+ok
+King ho un'idea
+scusa
+ho un'idea
+buona idea
+c'è un po' distopica
+e se lo creiamo
+per venderlo
+per venderlo
+devi
+tutto
+cioè lo creiamo
+per venderlo
+a JP Morgan
+Goldman Sachs
+che lasciano a casa
+il trading floor
+e hanno il bot
+ho capito ma JP Morgan
+vorrà vedere
+che funziona
+sto coso
+si però funziona
+in demo
+staccano il cazzo
+cioè nel senso
+ma in demo
+tu devi
+bro
+in demo
+si
+devi spendere
+soldi in token
+ah fuck
+capito
+ok
+adesso
+per provarlo
+devi spendere
+i soldi in token
+ok è chiaro
+per questo
+ti sto dicendo
+che dobbiamo
+efficientarlo al massimo
+che poi
+noi siamo in grado
+di fare una cosa
+talmente tanto fatta bene
+che la puoi scalare
+ok
+quindi magari parti
+con un agente
+cioè il news research
+è un agente
+è una persona
+un agente
+tu lo fai abbastanza
+lo fai abbastanza
+scalabile
+a tal punto
+che sia una persona
+o che siano dieci
+che si confrontano
+e danno una
+putta una
+che poi la dà gli altri
+ecco non cambia un cazzo
+però tu almeno
+l'hai testato
+su una persona
+e su una persona funziona
+quindi noi dobbiamo essere
+il più efficienti possibili
+ok
+cioè dobbiamo eliminare
+per quello ti dico
+che tutto quello
+che riusciamo a fare deterministico
+tipo il trader
+bro lo fai deterministico
+perché tu non devi
+alzare la cornetta
+tu hai davanti
+come sei messo davanti
+otto schermi
+con otto broker
+e tu in otto broker
+devi andare a cercarti
+su ogni schermo
+il singolo
+il singolo scambio
+ora se tu invece
+di avere otto schermi
+e un agente AI
+che si guarda
+tutti gli otto schermi
+li va a pescare
+e si va a vedere
+qual è la cosa
+tu semplicemente
+prendi dallo schermo
+scarichi la tabella
+deterministico
+scarichi la tabella
+estrai solo
+il coso che ti serve
+con tutti i dati
+che ti servono
+fai i tuoi calcoli
+matematici
+che ti servono
+quello lì
+non è un agent
+bro
+non c'è costo computazionale
+non c'è costo di token
+perché tanto
+l'individuazione
+del valore più basso
+è la cosa più semplice
+da fare
+ok
+che tu ne hai otto
+che tu ne hai cento
+riesci
+se riesci a farlo
+abbastanza efficiente
+lui non li guarda
+neanche tutti gli schermi
+va a chiedere
+direttamente
+al broker
+gli dice
+dammi questo prezzo qua
+li raccoglie tutti
+e poi una funzione
+che semplicemente
+trova il valore minimo
+bro
+la sai fare anche tu
+ok
+dobbiamo efficientare
+al massimo
+anche la parte
+di analisi tecnica
+se noi riusciamo
+a trasformare
+in deterministico
+cioè in codice python
+quello che serve
+per fare un'analisi tecnica
+e lasci
+perché la gente
+hai bro
+l'unica cosa
+che deve fare
+è la parte
+di ragionamento
+quella è l'unica cosa
+che deve fare
+che dovrebbe fare
+ok
+quindi tu
+immaginati
+uno strumento AI
+il cui unico scopo
+è invece di calcolare
+un ratio
+è di fare un ragionamento
+sui ratio
+quello è
+ma
+cioè perché è quello
+che fanno le persone
+bro
+cioè semplicemente
+guarda i numeri
+e ragionano sopra
+allo stesso modo
+questo
+quindi se tu hai
+dieci persone
+che ci devono ragionare
+quello costi
+se tu ne hai una persona
+con gli strumenti giusti
+quello è tutto
+un altro costo
+capito?
+quindi la struttura
+deve essere efficiente
+al massimo
+che poi esistano
+perché esistono
+i modelli cinesi
+che hanno
+a livello di performance
+brute
+che poi sono quelle
+che servono a noi
+perché a noi serve
+la parte
+del ragionamento
+brutto
+non che effettivamente
+funzioni
+sulla maggior parte
+delle casistiche possibili
+perché possono fargli
+le mille e mille domande
+tanto deve essere
+attestato su un compito specifico
+quella è forza bruta
+se ci sono dei modelli
+di forza bruta
+che costano
+e non sto scherzando
+costano un ventesimo
+di quegli americani
+è un gran vantaggio
+sì
+finché
+se non ti rubano i dati
+sì
+però
+però
+però
+i modelli cinesi
+la maggior parte
+sono
+aperti
+quindi
+gli americani
+cosa hanno fatto?
+si sono inventati
+un'azienda
+che di fatto
+compra il gpu
+cioè compra
+l'hardware
+scarica i modelli cinesi
+li esegna il locale
+e poi te li vende
+quindi a quel punto
+tu non stai usando
+i modelli cinesi
+in america
+con delle
+registrazioni
+chiaramente molto diverse
+follea
+potenzialmente
+se sei abbastanza bravo
+e hai abbastanza sbatti
+te lo puoi fare tu da solo
+vai su google cloud
+google cloud
+ti dà
+la gpu a consumo
+te le fa pagare a consumo
+sviluppi il tuo
+il tuo provider
+fondamentalmente
+che esistono
+cloud
+charge gpt
+chemi
+deep seek
+ti fai il tuo
+ok
+su google cloud
+che ti fa pagare
+l'energia
+praticamente
+computazionale
+scarichi i modelli
+e li utilizzi
+ma perché king invece
+sono pazzo
+e stupido
+cioè nella mia immaginazione
+comprare
+fisicamente
+le cose per farlo
+cioè comprare le cose
+che fanno
+troppi soldi
+e vento le cose
+non si può fare
+troppi soldi
+no troppi soldi bro
+cioè servono
+realisticamente
+servirebbe
+qualche decina
+di migliaio di euro
+ce l'abbiamo
+ma ce l'abbiamo cosa bro
+non ne va la pena
+perché sei super inefficiente
+fidati
+super inefficiente
+e non scalabile
+perché se vuoi scalare
+devi comprarne un'altra
+allora a quel punto
+dagli solamente
+cioè
+pagagli solamente
+quello che ti serve
+in quel momento
+perché poi magari
+tu ce li hai
+che lavorano
+una marea
+per 5 minuti
+e poi per
+se noi abbiamo
+un time frame
+di un'ora
+per un'ora
+non lavorano
+quella è in efficienza bro
+ma c'è di bestia
+non ne va la pena
+non ne va la pena
+non lo fa nessuno
+non lo fa nessuno
+realisticamente
+non lo fa nessuno
+neanche cloud bro
+cloud ha i data center
+e compra l'energia
+da amazon
+cioè amazon
+da i data center
+cloud non si li compra
+non si compra
+le cose che girano
+nessuno
+neanche chat bro
+si compra le cose che girano
+ok
+sono 4 persone
+che ne comprano
+talmente tante
+che ne hanno
+talmente tante
+che le possono dare
+a talmente tante persone
+che loro efficientano
+i costi
+in una maniera
+esorbitante
+quindi anche se ti applicano
+una leggera fee
+comunque
+con loro pagheresti
+di meno
+che comprandote
+oltre al fatto
+che devi gestirle bro
+perché se questa cosa
+si rompe
+tu sei fottuto
+se invece loro si rompe
+è responsabilità loro
+cioè i famosi
+data center
+stiamo parlando
+si
+si
+non ha senso
+farsi data center
+in casa
+non ha senso
+che dici
+riempiamo la mia cantina
+di ventole
+che girano
+no bro
+quella è un'altra azienda
+perché talmente
+sono aggeggi
+talmente tanto complessi
+ok
+se si spaccano bro
+sei fottuto
+perché tu non hai
+le competenze
+per aggiustarli
+cioè
+serve un altro lavoro
+ok
+ok
+ne va la pena
+vabbè
+comunque
+almeno abbiamo
+una direzione
+stavolta
+la direzione più concreta
+io adesso volevo
+ma sai che
+un'altra cosa
+che volevo fare
+per esempio
+è fare brainstorming
+con le AI
+quando ci metti
+a fare brainstorming
+con le AI
+quando hai una domanda
+lui ti dà
+ti dà una domanda
+tu la copi
+e la pasti
+dentro il row
+e te la
+te la wikizza
+un secondo ci vuole
+un secondo bro
+tu ti fai una conversazione
+esporti la conversazione
+gliela carichi
+lui prende le informazioni
+e te le metti visto
+te le metti visto
+quindi io volevo fare
+tanto questo lavoro qua
+sì
+tanto questo lavoro
+di collaborazione
+effettivamente
+con le AI
+nella costruzione
+con questa cosa
+anche a livello
+di progettazione
+perché oggettivamente
+possiamo avere
+tutte le migliori
+del mondo
+però
+lui sicuramente
+c'è le AI
+sicuramente ti dà una mano
+a valutarle
+a renderle
+un po' concrete
+quindi
+vabbè
+io mo me ne vado
+in palestra
+vai vai in palestra
+mi schieresco le idee
+poi torno
+studio un po'
+e penso a tutto quello
+che ci siamo detti
+eh anche io adesso
+lavoro un po'
+adesso oggi provo
+oggi provo
+oggi comincio
+il
+lo strumento
+il modulo
+del mio lavoro
+che analizza i documenti
+poi sì
+cioè sicuramente
+adesso devo ingestare
+la cosa
+e poi ha una certa
+che ci dovrà essere
+per forza un momento
+che mi pregno da solo
+per guardarmi tutta la wiki
+perché
+stiamo parlando del nulla bro
+perché se noi
+noi parliamo
+parliamo
+parliamo
+però poi magari
+non ci ricordiamo
+le cose che ci siamo
+detti prima
+magari
+cioè facciamo mille ragionamenti
+e ci dimentichiamo
+le cose
+infatti ha senso
+secondo me
+vabbè
+ti stavo per descriverseli
+ma non ha
+che cazzo
+me li scrivo
+tanto ma c'è la wiki
+mi dico
+riassummi
+me li riassume
+sì ma non solo
+te li riassume
+te li salva
+ti salva la risposta
+stavo dicendo
+me li segno
+ma che cazzo
+mi significa
+non ha senso
+vabbè
+club energy dai
+oh fammi sapere
+quando ti vuoi risentire
+io
+da qui
+alla prossima volta
+che ci sentiamo
+avrò già qualcosa
+nel senso
+mi metto a analizzare
+poi decido da cosa partire
+io non lo so
+perché ti appunto
+ti dico
+devo fare questo
+grande lavoro
+di studio
+perché
+secondo me
+è fondamentale
+poi qualcuno
+che mantiene
+cioè tu portami le idee
+però io poi devo
+devo tenerle in ordine
+capito
+cioè secondo me
+è fondamentale
+il fatto di avere
+più approcci disponibili
+ben strutturati
+capire
+io vengo da te
+tu mi vieni da me
+con le informazioni
+e ti dico
+guarda che
+però dobbiamo prendere
+prima questa decisione
+poi dobbiamo prendere
+questa
+poi collettiamo le altre
+sì sì
+ok
+va bene
+vabbè King
+ci sentiamo
+ciao

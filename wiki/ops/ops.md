@@ -27,7 +27,7 @@ Rendere visibili stato corrente, priorita, workstream attivi e prossimi passi.
 - [[ops/dashboard]] — vista operativa principale
 - [[ops/current-state]] — stato attuale
 - [[ops/backlog]] — priorita e backlog
-- [[ops/kanban-project-status]] — board kanban dello stato del progetto
+- [[kanban-project-status]] — board kanban dello stato del progetto
 
 ## Stato iniziale
 

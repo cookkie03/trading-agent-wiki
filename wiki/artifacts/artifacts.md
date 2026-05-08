@@ -24,4 +24,4 @@ Primo artifact operativo registrato in area `ops`.
 ## Pagine chiave
 
 - [[artifacts/artifact-workbench]] — ponte tra note e artifact visuali
-- [[ops/kanban-project-status]] — board kanban sullo stato attuale del progetto
+- [[kanban-project-status]] — board kanban sullo stato attuale del progetto

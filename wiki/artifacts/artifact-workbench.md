@@ -33,5 +33,5 @@ Pagina ponte tra wiki markdown e artifact visuali.
 
 ## Prossimo artifact consigliato
 
-- [[ops/kanban-project-status]] — board operativa sullo stato attuale
+- [[kanban-project-status]] — board operativa sullo stato attuale
 - un canvas collegato a [[build/system-map]]

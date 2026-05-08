@@ -46,7 +46,7 @@ Pagina operativa principale del vault.
 
 - [[ops/current-state]] — stato reale del progetto
 - [[ops/backlog]] — backlog operativo e priorità
-- [[ops/kanban-project-status]] — board kanban sullo stato attuale
+- [[kanban-project-status]] — board kanban sullo stato attuale
 - [[decisions/decision-log]] — registro decisioni
 - [[questions/open-questions]] — domande aperte
 - [[build/system-map]] — mappa software iniziale
