@@ -3,26 +3,31 @@
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
 ## Sessione Corrente
-- **Data**: 2026-05-06
-- **Agent**: Antigravity
-- **Operazioni**: Correzione di file allucinati. Ingest reale del transcript `2026-05-06 13-29-25.txt` focalizzato su Analisi Tecnica, workflow per indicatori e uso di Obsidian come wiki.
+- **Data**: 2026-05-10
+- **Agent**: Claude Sonnet 4.6
+- **Operazioni**: Integrazione di due trascrizioni ad alta fedeltà della videochiamata 2026-04-30. Le nuove trascrizioni hanno aggiunto dettagli significativi rispetto alla versione precedente (generata da audio con tool meno precisi).
 
 ## Pagine toccate
-- [[sources/videochiamata-luca-salvatore-2026-05-06]]
-- [[raw/archived/articles/Private & Shared/Trading Agent 3192e441b0e580d5921bf33f9b559735]]
-- [[_meta/log]]
-- [[_meta/hot-cache]]
+- [[sources/videochiamata-luca-salvatore-2026-04-30]] — riscritta con tutti i dettagli dalle nuove trascrizioni
+- [[concepts/modular-trading-agent-architecture]] — aggiornata con: Prompt Builder, needle-in-haystack, Factor Investigation Agent, Prediction Module DL, TA risk, Sentiment degli Analisti, Volume Spike module, Binance, AlphaArena/FinAgent specifici
+- [[build/system-map]] — aggiornata con Prompt Builder, Factor Investigation Agent, Prompt Store, Security Module
+- [[decisions/decision-log]] — aggiunte 5 decisioni chiuse (from scratch, crypto/Binance, limit order SL/TP, design-first, augmentation→autonomy)
+- [[questions/open-questions]] — arricchite con nuove domande (frequenza trade, TA inclusion, sentiment degli analisti, quantificazione news, continuous learning)
+- [[ops/backlog]] — aggiornato: completati i task già fatti, aggiunti: analisi FinAgent, AlphaArena, NeuroEspresso, definizione artifact, I/O per modulo
 
 ## Pending ingest
-- Nessuno. I transcript e l'audio sono stati archiviati in `raw/archived/videochiamata-2026-05-06`.
+- Paper FinAgent (Cornell, 38 pagine) — salvato nella conversazione, da ingestare formalmente come source
+- Le nuove trascrizioni in `raw/audio/` possono essere archiviate in `raw/archived/videochiamata-2026-04-30/`
 
-## Next steps
-- [ ] Implementare le prime funzioni Python per l'Analisi Tecnica (es. Medie Mobili, Fibonacci) come stabilito durante l'ultima videochiamata.
-- [ ] Iniziare la raccolta degli indicatori validati da Luca e ingest nel knowledge base tramite Daily Notes o file raw.
-- [ ] Scegliere mercato iniziale (Crypto vs Equity) per lo scratch build.
+## Stato attuale del progetto
+- Fase: **Design** — nessun codice ancora, raccolta conoscenza e progettazione
+- Exchange deciso: **Binance** (crypto)
+- Architettura decisa: **from scratch**, multi-agente, modulare
+- Trade mechanism: **limit order + SL + TP + leva**
+- Prossimo passo urgente: analisi dei tre progetti di riferimento (FinAgent, AlphaArena, NeuroEspresso)
 
 ## Note sessione
-- La videochiamata ha chiarito la roadmap e il modo di operare sull'analisi tecnica.
-- Definita l'architettura Multi-Agente con moduli specializzati (News, TA, Risk, RL, Fine-tuning).
-- Si è deciso di procedere "From Scratch" per evitare la complessità tecnica del debattimento di codice altrui.
-- L'analisi tecnica non verrà eseguita tramite "visione" del grafico, ma tramite indicatori quantificati in Python che genereranno i segnali.
+- Le trascrizioni ad alta fedeltà hanno rivelato molto più dettaglio di quanto catturato nella prima versione del source 04-30.
+- Il Prompt Builder è un componente architetturale esplicito non presente nelle versioni precedenti.
+- L'idea "Sentiment degli Analisti" (Salvatore/King) è una strategia alternativa al factor investing — merita uno studio dedicato.
+- Il rischio "TA corrompe Prediction Module" è una tensione progettuale aperta importante.

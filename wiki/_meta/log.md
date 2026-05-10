@@ -53,3 +53,14 @@
 - **Change**: Rimossi output AI allucinati da `raw/archived/articles/Private & Shared/Trading Agent 3192e441b0e580d5921bf33f9b559735.md` e riscritta la pagina `[[sources/videochiamata-luca-salvatore-2026-05-06]]` basata sul vero transcript `raw/transcripts/2026-05-06 13-29-25.txt`.
 - **Pages updated**: [[sources/videochiamata-luca-salvatore-2026-05-06]], [[raw/archived/articles/Private & Shared/Trading Agent 3192e441b0e580d5921bf33f9b559735]]
 - **Notes**: Il file della fonte originariamente conteneva allucinazioni dell'agente che sono state eliminate.
+
+## [2026-05-10] artifact | kanban | Luca Board — board personale
+- **File**: [[luca-board]]
+- **Based on**: [[ops/backlog]], [[decisions/decision-log]], [[questions/open-questions]], [[sources/videochiamata-luca-salvatore-2026-04-30]], [[sources/videochiamata-luca-salvatore-2026-05-06]]
+
+## [2026-05-10] update | Integrazione trascrizioni alta fedeltà — videochiamata 2026-04-30
+- **Type**: re-ingest / enrichment
+- **Sources**: `raw/audio/così ce l'abbiamo...txt`, `raw/audio/Invece Obsidian...txt` (trascrizioni ad alta fedeltà della videochiamata 2026-04-30)
+- **Pages updated**: [[sources/videochiamata-luca-salvatore-2026-04-30]], [[concepts/modular-trading-agent-architecture]], [[build/system-map]], [[decisions/decision-log]], [[questions/open-questions]], [[ops/backlog]]
+- **Contradictions**: nessuna — le nuove trascrizioni hanno aggiunto dettaglio, non contraddetto contenuto esistente
+- **Notes**: Le trascrizioni ad alta fedeltà hanno rivelato dettagli non presenti nella versione precedente: Prompt Builder come componente architetturale esplicito, meccanismo di esecuzione (limit order + SL + TP + leva), Binance come exchange scelto, problema needle-in-haystack, Factor Investigation Agent come agente separato, metodologia di quantificazione dei fattori (media empirica su serie storiche), strategia Sentiment degli Analisti (idea di King), Volume Spike module, specifiche su FinAgent (Cornell, ~50k stelle, Claude 4° contributore) e AlphaArena (confronto 5 LLM su Bitcoin). Aggiunte 5 decisioni chiuse nel decision log.

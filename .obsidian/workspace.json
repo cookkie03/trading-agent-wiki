@@ -11,14 +11,22 @@
             "id": "c5f4bf2e26f2f4cb",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "wiki/sources/notion-export-investimento-trading.md",
-                "mode": "source",
-                "source": false
+                "file": "wiki/artifacts/luca-board.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ]
+                }
               },
-              "icon": "lucide-file",
-              "title": "notion-export-investimento-trading"
+              "icon": "lucide-trello",
+              "title": "luca-board"
             }
           }
         ]
@@ -197,39 +205,42 @@
   },
   "active": "c5f4bf2e26f2f4cb",
   "lastOpenFiles": [
+    "CLAUDE.md",
+    "AGENTS copy.md",
+    "wiki/overview.md",
+    "wiki/artifacts/luca-board.md",
+    "Untitled Kanban.md",
+    "wiki/concepts/modular-trading-agent-architecture.md",
+    "wiki/concepts/concepts.md",
+    "wiki/artifacts/trading-floor.canvas",
+    "wiki/ops/dashboard.md",
+    "wiki/ops/current-state.md",
+    "wiki/artifacts/kanban-project-status.md",
+    "raw/audio/Invece Obsidian. Cioè, quando creo un nuovo volt, creo un nuovo cervello, c'è la nuova mappina. Quan.txt",
+    "raw/audio/così ce l'abbiamo va bene, allora King dovresti vedere il mio coso. Okay, dovresti vedere il mio Obs.txt",
+    "trading-agent",
+    "wiki/artifacts/artifacts.md",
+    "wiki/artifacts/artifact-workbench.md",
+    "wiki/sources/notion-export-investimento-trading.md",
     "wiki/sources/sources.md",
     "wiki/sources/conversazione-luca-salvatore-2026-04-28-30.md",
     "wiki/syntheses/syntheses.md",
     "wiki/questions/questions.md",
     "wiki/questions/open-questions.md",
-    "wiki/ops/dashboard.md",
-    "wiki/ops/current-state.md",
     "wiki/ops/backlog.md",
     "wiki/entities/entities.md",
     "wiki/decisions/decisions.md",
     "wiki/decisions/decision-log.md",
     "wiki/concepts/trader-workflow-automation.md",
-    "wiki/concepts/modular-trading-agent-architecture.md",
     "wiki/build/system-map.md",
     "wiki/build/build.md",
-    "wiki/artifacts/trading-floor.canvas",
-    "wiki/artifacts/kanban-project-status.md",
-    "wiki/artifacts/artifacts.md",
-    "wiki/artifacts/artifact-workbench.md",
     "raw/papers/2412.20138v7.pdf",
     "raw/archived/articles/dashboard starting finance streamlit.md",
-    "raw/archived/videochiamata-2026-04-30/videochimata 30 apri.m4a.transcription.md",
-    "wiki/sources/videochiamata-luca-salvatore-2026-05-06.md",
     "raw/archived/videochiamata-2026-04-30/videochimata 30 apri.m4a",
     "raw/archived/videochiamata-2026-04-30/2026-04-30 11-15-40.m4a",
-    "wiki/ops/ops.md",
-    "Senza nome 1.md",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist)/Untitled a1d60f974cb2446a8aeeb7fb46ec1d9a.md",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist)/26 12 2021 e0f4d7fa831c4fec827bccbb5502c07a.md",
     "raw/archived/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist) d07ff53b4b534f31b42906851597ee7a_all.csv",
     "raw/archived/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist) d07ff53b4b534f31b42906851597ee7a.csv",
     "raw/archived/articles/Private & Shared 2/Investimento e Trading/Trading Journal/Esempio TJ Base (a checklist)",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Rendita Passiva CeFi, DeFi/Staking f4e589b35dd34cf4870a139062775c9d.md",
     "raw/archived/articles/Private & Shared 2/Investimento e Trading/Position Sizing/Immagine_2022-02-05_143504.png",
     "raw/archived/articles/Private & Shared 2/Investimento e Trading/Position Sizing/Immagine_2022-02-05_143149.png",
     "raw/archived/articles/Private & Shared 2/Investimento e Trading/Operatività/indi8.jpg",
@@ -241,9 +252,6 @@
     "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/pat5.jpg",
     "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/pat4.jpg",
     "raw/archived/articles/Private & Shared 2/Investimento e Trading/Trading Journal",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Rendita Passiva CeFi, DeFi",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Position Sizing",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Operatività",
     "raw/notes/Trading Floor.canvas",
     "Senza nome.canvas"
   ]

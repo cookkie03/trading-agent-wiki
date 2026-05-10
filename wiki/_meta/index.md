@@ -28,12 +28,13 @@
 - [[decisions/decisions]] — hub delle decisioni di progetto
 - [[decisions/decision-log]] — registro decisioni
 
-## Ops (5)
+## Ops (6)
 - [[ops/ops]] — hub operativo del progetto
 - [[ops/dashboard]] — home operativa
 - [[ops/current-state]] — stato corrente
 - [[ops/backlog]] — backlog operativo
 - [[kanban-project-status]] — board kanban dello stato attuale
+- [[luca-board]] — board personale di Luca (idee, task, decisioni aperte)
 
 ## Build (2)
 - [[build/build]] — hub software-oriented del progetto
