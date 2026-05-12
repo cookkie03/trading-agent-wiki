@@ -13,8 +13,8 @@ updated: 2026-05-10
 confidence: high
 status: reviewed
 related:
-  - "[[sources/conversazione-luca-salvatore-2026-04-28-30]]"
-  - "[[concepts/modular-trading-agent-architecture]]"
+  - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
+  - "[[theory/modular-trading-agent-architecture]]"
   - "[[kanban-project-status]]"
   - "[[build/system-map]]"
 ---
@@ -184,7 +184,7 @@ Un limite noto degli LLM rilevante per l'architettura:
 - Progetto open source: ~50.000 stelle GitHub, ~10.000 fork.
 - Claude è il **4° contributore** per impatto.
 - Struttura: Research Team (bullish + bearish agents) → Analyst → Transaction Proposal → Risk Management Team → Manager (execution).
-- Paper: 38 pagine, salvato in `wiki/sources/` (da ingestare).
+- Paper: 38 pagine, salvato in `wiki/references/` (da ingestare).
 - Usabile: basta clonare e lanciare `trading-agents` da terminale.
 
 ### AlphaArena

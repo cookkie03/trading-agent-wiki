@@ -7,9 +7,7 @@ tags:
 created: 2026-04-30
 updated: 2026-04-30
 status: active
-related:
-  - "[[questions/questions]]"
-  - "[[ops/dashboard]]"
+related:  - "[[ops/dashboard]]"
 confidence: high
 area: research
 ---

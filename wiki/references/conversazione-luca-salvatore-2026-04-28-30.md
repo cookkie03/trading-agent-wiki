@@ -13,8 +13,8 @@ status: reviewed
 related:
   - "[[build/system-map]]"
   - "[[ops/current-state]]"
-  - "[[concepts/modular-trading-agent-architecture]]"
-  - "[[concepts/trader-workflow-automation]]"
+  - "[[theory/modular-trading-agent-architecture]]"
+  - "[[theory/trader-workflow-automation]]"
   - "[[questions/open-questions]]"
 ---
 

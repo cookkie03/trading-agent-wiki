@@ -37,22 +37,14 @@ Primo source progettuale ingestito. La struttura base e pronta e comincia a cont
 
 ## Aree principali
 
-- [[ops/ops|ops]] — stato vivo, priorita e prossimi passi
-- [[build/build|build]] — conoscenza strettamente software-oriented
-- [[sources/sources|sources]] — fonti ingestite
-- [[concepts/concepts|concepts]] — idee, modelli e terminologia
-- [[entities/entities|entities]] — soggetti e strumenti rilevanti
-- [[syntheses/syntheses|syntheses]] — analisi e sintesi ad alto valore
-- [[decisions/decisions|decisions]] — decisioni prese e loro motivazioni
-- [[questions/questions|questions]] — dubbi aperti e direzioni di ricerca
-- [[artifacts/artifacts|artifacts]] — schemi, mappe e rappresentazioni visive
+L\'indice completo delle aree e dei loro scopi si trova nel **[[_meta/index|Wiki Index]]**.
 
 ## Uso previsto
 
 Il flusso di base e:
 
 1. mettere materiale nuovo in `raw/`
-2. ingestire il materiale importante in `wiki/sources/`
+2. ingestire il materiale importante in `wiki/references/`
 3. propagare i risultati in conoscenza, decisioni, stato operativo e documentazione software
 
 ## Prossimo passo consigliato

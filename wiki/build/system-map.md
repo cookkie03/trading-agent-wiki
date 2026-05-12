@@ -7,16 +7,12 @@ tags:
 created: 2026-04-30
 updated: 2026-05-10
 status: draft
-related:
-  - "[[build/build]]"
-  - "[[concepts/modular-trading-agent-architecture]]"
-  - "[[artifacts/artifacts]]"
-confidence: high
+related:  - "[[theory/modular-trading-agent-architecture]]"confidence: high
 priority: high
 area: software
 sources:
-  - "[[sources/conversazione-luca-salvatore-2026-04-28-30]]"
-  - "[[sources/videochiamata-luca-salvatore-2026-04-30]]"
+  - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
+  - "[[references/videochiamata-luca-salvatore-2026-04-30]]"
 ---
 
 # System Map
@@ -48,10 +44,17 @@ Mappa dell'architettura software del `trading-agent`. Il sistema è progettato p
 - Disaccoppia la raccolta dati dall'invocazione dell'LLM.
 
 ### 4. Execution & Control
-- **Trader Agent (LLM)**: Legge il prompt più recente dal Prompt Store. Produce la proposta di trade con tre parametri obbligatori: prezzo limite (entry), Stop Loss, Take Profit. Tutti i trade in leva.
-- **Security Module**: Guard deterministici non-LLM. Valida la proposta contro regole fisse (esposizione max, leva max, strumenti consentiti).
-- **Risk Manager**: Valuta metriche di portafoglio, gestisce il Trailing Stop Loss (sposta SL a break-even quando il prezzo si muove favorevolmente).
-- **Exchange Module (Binance)**: Esegue gli ordini. Binance scelto per: liquidità, API complete, order book scaricabile, prezzi storici. Sostituibile con altro exchange senza riscrivere il sistema.
+- **Trader Agent (LLM)**: Legge il prompt più recente dal Prompt Store. Produce la proposta di trade o di ribilanciamento.
+- **Security Module**: Guard deterministici non-LLM. Valida ogni proposta contro lo "statuto del fondo" (esposizione max 5%, vendita a +100%).
+- **Risk Manager / Portfolio Manager**: Utilizza la libreria **Portfolio Optimizer** per calcolare i pesi ottimali del paniere. Gestisce il Trailing Stop Loss e il ribilanciamento periodico.
+- **Exchange Module (Binance)**: Esegue gli ordini.
+
+## Protocollo di Comunicazione Strutturata
+
+Per mantenere l'integrità del dato ed evitare degradazione nei prompt, il sistema adotta un flusso basato su report:
+1. **Modules → DB**: Ogni modulo produce un report strutturato (JSON) nel DB.
+2. **DB → Prompt Builder**: Il builder estrae solo i campi rilevanti dei report.
+3. **Prompt → Agent**: L'agente riceve un prompt denso di informazioni strutturate, riducendo il rumore discorsivo.
 
 ### 5. UI & Monitoring Layer
 - **Streamlit Dashboard**: Visualizzazione in sola lettura. Metriche: drawdown, rendimento, esposizione. Ispirata a SFC Investment Fund (link in `raw/articles/`). Accesso pubblico senza autenticazione (no tasti di azione).

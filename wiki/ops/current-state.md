@@ -10,12 +10,12 @@ status: draft
 related:
   - "[[ops/dashboard]]"
   - "[[overview]]"
-  - "[[sources/conversazione-luca-salvatore-2026-04-28-30]]"
+  - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
 confidence: medium
 priority: high
 area: ops
 sources:
-  - "[[sources/conversazione-luca-salvatore-2026-04-28-30]]"
+  - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
 ---
 
 # Current State

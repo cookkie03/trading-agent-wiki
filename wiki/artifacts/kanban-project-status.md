@@ -21,9 +21,9 @@ priority: high
 area: ops
 kanban-plugin: board
 sources:
-  - "[[sources/conversazione-luca-salvatore-2026-04-28-30]]"
-  - "[[sources/notion-export-investimento-trading]]"
-  - "[[sources/trading-floor-canvas]]"
+  - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
+  - "[[references/notion-export-investimento-trading]]"
+  - "[[references/trading-floor-canvas]]"
 
 ---
 

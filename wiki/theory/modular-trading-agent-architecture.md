@@ -9,13 +9,13 @@ updated: 2026-05-10
 status: reviewed
 related:
   - "[[build/system-map]]"
-  - "[[sources/conversazione-luca-salvatore-2026-04-28-30]]"
-  - "[[sources/videochiamata-luca-salvatore-2026-04-30]]"
+  - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
+  - "[[references/videochiamata-luca-salvatore-2026-04-30]]"
 confidence: high
 area: software
 sources:
-  - "[[sources/conversazione-luca-salvatore-2026-04-28-30]]"
-  - "[[sources/videochiamata-luca-salvatore-2026-04-30]]"
+  - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
+  - "[[references/videochiamata-luca-salvatore-2026-04-30]]"
 ---
 
 # Modular Trading Agent Architecture
@@ -136,6 +136,56 @@ Gli LLM leggono bene inizio e fine di un prompt lungo, ma perdono le informazion
 ## Visualizzazione e Controllo
 - **Dashboard Streamlit**: metriche di portafoglio in sola lettura. Ispirata a SFC Investment Fund (Starting Finance / ex Azimut). Link di riferimento salvato in `raw/articles/`.
 - **Telegram Bot/Canale**: notifiche per ogni trade con tutti i parametri. Link pubblico, sola lettura (no autenticazione).
+
+## Principio della Comunicazione Strutturata
+
+Per evitare l'"effetto telefono" tipico dei sistemi multi-agente che usano solo linguaggio naturale (dove le informazioni si degradano o si perdono nel mezzo di prompt lunghi), il sistema adotta un **Protocollo di Comunicazione Strutturato** ispirato a *TradingAgents*:
+- Gli agenti comunicano principalmente tramite **report e documenti strutturati** (JSON, tabelle, diagrammi).
+- Ogni agente estrae solo le informazioni necessarie dal DB (Global State), le processa e restituisce un report sintetico.
+- Il linguaggio naturale è riservato esclusivamente ai momenti di **dibattito e negoziazione** (es. tra Bullish e Bearish Researcher), dove il ragionamento qualitativo aggiunge valore.
+
+## Ruoli e Specializzazione (Modello TradingAgents)
+
+Ispirandosi alle società di trading reali, il sistema organizza gli agenti in team specializzati:
+
+### 1. Analyst Team (Data to Insights)
+- **Fundamental Analyst**: Focus su bilanci, ratios e insider transactions.
+- **Sentiment Analyst**: Analisi di social media e public perception.
+- **News Analyst**: Analisi macroeconomica e news aziendali.
+- **Technical Analyst**: Calcolo deterministico di indicatori (MACD, RSI, supporti).
+
+### 2. Researcher Team (Dialectical Reasoning)
+- Adotta il meccanismo del **Debate-driven reasoning**.
+- **Bullish Researcher** vs **Bearish Researcher**: si confrontano per far emergere bias e rischi nascosti.
+- Un facilitatore sintetizza il dibattito in una prospettiva prevalente.
+
+### 3. Trader Agents (Decision Making)
+- Sintetizzano i report analitici e l'esito del dibattito.
+- Determinano entry point, size, Stop Loss e Take Profit.
+
+### 4. Risk Management Team (Control & Compliance)
+- Valuta la proposta di trade contro la volatilità e la liquidità di mercato.
+- Opera da diverse prospettive (risk-seeking, neutral, conservative) per bilanciare il piano di trading.
+
+### 5. Fund Manager (Approval & Oversight)
+- Gestisce l'approvazione finale ed assicura che il trade rispetti lo "statuto del fondo".
+
+## Strategia: Trading Singolo vs Portfolio Bilanciato
+
+Il sistema deve supportare due modalità operative, con una tendenza verso la seconda per la gestione professionale del capitale:
+
+1. **Trading Singolo**: Ogni operazione è isolata, con entry/SL/TP chiari. Più adatto all'intraday.
+2. **Portfolio Bilanciato**: Gestione di un paniere di asset con **ribilanciamento periodico**.
+   - Usa tecniche di **ottimizzazione quantitativa** (es. Mean-Risk, Risk Budgeting via *Portfolio Optimizer*).
+   - Integra le opinioni degli LLM (Views) tramite modelli matematici come Black-Litterman o Entropy Pooling.
+   - Obiettivo: diversificazione e crescita costante del capitale nel lungo periodo.
+
+## Regole del Portafoglio (Statuto del Fondo)
+
+Per eliminare i bias cognitivi, l'esecuzione segue regole deterministiche fisse:
+- **Diversificazione**: Nessuna asset class >5% del portafoglio.
+- **Profit Taking**: Vendita automatica al raggiungimento del +100% di profitto.
+- **Cash-out Strategy**: Estrazione periodica di una percentuale dei profitti (es. 10%).
 
 ## Riferimenti e Ispirazioni
 - **FinAgent (Cornell University)**: ~50k stelle GitHub, ~10k fork, Claude come 4° contributore. Struttura: Research Team (bullish+bearish) → Analyst → Transaction Proposal → Risk Management → Manager.

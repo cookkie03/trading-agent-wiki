@@ -8,9 +8,7 @@ tags:
 created: 2026-04-30
 updated: 2026-04-30
 status: active
-related:
-  - "[[ops/ops]]"
-  - "[[overview]]"
+related:  - "[[overview]]"
 confidence: high
 priority: high
 area: ops

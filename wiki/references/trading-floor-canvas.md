@@ -10,8 +10,8 @@ updated: 2026-05-06
 confidence: high
 status: active
 related:
-  - "[[concepts/modular-trading-agent-architecture]]"
-  - "[[concepts/multi-agent-trading-floor]]"
+  - "[[theory/modular-trading-agent-architecture]]"
+  - "[[theory/multi-agent-trading-floor]]"
 ---
 
 # Trading Floor Canvas

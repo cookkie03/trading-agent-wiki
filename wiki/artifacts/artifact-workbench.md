@@ -7,9 +7,7 @@ tags:
 created: 2026-04-30
 updated: 2026-04-30
 status: active
-related:
-  - "[[artifacts/artifacts]]"
-  - "[[build/system-map]]"
+related:  - "[[build/system-map]]"
 confidence: high
 area: strategy
 ---

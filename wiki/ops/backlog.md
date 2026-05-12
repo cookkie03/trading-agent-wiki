@@ -14,8 +14,8 @@ confidence: high
 priority: high
 area: ops
 sources:
-  - "[[sources/conversazione-luca-salvatore-2026-04-28-30]]"
-  - "[[sources/videochiamata-luca-salvatore-2026-04-30]]"
+  - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
+  - "[[references/videochiamata-luca-salvatore-2026-04-30]]"
 ---
 
 # Backlog

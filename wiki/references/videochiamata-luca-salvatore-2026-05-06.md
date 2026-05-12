@@ -13,9 +13,9 @@ updated: 2026-05-10
 confidence: high
 status: reviewed
 related:
-  - "[[sources/videochiamata-luca-salvatore-2026-04-30]]"
+  - "[[references/videochiamata-luca-salvatore-2026-04-30]]"
   - "[[build/system-map]]"
-  - "[[concepts/modular-trading-agent-architecture]]"
+  - "[[theory/modular-trading-agent-architecture]]"
   - "[[decisions/decision-log]]"
 ---
 

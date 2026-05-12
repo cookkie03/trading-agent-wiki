@@ -11,9 +11,9 @@ updated: 2026-05-06
 confidence: high
 status: active
 related:
-  - "[[concepts/trading-fundamentals]]"
-  - "[[concepts/technical-analysis]]"
-  - "[[concepts/portfolio-management]]"
+  - "[[theory/trading-fundamentals]]"
+  - "[[theory/technical-analysis]]"
+  - "[[theory/portfolio-management]]"
 ---
 
 # Notion Export - Investimento e Trading

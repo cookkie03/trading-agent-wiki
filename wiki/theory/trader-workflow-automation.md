@@ -9,11 +9,11 @@ updated: 2026-04-30
 status: reviewed
 related:
   - "[[ops/current-state]]"
-  - "[[sources/conversazione-luca-salvatore-2026-04-28-30]]"
+  - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
 confidence: medium
 area: strategy
 sources:
-  - "[[sources/conversazione-luca-salvatore-2026-04-28-30]]"
+  - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
 ---
 
 # Trader Workflow Automation

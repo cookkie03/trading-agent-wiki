@@ -38,9 +38,9 @@ vault-root/
     │   ├── taxonomy.md
     │   └── hot-cache.md
     ├── overview.md
-    ├── sources/
-    ├── concepts/
-    ├── entities/
+    ├── references/
+    ├── theory/
+    ├── agents/
     ├── syntheses/
     ├── questions/
     ├── decisions/

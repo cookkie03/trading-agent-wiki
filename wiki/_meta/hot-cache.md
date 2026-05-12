@@ -3,14 +3,14 @@
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
 ## Sessione Corrente
-- **Data**: 2026-05-10
-- **Agent**: Claude Sonnet 4.6
-- **Operazioni**: (1) Integrazione trascrizioni alta fedeltà videochiamata 04-30. (2) Creazione board personali Luca e Salvatore con focus separati. (3) Ingest trascrizione completa videochiamata 05-06 — molti contenuti nuovi rispetto alla versione precedente.
+- **Data**: 2026-05-12
+- **Agent**: Gemini CLI
+- **Operazioni**: (1) Ingest completo paper "TradingAgents", "Alpha Arena" e documentazione libreria "Portfolio Optimizer". (2) Ingest trascrizioni onboarding Wiki e appunti architettura manoscritti. (3) Aggiornamento teoria e system map con principi di comunicazione strutturata e ottimizzazione di portafoglio. (4) Creazione entità Agenti per i framework e librerie identificate.
 
 ## Pagine toccate
-- [[sources/videochiamata-luca-salvatore-2026-04-30]] — arricchita con trascrizioni alta fedeltà
-- [[sources/videochiamata-luca-salvatore-2026-05-06]] — riscritta con trascrizione completa (molto più lunga della versione precedente)
-- [[concepts/modular-trading-agent-architecture]] — aggiunto principio deterministico e correlazione cripto
+- [[references/videochiamata-luca-salvatore-2026-04-30]] — arricchita con trascrizioni alta fedeltà
+- [[references/videochiamata-luca-salvatore-2026-05-06]] — riscritta con trascrizione completa (molto più lunga della versione precedente)
+- [[theory/modular-trading-agent-architecture]] — aggiunto principio deterministico e correlazione cripto
 - [[decisions/decision-log]] — aggiunte decisioni aperte importanti (trading singolo vs portfolio, multi-asset)
 - [[questions/open-questions]] — arricchite con nuove domande critiche
 - [[artifacts/luca-board]] — aggiunto modulo analisi documenti in corso, decisioni tecniche
