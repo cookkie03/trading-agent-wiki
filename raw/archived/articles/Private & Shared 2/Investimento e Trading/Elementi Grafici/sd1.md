@@ -1,0 +1,7 @@
+ACCETTAZIONE LONG
+
+Dominance
+
+Dominance
+
+ACCETTAZIONE SHORT

@@ -34,7 +34,8 @@
 - [[ops/current-state]] — stato corrente
 - [[ops/backlog]] — backlog operativo
 - [[kanban-project-status]] — board kanban dello stato attuale
-- [[luca-board]] — board personale di Luca (idee, task, decisioni aperte)
+- [[luca-board]] — board personale di Luca (focus tecnico: AI, architettura, programmazione)
+- [[salvatore-board]] — board personale di Salvatore (focus economico: mercati, trading, meccanismi reali)
 
 ## Build (2)
 - [[build/build]] — hub software-oriented del progetto

@@ -40,7 +40,7 @@
         10. **Esito del trade:** come è andato effettivamente il trade? ha seguito la nostra analisi? è andato a stop? a che % è arrivato dal take profit prima di invertire e tornarmi contro? Queste, e molte altre, sono tutte domanda che è solito porsi il trader che vuol portare la sua strategia sempre ad uno step successivo, e che spesso lo rendono profittevole indipendentemente dalle variazioni nelle logiche di mercato
         11. **Note con spunti di miglioramento:** in questa sezione vanno inserite sia le indicazioni operative legate a determinati aspetti migliorabili, derivati da errori o da supposizioni che bisogna testare, ma è anche utile avere traccia delle proprie condizioni emotive legate al trade: avere una visione a posteriori delle condizioni emotive in cui si opera permette un grande salto qualitativo dal punto di vista delle gestione emotiva.
     
-    [Esempio TJ Base (a checklist)](Trading%20Journal/Esempio%20TJ%20Base%20(a%20checklist)%20d07ff53b4b534f31b42906851597ee7a.csv)
+    [Esempio TJ Base (a checklist)](Esempio%20TJ%20Base%20(a%20checklist)%20d07ff53b4b534f31b42906851597ee7a.csv)
     
 - Analisi del TJ
     

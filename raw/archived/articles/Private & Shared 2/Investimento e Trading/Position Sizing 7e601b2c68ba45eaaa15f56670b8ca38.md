@@ -39,7 +39,7 @@ esempio:
 - Prima Loss = sizing di nuovo R,oppure decremento -0.5R
 - **Esponenziale**: **+/-x%** ogni volta
 
-![Immagine 2022-02-05 143149.png](Position%20Sizing/Immagine_2022-02-05_143149.png)
+![Immagine 2022-02-05 143149.png](Immagine_2022-02-05_143149.png)
 
 **Cutting Losses:**
 
@@ -51,7 +51,7 @@ esempio:
     - W5 = 0.56R
 - Ad ogni Win faccio un **“passo indietro”**
 
-![Immagine 2022-02-05 143504.png](Position%20Sizing/Immagine_2022-02-05_143504.png)
+![Immagine 2022-02-05 143504.png](Immagine_2022-02-05_143504.png)
 
 **Risk Management (RM) Dinamico**
 

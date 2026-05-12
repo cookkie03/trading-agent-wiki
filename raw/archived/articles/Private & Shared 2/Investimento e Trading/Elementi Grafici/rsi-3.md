@@ -1,0 +1,9 @@
+BTCUSD 15m 1h 4h D W M
+
+Bitcoin / U.S. Dollar 1D BITSTAMP O48386.95 H48785.37 L47860.38 C48186.22 -203.74 (-0.42%)
+
+48162.68 21.14 48183.82
+
+RSI 14 close 38.22
+
+Nov Dec 2021 Feb Mar Apr May Jun

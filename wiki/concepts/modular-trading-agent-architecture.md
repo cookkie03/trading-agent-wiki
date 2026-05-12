@@ -100,6 +100,25 @@ Questo disaccoppia la raccolta dati (asincrona, può durare minuti) dall'invocaz
 - Binance: più liquido, API complete, order book scaricabile, prezzi storici completi.
 - Modulare: sostituibile con altro exchange (equity broker, DEX anonimo) senza riscrivere il sistema.
 
+## Principio Deterministico — Costo Token come Vincolo
+
+Vincolo architetturale critico: **anche i backtest e le demo costano token**. L'LLM deve fare esclusivamente ragionamento. Tutto il resto è Python deterministico a costo zero.
+
+- **Data fetching**: Python scarica i dati, l'LLM non li recupera.
+- **Calcoli**: ratio, medie, confronti tra prezzi → Python.
+- **Logica di esecuzione**: trovare il prezzo minimo, applicare regole del portafoglio → Python.
+- **Solo ragionamento**: interpretare i segnali, pesare i fattori, decidere il trade → LLM.
+
+Conseguenza: i moduli devono essere progettati come "pre-processing deterministico → un'unica chiamata LLM per il ragionamento finale".
+
+## Correlazione tra Cripto — Allocazione Dinamica nel Basket
+
+Le cripto sono altamente correlate. Il sistema deve gestirlo su due livelli:
+1. **Trend macro** (es. Bitcoin sale → tutto il basket sale): identificato dal modulo di mercato.
+2. **Differenziazione intra-basket** via news: news negativa specifica su Solana → non-investire o shortare Solana anche in trend macro positivo.
+
+Questo permette di aprire **più trade in parallelo** per sessione, allocando dinamicamente nel basket invece di tutto-o-niente.
+
 ## Problema LLM: Needle in a Haystack
 
 Gli LLM leggono bene inizio e fine di un prompt lungo, ma perdono le informazioni nel mezzo. Implicazione: ogni agente deve ricevere informazioni **pre-elaborate e sintetiche**. Il multi-agente risolve questo distribuendo il carico: ogni agente ha solo le info rilevanti al suo compito.

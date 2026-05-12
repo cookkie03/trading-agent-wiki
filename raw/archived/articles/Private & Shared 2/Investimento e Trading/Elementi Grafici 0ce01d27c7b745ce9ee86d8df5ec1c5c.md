@@ -24,7 +24,7 @@
     
     Un espansione del prezzo lenta indica un momentum in esaurimento e viceversa.
     
-    ![indi-680x309-1.jpeg](Elementi%20Grafici/indi-680x309-1.jpeg)
+    ![indi-680x309-1.jpeg](indi-680x309-1.jpeg)
     
 - **Bande di Bollinger**
     
@@ -42,7 +42,7 @@
     2. il numero di periodi della **media mobile più lenta**
     3. la differenza che intercorre tra la media più veloce e la più lenta
     
-    ![macd-3.jpg](Elementi%20Grafici/macd-3.jpg)
+    ![macd-3.jpg](macd-3.jpg)
     
     - La Linea blu, è la linea che rappresenta la differenza tra la media a 12 e la media a 26 periodi ed è chiamata **MACD LINE**, essa: indica il momentum e l’oscillazione dallo zero indicno l’intensità del momentum
         
@@ -69,7 +69,7 @@
         > se il prezzo crea due minimi crescenti e il MACD invece segna due minimi decrescenti questo sta ad indicare un indebolimento del momentum rialzista con potenziale inversione bearish
         > 
         
-        ![macd2.jpg](Elementi%20Grafici/macd2.jpg)
+        ![macd2.jpg](macd2.jpg)
         
 - Stocastico
     
@@ -96,11 +96,11 @@
         
         attenzione perché più il segnale e anticipatorio, più è alto il rischio di falsi segnali
         
-        ![rsi-3.jpg](Elementi%20Grafici/rsi-3.jpg)
+        ![rsi-3.jpg](rsi-3.jpg)
         
     - **Divergenze Prezzo/RSI:** Come per il MACD le divergenze tra prezzo e oscillatore sono piuttosto indicative, ma questi segnali devono servire solo come ennesima conferma, contestualizzandoli in un’analisi variegata di diversi fattori.
         
-        ![rsi1.jpg](Elementi%20Grafici/rsi1.jpg)
+        ![rsi1.jpg](rsi1.jpg)
         
     
 
@@ -108,7 +108,7 @@
 
 - **Doji**
     
-    ![pat10.jpg](Elementi%20Grafici/pat10.jpg)
+    ![pat10.jpg](pat10.jpg)
     
     Il prezzo di chiusura è uguale o molto simile a quello di chiusura.
     
@@ -120,7 +120,7 @@
     
 - **Marubozu**
     
-    ![pat11.jpg](Elementi%20Grafici/pat11.jpg)
+    ![pat11.jpg](pat11.jpg)
     
     **Le Marubozu** (bullish o bearish) sono candele simili alle long line (candele direzionali classiche), ma sono sprovviste delle upper e lower shadows avendo **la chiusura e l’apertura dei prezzi corrispondenti** ai valori estremi.
     
@@ -130,7 +130,7 @@
     
 - **Engulfing**
     
-    ![pat12.jpg](Elementi%20Grafici/pat12.jpg)
+    ![pat12.jpg](pat12.jpg)
     
     Può essere sia bullish che bearish. Nel caso di **bullish engulfing pattern** abbiamo, dopo un trend al ribasso, una prima candle di colore rosso ed una seconda di colore verde con ampiezza maggiore della precedente tale da contenere il primo real body interamente nel secondo e viceversa.
     
@@ -174,7 +174,7 @@
     
     Sono pattern che presentano due picchi posti approssimativamente allo stesso livello. Spesso fanno parte di una **fase finale, esasperata, di un trend**. 
     
-    ![pat1-680x262-1.jpeg](Elementi%20Grafici/pat1-680x262-1.jpeg)
+    ![pat1-680x262-1.jpeg](pat1-680x262-1.jpeg)
     
     Il rialzo successivo (B) fallisce nel ripristinare il trend iniziale, poichè si ferma nei dintorni del primo massimo, peraltro con bassi volumi. La reazione che si sviluppa, porta una seconda ricaduta, questa volta più decisa. 
     
@@ -186,7 +186,7 @@
     
     Iniziano con una **reazione contraria** al trend di provenienza, classificabile come una **pausa di consolidamento** dopo un prolungato trend.
     
-    ![pat4.jpg](Elementi%20Grafici/pat4.jpg)
+    ![pat4.jpg](pat4.jpg)
     
     I prezzi **falliscono** la creazione di un nuovo massimo e riprendono una direzione contraria al movimento principale delineando una sorta di **canale**, una specie di **rettangolo inclinato**. Questi pattern portano ad una **ripartenza** del trend iniziale.
     
@@ -195,7 +195,7 @@
     Questo **bearish/bullish** pattern (simile in volumi e durata ai trinagoli) è composto da **due trendline positivamente/negativamente inclinate** (due trendline rialziste/ribassiste) che convergono verso un **apice superiore/cuneo inferiore**. Si presenta all’apice di **trend rialzista/ribassista** e e segna un **inversione** di trend.
     Una volta delineata la formazione bisogna attendere la **rottura**, con volumi elevati, chiusure sui massimi e volatilità maggiore della precedente.
     
-    ![pat5.jpg](Elementi%20Grafici/pat5.jpg)
+    ![pat5.jpg](pat5.jpg)
     
 - **Testa e Spalle**
     
@@ -205,18 +205,18 @@
     
     Come posizionarsi rispetto a questo pattern? Spesso una volta rotta la Neckline, il mercato tende a **ritestare la zona** di rottura per procurarsi lo slancio.
     
-    ![PAT-680x256-1.jpeg](Elementi%20Grafici/PAT-680x256-1.jpeg)
+    ![PAT-680x256-1.jpeg](PAT-680x256-1.jpeg)
     
     Il pattern testa spalle può anche essere di bottom ed ha le stesse caratteristiche di quello di top, con la particolarità di essere inclinata verso l’alto.
     
-    ![PAT7.jpg](Elementi%20Grafici/PAT7.jpg)
+    ![PAT7.jpg](PAT7.jpg)
     
 
 ## **Supply & Demand (price action)**
 
 La **Dominance** è la zona del grafico in cui sono **entrati i volumi** necessari ad effettuare l’accettazione ([breakout strutturale](Glossario%20392233cc665241ff9d1fa1a7e7041d81.md)) sopra un livello, confermando la **direzionalità del trend.**
 
-![sd1.jpg](Elementi%20Grafici/sd1.jpg)
+![sd1.jpg](sd1.jpg)
 
 Le **onde di ritracciamento** sono tendenzialmente **più lente** rispetto a quelle impulsive, quindi è importante capire dove sono entrati gli ordini che hanno permesso un accettazione, in quanto in quella zona risiederanno coloro che hanno permesso la creazione o prosecuzione del trend.
 
@@ -227,9 +227,9 @@ Individuare una **demand/supply zone** serve per **ottenere il miglior rischio r
 - Successivamente abbiamo tracciato una zona per individuare **il range di contrattazione** in cui sono entrati i volumi che hanno permesso l’escursione rialzista/ribassista
 - Questa zona si traccia tendenzialmente dal **minimo di riferimento dell’impulso all’ultimo massimo/minimo del ritracciamento/impulso**
 
-![sd4.jpg](Elementi%20Grafici/sd4.jpg)
+![sd4.jpg](sd4.jpg)
 
-![SD3.jpg](Elementi%20Grafici/SD3.jpg)
+![SD3.jpg](SD3.jpg)
 
 **ACCETTAZIONE LONG**: abbiamo un effettivo break out rialzista, quando nei Time Frame superiori (di solito chiusura D se non W) abbiamo una chiusura candela superiore al massimo precedente
 

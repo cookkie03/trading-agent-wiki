@@ -2,7 +2,7 @@
 
 Nel panorama **crypto**, la **rendita passiva** è ottenibile in diversi modi:
 
-[**Staking**](Rendita%20Passiva%20CeFi,%20DeFi/Staking%20f4e589b35dd34cf4870a139062775c9d.md)
+[**Staking**](Staking%20f4e589b35dd34cf4870a139062775c9d.md)
 
 - **Lending**
     
@@ -181,7 +181,7 @@ Come ben sappiamo rischi e rendimenti sono direttamente proporzionali. Queste pi
     un hacker sfrutta un prestito flash (cioè un prestito senza garanzia) per manipolare a proprio vantaggio il prezzo di una coin all’interno di un pool.
     
 
-[**Impermanent Loss**: ](Rendita%20Passiva%20CeFi,%20DeFi/Impermanent%20Loss%200a454820e4dc4646bb9d3f360eeae366.md)
+[**Impermanent Loss**: ](Impermanent%20Loss%200a454820e4dc4646bb9d3f360eeae366.md)
 
 - **SCAM**:
     

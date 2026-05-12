@@ -1,5 +1,6 @@
 ---
-title: "Kanban — Stato Progetto"
+
+title: Kanban — Stato Progetto
 type: ops
 tags:
   - ops
@@ -23,11 +24,8 @@ sources:
   - "[[sources/conversazione-luca-salvatore-2026-04-28-30]]"
   - "[[sources/notion-export-investimento-trading]]"
   - "[[sources/trading-floor-canvas]]"
+
 ---
-
-# Kanban — Stato Progetto
-
-Board operativa per tracciare i progressi dello sviluppo del Trading Agent e della Wiki.
 
 ## To Do (Backlog)
 
@@ -38,13 +36,16 @@ Board operativa per tracciare i progressi dello sviluppo del Trading Agent e del
 - [ ] Definire metriche di portafoglio specifiche (drawdown, rendimento, esposizione) per la dashboard Streamlit
 - [ ] Registrare ufficialmente la decisione "Dashboard di Augmentazione" in [[decisions/decision-log]]
 
+
 ## In Progress
 
 - [ ] Progettazione granulare dei moduli e delle interazioni (basandosi sul Trading Floor Canvas)
 
+
 ## Blocked / Decisioni Da Chiudere
 
 - [ ] Scelta mercato iniziale: Crypto vs Equity (Tensione aperta: Equity ha metriche forti, Crypto ha API facili. Decisione bloccante per l'implementazione pratica del data ingestion)
+
 
 ## Done
 
@@ -55,7 +56,17 @@ Board operativa per tracciare i progressi dello sviluppo del Trading Agent e del
 - [x] Inizializzare la struttura base del vault
 - [x] Formalizzare uno snapshot iniziale in [[ops/current-state]]
 
+
 ## Note Di Lettura
 
-- Sposta i task man mano che il progetto evolve.
-- Usa le doppie parentesi `[[nome pagina]]` per linkare task alle note della wiki.
+- [ ] Sposta i task man mano che il progetto evolve.
+- [ ] Usa le doppie parentesi `[[nome pagina]]` per linkare task alle note della wiki.
+
+
+
+
+%% kanban:settings
+```
+{"kanban-plugin":"board","list-collapse":[]}
+```
+%%

@@ -25,9 +25,13 @@ Ogni volta che emerge una domanda non banale, aggiungerla qui o creare una pagin
 ## Domande
 
 ### Strategia e Mercato
-- Crypto o equity come mercato iniziale? *(orientamento: crypto/Binance, non chiuso definitivamente)*
+- **Trading singolo o portfolio bilanciato?** Trading singolo (SL/TP, facile da valutare) vs portfolio bilanciato (diversificazione, ribilanciamento, difficile da valutare). Decisione centrale aperta.
+- Crypto o equity come mercato iniziale? *(orientamento: crypto/Binance, ma Salvatore suggerisce di partire da asset tradizionali e tenere crypto come side)*
 - Il primo MVP deve essere una dashboard intelligente o un agente autonomo? *(orientamento: dashboard/augmentation first)*
 - Quali metriche possono dare un criterio razionale alle crypto oltre alla pura analisi tecnica?
+- **Multi-asset o mono-asset?** Se si parte da equity/ETF si hanno metodologie più consolidate; crypto è un mondo a parte. Quale asset class permette l'approccio più versatile?
+- **Cash-out strategy**: quale % dei profitti viene estratta periodicamente? Da decidere come statuto del fondo prima di iniziare.
+- **Regole del portafoglio**: quali regole anti-bias stabilire a priori? (max esposizione per asset class, quando prendere profitto, ecc.)
 
 ### Architettura e Moduli
 - Qual è il set minimo di moduli necessario per un primo sistema utile?

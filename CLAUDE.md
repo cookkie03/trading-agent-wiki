@@ -25,13 +25,11 @@ Il vault è condiviso da due collaboratori e deve restare leggibile sia per gli 
 
 ```text
 vault-root/
-├── AGENTS.md
 ├── raw/
 │   ├── articles/
-│   ├── papers/
 │   ├── audio/
-│   ├── transcripts/
 │   ├── notes/
+│   ├── daily-notes/
 │   └── archived/
 └── wiki/
     ├── _meta/
@@ -50,6 +48,7 @@ vault-root/
     ├── build/
     └── artifacts/
 ```
+
 
 ## Entry Point Operativo
 
@@ -75,17 +74,17 @@ Ordine pratico di lettura a inizio sessione:
 
 ## Adattamenti Locali alle Wiki Skill
 
-Le skill in `.agents/skills/` sono la base operativa del vault, ma alcune vanno adattate alla struttura locale di `trading-agent-wiki`.
+Le skill in `.claude/skills/` sono la base operativa del vault, ma alcune vanno adattate alla struttura locale di `trading-agent-wiki`.
 
 ### Mapping cartelle
 
-- Quando una skill cita `raw/pdfs/`, in questo vault va letto come `raw/papers/`.
-- Quando una skill cita `raw/calls/`, in questo vault va interpretato come combinazione di `raw/audio/`, `raw/transcripts/` e `raw/notes/`, a seconda del materiale disponibile.
-- Quando una skill cita `daily-notes/`, qui va considerato un flusso non usato per default.
+- Quando una skill cita `raw/pdfs/` o `raw/papers/`, in questo vault va letto come `raw/articles/` (o direttamente nella root `raw/` per file singoli come PDF).
+- Quando una skill cita `raw/calls/`, in questo vault va interpretato come combinazione di `raw/audio/` e `raw/notes/`, a seconda del materiale disponibile.
+- Quando una skill cita `daily-notes/`, qui va considerato un flusso non usato per default (la cartella `raw/daily-notes/` esiste ma è vuota/non operativa).
 
 ### Regola pratica
 
-In caso di conflitto tra una skill generica e la struttura reale del vault, vince sempre la struttura reale dichiarata in questo `AGENTS.md`.
+In caso di conflitto tra una skill generica e la struttura reale del vault, vince sempre la struttura reale dichiarata in questo `CLAUDE.md`.
 
 ## Frontmatter Standard
 
@@ -154,17 +153,13 @@ SORT updated DESC
 
 ### Preprocessing e ingest multimediale
 
-- `wiki-preprocess`: da usare prima dell’ingest quando arrivano file audio o altri formati non immediatamente leggibili
-- `openai-whisper`: utile come supporto locale alla trascrizione, ma il flusso preferito resta `wiki-preprocess`
-- `defuddle`: da usare quando si parte da URL o articoli web prima di salvarli in `raw/`
-- `pdf`: utile quando serve estrarre o leggere materiale da paper e PDF complessi
-
+- `wiki-preprocess`: da usare prima dell’ingest quando arrivano file in formati non immediatamente leggibili, come audio, pdf, ecc...
+- `crawl4ai`: da usare quando si parte da URL o articoli web prima di salvarli in `raw/`
 ### Sintassi e formati Obsidian
 
 - `obsidian-markdown`: obbligatoria per note `.md`, frontmatter, wikilink, callout, embed e Dataview inline
 - `json-canvas`: obbligatoria per file `.canvas` in `wiki/artifacts/` o in altre aree del vault
 - `obsidian-bases`: per eventuali viste `.base` dinamiche
-- `obsidian-cli`: utile per operazioni dirette su un vault Obsidian aperto
 
 ### Skill non centrali ma disponibili
 

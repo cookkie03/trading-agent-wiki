@@ -35,8 +35,14 @@ Quando una scelta smette di essere banale, registrarla qui o creare una pagina d
 
 ## Decisioni non ancora chiuse
 
-- **Crypto vs Equity definitivo**: orientamento su crypto, ma non chiuso — valutare dopo la fase di ricerca
-- **Includere o meno il modulo TA**: rischio di corrompere il Prediction Module DL. Decidere solo dopo backtest comparativi con/senza TA
-- **Frequenza di trade e invocazione LLM**: dipende dal tempo di elaborazione dei moduli (stima: secondi → minuti → max ~1 ora)
-- **Fine-tuning vs Continuous Learning**: continuous learning in real-time è ancora un problema aperto; fine-tuning periodico più praticabile
-- **Sentiment degli analisti come modulo**: idea interessante (King), ma richiede studio di fattibilità
+| Tema | Contesto |
+|------|----------|
+| **Trading singolo vs Portfolio bilanciato** | Trading singolo: facile da valutare (SL/TP binario). Portfolio bilanciato: più robusto ma difficile da valutare e richiede orizzonte temporale più lungo. Decisione centrale — da chiudere prima di costruire il sistema |
+| **Multi-asset vs Solo cripto** | Salvatore propone: partire da asset tradizionali (equity/ETF) + cripto come side. Cripto è un mondo a parte con metodologie diverse. Decidere il mercato principale prima che Salvatore possa approfondire l'analisi |
+| **Cash-out strategy** | Quale % dei profitti viene estratta periodicamente? Regola da stabilire a priori come statuto del fondo |
+| **Regole del portafoglio (statuto)** | Es: nessuna asset class >5%, vendi quando una posizione supera +100% di profitto. Regole deterministiche anti-bias da implementare nel Security Module |
+| **Crypto vs Equity definitivo** | Orientamento su crypto, non chiuso — potrebbe cambiare se si decide di partire da asset tradizionali |
+| **Includere il modulo TA** | Rischio di corrompere il Prediction Module DL. Decidere solo dopo backtest comparativi con/senza TA |
+| **Frequenza di trade e invocazione LLM** | Dipende dal tempo di elaborazione dei moduli (stima: secondi → ~1 ora) + costo token per chiamata |
+| **Fine-tuning vs Continuous Learning** | Il continuous learning in real-time è ancora un problema aperto; fine-tuning periodico più praticabile |
+| **Sentiment degli analisti come modulo** | Idea interessante (King/Salvatore), richiede studio di fattibilità |

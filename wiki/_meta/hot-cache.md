@@ -5,29 +5,29 @@
 ## Sessione Corrente
 - **Data**: 2026-05-10
 - **Agent**: Claude Sonnet 4.6
-- **Operazioni**: Integrazione di due trascrizioni ad alta fedeltà della videochiamata 2026-04-30. Le nuove trascrizioni hanno aggiunto dettagli significativi rispetto alla versione precedente (generata da audio con tool meno precisi).
+- **Operazioni**: (1) Integrazione trascrizioni alta fedeltà videochiamata 04-30. (2) Creazione board personali Luca e Salvatore con focus separati. (3) Ingest trascrizione completa videochiamata 05-06 — molti contenuti nuovi rispetto alla versione precedente.
 
 ## Pagine toccate
-- [[sources/videochiamata-luca-salvatore-2026-04-30]] — riscritta con tutti i dettagli dalle nuove trascrizioni
-- [[concepts/modular-trading-agent-architecture]] — aggiornata con: Prompt Builder, needle-in-haystack, Factor Investigation Agent, Prediction Module DL, TA risk, Sentiment degli Analisti, Volume Spike module, Binance, AlphaArena/FinAgent specifici
-- [[build/system-map]] — aggiornata con Prompt Builder, Factor Investigation Agent, Prompt Store, Security Module
-- [[decisions/decision-log]] — aggiunte 5 decisioni chiuse (from scratch, crypto/Binance, limit order SL/TP, design-first, augmentation→autonomy)
-- [[questions/open-questions]] — arricchite con nuove domande (frequenza trade, TA inclusion, sentiment degli analisti, quantificazione news, continuous learning)
-- [[ops/backlog]] — aggiornato: completati i task già fatti, aggiunti: analisi FinAgent, AlphaArena, NeuroEspresso, definizione artifact, I/O per modulo
-
-## Pending ingest
-- Paper FinAgent (Cornell, 38 pagine) — salvato nella conversazione, da ingestare formalmente come source
-- Le nuove trascrizioni in `raw/audio/` possono essere archiviate in `raw/archived/videochiamata-2026-04-30/`
+- [[sources/videochiamata-luca-salvatore-2026-04-30]] — arricchita con trascrizioni alta fedeltà
+- [[sources/videochiamata-luca-salvatore-2026-05-06]] — riscritta con trascrizione completa (molto più lunga della versione precedente)
+- [[concepts/modular-trading-agent-architecture]] — aggiunto principio deterministico e correlazione cripto
+- [[decisions/decision-log]] — aggiunte decisioni aperte importanti (trading singolo vs portfolio, multi-asset)
+- [[questions/open-questions]] — arricchite con nuove domande critiche
+- [[artifacts/luca-board]] — aggiunto modulo analisi documenti in corso, decisioni tecniche
+- [[artifacts/salvatore-board]] — aggiornata con tutte le nuove idee della call 05-06
 
 ## Stato attuale del progetto
-- Fase: **Design** — nessun codice ancora, raccolta conoscenza e progettazione
-- Exchange deciso: **Binance** (crypto)
-- Architettura decisa: **from scratch**, multi-agente, modulare
-- Trade mechanism: **limit order + SL + TP + leva**
-- Prossimo passo urgente: analisi dei tre progetti di riferimento (FinAgent, AlphaArena, NeuroEspresso)
+- Fase: **Design** — nessun codice ancora
+- Luca ha iniziato il **modulo analisi documenti** (primo modulo concreto)
+- **Decisione critica aperta**: trading singolo vs portfolio bilanciato — da chiudere prima di costruire
+- **Framing aggiornato**: il progetto è un "AI Investment Fund / Factory", non solo un trading bot
+- Exchange: Binance (crypto), ma Salvatore propone di partire da asset tradizionali
 
-## Note sessione
-- Le trascrizioni ad alta fedeltà hanno rivelato molto più dettaglio di quanto catturato nella prima versione del source 04-30.
-- Il Prompt Builder è un componente architetturale esplicito non presente nelle versioni precedenti.
-- L'idea "Sentiment degli Analisti" (Salvatore/King) è una strategia alternativa al factor investing — merita uno studio dedicato.
-- Il rischio "TA corrompe Prediction Module" è una tensione progettuale aperta importante.
+## Pending ingest
+- Le trascrizioni in `raw/audio/` possono essere archiviate in `raw/archived/`
+
+## Note sessione critiche
+- Il **principio deterministico** è un vincolo architetturale: LLM solo per ragionamento, tutto il resto Python. Anche i backtest costano token.
+- **Modelli cinesi (DeepSeek)**: costano 1/20 degli americani. Google Cloud + modelli open source = infrastruttura ottimale.
+- Salvatore ha proposto regole del portafoglio stile fondo professionale (nessuna asset class >5%, vendi a +100% profitto, cash-out periodico). Da formalizzare come "statuto del fondo".
+- La correlazione tra cripto richiede un modulo di allocazione dinamica nel basket.

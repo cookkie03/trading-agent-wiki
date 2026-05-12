@@ -51,12 +51,25 @@
 
 ## [2026-05-06] update | Correzione file allucinati
 - **Change**: Rimossi output AI allucinati da `raw/archived/articles/Private & Shared/Trading Agent 3192e441b0e580d5921bf33f9b559735.md` e riscritta la pagina `[[sources/videochiamata-luca-salvatore-2026-05-06]]` basata sul vero transcript `raw/transcripts/2026-05-06 13-29-25.txt`.
-- **Pages updated**: [[sources/videochiamata-luca-salvatore-2026-05-06]], [[raw/archived/articles/Private & Shared/Trading Agent 3192e441b0e580d5921bf33f9b559735]]
+- **Pages updated**: [[sources/videochiamata-luca-salvatore-2026-05-06]], [[Trading Agent 3192e441b0e580d5921bf33f9b559735]]
 - **Notes**: Il file della fonte originariamente conteneva allucinazioni dell'agente che sono state eliminate.
 
-## [2026-05-10] artifact | kanban | Luca Board — board personale
-- **File**: [[luca-board]]
+## [2026-05-10] ingest | Videochiamata Luca-Salvatore (2026-05-06) — trascrizione completa
+- **Type**: call (trascrizione ad alta fedeltà, versione molto più completa della precedente)
+- **Source**: `raw/audio/Come stai tutto bene?...txt`
+- **Pages updated**: [[sources/videochiamata-luca-salvatore-2026-05-06]], [[concepts/modular-trading-agent-architecture]], [[decisions/decision-log]], [[questions/open-questions]], [[artifacts/luca-board]], [[artifacts/salvatore-board]]
+- **Contradictions**: nessuna — la nuova trascrizione ha aggiunto molta più sostanza rispetto alla versione breve precedente
+- **Notes**: Nuovi contenuti chiave: trading singolo vs portfolio bilanciato (decisione centrale aperta), multi-asset vs solo cripto, principio deterministico (LLM solo per ragionamento, tutto il resto Python deterministico), costo token come vincolo architetturale, modelli cinesi open source (DeepSeek) 1/20 del costo su Google Cloud, correlazione intra-crypto con allocazione dinamica nel basket, regole del portafoglio stile fondo professionale (statuto anti-bias), framing "AI Investment Fund / Factory", Luca inizia modulo analisi documenti
+
+## [2026-05-10] artifact | kanban | Luca Board — board personale (tecnico)
+- **File**: [[luca-board]] (in `wiki/artifacts/`)
 - **Based on**: [[ops/backlog]], [[decisions/decision-log]], [[questions/open-questions]], [[sources/videochiamata-luca-salvatore-2026-04-30]], [[sources/videochiamata-luca-salvatore-2026-05-06]]
+- **Notes**: riorientata su focus tecnico/AI/programmazione dopo chiarimento ruoli del team
+
+## [2026-05-10] artifact | kanban | Salvatore Board — board personale (economico)
+- **File**: [[salvatore-board]] (in `wiki/artifacts/`)
+- **Based on**: [[ops/backlog]], [[decisions/decision-log]], [[questions/open-questions]], [[sources/videochiamata-luca-salvatore-2026-04-30]], [[sources/videochiamata-luca-salvatore-2026-05-06]]
+- **Notes**: focus su dominio economico/trading, meccanismi di mercato reale, fattori, strategie
 
 ## [2026-05-10] update | Integrazione trascrizioni alta fedeltà — videochiamata 2026-04-30
 - **Type**: re-ingest / enrichment

@@ -1,0 +1,13 @@
+BTCUSD 15m 1h 4h D W M
+
+Senza nome
+
+Bitcoin / U.S. Dollar 4h BITSTAMP O46849.08 H47133.32 L46580.00 C46925.18 +92.19 (+0.20)
+
+46916.56 27.07 46943.63
+
+DEMAND ZONE
+
+Dominance Long
+
+2021 6 11 18 25 Feb 8 15 22 Mar
