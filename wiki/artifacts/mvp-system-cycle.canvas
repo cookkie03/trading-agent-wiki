@@ -1,0 +1,42 @@
+{
+	"nodes":[
+		{"id":"a1b2c3d4e5f60014","type":"group","x":760,"y":150,"width":400,"height":760,"label":"POST-MVP — moduli successivi (non costruire adesso)"},
+		{"id":"a1b2c3d4e5f60003","type":"group","x":60,"y":150,"width":700,"height":180,"color":"4","label":"TAVOLO — analisi parallela (3 moduli girano in contemporanea)"},
+		{"id":"a1b2c3d4e5f6001a","type":"group","x":60,"y":1620,"width":700,"height":130,"label":"Legenda colori"},
+		{"id":"a1b2c3d4e5f60001","type":"text","text":"# Ciclo Operativo del Sistema\nCome funziona il trading agent ad ogni ciclo (ogni 4h o 24h)","x":100,"y":-120,"width":560,"height":80},
+		{"id":"a1b2c3d4e5f60002","type":"text","text":"## Data Ingestion\nScarica candele OHLCV, book, macro, news grezze da Binance e fonti esterne","x":180,"y":20,"width":400,"height":80,"color":"5"},
+		{"id":"a1b2c3d4e5f60005","type":"text","text":"**News Agent**\nSentiment elaborato su news recenti (semplificato nel MVP)","x":300,"y":190,"width":200,"height":110,"color":"3"},
+		{"id":"a1b2c3d4e5f60008","type":"text","text":"## Prompt Builder\nAssembla deterministicamente in Python tutti gli output in un unico prompt strutturato per l'LLM","x":180,"y":570,"width":400,"height":90,"color":"4"},
+		{"id":"a1b2c3d4e5f60009","type":"text","text":"## LLM Trader Agent\nL'unica parte con intelligenza artificiale.\nLegge il prompt e decide: asset, direzione, entry, SL, TP, size.\nRisponde sempre in JSON strutturato.","x":180,"y":720,"width":400,"height":110,"color":"4"},
+		{"id":"a1b2c3d4e5f6000a","type":"text","text":"## Security Module\nControllo deterministico (solo Python, no LLM).\nBlocca la decisione se viola lo statuto del fondo o i limiti di rischio.","x":180,"y":890,"width":400,"height":90,"color":"3"},
+		{"id":"a1b2c3d4e5f6000b","type":"text","text":"## Portfolio Allocator\nCalcola la size finale dell'ordine in base al portafoglio corrente e al Rebalancing Gate.","x":180,"y":1040,"width":400,"height":90,"color":"3"},
+		{"id":"a1b2c3d4e5f6000c","type":"text","text":"## Exchange Module\nUnico punto di contatto con l'exchange. Due backend intercambiabili:","x":180,"y":1190,"width":400,"height":80,"color":"5"},
+		{"id":"a1b2c3d4e5f6000d","type":"text","text":"**Live**\nBinance Testnet\n(paper trading)","x":160,"y":1330,"width":185,"height":80,"color":"5"},
+		{"id":"a1b2c3d4e5f6000e","type":"text","text":"**Backtest**\nReplay dati storici\n(stesso codice)","x":365,"y":1330,"width":185,"height":80,"color":"5"},
+		{"id":"a1b2c3d4e5f60015","type":"text","text":"**RL / Weighting Module**\nPondera dinamicamente i moduli del TAVOLO in base ai risultati storici. Il modulo che ha avuto ragione di più pesa di più.","x":780,"y":200,"width":360,"height":100},
+		{"id":"a1b2c3d4e5f60016","type":"text","text":"**Fine-Tuning Module**\nAggiorna periodicamente il modello LLM con i trade passati per migliorare le decisioni future.","x":780,"y":320,"width":360,"height":90},
+		{"id":"a1b2c3d4e5f60017","type":"text","text":"**Black-Litterman / Portfolio Dinamico**\nL'LLM produce 'previsioni' strutturate; un ottimizzatore matematico (Python) calcola i pesi ottimali del portafoglio. Più corretto di decidere i pesi a mano.","x":780,"y":430,"width":360,"height":110},
+		{"id":"a1b2c3d4e5f60018","type":"text","text":"**Regime Detection (HMM)**\nRiconosce automaticamente se il mercato è in fase toro, orso o laterale. Adatta la metrica di rischio al regime corrente.","x":780,"y":560,"width":360,"height":100},
+		{"id":"a1b2c3d4e5f60019","type":"text","text":"**Sentiment degli Analisti**\nAggrega l'orientamento di analisti umani (report, rating, target price) come segnale aggiuntivo per il TAVOLO.","x":780,"y":680,"width":360,"height":110},
+		{"id":"a1b2c3d4e5f6000f","type":"text","text":"## Logger / DB Centrale\nSalva tutto: trade, chain-of-thought LLM, metriche per-trade e portfolio, output di ogni modulo.","x":180,"y":1470,"width":400,"height":100,"color":"5"},
+		{"id":"a1b2c3d4e5f6001b","type":"text","text":"**Verde**\nMVP core — da costruire","x":80,"y":1650,"width":180,"height":80,"color":"4"},
+		{"id":"a1b2c3d4e5f6001c","type":"text","text":"**Giallo**\nMVP — versione semplificata","x":280,"y":1650,"width":180,"height":80,"color":"3"},
+		{"id":"a1b2c3d4e5f6001d","type":"text","text":"**Azzurro**\nInfrastruttura (Exchange, DB)","x":480,"y":1650,"width":180,"height":80,"color":"5"},
+		{"id":"a1b2c3d4e5f60004","type":"text","text":"**Analista**\nRatio finanziari, validazione news, dati fondamentali","x":40,"y":190,"width":200,"height":110,"color":"4"},
+		{"id":"a1b2c3d4e5f60006","type":"text","text":"**Quant Agent**\nBacktest, forecasting, indicatori tecnici sull'asset","x":580,"y":190,"width":200,"height":110,"color":"4"},
+		{"id":"a1b2c3d4e5f60007","type":"text","text":"## Risk Analyst Agent ⬆ UPSTREAM\nLegge output TAVOLO + stato portafoglio.\nProduce: VaR, esposizione max, range SL/TP ammissibili, go/no-go.\n*Imposta i paletti PRIMA che il Trader decida.*","x":200,"y":365,"width":480,"height":150,"color":"3"}
+	],
+	"edges":[
+		{"id":"e100000000000001","fromNode":"a1b2c3d4e5f60002","fromSide":"bottom","toNode":"a1b2c3d4e5f60003","toSide":"top","label":"dati grezzi"},
+		{"id":"e100000000000002","fromNode":"a1b2c3d4e5f60003","fromSide":"bottom","toNode":"a1b2c3d4e5f60007","toSide":"top","label":"output analisi"},
+		{"id":"e100000000000003","fromNode":"a1b2c3d4e5f60007","fromSide":"bottom","toNode":"a1b2c3d4e5f60008","toSide":"top","label":"briefing rischio"},
+		{"id":"e100000000000004","fromNode":"a1b2c3d4e5f60008","fromSide":"bottom","toNode":"a1b2c3d4e5f60009","toSide":"top","label":"prompt strutturato"},
+		{"id":"e100000000000005","fromNode":"a1b2c3d4e5f60009","fromSide":"bottom","toNode":"a1b2c3d4e5f6000a","toSide":"top","label":"decisione JSON"},
+		{"id":"e100000000000006","fromNode":"a1b2c3d4e5f6000a","fromSide":"bottom","toNode":"a1b2c3d4e5f6000b","toSide":"top","label":"trade approvato"},
+		{"id":"e100000000000007","fromNode":"a1b2c3d4e5f6000b","fromSide":"bottom","toNode":"a1b2c3d4e5f6000c","toSide":"top","label":"ordine con size"},
+		{"id":"e100000000000008","fromNode":"a1b2c3d4e5f6000c","fromSide":"bottom","toNode":"a1b2c3d4e5f6000d","toSide":"top"},
+		{"id":"e100000000000009","fromNode":"a1b2c3d4e5f6000c","fromSide":"bottom","toNode":"a1b2c3d4e5f6000e","toSide":"top"},
+		{"id":"e10000000000000a","fromNode":"a1b2c3d4e5f6000d","fromSide":"bottom","toNode":"a1b2c3d4e5f6000f","toSide":"top","label":"esito trade"},
+		{"id":"e10000000000000b","fromNode":"a1b2c3d4e5f6000e","fromSide":"bottom","toNode":"a1b2c3d4e5f6000f","toSide":"top","label":"esito simulato"}
+	]
+}

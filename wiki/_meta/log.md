@@ -2,6 +2,32 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-05-13] ingest | Videochiamata Luca-Salvatore 2026-05-13
+- **Type**: call (trascrizione audio)
+- **Source**: `raw/audio/2026-05-13 13-14-17.m4a` + trascrizione `.txt`
+- **Pages created**: [[references/videochiamata-luca-salvatore-2026-05-13]], [[ops/wiki-restructuring-plan]]
+- **Pages updated**: [[decisions/decision-log]], [[_meta/index]]
+- **Contradictions**: nessuna
+- **Notes**: Temi principali: trend following come strategia (Moncler example), value investing non scalabile per ora, walk-through architettura e canvas con Salvatore, struttura proposta per sezione quant wiki, workflow Salvatore in Obsidian, piano ristrutturazione wiki (pianificato, non eseguito). Insight critico: effetto FX obbligatorio da considerare su asset con ricavi internazionali.
+
+## [2026-05-13] artifact | Canvas + Glossario — artifact duraturi per il team
+- **Pages created**: [[artifacts/mvp-system-cycle.canvas]], [[artifacts/dev-roadmap.canvas]], [[ops/glossario]]
+- **Pages updated**: [[syntheses/notebooklm-research-2026-05-13]] (aggiunti riferimenti precisi ai paper), [[_meta/index]]
+- **Notes**: canvas del ciclo operativo e roadmap di sviluppo per spiegare a Salvatore; glossario aggiornabile in italiano; tabella riferimenti ai paper nella synthesis
+
+## [2026-05-13] synthesis | Ricerca NotebookLM — Approcci da progetti simili AI+Finance
+- **Type**: research session (NotebookLM query su 43 fonti)
+- **Pages created**: [[syntheses/notebooklm-research-2026-05-13]]
+- **Pages updated**: [[build/mvp-prototype-design]], [[decisions/decision-log]], [[_meta/index]]
+- **Decisioni chiuse**:
+  - Framework backtesting: **VectorBT** (usato da MarketSenseAI)
+  - LLM principale: **DeepSeek** confermato (Alpha Arena: miglior costo/perf)
+  - SL/TP: obbligatori come hard constraint (Simone Rizzo: senza → drawdown devastante)
+  - Output LLM: JSON strutturato obbligatorio (tutti i framework convergono)
+  - Prophet: **non usare** come forecast principale (non regge i crolli)
+- **Nuovi insight operativi**: Quick+Deep Thinker pattern, Pivot Points nel Prompt Builder, Rebalancing Gate, Black-Litterman per views LLM → pesi portfolio
+- **Notes**: Qwen 3 Max +22.88% in Alpha Arena (sorpresa), ma non ancora disponibile facilmente. DeepSeek al secondo posto (+4.76%), Claude -33%.
+
 ## [2026-04-30] init | Inizializzazione vault
 - **Pages created**: [[overview]], [[_meta/index]], [[_meta/log]], [[_meta/taxonomy]], [[_meta/hot-cache]]
 - **Vault type**: project wiki
@@ -26,6 +52,21 @@
 - **Pages created**: [[ops/dashboard]], [[ops/current-state]], [[ops/backlog]], [[build/system-map]], [[decisions/decision-log]], [[questions/open-questions]], [[artifacts/artifact-workbench]]
 - **Pages updated**: [[overview]],      [[_meta/index]], [[AGENTS]]
 - **Notes**: aggiunta una superficie operativa pronta all'uso con dashboard, backlog, stato corrente, system map e registri iniziali
+
+## [2026-05-13] brainstorming | Design MVP Prototype
+- **Partecipanti**: Luca, Claude Code
+- **Pages created**: [[build/mvp-prototype-design]]
+- **Pages updated**: nessuna (aggiornamento index pendente)
+- **Raw**: `raw/notes/sessione-brainstorming-2026-05-13.md`
+- **Decisioni chiuse**:
+  - Architettura: monolite modulare (Opzione A)
+  - Tipo prototipo: agente autonomo paper trading + backtesting continuativo + metriche
+  - Orizzonte trade: swing trading (4h/daily)
+  - Sequenza sviluppo: Modulo A (Exchange+DB, Luca solo) in parallelo con progettazione Modulo C (Quant+Backtest, con Salvatore), poi Modulo D (Prompt Builder + LLM Trader)
+  - Ciclo raffinato: Risk Analyst è upstream del Trader (fonte: trading-floor.canvas)
+  - Portfolio architecture-first, single-asset deployment nel MVP
+- **Decisioni ancora aperte**: framework backtesting (vectorbt vs backtesting.py), strategia del fondo (formalizzare con Salvatore)
+- **Notes**: prima sessione di design strutturata con agent; raw note contiene tutto il materiale grezzo
 
 ## [2026-04-30] ingest | Conversazione progettuale Luca-Salvatore
 - **Type**: call / note

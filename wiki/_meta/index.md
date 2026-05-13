@@ -17,6 +17,7 @@
 - [[references/library-portfolio-optimizer]] — documentazione della libreria di ottimizzazione quantitativa
 - [[references/onboarding-wiki-workflow]] — sintesi del metodo di lavoro e uso di Obsidian
 - [[references/architecture-handwritten-notes]] — trascrizione degli schemi iniziali di sistema
+- [[references/videochiamata-luca-salvatore-2026-05-13]] — trend following, value investing, walk-through architettura, piano ristrutturazione wiki
 
 ## Theory
 *Hub delle idee, dei modelli, pattern quantitativi e della terminologia del progetto.*
@@ -29,7 +30,7 @@
 
 ## Syntheses
 *Hub per analisi, memo, confronti e sintesi durevoli.*
-*(Nessuna synthesis ancora registrata)*
+- [[syntheses/notebooklm-research-2026-05-13]] — ricerca su approcci da TradingAgents, MarketSenseAI, Alpha Arena, Simone Rizzo
 
 ## Decisions
 *Hub delle decisioni di progetto e delle loro motivazioni.*
@@ -40,6 +41,8 @@
 - [[ops/dashboard]] — home operativa
 - [[ops/current-state]] — stato corrente
 - [[ops/backlog]] — backlog operativo
+- [[ops/glossario]] — glossario termini del progetto (aggiornabile)
+- [[ops/wiki-restructuring-plan]] — piano di ristrutturazione wiki (pianificato, non ancora eseguito)
 - [[kanban-project-status]] — board kanban dello stato attuale
 - [[luca-board]] — board personale di Luca (focus tecnico: AI, architettura, programmazione)
 - [[salvatore-board]] — board personale di Salvatore (focus economico: mercati, trading, meccanismi reali)
@@ -47,6 +50,7 @@
 ## Build
 *Hub software-oriented del progetto per raccogliere conoscenza strettamente tecnica: architettura, componenti, integrazioni, vincoli e note di implementazione.*
 - [[build/system-map]] — mappa iniziale del sistema
+- [[build/mvp-prototype-design]] — design del prototipo MVP (sessione 2026-05-13)
 
 ## Questions
 *Hub dei dubbi aperti, dei gap informativi e delle verifiche da fare.*
@@ -56,3 +60,5 @@
 *Hub di schemi, mappe mentali, canvas e altri supporti visivi del vault.*
 - [[artifacts/artifact-workbench]] — ponte tra note e artifact
 - [[artifacts/trading-floor.canvas]] — canvas visuale dell'architettura multi-agente
+- [[artifacts/mvp-system-cycle.canvas]] — ciclo operativo completo del sistema (MVP + post-MVP)
+- [[artifacts/dev-roadmap.canvas]] — roadmap di sviluppo (Track 1/2/3 + post-MVP)

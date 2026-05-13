@@ -3,31 +3,47 @@
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
 ## Sessione Corrente
-- **Data**: 2026-05-12
-- **Agent**: Gemini CLI
-- **Operazioni**: (1) Ingest completo paper "TradingAgents", "Alpha Arena" e documentazione libreria "Portfolio Optimizer". (2) Ingest trascrizioni onboarding Wiki e appunti architettura manoscritti. (3) Aggiornamento teoria e system map con principi di comunicazione strutturata e ottimizzazione di portafoglio. (4) Creazione entità Agenti per i framework e librerie identificate.
+- **Data**: 2026-05-13
+- **Agent**: Claude Code
+- **Operazioni**: Sessione di brainstorming + ricerca NotebookLM (43 fonti). Chiuse decisioni principali + framework backtesting + conferma LLM. Creata synthesis dalla ricerca.
 
-## Pagine toccate
-- [[references/videochiamata-luca-salvatore-2026-04-30]] — arricchita con trascrizioni alta fedeltà
-- [[references/videochiamata-luca-salvatore-2026-05-06]] — riscritta con trascrizione completa (molto più lunga della versione precedente)
-- [[theory/modular-trading-agent-architecture]] — aggiunto principio deterministico e correlazione cripto
-- [[decisions/decision-log]] — aggiunte decisioni aperte importanti (trading singolo vs portfolio, multi-asset)
-- [[questions/open-questions]] — arricchite con nuove domande critiche
-- [[artifacts/luca-board]] — aggiunto modulo analisi documenti in corso, decisioni tecniche
-- [[artifacts/salvatore-board]] — aggiornata con tutte le nuove idee della call 05-06
+## Pagine toccate (sessione corrente)
+- [[references/videochiamata-luca-salvatore-2026-05-13]] — CREATA — call 2026-05-13 con strategia trend following, value investing, architettura
+- [[ops/wiki-restructuring-plan]] — CREATA — piano ristrutturazione wiki (pianificato, non eseguito)
+- [[decisions/decision-log]] — aggiunte: value investing non scalabile, struttura wiki quant aperta
+- [[_meta/index]] — aggiornato con nuova reference e ops/wiki-restructuring-plan
+
+## Pagine toccate (sessione precedente 2026-05-13)
+- [[build/mvp-prototype-design]] — CREATA + aggiornata con decisione backtesting e insights NotebookLM
+- [[syntheses/notebooklm-research-2026-05-13]] — CREATA — synthesis da ricerca su 43 fonti
+- [[decisions/decision-log]] — aggiornate decisioni chiuse 2026-05-13 (6 nuove)
+- [[_meta/index]] — aggiunta voce syntheses
+- [[_meta/log]] — aggiunta entry sessione 2026-05-13
 
 ## Stato attuale del progetto
-- Fase: **Design** — nessun codice ancora
-- Luca ha iniziato il **modulo analisi documenti** (primo modulo concreto)
-- **Decisione critica aperta**: trading singolo vs portfolio bilanciato — da chiudere prima di costruire
-- **Framing aggiornato**: il progetto è un "AI Investment Fund / Factory", non solo un trading bot
-- Exchange: Binance (crypto), ma Salvatore propone di partire da asset tradizionali
+- Fase: **Design → prossimo passo: sviluppo Modulo A**
+- **Architettura scelta**: monolite modulare (Opzione A), con path evolutivo verso microservizi
+- **Tipo prototipo**: agente autonomo paper trading (Binance Testnet) + backtesting continuativo + metriche per-trade e portfolio
+- **Orizzonte trade**: swing trading (4h/daily)
+- **Sequenza sviluppo**:
+  - Track 1 (Luca solo): **Modulo A** — Exchange Module + DB
+  - Track 2 (Luca + Salvatore, in parallelo): **Modulo C** — Quant Agent + Backtesting
+  - Track 3 (dopo A completato): **Modulo D** — Prompt Builder + LLM Trader
+- **Ciclo aggiornato**: Risk Analyst Agent è UPSTREAM del Trader (fonte: trading-floor.canvas)
+- **Portfolio**: architettura portfolio-first, MVP deployment su singolo asset
 
 ## Pending ingest
+- `raw/notes/sessione-brainstorming-2026-05-13.md` — da completare ingest formale (interrotto)
+- `raw/audio/2026-05-13 13-14-17.m4a` — INGESTATO tramite trascrizione txt
+- `raw/articles/quant strategy/*.txt` — audio/note di Salvatore su strategie quant, da ingestare
 - Le trascrizioni in `raw/audio/` possono essere archiviate in `raw/archived/`
 
+## Decisioni ancora aperte
+- ~~Framework backtesting~~ **CHIUSO: VectorBT** (2026-05-13)
+- Strategia del fondo: formalizzare con Salvatore (orientamento: multi-factor fundamentals)
+- Frequenza ciclo: 4h vs 24h (dipende da backtest iniziali)
+
 ## Note sessione critiche
-- Il **principio deterministico** è un vincolo architetturale: LLM solo per ragionamento, tutto il resto Python. Anche i backtest costano token.
-- **Modelli cinesi (DeepSeek)**: costano 1/20 degli americani. Google Cloud + modelli open source = infrastruttura ottimale.
-- Salvatore ha proposto regole del portafoglio stile fondo professionale (nessuna asset class >5%, vendi a +100% profitto, cash-out periodico). Da formalizzare come "statuto del fondo".
-- La correlazione tra cripto richiede un modulo di allocazione dinamica nel basket.
+- **Metriche per-trade e portfolio sono separate**: non sono sovrapponibili. Il sistema le raccoglie a due livelli indipendenti. I trade di ribilanciamento trattati come eventi discreti danno metriche per-trade leggibili dentro un framework portfolio.
+- **Risk Analyst upstream**: imposta i paletti PRIMA del Trader, non valida dopo. Insight da trading-floor.canvas.
+- Il **principio deterministico** rimane vincolo hard: LLM solo per ragionamento, tutto il resto Python.

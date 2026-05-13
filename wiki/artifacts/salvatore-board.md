@@ -1,5 +1,5 @@
 ---
-kanban-plugin: basic
+kanban-plugin: board
 ---
 
 ## 💡 Idee di mercato
@@ -57,8 +57,10 @@ kanban-plugin: basic
 - [x] Framing del progetto come **AI Investment Fund / Factory** — non solo trading bot
 
 
+
+
 %% kanban:settings
 ```
-{"kanban-plugin":"basic","list-collapse":[false,false,false,false,false]}
+{"kanban-plugin":"board","list-collapse":[false,false,false,false,true,true]}
 ```
 %%
