@@ -62,6 +62,9 @@ Task programmato che si esegue automaticamente a intervalli regolari. Il nostro 
 **CCXT**
 Libreria Python che ti permette di parlare con quasi tutti gli exchange (Binance, Hyperliquid, ecc.) con lo stesso codice. Cambi exchange cambiando una riga di configurazione.
 
+**Tool parametrizzabile**
+Un modulo/funzione che accetta parametri in input invece di avere valori hardcodati. Es: non "calcola media mobile a 50" ma "calcola media mobile con period=N". L'AI può sperimentare diversi parametri senza toccare il codice.
+
 ---
 
 ## Termini di Analisi Quantitativa
@@ -93,6 +96,9 @@ Stima della perdita massima probabile in un dato periodo con una certa probabili
 **CVaR (Conditional Value at Risk)**
 Più prudente del VaR: stima la perdita media nei peggiori scenari (quelli oltre il VaR). Es: "nei peggiori 5% dei casi, perdo in media Y€". Preferito al VaR perché considera il rischio di coda (eventi rari ma devastanti).
 
+**Pivot Points**
+Livelli di prezzo calcolati matematicamente dalle candele precedenti (high, low, close). Usati come riferimenti spaziali per l'LLM: "il prezzo è sopra o sotto il pivot? Vicino a supporto o resistenza?". Tutti i sistemi pratici analizzati li includono nel prompt.
+
 ---
 
 ## Termini Post-MVP (da capire quando si arriva)
@@ -104,22 +110,22 @@ Meccanismo che evita l'overtrading (aprire e chiudere posizioni continuamente). 
 Pattern architetturale: usa un modello LLM economico e veloce (es. DeepSeek small) per le operazioni frequenti di raccolta dati e analisi di superficie. Usa un modello più capace (ma costoso) solo per la decisione finale del Trader. Riduce il costo token senza sacrificare qualità sulla decisione critica.
 
 **Black-Litterman**
-Metodo matematico (Nobel 1990) per costruire un portafoglio ottimizzato. Il punto di forza: permette di "iniettare" le previsioni dell'LLM come vincoli matematici nell'ottimizzazione. L'LLM dice "penso che BTC salirà del 5% con confidenza 0.7"; Black-Litterman traduce questo in pesi di portafoglio ottimali. Il calcolo lo fa Python, non l'LLM.
+Metodo matematico per costruire un portafoglio ottimizzato. Il punto di forza: permette di "iniettare" le previsioni dell'LLM come vincoli matematici nell'ottimizzazione. L'LLM dice "penso che BTC salirà del 5% con confidenza 0.7"; Black-Litterman traduce questo in pesi di portafoglio ottimali. Il calcolo lo fa Python, non l'LLM.
 
 **Entropy Pooling**
-Versione più potente di Black-Litterman. Permette viste non solo sui rendimenti attesi, ma su volatilità, correlazioni, scenari di stress. Utile quando si hanno più agenti con previsioni diverse: aggrega tutto con pesi di confidenza. In un sistema multi-agent, è il modo corretto di combinare le opinioni di Analista, News Agent e Quant Agent.
+Versione più potente di Black-Litterman. Permette viste non solo sui rendimenti attesi, ma su volatilità, correlazioni, scenari di stress. Utile quando si hanno più agenti con previsioni diverse: aggrega tutto con pesi di confidenza.
 
 **Regime Detection (HMM)**
-L'HMM (Hidden Markov Model) è un algoritmo statistico che riconosce automaticamente in quale "stato" si trova il mercato: toro (prezzi in salita), orso (prezzi in discesa), laterale (range). Utile per adattare la metrica di rischio: in mercato toro si può essere più aggressivi (minimizza varianza), in orso si deve essere più difensivi (minimizza CVaR).
+L'HMM (Hidden Markov Model) riconosce automaticamente in quale "stato" si trova il mercato: toro (prezzi in salita), orso (prezzi in discesa), laterale (range). Utile per adattare la metrica di rischio: in toro si può essere più aggressivi, in orso più difensivi (CVaR).
 
 **Opinion Pooling**
-In un sistema multi-agent, tecnica per combinare le previsioni di più agenti assegnando pesi di probabilità a ciascuno. Es: Analista pesa 40%, News Agent 30%, Quant Agent 30%. I pesi possono essere dinamici (RL module li aggiorna in base ai risultati storici di ogni agente).
+In un sistema multi-agent, tecnica per combinare le previsioni di più agenti assegnando pesi di probabilità a ciascuno. I pesi possono essere dinamici (RL module li aggiorna in base ai risultati storici di ogni agente).
 
 **Walk-Forward Backtesting**
-Metodo di backtesting più realistico. Si addestra il modello su un periodo, si testa sul successivo, si avanza nel tempo e si ripete. Simula come il sistema avrebbe effettivamente imparato nel tempo, evitando di addestrare e testare sugli stessi dati.
+Metodo di backtesting più realistico. Si addestra il modello su un periodo, si testa sul successivo, si avanza nel tempo e si ripete.
 
 **CPCV (Combinatorial Purged Cross-Validation)**
-Tecnica avanzata per evitare il look-ahead bias nella validazione dei modelli. Elimina i dati adiacenti ai confini tra training e test per evitare che l'autocorrelazione dei prezzi "faccia passare" informazione futura nel modello.
+Tecnica avanzata per evitare il look-ahead bias nella validazione dei modelli. Elimina i dati adiacenti ai confini tra training e test per evitare autocorrelazione.
 
 ---
 

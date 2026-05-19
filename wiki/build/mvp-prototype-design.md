@@ -10,10 +10,10 @@ created: 2026-05-13
 updated: 2026-05-13
 status: active
 related:
-  - "[[theory/modular-trading-agent-architecture]]"
-  - "[[artifacts/trading-floor.canvas]]"
-  - "[[decisions/decision-log]]"
   - "[[build/system-map]]"
+  - "[[build/decision-log]]"
+  - "[[build/stack]]"
+  - "[[artifacts/trading-floor.canvas]]"
 confidence: high
 priority: high
 area: software
@@ -156,7 +156,8 @@ Dalla ricerca su TradingAgents, MarketSenseAI, Alpha Arena e Simone Rizzo:
 Vedere [[syntheses/notebooklm-research-2026-05-13]] per la sintesi completa.
 
 ## Riferimenti
-- [[theory/modular-trading-agent-architecture]] — architettura completa del sistema
+- [[build/system-map]] — architettura completa del sistema
+- [[build/decision-log]] — decisioni prese e aperte
+- [[build/stack]] — tech stack scelto
 - [[artifacts/trading-floor.canvas]] — schema trading floor (fonte del ciclo raffinato)
-- [[decisions/decision-log]] — decisioni pregresse
 - Sessione brainstorming: `raw/notes/sessione-brainstorming-2026-05-13.md`

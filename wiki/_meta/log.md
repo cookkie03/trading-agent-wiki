@@ -2,6 +2,20 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-05-14] update | Aggiunta sezione strategy/
+- **Operazione**: recuperata la distinzione build/ (software, Luca) vs strategy/ (conoscenza mercato, Salvatore)
+- **Cartelle create**: `strategy/`, `strategy/methods/`, `strategy/indicators/`, `strategy/metrics/`
+- **File creati**: [[strategy/index]], [[strategy/methods/trend-following]], [[strategy/methods/factor-investing]]
+- **File aggiornati**: [[build/modules/module-c-quant-backtest]] (link a strategy/), [[_meta/taxonomy]], [[_meta/index]], [[overview]]
+
+## [2026-05-13] restructure | Ristrutturazione completa del vault
+- **Operazione**: ristrutturazione della wiki da struttura generica a struttura orientata al progetto
+- **Cartelle eliminate**: `ops/`, `theory/`, `agents/`, `decisions/`, `questions/`
+- **Cartelle create**: `build/modules/`, `references/external/`
+- **File creati**: [[build/decision-log]], [[build/stack]], [[build/modules/module-a-exchange-db]], [[build/modules/module-c-quant-backtest]], [[build/modules/module-d-prompt-builder-trader]], [[build/modules/risk-analyst]], [[references/external/trading-agents-framework]], [[references/external/cvx-portfolio-optimizer]], [[_meta/glossario]]
+- **File aggiornati**: [[build/system-map]] (merge theory/), [[build/mvp-prototype-design]] (link fix), [[overview]], [[_meta/index]], [[_meta/taxonomy]]
+- **Logica**: ops/ → board; theory/ → build/system-map; agents/ → references/external/; decisions/ → build/decision-log; questions/ → inline nei module files e nelle board
+
 ## [2026-05-13] ingest | Videochiamata Luca-Salvatore 2026-05-13
 - **Type**: call (trascrizione audio)
 - **Source**: `raw/audio/2026-05-13 13-14-17.m4a` + trascrizione `.txt`
@@ -121,7 +135,7 @@
 
 ## [2026-05-12] ingest | TradingAgents, Alpha Arena & Portfolio Optimizer
 - **Type**: research paper / library documentation
-- **Pages created**: [[references/paper-trading-agents]], [[references/paper-alpha-arena]], [[references/library-portfolio-optimizer]], [[references/architecture-handwritten-notes]], [[agents/trading-agents-framework]], [[agents/cvx-portfolio-optimizer]]
+- **Pages created**: [[paper-trading-agents]], [[paper-alpha-arena]], [[references/library-portfolio-optimizer]], [[references/architecture-handwritten-notes]], [[agents/trading-agents-framework]], [[agents/cvx-portfolio-optimizer]]
 - **Pages updated**: [[theory/modular-trading-agent-architecture]], [[build/system-map]], [[_meta/index]]
 - **Contradictions**: nessuna
 - **Notes**: Ingest completa di materiale tecnico di frontiera. TradingAgents introduce il protocollo di comunicazione strutturata e il team di analisti/debater. Portfolio Optimizer (cvx-optimizer) fornisce il motore per il Portfolio Management quantitativo e l'integrazione di opinioni (views) via Black-Litterman. Alpha Arena fornisce benchmark comparativi tra LLM. La system map ora include esplicitamente il portfolio manager e il protocollo di comunicazione strutturato.

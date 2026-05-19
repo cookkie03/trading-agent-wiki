@@ -1,5 +1,5 @@
 ---
-title: "Ricerca NotebookLM — Approcci da Progetti Simili AI+Finance (con riferimenti)"
+title: Ricerca NotebookLM — Approcci da Progetti Simili AI+Finance (con riferimenti)
 type: synthesis
 tags:
   - architecture
@@ -13,7 +13,7 @@ sources:
   - Alpha Arena
   - AlpacaTradingAgent
   - cvx-portfolio-optimizer
-  - "Creo il mio Trading AI Agent (Simone Rizzo, 4 video)"
+  - Creo il mio Trading AI Agent (Simone Rizzo, 4 video)
 created: 2026-05-13
 updated: 2026-05-13
 status: active
@@ -24,8 +24,8 @@ related:
   - "[[build/mvp-prototype-design]]"
   - "[[theory/modular-trading-agent-architecture]]"
   - "[[decisions/decision-log]]"
-  - "[[references/paper-trading-agents]]"
-  - "[[references/paper-alpha-arena]]"
+  - "[[paper-trading-agents]]"
+  - "[[paper-alpha-arena]]"
 ---
 
 # Ricerca NotebookLM — Approcci da Progetti Simili AI+Finance

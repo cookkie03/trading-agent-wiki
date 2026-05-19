@@ -1,24 +1,24 @@
 {
   "main": {
-    "id": "da431f11963efd5c",
+    "id": "8050c14c78e1bf7d",
     "type": "split",
     "children": [
       {
-        "id": "1cbfb9d4d18aad50",
+        "id": "f2d4de319e047d26",
         "type": "tabs",
         "children": [
           {
-            "id": "f69f360a75dd3791",
+            "id": "9667cee55f7f5e7f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/ops/wiki-restructuring-plan.md",
+                "file": "raw/daily-notes/2026-05-19.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "wiki-restructuring-plan"
+              "title": "2026-05-19"
             }
           }
         ]
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "b5bc52506d6bfb65",
+    "id": "494a9d57cfecf5f7",
     "type": "split",
     "children": [
       {
-        "id": "6ce700d6fd6bf9ed",
+        "id": "aa91570993ede869",
         "type": "tabs",
         "children": [
           {
-            "id": "168c1cbc86e15b94",
+            "id": "a33a5ef0f6f34da0",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "c079800e17a9ee71",
+            "id": "8447bfef77270793",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "2e5051338e8aa55b",
+            "id": "6cf362cf496e2767",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,20 +81,19 @@
     "width": 300
   },
   "right": {
-    "id": "29fabff42699a85e",
+    "id": "4365d1ca707e791b",
     "type": "split",
     "children": [
       {
-        "id": "1639b2a36c575cec",
+        "id": "2bae2f960680db2c",
         "type": "tabs",
         "children": [
           {
-            "id": "6b1397e899958f8b",
+            "id": "1bf74b2a07f22464",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "wiki/_meta/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +103,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Riferimenti a index"
+              "title": "Riferimenti"
             }
           },
           {
-            "id": "d61f438b6ccd7a5b",
+            "id": "519438d4f387abe0",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "wiki/_meta/index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Collegamenti in uscita da index"
+              "title": "Collegamenti in uscita"
             }
           },
           {
-            "id": "b949bceea94639e3",
+            "id": "1c9c952213e3b954",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,7 +135,7 @@
             }
           },
           {
-            "id": "7f21782d81552354",
+            "id": "5ec9b1b12f817500",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -151,22 +149,22 @@
             }
           },
           {
-            "id": "005e838512ad227b",
+            "id": "c4b4e561fbaf962a",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "wiki/_meta/index.md",
+                "file": "raw/daily-notes/2026-05-19.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Struttura di index"
+              "title": "Struttura di 2026-05-19"
             }
           },
           {
-            "id": "ad28379376be2da7",
+            "id": "797ee80e13297804",
             "type": "leaf",
             "state": {
               "type": "git-view",
@@ -180,73 +178,35 @@
       }
     ],
     "direction": "horizontal",
-    "width": 349.5
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
+      "daily-notes:Apri nota del giorno": false,
+      "obsidian-kanban:Create new board": false,
+      "obsidian-git:Open Git source control": false,
       "switcher:Apri selezione rapida": false,
       "graph:Apri vista grafo": false,
       "canvas:Crea nuova lavagna": false,
-      "daily-notes:Apri nota del giorno": false,
+      "templates:Inserisci modello": false,
       "command-palette:Apri riquadro comandi": false,
-      "bases:Crea nuova Base": false,
-      "obsidian-kanban:Create new board": false,
-      "obsidian-git:Open Git source control": false
+      "bases:Crea nuova Base": false
     }
   },
-  "active": "f69f360a75dd3791",
+  "active": "797ee80e13297804",
   "lastOpenFiles": [
-    "raw/daily-notes/2026-05-13.md",
-    "wiki/ops/wiki-restructuring-plan.md",
-    "wiki/references/videochiamata-luca-salvatore-2026-05-13.md",
-    "raw/audio/Bella, Come tutto bene? Sì, dai, sono un po' inguaiati questi giorni PD però perché? perché vorrei f.txt",
-    "raw/audio/2026-05-13 13-14-17.m4a",
-    "raw/daily-notes/model.md",
-    "raw/models",
-    "wiki/_meta/hot-cache.md",
-    "wiki/_meta/log.md",
-    "wiki/_meta/index.md",
-    "raw/archived/conversazione-luca-salvatore-2026-04-28-30/2026-04-29.md",
-    "raw/archived/conversazione-luca-salvatore-2026-04-28-30/2026-04-26 2.md",
-    "raw/daily-notes/2026-05-11.md",
-    "Senza nome.base",
-    "Senza nome.canvas",
-    "CLAUDE.md",
-    "wiki/ops/glossario.md",
-    "wiki/ops/dashboard.md",
-    "wiki/ops/current-state.md",
-    "wiki/decisions/decision-log.md",
-    "wiki/artifacts/luca-board.md",
-    "wiki/artifacts/salvatore-board.md",
-    "wiki/artifacts/dev-roadmap.canvas",
-    "wiki/artifacts/idea architettura.canvas",
-    "wiki/artifacts/mvp-system-cycle.canvas",
-    "notes.md",
-    "wiki/agents/cvx-portfolio-optimizer.md",
-    "raw/notes/Trading Agent — Architecture Overview.md",
-    "raw/notes/Trading Agent — Architecture Overview.jpg",
-    "raw/notes/sessione-brainstorming-2026-05-13.md",
+    "wiki/references/external/paper-trading-agents.md",
+    "wiki/references/external/trading-agents-framework.md",
+    "wiki/references/external/cvx-portfolio-optimizer.md",
+    "raw/daily-notes/2026-05-19.md",
+    "raw/notes/Tool Set, Provider dati, Exchange.md",
+    "raw/articles/TradingAgents Code Wiki.md",
     "raw/articles/TradingAgents.md",
-    "raw/articles/quant strategy/Quantitative Trading Strategies Alpha, Backtesting & Performance - Interactive.md",
-    "Untitled Kanban.md",
-    "wiki/theory/modular-trading-agent-architecture.md",
-    "wiki/references/architecture-handwritten-notes.md",
-    "wiki/artifacts/trading-floor.canvas",
-    "storage_state.json",
-    "remove_hub_links.py",
-    "bulk_rename_links.py",
-    "wiki/references",
-    "wiki/agents",
-    "wiki/theory",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Position Sizing/Immagine_2022-02-05_143504.png",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Position Sizing/Immagine_2022-02-05_143149.png",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Operatività/indi8.jpg",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Glossario/Untitled.png",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/sd4.jpg",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/sd1.jpg",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/rsi1.jpg",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/rsi-3.jpg",
-    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/pat5.jpg",
-    "raw/notes/Trading Floor.canvas"
+    "raw/articles/TradingAgents.pdf",
+    "wiki/artifacts/luca-board.md",
+    "wiki/artifacts/kanban-project-status.md",
+    "wiki/build/modules/module-a-exchange-db.md",
+    "Clippings/Program and courses Data Science and Society.md",
+    "Clippings"
   ]
 }

@@ -5,7 +5,7 @@ tags:
   - overview
   - strategy
 created: 2026-04-30
-updated: 2026-04-30
+updated: 2026-05-13
 status: active
 related: []
 confidence: high
@@ -13,40 +13,58 @@ confidence: high
 
 # Trading Agent
 
-Questa wiki e la base operativa condivisa del progetto `trading-agent`.
-Serve a raccogliere fonti, distillare conoscenza, documentare il software e mantenere visibile lo stato del progetto.
+Wiki operativa del progetto `trading-agent`. Raccoglie fonti, documenta il software, traccia le decisioni e mantiene visibile lo stato del progetto. Consultabile da agenti AI e da umani.
 
-## Natura del progetto
+---
 
-Il progetto combina tre dimensioni principali:
+## Cos'è il progetto
 
-- software
-- ricerca
-- economica e di mercato
+Un sistema multi-agente che replica e automatizza il workflow di un trader professionale: raccogliere informazioni, analizzare segnali quantitativi, decidere con un LLM, eseguire ordini deterministicamente.
 
-La struttura della wiki e pensata per non forzare una separazione artificiale troppo presto, ma per rendere queste dimensioni navigabili man mano che il materiale cresce.
+**Fase attuale**: sviluppo Modulo A (Exchange + DB) in parallelo con la progettazione di Modulo C (Quant + Backtesting). Paper trading su Binance Testnet.
 
-## Stato corrente
+---
 
-Vault appena inizializzato.
-Primo source progettuale ingestito. La struttura base e pronta e comincia a contenere ipotesi reali su architettura, mercato iniziale e workflow.
+## Ingresso rapido
 
-## Ingresso operativo consigliato
+| Vuoi... | Vai a... |
+|---------|----------|
+| Capire come funziona il sistema | [[build/system-map]] |
+| Vedere cosa si sta costruendo ora | [[artifacts/luca-board]] · [[artifacts/salvatore-board]] |
+| Vedere il piano MVP completo | [[build/mvp-prototype-design]] |
+| Trovare un termine che non conosci | [[_meta/glossario]] |
+| Vedere tutte le decisioni prese | [[build/decision-log]] |
+| Trovare una fonte o un paper | [[references/_meta/index]] → [[_meta/index]] |
 
-- [[ops/dashboard|Ops Dashboard]] — home operativa per lavorare nel vault
+---
 
-## Aree principali
+## Struttura della wiki
 
-L\'indice completo delle aree e dei loro scopi si trova nel **[[_meta/index|Wiki Index]]**.
+```
+wiki/
+├── build/          ← spec software (Luca): architettura, moduli, stack, decisioni
+├── strategy/       ← conoscenza di mercato (Salvatore): metodi, indicatori, metriche
+├── references/     ← fonti ingestite (call, paper, librerie, articoli)
+│   └── external/   ← framework e librerie terze parti
+├── syntheses/      ← analisi trasversali multi-fonte
+├── artifacts/      ← canvas, roadmap, board di lavoro
+└── _meta/          ← navigazione vault (index, log, glossario, taxonomy)
+```
 
-## Uso previsto
+---
 
-Il flusso di base e:
+## Flusso di lavoro
 
-1. mettere materiale nuovo in `raw/`
-2. ingestire il materiale importante in `wiki/references/`
-3. propagare i risultati in conoscenza, decisioni, stato operativo e documentazione software
+```
+raw/           → wiki-ingest →  references/    (fonti)
+                             →  syntheses/     (analisi)
+                             →  build/         (spec aggiornate)
+artifacts/     → boards Luca e Salvatore       (task e decisioni)
+```
 
-## Prossimo passo consigliato
+**Luca**: carica materiale tecnico in `raw/`, aggiorna i moduli in `build/`, aggiorna la board.
+**Salvatore**: carica in `raw/` indicatori, strategie, meccanismi di mercato, casi reali. L'agente struttura il materiale in `strategy/`.
 
-Chiudere le prime decisioni su framing del sistema e mercato iniziale, poi trasformarle in mappa software e piano operativo.
+---
+
+*Indice completo: [[_meta/index]]*
