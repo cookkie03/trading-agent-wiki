@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "f2d4de319e047d26",
+        "id": "9de70ba1d5d97653",
         "type": "tabs",
         "children": [
           {
-            "id": "9667cee55f7f5e7f",
+            "id": "6637601c0ef4e2f1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -193,12 +193,15 @@
       "bases:Crea nuova Base": false
     }
   },
-  "active": "797ee80e13297804",
+  "active": "a33a5ef0f6f34da0",
   "lastOpenFiles": [
+    "raw/daily-notes/2026-05-20.md",
+    "raw/daily-notes/2026-05-19.md",
+    "Untitled Kanban 1.md",
+    "Untitled Kanban.md",
     "wiki/references/external/paper-trading-agents.md",
     "wiki/references/external/trading-agents-framework.md",
     "wiki/references/external/cvx-portfolio-optimizer.md",
-    "raw/daily-notes/2026-05-19.md",
     "raw/notes/Tool Set, Provider dati, Exchange.md",
     "raw/articles/TradingAgents Code Wiki.md",
     "raw/articles/TradingAgents.md",
