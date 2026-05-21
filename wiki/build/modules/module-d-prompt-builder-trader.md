@@ -3,97 +3,113 @@ title: "Modulo D — Prompt Builder + LLM Trader"
 type: build
 tags:
   - build
-  - software
+  - multi-agent
+  - architecture
 created: 2026-05-13
-updated: 2026-05-13
+updated: 2026-05-21
 status: active
 priority: medium
 area: software
 related:
   - "[[build/system-map]]"
-  - "[[build/stack]]"
-  - "[[build/mvp-prototype-design]]"
   - "[[build/modules/module-a-exchange-db]]"
   - "[[build/modules/module-c-quant-backtest]]"
+  - "[[build/modules/risk-analyst]]"
+  - "[[references/tradingagents-code-wiki]]"
+  - "[[references/external/trading-agents-framework]]"
 ---
 
 # Modulo D — Prompt Builder + LLM Trader
 
-**Track 3 — inizia solo dopo che Modulo A è completato.**
-
-Il modulo della decisione. Il Prompt Builder assembla deterministicamente tutti gli output dei moduli in un prompt strutturato. L'LLM Trader legge il prompt e produce una proposta di trade in JSON.
+Track 3 (dopo Modulo A). Il modulo che assembla tutti gli output del sistema e invoca l'LLM per la decisione di trade finale.
 
 ---
 
-## Cosa fa
+## Funzione
 
-### Prompt Builder (deterministico, no LLM)
+1. **Prompt Builder**: legge dal DB gli output di tutti i moduli (Quant Agent, News Agent, Risk Analyst, ecc.) e li assembla deterministicamente in un prompt strutturato per l'LLM
+2. **LLM Trader**: riceve il prompt, ragiona dentro i paletti definiti dal Risk Analyst, produce un JSON con la proposta di trade
 
-- Legge dal DB: output di Modulo C (segnali quant), stato portafoglio, briefing Risk Analyst
-- Assembla un prompt secondo un **template fisso** con sezioni:
-  1. Ruolo + stato portafoglio (capitale, liquidità, posizioni aperte)
-  2. Dati strutturati: indicatori tecnici, Pivot Points, segnali quant
-  3. Briefing Risk Analyst: VaR, esposizione max, range SL/TP ammissibili
-  4. Regole operative: una posizione per coin, operazioni ammesse (open/close/hold)
-  5. Formato output obbligatorio (JSON con campi fissi)
-- Salva il prompt assemblato in `module_outputs` (Prompt Store)
-
-### LLM Trader (DeepSeek)
-
-- Legge il prompt dal Prompt Store
-- Produce **esclusivamente** un oggetto JSON:
-  ```json
-  {
-    "azione": "open",
-    "asset": "BTCUSDT",
-    "direzione": "long",
-    "entry": 65000,
-    "sl": 63000,
-    "tp": 70000,
-    "leva": 3,
-    "reasoning": "..."
-  }
-  ```
-- Non esegue l'ordine — lo propone. L'esecuzione è delegata al Security Module e all'Exchange Module
-
-## Output atteso
-
-> Primo ciclo completo end-to-end: dati reali → prompt → decisione LLM → ordine paper su Binance.
+Output JSON obbligatorio: `{ asset, direction, entry, SL, TP, leverage, reasoning }`.
 
 ---
 
-## Tech
+## Filosofia degli Agenti
 
-- **DeepSeek**: LLM principale (costo 1/30 di GPT-5, 2° posto Alpha Arena)
-- Output **JSON strutturato** obbligatorio — parsing deterministico
-- **Pivot Points** inclusi nel prompt — tutti i sistemi pratici analizzati li usano come riferimenti spaziali
-- **Template Prompt**: struttura fissa, campi riempiti deterministicamente dai dati del DB
+*Emersa dalla lettura del codebase TradingAgents (2026-05-19). Punto di partenza: [[references/tradingagents-code-wiki]]*
+
+### Principio guida: pochi agenti, tanti tool potenti
+
+Il sistema TradingAgents usa molti agenti con ruoli separati (Analysts → Researchers → Risk Debaters → Managers → Trader). La nostra variante mira a **efficientare drasticamente** questa architettura:
+
+- **Analysts** → non sono agenti LLM ma un **layer di moduli deterministici** che forniscono dati già pronti al layer successivo
+  - News: gestite con RAG
+  - Indicatori tecnici: calcolati automaticamente dal DB con formule
+  - Social media sentiment: RAG oppure sintesi con tag multipli (ticker, horizon, data/ora, ecc.)
+  - Fondamentali: raccolti e parsati da un modellino locale; metriche bilancio (revenues, EBIT, ecc.) caricate nel DB; eventualmente sintesi LLM-ready allegate
+- **Researchers** (Bull/Bear debate) → architettura da valutare criticamente; la divisione in due agenti potrebbe essere inefficiente
+- **Risk Management Debaters** → da riesaminare; ipotesi preferita: un agente strategia + un agente rules (portfolio constraints), entrambi orientati a massimizzare profitto analizzando scenari con tool appositi
+- **Managers + Trader** → ridurre al minimo; riformulare ispirandosi ai workflow degli investitori istituzionali reali
+
+### Tool-centric design
+
+Ogni agente deve potersi collegare a tool completi e versatili. La selezione e progettazione dei tool è di **fondamentale rilevanza**: dare quanta più completezza di informazioni possibili con quanta meno latenza possibile.
+
+Per ogni tool ereditato dal fork TradingAgents: valutare se tenerlo, potenziarlo o riscriverlo da zero.
+
+Fonti di ispirazione per i tool: sezione "Data Retrieval Tools and Utilities" di [[references/tradingagents-code-wiki]] — Fundamental Data e News/Insider Transactions tools sono buoni punti di partenza.
 
 ---
 
-## Decisioni prese
+## State Management e Schemas
 
-| Tema | Scelta |
-|------|--------|
-| LLM | DeepSeek |
-| Output | JSON strutturato obbligatorio |
-| Pivot Points | Inclusi nel prompt (confermato da ricerca NotebookLM) |
-| Principio | LLM decide, Python esegue (deterministico) |
+Obiettivo: **pochi schema molto potenti e dettagliati**, non tanti schema frammentati.
 
-## Domande aperte
+Pattern da TradingAgents da adottare:
+- **TypedDict** per gli state di workflow (propagati tra i nodi del grafo)
+- **Pydantic** per gli output strutturati degli LLM (con field descriptions come istruzioni)
+- **Fallback a free-text** quando structured output non è disponibile o fallisce
 
-- **Struttura esatta del template prompt**: quali sezioni, quale ordine, quanti token per sezione?
-- **Quick Thinker + Deep Thinker**: usare DeepSeek small per raccolta dati e DeepSeek Chat per la decisione finale?
-- **Frequenza di invocazione**: ogni 4h o 24h? Dipende dal costo token per chiamata e dal tempo di elaborazione dei moduli.
+Ogni state deve salvare automaticamente le informazioni rilevanti nella memoria del sistema (log).
+
+Buona la gestione degli structured output con fallback in plain text: prevenire interruzioni del pipeline.
+
+---
+
+## Multi-Agent Debate: Mantenerlo o No?
+
+Il debate a 3 agenti per il Risk Management (aggressivo, neutrale, conservativo) ha un vantaggio reale: copertura di angolazioni estreme che un singolo agente potrebbe ignorare (es. extraterritorialità dei ricavi, rischio cambio su mercati esteri).
+
+**Ipotesi**: mantenere il debate se efficientato — ridurre il numero di agenti e affinare i system prompt. Non eliminarlo a priori.
+
+Da investigare: pro e contro della struttura a debate rispetto a un singolo agente multi-prospettiva.
+
+---
+
+## Orchestrazione: LangGraph
+
+Molto probabile che il progetto utilizzi **LangGraph** per i workflow e **LangChain** per gli agenti, partendo come fork di TradingAgents.
+
+Pattern di LangGraph utili da adottare:
+- `StateGraph` con nodi = agenti, edges = logica condizionale
+- `ConditionalLogic` per routing dinamico in base all'`AgentState`
+- `Propagator` per inizializzare lo state con contesto storico
+- Checkpointing SQLite per-ticker per resume in caso di crash
 
 ---
 
 ## Dipendenze
 
-- **Dipende da Modulo A**: legge dati da `market_data` e `portfolio_state`
-- **Dipende da Modulo C**: legge segnali da `module_outputs`
-- **Dipende da Risk Analyst** (post-MVP): legge il briefing rischio — nel MVP la parte Risk è semplificata
+- Legge da: DB centrale (`module_outputs`, `market_data`, `portfolio_state`)
+- Produce: proposta trade JSON → Security Module
+- Upstream: [[build/modules/risk-analyst]] (paletti), [[build/modules/module-c-quant-backtest]] (segnali quant)
+- Downstream: Security Module → Portfolio Allocator → [[build/modules/module-a-exchange-db]]
 
 ---
 
-*Vedere [[build/mvp-prototype-design]] per il ciclo operativo completo.*
+## TODO / Decisioni aperte
+
+- Frequenza di invocazione dell'LLM Trader (vincolo costo token + latenza moduli upstream)
+- Valutare architettura debate: quanti agenti, quali prospettive, se mantenerlo
+- Definire schema finale AgentState e output JSON del Trader
+- Brainstorming: replicare i workflow degli uffici di un investitore istituzionale

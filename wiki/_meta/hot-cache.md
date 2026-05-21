@@ -3,9 +3,9 @@
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
 ## Sessione Corrente
-- **Data**: 2026-05-13
+- **Data**: 2026-05-21
 - **Agent**: Claude Code
-- **Operazione principale**: Ristrutturazione completa del vault
+- **Operazione principale**: Ingest TradingAgents Code Wiki + note di lettura Luca (daily note 2026-05-19)
 
 ## Stato attuale del progetto
 - Fase: **Design → sviluppo Modulo A inizia ora**
@@ -51,7 +51,14 @@ wiki/
 - `raw/notes/sessione-brainstorming-2026-05-13.md` — ingest formale ancora pendente
 - `raw/articles/quant strategy/*.txt` — note audio di Salvatore su strategie quant, da ingestare
 - `raw/audio/2026-05-13 13-14-17.m4a` — ingestato via trascrizione txt
+- `raw/articles/TradingAgents Code Wiki.md` — source page creata; il file raw non è stato archiviato (contenuto molto lungo, lasciato in raw per consultazione)
 
 ## Pagine chiave da aggiornare prossima sessione
-- [[artifacts/luca-board]] — aggiungere task esplicito "Implementa Modulo A"
-- [[artifacts/salvatore-board]] — aggiornare con nuove domande emerse
+- [[artifacts/luca-board]] — aggiungere task esplicito "Implementa Modulo A" + "Studia LangGraph" + "Decidi fork vs from scratch"
+- [[artifacts/salvatore-board]] — aggiungere domande per Salvatore (indicatori di performance, analisi tecnica, workflow investitore istituzionale)
+- [[build/decision-log]] — formalizzare decisione fork vs from scratch con Salvatore
+
+## Decisioni emerse questa sessione (da discutere)
+- **Fork vs from scratch**: Luca dopo lettura Code Wiki propende per fork da TradingAgents. Da discutere con Salvatore e formalizzare
+- **Self-scheduling vs cron**: decisione ancora aperta su come schedulare i cicli di analisi
+- **Debate architecture**: mantenerla efficientata o ridisegnare? Da investigare prima di implementare Modulo D

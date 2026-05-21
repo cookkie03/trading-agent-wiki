@@ -5,7 +5,7 @@ tags:
   - decision
   - strategy
 created: 2026-04-30
-updated: 2026-05-13
+updated: 2026-05-21
 status: active
 related:
   - "[[build/system-map]]"
@@ -22,7 +22,7 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 
 | Data | Decisione | Motivazione |
 |------|-----------|-------------|
-| 2026-04-30 | **From scratch** — non fare fork di progetti esistenti | Chi parte da un fork deve comunque studiare il codice altrui; meglio costruire con piena comprensione |
+| 2026-04-30 | **From scratch** — non fare fork di progetti esistenti | Chi parte da un fork deve comunque studiare il codice altrui; meglio costruire con piena comprensione. **Contraddizione 2026-05-19**: dopo lettura del Code Wiki di TradingAgents, Luca rivaluta — probabile fork come punto di partenza. Decisione da formalizzare. |
 | 2026-04-30 | **Crypto come mercato iniziale** — Binance come exchange | Accesso dati migliore, liquidità, semplicità API rispetto all'equity |
 | 2026-04-30 | **Limit order + SL/TP obbligatori**, tutti i trade in leva | Ogni trade deve avere tre numeri definiti: entry, SL, TP. Senza SL/TP, win rate 66% porta comunque a drawdown devastanti |
 | 2026-04-30 | **Design-first** prima di qualsiasi coding | Progettare artifact, raccogliere info, definire I/O per ogni modulo |
@@ -37,6 +37,14 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 | 2026-05-13 | **Output LLM = JSON strutturato obbligatorio** | Tutti i framework convergono su questo. Necessario per parsing deterministico |
 | 2026-05-13 | **Prophet non usare** come modulo forecast | Non regge sui crolli improvvisi, genera previsioni bullish in mercati bearish |
 | 2026-05-13 | **Value investing non scalabile** come strategia primaria ora | Ogni azione richiede analisi diversa; costoso in tempo e token. Da rivalutare in futuro |
+
+---
+
+| 2026-05-19 | **Data strategy: DB-first** — salvare ogni dato nel DB prima di renderlo disponibile agli agenti | Preferito rispetto al hub routing di TradingAgents (che chiama i vendor on-demand). Consente deduplicazione deterministica e sfruttamento massimo dei rate limit. Trade-off da valutare: latenza su dati molto recenti non ancora nel DB |
+| 2026-05-19 | **Framework**: LangGraph + LangChain confermati | LangGraph ben mantenuto; il pattern StateGraph con checkpointing SQLite è adatto al nostro workflow. Potenzialmente poco efficiente ma priorità è avviare. Da imparare |
+| 2026-05-19 | **Filosofia agenti**: pochi agenti + tanti tool potenti | Contrario alla moltiplicazione di agenti (Analysts/Researchers/Managers/Trader di TradingAgents). Il layer Analysts diventa moduli deterministici; gli agenti LLM si concentrano solo sul ragionamento finale |
+| 2026-05-19 | **Pattern intra-modulo**: un file gateway per subdirectory | Ogni subdirectory = modulo; un file unico gestisce input/output intra- e inter-modulo |
+| 2026-05-19 | **Look-ahead bias**: doppia data per ogni informazione | (1) data di ottenimento/pubblicazione, (2) data a cui l'informazione si riferisce. Più preciso del semplice `curr_date` filtering di TradingAgents |
 
 ---
 
@@ -55,3 +63,6 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 | **Fine-tuning vs Continuous Learning** | Continuous learning real-time è problema aperto; fine-tuning periodico più praticabile | post-MVP |
 | **Exchange decentralizzato (DEX)** | Quando ha senso passare a un DEX anonimo (no KYC) rispetto a Binance? | post-MVP |
 | **Struttura wiki quant** | Sezione strategie da costruire man mano che Salvatore porta materiale | [[_meta/index]] |
+| **Fork vs from scratch** | Luca propende per partire da TradingAgents come fork, in contraddizione con la decisione 2026-04-30. Decisione da formalizzare con Salvatore | [[build/decision-log]] |
+| **Self-scheduling vs cron** | Agenti che si auto-schedolano nell'output strutturato vs cron job fissi a intervalli prestabiliti (4h/24h) | [[build/modules/module-d-prompt-builder-trader]] |
+| **Debate architecture** | Mantenere la struttura a debate (Bull/Bear, Risk Debaters) efficientandola, o ridisegnare con meno agenti e system prompt mirati? | [[build/modules/module-d-prompt-builder-trader]] |

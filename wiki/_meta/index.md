@@ -16,6 +16,7 @@
 - [[build/modules/module-c-quant-backtest]] — Modulo C: Quant Agent + Backtesting (Track 2, Luca+Salvatore)
 - [[build/modules/module-d-prompt-builder-trader]] — Modulo D: Prompt Builder + LLM Trader (Track 3)
 - [[build/modules/risk-analyst]] — Risk Analyst Agent (post-MVP)
+- [[build/ideas-log]] — log append-only delle idee di progetto (mai cancellare)
 
 ## References — Fonti ingestite
 *Materiale grezzo ingestito: call, paper, librerie, articoli.*
@@ -32,6 +33,7 @@
 - [[references/onboarding-wiki-workflow]] — metodo di lavoro e uso di Obsidian
 - [[references/trading-floor-canvas]] — schema architettura multi-agente
 - [[references/external/trading-agents-framework]] — TradingAgents framework (scheda sintetica)
+- [[references/tradingagents-code-wiki]] — TradingAgents Code Wiki (documentazione tecnica del codebase: agenti, orchestrazione, data layer, LLM integration)
 - [[references/external/cvx-portfolio-optimizer]] — cvx-portfolio-optimizer (scheda sintetica)
 
 ## Strategy — Conoscenza di mercato

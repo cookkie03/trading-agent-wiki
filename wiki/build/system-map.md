@@ -5,7 +5,7 @@ tags:
   - build
   - architecture
 created: 2026-04-30
-updated: 2026-05-13
+updated: 2026-05-21
 status: active
 priority: high
 area: software
@@ -62,7 +62,7 @@ Data Ingestion
   └── Logger              → trade, chain-of-thought, metriche nel DB
 ```
 
-**Frequenza**: ogni 4h o 24h (swing trading). Schedulato come cron job.
+**Frequenza**: ogni 4h o 24h (swing trading). Schedulato come cron job — o in alternativa con self-scheduling agents (vedi [[build/ideas-log]]).
 
 ---
 
@@ -148,4 +148,24 @@ Questo evita l'effetto "telefono senza fili" (degradazione informazioni nei prom
 
 ---
 
-*Per le decisioni tecniche vedere [[build/decision-log]]. Per il piano MVP vedere [[build/mvp-prototype-design]].*
+---
+
+## Pattern architetturali (aggiornamento 2026-05-21)
+
+*Emersi dalla lettura del codebase TradingAgents — [[references/tradingagents-code-wiki]]*
+
+**Look-ahead bias — doppia data**: ogni informazione nel DB ha due date distinte:
+- `publication_date`: quando è stata ottenuta/pubblicata (es. giorno di pubblicazione delle trimestrali)
+- `reference_date`: la data a cui l'informazione si riferisce (es. ultimo giorno del trimestre)
+
+**DB-first data strategy**: ogni dato viene scritto nel DB prima di essere reso disponibile agli agenti. I tool si agganciano al DB, non ai vendor direttamente. Eccezione da valutare: dati real-time molto recenti non ancora nel DB.
+
+**Pattern intra-modulo**: ogni subdirectory del progetto è un modulo con un unico file gateway che gestisce tutto il routing input/output intra- e inter-modulo.
+
+**Standardizzazione**: tutti i moduli producono output in formati comuni. L'exchange deve essere intercambiabile (demo ↔ reale).
+
+**Indicatori calcolati dal DB**: nessun calcolo on-the-fly — gli indicatori vengono calcolati con formule che richiamano i dati grezzi già nel DB.
+
+---
+
+*Per le decisioni tecniche vedere [[build/decision-log]]. Per il piano MVP vedere [[build/mvp-prototype-design]]. Per idee e brainstorming: [[build/ideas-log]].*

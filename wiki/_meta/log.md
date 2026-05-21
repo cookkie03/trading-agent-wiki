@@ -2,6 +2,15 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-05-21] ingest | TradingAgents Code Wiki + note di lettura Luca
+
+- **Type**: article (code wiki) + note (daily note 2026-05-19)
+- **Source raw**: `raw/articles/TradingAgents Code Wiki.md`, `raw/daily-notes/2026-05-19.md`
+- **Pages created**: [[references/tradingagents-code-wiki]], [[build/ideas-log]]
+- **Pages updated**: [[build/modules/module-d-prompt-builder-trader]] (riscritto da raw dump a pagina strutturata), [[build/system-map]] (pattern architetturali: look-ahead bias doppia data, DB-first, indicatori dal DB), [[build/decision-log]] (nuove decisioni: DB-first, LangGraph, agent philosophy, look-ahead bias; aperte: fork vs from scratch, self-scheduling, debate architecture)
+- **Contradictions**: decisione "From scratch" (2026-04-30) vs. "fork da TradingAgents" (2026-05-19, Luca) — segnalata nel decision-log, da formalizzare
+- **Notes**: ideas-log.md creato come file append-only su richiesta di Luca per raccogliere tutte le idee del progetto
+
 ## [2026-05-14] update | Aggiunta sezione strategy/
 - **Operazione**: recuperata la distinzione build/ (software, Luca) vs strategy/ (conoscenza mercato, Salvatore)
 - **Cartelle create**: `strategy/`, `strategy/methods/`, `strategy/indicators/`, `strategy/metrics/`
