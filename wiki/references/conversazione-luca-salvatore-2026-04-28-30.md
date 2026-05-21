@@ -12,10 +12,7 @@ confidence: medium
 status: reviewed
 related:
   - "[[build/system-map]]"
-  - "[[ops/current-state]]"
-  - "[[theory/modular-trading-agent-architecture]]"
-  - "[[theory/trader-workflow-automation]]"
-  - "[[questions/open-questions]]"
+  - "[[build/system-map]]"
 ---
 
 # Conversazione progettuale Luca-Salvatore (2026-04-28 / 2026-04-30)

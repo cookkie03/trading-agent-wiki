@@ -2,6 +2,50 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-05-22] ingest | Tool Set Provider Dati Exchange + Note Quant Salvatore + Brenndoerfer + Update videochiamata-05-13
+
+- **Type**: note (provider dati) + audio notes (strategie quant) + article (quant trading)
+- **Sources raw**:
+  - `raw/notes/Tool Set, Provider dati, Exchange.md` → archiviato
+  - `raw/articles/quant strategy/*.txt` (6 file, 2 trascrizioni uniche) → da archiviare
+  - `raw/articles/quant strategy/Quantitative Trading Strategies...md` → da archiviare
+  - `raw/audio/Bella, Come tutto bene?...txt` → da archiviare (contenuto extra aggiunto a videochiamata-05-13)
+  - `raw/notes/sessione-brainstorming-2026-05-13.md` → archiviato (già ingestato come mvp-prototype-design)
+  - `raw/daily-notes/2026-05-13.md` → archiviato (contenuto minimalissimo, già coperto)
+  - `raw/daily-notes/2026-05-14.md` → archiviato (contenuto minimalissimo, già coperto)
+  - `raw/audio/Come stai tutto bene?...txt` → da archiviare (già ingestato come videochiamata-05-06)
+  - `raw/audio/così ce l'abbiamo...txt` → da archiviare (già ingestato come videochiamata-04-30)
+  - `raw/audio/Invece Obsidian...txt` → da archiviare (già ingestato come videochiamata-04-30)
+- **Pages created**:
+  - [[references/tool-set-provider-dati-exchange]]
+  - [[references/note-audio-salvatore-quant-strategy]]
+  - [[references/quantitative-trading-strategies-brenndoerfer]]
+  - [[strategy/methods/mean-reversion-stat-arb]]
+- **Pages updated**:
+  - [[references/videochiamata-luca-salvatore-2026-05-13]] (aggiunto sez. 8-11: struttura multi-agente verbale Salvatore, order book crypto, fork vs from scratch, sequenza operativa)
+  - [[strategy/index]] (aggiunto mean-reversion-stat-arb)
+  - [[_meta/index]] (aggiunte 4 nuove pagine + mean-reversion a strategy)
+- **Contradictions**: nessuna
+- **Notes**: 4 file audio confermati come già ingestati in sessioni precedenti. File quant strategy contenevano 2 trascrizioni uniche duplicate. Daily notes erano minimalissime. I file audio da archiviare richiedono permesso bash — da completare manualmente.
+
+## [2026-05-22] update | CLAUDE.md riscritto
+
+- **Change**: CLAUDE.md ridotto all'osso e reso resistente a ristrutturazioni future
+- **Rimosso**: struttura vault hardcodata, riferimenti a cartelle eliminate (ops/, theory/, decisions/), dataview queries obsolete, tipi frontmatter non più usati
+- **Aggiunto**: delega esplicita dei path a taxonomy.md, tabella skill operative, regola di precedenza (taxonomy.md vince su path)
+- **Principio**: se la struttura cambia → si aggiorna taxonomy.md, non CLAUDE.md
+
+## [2026-05-21] lint | Wiki health check + fix
+
+- **Link rotti risolti** (~35 link su 12 pagine): `[[theory/*]]` → `[[build/system-map]]`, `[[decisions/decision-log]]` → `[[build/decision-log]]`, `[[ops/*]]` → rimossi o redirectati verso `artifacts/`
+- **raw_source_path corretti**: `references/trading-floor-canvas.md` (puntava a file mancante), `references/videochiamata-luca-salvatore-2026-04-30.md` (m4a mancante → svuotato)
+- **Merge duplicati**: `references/external/trading-agents-framework.md` → contenuto incorporato in `references/external/paper-trading-agents.md` + eliminato; `references/library-portfolio-optimizer.md` → contenuto incorporato in `references/external/cvx-portfolio-optimizer.md` + eliminato
+- **Pagina orfana risolta**: `artifacts/idea architettura.canvas` aggiunto all'index
+- **overview.md**: fix link `[[references/_meta/index]]` → `[[_meta/index]]`
+- **Index aggiornato**: path completi per paper, rimozione duplicati, aggiunta canvas orfano
+- **hot-cache aggiornato**: struttura wiki con ideas-log.md e external/ corretti
+- **Pending ingest**: lanciato subagent in background per i raw pendenti (sessione-brainstorming-2026-05-13, quant strategy txts, Tool Set note, daily-notes 13-14 maggio, audio txts)
+
 ## [2026-05-21] ingest | TradingAgents Code Wiki + note di lettura Luca
 
 - **Type**: article (code wiki) + note (daily note 2026-05-19)

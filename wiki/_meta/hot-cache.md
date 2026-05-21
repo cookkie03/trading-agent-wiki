@@ -3,9 +3,9 @@
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
 ## Sessione Corrente
-- **Data**: 2026-05-21
+- **Data**: 2026-05-22
 - **Agent**: Claude Code
-- **Operazione principale**: Ingest TradingAgents Code Wiki + note di lettura Luca (daily note 2026-05-19)
+- **Operazione principale**: Ingest batch pending — Tool Set/Provider dati, note quant Salvatore (dual portfolio + mean reversion), articolo Brenndoerfer, update videochiamata-05-13 con contenuto extra audio
 
 ## Stato attuale del progetto
 - Fase: **Design → sviluppo Modulo A inizia ora**
@@ -30,6 +30,7 @@ wiki/
 │   ├── mvp-prototype-design.md
 │   ├── stack.md
 │   ├── decision-log.md
+│   ├── ideas-log.md  ← log append-only idee di progetto
 │   └── modules/    ← module-a, module-c, module-d, risk-analyst
 ├── strategy/       ← conoscenza di mercato (dominio Salvatore)
 │   ├── index.md
@@ -37,7 +38,7 @@ wiki/
 │   ├── indicators/ ← RSI, MACD, Pivot Points... (da popolare)
 │   └── metrics/    ← Sharpe, Drawdown... (da popolare)
 ├── references/     ← fonti ingestite
-│   └── external/   ← framework/librerie terze
+│   └── external/   ← paper e librerie terze (paper-trading-agents, paper-alpha-arena, cvx-portfolio-optimizer)
 ├── syntheses/      ← analisi trasversali
 └── artifacts/      ← canvas + board Luca + board Salvatore
 ```
@@ -48,17 +49,29 @@ wiki/
 - **Statuto del fondo**: regole hard limits (cash-out %, max esposizione, ecc.)
 
 ## Pending ingest
-- `raw/notes/sessione-brainstorming-2026-05-13.md` — ingest formale ancora pendente
-- `raw/articles/quant strategy/*.txt` — note audio di Salvatore su strategie quant, da ingestare
-- `raw/audio/2026-05-13 13-14-17.m4a` — ingestato via trascrizione txt
-- `raw/articles/TradingAgents Code Wiki.md` — source page creata; il file raw non è stato archiviato (contenuto molto lungo, lasciato in raw per consultazione)
+- `raw/audio/2026-05-13 13-14-17.m4a` — già ingestato via trascrizione txt, .m4a lasciato in raw
+- `raw/articles/TradingAgents Code Wiki.md` — source page creata; lasciato in raw per consultazione (file molto lungo)
+- `raw/articles/TradingAgents.md` / `.pdf` — già ingestato come `references/external/paper-trading-agents`; da archiviare se non serve più
+- Tutto il resto: archiviato in `raw/archived/`
+
+## Pagine create questa sessione
+- [[references/tool-set-provider-dati-exchange]] — broker + provider dati per l'Italia
+- [[references/note-audio-salvatore-quant-strategy]] — dual portfolio + mean reversion (note Salvatore)
+- [[references/quantitative-trading-strategies-brenndoerfer]] — articolo tecnico quant trading completo
+- [[strategy/methods/mean-reversion-stat-arb]] — strategia candidata per Modulo C
+
+## Pagine aggiornate questa sessione
+- [[references/videochiamata-luca-salvatore-2026-05-13]] — aggiunte sez. 8-11 (struttura agenti verbale, order book, fork vs from scratch)
 
 ## Pagine chiave da aggiornare prossima sessione
 - [[artifacts/luca-board]] — aggiungere task esplicito "Implementa Modulo A" + "Studia LangGraph" + "Decidi fork vs from scratch"
-- [[artifacts/salvatore-board]] — aggiungere domande per Salvatore (indicatori di performance, analisi tecnica, workflow investitore istituzionale)
+- [[artifacts/salvatore-board]] — aggiungere domande per Salvatore (indicatori, analisi tecnica, workflow investitore)
 - [[build/decision-log]] — formalizzare decisione fork vs from scratch con Salvatore
+- [[strategy/methods/mean-reversion-stat-arb]] — da completare quando Salvatore finisce di leggere l'articolo trovato
 
-## Decisioni emerse questa sessione (da discutere)
-- **Fork vs from scratch**: Luca dopo lettura Code Wiki propende per fork da TradingAgents. Da discutere con Salvatore e formalizzare
-- **Self-scheduling vs cron**: decisione ancora aperta su come schedulare i cicli di analisi
-- **Debate architecture**: mantenerla efficientata o ridisegnare? Da investigare prima di implementare Modulo D
+## Decisioni ancora aperte (carry-over)
+- **Fork vs from scratch**: Luca propende per fork da TradingAgents. Da discutere e formalizzare con Salvatore
+- **Self-scheduling vs cron**: aperta
+- **Debate architecture**: mantenerla o ridisegnare? Da investigare prima di Modulo D
+- **Strategia Modulo C**: mean reversion è candidata principale (Salvatore) — da decidere con Luca
+- **Dual portfolio value+quant**: idea embrionale di Salvatore, da discutere in sessione dedicata

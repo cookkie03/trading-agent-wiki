@@ -8,12 +8,12 @@ tags:
   - research
 raw_source_path: "raw/articles/TradingAgents.md"
 created: 2026-05-12
-updated: 2026-05-12
+updated: 2026-05-21
 confidence: high
 status: reviewed
 related:
-  - "[[theory/modular-trading-agent-architecture]]"
   - "[[build/system-map]]"
+  - "[[references/tradingagents-code-wiki]]"
 ---
 
 # TradingAgents: Multi-Agents LLM Financial Trading Framework
@@ -65,3 +65,11 @@ Il framework supera i limiti dei sistemi a singolo agente o dei sistemi multi-ag
 - Conferma la validità dell'architettura multi-agente modulare.
 - Introduce l'importanza della **comunicazione strutturata** tra moduli (già presente come idea di "DB" nel nostro `system-map`).
 - Suggerisce l'uso di **debater** per migliorare la robustezza della decisione del Trader.
+
+## Pattern adottati nel nostro progetto
+
+- **Comunicazione strutturata via JSON** (non chat free-form) tra agenti — evita l'effetto "telefono senza fili"
+- **Quick Thinker + Deep Thinker**: modelli economici per raccolta dati, modelli capaci solo per la decisione finale
+- **Risk Management upstream** (nostra variante): nel TradingAgents originale il Risk Team valuta *dopo* il Trader; nel nostro design il Risk Analyst agisce *prima*, impostando i paletti
+
+Per i dettagli implementativi del codebase vedere [[references/tradingagents-code-wiki]].

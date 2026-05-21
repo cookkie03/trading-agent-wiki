@@ -22,8 +22,8 @@ priority: high
 area: research
 related:
   - "[[build/mvp-prototype-design]]"
-  - "[[theory/modular-trading-agent-architecture]]"
-  - "[[decisions/decision-log]]"
+  - "[[build/system-map]]"
+  - "[[build/decision-log]]"
   - "[[paper-trading-agents]]"
   - "[[paper-alpha-arena]]"
 ---

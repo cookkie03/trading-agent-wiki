@@ -34,7 +34,7 @@ Un sistema multi-agente che replica e automatizza il workflow di un trader profe
 | Vedere il piano MVP completo | [[build/mvp-prototype-design]] |
 | Trovare un termine che non conosci | [[_meta/glossario]] |
 | Vedere tutte le decisioni prese | [[build/decision-log]] |
-| Trovare una fonte o un paper | [[references/_meta/index]] → [[_meta/index]] |
+| Trovare una fonte o un paper | [[_meta/index]] |
 
 ---
 

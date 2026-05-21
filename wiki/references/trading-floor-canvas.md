@@ -4,14 +4,13 @@ type: source
 tags:
   - source
   - architecture
-raw_source_path: "raw/notes/Trading Floor.canvas"
+raw_source_path: "wiki/artifacts/trading-floor.canvas"
 created: 2026-05-06
 updated: 2026-05-06
 confidence: high
 status: active
 related:
-  - "[[theory/modular-trading-agent-architecture]]"
-  - "[[theory/multi-agent-trading-floor]]"
+  - "[[build/system-map]]"
 ---
 
 # Trading Floor Canvas

@@ -11,10 +11,14 @@
             "id": "25beb56429faa165",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "CLAUDE.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nuova scheda"
+              "title": "CLAUDE"
             }
           }
         ]
@@ -189,11 +193,20 @@
       "bases:Crea nuova Base": false
     }
   },
-  "active": "a33a5ef0f6f34da0",
+  "active": "25beb56429faa165",
   "lastOpenFiles": [
-    "wiki/build/system-map.md.tmp.37022.6308b6038e05",
+    "raw/archived/articles/quant strategy/Quantitative Trading Strategies Alpha, Backtesting & Performance - Interactive.md",
+    "raw/archived/articles/quant strategy/Allora, King, ho trovato una roba che mi sembrava interessante adesso sto dedicando circa un'ora Sla.txt",
+    "raw/archived/articles/quant strategy/Allora, King, ho trovato una roba che mi sembrava interessante adesso sto dedicando circa un'ora Sla 1.txt",
+    "raw/archived/articles/quant strategy/Allora ti dico King, ho avuto un'idea nel senso sto leggendo due libri in questo momento, uno sulla .txt",
+    "raw/archived/articles/quant strategy/Allora ti dico King, ho avuto un'idea nel senso sto leggendo due libri in questo momento, uno sulla  3.txt",
+    "raw/archived/articles/quant strategy/Allora ti dico King, ho avuto un'idea nel senso sto leggendo due libri in questo momento, uno sulla  2.txt",
+    "raw/archived/articles/quant strategy/Allora ti dico King, ho avuto un'idea nel senso sto leggendo due libri in questo momento, uno sulla  1.txt",
+    "raw/archived/articles/quant strategy",
+    "raw/archived/audio/così ce l'abbiamo va bene, allora King dovresti vedere il mio coso. Okay, dovresti vedere il mio Obs.txt",
+    "raw/archived/audio/Invece Obsidian. Cioè, quando creo un nuovo volt, creo un nuovo cervello, c'è la nuova mappina. Quan.txt",
+    "raw/archived/audio/Come stai tutto bene? sì dai tu sto mettendo il polletto in friggitrice ad aria. Sì, sì, sì, pollett.txt",
     "wiki/build/ideas-log.md",
-    "wiki/build/ideas-log.md.tmp.37022.ed39e49009f0",
     "wiki/references/tradingagents-code-wiki.md",
     "wiki/build/modules/module-d-prompt-builder-trader.md",
     "raw/daily-notes/2026-05-19.md",
@@ -206,11 +219,9 @@
     "raw/notes/Tool Set, Provider dati, Exchange.md",
     "raw/articles/TradingAgents Code Wiki.md",
     "raw/articles/TradingAgents.md",
-    "raw/articles/TradingAgents.pdf",
     "wiki/artifacts/luca-board.md",
     "wiki/artifacts/kanban-project-status.md",
     "wiki/build/modules/module-a-exchange-db.md",
-    "Clippings/Program and courses Data Science and Society.md",
-    "Clippings"
+    "Clippings/Program and courses Data Science and Society.md"
   ]
 }

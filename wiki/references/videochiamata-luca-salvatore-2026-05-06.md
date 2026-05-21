@@ -15,8 +15,8 @@ status: reviewed
 related:
   - "[[references/videochiamata-luca-salvatore-2026-04-30]]"
   - "[[build/system-map]]"
-  - "[[theory/modular-trading-agent-architecture]]"
-  - "[[decisions/decision-log]]"
+  - "[[build/system-map]]"
+  - "[[build/decision-log]]"
 ---
 
 # Videochiamata Luca-Salvatore (2026-05-06)

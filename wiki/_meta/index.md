@@ -25,16 +25,17 @@
 - [[references/videochiamata-luca-salvatore-2026-04-30]] — architettura multi-agente e dashboard
 - [[references/videochiamata-luca-salvatore-2026-05-06]] — allineamento architettura cron/prompt-builder
 - [[references/videochiamata-luca-salvatore-2026-05-13]] — trend following, value investing, walk-through canvas
-- [[paper-trading-agents]] — TradingAgents framework (TauricResearch)
-- [[paper-alpha-arena]] — benchmark LLM su trading crypto
-- [[references/library-portfolio-optimizer]] — documentazione cvx-portfolio-optimizer
+- [[references/external/paper-trading-agents]] — TradingAgents paper + pattern adottati nel progetto — *anche come bare link `[[paper-trading-agents]]`*
+- [[references/external/paper-alpha-arena]] — benchmark LLM su trading crypto — *anche come bare link `[[paper-alpha-arena]]`*
 - [[references/architecture-handwritten-notes]] — schemi iniziali di sistema
 - [[references/notion-export-investimento-trading]] — export Notion su trading e investimenti
 - [[references/onboarding-wiki-workflow]] — metodo di lavoro e uso di Obsidian
 - [[references/trading-floor-canvas]] — schema architettura multi-agente
-- [[references/external/trading-agents-framework]] — TradingAgents framework (scheda sintetica)
 - [[references/tradingagents-code-wiki]] — TradingAgents Code Wiki (documentazione tecnica del codebase: agenti, orchestrazione, data layer, LLM integration)
-- [[references/external/cvx-portfolio-optimizer]] — cvx-portfolio-optimizer (scheda sintetica)
+- [[references/external/cvx-portfolio-optimizer]] — cvx-portfolio-optimizer (documentazione completa, merge con library-portfolio-optimizer)
+- [[references/tool-set-provider-dati-exchange]] — broker con API Python disponibili in Italia + provider dati gratuiti (stack raccomandato)
+- [[references/note-audio-salvatore-quant-strategy]] — note audio Salvatore su strategie quant: dual portfolio value+quant, mean reversion/stat arb
+- [[references/quantitative-trading-strategies-brenndoerfer]] — articolo Brenndoerfer su quant trading: alpha, backtesting, metriche performance (con codice Python)
 
 ## Strategy — Conoscenza di mercato
 *Approcci, indicatori, metriche: il dominio di Salvatore. Ogni elemento qui alimenta [[build/modules/module-c-quant-backtest]].*
@@ -42,6 +43,7 @@
 - [[strategy/index]] — panoramica e principio di linking
 - [[strategy/methods/trend-following]] — seguire il trend degli istituzionali
 - [[strategy/methods/factor-investing]] — fattori fondamentali e quantitativi (post-MVP)
+- [[strategy/methods/mean-reversion-stat-arb]] — mean reversion e statistical arbitrage / pairs trading (candidata Modulo C)
 
 *(indicators/ e metrics/ si popolano man mano che Salvatore porta materiale)*
 
@@ -60,6 +62,7 @@
 - [[artifacts/salvatore-board]] — board di Salvatore (focus economico: mercati, strategie)
 - [[artifacts/artifact-workbench]] — ponte tra note e artifact
 - [[artifacts/kanban-project-status]] — kanban stato progetto
+- [[artifacts/idea architettura.canvas]] — canvas architettura (artifact di lavoro)
 
 ## Meta
 - [[_meta/glossario]] — glossario termini del progetto

@@ -10,12 +10,9 @@ created: 2026-04-30
 updated: 2026-05-06
 status: active
 related:
-  - "[[ops/dashboard]]"
-  - "[[ops/current-state]]"
-  - "[[ops/backlog]]"
   - "[[build/system-map]]"
-  - "[[decisions/decision-log]]"
-  - "[[questions/open-questions]]"
+  - "[[build/decision-log]]"
+  - "[[artifacts/luca-board]]"
 confidence: high
 priority: high
 area: ops
@@ -34,7 +31,7 @@ sources:
 - [ ] Definire la struttura Input/Output del modulo **Analista (Ratio/Grafici)**
 - [ ] Iniziare la ricerca sui progetti citati: Alfa Arena, NeuroEspresso, Cornell Paper
 - [ ] Definire metriche di portafoglio specifiche (drawdown, rendimento, esposizione) per la dashboard Streamlit
-- [ ] Registrare ufficialmente la decisione "Dashboard di Augmentazione" in [[decisions/decision-log]]
+- [ ] Registrare ufficialmente la decisione "Dashboard di Augmentazione" in [[build/decision-log]]
 
 
 ## In Progress
@@ -54,7 +51,7 @@ sources:
 - [x] Ingestire i transcript della videochiamata del 30 aprile
 - [x] Inizializzare repository Git ed eseguire il primo commit
 - [x] Inizializzare la struttura base del vault
-- [x] Formalizzare uno snapshot iniziale in [[ops/current-state]]
+- [x] Formalizzare uno snapshot iniziale dello stato del progetto
 
 
 ## Note Di Lettura

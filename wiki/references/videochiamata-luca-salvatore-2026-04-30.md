@@ -7,15 +7,15 @@ tags:
   - strategy
   - architecture
 sources: []
-raw_source_path: raw/audio/videochimata 30 apri.m4a
+raw_source_path: ""
 created: 2026-04-30
 updated: 2026-05-10
 confidence: high
 status: reviewed
 related:
   - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
-  - "[[theory/modular-trading-agent-architecture]]"
-  - "[[kanban-project-status]]"
+  - "[[build/system-map]]"
+  - "[[artifacts/kanban-project-status]]"
   - "[[build/system-map]]"
 ---
 

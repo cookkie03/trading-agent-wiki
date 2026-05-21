@@ -5,7 +5,7 @@ tags:
   - strategy
   - market-structure
 created: 2026-05-14
-updated: 2026-05-14
+updated: 2026-05-22
 status: active
 area: strategy
 related:
@@ -36,6 +36,7 @@ Ogni metodo descrive una strategia o un approccio: come funziona, quando funzion
 
 - [[strategy/methods/trend-following]] — seguire il trend degli istituzionali (approccio attuale Salvatore)
 - [[strategy/methods/factor-investing]] — investire basandosi su fattori fondamentali e quantitativi
+- [[strategy/methods/mean-reversion-stat-arb]] — mean reversion e statistical arbitrage / pairs trading (candidata per Modulo C, da Salvatore)
 
 *Aggiungere un file per ogni nuovo approccio studiato, anche se poi si decide di non usarlo.*
 

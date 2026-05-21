@@ -11,7 +11,7 @@ updated: 2026-05-12
 confidence: high
 status: reviewed
 related:
-  - "[[theory/modular-trading-agent-architecture]]"
+  - "[[build/system-map]]"
 ---
 
 # Alpha Arena & Six Frontier LLMs Trading Competition

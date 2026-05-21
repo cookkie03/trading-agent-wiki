@@ -13,9 +13,8 @@ status: active
 confidence: high
 related:
   - "[[build/mvp-prototype-design]]"
-  - "[[decisions/decision-log]]"
-  - "[[ops/wiki-restructuring-plan]]"
-  - "[[theory/modular-trading-agent-architecture]]"
+  - "[[build/decision-log]]"
+  - "[[build/system-map]]"
 ---
 
 # Videochiamata Luca-Salvatore — 2026-05-13
@@ -170,6 +169,90 @@ Salvatore ha spiegato concetti avanzati post-MVP in modo chiaro:
 
 ---
 
+## 8. Struttura multi-agente — descrizione verbale di Salvatore
+
+Salvatore ha descritto verbalmente la sua visione di un trading floor come gerarchia di agenti AI, partendo dal paragone con un vero trading room istituzionale.
+
+### Layer del trading floor (visione Salvatore)
+
+**Layer inferiore — Il Tavolo (tre agenti che comunicano tra loro):**
+- **News Research Agent**: analizza tutte le news, elabora sentiment, individua opportunità macro. Comunica bilateralmente con l'Analista.
+- **Analista Finanziario**: analizza lo strumento specifico individuato dal News Research — P/E, volumi, prezzi, spread del broker, analisi tecnica. Comunica bilateralmente con il News Research Agent e con il Quant.
+- **Quant/Conto**: fa analisi previsionale matematica (es. Monte Carlo, processi stocastici). Fornisce previsioni del prezzo futuro. Comunica bilateralmente con gli altri due al tavolo.
+
+I tre comunicano tra loro (frecce bidirezionali) e producono un output congiunto.
+
+**Layer intermedio — Risk Analyst:**
+- Riceve l'output del Tavolo
+- Analizza il rischio: VaR, expected shortfall, esposizione massima, range SL/TP
+- Risponde con approvazione + paletti, oppure rimanda al tavolo con motivazione
+- Il Risk Analyst deve essere **molto critico** — "meglio non guadagnare che perdere"
+- Fornisce i paletti (stop loss, take profit, max size) al Trader
+
+**Layer superiore — Trader Agent:**
+- Riceve il referto approvato del Risk Analyst con tutti i paletti
+- Ha un unico compito: **eseguire al miglior prezzo possibile**
+- Trova il broker con spread minore e maggiore liquidità per lo strumento
+- Non decide la strategia, la esegue deterministicamente nelle condizioni di mercato
+
+**Analogia con trading floor reale:**
+- Equity Research → News Research Agent + Analista
+- Quant → Conto
+- Risk Management → Risk Analyst Agent
+- Trader → Trader Agent (che nei fondi reali "chiama i broker, tratta, ottiene il prezzo migliore")
+
+### Metriche di portafoglio — riferimento StreamLit
+
+Salvatore ha mostrato la dashboard StreamLit di Starting Finance (STFC Investment Fund) come riferimento per le metriche di portafoglio. Include tutte le metriche chiave: Sharpe, drawdown, rendimento, analytics avanzate. Può essere presa come ispirazione per la dashboard del nostro sistema.
+
+---
+
+## 9. Order Book e provider — considerazioni operative
+
+### Order Book su Crypto (pubblico)
+
+- Sulle cripto, essendo tutto digitale, l'order book è pubblico
+- Si possono aggregare le API di Binance, Coinbase, Kraken per avere l'order book completo di tutti i provider
+- Whale Alert: servizio che aggrega gli ordini istituzionali pubblici su crypto → può essere usato come segnale
+
+### Limitazione sulle azioni
+
+- Su azioni tradizionali, il volume aggregato non indica acquisti vs vendite
+- I fondi istituzionali devono pubblicare per legge le posizioni (ma in ritardo, settimanalmente)
+- "Nancy Pelosi following" / insider tracking: teoricamente fattibile ma con delay
+
+### Provider aggregatori (database aziendali)
+
+- AIDA, Orbis: database aziendali (non discussi in dettaglio)
+- AlfaSpread: calcola DCF automaticamente, ma API probabilmente a pagamento o con limiti
+- Conclusione: i tool deterministici Python (scritti da noi) che si agganciano alle API sono più efficienti di delegare la ricerca a Claude/ChatGPT
+
+---
+
+## 10. Fork vs From Scratch — stato del dibattito in questa call
+
+Luca ha mostrato a Salvatore il progetto TradingAgents (Cornell, ~50k stelle, Claude 4° contributore). Discussione:
+
+- **Argomento per il fork**: infrastruttura già pronta, 10.000 fork esistenti, open source usabile immediatamente
+- **Argomento contro**: partire da un fork significa studiare il codice altrui fino a capirlo come se l'avessi scritto tu, oppure non sapere cosa cambiare quando qualcosa va storto. "A quel punto crealo da zero."
+- **Decisione**: non chiusa in questa call. Dipende da ulteriore studio e da quanto il progetto TradingAgents è modificabile efficacemente.
+
+Luca propende per il fork (lo ha detto nel daily note 2026-05-19 dopo aver letto il Code Wiki). Da formalizzare con Salvatore.
+
+---
+
+## 11. Sequenza operativa proposta da Luca (fine call)
+
+1. Decidere gli artifact da creare (mappe mentali, kanban necessari)
+2. Fase raccolta informazioni su tutti i progetti open source simili
+3. Da quella raccolta → decisioni: fork vs from scratch, architettura, input/output per modulo
+4. Progettazione granulare: per ogni modulo, definire input/output precisi
+5. Solo dopo → sviluppo con agente coding
+
+**Principio guida**: il codice lo crea l'agente AI, l'importante è sapere al 200% cosa vuoi e come lo vuoi. La qualità del progetto dipende dalla qualità della progettazione.
+
+---
+
 ## Decisioni e insight operativi
 
 | Tema | Contenuto |
@@ -179,3 +262,7 @@ Salvatore ha spiegato concetti avanzati post-MVP in modo chiaro:
 | Tool design | Parametrizzabili (no hardcoded), modulari, componibili in aggregazioni ("tavoli") |
 | Ruolo Salvatore | Market research, raccolta info, caricamento Raw/; NON creazione pagine wiki |
 | Wiki ristrutturazione | Pianificata con Claude, poi spiegata a Salvatore. Vedere [[ops/wiki-restructuring-plan]] |
+| Order book crypto | Pubblico su Binance/Coinbase/Kraken — aggregabile via API |
+| Struttura agenti | Trading floor: Tavolo (News+Analista+Quant) → Risk Analyst → Trader |
+| Fork vs from scratch | Dibattito aperto. Luca propende per fork, da formalizzare |
+| Dashboard metriche | StreamLit STFC come riferimento per metriche di portafoglio |
