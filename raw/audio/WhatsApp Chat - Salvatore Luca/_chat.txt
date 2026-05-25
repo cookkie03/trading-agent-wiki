@@ -1,0 +1,183 @@
+
+[22/05/26, 15:27:46] Luca: ciao caro, piccolo aggiornamento, ho finito l’altro ieri di leggere la guida sul progetto di UCLA che si chiama TradingAgents, quello di cui ti sto parlando in sti giorni; adesso l’ho scaricato e lo sto testando per capire come lavora nel concreto, attualmente mi sta facendo un analisi su nvidia
+[22/05/26, 15:27:56] Luca: ci saranno tante cose da vedere e di cui parlare
+[22/05/26, 15:52:13] Salvatore Gulisano: Bella
+[22/05/26, 15:52:27] Salvatore Gulisano: Giramela dopo che fa l'analisi se riesci
+[22/05/26, 15:52:37] Salvatore Gulisano: Nella pausa studio do un occhio a come l'ha fatta ‎<Questo messaggio è stato modificato>
+[22/05/26, 15:55:06] Luca: bro l’ha fatta ma è gigante
+[22/05/26, 15:56:04] Luca: king effettivamente leggersi come ha fatto l’analisi sarebbe stra utile e se lo fai tu secondo me è ancora più utile perché sai più di me quanto può essere fatta bene o male, se hai voglia sei un goat
+[22/05/26, 15:56:24] Salvatore Gulisano: Si king lo faccio volentieri
+[22/05/26, 15:56:30] Salvatore Gulisano: Se me la giri gli do un occhio
+[22/05/26, 15:56:40] Luca: mo te la giro
+[22/05/26, 15:56:41] Salvatore Gulisano: Spero non sia + di 15 pagine ahahahah
+[22/05/26, 15:56:47] Luca: quasi 30
+[22/05/26, 15:56:50] Salvatore Gulisano: Mi prendo una mezz'oretta di pausa
+[22/05/26, 15:56:53] Luca: infatti è da accorciare
+[22/05/26, 15:56:56] Salvatore Gulisano: DAAAAAAAAAAAAAAMN
+[22/05/26, 15:56:59] Luca: leggitela anche in più giorni
+[22/05/26, 15:57:04] Luca: con calma
+[22/05/26, 15:57:10] Salvatore Gulisano: C'è da vedere se sono 30 pagine di cose utili
+[22/05/26, 15:57:11] Salvatore Gulisano: o no
+[22/05/26, 15:57:14] Salvatore Gulisano: Ahahahahahahah
+[22/05/26, 15:57:16] Luca: bro non le ho lette
+[22/05/26, 15:57:26] Luca: se riesci a capirlo tu sarebbe ottimo, poi la vediamo insieme
+[22/05/26, 15:57:56] Luca: io l’unica cosa che ho fatto è stata: scaricare quel software già fatto, premere avvio, selezionare NVDA come titolo e scaricare il report.
+[22/05/26, 15:58:05] Luca: quindi tipo scarica e prova, così com’è
+[22/05/26, 15:58:30] Salvatore Gulisano: Ah damn, cioè hai messo 0 input?
+[22/05/26, 15:58:38] Luca: 0
+[22/05/26, 15:58:45] Salvatore Gulisano: Hanno già parametrato tutto mi stai dicendo
+[22/05/26, 15:58:53] Salvatore Gulisano: Che cazzo di roba pazzurda
+[22/05/26, 15:58:55] Salvatore Gulisano: WTF
+[22/05/26, 15:59:12] Luca: hanno già dei connettori verso yahoo finance e altri provider di info e news + una ricerca su reddit e un altro social specifico per finanza per analizzare il sentiment
+[22/05/26, 15:59:24] Salvatore Gulisano: Se è fatta bene tutta la gente che fa equity research sta per perdere il lavoro
+[22/05/26, 15:59:33] Salvatore Gulisano: Sono curiosissimo
+[22/05/26, 15:59:34] Salvatore Gulisano: Giuro
+[22/05/26, 15:59:48] Salvatore Gulisano: Sarò molto critico ma molto onesto nel leggerla
+[22/05/26, 15:59:56] Luca: chiaro bro
+[22/05/26, 16:00:00] Salvatore Gulisano: Se è fatta bene lascio l'uni
+[22/05/26, 16:00:02] Luca: considera, io l’ho fatta con un modello free
+[22/05/26, 16:00:07] Salvatore Gulisano: Perchè sarà una laurea inutile
+‎[22/05/26, 16:00:18] Luca: complete_report.pdf • ‎34 pagine ‎<allegato: 00000625-complete_report.pdf>
+[22/05/26, 16:00:25] Luca: no bro ahahah non farlo
+[22/05/26, 16:00:33] Salvatore Gulisano: 5 anni di studio per essere rimpiazzato da un algoritmo 0 1 0 1 0 1
+[22/05/26, 16:02:54] Luca: considera che questa analisi è stata fatta con un modello free, ma se avessi usato claude, questo report sarebbe costato 4.2$
+[22/05/26, 16:04:05] Salvatore Gulisano: Ti dico già che non è preciso al millesimo
+[22/05/26, 16:04:13] Salvatore Gulisano: Già alla prima pag
+[22/05/26, 16:04:17] Luca: con un modello cinese potremmo spendere meno di 1$
+[22/05/26, 16:04:23] Salvatore Gulisano: Perchè prende i prezzi di apertura
+[22/05/26, 16:04:34] Salvatore Gulisano: Non chiedermi why l'hanno impostato così
+[22/05/26, 16:04:44] Salvatore Gulisano: Si fa con i prezzi di chiusura, comunque poco conto, continuo
+[22/05/26, 16:04:45] Luca: bro aspetta
+[22/05/26, 16:04:47] Luca: aspetta
+[22/05/26, 16:05:10] Luca: non ti ho detto come leggerlo
+[22/05/26, 16:05:48] Luca: questo è l’elenco di agenti, sono tema di agenti per categoria ‎<Questo messaggio è stato modificato>
+‎[22/05/26, 16:06:24] Luca: ‎<allegato: 00000639-PHOTO-2026-05-22-16-06-24.jpg>
+[22/05/26, 16:06:48] Luca: gli analisi sono indipendenti, ognuno di loro fa il proprio lavoro e poi restituisce un output
+[22/05/26, 16:06:54] Luca: e lo vedi come prima parte
+[22/05/26, 16:07:28] Luca: poi nella seconda parte ci sono i debaters, che scrivono entrambi sullo stesso foglio e discutono, aggiungendo le loro motivazioni conversando
+[22/05/26, 16:07:58] Luca: uguale i risk management debaters conversano
+[22/05/26, 16:08:01] Luca: e poi in sequenza gli altri
+[22/05/26, 16:08:46] Luca: tu scrivimi oppure appuntati da qualche parte ogni commento che ti viene in mente leggendolo, così teniamo traccia
+[22/05/26, 16:08:51] Luca: poi al telefono ne possiamo parlare
+[22/05/26, 16:10:01] Luca: appuntati le cose soprattutto nell’ottica di capire cosa bisogna modificare e come
+[22/05/26, 16:11:17] Salvatore Gulisano: Ok chiaro
+[22/05/26, 16:11:40] Salvatore Gulisano: Mi sembra strano che non parli del fatto che la Cina abbia bandito i chip Nvidia
+[22/05/26, 16:11:48] Salvatore Gulisano: Forse non ha preso bene le info ad oggi?
+[22/05/26, 16:12:09] Salvatore Gulisano: Sta facendo -5 per questo motivo questa settimana eppure non ne parla nella sentiment analysis
+[22/05/26, 16:12:13] Salvatore Gulisano: Mi pare strano
+[22/05/26, 16:12:17] Salvatore Gulisano: (appunto 1)
+[22/05/26, 16:12:23] Luca: si bro può essere per mille motivi, segnati anche le domande, così poi le svisceriamo insieme in chiamata, ora non riesco a starci troppo dietro
+[22/05/26, 16:12:27] Luca: segnati tutto bro
+[22/05/26, 16:12:34] Luca: bravissimo, fai così
+[22/05/26, 16:18:03] Salvatore Gulisano: Stupendo il fatto che ci sono letteralmente due researcher che parlano
+[22/05/26, 16:18:20] Luca: bro non hai idea di cosa c’ho in testa di fare io
+[22/05/26, 16:18:27] Luca: letteralmente un fottuto ufficio di gente
+[22/05/26, 16:18:33] Luca: gente = agenti AI
+[22/05/26, 16:18:41] Luca: con gli steroidi*
+[22/05/26, 16:24:53] Salvatore Gulisano: King è fatta bene
+[22/05/26, 16:25:06] Salvatore Gulisano: Sarebbe da vedere se ogni dato è puntuale e sensato
+‎[22/05/26, 16:27:09] Salvatore Gulisano: ‎<allegato: 00000664-AUDIO-2026-05-22-16-27-09.opus>
+[22/05/26, 16:27:20] Salvatore Gulisano: Non capisco come faccia
+[22/05/26, 16:27:27] Salvatore Gulisano: A dare delle conclusioni ragionate
+[22/05/26, 16:27:50] Salvatore Gulisano: Sono genuinamente sconcertato
+[22/05/26, 16:28:32] Salvatore Gulisano: Spero per il bene dell’umanità che siano opinioni già fatte e copiate
+[22/05/26, 16:28:38] Salvatore Gulisano: Altrimenti l’umanità è spacciata
+[22/05/26, 16:28:53] Salvatore Gulisano: Quello è cazzo pensiero
+[22/05/26, 16:28:59] Salvatore Gulisano: Non è più una merda di regressione
+[22/05/26, 16:29:07] Salvatore Gulisano: Quello è pensiero ragionato, non ha senso
+[22/05/26, 16:29:34] Luca: lui sul momento usa queste fonti: 
+yahoo finance tutto quello che trova
+alpha vantage (non conosco), estrae common, fundamentals, indicator, news, stock (piu di preciso non saprei, dovrei mettermici un po’ di più, lo farò e ti dirò)
+reddit, social network
+stockstats (non conosco)
+stocktwits, penso sia un social network tipo reddit ma per la finanza
+[22/05/26, 16:29:40] Luca: e tutto quello che scarica lo fa sul momento
+[22/05/26, 16:30:25] Luca: e bro, io non ho fatto niente, ho scoperto il progetto, scaricato, installato, scritto “nvda” lui in 50 minuti ha prodotto questo
+‎[22/05/26, 16:31:06] Salvatore Gulisano: ‎<allegato: 00000676-AUDIO-2026-05-22-16-31-06.opus>
+[22/05/26, 16:31:08] Luca: purtroppo non sono già fatte, non sono copiate
+[22/05/26, 16:31:13] Luca: sono ragionate al momento
+[22/05/26, 16:31:38] Luca: se vuoi puoi darmi un titolo e te ne faccio un altro
+[22/05/26, 16:31:44] Luca: mi serve solo il ticker
+[22/05/26, 16:31:49] Salvatore Gulisano: Fai MONC
+[22/05/26, 16:31:54] Salvatore Gulisano: Che l’ho analizzato recentemente
+[22/05/26, 16:31:56] Luca: vediamo se le trova
+[22/05/26, 16:31:57] Salvatore Gulisano: E sono sul pezzo
+[22/05/26, 16:31:58] Salvatore Gulisano: Moncler
+[22/05/26, 16:32:02] Salvatore Gulisano: Sul ftsemib
+[22/05/26, 16:32:11] Salvatore Gulisano: Ci dovrebbe stare anche sul NYSE
+[22/05/26, 16:32:21] Luca: nel senso che, lui legge tutte le news, magari nelle news ci sono dei ragionamenti, ma poi lui li elabora
+[22/05/26, 16:32:41] Luca: eh appunto, non so se con le sue fonti ha accesso anche alle stock extra us
+[22/05/26, 16:32:44] Luca: vediamo
+[22/05/26, 16:33:11] Luca: la posso creare anche in italiano se vuoi
+[22/05/26, 16:34:03] Luca: provo anche ad usare il modello cinese che userei in produzione, quando lo mettiamo in funzione sul serio, così riesci a vedere quanto cambia
+‎[22/05/26, 16:34:38] Salvatore Gulisano: ‎<allegato: 00000693-AUDIO-2026-05-22-16-34-38.opus>
+[22/05/26, 16:35:15] Luca: bro, lui non calcola, lui prende i numeri da yahoo finance e si si fa un’idea sulle opinioni degli altri
+[22/05/26, 16:35:27] Luca: basata su articoli e opinioni degli altri
+[22/05/26, 16:35:31] Luca: però noi possiamo modificare la cosa
+‎[22/05/26, 16:35:42] Salvatore Gulisano: ‎<allegato: 00000697-AUDIO-2026-05-22-16-35-42.opus>
+[22/05/26, 16:36:33] Luca: no, lui non ha solo i numeri, ha usato anche reddit
+[22/05/26, 16:37:27] Luca: teoricamente dentro 
+Sentiment Analyst
+NVDA Sentiment Report — 2026-05-15 to 2026-05-22
+dovrebbe esserci scritto quello che ha estratto sulle opinioni della gente
+[22/05/26, 16:37:31] Luca: sul pdf
+[22/05/26, 16:37:44] Luca: sisi ho capito che intendi
+‎[22/05/26, 16:37:51] Salvatore Gulisano: ‎<allegato: 00000702-AUDIO-2026-05-22-16-37-51.opus>
+[22/05/26, 16:38:17] Luca: ah giusto bro
+[22/05/26, 16:38:30] Luca: ci sono anche 3 livelli di effort, questo era il piu scrauso dei 3
+[22/05/26, 16:38:38] Luca: adesso provo col massimo
+[22/05/26, 16:38:42] Luca: col modello cinese
+‎[22/05/26, 16:39:37] Salvatore Gulisano: ‎<allegato: 00000707-AUDIO-2026-05-22-16-39-37.opus>
+[22/05/26, 16:39:49] Luca: niente bro, ho esaurito la quota free
+[22/05/26, 16:40:00] Salvatore Gulisano: Nooooooo
+[22/05/26, 16:40:11] Luca: riprovo domani, vediamo cosa genera, comunque MONC, modello cinese, massimo effort
+[22/05/26, 16:40:14] Luca: 3/3
+[22/05/26, 16:40:15] Salvatore Gulisano: Quanto costa?
+[22/05/26, 16:40:30] Luca: per ora sto usando modelli free con llimiti d’uso
+[22/05/26, 16:40:55] Luca: se no paghi al consumo, quel report più o meno costa 1$, però era effort 1/3, non so quanto possa costare il 3/3
+[22/05/26, 16:41:48] Salvatore Gulisano: Ok chiaro
+[22/05/26, 16:42:36] Luca: bro è crazy
+[22/05/26, 16:43:00] Luca: l’avrà preso dai social sentiment
+[22/05/26, 16:43:06] Salvatore Gulisano: Eh si King
+[22/05/26, 16:43:19] Salvatore Gulisano: però non è una cosa per forza positiva, perchè chiunque scrive sul web
+[22/05/26, 16:43:27] Salvatore Gulisano: Dalle persone valevoli ai ritardati
+[22/05/26, 16:43:33] Salvatore Gulisano: Questo è il big problem
+[22/05/26, 16:44:10] Luca: vai vai studia, comunque considera che noi non useremo per forza il sentiment dai social
+[22/05/26, 16:44:23] Luca: il nostro, o per lo meno mio, obbiettivo è quello di migliorare questa cosa
+[22/05/26, 16:44:54] Luca: renderla meno biased e più data driven, più oggettiva, stimolare di più il ragionamento e bombardarlo meno di informazioni, renderlo più efficiente e soprattutto veramente autonomo
+[22/05/26, 16:45:25] Luca: perché per ora è solo in grado di darmi un giudizio su una stock, io ho intenzione di fare cose giganti con sta roba, questa è solo una base
+‎[22/05/26, 16:45:35] Salvatore Gulisano: ‎<allegato: 00000726-AUDIO-2026-05-22-16-45-35.opus>
+[22/05/26, 16:45:57] Luca: comunque te lo sto facendo lo stesso modello di prima, effort 3/3, purtroppo in inglese, ma te lo traduco e ti mando entrambe le versioni
+[22/05/26, 16:46:03] Salvatore Gulisano: Si è decisamente da rendere più data driven
+[22/05/26, 16:46:06] Luca: perché il modello di prima è ancora sbloccato non so perché
+[22/05/26, 16:46:15] Salvatore Gulisano: Perché ha preso opinioni di altri
+[22/05/26, 16:46:30] Salvatore Gulisano: Ok thankssss
+[22/05/26, 16:47:00] Luca: il rischio di una bolla estremamente gigante è reale bro
+[22/05/26, 16:47:12] Luca: il rischio c’è ed è esattamente questo il motivo della bolla
+[22/05/26, 16:47:14] Luca: è reale bro
+[22/05/26, 16:47:31] Salvatore Gulisano: Ma che cazzo di cosa stupidamente folle hanno creato
+[22/05/26, 16:47:43] Luca: ah, l’essere umano…
+[22/05/26, 16:48:02] Luca: abbastanza
+[22/05/26, 16:48:05] Salvatore Gulisano: Sempre più speranzoso che faremo la fine dei dinosauri
+[22/05/26, 16:48:09] Luca: non posso non sfruttare sta roba capisci?
+[22/05/26, 16:48:09] Salvatore Gulisano: deserved
+[22/05/26, 16:48:20] Luca: si bro
+[22/05/26, 16:48:29] Salvatore Gulisano: No King chiaro, io al contrario voglio una fattoria nel mezzo del nulla
+[22/05/26, 16:48:31] Salvatore Gulisano: Altro che
+[22/05/26, 16:48:41] Salvatore Gulisano: Non voglio essere parte della deriva del mondo
+[22/05/26, 16:48:54] Salvatore Gulisano: Ne sarò parte solo finchè non avrò abbastanza per la fattoria
+[22/05/26, 16:48:58] Salvatore Gulisano: Poi basta
+[22/05/26, 16:49:09] Luca: no bro, io la deriva del mondo la devo scopare, devo entrare nella gabbia dei leoni per tot anni e poi sparire
+[22/05/26, 16:49:18] Luca: bravo
+[22/05/26, 16:49:19] Salvatore Gulisano: Ahahahahahahahahahahahah
+[22/05/26, 16:49:22] Luca: io per la barca
+[22/05/26, 16:49:28] Salvatore Gulisano: barca gasa
+[22/05/26, 16:49:31] Luca: eh si
+[22/05/26, 16:49:44] Salvatore Gulisano: vado a studiare va
+[22/05/26, 16:49:44] Luca: fanculo bro, vendo tutto, compro barchetta e vivo li
+[22/05/26, 16:49:49] Luca: buono studio
+[22/05/26, 16:49:51] Salvatore Gulisano: stasera me la rileggo
+[22/05/26, 16:49:55] Salvatore Gulisano: bella king
+[22/05/26, 16:49:58] Luca: stasera ti mando quella su monc
+[22/05/26, 16:50:04] Salvatore Gulisano: yesssss
+[22/05/26, 17:19:18] Luca: scusa bro, non voglio disturbarti troppo, ti avviso adesso perché poi mi dimentico, per MONC non ha trovato molte informazioni, sicuro non ha trovato niente sul social sentiment, quindi vediamo come si comporta quando ha meno info

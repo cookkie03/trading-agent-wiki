@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "raw/daily-notes/2026-05-19.md",
+                "file": "raw/daily-notes/2026-05-22.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-05-19"
+              "title": "2026-05-22"
             }
           }
         ]
@@ -165,6 +165,8 @@
       "bases:Crea nuova Base": false
     }
   },
-  "active": "76e014fbe33d73c1",
-  "lastOpenFiles": []
+  "active": "a57fb8ddfc5f757e",
+  "lastOpenFiles": [
+    "raw/daily-notes/2026-05-19.md"
+  ]
 }
