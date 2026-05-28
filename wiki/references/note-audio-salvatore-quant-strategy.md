@@ -13,7 +13,7 @@ status: active
 related:
   - "[[strategy/methods/trend-following]]"
   - "[[strategy/index]]"
-  - "[[build/modules/module-c-quant-backtest]]"
+  - "[[build/modules/quant-backtesting]]"
 ---
 
 # Note Audio Salvatore — Strategie Quant (2026-05)

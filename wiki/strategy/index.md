@@ -9,7 +9,7 @@ updated: 2026-05-22
 status: active
 area: strategy
 related:
-  - "[[build/modules/module-c-quant-backtest]]"
+  - "[[build/modules/quant-backtesting]]"
   - "[[build/decision-log]]"
 ---
 
@@ -26,7 +26,7 @@ Questa sezione è il dominio di Salvatore. Ogni elemento qui dentro è distillat
 Ogni file in `strategy/` dovrebbe linkare:
 - i **metodi** che lo usano (es. `rsi.md` → `trend-following.md`)
 - le **metriche** con cui si valuta (es. `trend-following.md` → `sharpe-ratio.md`)
-- il **modulo software** che lo implementa (es. `trend-following.md` → `[[build/modules/module-c-quant-backtest]]`)
+- il **modulo software** che lo implementa (es. `trend-following.md` → `[[build/modules/quant-backtesting]]`)
 
 ---
 
@@ -63,4 +63,4 @@ Un file per ogni metrica: come si calcola, cosa misura, quando è utile.
 1. Carica in `raw/` tutto quello che trova: articoli, note, audio, casi reali
 2. L'agente ingesta e crea/aggiorna file qui
 3. Salvatore può anche modificare direttamente i file esistenti
-4. Luca traduce i metodi validati in tool Python in `build/modules/module-c-quant-backtest`
+4. Luca traduce i metodi validati in tool Python in `build/modules/quant-backtesting`

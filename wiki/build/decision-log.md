@@ -5,7 +5,7 @@ tags:
   - decision
   - strategy
 created: 2026-04-30
-updated: 2026-05-21
+updated: 2026-05-27
 status: active
 related:
   - "[[build/system-map]]"
@@ -45,6 +45,17 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 | 2026-05-19 | **Filosofia agenti**: pochi agenti + tanti tool potenti | Contrario alla moltiplicazione di agenti (Analysts/Researchers/Managers/Trader di TradingAgents). Il layer Analysts diventa moduli deterministici; gli agenti LLM si concentrano solo sul ragionamento finale |
 | 2026-05-19 | **Pattern intra-modulo**: un file gateway per subdirectory | Ogni subdirectory = modulo; un file unico gestisce input/output intra- e inter-modulo |
 | 2026-05-19 | **Look-ahead bias**: doppia data per ogni informazione | (1) data di ottenimento/pubblicazione, (2) data a cui l'informazione si riferisce. Più preciso del semplice `curr_date` filtering di TradingAgents |
+| 2026-05-19 | **Fork da TradingAgents (TauricResearch)** confermato come punto di partenza | Luca ha letto il codice, valuta il fork come più efficiente di partire da zero. Contraddice la decisione 2026-04-30 ma supportata da approfondimento tecnico |
+| 2026-05-23 | **Scope: Stock-only prima, poi multi-asset** | Il progetto si sviluppa prima su equity pura (stock), poi si allarga a: commodities, BTC only, derivati futures e opzioni (per copertura, rischio cambio). Crypto rimossa come focus primario. |
+| 2026-05-23 | **LangChain come AI agent framework** | Confermato definitivamente. TradingAgents usa già LangChain/LangGraph — coerente con il fork. Struttura repo: subfolder per componente + subfolder liste tool |
+| 2026-05-23 | **Struttura build: non più divisione per moduli sequenziali** | La divisione module-A/C/D/risk-analyst era legata alla sequenza di sviluppo. Sostituita con organizzazione per funzione/dominio, non per timeline |
+| 2026-05-26 | **Bull/Bear Analyst agents non servono** | Feedback di Salvatore (esperto equity research): la struttura debate del report è confusa, ridondante e aumenta l'effort nella parte sbagliata. La financial analysis è il core; il bull/bear case va ridotto a una vista strategica concisa |
+| 2026-05-26 | **Report structure**: financial → tecnica → bull/bear (ridotto) → risk (4 param) | Ordine proposto da Salvatore. Peso maggiore su: revenues, debt, patrimoniale, relazioni di gestione, note integrative. Analisi tecnica su trend. Bull/bear conciso. Risk: 4 parametri, non discorsivo |
+| 2026-05-27 | **Suddivisione Ricercatori vs Esecutori** | Gli agenti attivi sono divisi in due gruppi: Ricercatori (generazione idee e rating) ed Esecutori (gestione ordini ed esecuzione con tool robusti). Gli analysts diventano moduli Python deterministici. |
+| 2026-05-27 | **Statuto del Fondo & Riserva 10%** | Lo Statuto del portafoglio sarà di tipo istituzionale e conterrò regole rigide deterministiche (Python) a monte. La prima regola impone di tenere il 10% del portafoglio sempre disinvestito in cash puro come riserva strategica. |
+| 2026-05-27 | **Leva controllata via Opzioni (Call/Put)** | Leva a debito diretta vietata causa margini elevati. La leva si attiva solo su segnali ad altissima convinzione validati dal sistema (`Strong Buy` / `Strong Sell`), acquistando opzioni Call/Put. L'assegnazione finale del calcolo della convinzione all'agente o nodo più coerente avverrà in fase di costruzione del grafo dopo aver elencato tutti i compiti. |
+| 2026-05-27 | **Costo API LLM equiparato a commissioni** | Il costo dei token OpenRouter consumati dagli agenti viene stimato in fiat ($/€) e trattato come una commissione del broker, detratta dal profitto atteso per calcolare la net performance. |
+| 2026-05-27 | **Business Model: Open Source + Friends Performance Fee** | Il codice rimarrà open source su GitHub come portfolio per Luca. La monetizzazione avverrà tramite sito performance pubblico ("Piero") gestendo capitali di amici stretti con contratti privati di scarico responsabilità e fee del 1% sui soli profitti generati. |
 
 ---
 
@@ -52,17 +63,20 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 
 | Tema | Contesto | Dove si risolve |
 |------|----------|-----------------|
-| **Strategia del fondo** | Orientamento: multi-factor fundamentals, ma non formalizzato con Salvatore | [[build/modules/module-c-quant-backtest]] |
-| **Frequenza ciclo** | 4h vs 24h — dipende da backtest iniziali | [[build/modules/module-c-quant-backtest]] |
+| **Strategia del fondo** | Orientamento: multi-factor fundamentals, ma non formalizzato con Salvatore | [[build/modules/quant-backtesting]] |
+| **Frequenza ciclo** | 4h vs 24h — dipende da backtest iniziali | [[build/modules/quant-backtesting]] |
 | **Trading singolo vs Portfolio bilanciato** | Architettura portfolio-first, MVP singolo asset. Metriche separate. Parzialmente risolto | [[build/mvp-prototype-design]] |
-| **Multi-asset vs solo cripto** | Salvatore propende per asset tradizionali + cripto side | [[build/modules/module-c-quant-backtest]] |
-| **Cash-out strategy** | Quale % dei profitti estratta periodicamente? Regola da mettere nello statuto | [[build/modules/risk-analyst]] |
-| **Regole portafoglio (statuto)** | Es: max 5% per asset class, vendi a +100%. Hard limits deterministici | [[build/modules/risk-analyst]] |
-| **Includere modulo TA?** | Rischio di corrompere il Prediction Module DL. Test A/B con/senza | [[build/modules/module-c-quant-backtest]] |
-| **Frequenza invocazione LLM Trader** | Vincolo tecnico + costo API. Dipende da tempo elaborazione moduli | [[build/modules/module-d-prompt-builder-trader]] |
+| **Multi-asset vs solo cripto** | ~~Aperta~~ → **CHIUSA 2026-05-23**: stock-only prima, poi multi-asset (commodities, BTC only, derivati). Vedere decisioni chiuse. | — |
+| **Cash-out strategy** | Quale % dei profitti estratta periodicamente? Regola da mettere nello statuto | [[build/modules/risk-management]] |
+| **Regole specifiche dello Statuto** | Esposizione massima per asset, vendite automatiche, max drawdown consentito. Statuto in stile istituzionale generico | [[build/modules/risk-management]] |
+| **Meccanismo di disinvestimento ottimale** | Come calcolare deterministicamente quale asset vendere per fare spazio a nuove idee senza intaccare il 10% cash | [[build/modules/risk-management]] |
+| **Algoritmo token cost estimator** | Implementazione del tracciamento token e logica di ricarica automatica API | [[build/modules/risk-management]] |
+| **Includere modulo TA?** | Rischio di corrompere il Prediction Module DL. Test A/B con/senza | [[build/modules/quant-backtesting]] |
+| **Frequenza invocazione LLM Trader** | Vincolo tecnico + costo API. Dipende da tempo elaborazione moduli | [[build/modules/llm-agent-system]] |
+| **Dynamic Temporal Checkpoints** | Definizione dell'autolimitazione temporale del Trader nel JSON structured (prossimo check controllato dall'AI) | [[build/modules/llm-agent-system]] |
 | **Fine-tuning vs Continuous Learning** | Continuous learning real-time è problema aperto; fine-tuning periodico più praticabile | post-MVP |
 | **Exchange decentralizzato (DEX)** | Quando ha senso passare a un DEX anonimo (no KYC) rispetto a Binance? | post-MVP |
 | **Struttura wiki quant** | Sezione strategie da costruire man mano che Salvatore porta materiale | [[_meta/index]] |
-| **Fork vs from scratch** | Luca propende per partire da TradingAgents come fork, in contraddizione con la decisione 2026-04-30. Decisione da formalizzare con Salvatore | [[build/decision-log]] |
-| **Self-scheduling vs cron** | Agenti che si auto-schedolano nell'output strutturato vs cron job fissi a intervalli prestabiliti (4h/24h) | [[build/modules/module-d-prompt-builder-trader]] |
-| **Debate architecture** | Mantenere la struttura a debate (Bull/Bear, Risk Debaters) efficientandola, o ridisegnare con meno agenti e system prompt mirati? | [[build/modules/module-d-prompt-builder-trader]] |
+| **Fork vs from scratch** | ~~Aperta~~ → **CHIUSA 2026-05-19**: fork da TradingAgents (TauricResearch) confermato. Vedere decisioni chiuse. | — |
+| **Self-scheduling vs cron** | Agenti che si auto-schedolano nell'output strutturato vs cron job fissi a intervalli prestabiliti (4h/24h) | [[build/modules/llm-agent-system]] |
+| **Debate architecture** | ~~Aperta~~ → **CHIUSA 2026-05-26**: Bull/Bear agents eliminati. Risk debate da ridisegnare con meno agenti e system prompt mirati (la struttura a 3 agenti Risk potrebbe restare se efficientata). Vedere decisioni chiuse. | — |

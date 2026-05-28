@@ -12,7 +12,7 @@ status: draft
 related:
   - "[[strategy/index]]"
   - "[[strategy/methods/trend-following]]"
-  - "[[build/modules/module-c-quant-backtest]]"
+  - "[[build/modules/quant-backtesting]]"
   - "[[references/note-audio-salvatore-quant-strategy]]"
   - "[[references/quantitative-trading-strategies-brenndoerfer]]"
 confidence: medium

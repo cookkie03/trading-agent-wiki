@@ -15,7 +15,7 @@ status: active
 related:
   - "[[strategy/index]]"
   - "[[strategy/methods/trend-following]]"
-  - "[[build/modules/module-c-quant-backtest]]"
+  - "[[build/modules/quant-backtesting]]"
   - "[[references/note-audio-salvatore-quant-strategy]]"
 ---
 

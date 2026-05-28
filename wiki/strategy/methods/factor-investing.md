@@ -10,7 +10,7 @@ status: draft
 confidence: medium
 area: strategy
 related:
-  - "[[build/modules/module-c-quant-backtest]]"
+  - "[[build/modules/quant-backtesting]]"
   - "[[references/videochiamata-luca-salvatore-2026-05-13]]"
 ---
 
@@ -68,5 +68,5 @@ Nel sistema multi-agente, il **Factor Investigation Agent** è il modulo dedicat
 
 ## Implementazione software
 
-→ [[build/modules/module-c-quant-backtest]] — il Quant Agent integrerà factor signals come input
+→ [[build/modules/quant-backtesting]] — il Quant Agent integrerà factor signals come input
 → [[build/system-map]] — Factor Investigation Agent nel layer Research & Intelligence (post-MVP)

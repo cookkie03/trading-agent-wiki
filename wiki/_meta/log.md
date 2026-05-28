@@ -2,6 +2,54 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-05-27] update | Decoupling logic segnali Strong Buy/Sell da agenti specifici
+
+- **Change**: Scollegata esplicitamente la logica dei segnali ad alta convinzione (Strong Buy e Strong Sell) per la leva con opzioni da una tipologia rigida di agenti (come i "Ricercatori"). Il calcolo e la validazione della convinzione sono trattati come concetti/task di sistema, e l'assegnazione finale del ruolo all'agente o nodo più idoneo avverrà durante la mappatura granulare del grafo LangGraph.
+- **Pages updated**: [[references/conversazione-luca-salvatore-2026-05-27]], [[build/modules/llm-agent-system]], [[build/modules/risk-management]], [[build/decision-log]]
+
+## [2026-05-27] ingest | Brainstorming Luca & Salvatore 27/05 — Ricercatori/Esecutori + Statuto 10% + Opzioni Leva + Token Cost Estimator + Piero Site
+
+- **Type**: chat + 18 note vocali WhatsApp (brainstorming architetturale e operativo)
+- **Sources raw**:
+  - `raw/daily-notes/2026-05-27.md` — log chat WhatsApp del 27 maggio 2026
+  - `raw/audio/WhatsApp Audio 2026-05-27 at *` (18 file trascrizioni .md) — note vocali Salvatore trascritte
+- **Pages created**:
+  - [[references/conversazione-luca-salvatore-2026-05-27]]
+- **Pages updated**:
+  - [[build/modules/llm-agent-system]] (suddivisione Ricercatori/Esecutori, opzioni leva, integrazione LangSmith)
+  - [[build/modules/risk-management]] (Statuto deterministico, riserva liquidità 10%, OpenRouter LLM cost estimator)
+  - [[build/decision-log]] (aggiunte 5 decisioni chiuse e 4 aperte/aggiornate del 27/05)
+  - [[_meta/index]] (collegata nuova source page delle referenze)
+  - [[_meta/hot-cache]] (aggiornato contesto sessione, decisioni e pending ingests)
+- **Contradictions**: nessuna
+- **Notes**: Sessione estremamente prolifica che sposta l'orizzonte operativo verso un modello "Wealth Manager" autonomo ("Piero") basato su stock-only e leva controllata tramite acquisto opzioni (Call/Put), tracciato con LangSmith e regolato da uno Statuto istituzionale rigido con 10% liquidità disinvestita costante.
+
+## [2026-05-27] ingest | Daily Notes 19-22-23-25-26/05 + WhatsApp chat 22/05 + Istruzioni wiki
+
+- **Type**: daily notes (idee tecniche) + chat WhatsApp (test TradingAgents) + istruzioni wiki (scope + struttura)
+- **Sources raw**:
+  - `raw/daily-notes/2026-05-19.md` — appunti lettura TradingAgents Code Wiki + istruzioni wiki
+  - `raw/daily-notes/2026-05-22.md` — idee architetturali e organizzative
+  - `raw/daily-notes/2026-05-23.md` — istruzioni wiki: scope stock-only, dismetti moduli sequenziali, LangChain
+  - `raw/daily-notes/2026-05-25.md` — LangSmith, Mermaid, evaluation CLI
+  - `raw/daily-notes/2026-05-26.md` — conversazione Luca+Salvatore su report TradingAgents NVDA
+  - `raw/audio/WhatsApp Chat - Salvatore Luca/_chat.txt` — chat WhatsApp 22/05 test NVDA
+  - `raw/audio/WhatsApp Chat - Salvatore Luca/*.opus` (6 file) — audio Salvatore, richiedono wiki-preprocess
+- **Pages created**:
+  - [[references/whatsapp-luca-salvatore-2026-05-22]]
+  - [[references/conversazione-luca-salvatore-2026-05-26]]
+- **Pages updated**:
+  - [[build/ideas-log]] (aggiunte sezioni 22/05, 25/05, 26/05)
+  - [[build/stack]] (aggiunta sezione AI Agent Framework: LangChain, LangSmith, Mermaid, struttura repo)
+  - [[build/decision-log]] (aggiunte 7 decisioni chiuse 2026-05-19/23/26; chiuse 3 aperte: fork, multi-asset, debate)
+  - [[build/modules/exchange-db]] (rinominato da module-a-exchange-db; scope stock-only, exchange da scegliere)
+  - [[build/modules/quant-backtesting]] (rinominato da module-c-quant-backtest; aggiornati riferimenti)
+  - [[build/modules/llm-agent-system]] (rinominato da module-d-prompt-builder-trader; Bull/Bear agents eliminati)
+  - [[build/modules/risk-management]] (rinominato da risk-analyst; aggiornati riferimenti)
+  - [[_meta/index]] (aggiornati link moduli + aggiunte 2 nuove source page)
+- **Contradictions**: Scope decisione 2026-04-30 (crypto) contradetto da 2026-05-23 (stock-only) → risolto a favore della più recente
+- **Notes**: 6 file .opus trascritti con Whisper medium in questa sessione. 1 .m4a (2026-05-13) ancora pending. Audio contenevano: valutazione report NVDA, analisi del ragionamento AI vs bias, rischio sistemico AI trading, contesto S&P500 Mag7.
+
 ## [2026-05-22] ingest | Tool Set Provider Dati Exchange + Note Quant Salvatore + Brenndoerfer + Update videochiamata-05-13
 
 - **Type**: note (provider dati) + audio notes (strategie quant) + article (quant trading)
@@ -51,7 +99,7 @@
 - **Type**: article (code wiki) + note (daily note 2026-05-19)
 - **Source raw**: `raw/articles/TradingAgents Code Wiki.md`, `raw/daily-notes/2026-05-19.md`
 - **Pages created**: [[references/tradingagents-code-wiki]], [[build/ideas-log]]
-- **Pages updated**: [[build/modules/module-d-prompt-builder-trader]] (riscritto da raw dump a pagina strutturata), [[build/system-map]] (pattern architetturali: look-ahead bias doppia data, DB-first, indicatori dal DB), [[build/decision-log]] (nuove decisioni: DB-first, LangGraph, agent philosophy, look-ahead bias; aperte: fork vs from scratch, self-scheduling, debate architecture)
+- **Pages updated**: [[build/modules/llm-agent-system]] (riscritto da raw dump a pagina strutturata), [[build/system-map]] (pattern architetturali: look-ahead bias doppia data, DB-first, indicatori dal DB), [[build/decision-log]] (nuove decisioni: DB-first, LangGraph, agent philosophy, look-ahead bias; aperte: fork vs from scratch, self-scheduling, debate architecture)
 - **Contradictions**: decisione "From scratch" (2026-04-30) vs. "fork da TradingAgents" (2026-05-19, Luca) — segnalata nel decision-log, da formalizzare
 - **Notes**: ideas-log.md creato come file append-only su richiesta di Luca per raccogliere tutte le idee del progetto
 
@@ -59,13 +107,13 @@
 - **Operazione**: recuperata la distinzione build/ (software, Luca) vs strategy/ (conoscenza mercato, Salvatore)
 - **Cartelle create**: `strategy/`, `strategy/methods/`, `strategy/indicators/`, `strategy/metrics/`
 - **File creati**: [[strategy/index]], [[strategy/methods/trend-following]], [[strategy/methods/factor-investing]]
-- **File aggiornati**: [[build/modules/module-c-quant-backtest]] (link a strategy/), [[_meta/taxonomy]], [[_meta/index]], [[overview]]
+- **File aggiornati**: [[build/modules/quant-backtesting]] (link a strategy/), [[_meta/taxonomy]], [[_meta/index]], [[overview]]
 
 ## [2026-05-13] restructure | Ristrutturazione completa del vault
 - **Operazione**: ristrutturazione della wiki da struttura generica a struttura orientata al progetto
 - **Cartelle eliminate**: `ops/`, `theory/`, `agents/`, `decisions/`, `questions/`
 - **Cartelle create**: `build/modules/`, `references/external/`
-- **File creati**: [[build/decision-log]], [[build/stack]], [[build/modules/module-a-exchange-db]], [[build/modules/module-c-quant-backtest]], [[build/modules/module-d-prompt-builder-trader]], [[build/modules/risk-analyst]], [[references/external/trading-agents-framework]], [[references/external/cvx-portfolio-optimizer]], [[_meta/glossario]]
+- **File creati**: [[build/decision-log]], [[build/stack]], [[build/modules/exchange-db]], [[build/modules/quant-backtesting]], [[build/modules/llm-agent-system]], [[build/modules/risk-management]], [[references/external/trading-agents-framework]], [[references/external/cvx-portfolio-optimizer]], [[_meta/glossario]]
 - **File aggiornati**: [[build/system-map]] (merge theory/), [[build/mvp-prototype-design]] (link fix), [[overview]], [[_meta/index]], [[_meta/taxonomy]]
 - **Logica**: ops/ → board; theory/ → build/system-map; agents/ → references/external/; decisions/ → build/decision-log; questions/ → inline nei module files e nelle board
 

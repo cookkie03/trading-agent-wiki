@@ -1,5 +1,6 @@
 [
   "obsidian-kanban",
   "obsidian-git",
-  "editing-toolbar"
+  "editing-toolbar",
+  "find-and-replace-in-selection"
 ]

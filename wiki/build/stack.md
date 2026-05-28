@@ -5,12 +5,12 @@ tags:
   - build
   - infrastructure
 created: 2026-05-13
-updated: 2026-05-13
+updated: 2026-05-27
 status: active
 area: software
 related:
   - "[[build/system-map]]"
-  - "[[build/modules/module-a-exchange-db]]"
+  - "[[build/modules/exchange-db]]"
 ---
 
 # Tech Stack
@@ -58,10 +58,24 @@ Scelte tecnologiche confermate per il progetto. Ogni voce ha una motivazione o u
 | Output format | **JSON strutturato** | Tutti i framework convergono su questo. Parsing deterministico obbligatorio |
 | LLM da monitorare | **Qwen 3 Max** | Vincitore Alpha Arena (+22.88%). Non ancora facilmente accessibile via API |
 
+## AI Agent Framework
+
+| Componente | Scelta | Motivazione |
+|------------|--------|-------------|
+| Framework agenti | **LangChain** | Confermato 2026-05-23. Ecosistema maturo, ben mantenuto, usato anche da TradingAgents (base del fork) |
+| Workflow / grafi | **LangGraph** | StateGraph con nodi = agenti, edges = logica condizionale, checkpointing SQLite per-ticker |
+| Debug agenti | **LangSmith** | Piattaforma di tracing e debugging integrata nell'ecosistema LangChain |
+| Evaluation | **LangSmith CLI** | Evaluation automatica degli agenti nel terminale (VS Code) |
+| Verifica grafi | **Mermaid (LangGraph built-in)** | LangGraph genera diagrammi Mermaid dei grafi — usare per verificare struttura con coding agent |
+
+### Struttura repo (orientamento 2026-05-23)
+
+- Un subfolder per ogni componente/agente del sistema
+- Un subfolder dedicato alle **liste di tool** disponibili per gli agenti
+
 ## Post-MVP (non decidere ora)
 
 | Componente | Candidato | Quando |
 |------------|-----------|--------|
-| Portfolio optimizer | cvx-portfolio-optimizer (skfolio) | Dopo che A+C+D girano |
-| Framework multi-agente | da valutare (LangGraph, AutoGen, custom) | Dopo MVP funzionante |
+| Portfolio optimizer | cvx-portfolio-optimizer (skfolio) | Dopo che i componenti core girano |
 | Fine-tuning | LoRA/QLoRA su modello open-source | Dopo anni di storico |

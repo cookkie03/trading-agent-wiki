@@ -1,0 +1,1 @@
+il concetto è anche lì se io con questa cosa, perché ho delle aspettative molto alte, okay io ho delle aspettative molto alte, avendo delle aspettative molto alte, magari raggiungo degli obiettivi molto alti. Se questi obiettivi sono tali da permettermi di pensare di smettere di lavorare e io la privatizzo, ma subito provo, cioè subitissimo la privatizzo

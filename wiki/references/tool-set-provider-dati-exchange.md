@@ -11,7 +11,7 @@ updated: 2026-05-22
 confidence: high
 status: active
 related:
-  - "[[build/modules/module-a-exchange-db]]"
+  - "[[build/modules/exchange-db]]"
   - "[[build/stack]]"
   - "[[build/system-map]]"
 ---
@@ -160,4 +160,4 @@ Free tier disponibile con dataset come WIKI EOD Stock Prices.
 
 ## Relazione con il Modulo A
 
-Il [[build/modules/module-a-exchange-db]] dovrà implementare i connector verso i provider scelti. La filosofia è: ogni provider diventa un modulo Python parametrizzabile che legge dall'API e scrive nel DB centrale. I tool non devono avere valori hardcodati (es. non "scarica ultimi 30 giorni" ma "scarica dal parametro `start_date` al parametro `end_date`").
+Il [[build/modules/exchange-db]] dovrà implementare i connector verso i provider scelti. La filosofia è: ogni provider diventa un modulo Python parametrizzabile che legge dall'API e scrive nel DB centrale. I tool non devono avere valori hardcodati (es. non "scarica ultimi 30 giorni" ma "scarica dal parametro `start_date` al parametro `end_date`").

@@ -12,10 +12,10 @@ area: software
 related:
   - "[[build/mvp-prototype-design]]"
   - "[[build/stack]]"
-  - "[[build/modules/module-a-exchange-db]]"
-  - "[[build/modules/module-c-quant-backtest]]"
-  - "[[build/modules/module-d-prompt-builder-trader]]"
-  - "[[build/modules/risk-analyst]]"
+  - "[[build/modules/exchange-db]]"
+  - "[[build/modules/quant-backtesting]]"
+  - "[[build/modules/llm-agent-system]]"
+  - "[[build/modules/risk-management]]"
 sources:
   - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
   - "[[references/videochiamata-luca-salvatore-2026-04-30]]"
@@ -86,7 +86,7 @@ Ogni modulo è parametrizzabile — accetta parametri in input, non valori hardc
 
 | Modulo | Funzione | Stato |
 |--------|----------|-------|
-| **Quant Agent** | Segnali tecnici e quantitativi → [[build/modules/module-c-quant-backtest]] | Track 2 |
+| **Quant Agent** | Segnali tecnici e quantitativi → [[build/modules/quant-backtesting]] | Track 2 |
 | News Agent | Sentiment news, Fear & Greed, whale alerts | Post-MVP |
 | Analista | Ratio finanziari, validazione fondamentali | Post-MVP |
 | Factor Investigation Agent | Quali fattori includere nel modello; coefficienti empirici | Post-MVP |
@@ -98,8 +98,8 @@ Ogni modulo è parametrizzabile — accetta parametri in input, non valori hardc
 
 | Componente | Funzione | Tipo |
 |------------|----------|------|
-| **Risk Analyst** | Paletti dinamici upstream → [[build/modules/risk-analyst]] | Post-MVP |
-| **Prompt Builder** | Assembla deterministicamente tutti gli output → [[build/modules/module-d-prompt-builder-trader]] | Track 3 |
+| **Risk Analyst** | Paletti dinamici upstream → [[build/modules/risk-management]] | Post-MVP |
+| **Prompt Builder** | Assembla deterministicamente tutti gli output → [[build/modules/llm-agent-system]] | Track 3 |
 | **LLM Trader** | Ragionamento finale → JSON con proposta trade | LLM (DeepSeek) |
 
 ---
@@ -110,7 +110,7 @@ Ogni modulo è parametrizzabile — accetta parametri in input, non valori hardc
 |------------|----------|------|
 | Security Module | Valida proposta contro statuto del fondo (hard limits) | Python deterministico |
 | Portfolio Allocator | Calcola size finale in base al portafoglio | Python (post-MVP: cvx-optimizer) |
-| **Exchange Module** | Esegue ordini → [[build/modules/module-a-exchange-db]] | CCXT + Binance API |
+| **Exchange Module** | Esegue ordini → [[build/modules/exchange-db]] | CCXT + Binance API |
 | Logger | Logga tutto nel DB | Python |
 
 ---
@@ -141,9 +141,9 @@ Questo evita l'effetto "telefono senza fili" (degradazione informazioni nei prom
 
 | Track | Chi | Moduli |
 |-------|-----|--------|
-| Track 1 | Luca solo | [[build/modules/module-a-exchange-db]] |
-| Track 2 | Luca + Salvatore | [[build/modules/module-c-quant-backtest]] |
-| Track 3 | dopo Track 1 | [[build/modules/module-d-prompt-builder-trader]] |
+| Track 1 | Luca solo | [[build/modules/exchange-db]] |
+| Track 2 | Luca + Salvatore | [[build/modules/quant-backtesting]] |
+| Track 3 | dopo Track 1 | [[build/modules/llm-agent-system]] |
 | Post-MVP | tutto il team | Risk Analyst, News Agent, Security Module, Portfolio Allocator |
 
 ---

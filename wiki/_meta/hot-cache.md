@@ -3,24 +3,31 @@
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
 ## Sessione Corrente
-- **Data**: 2026-05-22
-- **Agent**: Claude Code
-- **Operazione principale**: Ingest batch pending — Tool Set/Provider dati, note quant Salvatore (dual portfolio + mean reversion), articolo Brenndoerfer, update videochiamata-05-13 con contenuto extra audio
+- **Data**: 2026-05-27
+- **Agent**: Antigravity
+- **Operazione principale**: Ingestione conversazione 27/05 (chat e 18 note vocali) + aggiornamento specifiche: suddivisione Ricercatori/Esecutori, Statuto deterministico (10% riserva liquidità), esposizione a leva con opzioni Call/Put, LLM Token Cost Estimator e modello business "Piero".
 
 ## Stato attuale del progetto
-- Fase: **Design → sviluppo Modulo A inizia ora**
-- **Architettura**: monolite modulare, principio deterministico
-- **Prototipo**: paper trading autonomo su Binance Testnet + backtesting continuativo
-- **Orizzonte trade**: swing trading (4h/daily)
-- **Sequenza sviluppo**:
-  - Track 1 (Luca solo): **Modulo A** — Exchange + DB → [[build/modules/module-a-exchange-db]]
-  - Track 2 (Luca + Salvatore): **Modulo C** — Quant + Backtesting → [[build/modules/module-c-quant-backtest]]
-  - Track 3 (dopo A): **Modulo D** — Prompt Builder + LLM Trader → [[build/modules/module-d-prompt-builder-trader]]
+- Fase: **Design → sviluppo in preparazione**
+- **Architettura**: monolite modulare, principio deterministico (Statuto rigido Python upstream)
+- **Prototipo**: paper trading autonomo su exchange equity (da scegliere) + backtesting continuativo
+- **Orizzonte trade**: swing trading (4h/daily / checkpoint AI flessibili)
+- **Scope**: **Stock-only** (equity pura) — poi multi-asset: commodities, BTC only, derivati futures/opzioni
+- **Framework**: LangChain + LangGraph (fork da TradingAgents TauricResearch)
+- **Debug/Evaluation**: LangSmith + LangSmith CLI (portale UI per evaluation)
 - **LLM**: DeepSeek, output JSON obbligatorio
 - **Backtesting**: VectorBT (decisione chiusa)
-- **Risk Analyst**: upstream del Trader (imposta paletti prima della decisione)
 
-## Struttura wiki post-ristrutturazione
+## Struttura componenti (post-ristrutturazione 2026-05-23)
+```
+wiki/build/modules/
+├── exchange-db.md          ← Exchange + DB (ex Modulo A)
+├── quant-backtesting.md    ← Quant Agent + Backtesting (ex Modulo C)
+├── llm-agent-system.md     ← LLM Agent System (ex Modulo D)
+└── risk-management.md      ← Risk Management (ex Risk Analyst)
+```
+
+## Struttura wiki
 ```
 wiki/
 ├── _meta/          ← navigazione (index, log, hot-cache, taxonomy, glossario)
@@ -31,47 +38,52 @@ wiki/
 │   ├── stack.md
 │   ├── decision-log.md
 │   ├── ideas-log.md  ← log append-only idee di progetto
-│   └── modules/    ← module-a, module-c, module-d, risk-analyst
+│   └── modules/    ← exchange-db, quant-backtesting, llm-agent-system, risk-management
 ├── strategy/       ← conoscenza di mercato (dominio Salvatore)
 │   ├── index.md
-│   ├── methods/    ← trend-following, factor-investing...
-│   ├── indicators/ ← RSI, MACD, Pivot Points... (da popolare)
-│   └── metrics/    ← Sharpe, Drawdown... (da popolare)
+│   ├── methods/    ← trend-following, factor-investing, mean-reversion-stat-arb
+│   ├── indicators/ ← da popolare
+│   └── metrics/    ← da popolare
 ├── references/     ← fonti ingestite
-│   └── external/   ← paper e librerie terze (paper-trading-agents, paper-alpha-arena, cvx-portfolio-optimizer)
+│   └── external/   ← paper e librerie terze
 ├── syntheses/      ← analisi trasversali
-└── artifacts/      ← canvas + board Luca + board Salvatore
+└── artifacts/      ← canvas + board
 ```
+
+## Decisioni chiuse importanti (recenti)
+- **Suddivisione Ricercatori vs Esecutori** (2026-05-27)
+- **Statuto del Fondo & Riserva 10% cash** (2026-05-27)
+- **Leva controllata via Opzioni Call/Put** (2026-05-27)
+- **API LLM token cost equiparato a commissioni** (2026-05-27)
+- **Business Model: Open Source + Friends Performance Fee (Piero site)** (2026-05-27)
 
 ## Decisioni ancora aperte (priorità)
 - **Strategia del fondo**: da formalizzare con Salvatore (orientamento: multi-factor)
 - **Frequenza ciclo**: 4h vs 24h (dipende da backtest)
-- **Statuto del fondo**: regole hard limits (cash-out %, max esposizione, ecc.)
+- **Regole specifiche dello Statuto**: esposizione massima, regole vendita, drawdown limite (in corso)
+- **Algoritmo di disinvestimento ottimale**: per recuperare liquidità senza violare il 10% cash (in corso)
+- **LLM Token Cost Estimator**: implementazione algoritmo e auto-ricarica (in corso)
+- **Dynamic Temporal Checkpoints**: feedback loop temporale gestito dall'AI (in corso)
+- **Exchange per paper trading equity**: Alpaca? Interactive Brokers? Da scegliere
 
 ## Pending ingest
-- `raw/audio/2026-05-13 13-14-17.m4a` — già ingestato via trascrizione txt, .m4a lasciato in raw
-- `raw/articles/TradingAgents Code Wiki.md` — source page creata; lasciato in raw per consultazione (file molto lungo)
-- `raw/articles/TradingAgents.md` / `.pdf` — già ingestato come `references/external/paper-trading-agents`; da archiviare se non serve più
-- Tutto il resto: archiviato in `raw/archived/`
+- `raw/audio/2026-05-13 13-14-17.m4a` — già in lista, richiede `/wiki-preprocess` (trascrizione mancante)
+- `raw/articles/TradingAgents Code Wiki.md` — source page creata; lasciato in raw per consultazione
+- `raw/articles/TradingAgents.md` / `.pdf` — già ingestato come `references/external/paper-trading-agents`
 
 ## Pagine create questa sessione
-- [[references/tool-set-provider-dati-exchange]] — broker + provider dati per l'Italia
-- [[references/note-audio-salvatore-quant-strategy]] — dual portfolio + mean reversion (note Salvatore)
-- [[references/quantitative-trading-strategies-brenndoerfer]] — articolo tecnico quant trading completo
-- [[strategy/methods/mean-reversion-stat-arb]] — strategia candidata per Modulo C
+- [[references/conversazione-luca-salvatore-2026-05-27]] — Ingestione brainstorming del 27/05 (chat e 18 note vocali trascritte)
 
 ## Pagine aggiornate questa sessione
-- [[references/videochiamata-luca-salvatore-2026-05-13]] — aggiunte sez. 8-11 (struttura agenti verbale, order book, fork vs from scratch)
+- [[build/modules/llm-agent-system]] — Ricercatori/Esecutori, opzioni leva, LangSmith
+- [[build/modules/risk-management]] — Statuto deterministico, riserva 10%, token cost estimator
+- [[build/decision-log]] — Nuove decisioni chiuse e aperte del 2026-05-27
+- [[_meta/index]] — Collegamento nuova source page
+- [[_meta/hot-cache]] — Aggiornamento contesto sessione
 
 ## Pagine chiave da aggiornare prossima sessione
-- [[artifacts/luca-board]] — aggiungere task esplicito "Implementa Modulo A" + "Studia LangGraph" + "Decidi fork vs from scratch"
-- [[artifacts/salvatore-board]] — aggiungere domande per Salvatore (indicatori, analisi tecnica, workflow investitore)
-- [[build/decision-log]] — formalizzare decisione fork vs from scratch con Salvatore
-- [[strategy/methods/mean-reversion-stat-arb]] — da completare quando Salvatore finisce di leggere l'articolo trovato
-
-## Decisioni ancora aperte (carry-over)
-- **Fork vs from scratch**: Luca propende per fork da TradingAgents. Da discutere e formalizzare con Salvatore
-- **Self-scheduling vs cron**: aperta
-- **Debate architecture**: mantenerla o ridisegnare? Da investigare prima di Modulo D
-- **Strategia Modulo C**: mean reversion è candidata principale (Salvatore) — da decidere con Luca
-- **Dual portfolio value+quant**: idea embrionale di Salvatore, da discutere in sessione dedicata
+- [[artifacts/luca-board]] — aggiornare task: Modulo A → Exchange + DB, togliere "LangGraph da imparare" (in corso), aggiungere "Studia il codice TradingAgents"
+- [[artifacts/salvatore-board]] — aggiornare con domande emerse: indicatori tecnici e performance (tutte), calendario economico, workflow analista istituzionale
+- [[build/system-map]] — aggiornare per riflettere scope stock-only e nuovi nomi componenti
+- [[strategy/methods/mean-reversion-stat-arb]] — da completare quando Salvatore finisce di leggere l'articolo
+- Decidere exchange per paper trading equity → aggiornare [[build/modules/exchange-db]] e [[build/stack]]

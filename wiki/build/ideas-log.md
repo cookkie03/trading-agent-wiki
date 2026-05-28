@@ -5,7 +5,7 @@ tags:
   - build
   - roadmap
 created: 2026-05-21
-updated: 2026-05-21
+updated: 2026-05-27
 status: active
 area: software
 ---
@@ -13,6 +13,77 @@ area: software
 # Ideas Log
 
 File append-only per le idee emerse durante lo sviluppo del progetto. Non si cancella mai nulla; al massimo si aggiunge una nota di stato o si categorizza.
+
+---
+
+## 2026-05-22 — Idee architetturali e organizzative
+
+*Fonte: `raw/daily-notes/2026-05-22.md`*
+
+### Multi-Agent Communication Layer
+
+**Idea chiave**: un team di agenti in grafi che si mantengono costantemente aggiornati e dialogano tra loro su richiesta. Esempio concreto: Trader Agent ha bisogno di conoscere la situazione macroeconomica → usa un tool che richiama il MacroEconomist Agent, costruendo un prompt di richiesta ad hoc → il MacroEconomist risponde con un report cucito sulle esigenze della richiesta, non generico.
+
+### Gestione del costo computazionale LLM
+
+Due strategie complementari per agenti con recall frequente:
+- **Sintesi con modelli locali**: per agenti che vengono richiamati costantemente, produrre sintesi compresse con modelli locali prima di passarle agli agenti principali
+- **Autocompattazione del contesto**: per agenti che lavorano in modo continuo, necessario un meccanismo di autocompattazione del contesto per non esaurire la finestra
+
+### Materiale da caricare nel wiki
+
+- Documenti dalla triennale di Luca e Salvatore
+- Materiale dell'associazione di Luca e Salvatore
+- Obiettivo: estrarre tutte le informazioni utili a valutare ogni aspetto del progetto, a partire dalla strategia da implementare
+
+### Merge 3 progetti simili
+
+Caricare nella cartella di lavoro altri due progetti simili a trading-agent, eseguire un'analisi con graphify o strumento simile per:
+1. Identificare conflitti tra i tre progetti
+2. Produrre una versione unificata (merge) delle idee
+3. Usarla come base di lavoro per le decisioni progettuali
+
+---
+
+## 2026-05-25 — LangSmith e tooling di sviluppo
+
+*Fonte: `raw/daily-notes/2026-05-25.md`*
+
+### LangSmith per debug e evaluation
+
+- **LangSmith**: piattaforma di debug degli agenti LangChain/LangGraph — già integrata nell'ecosistema, da usare durante lo sviluppo
+- **Funzione Mermaid**: LangGraph supporta la generazione di diagrammi Mermaid dei grafi; usare questa funzione per far verificare al coding agent (Claude Code) se la struttura dei grafi corrisponde al design inteso
+- **LangSmith CLI**: strumento per l'evaluation automatica degli agenti direttamente nel terminale (VS Code) — da integrare nel workflow di sviluppo per valutazione continua senza uscire dall'IDE
+
+---
+
+## 2026-05-22 — Rischio sistemico dell'AI trading (Salvatore)
+
+*Fonte: [[references/whatsapp-luca-salvatore-2026-05-22]] (audio 00000726)*
+
+**Osservazione di Salvatore**: se tutti usano lo stesso sistema AI per le analisi finanziarie, ottengono tutti lo stesso output → price discovery eliminata, mercato privo di senso.
+
+Rischi identificati:
+- **Gigabolla**: sentiment uniforme → tutti si muovono nella stessa direzione
+- **Vulnerabilità a manipolazione**: informazioni false su internet → bias dell'AI → bolle artificiali targettizzate
+- **Implicazione progettuale**: il nostro sistema deve essere differenziante per definizione — più data-driven (dati fondamentali oggettivi) e meno dipendente dal sentiment pubblico (Reddit, social media)
+
+Questa osservazione rafforza la decisione di costruire un sistema orientato all'analisi fondamentale e quantitativa, non al sentiment aggregato.
+
+---
+
+## 2026-05-26 — Calendario economico e struttura report
+
+*Fonte: [[references/conversazione-luca-salvatore-2026-05-26]] (feedback Salvatore)*
+
+### Calendario economico come dato di sistema
+
+Il sistema dovrebbe raccogliere e mantenere aggiornato un **calendario economico** contenente:
+- Date delle trimestrali delle aziende in portafoglio
+- Accordi internazionali rilevanti
+- Date di pubblicazione dati macro (PIL, inflazione, tassi, ecc.)
+
+Questo calendario è input rilevante per gli agenti che devono contestualizzare movimenti di prezzo.
 
 ---
 

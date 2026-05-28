@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "skills": {
+    "crawl4ai": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "crawl4ai/SKILL.md",
+      "computedHash": "559e25bed30d8391b417f4d0991f2ca18de3c2026f287ef928ca0e0ea2c4d831"
+    },
+    "glm-ocr": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "glm-ocr/SKILL.md",
+      "computedHash": "80d0973b2f38f543e00c479e704a52495b54d6b6469fd1c44e4ec6192e3917bc"
+    },
+    "json-canvas": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "json-canvas/SKILL.md",
+      "computedHash": "56cbac74a93e4fba97f4d44bccfdeaae89e545b223f47df392c7705e01e6c543"
+    },
+    "obsidian-bases": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "obsidian-bases/SKILL.md",
+      "computedHash": "ed0a53502693e56c67575a9958daca9a3a1ac7ba483367f400b4cad9488bfb3c"
+    },
+    "obsidian-markdown": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "obsidian-markdown/SKILL.md",
+      "computedHash": "cacc9058a35ad3fd4985b4c31121bff8202f1337c39808c1326ded6a19a7915f"
+    },
+    "wiki-artifact": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "wiki-artifact/SKILL.md",
+      "computedHash": "b168076038a61051d9434d8fc8cebb757ac9fc164f30ff2e1fe54a77e7a06334"
+    },
+    "wiki-ingest": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "wiki-ingest/SKILL.md",
+      "computedHash": "dd79f7dc3c55709a736c94fb3bf935a84eff4d3ded958af551d1b3af4c10cbef"
+    },
+    "wiki-init": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "wiki-init/SKILL.md",
+      "computedHash": "0652da9a9b0bb2f0eb5020c3d82a890490a29253e1504d615244060083f954f1"
+    },
+    "wiki-lint": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "wiki-lint/SKILL.md",
+      "computedHash": "fe2c4c829e2e7678d948386484c42a3c975ebd6a04782a3525b3d7dd8b355fa0"
+    },
+    "wiki-preprocess": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "wiki-preprocess/SKILL.md",
+      "computedHash": "7aee76d160c6d4553f873e6a25c712ef5ca026e098e29a17739230168252a92e"
+    },
+    "wiki-query": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "wiki-query/SKILL.md",
+      "computedHash": "9a2a08a258efc8226bf9bc298af1cc1d686ce9ed1fc182f3bd0c3d1df00b0c30"
+    },
+    "wiki-save": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "wiki-save/SKILL.md",
+      "computedHash": "35b6e7f3ae29e9a3a00302826410858bdd01d06c2906ae690ce85a235101d7eb"
+    }
+  }
+}

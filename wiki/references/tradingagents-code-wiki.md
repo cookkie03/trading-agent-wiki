@@ -14,7 +14,7 @@ related:
   - "[[references/external/trading-agents-framework]]"
   - "[[paper-trading-agents]]"
   - "[[build/system-map]]"
-  - "[[build/modules/module-d-prompt-builder-trader]]"
+  - "[[build/modules/llm-agent-system]]"
 sources:
   - "https://codewiki.google/github.com/tauricresearch/tradingagents"
 ---

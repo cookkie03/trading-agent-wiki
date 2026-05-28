@@ -11,7 +11,7 @@ updated: 2026-05-21
 status: active
 confidence: high
 related:
-  - "[[build/modules/risk-analyst]]"
+  - "[[build/modules/risk-management]]"
   - "[[build/system-map]]"
 ---
 

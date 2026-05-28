@@ -12,10 +12,10 @@
 - [[build/mvp-prototype-design]] — design del prototipo MVP
 - [[build/stack]] — tech stack scelto e motivazioni
 - [[build/decision-log]] — storico decisioni chiuse + decisioni ancora aperte
-- [[build/modules/module-a-exchange-db]] — Modulo A: Exchange + DB (Track 1, Luca)
-- [[build/modules/module-c-quant-backtest]] — Modulo C: Quant Agent + Backtesting (Track 2, Luca+Salvatore)
-- [[build/modules/module-d-prompt-builder-trader]] — Modulo D: Prompt Builder + LLM Trader (Track 3)
-- [[build/modules/risk-analyst]] — Risk Analyst Agent (post-MVP)
+- [[build/modules/exchange-db]] — Exchange + DB: connessione exchange, esecuzione ordini, DB centrale
+- [[build/modules/quant-backtesting]] — Quant Agent + Backtesting: strategia quantitativa, indicatori, backtest VectorBT
+- [[build/modules/llm-agent-system]] — LLM Agent System: Prompt Builder + LLM Trader (LangChain/LangGraph)
+- [[build/modules/risk-management]] — Risk Management: paletti dinamici upstream del Trader
 - [[build/ideas-log]] — log append-only delle idee di progetto (mai cancellare)
 
 ## References — Fonti ingestite
@@ -36,9 +36,12 @@
 - [[references/tool-set-provider-dati-exchange]] — broker con API Python disponibili in Italia + provider dati gratuiti (stack raccomandato)
 - [[references/note-audio-salvatore-quant-strategy]] — note audio Salvatore su strategie quant: dual portfolio value+quant, mean reversion/stat arb
 - [[references/quantitative-trading-strategies-brenndoerfer]] — articolo Brenndoerfer su quant trading: alpha, backtesting, metriche performance (con codice Python)
+- [[references/whatsapp-luca-salvatore-2026-05-22]] — test TradingAgents su NVDA: report PDF 30pp, feedback Salvatore, provider dati, costi LLM
+- [[references/conversazione-luca-salvatore-2026-05-26]] — feedback strutturato Salvatore su report: financial analysis core, no Bull/Bear agents, calendario economico
+- [[references/conversazione-luca-salvatore-2026-05-27]] — brainstorming architettura Ricercatori/Esecutori, Statuto del Fondo (10% cash reserve), opzioni leva, token cost estimator e Piero wealth manager site
 
 ## Strategy — Conoscenza di mercato
-*Approcci, indicatori, metriche: il dominio di Salvatore. Ogni elemento qui alimenta [[build/modules/module-c-quant-backtest]].*
+*Approcci, indicatori, metriche: il dominio di Salvatore. Ogni elemento qui alimenta [[build/modules/quant-backtesting]].*
 
 - [[strategy/index]] — panoramica e principio di linking
 - [[strategy/methods/trend-following]] — seguire il trend degli istituzionali
