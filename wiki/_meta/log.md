@@ -2,20 +2,31 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
-## [2026-05-29] lint + update | Ristrutturazione wiki post-call + ingest pending
+## [2026-05-29] refactor strutturale | Riorganizzazione completa per argomento + moduli da canvas
+
+- **Trigger**: "rifattorizzare completamente la struttura tree e di file della wiki" → "eliminiamo references" → "i moduli vanno rifatti, non rispettano `architettura.canvas`"
+- **Decisioni di struttura (con Luca)**: dissolvi-del-tutto le call (date inline, no `journal/`); naming inglese; PM = agente LLM orchestratore; moduli decomposti per aree del canvas (4 file).
+- **Rinominazioni cartelle**: `build/` → `system/`; `references/` **eliminata**.
+- **`references/` smistata**: prior-art → `prior-art/{tradingagents,libraries,papers}/`; `tool-set-provider` → [[system/data-providers]]; `onboarding-wiki-workflow` → [[_meta/onboarding]]; `trading-floor-canvas` → [[artifacts/trading-floor]]; `note-audio-salvatore` dissolto in nuova [[strategy/methods/dual-portfolio]].
+- **Moduli ricreati su `architettura.canvas`**: eliminati `exchange-db`, `llm-agent-system`, `risk-management`; creati [[system/modules/data-layer]] (DB-hub + extraction + mantainer), [[system/modules/agents]] (PM orchestratore + 2 desk + Risk Analyst/Statuto), [[system/modules/execution]] (Investment State → Trade → Exchange); [[system/modules/quant-backtesting]] mantenuto. [[system/architecture]] riallineata (2 desk, mantainer, PM agente, canvas `architettura.canvas`).
+- **Dissolte ed eliminate** (grezzi in `raw/archived/`): 8 call (`conversazione`/`videochiamata`/`whatsapp`) + `architecture-handwritten-notes` + `note-audio-salvatore`.
+- **Link**: riscritti tutti i wikilink path-qualified + bare + alias; rimosse le `sources:` verso le call dissolte; provenienza ora inline (date). Verifica: 0 link rotti fuori da questo log (le voci storiche qui sotto conservano i nomi dell'epoca).
+- **Meta aggiornati**: [[_meta/taxonomy]] (path nuovi, righe morte marcate), [[_meta/index]] (riscritto), [[overview]], [[_meta/hot-cache]].
+
+
 
 - **Trigger**: `/wiki-lint` — "rivediamo completamente la struttura della wiki per farla funzionare meglio con le cose discusse nelle ultime call"
 - **Lint**: 1 link rotto (`dev-roadmap.canvas`), 1 ambiguo (`trading-floor.canvas` duplicato), 1 orfana (`tradingagents-graph-schema`), 1 conflitto (Trader), 54 file spazzatura, 3 file pending. Freshness: nessun problema >90gg.
 - **Riallineamenti contenuto**:
-  - [[build/system-map]] riscritta sulla topologia 2026-05-29 (PM orchestratore → analisti → research_state → Risk Analyst gate → Trade deterministico; Layer DB esteso/Extractors/gate; protocollo state+DB con context rot; sequenza di sviluppo "riscrivere il grafo")
-  - [[build/modules/llm-agent-system]] **conflitto Trader risolto**: Funzione + sezione Leva riallineate (segnale `Strong` nel research_state validato dal Risk Analyst, esecuzione deterministica); Dipendenze/TODO aggiornati
-  - [[build/modules/exchange-db]] **schema DB consolidato** (5 tabelle core ↔ 4 aree logiche, mapping unico)
+  - [[system/architecture]] riscritta sulla topologia 2026-05-29 (PM orchestratore → analisti → research_state → Risk Analyst gate → Trade deterministico; Layer DB esteso/Extractors/gate; protocollo state+DB con context rot; sequenza di sviluppo "riscrivere il grafo")
+  - [[system/modules/agents]] **conflitto Trader risolto**: Funzione + sezione Leva riallineate (segnale `Strong` nel research_state validato dal Risk Analyst, esecuzione deterministica); Dipendenze/TODO aggiornati
+  - [[system/modules/data-layer]] **schema DB consolidato** (5 tabelle core ↔ 4 aree logiche, mapping unico)
 - **Ingest pending**:
-  - daily-note 2026-05-28 (storage SQL vs JSON) → domanda aperta in [[build/modules/exchange-db]] e [[build/decision-log]]
-  - daily-note 2026-05-29 (tool per indicatori + SFC) → sezione tool-centric di [[build/modules/llm-agent-system]]
+  - daily-note 2026-05-28 (storage SQL vs JSON) → domanda aperta in [[system/modules/data-layer]] e [[system/decision-log]]
+  - daily-note 2026-05-29 (tool per indicatori + SFC) → sezione tool-centric di [[system/modules/agents]]
   - transcript 05-13 → pagina [[references/videochiamata-luca-salvatore-2026-05-13]] già completa; archiviato, raw_source_path corretto
 - **Fix link rotti**: `ops/wiki-restructuring-plan` (2×), `external/trading-agents-framework` (2×), `tradingagents-graph.canvas` (2×, canvas eliminato da Luca)
-- **Pages updated**: [[build/system-map]], [[build/modules/llm-agent-system]], [[build/modules/exchange-db]], [[build/decision-log]], [[_meta/index]], [[references/videochiamata-luca-salvatore-2026-05-13]], [[references/tradingagents-code-wiki]], [[references/tradingagents-graph-schema]], [[_meta/hot-cache]]
+- **Pages updated**: [[system/architecture]], [[system/modules/agents]], [[system/modules/data-layer]], [[system/decision-log]], [[_meta/index]], [[references/videochiamata-luca-salvatore-2026-05-13]], [[prior-art/tradingagents/code-wiki]], [[prior-art/tradingagents/graph-schema]], [[_meta/hot-cache]]
 - **Deleted**: 54 frammenti `raw/audio/.txt*.txt`; stub `wiki/artifacts/artifact-workbench.md`
 - **Archived**: `raw/archived/daily-notes/2026-05-28.md`, `2026-05-29.md`; `raw/archived/audio/2026-05-13 13-14-17.txt` (+.tmp.mp3)
 - **Canvas**: Luca ha riorganizzato in Obsidian in parallelo → tutti sotto `artifacts/` (design in `artifacts/architecture/`); eliminati da lui `mvp-system-cycle.canvas`, `trading-floor.canvas` (root), `tradingagents-graph.canvas`. `wiki/build/architecture/` non esiste più.
@@ -25,10 +36,10 @@
 ## [2026-05-29] cleanup | Rimozione ridondanze + link rotti residui
 
 - **Trigger**: richiesta utente — "tenere tutto pulito, togliere informazioni ridondanti, file non essenziali"
-- **Refactor**: [[build/mvp-prototype-design]] — rimossi *Ciclo operativo* (vecchia topologia, duplicava [[build/system-map]]) e *Decisioni fondanti* (duplicavano [[build/decision-log]], con dati stale su crypto/Binance/DeepSeek 1/20); allineato a stock-only + topologia 29/05; **mantenuti** metriche a due livelli, backtesting integrato, sequenza track, insight NotebookLM
-- **Deleted**: `wiki/artifacts/kanban-project-status.md` — stale (06/05), `type:ops` (ruolo eliminato dalla taxonomy), "Blocked: Crypto vs Equity" già chiuso, ridondante con [[artifacts/luca-board]] + [[artifacts/salvatore-board]] + [[build/decision-log]]. Riferimenti sistemati in [[_meta/index]] e [[references/videochiamata-luca-salvatore-2026-04-30]]
-- **Link rotti risolti**: `[[strategy/]]`→`[[strategy/index]]` (quant-backtesting); 3 stub metriche in [[strategy/methods/trend-following]] → testo semplice; `[[raw/daily-notes/2026-05-19]]` in [[build/ideas-log]] → path archiviato
-- **Pages updated**: [[build/mvp-prototype-design]], [[_meta/index]], [[references/videochiamata-luca-salvatore-2026-04-30]], [[build/modules/quant-backtesting]], [[strategy/methods/trend-following]], [[build/ideas-log]], [[_meta/hot-cache]]
+- **Refactor**: [[system/mvp]] — rimossi *Ciclo operativo* (vecchia topologia, duplicava [[system/architecture]]) e *Decisioni fondanti* (duplicavano [[system/decision-log]], con dati stale su crypto/Binance/DeepSeek 1/20); allineato a stock-only + topologia 29/05; **mantenuti** metriche a due livelli, backtesting integrato, sequenza track, insight NotebookLM
+- **Deleted**: `wiki/artifacts/kanban-project-status.md` — stale (06/05), `type:ops` (ruolo eliminato dalla taxonomy), "Blocked: Crypto vs Equity" già chiuso, ridondante con [[artifacts/luca-board]] + [[artifacts/salvatore-board]] + [[system/decision-log]]. Riferimenti sistemati in [[_meta/index]] e [[references/videochiamata-luca-salvatore-2026-04-30]]
+- **Link rotti risolti**: `[[strategy/]]`→`[[strategy/index]]` (quant-backtesting); 3 stub metriche in [[strategy/methods/trend-following]] → testo semplice; `[[raw/daily-notes/2026-05-19]]` in [[system/ideas-log]] → path archiviato
+- **Pages updated**: [[system/mvp]], [[_meta/index]], [[references/videochiamata-luca-salvatore-2026-04-30]], [[system/modules/quant-backtesting]], [[strategy/methods/trend-following]], [[system/ideas-log]], [[_meta/hot-cache]]
 - **Stato finale**: 0 link rotti reali nella wiki
 
 ## [2026-05-29] ingest | Due videochiamate Luca & Salvatore 29/05 — LangChain/LangGraph + design architettura custom
@@ -41,21 +52,21 @@
   - [[references/videochiamata-luca-salvatore-2026-05-29]]
   - [[strategy/metrics/benchmark]]
 - **Pages updated**:
-  - [[build/modules/llm-agent-system]] (topologia agenti, Trade deterministico, PM orchestratore, context rot, OpenRouter/DeepSeek)
-  - [[build/modules/exchange-db]] (design DB esteso, extractors, market alert, retention)
-  - [[build/modules/risk-management]] (Risk Analyst gate bear + guardrail deterministici)
-  - [[build/modules/quant-backtesting]] (posizione TA/fondamentali/sentiment)
-  - [[build/decision-log]] (10 decisioni chiuse del 29/05 + aggiornate aperte)
-  - [[build/stack]] (OpenRouter, DeepSeek V4 Pro + costi, storage)
+  - [[system/modules/agents]] (topologia agenti, Trade deterministico, PM orchestratore, context rot, OpenRouter/DeepSeek)
+  - [[system/modules/data-layer]] (design DB esteso, extractors, market alert, retention)
+  - [[system/modules/agents]] (Risk Analyst gate bear + guardrail deterministici)
+  - [[system/modules/quant-backtesting]] (posizione TA/fondamentali/sentiment)
+  - [[system/decision-log]] (10 decisioni chiuse del 29/05 + aggiornate aperte)
+  - [[system/stack]] (OpenRouter, DeepSeek V4 Pro + costi, storage)
   - [[wiki/overview]], [[strategy/index]], [[artifacts/luca-board]], [[artifacts/salvatore-board]], [[_meta/index]], [[_meta/hot-cache]]
-- **Conflicts**: segnalato (non risolto automaticamente) — vecchio "LLM Trader produce JSON" + "agente Esecutore gestisce leva" in [[build/modules/llm-agent-system]] vs nuovo "Trade = funzione Python deterministica". Da riconciliare dove vive la logica leva via opzioni.
+- **Conflicts**: segnalato (non risolto automaticamente) — vecchio "LLM Trader produce JSON" + "agente Esecutore gestisce leva" in [[system/modules/agents]] vs nuovo "Trade = funzione Python deterministica". Da riconciliare dove vive la logica leva via opzioni.
 - **Skipped**: nessuno (`raw/notes/` conteneva solo `.DS_Store`)
-- **Notes**: Sessione di design molto densa. Confermato il pivot definitivo a gestione di portafoglio mid-term stock-only; definita la topologia del grafo da costruire (riscrittura su base TradingAgents), il DB esteso ispirato alla dashboard SFC, e lo stack LLM (OpenRouter + DeepSeek V4 Pro). [[build/system-map]] resta da allineare alla nuova topologia.
+- **Notes**: Sessione di design molto densa. Confermato il pivot definitivo a gestione di portafoglio mid-term stock-only; definita la topologia del grafo da costruire (riscrittura su base TradingAgents), il DB esteso ispirato alla dashboard SFC, e lo stack LLM (OpenRouter + DeepSeek V4 Pro). [[system/architecture]] resta da allineare alla nuova topologia.
 
 ## [2026-05-27] update | Decoupling logic segnali Strong Buy/Sell da agenti specifici
 
 - **Change**: Scollegata esplicitamente la logica dei segnali ad alta convinzione (Strong Buy e Strong Sell) per la leva con opzioni da una tipologia rigida di agenti (come i "Ricercatori"). Il calcolo e la validazione della convinzione sono trattati come concetti/task di sistema, e l'assegnazione finale del ruolo all'agente o nodo più idoneo avverrà durante la mappatura granulare del grafo LangGraph.
-- **Pages updated**: [[references/conversazione-luca-salvatore-2026-05-27]], [[build/modules/llm-agent-system]], [[build/modules/risk-management]], [[build/decision-log]]
+- **Pages updated**: [[references/conversazione-luca-salvatore-2026-05-27]], [[system/modules/agents]], [[system/modules/agents]], [[system/decision-log]]
 
 ## [2026-05-27] ingest | Brainstorming Luca & Salvatore 27/05 — Ricercatori/Esecutori + Statuto 10% + Opzioni Leva + Token Cost Estimator + Piero Site
 
@@ -66,9 +77,9 @@
 - **Pages created**:
   - [[references/conversazione-luca-salvatore-2026-05-27]]
 - **Pages updated**:
-  - [[build/modules/llm-agent-system]] (suddivisione Ricercatori/Esecutori, opzioni leva, integrazione LangSmith)
-  - [[build/modules/risk-management]] (Statuto deterministico, riserva liquidità 10%, OpenRouter LLM cost estimator)
-  - [[build/decision-log]] (aggiunte 5 decisioni chiuse e 4 aperte/aggiornate del 27/05)
+  - [[system/modules/agents]] (suddivisione Ricercatori/Esecutori, opzioni leva, integrazione LangSmith)
+  - [[system/modules/agents]] (Statuto deterministico, riserva liquidità 10%, OpenRouter LLM cost estimator)
+  - [[system/decision-log]] (aggiunte 5 decisioni chiuse e 4 aperte/aggiornate del 27/05)
   - [[_meta/index]] (collegata nuova source page delle referenze)
   - [[_meta/hot-cache]] (aggiornato contesto sessione, decisioni e pending ingests)
 - **Contradictions**: nessuna
@@ -89,13 +100,13 @@
   - [[references/whatsapp-luca-salvatore-2026-05-22]]
   - [[references/conversazione-luca-salvatore-2026-05-26]]
 - **Pages updated**:
-  - [[build/ideas-log]] (aggiunte sezioni 22/05, 25/05, 26/05)
-  - [[build/stack]] (aggiunta sezione AI Agent Framework: LangChain, LangSmith, Mermaid, struttura repo)
-  - [[build/decision-log]] (aggiunte 7 decisioni chiuse 2026-05-19/23/26; chiuse 3 aperte: fork, multi-asset, debate)
-  - [[build/modules/exchange-db]] (rinominato da module-a-exchange-db; scope stock-only, exchange da scegliere)
-  - [[build/modules/quant-backtesting]] (rinominato da module-c-quant-backtest; aggiornati riferimenti)
-  - [[build/modules/llm-agent-system]] (rinominato da module-d-prompt-builder-trader; Bull/Bear agents eliminati)
-  - [[build/modules/risk-management]] (rinominato da risk-analyst; aggiornati riferimenti)
+  - [[system/ideas-log]] (aggiunte sezioni 22/05, 25/05, 26/05)
+  - [[system/stack]] (aggiunta sezione AI Agent Framework: LangChain, LangSmith, Mermaid, struttura repo)
+  - [[system/decision-log]] (aggiunte 7 decisioni chiuse 2026-05-19/23/26; chiuse 3 aperte: fork, multi-asset, debate)
+  - [[system/modules/data-layer]] (rinominato da module-a-exchange-db; scope stock-only, exchange da scegliere)
+  - [[system/modules/quant-backtesting]] (rinominato da module-c-quant-backtest; aggiornati riferimenti)
+  - [[system/modules/agents]] (rinominato da module-d-prompt-builder-trader; Bull/Bear agents eliminati)
+  - [[system/modules/agents]] (rinominato da risk-analyst; aggiornati riferimenti)
   - [[_meta/index]] (aggiornati link moduli + aggiunte 2 nuove source page)
 - **Contradictions**: Scope decisione 2026-04-30 (crypto) contradetto da 2026-05-23 (stock-only) → risolto a favore della più recente
 - **Notes**: 6 file .opus trascritti con Whisper medium in questa sessione. 1 .m4a (2026-05-13) ancora pending. Audio contenevano: valutazione report NVDA, analisi del ragionamento AI vs bias, rischio sistemico AI trading, contesto S&P500 Mag7.
@@ -115,9 +126,9 @@
   - `raw/audio/così ce l'abbiamo...txt` → da archiviare (già ingestato come videochiamata-04-30)
   - `raw/audio/Invece Obsidian...txt` → da archiviare (già ingestato come videochiamata-04-30)
 - **Pages created**:
-  - [[references/tool-set-provider-dati-exchange]]
-  - [[references/note-audio-salvatore-quant-strategy]]
-  - [[references/quantitative-trading-strategies-brenndoerfer]]
+  - [[system/data-providers]]
+  - [[strategy/methods/dual-portfolio]]
+  - [[prior-art/papers/brenndoerfer-quant-trading]]
   - [[strategy/methods/mean-reversion-stat-arb]]
 - **Pages updated**:
   - [[references/videochiamata-luca-salvatore-2026-05-13]] (aggiunto sez. 8-11: struttura multi-agente verbale Salvatore, order book crypto, fork vs from scratch, sequenza operativa)
@@ -135,7 +146,7 @@
 
 ## [2026-05-21] lint | Wiki health check + fix
 
-- **Link rotti risolti** (~35 link su 12 pagine): `[[theory/*]]` → `[[build/system-map]]`, `[[decisions/decision-log]]` → `[[build/decision-log]]`, `[[ops/*]]` → rimossi o redirectati verso `artifacts/`
+- **Link rotti risolti** (~35 link su 12 pagine): `[[theory/*]]` → `[[system/architecture]]`, `[[decisions/decision-log]]` → `[[system/decision-log]]`, `[[ops/*]]` → rimossi o redirectati verso `artifacts/`
 - **raw_source_path corretti**: `references/trading-floor-canvas.md` (puntava a file mancante), `references/videochiamata-luca-salvatore-2026-04-30.md` (m4a mancante → svuotato)
 - **Merge duplicati**: `references/external/trading-agents-framework.md` → contenuto incorporato in `references/external/paper-trading-agents.md` + eliminato; `references/library-portfolio-optimizer.md` → contenuto incorporato in `references/external/cvx-portfolio-optimizer.md` + eliminato
 - **Pagina orfana risolta**: `artifacts/idea architettura.canvas` aggiunto all'index
@@ -148,8 +159,8 @@
 
 - **Type**: article (code wiki) + note (daily note 2026-05-19)
 - **Source raw**: `raw/articles/TradingAgents Code Wiki.md`, `raw/daily-notes/2026-05-19.md`
-- **Pages created**: [[references/tradingagents-code-wiki]], [[build/ideas-log]]
-- **Pages updated**: [[build/modules/llm-agent-system]] (riscritto da raw dump a pagina strutturata), [[build/system-map]] (pattern architetturali: look-ahead bias doppia data, DB-first, indicatori dal DB), [[build/decision-log]] (nuove decisioni: DB-first, LangGraph, agent philosophy, look-ahead bias; aperte: fork vs from scratch, self-scheduling, debate architecture)
+- **Pages created**: [[prior-art/tradingagents/code-wiki]], [[system/ideas-log]]
+- **Pages updated**: [[system/modules/agents]] (riscritto da raw dump a pagina strutturata), [[system/architecture]] (pattern architetturali: look-ahead bias doppia data, DB-first, indicatori dal DB), [[system/decision-log]] (nuove decisioni: DB-first, LangGraph, agent philosophy, look-ahead bias; aperte: fork vs from scratch, self-scheduling, debate architecture)
 - **Contradictions**: decisione "From scratch" (2026-04-30) vs. "fork da TradingAgents" (2026-05-19, Luca) — segnalata nel decision-log, da formalizzare
 - **Notes**: ideas-log.md creato come file append-only su richiesta di Luca per raccogliere tutte le idee del progetto
 
@@ -157,14 +168,14 @@
 - **Operazione**: recuperata la distinzione build/ (software, Luca) vs strategy/ (conoscenza mercato, Salvatore)
 - **Cartelle create**: `strategy/`, `strategy/methods/`, `strategy/indicators/`, `strategy/metrics/`
 - **File creati**: [[strategy/index]], [[strategy/methods/trend-following]], [[strategy/methods/factor-investing]]
-- **File aggiornati**: [[build/modules/quant-backtesting]] (link a strategy/), [[_meta/taxonomy]], [[_meta/index]], [[overview]]
+- **File aggiornati**: [[system/modules/quant-backtesting]] (link a strategy/), [[_meta/taxonomy]], [[_meta/index]], [[overview]]
 
 ## [2026-05-13] restructure | Ristrutturazione completa del vault
 - **Operazione**: ristrutturazione della wiki da struttura generica a struttura orientata al progetto
 - **Cartelle eliminate**: `ops/`, `theory/`, `agents/`, `decisions/`, `questions/`
 - **Cartelle create**: `build/modules/`, `references/external/`
-- **File creati**: [[build/decision-log]], [[build/stack]], [[build/modules/exchange-db]], [[build/modules/quant-backtesting]], [[build/modules/llm-agent-system]], [[build/modules/risk-management]], [[references/external/trading-agents-framework]], [[references/external/cvx-portfolio-optimizer]], [[_meta/glossario]]
-- **File aggiornati**: [[build/system-map]] (merge theory/), [[build/mvp-prototype-design]] (link fix), [[overview]], [[_meta/index]], [[_meta/taxonomy]]
+- **File creati**: [[system/decision-log]], [[system/stack]], [[system/modules/data-layer]], [[system/modules/quant-backtesting]], [[system/modules/agents]], [[system/modules/agents]], [[references/external/trading-agents-framework]], [[prior-art/libraries/cvx-portfolio-optimizer]], [[_meta/glossario]]
+- **File aggiornati**: [[system/architecture]] (merge theory/), [[system/mvp]] (link fix), [[overview]], [[_meta/index]], [[_meta/taxonomy]]
 - **Logica**: ops/ → board; theory/ → build/system-map; agents/ → references/external/; decisions/ → build/decision-log; questions/ → inline nei module files e nelle board
 
 ## [2026-05-13] ingest | Videochiamata Luca-Salvatore 2026-05-13
@@ -183,7 +194,7 @@
 ## [2026-05-13] synthesis | Ricerca NotebookLM — Approcci da progetti simili AI+Finance
 - **Type**: research session (NotebookLM query su 43 fonti)
 - **Pages created**: [[syntheses/notebooklm-research-2026-05-13]]
-- **Pages updated**: [[build/mvp-prototype-design]], [[decisions/decision-log]], [[_meta/index]]
+- **Pages updated**: [[system/mvp]], [[decisions/decision-log]], [[_meta/index]]
 - **Decisioni chiuse**:
   - Framework backtesting: **VectorBT** (usato da MarketSenseAI)
   - LLM principale: **DeepSeek** confermato (Alpha Arena: miglior costo/perf)
@@ -214,13 +225,13 @@
 - **Notes**: refactor delle skill `wiki-init`, `wiki-ingest`, `wiki-query`, `wiki-save`, `wiki-lint`, `wiki-artifact`, `wiki-preprocess` per renderle context-aware e riusabili tra vault di progetto e second brain
 
 ## [2026-04-30] update | Operational surface hardened
-- **Pages created**: [[ops/dashboard]], [[ops/current-state]], [[ops/backlog]], [[build/system-map]], [[decisions/decision-log]], [[questions/open-questions]], [[artifacts/artifact-workbench]]
+- **Pages created**: [[ops/dashboard]], [[ops/current-state]], [[ops/backlog]], [[system/architecture]], [[decisions/decision-log]], [[questions/open-questions]], [[artifacts/artifact-workbench]]
 - **Pages updated**: [[overview]],      [[_meta/index]], [[AGENTS]]
 - **Notes**: aggiunta una superficie operativa pronta all'uso con dashboard, backlog, stato corrente, system map e registri iniziali
 
 ## [2026-05-13] brainstorming | Design MVP Prototype
 - **Partecipanti**: Luca, Claude Code
-- **Pages created**: [[build/mvp-prototype-design]]
+- **Pages created**: [[system/mvp]]
 - **Pages updated**: nessuna (aggiornamento index pendente)
 - **Raw**: `raw/notes/sessione-brainstorming-2026-05-13.md`
 - **Decisioni chiuse**:
@@ -236,18 +247,18 @@
 ## [2026-04-30] ingest | Conversazione progettuale Luca-Salvatore
 - **Type**: call / note
 - **Pages created**: [[references/conversazione-luca-salvatore-2026-04-28-30]], [[theory/modular-trading-agent-architecture]], [[theory/trader-workflow-automation]]
-- **Pages updated**: [[overview]], [[ops/dashboard]], [[ops/current-state]], [[ops/backlog]], [[build/system-map]], [[decisions/decision-log]], [[questions/open-questions]],   [[_meta/index]]
+- **Pages updated**: [[overview]], [[ops/dashboard]], [[ops/current-state]], [[ops/backlog]], [[system/architecture]], [[decisions/decision-log]], [[questions/open-questions]],   [[_meta/index]]
 - **Contradictions**: nessuna
 - **Notes**: ordinato un bundle di audio, trascrizioni e appunti tra Luca e Salvatore; escluse le parti strettamente personali non rilevanti
 
 ## [2026-04-30] artifact | kanban | Stato Progetto
 - **File**: [[kanban-project-status]]
-- **Based on**: [[ops/dashboard]], [[ops/current-state]], [[ops/backlog]], [[build/system-map]], [[decisions/decision-log]], [[questions/open-questions]], [[references/conversazione-luca-salvatore-2026-04-28-30]]
+- **Based on**: [[ops/dashboard]], [[ops/current-state]], [[ops/backlog]], [[system/architecture]], [[decisions/decision-log]], [[questions/open-questions]], [[references/conversazione-luca-salvatore-2026-04-28-30]]
 
 ## [2026-04-30] ingest | Videochiamata Luca-Salvatore (2026-04-30)
 - **Type**: video-call
 - **Pages created**: [[references/videochiamata-luca-salvatore-2026-04-30]]
-- **Pages updated**: [[theory/modular-trading-agent-architecture]], [[build/system-map]], [[kanban-project-status]], [[ops/backlog]], [[_meta/index]]
+- **Pages updated**: [[theory/modular-trading-agent-architecture]], [[system/architecture]], [[kanban-project-status]], [[ops/backlog]], [[_meta/index]]
 - **Contradictions**: nessuna
 - **Notes**: Ingestiti i due transcript della videochiamata odierna. Definita l'architettura multi-agente e la roadmap verso la dashboard di augmentazione.
 
@@ -280,14 +291,14 @@
 ## [2026-05-10] update | Integrazione trascrizioni alta fedeltà — videochiamata 2026-04-30
 - **Type**: re-ingest / enrichment
 - **Sources**: `raw/audio/così ce l'abbiamo...txt`, `raw/audio/Invece Obsidian...txt` (trascrizioni ad alta fedeltà della videochiamata 2026-04-30)
-- **Pages updated**: [[references/videochiamata-luca-salvatore-2026-04-30]], [[theory/modular-trading-agent-architecture]], [[build/system-map]], [[decisions/decision-log]], [[questions/open-questions]], [[ops/backlog]]
+- **Pages updated**: [[references/videochiamata-luca-salvatore-2026-04-30]], [[theory/modular-trading-agent-architecture]], [[system/architecture]], [[decisions/decision-log]], [[questions/open-questions]], [[ops/backlog]]
 - **Contradictions**: nessuna — le nuove trascrizioni hanno aggiunto dettaglio, non contraddetto contenuto esistente
 - **Notes**: Le trascrizioni ad alta fedeltà hanno rivelato dettagli non presenti nella versione precedente: Prompt Builder come componente architetturale esplicito, meccanismo di esecuzione (limit order + SL + TP + leva), Binance come exchange scelto, problema needle-in-haystack, Factor Investigation Agent come agente separato, metodologia di quantificazione dei fattori (media empirica su serie storiche), strategia Sentiment degli Analisti (idea di King), Volume Spike module, specifiche su FinAgent (Cornell, ~50k stelle, Claude 4° contributore) e AlphaArena (confronto 5 LLM su Bitcoin). Aggiunte 5 decisioni chiuse nel decision log.
 
 ## [2026-05-12] ingest | TradingAgents, Alpha Arena & Portfolio Optimizer
 - **Type**: research paper / library documentation
-- **Pages created**: [[paper-trading-agents]], [[paper-alpha-arena]], [[references/library-portfolio-optimizer]], [[references/architecture-handwritten-notes]], [[agents/trading-agents-framework]], [[agents/cvx-portfolio-optimizer]]
-- **Pages updated**: [[theory/modular-trading-agent-architecture]], [[build/system-map]], [[_meta/index]]
+- **Pages created**: [[prior-art/tradingagents/paper]], [[prior-art/papers/alpha-arena]], [[references/library-portfolio-optimizer]], [[references/architecture-handwritten-notes]], [[agents/trading-agents-framework]], [[agents/cvx-portfolio-optimizer]]
+- **Pages updated**: [[theory/modular-trading-agent-architecture]], [[system/architecture]], [[_meta/index]]
 - **Contradictions**: nessuna
 - **Notes**: Ingest completa di materiale tecnico di frontiera. TradingAgents introduce il protocollo di comunicazione strutturata e il team di analisti/debater. Portfolio Optimizer (cvx-optimizer) fornisce il motore per il Portfolio Management quantitativo e l'integrazione di opinioni (views) via Black-Litterman. Alpha Arena fornisce benchmark comparativi tra LLM. La system map ora include esplicitamente il portfolio manager e il protocollo di comunicazione strutturato.
 
@@ -295,8 +306,8 @@
 
 - **Type**: code-ingest + consolidamento artifact
 - **Contesto**: il lavoro era stato fatto per errore su una copia git in `~/Downloads/trading-agent-wiki` (repo senza commit, lineage più vecchio). Migrato qui sul vault vero in modo **chirurgico** (solo i deliverable di sessione, innestati sul contenuto attuale di DST). Backup del vault creato in `~/Downloads/trading-agent-wiki-iCloud-backup-<timestamp>` prima del merge.
-- **Pages created**: [[references/external/rizzo-trading-agent]], [[references/external/sfc-portfolio-tracker]], [[artifacts/project-board]]
-- **Pages updated**: [[references/external/cvx-portfolio-optimizer]] (sezione piattaforma full-stack + BAML LLM-views + frontmatter), [[build/modules/exchange-db]], [[build/modules/quant-backtesting]], [[build/modules/risk-management]], [[build/modules/llm-agent-system]] (sezioni "Riferimenti di codice (repo esterni)"), [[_meta/index]], [[overview]]
+- **Pages created**: [[prior-art/libraries/rizzo-trading-agent]], [[prior-art/libraries/sfc-portfolio-tracker]], [[artifacts/project-board]]
+- **Pages updated**: [[prior-art/libraries/cvx-portfolio-optimizer]] (sezione piattaforma full-stack + BAML LLM-views + frontmatter), [[system/modules/data-layer]], [[system/modules/quant-backtesting]], [[system/modules/agents]], [[system/modules/agents]] (sezioni "Riferimenti di codice (repo esterni)"), [[_meta/index]], [[overview]]
 - **Pages deleted**: artifacts/luca-board.md, artifacts/salvatore-board.md (consolidate in project-board; kanban-project-status già rimossa in precedenza)
 - **Sources**: github.com/SilvioBaratto/optimizer, github.com/Rizzo-AI-Academy/rizzo-trading-agent, github.com/Sbirrondi/sfc-portfolio-tracker
 - **Consolidamento board**: project-board ricostruita dal contenuto ATTUALE di luca-board + salvatore-board in DST (NON dalle versioni vecchie di Downloads): preserva decisioni risolte 2026-05-29 (LangGraph, OpenRouter+DeepSeek V4 Pro, portfolio/mid-term, stock-only+benchmark) e i task nuovi (grafo LangGraph, Extractors, market driver, valuation, P/E). Colonne per stato + marker dominio (🛠/📈/🔀). Decisioni storiche superate annotate inline (*aggiornata:*).

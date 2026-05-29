@@ -10,9 +10,9 @@ created: 2026-05-13
 updated: 2026-05-29
 status: active
 related:
-  - "[[build/system-map]]"
-  - "[[build/decision-log]]"
-  - "[[build/stack]]"
+  - "[[system/architecture]]"
+  - "[[system/decision-log]]"
+  - "[[system/stack]]"
   - "[[trading-floor.canvas]]"
 confidence: high
 priority: high
@@ -29,7 +29,7 @@ Agente autonomo su **paper trading equity** (exchange stock da scegliere — Alp
 
 Nessun capitale reale. Nessuna supervisione umana obbligatoria nel loop. Validazione del sistema su dati storici e in real-time simulato prima di andare live.
 
-> **Decisioni fondanti e architettura**: non duplicate qui. Le scelte chiave (monolite modulare, swing trading, principio deterministico, stock-only, OpenRouter/DeepSeek, ecc.) sono in [[build/decision-log]]; la **topologia operativa aggiornata** (analisti → research_state → Risk Analyst → Trade deterministico) è in [[build/system-map]]. Questa pagina si concentra su **cosa deve produrre l'MVP** (metriche, sequenza di sviluppo, insight implementativi).
+> **Decisioni fondanti e architettura**: non duplicate qui. Le scelte chiave (monolite modulare, swing trading, principio deterministico, stock-only, OpenRouter/DeepSeek, ecc.) sono in [[system/decision-log]]; la **topologia operativa aggiornata** (analisti → research_state → Risk Analyst → Trade deterministico) è in [[system/architecture]]. Questa pagina si concentra su **cosa deve produrre l'MVP** (metriche, sequenza di sviluppo, insight implementativi).
 
 ### Backtesting integrato
 
@@ -57,11 +57,11 @@ Il resto del ciclo è identico. Questo garantisce che il backtest testa esattame
 
 ## DB centrale
 
-Postgres (produzione) / SQLite (sviluppo locale). Schema completo (5 tabelle core ↔ 4 aree logiche) in [[build/modules/exchange-db]].
+Postgres (produzione) / SQLite (sviluppo locale). Schema completo (5 tabelle core ↔ 4 aree logiche) in [[system/modules/data-layer]].
 
 ## Sequenza di sviluppo
 
-### Track 1 — Luca (sviluppo solo) → [[build/modules/exchange-db]]
+### Track 1 — Luca (sviluppo solo) → [[system/modules/data-layer]]
 - Connessione all'exchange equity (paper trading API — Alpaca/IB da scegliere)
 - Esecuzione ordini paper (limit order con SL/TP)
 - Schema DB con le 5 tabelle core
@@ -69,13 +69,13 @@ Postgres (produzione) / SQLite (sviluppo locale). Schema completo (5 tabelle cor
 
 Obiettivo: pipe vuoto funzionante, dati reali che scorrono nel DB.
 
-### Track 2 — Luca + Salvatore (in parallelo con Track 1) → [[build/modules/quant-backtesting]]
+### Track 2 — Luca + Salvatore (in parallelo con Track 1) → [[system/modules/quant-backtesting]]
 - Definizione della strategia quantitativa (multi-factor fundamentals è l'orientamento)
 - Framework backtesting: **VectorBT** (deciso)
 - Download dati storici equity
 - Prime metriche su dati reali
 
-### Track 3 — dopo Track 1, Track 2 progettato → [[build/modules/llm-agent-system]]
+### Track 3 — dopo Track 1, Track 2 progettato → [[system/modules/agents]]
 - Il sistema arriva qui con dati REALI già nel DB (non fittizi)
 - Riscrittura del grafo su base TradingAgents + integrazione OpenRouter/DeepSeek
 - Primo ciclo completo: dati → analisti → research_state → Risk Analyst → Trade deterministico → log
@@ -111,8 +111,8 @@ Dalla ricerca su TradingAgents, MarketSenseAI, Alpha Arena e Simone Rizzo:
 Vedere [[syntheses/notebooklm-research-2026-05-13]] per la sintesi completa.
 
 ## Riferimenti
-- [[build/system-map]] — architettura completa del sistema
-- [[build/decision-log]] — decisioni prese e aperte
-- [[build/stack]] — tech stack scelto
-- [[trading-floor.canvas]] — schema trading floor (versione storica; topologia attuale in [[build/system-map]])
+- [[system/architecture]] — architettura completa del sistema
+- [[system/decision-log]] — decisioni prese e aperte
+- [[system/stack]] — tech stack scelto
+- [[trading-floor.canvas]] — schema trading floor (versione storica; topologia attuale in [[system/architecture]])
 - Sessione brainstorming: `raw/archived/notes/sessione-brainstorming-2026-05-13.md`

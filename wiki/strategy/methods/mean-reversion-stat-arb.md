@@ -12,9 +12,9 @@ status: draft
 related:
   - "[[strategy/index]]"
   - "[[strategy/methods/trend-following]]"
-  - "[[build/modules/quant-backtesting]]"
-  - "[[references/note-audio-salvatore-quant-strategy]]"
-  - "[[references/quantitative-trading-strategies-brenndoerfer]]"
+  - "[[system/modules/quant-backtesting]]"
+  - "[[strategy/methods/dual-portfolio]]"
+  - "[[prior-art/papers/brenndoerfer-quant-trading]]"
 confidence: medium
 area: strategy
 ---
@@ -161,4 +161,4 @@ Giorni/settimane. Richiede risk management sofisticato (da Brenndoerfer).
 
 - **Opposta al trend following**: trend following scommette sulla persistenza del trend, mean reversion scommette sul ritorno alla media
 - **Complementare**: un fondo che usa entrambe (idea dual portfolio di Salvatore) ha diversificazione naturale
-- Vedere [[references/note-audio-salvatore-quant-strategy]] per l'idea del dual portfolio
+- Vedere [[strategy/methods/dual-portfolio]] per l'idea del dual portfolio

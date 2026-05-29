@@ -11,16 +11,16 @@ updated: 2026-05-21
 status: active
 confidence: high
 related:
-  - "[[paper-trading-agents]]"
-  - "[[build/system-map]]"
-  - "[[build/modules/llm-agent-system]]"
+  - "[[prior-art/tradingagents/paper]]"
+  - "[[system/architecture]]"
+  - "[[system/modules/agents]]"
 sources:
   - "https://codewiki.google/github.com/tauricresearch/tradingagents"
 ---
 
 # TradingAgents Code Wiki
 
-Documentazione tecnica auto-generata del codebase [tauricresearch/tradingagents](https://github.com/tauricresearch/tradingagents). Pubblicata il 2026-05-18. Complementa il [[paper-trading-agents]] con dettagli implementativi.
+Documentazione tecnica auto-generata del codebase [tauricresearch/tradingagents](https://github.com/tauricresearch/tradingagents). Pubblicata il 2026-05-18. Complementa il [[prior-art/tradingagents/paper]] con dettagli implementativi.
 
 ---
 

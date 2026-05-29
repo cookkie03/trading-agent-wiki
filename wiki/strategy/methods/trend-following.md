@@ -10,8 +10,7 @@ status: active
 confidence: medium
 area: strategy
 related:
-  - "[[build/modules/quant-backtesting]]"
-  - "[[references/videochiamata-luca-salvatore-2026-05-13]]"
+  - "[[system/modules/quant-backtesting]]"
 ---
 
 # Trend Following
@@ -78,4 +77,4 @@ related:
 
 ## Implementazione software
 
-→ [[build/modules/quant-backtesting]] — il modulo che implementa e backtesta questa strategia
+→ [[system/modules/quant-backtesting]] — il modulo che implementa e backtesta questa strategia

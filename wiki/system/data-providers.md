@@ -7,22 +7,48 @@ tags:
   - market-structure
 raw_source_path: "raw/archived/notes/Tool Set, Provider dati, Exchange.md"
 created: 2026-05-22
-updated: 2026-05-22
+updated: 2026-05-29
 confidence: high
 status: active
 related:
-  - "[[build/modules/exchange-db]]"
-  - "[[build/stack]]"
-  - "[[build/system-map]]"
+  - "[[system/modules/data-layer]]"
+  - "[[system/stack]]"
+  - "[[system/architecture]]"
 ---
 
 # Tool Set, Provider Dati, Exchange
 
 Panoramica dei broker con API Python disponibili in Italia e dei provider di dati di mercato gratuiti, con raccomandazioni per lo stack del trading agent. Fonte: note raw compilate (probabile output di ricerca AI su Claude/ChatGPT).
 
+> **Distinzione fondamentale**: il broker serve principalmente per **eseguire ordini** (e per il paper trading dell'MVP). La **popolazione del DB** (prezzi storici, fondamentali, news, macro, sentiment) avviene tramite data vendor separati. Le due cose si sovrappongono solo parzialmente — IBKR ad esempio può fornire entrambe, ma non è detto sia la scelta ottimale per ogni tipo di dato.
+
 ---
 
-## Broker con API Python — Disponibili in Italia
+## Broker — Solo per l'esecuzione ordini
+
+### Specifiche richieste dal progetto
+
+| Categoria | Requisito | Motivazione |
+|-----------|-----------|-------------|
+| **API** | REST + WebSocket | REST per ordini, WebSocket per feed real-time (adaptive extractor) |
+| **API** | Paper trading sandbox = specchio del live | Il codice non deve cambiare passando a live |
+| **API** | Python SDK ufficiale o CCXT-compatible | Stack Python; interfaccia astratta = cambio broker = cambio config |
+| **API** | Rate limit adeguati | Adaptive extractor: alta freq vicino al target, daily altrove |
+| **API** | Tipi ordine: limit, SL, TP | Hard constraint architetturale |
+| **Asset** | Equity US (S&P 500) — MVP | Benchmark primario |
+| **Asset** | Equity internazionale | Secondo benchmark 60/40 all-world |
+| **Asset** | Multi-currency (USD, EUR minimo) | Portafoglio non solo EUR |
+| **Asset** | Roadmap: commodities, BTC, futures, opzioni | Espansione post-MVP |
+| **Safety** | Broker regolamentato (MiFID II / ESMA o SEC+FINRA) | Requisito legale e fiduciario |
+| **Safety** | Fondi segregati + protezione depositi | Rischio controparte |
+| **Safety** | Uptime SLA documentato | Sistema autonomo, downtime = trade mancati |
+| **Costi** | Commissioni basse o zero per equity | Drag minimo sul rendimento |
+| **Costi** | Paper trading gratuito | Dev + testing indefinito prima del live |
+| **Dev** | Documentazione API di qualità, API stabile | Velocità di sviluppo, no breaking change imprevisti |
+
+> Il broker **non** è il fornitore principale di dati storici o fondamentali — quelli vengono dai data vendor sotto.
+
+---
 
 ### Interactive Brokers (IBKR) — Il riferimento assoluto
 
@@ -39,14 +65,14 @@ La piattaforma TWS include 50+ order types e algoritmi, portfolio analysis, mode
 
 ---
 
-### Alpaca — Il migliore per algo trading puro
+### Alpaca — Il migliore per algo trading puro (MVP candidate)
 
 Alpaca è identificato come il miglior broker per algorithmic trading in Italia nel 2026, grazie alla sua API developer-friendly, basse commissioni e paper trading disponibile globalmente.
 
 All-in-one: con poche API call si recuperano market data e si inviano ordini. SDK ufficiali disponibili in Python, JS e altri linguaggi.
 
 - **Limiti**: il live trading richiede KYC ed è disponibile solo in certi paesi. Il paper trading (demo mode) è disponibile globalmente. Focalizzato su equity US + crypto.
-- **Rilevanza per il progetto**: ottimo per phase testing, ma non su Binance/crypto
+- **Rilevanza per il progetto**: candidato ideale per la fase MVP/paper trading — API developer-first, zero friction, paper trading perfetto. Limite: US equity only, niente opzioni reali. Per produzione con copertura internazionale → IBKR.
 
 ---
 
@@ -133,31 +159,47 @@ Free tier disponibile con dataset come WIKI EOD Stock Prices.
 
 ## Riepilogo
 
-| Categoria | Strumento | Asset Class | Gratuito | Python |
-|---|---|---|---|---|
-| **Broker** | Interactive Brokers | Tutto | API gratis | `ib_insync` |
-| **Broker** | Alpaca | US equity + crypto | paper gratis | SDK ufficiale |
-| **Prezzi** | yfinance | Tutto | sì | sì |
-| **Prezzi + TA** | Alpha Vantage | Tutto | 25/day | sì |
-| **Real-time + news** | Finnhub | Tutto | 60/min | sì |
+| Ruolo | Strumento | Asset Class | Gratuito | Python |
+|-------|-----------|-------------|----------|--------|
+| **Broker (esecuzione)** | Interactive Brokers | Tutto | API gratis | `ib_insync` |
+| **Broker (MVP paper)** | Alpaca | US equity + crypto | paper gratis | SDK ufficiale |
+| **Prezzi storici** | yfinance | Tutto | sì | sì |
+| **Prezzi + TA + fondamentali** | Alpha Vantage | Tutto | 25/day free | sì |
+| **Real-time + news + sentiment** | Finnhub | Tutto | 60/min free | sì |
 | **Aggregatore** | OpenBB | Tutto | sì | sì |
 | **Macro** | FRED | Macro | sì | `fredapi` |
-| **Multi-asset** | Twelve Data | Tutto | 800/day | sì |
-| **Dataset** | Nasdaq Data Link | Multi | parziale | sì |
+| **Multi-asset prezzi** | Twelve Data | Tutto | 800/day free | sì |
+| **Dataset storici** | Nasdaq Data Link | Multi | parziale | sì |
 
 ---
 
-## Stack raccomandato per il Trading Agent (mercati tradizionali)
+## Stack raccomandato per il Trading Agent
 
-- **Esecuzione**: IBKR (copre tutto, API robusta, disponibile in Italia)
-- **Dati prezzi + fondamentali**: `yfinance` per il dev, Alpha Vantage per la produzione
-- **Macro + sentiment**: FRED + Finnhub
-- **Aggregatore unificato**: OpenBB come layer di astrazione sopra tutto
+### Esecuzione ordini (broker)
+- **MVP / paper trading**: Alpaca — API developer-first, zero commission, paper trading identico al live
+- **Produzione**: IBKR — copre tutto (equity internazionale, futures, opzioni), API robusta, disponibile in Italia
 
-> Nota: per il prototipo attuale su Binance/crypto, lo stack principale è Binance API (order book pubblico, dati storici, paper trading testnet). I provider sopra sono rilevanti per la fase successiva o per eventuali espansioni su equity.
+### Popolazione DB (data vendor, separati dal broker)
+- **Prezzi OHLCV storici + fondamentali**: `yfinance` per il dev → Alpha Vantage o Twelve Data per la produzione
+- **News + sentiment + insider trading**: Finnhub (60 req/min free, ottimo per il Market Alert Agent)
+- **Macro (GDP, tassi, inflazione)**: FRED — gratuito, 800k+ serie storiche
+- **Aggregatore unificato**: OpenBB come layer di astrazione sopra tutti i provider (unica API, sostituire sorgenti senza riscrivere i connector)
 
 ---
 
-## Relazione con il Modulo A
+## Relazione con il Modulo Exchange + DB
 
-Il [[build/modules/exchange-db]] dovrà implementare i connector verso i provider scelti. La filosofia è: ogni provider diventa un modulo Python parametrizzabile che legge dall'API e scrive nel DB centrale. I tool non devono avere valori hardcodati (es. non "scarica ultimi 30 giorni" ma "scarica dal parametro `start_date` al parametro `end_date`").
+Il [[system/modules/data-layer]] dovrà implementare i connector verso i provider scelti. La filosofia è: ogni provider diventa un modulo Python parametrizzabile che legge dall'API e scrive nel DB centrale. I tool non devono avere valori hardcodati (es. non "scarica ultimi 30 giorni" ma "scarica dal parametro `start_date` al parametro `end_date`").
+
+### Mapping provider → area DB
+
+| Area DB | Fonte principale | Fonte secondaria |
+|---------|-----------------|-----------------|
+| `market_data` — prezzi | yfinance (dev) / Twelve Data (prod) | Alpha Vantage |
+| `market_data` — fondamentali | Alpha Vantage | yfinance |
+| `market_data` — news + sentiment | Finnhub | Alpha Vantage news |
+| `market_data` — macro | FRED | Alpha Vantage macro |
+| `market_data` — insider trading | Finnhub | Alpha Vantage |
+| `market_data` — calendario economico | Finnhub (earnings calendar) | — |
+| `market_data` — tassi di cambio | Alpha Vantage / Twelve Data | — |
+| Esecuzione ordini | Alpaca (MVP) → IBKR (prod) | — |

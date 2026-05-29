@@ -21,11 +21,11 @@ confidence: high
 priority: high
 area: research
 related:
-  - "[[build/mvp-prototype-design]]"
-  - "[[build/system-map]]"
-  - "[[build/decision-log]]"
-  - "[[paper-trading-agents]]"
-  - "[[paper-alpha-arena]]"
+  - "[[system/mvp]]"
+  - "[[system/architecture]]"
+  - "[[system/decision-log]]"
+  - "[[prior-art/tradingagents/paper]]"
+  - "[[prior-art/papers/alpha-arena]]"
 ---
 
 # Ricerca NotebookLM — Approcci da Progetti Simili AI+Finance

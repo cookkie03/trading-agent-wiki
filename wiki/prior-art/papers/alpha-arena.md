@@ -11,7 +11,7 @@ updated: 2026-05-12
 confidence: high
 status: reviewed
 related:
-  - "[[build/system-map]]"
+  - "[[system/architecture]]"
 ---
 
 # Alpha Arena & Six Frontier LLMs Trading Competition

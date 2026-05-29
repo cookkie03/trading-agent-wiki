@@ -11,11 +11,11 @@ updated: 2026-05-29
 status: active
 confidence: high
 related:
-  - "[[build/modules/risk-management]]"
-  - "[[build/modules/llm-agent-system]]"
-  - "[[build/system-map]]"
-  - "[[references/external/rizzo-trading-agent]]"
-  - "[[references/external/sfc-portfolio-tracker]]"
+  - "[[system/modules/agents]]"
+  - "[[system/modules/agents]]"
+  - "[[system/architecture]]"
+  - "[[prior-art/libraries/rizzo-trading-agent]]"
+  - "[[prior-art/libraries/sfc-portfolio-tracker]]"
 ---
 
 # Portfolio Optimizer (cvx-portfolio-optimizer)
@@ -79,15 +79,15 @@ La cartella `api/baml_src/` definisce **funzioni LLM tipizzate** con [BAML](http
 | `AdaptFactorWeights` | adatta i pesi dei fattori |
 | `DesignStressScenarios` | genera scenari di stress |
 
-Pattern chiave (in `GenerateViews.baml`): l'LLM riceve **fattori quantitativi per asset** (P/E, P/B, momentum 12-1m, RSI, ROE, debt/equity, growth, distanza da 52w high/low, consenso analisti) e produce views con **confidence calibrata mappata su Idzorek alpha** → fed deterministicamente nel modello Black-Litterman. **Da studiare e adattare**: è il modo "giusto" di far produrre all'LLM opinioni che la matematica integra, anziché lasciare all'LLM la decisione finale di trade (allineato al nostro principio deterministico, [[build/modules/risk-management]]).
+Pattern chiave (in `GenerateViews.baml`): l'LLM riceve **fattori quantitativi per asset** (P/E, P/B, momentum 12-1m, RSI, ROE, debt/equity, growth, distanza da 52w high/low, consenso analisti) e produce views con **confidence calibrata mappata su Idzorek alpha** → fed deterministicamente nel modello Black-Litterman. **Da studiare e adattare**: è il modo "giusto" di far produrre all'LLM opinioni che la matematica integra, anziché lasciare all'LLM la decisione finale di trade (allineato al nostro principio deterministico, [[system/modules/agents]]).
 
 ### Servizi backend riutilizzabili come riferimento (`api/app/services/`)
 `view_generation`, `entropy_pooling_service`, `opinion_pooling`, `optimization_service`, `backtest_service`, `rebalancing_service`, `risk_analytics_service`, `risk_budget_service`, `factor_*_service`, `macro_regime_service`, `macro_news_summary`, `sentiment`, `stress_scenarios`, `synthetic_service`, `tuning_service`, `universe_screening_service`, `validation_service`, `reference_index_seeder`, `report_service`, `scheduler`, **`broker_sync_service`** + **`trading212/`** (sincronizzazione broker), `yfinance_data_service`, `notifications`. I router `api/v1/` espongono ognuno di questi (`optimize`, `views`, `opinion_pooling`, `risk`, `factors`, `rebalance`, `backtest`, `tune`, `synthetic`, `stress_scenarios`, `macro_regime`, `attribution`, `dashboard`, `jobs`, `trading212`, ...).
 
 ### Cosa estrarre / a cui ispirarsi per il nostro progetto
-1. **Architettura backend FastAPI a layer** (models→repositories→services→routers + middleware + Alembic) = blueprint diretto per il nostro backend e il DB centrale ([[build/modules/exchange-db]]).
-2. **BAML per le funzioni LLM** (output strutturato + Ollama/cloud intercambiabili) = alternativa o complemento al nostro "JSON obbligatorio su DeepSeek"; `GenerateViews` è il template del ponte LLM→Black-Litterman ([[build/modules/llm-agent-system]]).
+1. **Architettura backend FastAPI a layer** (models→repositories→services→routers + middleware + Alembic) = blueprint diretto per il nostro backend e il DB centrale ([[system/modules/data-layer]]).
+2. **BAML per le funzioni LLM** (output strutturato + Ollama/cloud intercambiabili) = alternativa o complemento al nostro "JSON obbligatorio su DeepSeek"; `GenerateViews` è il template del ponte LLM→Black-Litterman ([[system/modules/agents]]).
 3. **`broker_sync_service` + `trading212`** = riferimento per il modulo Exchange (anche se equity europeo).
 4. **Background jobs + scheduler + Alembic + docker-compose** = infrastruttura operativa già risolta.
 5. La **libreria `optimizer/`** resta il motore quant candidato (vedi sopra) — ora sappiamo che esiste anche tutto il "contorno" applicativo a cui guardare.
-6. **Confronto con gli altri due riferimenti**: [[references/external/rizzo-trading-agent]] dà il ciclo agente LLM→esecuzione end-to-end (semplice, crypto); questo optimizer dà il motore quant + LLM-views production-grade; [[references/external/sfc-portfolio-tracker]] dà analytics/dashboard/reporting. Insieme coprono tutto lo spettro del nostro sistema.
+6. **Confronto con gli altri due riferimenti**: [[prior-art/libraries/rizzo-trading-agent]] dà il ciclo agente LLM→esecuzione end-to-end (semplice, crypto); questo optimizer dà il motore quant + LLM-views production-grade; [[prior-art/libraries/sfc-portfolio-tracker]] dà analytics/dashboard/reporting. Insieme coprono tutto lo spettro del nostro sistema.

@@ -29,11 +29,11 @@ Un sistema multi-agente che replica e automatizza il workflow di un trader profe
 
 | Vuoi... | Vai a... |
 |---------|----------|
-| Capire come funziona il sistema | [[build/system-map]] |
+| Capire come funziona il sistema | [[system/architecture]] |
 | Vedere cosa si sta costruendo ora | [[artifacts/project-board]] |
-| Vedere il piano MVP completo | [[build/mvp-prototype-design]] |
+| Vedere il piano MVP completo | [[system/mvp]] |
 | Trovare un termine che non conosci | [[_meta/glossario]] |
-| Vedere tutte le decisioni prese | [[build/decision-log]] |
+| Vedere tutte le decisioni prese | [[system/decision-log]] |
 | Trovare una fonte o un paper | [[_meta/index]] |
 
 ---
@@ -42,13 +42,14 @@ Un sistema multi-agente che replica e automatizza il workflow di un trader profe
 
 ```
 wiki/
-├── build/          ← spec software (Luca): architettura, moduli, stack, decisioni
+├── system/         ← spec software (Luca): architettura, moduli, stack, decisioni, MVP
+│   └── modules/    ← data-layer · agents · execution · quant-backtesting
 ├── strategy/       ← conoscenza di mercato (Salvatore): metodi, indicatori, metriche
-├── references/     ← fonti ingestite (call, paper, librerie, articoli)
-│   └── external/   ← framework e librerie terze parti
+├── prior-art/      ← sistemi/paper/librerie esterni studiati e forkati
+│   ├── tradingagents/ · libraries/ · papers/
 ├── syntheses/      ← analisi trasversali multi-fonte
-├── artifacts/      ← canvas, roadmap, board di lavoro
-└── _meta/          ← navigazione vault (index, log, glossario, taxonomy)
+├── artifacts/      ← canvas, board di lavoro
+└── _meta/          ← navigazione vault (index, log, glossario, taxonomy, onboarding)
 ```
 
 ---
@@ -56,13 +57,16 @@ wiki/
 ## Flusso di lavoro
 
 ```
-raw/           → wiki-ingest →  references/    (fonti)
+raw/           → wiki-ingest →  prior-art/     (sistemi/paper esterni)
                              →  syntheses/     (analisi)
-                             →  build/         (spec aggiornate)
-artifacts/     → boards Luca e Salvatore       (task e decisioni)
+                             →  system/        (spec software aggiornate)
+                             →  strategy/      (conoscenza di mercato)
+artifacts/     → project-board                 (task e decisioni)
 ```
 
-**Luca**: carica materiale tecnico in `raw/`, aggiorna i moduli in `build/`, aggiorna la board.
+I record grezzi delle call restano in `raw/archived/`; la loro sostanza è dissolta nelle pagine tematiche (decisioni datate in `system/decision-log`).
+
+**Luca**: carica materiale tecnico in `raw/`, aggiorna i moduli in `system/modules/`, aggiorna la board.
 **Salvatore**: carica in `raw/` indicatori, strategie, meccanismi di mercato, casi reali. L'agente struttura il materiale in `strategy/`.
 
 ---

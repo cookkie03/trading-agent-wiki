@@ -15,8 +15,8 @@ status: active
 related:
   - "[[strategy/index]]"
   - "[[strategy/methods/trend-following]]"
-  - "[[build/modules/quant-backtesting]]"
-  - "[[references/note-audio-salvatore-quant-strategy]]"
+  - "[[system/modules/quant-backtesting]]"
+  - "[[strategy/methods/dual-portfolio]]"
 ---
 
 # Quantitative Trading Strategies: Alpha, Backtesting & Performance (Brenndoerfer)

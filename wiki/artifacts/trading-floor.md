@@ -10,7 +10,7 @@ updated: 2026-05-06
 confidence: high
 status: active
 related:
-  - "[[build/system-map]]"
+  - "[[system/architecture]]"
 ---
 
 # Trading Floor Canvas

@@ -9,8 +9,8 @@ updated: 2026-05-29
 status: active
 area: strategy
 related:
-  - "[[build/modules/quant-backtesting]]"
-  - "[[build/decision-log]]"
+  - "[[system/modules/quant-backtesting]]"
+  - "[[system/decision-log]]"
 ---
 
 # Strategy
@@ -26,7 +26,7 @@ Questa sezione è il dominio di Salvatore. Ogni elemento qui dentro è distillat
 Ogni file in `strategy/` dovrebbe linkare:
 - i **metodi** che lo usano (es. `rsi.md` → `trend-following.md`)
 - le **metriche** con cui si valuta (es. `trend-following.md` → `sharpe-ratio.md`)
-- il **modulo software** che lo implementa (es. `trend-following.md` → `[[build/modules/quant-backtesting]]`)
+- il **modulo software** che lo implementa (es. `trend-following.md` → `[[system/modules/quant-backtesting]]`)
 
 ---
 
@@ -48,7 +48,7 @@ Un file per ogni indicatore: cosa misura, come si interpreta, quali parametri ha
 
 *(Da popolare — Salvatore porta gli indicatori che usa)*
 
-> **In arrivo (2026-05-29)**: Salvatore convertirà in TXT/Obsidian il suo file **market driver** (4 macro-categorie, da arricchire) e preparerà un documento sugli **indicatori di valuation** delle stock. Vedere [[references/videochiamata-luca-salvatore-2026-05-29]].
+> **In arrivo (2026-05-29)**: Salvatore convertirà in TXT/Obsidian il suo file **market driver** (4 macro-categorie, da arricchire) e preparerà un documento sugli **indicatori di valuation** delle stock (emerso nella call del 2026-05-29).
 
 ---
 
@@ -67,4 +67,4 @@ Un file per ogni metrica: come si calcola, cosa misura, quando è utile.
 1. Carica in `raw/` tutto quello che trova: articoli, note, audio, casi reali
 2. L'agente ingesta e crea/aggiorna file qui
 3. Salvatore può anche modificare direttamente i file esistenti
-4. Luca traduce i metodi validati in tool Python in `build/modules/quant-backtesting`
+4. Luca traduce i metodi validati in tool Python in [[system/modules/quant-backtesting]]

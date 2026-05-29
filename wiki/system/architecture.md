@@ -1,5 +1,5 @@
 ---
-title: "System Map"
+title: "Architettura del sistema"
 type: build
 tags:
   - build
@@ -10,17 +10,12 @@ status: active
 priority: high
 area: software
 related:
-  - "[[build/mvp-prototype-design]]"
-  - "[[build/stack]]"
-  - "[[build/modules/exchange-db]]"
-  - "[[build/modules/quant-backtesting]]"
-  - "[[build/modules/llm-agent-system]]"
-  - "[[build/modules/risk-management]]"
-sources:
-  - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
-  - "[[references/videochiamata-luca-salvatore-2026-04-30]]"
-  - "[[references/videochiamata-luca-salvatore-2026-05-13]]"
-  - "[[references/videochiamata-luca-salvatore-2026-05-29]]"
+  - "[[system/mvp]]"
+  - "[[system/stack]]"
+  - "[[system/modules/data-layer]]"
+  - "[[system/modules/quant-backtesting]]"
+  - "[[system/modules/agents]]"
+  - "[[system/modules/execution]]"
 ---
 
 # System Map
@@ -35,21 +30,21 @@ Architettura completa del `trading-agent`. Il sistema replica e automatizza il w
 
 **Modularità**: ogni modulo è un blocco con input e output definiti, scrivibile e leggibile dal DB centrale. Si può sostituire, pesare dinamicamente o disabilitare senza toccare il resto del sistema.
 
-**DB come hub centrale**: tutti i moduli scrivono qui; il Prompt Builder legge da qui. L'unica fonte di verità del sistema.
+**DB come hub centrale**: tutti i moduli scrivono qui; gli agenti leggono da qui (solo i campi che servono). L'unica fonte di verità del sistema.
 
 ---
 
 ## Topologia operativa (design 2026-05-29)
 
-> Vista concreta progettata sulla canvas `wiki/artifacts/architecture/agents.canvas` nella call del 29/05 ([[references/videochiamata-luca-salvatore-2026-05-29]]). Sostituisce il vecchio ciclo lineare "TAVOLO → Prompt Builder → LLM Trader → Security → Allocator". Dettaglio agenti in [[build/modules/llm-agent-system]].
+> Vista concreta progettata sulla canvas `wiki/artifacts/architettura.canvas` (call del 2026-05-29). Sostituisce il vecchio ciclo lineare "TAVOLO → Prompt Builder → LLM Trader → Security → Allocator". Dettaglio agenti in [[system/modules/agents]].
 
 ```
 Portfolio Manager (CEO / orchestratore)  ◄── attivato da: alert numerico | periodical synthesis
   │  (tavolo circolare: ha tool verso tutti, decide quando "ho info sufficienti")
   │
-  ├─► Desk di origination (analisti) — chiamato come tool:
-  │      Market ─┐                          ┌─ Fondamentali (financials)
-  │      Sentiment ┘─► loop conversazione ─►┘─ Technical
+  ├─► Desk di origination — chiamati come tool:
+  │      Analyst Research  (Market + Sentiment)        ─┐
+  │      Analyst Technical (Technical + Fondamentali)  ─┘─► loop conversazione
   │                         │
   │                         ▼
   │                 research_state  =  tesi di investimento completa
@@ -79,13 +74,13 @@ Portfolio Manager (CEO / orchestratore)  ◄── attivato da: alert numerico |
 
 ## Layer 1 — DB Centrale (esteso)
 
-Unico punto di verità (blocco viola della canvas, sempre acceso). Schema completo in [[build/modules/exchange-db]]. Quattro aree logiche oltre alle 5 tabelle SQL core:
+Unico punto di verità (blocco viola della canvas, sempre acceso). Schema completo in [[system/modules/data-layer]]. Quattro aree logiche oltre alle 5 tabelle SQL core:
 
 | Area | Contenuto |
 |------|-----------|
 | **Rendicontazione portafoglio** | Liquidità corrente/investita, distribuzione (geo/asset class/settore/duration), P/L e metriche di performance |
 | **Dati live** | Prezzi, calendario economico, news, indicatori macro, insider trading, tassi di cambio |
-| **Costituzione / Statuto** | Regole deterministiche del fondo (al centro) → [[build/modules/risk-management]] |
+| **Costituzione / Statuto** | Regole deterministiche del fondo (al centro) → [[system/modules/agents]] |
 | **Log** | `states`, `reports`, `transactions` — storico completo, con retention via clustering+riassunto |
 
 ---
@@ -99,19 +94,20 @@ Primo set di tool degli agenti. Si agganciano al DB (DB-first), non ai vendor di
 | **Extractors set** | Estraggono info di mercato → le scrivono sia nel DB sia verso gli agenti |
 | **Adaptive extractor** | Frequenza adattiva in base alla vicinanza al target (rispetta i rate limit) |
 | **Market Alert agent** | Riceve dagli adaptive extractor; unico tool = *calendar tool* che scrive eventi nel calendario economico → alla scadenza scatta l'alert (solo numerico/prezzo) |
+| **mantainer** | Manutenzione (non-LLM) dei dati technical e della rendicontazione nel DB *(nodo nuovo del canvas, ruolo da confermare)* |
 
 ---
 
 ## Layer 3 — Origination / Analisi
 
-I 4 analisti compilano lo `research_state`. In valutazione: tenerli **4 separati** o **2 agenti** con 2 moduli interni ciascuno (vedi decisione aperta).
+Due **desk** compilano lo `research_state` (decisione consolidata dal canvas, chiude il dubbio "2 vs 4 agenti"): **Analyst Research** (Market + Sentiment) e **Analyst Technical** (Technical + Fondamentali).
 
 | Analista | Funzione | Tipo |
 |----------|----------|------|
 | **Market** | Contesto di mercato, macro | LLM + tool |
 | **Sentiment** | Sentiment news/social (indicatori da definire) → aggrega su Market | LLM + tool |
 | **Fondamentali** | Financials, ratio (es. P/E trailing vs current) | LLM + tool |
-| **Technical** | Segnali tecnici/quantitativi → [[build/modules/quant-backtesting]]; aggrega su Fondamentali | LLM + tool (calcoli deterministici) |
+| **Technical** | Segnali tecnici/quantitativi → [[system/modules/quant-backtesting]]; aggrega su Fondamentali | LLM + tool (calcoli deterministici) |
 
 Output: `research_state` versionato (`alpha`/v1) con esiti `approved`/`declined`.
 
@@ -121,10 +117,10 @@ Output: `research_state` versionato (`alpha`/v1) con esiti `approved`/`declined`
 
 | Componente | Funzione | Tipo |
 |------------|----------|------|
-| **Risk Analyst** | Antitesi bearish + guardrail dello Statuto; soglia ~60-70%; approve / decline+razionale → [[build/modules/risk-management]] | LLM (reasoning) + check Python |
+| **Risk Analyst** | Antitesi bearish + guardrail dello Statuto; soglia ~60-70%; approve / decline+razionale → [[system/modules/agents]] | LLM (reasoning) + check Python |
 | **Guardrail deterministici** | VaR ~10%, % max per area/settore, diversificazione, duration: check Python, non compiti dell'LLM | Python deterministico |
 | **Investment State** | Gate di completezza: nessun trade finché lo state non è completo; reset automatico post-transazione | Python |
-| **Trade** | Estrae la proposta dallo state, sceglie il miglior prezzo tra broker, esegue → [[build/modules/exchange-db]] | **Python deterministico (NON agent)** |
+| **Trade** | Estrae la proposta dallo state, sceglie il miglior prezzo tra broker, esegue → [[system/modules/execution]] | **Python deterministico (NON agent)** |
 | Logger | Logga states/reports/transactions nel DB | Python |
 
 ---
@@ -155,9 +151,9 @@ Dare a ogni agente solo l'informazione necessaria evita sia l'effetto "telefono 
 
 | Track | Chi | Moduli |
 |-------|-----|--------|
-| Track 1 | Luca solo | [[build/modules/exchange-db]] |
-| Track 2 | Luca + Salvatore | [[build/modules/quant-backtesting]] |
-| Track 3 | dopo Track 1 | [[build/modules/llm-agent-system]] (riscrittura del grafo su base TradingAgents) |
+| Track 1 | Luca solo | [[system/modules/data-layer]] |
+| Track 2 | Luca + Salvatore | [[system/modules/quant-backtesting]] |
+| Track 3 | dopo Track 1 | [[system/modules/agents]] (riscrittura del grafo su base TradingAgents) |
 | Post-MVP | tutto il team | Risk Analyst completo, desk di monitoring/evaluation, extractor adattivi, dashboard/Telegram |
 
 > **Approccio sviluppo (2026-05-29)**: si riscrive il grafo tenendo la base di TradingAgents (tool `dataflows` + LLM clients), rifacendo da capo node/edge/state/tool e system prompt. 4 task di engineering: **agenti, state, system prompt, tool**.
@@ -168,7 +164,7 @@ Dare a ogni agente solo l'informazione necessaria evita sia l'effetto "telefono 
 
 ## Pattern architetturali (aggiornamento 2026-05-21)
 
-*Emersi dalla lettura del codebase TradingAgents — [[references/tradingagents-code-wiki]]*
+*Emersi dalla lettura del codebase TradingAgents — [[prior-art/tradingagents/code-wiki]]*
 
 **Look-ahead bias — doppia data**: ogni informazione nel DB ha due date distinte:
 - `publication_date`: quando è stata ottenuta/pubblicata (es. giorno di pubblicazione delle trimestrali)
@@ -184,4 +180,4 @@ Dare a ogni agente solo l'informazione necessaria evita sia l'effetto "telefono 
 
 ---
 
-*Per le decisioni tecniche vedere [[build/decision-log]]. Per il piano MVP vedere [[build/mvp-prototype-design]]. Per idee e brainstorming: [[build/ideas-log]].*
+*Per le decisioni tecniche vedere [[system/decision-log]]. Per il piano MVP vedere [[system/mvp]]. Per idee e brainstorming: [[system/ideas-log]].*

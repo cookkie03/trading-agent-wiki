@@ -10,19 +10,18 @@ created: 2026-04-30
 updated: 2026-05-29
 status: active
 related:
-  - "[[build/system-map]]"
-  - "[[build/decision-log]]"
-  - "[[build/stack]]"
-  - "[[build/ideas-log]]"
+  - "[[system/architecture]]"
+  - "[[system/decision-log]]"
+  - "[[system/stack]]"
+  - "[[system/ideas-log]]"
   - "[[strategy/metrics/benchmark]]"
 confidence: high
 priority: high
 area: ops
 kanban-plugin: board
 sources:
-  - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
-  - "[[references/notion-export-investimento-trading]]"
-  - "[[references/trading-floor-canvas]]"
+  - "[[prior-art/papers/notion-trading-concepts]]"
+  - "[[artifacts/trading-floor]]"
 ---
 
 > Board unica di progetto. Marker di dominio per card: 🛠 = tecnico/software (Luca) · 📈 = mercato/strategia (Salvatore) · 🔀 = condiviso/trasversale.
@@ -34,7 +33,7 @@ sources:
 - [ ] 🛠 **Logging strutturato della chain-of-thought** — schema del log per ogni trade: input moduli → ragionamento LLM → decisione → esito. Fondamentale per fine-tuning e analisi RL
 - [ ] 🛠 **Continuous Learning real-time** — fine-tuning sul dato in streaming. Problema ancora aperto nella ricerca: esplorare dopo che il fine-tuning batch funziona
 - [ ] 🛠 **Exchange module intercambiabile** — interfaccia astratta, contratto I/O identico tra adattatori (paper → live → eventuale DEX)
-- [ ] 🛠 **Costo per trade — vincolo API** — stimare il costo in token (€) di ogni invocazione dell'LLM Trader col prompt pieno. Influenza la frequenza massima sostenibile → token cost estimator in [[build/modules/risk-management]]
+- [ ] 🛠 **Costo per trade — vincolo API** — stimare il costo in token (€) di ogni invocazione dell'LLM Trader col prompt pieno. Influenza la frequenza massima sostenibile → token cost estimator in [[system/modules/agents]]
 - [ ] 📈 **Strategia Sentiment degli Analisti** — capire il *perché* del consenso bullish/bearish: identificare il pattern di metriche che lo genera → il bot lo replica e trada prima della folla. Idea originale, diversa dal factor investing classico
 - [ ] 📈 **Stop loss istituzionali a domino** — sfruttare le soglie psicologiche dove si concentrano gli SL degli istituzionali: sotto soglia scatta una cascata prevedibile. Come identificarle in anticipo?
 - [ ] 📈 **Quantificazione eventi rari** — come gestire eventi mai visti (prima riunione di un nuovo presidente BCE)? Usare la categoria più vicina o trattarli come unknown?
@@ -43,16 +42,16 @@ sources:
 
 ## 🔴 Da fare
 
-- [ ] 🛠 **Progettare lo schema del DB esteso** — consolidare il design 2026-05-29: rendicontazione portafoglio (liquidità, distribuzione multi-filtro, P/L), dati live (prezzi, calendario, news, macro, insider, cambi), costituzione/statuto al centro, log (states/reports/transactions) + retention/clustering. Vedi [[build/modules/exchange-db]]
+- [ ] 🛠 **Progettare lo schema del DB esteso** — consolidare il design 2026-05-29: rendicontazione portafoglio (liquidità, distribuzione multi-filtro, P/L), dati live (prezzi, calendario, news, macro, insider, cambi), costituzione/statuto al centro, log (states/reports/transactions) + retention/clustering. Vedi [[system/modules/data-layer]]
 - [ ] 🛠 **Definire I/O spec per ogni modulo** — cosa entra (formato, fonte) e cosa esce (formato, destinazione nel DB) per: Prompt Builder, News Research Agent, Factor Quantification, Prediction Module, Risk Analyst Agent, Analista (Ratio/Grafici)
-- [ ] 🛠 **Riscrivere il grafo LangGraph** — tenere `dataflows` + LLM clients di TradingAgents; riscrivere node/edge/state/tool secondo la topologia 2026-05-29 (analisti → research_state → Risk Analyst → Trade deterministico; PM orchestratore; investment_state gate). Vedi [[build/modules/llm-agent-system]]
-- [ ] 🛠 **Implementare gli Extractors** — Extractors set + Adaptive extractor (frequenza per vicinanza al target, rispetto rate limit) + Market Alert agent + calendar tool. Vedi [[build/modules/exchange-db]]
+- [ ] 🛠 **Riscrivere il grafo LangGraph** — tenere `dataflows` + LLM clients di TradingAgents; riscrivere node/edge/state/tool secondo la topologia 2026-05-29 (analisti → research_state → Risk Analyst → Trade deterministico; PM orchestratore; investment_state gate). Vedi [[system/modules/agents]]
+- [ ] 🛠 **Implementare gli Extractors** — Extractors set + Adaptive extractor (frequenza per vicinanza al target, rispetto rate limit) + Market Alert agent + calendar tool. Vedi [[system/modules/data-layer]]
 - [ ] 🛠 **Configurare OpenRouter + DeepSeek V4 Pro** — setup del router e del modello principale
 - [ ] 🛠 **Studiare i corsi completi LangGraph e LangSmith** — finora solo i Quickstart; serve il Foundation/completo
 - [ ] 🛠 **Valutare canale Telegram "sala segnali"** — calendario, riassunti news, prezzi, trade, variazioni rilevanti (orario/giornaliero), alert interattivi
 - [ ] 🛠 **Ingestare il file market driver di Salvatore** — quando arriva in `raw/` come TXT (`/wiki-ingest` + aggiornare la board)
-- [ ] 🛠 **Definire metriche di portafoglio per la dashboard** — drawdown, rendimento, esposizione e KPI per la dashboard Streamlit (catalogo riusabile in [[references/external/sfc-portfolio-tracker]])
-- [ ] 🛠 **Registrare la decisione "Dashboard di Augmentazione"** in [[build/decision-log]]
+- [ ] 🛠 **Definire metriche di portafoglio per la dashboard** — drawdown, rendimento, esposizione e KPI per la dashboard Streamlit (catalogo riusabile in [[prior-art/libraries/sfc-portfolio-tracker]])
+- [ ] 🛠 **Registrare la decisione "Dashboard di Augmentazione"** in [[system/decision-log]]
 - [ ] 🛠 **Analizzare FinAgent (tecnico)** — clonare la repo: come sono implementati gli agenti, framework, comunicazione, gestione del prompt
 - [ ] 🛠 **Analizzare AlphaArena (tecnico)** — 5 LLM in parallelo su Bitcoin: struttura codice, gestione output, integrazione exchange
 - [ ] 🛠 **Analizzare NeuroEspresso — Silvio Baratto (tecnico)** — pattern multi-agente, struttura del codice, cosa è rimasto incompleto e perché
@@ -84,7 +83,7 @@ sources:
 - [ ] 🛠 **Includere il modulo TA?** — rischio: TA mal calibrata corrompe il Prediction Module. Progettare come opzionale e testare A/B (con/senza)
 - [ ] 🛠 **Analisti: 2 o 4 agenti?** — tenere market/sentiment/fondamentale/technical separati o accorpati in 2 agenti con moduli interni. Da decidere a sviluppo
 - [ ] 🔀 **Frequenza ciclo / trading** — angolo tecnico (costo token + latenza moduli upstream, da secondi a ~1 ora) e angolo mercato (intraday/giornaliero/settimanale: quale timeframe ha più segnale vs rumore). Dipende dai primi backtest
-- [ ] 📈 **Regole del portafoglio — scrivere lo statuto** — base già definita (riserva 10% cash, vedi [[build/modules/risk-management]]). Da chiudere: max 5% per asset class, +100% → vendi, max drawdown, cash-out periodico
+- [ ] 📈 **Regole del portafoglio — scrivere lo statuto** — base già definita (riserva 10% cash, vedi [[system/modules/agents]]). Da chiudere: max 5% per asset class, +100% → vendi, max drawdown, cash-out periodico
 - [ ] 📈 **Cash-out strategy: quale %?** — quanti profitti estratti periodicamente vs reinvestiti?
 - [ ] 📈 **Crypto vs Equity definitivo** — dai fondamentali: quale mercato ha più razionalità per un sistema quantitativo? Crypto accessibile ma rumoroso; equity più storia e logica fondamentale
 - [ ] 📈 **Strategia Sentiment degli Analisti: vale la pena?** — edge reale o troppo difficile da modellare? Studio di fattibilità prima della valutazione tecnica
@@ -95,7 +94,7 @@ sources:
 - [x] 🔀 **Decisione: portfolio / mid-term** ✅ 2026-05-29 — no day trading (rischio blow-up + mancanza competenze day trading). Chiude "Trading singolo vs Portfolio"
 - [x] 🔀 **Decisione: mercato = stock-only, poi multi-asset** ✅ 2026-05-23 — benchmark S&P + 60/40 all-world ([[strategy/metrics/benchmark]]). Chiude "Crypto vs Equity" come scelta d'avvio
 - [x] 🛠 **Decisione: framework = LangGraph** ✅ 2026-05-29 — riscrivere il grafo tenendo come base i tool/LLM clients di TradingAgents
-- [x] 🛠 **Decisione: provider LLM = OpenRouter + DeepSeek V4 Pro** ✅ 2026-05-29 — ~10× più economico di Sonnet ([[build/stack]]). Supera l'ipotesi "DeepSeek su Google Cloud"
+- [x] 🛠 **Decisione: provider LLM = OpenRouter + DeepSeek V4 Pro** ✅ 2026-05-29 — ~10× più economico di Sonnet ([[system/stack]]). Supera l'ipotesi "DeepSeek su Google Cloud"
 - [x] 🛠 **Decisione: design-first** — documento di architettura completo prima di scrivere codice
 - [x] 🛠 **Decisione (storica): from scratch / no fork** — *aggiornata: vedi decisione LangGraph 2026-05-29, si riusano i tool/LLM clients di TradingAgents*
 - [x] 🛠 **Decisione (storica): Binance come exchange iniziale** — *aggiornata: con lo scope stock-only l'exchange è da riscegliere (Alpaca / Interactive Brokers)*

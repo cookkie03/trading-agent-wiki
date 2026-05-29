@@ -5,8 +5,8 @@
 ## Sessione Corrente
 - **Data**: 2026-05-29
 - **Agent**: Claude Code (Opus)
-- **Operazione principale**: **Lint + ristrutturazione** della wiki per allinearla alle call del 29/05 (segue l'ingest delle due videochiamate fatto in precedenza nella stessa giornata). Riscritta `system-map` sulla topologia 29/05, riconciliato il conflitto Trader in `llm-agent-system`, consolidato lo schema DB in `exchange-db`, ingeriti i 3 file pending (daily-notes 28/29 + transcript 05-13). Cleanup: rimossi 54 frammenti spazzatura in `raw/audio/`, rimossa la stub `artifact-workbench`, fixati link rotti. Canvas riorganizzati da Luca in Obsidian (in parallelo) → tutti sotto `artifacts/`.
-- **Operazione successiva (migrazione)**: ingest di 3 repo GitHub (`rizzo-trading-agent`, `sfc-portfolio-tracker`, full-stack di `cvx-portfolio-optimizer`) con sezioni "Riferimenti di codice" nei 4 moduli build, e **consolidamento delle 3 board kanban in [[artifacts/project-board]]** (board unica, colonne per stato + marker dominio 🛠/📈/🔀). Lavoro originariamente svolto per errore sulla copia `~/Downloads/trading-agent-wiki`, poi migrato qui in modo chirurgico. project-board ricostruita dal contenuto **attuale** di DST (decisioni risolte 29/05 preservate). Backup pre-merge in `~/Downloads/trading-agent-wiki-iCloud-backup-<ts>`.
+- **Operazione principale**: **Refactor strutturale completo del wiki**. (1) `build/` → `system/`; (2) `references/` **eliminata**: prior-art esterno → `prior-art/{tradingagents,libraries,papers}/`, le 8 call + handwritten-notes **dissolte** (sostanza già nelle pagine tematiche, grezzi in `raw/archived/`, provenienza ora inline come date), note-audio-salvatore → nuova `strategy/methods/dual-portfolio`, tool-set → `system/data-providers`, onboarding → `_meta/`, trading-floor-canvas → `artifacts/`. (3) **Moduli ricreati sul canvas `architettura.canvas`**: i 4 file legacy (exchange-db/llm-agent-system/risk-management + quant) sostituiti da **`data-layer` · `agents` · `execution` · `quant-backtesting`**. (4) Riscritti tutti i wikilink path-qualified + bare; aggiornati taxonomy, index, overview; `log.md` lasciato come storico.
+- **Decisioni di struttura prese con Luca**: dissolvi-del-tutto le call (date inline, no journal); naming inglese; PM = **agente LLM orchestratore** (umano solo override iniziale); decomposizione moduli **per aree del canvas** (4 file).
 
 ## Stato attuale del progetto
 - Fase: **Design → sviluppo in preparazione**
@@ -15,92 +15,70 @@
 - **Orizzonte trade**: swing trading (4h/daily / checkpoint AI flessibili)
 - **Scope**: **Stock-only** (equity pura) — poi multi-asset: commodities, BTC only, derivati futures/opzioni
 - **Framework**: LangChain + LangGraph (fork da TradingAgents TauricResearch)
-- **Debug/Evaluation**: LangSmith + LangSmith CLI (portale UI per evaluation)
-- **LLM**: DeepSeek, output JSON obbligatorio
+- **Debug/Evaluation**: LangSmith + LangSmith CLI
+- **LLM**: OpenRouter + DeepSeek V4 Pro, output JSON obbligatorio
 - **Backtesting**: VectorBT (decisione chiusa)
 
-## Struttura componenti (post-ristrutturazione 2026-05-23)
-```
-wiki/build/modules/
-├── exchange-db.md          ← Exchange + DB (ex Modulo A)
-├── quant-backtesting.md    ← Quant Agent + Backtesting (ex Modulo C)
-├── llm-agent-system.md     ← LLM Agent System (ex Modulo D)
-└── risk-management.md      ← Risk Management (ex Risk Analyst)
-```
-
-## Struttura wiki
+## Struttura wiki (post-refactor 2026-05-29)
 ```
 wiki/
-├── _meta/          ← navigazione (index, log, hot-cache, taxonomy, glossario)
+├── _meta/          ← navigazione (index, log, hot-cache, taxonomy, glossario, onboarding)
 ├── overview.md     ← entry point
-├── build/          ← spec software (dominio Luca)
-│   ├── system-map.md
-│   ├── mvp-prototype-design.md
-│   ├── stack.md
-│   ├── decision-log.md
-│   ├── ideas-log.md  ← log append-only idee di progetto
-│   └── modules/    ← exchange-db, quant-backtesting, llm-agent-system, risk-management
+├── system/         ← spec software (dominio Luca)
+│   ├── architecture.md · mvp.md · stack.md · data-providers.md
+│   ├── decision-log.md · ideas-log.md
+│   └── modules/    ← data-layer · agents · execution · quant-backtesting
 ├── strategy/       ← conoscenza di mercato (dominio Salvatore)
 │   ├── index.md
-│   ├── methods/    ← trend-following, factor-investing, mean-reversion-stat-arb
+│   ├── methods/    ← trend-following · factor-investing · mean-reversion-stat-arb · dual-portfolio
 │   ├── indicators/ ← da popolare
-│   └── metrics/    ← benchmark (+ stub da creare: sharpe-ratio, max-drawdown, win-rate)
-├── references/     ← fonti ingestite
-│   └── external/   ← paper e librerie terze
+│   └── metrics/    ← benchmark
+├── prior-art/      ← esterni studiati/forkati
+│   ├── tradingagents/ ← paper · code-wiki · graph-schema
+│   ├── libraries/  ← cvx-portfolio-optimizer · rizzo-trading-agent · sfc-portfolio-tracker
+│   └── papers/     ← alpha-arena · brenndoerfer-quant-trading · notion-trading-concepts
 ├── syntheses/      ← analisi trasversali
-└── artifacts/      ← board + canvas
-    └── architecture/ ← canvas di design (agents.canvas = corrente, langchain, idea, trading-floor)
+└── artifacts/      ← architettura.canvas (corrente) + architecture/ (canvas) + project-board
 ```
-> Nota: `wiki/build/architecture/` è stato eliminato; i canvas vivono tutti sotto `artifacts/`.
+
+## Moduli (allineati ad `architettura.canvas`)
+- **data-layer** — DB centrale (4 aree: rendicontazione, dati live, costituzione, log) + Extraction (extractors set, adaptive extractor, market alert, calendar tool, **mantainer**)
+- **agents** — PM orchestratore + Analyst Research (Market+Sentiment) + Analyst Technical (Technical+Fondamentali) + Risk Analyst (bear + Statuto + guardrail + token cost + leva opzioni)
+- **execution** — Investment State (gate completezza) → Trade (Python deterministico) → Exchange (paper) → transactions
+- **quant-backtesting** — strategia quant + VectorBT (offline, non nel canvas)
 
 ## Decisioni chiuse importanti (recenti)
 - **Portfolio / mid-term confermato, NO day trading** (2026-05-29)
 - **OpenRouter + DeepSeek V4 Pro** come provider/modello principale (2026-05-29)
 - **Trader = funzione Python deterministica (NON agent)** (2026-05-29)
+- **PM = agente LLM orchestratore** (umano solo override iniziale) (2026-05-29)
+- **2 desk analisti**: Analyst Research + Analyst Technical (chiude "2 vs 4") (2026-05-29, da canvas)
 - **Head of Analyst eliminato; Risk Analyst = gate bear unico** (2026-05-29)
 - **Guardrail deterministici da Statuto-schema** (2026-05-29)
 - **Avvio con portafoglio già investito** + universo investibile come lista (2026-05-29)
-- **Benchmark: S&P 500 + 60/40 all-world**, idea selezione attiva S&P (2026-05-29)
+- **Benchmark: S&P 500 + 60/40 all-world** (2026-05-29)
 - **Investment State come gate di completezza pre-trade** (2026-05-29)
 - **Riscrivere il grafo tenendo base TradingAgents** (2026-05-29)
-- **Suddivisione Ricercatori vs Esecutori**, **Statuto & 10% cash**, **Leva via Opzioni**, **Token cost = commissioni**, **Business Model Piero** (2026-05-27)
+- **Statuto & 10% cash · Leva via Opzioni · Token cost = commissioni · Business Model Piero** (2026-05-27)
 
 ## Decisioni ancora aperte (priorità)
-- **Analisti: 2 o 4 agenti?** (market/sentiment/fondamentale/technical separati o accorpati) — a sviluppo
-- **Indicatori di sentiment**: da inventare (non esistono standard) — con Salvatore
-- **Desk di monitoring/evaluation**: design dell'agente che sorveglia le posizioni esistenti
-- **Strategia del fondo**: da formalizzare con Salvatore (orientamento: multi-factor)
+- **Forma di storage per area** (SQL/JSON/time-series) + exchange paper trading equity
+- **Ruolo esatto del nodo `mantainer`** nel grafo (nuovo dal canvas)
+- **Indicatori di sentiment**: da inventare — con Salvatore
+- **Desk di monitoring/evaluation**: design dell'agente che sorveglia le posizioni
+- **Strategia del fondo**: da formalizzare con Salvatore (multi-factor)
 - **Frequenza ciclo**: 4h vs 24h (dipende da backtest)
-- **Regole specifiche dello Statuto**: esposizione massima, regole vendita, drawdown limite (in corso)
-- **Algoritmo di disinvestimento ottimale**: per recuperare liquidità senza violare il 10% cash (in corso)
-- **Dynamic Temporal Checkpoints**: feedback loop temporale gestito dall'AI (in corso)
-- **Exchange per paper trading equity**: Alpaca? Interactive Brokers? Da scegliere
+- **Regole specifiche dello Statuto** + **algoritmo di disinvestimento ottimale** (in corso)
+- **Dynamic Temporal Checkpoints**: feedback loop temporale gestito dall'AI
 
 ## Pending ingest
-- **File market driver di Salvatore** (4 macro-categorie) — atteso in `raw/` come TXT, da arricchire e ingestare in `strategy/indicators/`
-- **Documento indicatori di valuation** (Salvatore + associazione) — atteso, poi TXT + ingest
-- `raw/articles/AlphaArena/` + `raw/articles/optimizer/` + `raw/articles/TradingAgents*` — lasciati in raw per consultazione (source page già esistenti)
-- ~~daily-notes 28/29~~ ✅ ingerite; ~~transcript 05-13~~ ✅ archiviata (pagina già completa)
-- `raw/daily-notes/model.md` = template vuoto (resta, non si ingerisce)
-
-## Lint + ristrutturazione questa sessione (2026-05-29)
-- ✅ [[build/system-map]] — riscritta sulla topologia 29/05 (PM orchestratore → analisti → research_state → Risk Analyst gate → Trade deterministico; Layer DB esteso, Extractors, gate; protocollo state+DB con context rot)
-- ✅ [[build/modules/llm-agent-system]] — **conflitto Trader risolto**: Funzione e sezione Leva riallineate (convinzione `Strong` nel research_state, esecuzione deterministica); path canvas → `artifacts/architecture/`; ingerita daily-note 29 (tool indicatori); link rotto framework rimosso
-- ✅ [[build/modules/exchange-db]] — **schema DB consolidato** (5 core ↔ 4 aree logiche in un mapping unico); domanda storage SQL/JSON (daily-note 28)
-- ✅ [[build/decision-log]] — aggiunta domanda aperta "forma di storage per area"
-- ✅ [[_meta/index]] — fixato link rotto `dev-roadmap.canvas`, riorganizzata sezione Canvas, aggiunta orfana `tradingagents-graph-schema`, aggiornate descrizioni moduli
-- ✅ [[references/videochiamata-luca-salvatore-2026-05-13]] — link rotti `ops/` fixati, raw_source_path → transcript archiviato
-- ✅ [[references/tradingagents-code-wiki]], [[references/tradingagents-graph-schema]] — link rotti canvas fixati
-- 🗑️ rimossi: 54 frammenti spazzatura `raw/audio/.txt*.txt`, stub `artifacts/artifact-workbench.md`
-- 📦 archiviati: daily-notes 28/29, transcript+mp3 05-13
-
-## Cleanup pass 2 (stessa sessione)
-- ✅ [[build/mvp-prototype-design]] — rimosso ciclo operativo vecchio + decisioni fondanti (duplicavano system-map/decision-log); allineato a stock-only + topologia 29/05; mantenuti metriche a due livelli e insight NotebookLM
-- 🗑️ rimosso `artifacts/kanban-project-status.md` — fermo al 06/05, `type:ops` (ruolo eliminato), "Blocked: Crypto vs Equity" già deciso, soppiantato da luca-board + salvatore-board. Sistemati i link in index e videochiamata-04-30
-- 🔧 risolti tutti i link rotti minori: `[[strategy/]]`→`[[strategy/index]]`, stub metriche in trend-following → testo, puntatore raw in ideas-log → path archiviato
-- **Stato link**: 0 link rotti reali nella wiki
+- **File market driver di Salvatore** (4 macro-categorie) — atteso in `raw/` come TXT → `strategy/indicators/`
+- **Documento indicatori di valuation** (Salvatore) — atteso, poi TXT + ingest
+- `raw/articles/AlphaArena/` + `optimizer/` + `TradingAgents*` — in raw per consultazione (pagine prior-art già esistenti)
+- `raw/daily-notes/model.md` = template vuoto (resta)
 
 ## Da fare prossima sessione
-- Decidere **forma di storage per area** (SQL/JSON/time-series) + exchange paper trading equity
-- Decidere **analisti 2 vs 4** e dove vive l'aggregazione del segnale `Strong`
-- Creare pagine metriche (`sharpe-ratio`, `max-drawdown`, `win-rate`) in `strategy/metrics/` solo quando servono davvero
+- Verificare in Obsidian che la graph view non abbia orfani inattesi dopo il refactor
+- Confermare con Luca il ruolo del nodo **`mantainer`** e completare i moduli se serve
+- Decidere **forma di storage per area** + exchange paper trading equity
+- Creare pagine metriche (`sharpe-ratio`, `max-drawdown`, `win-rate`) in `strategy/metrics/` solo quando servono

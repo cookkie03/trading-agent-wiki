@@ -59,7 +59,7 @@ Caricare nella cartella di lavoro altri due progetti simili a trading-agent, ese
 
 ## 2026-05-22 — Rischio sistemico dell'AI trading (Salvatore)
 
-*Fonte: [[references/whatsapp-luca-salvatore-2026-05-22]] (audio 00000726)*
+*Fonte: call 2026-05-22 (audio 00000726)*
 
 **Osservazione di Salvatore**: se tutti usano lo stesso sistema AI per le analisi finanziarie, ottengono tutti lo stesso output → price discovery eliminata, mercato privo di senso.
 
@@ -74,7 +74,7 @@ Questa osservazione rafforza la decisione di costruire un sistema orientato all'
 
 ## 2026-05-26 — Calendario economico e struttura report
 
-*Fonte: [[references/conversazione-luca-salvatore-2026-05-26]] (feedback Salvatore)*
+*Fonte: call 2026-05-26 (feedback Salvatore)*
 
 ### Calendario economico come dato di sistema
 
@@ -89,7 +89,7 @@ Questo calendario è input rilevante per gli agenti che devono contestualizzare 
 
 ## 2026-05-21 — Da lettura TradingAgents Code Wiki
 
-*Fonte: `raw/archived/daily-notes/2026-05-19.md` + [[references/tradingagents-code-wiki]]*
+*Fonte: `raw/archived/daily-notes/2026-05-19.md` + [[prior-art/tradingagents/code-wiki]]*
 
 ### Architettura e Agenti
 

@@ -11,8 +11,7 @@ area: strategy
 confidence: medium
 related:
   - "[[strategy/index]]"
-  - "[[build/modules/risk-management]]"
-  - "[[references/videochiamata-luca-salvatore-2026-05-29]]"
+  - "[[system/modules/agents]]"
 ---
 
 # Benchmark

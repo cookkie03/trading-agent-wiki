@@ -8,8 +8,8 @@ created: 2026-04-30
 updated: 2026-05-29
 status: active
 related:
-  - "[[build/system-map]]"
-  - "[[build/mvp-prototype-design]]"
+  - "[[system/architecture]]"
+  - "[[system/mvp]]"
 ---
 
 # Decision Log
@@ -73,24 +73,24 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 
 | Tema | Contesto | Dove si risolve |
 |------|----------|-----------------|
-| **Strategia del fondo** | Orientamento: multi-factor fundamentals, ma non formalizzato con Salvatore | [[build/modules/quant-backtesting]] |
-| **Frequenza ciclo** | 4h vs 24h — dipende da backtest iniziali | [[build/modules/quant-backtesting]] |
+| **Strategia del fondo** | Orientamento: multi-factor fundamentals, ma non formalizzato con Salvatore | [[system/modules/quant-backtesting]] |
+| **Frequenza ciclo** | 4h vs 24h — dipende da backtest iniziali | [[system/modules/quant-backtesting]] |
 | **Trading singolo vs Portfolio bilanciato** | ~~Aperta~~ → **CHIUSA 2026-05-29**: portfolio / mid-term confermato, no day trading. Vedere decisioni chiuse. | — |
 | **Multi-asset vs solo cripto** | ~~Aperta~~ → **CHIUSA 2026-05-23**: stock-only prima, poi multi-asset (commodities, BTC only, derivati). Vedere decisioni chiuse. | — |
-| **Cash-out strategy** | Quale % dei profitti estratta periodicamente? Regola da mettere nello statuto | [[build/modules/risk-management]] |
-| **Regole specifiche dello Statuto** | Esposizione massima per asset, vendite automatiche, max drawdown consentito. Statuto in stile istituzionale generico | [[build/modules/risk-management]] |
-| **Meccanismo di disinvestimento ottimale** | Come calcolare deterministicamente quale asset vendere per fare spazio a nuove idee senza intaccare il 10% cash | [[build/modules/risk-management]] |
-| **Algoritmo token cost estimator** | Implementazione del tracciamento token e logica di ricarica automatica API | [[build/modules/risk-management]] |
-| **Includere modulo TA?** | Rischio di corrompere il Prediction Module DL. Test A/B con/senza | [[build/modules/quant-backtesting]] |
-| **Frequenza invocazione LLM Trader** | Vincolo tecnico + costo API. Dipende da tempo elaborazione moduli | [[build/modules/llm-agent-system]] |
-| **Dynamic Temporal Checkpoints** | Definizione dell'autolimitazione temporale del Trader nel JSON structured (prossimo check controllato dall'AI) | [[build/modules/llm-agent-system]] |
+| **Cash-out strategy** | Quale % dei profitti estratta periodicamente? Regola da mettere nello statuto | [[system/modules/agents]] |
+| **Regole specifiche dello Statuto** | Esposizione massima per asset, vendite automatiche, max drawdown consentito. Statuto in stile istituzionale generico | [[system/modules/agents]] |
+| **Meccanismo di disinvestimento ottimale** | Come calcolare deterministicamente quale asset vendere per fare spazio a nuove idee senza intaccare il 10% cash | [[system/modules/agents]] |
+| **Algoritmo token cost estimator** | Implementazione del tracciamento token e logica di ricarica automatica API | [[system/modules/agents]] |
+| **Includere modulo TA?** | Rischio di corrompere il Prediction Module DL. Test A/B con/senza | [[system/modules/quant-backtesting]] |
+| **Frequenza invocazione LLM Trader** | Vincolo tecnico + costo API. Dipende da tempo elaborazione moduli | [[system/modules/agents]] |
+| **Dynamic Temporal Checkpoints** | Definizione dell'autolimitazione temporale del Trader nel JSON structured (prossimo check controllato dall'AI) | [[system/modules/agents]] |
 | **Fine-tuning vs Continuous Learning** | Continuous learning real-time è problema aperto; fine-tuning periodico più praticabile | post-MVP |
 | **Exchange decentralizzato (DEX)** | Quando ha senso passare a un DEX anonimo (no KYC) rispetto a Binance? | post-MVP |
 | **Struttura wiki quant** | Sezione strategie da costruire man mano che Salvatore porta materiale | [[_meta/index]] |
 | **Fork vs from scratch** | ~~Aperta~~ → **CHIUSA 2026-05-19**: fork da TradingAgents (TauricResearch) confermato. Vedere decisioni chiuse. | — |
-| **Self-scheduling vs cron** | Orientamento 2026-05-29: agenti **asincroni** attivati da **alert** (numerici/prezzo) o da **periodical synthesis** a intervalli fissi; adaptive extractor con frequenza variabile per rispettare i rate limit | [[build/modules/llm-agent-system]] |
-| **Analisti: 2 o 4 agenti?** | Tenere 4 ruoli separati (market, sentiment, fondamentale, technical) o 2 agenti con 2 moduli interni ciascuno. Da decidere a sviluppo | [[build/modules/llm-agent-system]] |
-| **Indicatori di sentiment** | Il sentiment non ha indicatori propri standard (solo indici di paura) → da inventare/definire. Posizione ibrida col technical | [[build/modules/quant-backtesting]] |
-| **Desk di monitoring/evaluation** | Serve un agente/desk che sorvegli le posizioni esistenti e rifaccia il processo quando le news cambiano la tesi (evita target obsoleti e posizioni di segno opposto). Design da definire | [[build/modules/llm-agent-system]] |
-| **Forma di storage per area** | SQL relazionale vs JSON/documentale vs time-series: quale per quale dato (rendicontazione, states, dati live)? Forme non ancora considerate? (daily note 2026-05-28) | [[build/modules/exchange-db]] |
+| **Self-scheduling vs cron** | Orientamento 2026-05-29: agenti **asincroni** attivati da **alert** (numerici/prezzo) o da **periodical synthesis** a intervalli fissi; adaptive extractor con frequenza variabile per rispettare i rate limit | [[system/modules/agents]] |
+| **Analisti: 2 o 4 agenti?** | Tenere 4 ruoli separati (market, sentiment, fondamentale, technical) o 2 agenti con 2 moduli interni ciascuno. Da decidere a sviluppo | [[system/modules/agents]] |
+| **Indicatori di sentiment** | Il sentiment non ha indicatori propri standard (solo indici di paura) → da inventare/definire. Posizione ibrida col technical | [[system/modules/quant-backtesting]] |
+| **Desk di monitoring/evaluation** | Serve un agente/desk che sorvegli le posizioni esistenti e rifaccia il processo quando le news cambiano la tesi (evita target obsoleti e posizioni di segno opposto). Design da definire | [[system/modules/agents]] |
+| **Forma di storage per area** | SQL relazionale vs JSON/documentale vs time-series: quale per quale dato (rendicontazione, states, dati live)? Forme non ancora considerate? (daily note 2026-05-28) | [[system/modules/data-layer]] |
 | **Debate architecture** | ~~Aperta~~ → **CHIUSA 2026-05-26**: Bull/Bear agents eliminati. Risk debate da ridisegnare con meno agenti e system prompt mirati (la struttura a 3 agenti Risk potrebbe restare se efficientata). Vedere decisioni chiuse. | — |

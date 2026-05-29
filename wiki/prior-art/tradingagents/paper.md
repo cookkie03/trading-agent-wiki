@@ -12,8 +12,8 @@ updated: 2026-05-21
 confidence: high
 status: reviewed
 related:
-  - "[[build/system-map]]"
-  - "[[references/tradingagents-code-wiki]]"
+  - "[[system/architecture]]"
+  - "[[prior-art/tradingagents/code-wiki]]"
 ---
 
 # TradingAgents: Multi-Agents LLM Financial Trading Framework
@@ -72,4 +72,4 @@ Il framework supera i limiti dei sistemi a singolo agente o dei sistemi multi-ag
 - **Quick Thinker + Deep Thinker**: modelli economici per raccolta dati, modelli capaci solo per la decisione finale
 - **Risk Management upstream** (nostra variante): nel TradingAgents originale il Risk Team valuta *dopo* il Trader; nel nostro design il Risk Analyst agisce *prima*, impostando i paletti
 
-Per i dettagli implementativi del codebase vedere [[references/tradingagents-code-wiki]].
+Per i dettagli implementativi del codebase vedere [[prior-art/tradingagents/code-wiki]].

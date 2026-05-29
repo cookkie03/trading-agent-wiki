@@ -9,9 +9,8 @@ updated: 2026-05-29
 status: active
 area: software
 related:
-  - "[[build/system-map]]"
-  - "[[build/modules/exchange-db]]"
-  - "[[references/videochiamata-luca-salvatore-2026-05-29]]"
+  - "[[system/architecture]]"
+  - "[[system/modules/data-layer]]"
 ---
 
 # Tech Stack
