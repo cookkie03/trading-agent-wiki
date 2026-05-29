@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "0a3596d95fa45b93",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "empty",
-              "state": {},
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "Nuova scheda"
-            }
-          },
-          {
             "id": "51872d2abb72112c",
             "type": "leaf",
             "state": {
@@ -27,17 +15,16 @@
               "state": {
                 "file": "wiki/build/architecture/agents.canvas",
                 "viewState": {
-                  "x": -360,
-                  "y": 200,
-                  "zoom": -1.3857966312422454
+                  "x": -348.7367063338497,
+                  "y": 172.45384420690112,
+                  "zoom": -0.5692528092517564
                 }
               },
               "icon": "lucide-layout-dashboard",
               "title": "agents"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -194,7 +181,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -211,8 +199,8 @@
   },
   "active": "51872d2abb72112c",
   "lastOpenFiles": [
-    "wiki/build/architecture/Architettura langchain.canvas",
     "wiki/build/architecture/agents.canvas",
+    "wiki/build/architecture/Architettura langchain.canvas",
     "wiki/build/architecture/trading-floor.canvas",
     "wiki/strategy/metrics",
     "wiki/strategy/indicators",
