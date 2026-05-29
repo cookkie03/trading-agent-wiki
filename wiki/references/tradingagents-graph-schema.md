@@ -24,7 +24,7 @@ Ricognizione esaustiva del grafo LangGraph implementato in `tradingagents/graph/
 > Entry point: `TradingAgentsGraph.propagate(company_name, trade_date, asset_type)` in [`tradingagents/graph/trading_graph.py`](../../../../Desktop/trading-agent/tradingagents/graph/trading_graph.py).
 > Grafo LangGraph: `StateGraph(AgentState)` montato da `GraphSetup.setup_graph()` in [`setup.py`](../../../../Desktop/trading-agent/tradingagents/graph/setup.py).
 
-Artifact visuale collegato: [[tradingagents-graph.canvas]]
+Artifact visuale collegato: [[tradingagents-graph-finance.canvas]] (vista business del sistema TradingAgents)
 
 ---
 

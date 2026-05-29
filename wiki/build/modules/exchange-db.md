@@ -40,35 +40,26 @@ Il componente fondante. Costruisce la pipe vuota: connessione all'exchange, esec
 
 ---
 
-## Schema DB (5 tabelle core)
+## Schema DB (definitivo, consolidato 2026-05-29)
 
-| Tabella | Contenuto |
-|---------|-----------|
-| `market_data` | OHLCV, order book, timestamp — dati grezzi dall'exchange |
-| `trades` | Ogni ordine eseguito: entry, SL, TP, esito, P&L |
-| `portfolio_state` | Snapshot corrente del portafoglio: posizioni, liquidità, esposizione |
-| `module_outputs` | Output JSON di ogni modulo per ogni ciclo |
-| `logs` | Log di sistema, errori, chain-of-thought LLM |
+Il DB è il blocco **viola** della canvas `agents.canvas`: sempre acceso, interrogato dai tool solo per le info che servono. Ispirato alla dashboard **Streamlit di SFC** (Edoardo Birondi, "Sbirri"); obiettivo dichiarato: una **replica custom di Yahoo Finance** specifica per il progetto ([[references/videochiamata-luca-salvatore-2026-05-29]]).
 
----
+Le **5 tabelle core** sono la base SQL minima; il design 29/05 le organizza in **4 aree logiche**. Mapping unico:
 
-## Design DB esteso (call 2026-05-29)
+| Area logica | Tabelle / contenuto | Tabella core |
+|-------------|---------------------|--------------|
+| **1. Rendicontazione portafoglio** | Liquidità corrente/investita; distribuzione con più filtri (geo, asset class, **settore**, **duration**); P/L e metriche di performance. Modello a **oggetti** (ogni posizione = oggetto con proprietà annidate; riga = posizione, colonna = caratteristica). | `portfolio_state` (esteso) |
+| **2. Dati live** (aggiornati di continuo) | Prezzi di mercato · calendario economico · news · indicatori macro · **insider trading** (institutional positions) · **tassi di cambio** (non si opera solo in EUR) | `market_data` (esteso) |
+| **3. Costituzione / Statuto** | Regole deterministiche del fondo, al **centro** (base di rendicontazione e dati live) → [[build/modules/risk-management]] | *(nuova)* `charter` / parametri |
+| **4. Log** | `states`, `reports`, `transactions` — si salva tutto lo storico | `logs` + `trades` |
 
-Nella call del 29/05 il DB è stato ridisegnato in modo più ricco delle 5 tabelle core, ispirato alla dashboard **Streamlit di SFC** (fatta da Edoardo Birondi, "Sbirri"). Obiettivo dichiarato: una **replica custom di Yahoo Finance** specifica per il progetto. Sulla canvas è il blocco **viola**, sempre acceso, interrogato dai tool solo per le info che servono. Vedere [[references/videochiamata-luca-salvatore-2026-05-29]].
-
-Quattro aree logiche:
-
-1. **Rendicontazione portafoglio**
-   - **Liquidità corrente / investita** (la base).
-   - **Distribuzione portafoglio con più filtri**: geografica, asset class, **settore**, **duration** (bond). Realisticamente una grande tabella (riga = posizione, colonna = caratteristica). Modello mentale a **oggetti** (ogni azione = oggetto con proprietà, anche annidate).
-   - **P/L e metriche di performance**.
-2. **Dati che si aggiornano di continuo**
-   - Prezzi di mercato · calendario economico · news · indicatori macro · **insider trading** (institutional positions) · **tassi di cambio** (importanti: non si opera solo in EUR).
-3. **Costituzione / Statuto** — al **centro** (base di rendicontazione e dati live). Vedere [[build/modules/risk-management]].
-4. **Log** — includono **states, reports, transactions**. Si salva tutto lo storico.
+> `module_outputs` (5ª core) resta come buffer degli output strutturati per ciclo, confluendo nell'area Log (`states`/`reports`).
 
 ### Retention / clustering
 A lungo termine la memoria cresce troppo → niente troncamento secco: **clusterizzare + riassumere + cancellare progressivamente** tenendo i riassunti. Ipotesi: ~5 anni giornaliero, 5-10 settimanale, 10-30 mensile. Hardware: hard disk esterni (es. 20TB ~500€). Molti dati vecchi sono comunque recuperabili online (Yahoo Finance; Reuters ora a pagamento).
+
+### Forma di storage (domanda aperta — daily note 2026-05-28)
+Luca: *"meglio SQL o JSON per i dati? quale forma di storage è meglio per quale dato? ci sono altre forme che non sto considerando?"* → da decidere per area: relazionale (SQL) per rendicontazione/transazioni strutturate; JSON/documentale per states e output LLM annidati; eventuali time-series store per i dati live. Vedi Domande aperte.
 
 ### Extractors (i primi tool degli agenti)
 - **Extractors set**: estraggono le info di mercato e le mandano **sia al DB sia agli agenti** (salvate in entrambe le direzioni).
@@ -77,8 +68,6 @@ A lungo termine la memoria cresce troppo → niente troncamento secco: **cluster
 
 ### Output verso utente (idea)
 **Canale Telegram "sala segnali"**: calendario economico, riassunti news, prezzi, trade fatti, variazioni di prezzo importanti (orario/giornaliero). Plaggabile alla dashboard con alert interattivi.
-
-> Le 5 tabelle core qui sotto restano la base SQL minima; il design 2026-05-29 le estende con le aree logiche sopra (da consolidare in schema definitivo).
 
 ---
 
@@ -105,6 +94,7 @@ A lungo termine la memoria cresce troppo → niente troncamento secco: **cluster
 
 - **Exchange per paper trading stock**: quale scegliere? Alpaca ha API gratuite per US equity; Interactive Brokers ha copertura più ampia ma setup più complesso. Da decidere.
 - **CCXT per equity**: verificare se CCXT supporta l'exchange scelto o se serve una libreria dedicata (es. alpaca-trade-api).
+- **Forma di storage per area (daily note 2026-05-28)**: SQL relazionale vs JSON/documentale vs time-series — quale per quale dato? Possibili forme non ancora considerate? Da decidere insieme allo schema definitivo.
 
 ---
 

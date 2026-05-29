@@ -5,7 +5,7 @@ tags:
   - build
   - architecture
 created: 2026-04-30
-updated: 2026-05-21
+updated: 2026-05-29
 status: active
 priority: high
 area: software
@@ -20,6 +20,7 @@ sources:
   - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
   - "[[references/videochiamata-luca-salvatore-2026-04-30]]"
   - "[[references/videochiamata-luca-salvatore-2026-05-13]]"
+  - "[[references/videochiamata-luca-salvatore-2026-05-29]]"
 ---
 
 # System Map
@@ -38,80 +39,93 @@ Architettura completa del `trading-agent`. Il sistema replica e automatizza il w
 
 ---
 
-## Ciclo operativo (MVP)
+## Topologia operativa (design 2026-05-29)
+
+> Vista concreta progettata sulla canvas `wiki/artifacts/architecture/agents.canvas` nella call del 29/05 ([[references/videochiamata-luca-salvatore-2026-05-29]]). Sostituisce il vecchio ciclo lineare "TAVOLO → Prompt Builder → LLM Trader → Security → Allocator". Dettaglio agenti in [[build/modules/llm-agent-system]].
 
 ```
-Data Ingestion
+Portfolio Manager (CEO / orchestratore)  ◄── attivato da: alert numerico | periodical synthesis
+  │  (tavolo circolare: ha tool verso tutti, decide quando "ho info sufficienti")
   │
-  ├── TAVOLO (in parallelo):
-  │     ├── Analista      → ratio finanziari, validazione news
-  │     ├── News Agent    → sentiment elaborato su news
-  │     └── Quant Agent   → segnali tecnici e quantitativi (Modulo C)
+  ├─► Desk di origination (analisti) — chiamato come tool:
+  │      Market ─┐                          ┌─ Fondamentali (financials)
+  │      Sentiment ┘─► loop conversazione ─►┘─ Technical
+  │                         │
+  │                         ▼
+  │                 research_state  =  tesi di investimento completa
+  │                 (buy/hold/sell + target entry/exit + stop loss + sizing + pro/contro)
+  │                         │
+  │                         ▼
+  │              Risk Analyst (antitesi bear + guardrail deterministici da Statuto)
+  │                 │  approva (~60-70%)        │  rimanda indietro con razionale
+  │                 ▼                            └────────► (loop agli analisti)
+  │              Investment State  (gate di completezza pre-trade)
+  │                 │
+  │                 ▼
+  │              Trade  =  funzione Python deterministica (estrae proposta → best price → esegue)
+  │                 │  (al rilevamento della transazione → reset automatico dello state)
+  │                 ▼
+  │              Exchange (paper) + scrittura nel DB
   │
-  ├── Risk Analyst Agent  ← upstream — imposta paletti prima del Trader
-  │     └── produce: VaR, esposizione max, range SL/TP, go/no-go
-  │
-  ├── Prompt Builder      → assembla deterministicamente tutti gli output
-  │
-  ├── Trader Agent (LLM)  ← decide dentro i paletti del Risk Analyst
-  │     └── produce JSON: asset, direzione, entry, SL, TP, leva, reasoning
-  │
-  ├── Security Module     → hard limits deterministici (statuto del fondo)
-  ├── Portfolio Allocator → size finale in base al portafoglio corrente
-  ├── Exchange Module     → Binance Testnet (live) | replay storico (backtest)
-  └── Logger              → trade, chain-of-thought, metriche nel DB
+  └─► Desk di monitoring/evaluation — sorveglia le posizioni esistenti; se le news cambiano
+         la tesi, rifà il processo (evita target obsoleti / posizioni di segno opposto)
 ```
 
-**Frequenza**: ogni 4h o 24h (swing trading). Schedulato come cron job — o in alternativa con self-scheduling agents (vedi [[build/ideas-log]]).
+**Attivazione (mercati efficienti, no push news)**: le API rispondono solo a richiesta. Un **prezzo anomalo** (alert numerico) attiva il monitoring, che poi cerca la spiegazione (news/tassi). Coerente con l'orizzonte mid-term: non serve reazione istantanea.
+
+**Frequenza**: agenti **asincroni** attivati da alert o da *periodical synthesis* a intervalli fissi; gli **adaptive extractor** modulano la frequenza di estrazione (alta vicino al target, daily lontano) per rispettare i rate limit. Supera il dibattito cron vs self-scheduling.
 
 ---
 
-## Layer 1 — DB Centrale
+## Layer 1 — DB Centrale (esteso)
 
-Unico punto di verità. Tutti i moduli leggono e scrivono qui.
+Unico punto di verità (blocco viola della canvas, sempre acceso). Schema completo in [[build/modules/exchange-db]]. Quattro aree logiche oltre alle 5 tabelle SQL core:
 
-| Tabella | Contenuto |
-|---------|-----------|
-| `market_data` | OHLCV, order book, timestamp da Binance |
-| `module_outputs` | Output JSON di ogni modulo per ogni ciclo |
-| `trades` | Ogni ordine: entry, SL, TP, esito, P&L |
-| `portfolio_state` | Posizioni correnti, liquidità, esposizione |
-| `logs` | Log di sistema, errori, chain-of-thought LLM |
-
----
-
-## Layer 2 — Moduli di Analisi
-
-Ogni modulo è parametrizzabile — accetta parametri in input, non valori hardcodati.
-
-| Modulo | Funzione | Stato |
-|--------|----------|-------|
-| **Quant Agent** | Segnali tecnici e quantitativi → [[build/modules/quant-backtesting]] | Track 2 |
-| News Agent | Sentiment news, Fear & Greed, whale alerts | Post-MVP |
-| Analista | Ratio finanziari, validazione fondamentali | Post-MVP |
-| Factor Investigation Agent | Quali fattori includere nel modello; coefficienti empirici | Post-MVP |
-| Prediction Agent (DL) | Relazioni non lineari fattori → prezzo | Post-MVP avanzato |
+| Area | Contenuto |
+|------|-----------|
+| **Rendicontazione portafoglio** | Liquidità corrente/investita, distribuzione (geo/asset class/settore/duration), P/L e metriche di performance |
+| **Dati live** | Prezzi, calendario economico, news, indicatori macro, insider trading, tassi di cambio |
+| **Costituzione / Statuto** | Regole deterministiche del fondo (al centro) → [[build/modules/risk-management]] |
+| **Log** | `states`, `reports`, `transactions` — storico completo, con retention via clustering+riassunto |
 
 ---
 
-## Layer 3 — Decisione
+## Layer 2 — Estrazione dati (Extractors)
+
+Primo set di tool degli agenti. Si agganciano al DB (DB-first), non ai vendor direttamente.
+
+| Componente | Funzione |
+|------------|----------|
+| **Extractors set** | Estraggono info di mercato → le scrivono sia nel DB sia verso gli agenti |
+| **Adaptive extractor** | Frequenza adattiva in base alla vicinanza al target (rispetta i rate limit) |
+| **Market Alert agent** | Riceve dagli adaptive extractor; unico tool = *calendar tool* che scrive eventi nel calendario economico → alla scadenza scatta l'alert (solo numerico/prezzo) |
+
+---
+
+## Layer 3 — Origination / Analisi
+
+I 4 analisti compilano lo `research_state`. In valutazione: tenerli **4 separati** o **2 agenti** con 2 moduli interni ciascuno (vedi decisione aperta).
+
+| Analista | Funzione | Tipo |
+|----------|----------|------|
+| **Market** | Contesto di mercato, macro | LLM + tool |
+| **Sentiment** | Sentiment news/social (indicatori da definire) → aggrega su Market | LLM + tool |
+| **Fondamentali** | Financials, ratio (es. P/E trailing vs current) | LLM + tool |
+| **Technical** | Segnali tecnici/quantitativi → [[build/modules/quant-backtesting]]; aggrega su Fondamentali | LLM + tool (calcoli deterministici) |
+
+Output: `research_state` versionato (`alpha`/v1) con esiti `approved`/`declined`.
+
+---
+
+## Layer 4 — Rischio, gate ed Esecuzione
 
 | Componente | Funzione | Tipo |
 |------------|----------|------|
-| **Risk Analyst** | Paletti dinamici upstream → [[build/modules/risk-management]] | Post-MVP |
-| **Prompt Builder** | Assembla deterministicamente tutti gli output → [[build/modules/llm-agent-system]] | Track 3 |
-| **LLM Trader** | Ragionamento finale → JSON con proposta trade | LLM (DeepSeek) |
-
----
-
-## Layer 4 — Esecuzione e Controllo
-
-| Componente | Funzione | Tipo |
-|------------|----------|------|
-| Security Module | Valida proposta contro statuto del fondo (hard limits) | Python deterministico |
-| Portfolio Allocator | Calcola size finale in base al portafoglio | Python (post-MVP: cvx-optimizer) |
-| **Exchange Module** | Esegue ordini → [[build/modules/exchange-db]] | CCXT + Binance API |
-| Logger | Logga tutto nel DB | Python |
+| **Risk Analyst** | Antitesi bearish + guardrail dello Statuto; soglia ~60-70%; approve / decline+razionale → [[build/modules/risk-management]] | LLM (reasoning) + check Python |
+| **Guardrail deterministici** | VaR ~10%, % max per area/settore, diversificazione, duration: check Python, non compiti dell'LLM | Python deterministico |
+| **Investment State** | Gate di completezza: nessun trade finché lo state non è completo; reset automatico post-transazione | Python |
+| **Trade** | Estrae la proposta dallo state, sceglie il miglior prezzo tra broker, esegue → [[build/modules/exchange-db]] | **Python deterministico (NON agent)** |
+| Logger | Logga states/reports/transactions nel DB | Python |
 
 ---
 
@@ -119,8 +133,8 @@ Ogni modulo è parametrizzabile — accetta parametri in input, non valori hardc
 
 | Componente | Funzione | Stato |
 |------------|----------|-------|
-| Streamlit Dashboard | Sola lettura: equity curve, posizioni, metriche | Post-MVP |
-| Telegram Bot | Notifiche trade in tempo reale | Post-MVP |
+| Streamlit Dashboard | Sola lettura: equity curve, posizioni, metriche (rif. dashboard SFC) | Post-MVP |
+| Canale Telegram "sala segnali" | Calendario, riassunti news, prezzi, trade, variazioni rilevanti | Post-MVP |
 | RL / Weighting Module | Ponderazione dinamica dei moduli su esiti storici | Post-MVP avanzato |
 | Fine-Tuning Module | Riaddestramento LLM su storico del progetto | Post-MVP avanzato |
 
@@ -128,12 +142,12 @@ Ogni modulo è parametrizzabile — accetta parametri in input, non valori hardc
 
 ## Protocollo di comunicazione
 
-Tutti i moduli comunicano via DB, non via chiamate dirette:
-1. **Moduli → DB**: ogni modulo produce un report JSON in `module_outputs`
-2. **DB → Prompt Builder**: il Builder estrae i campi rilevanti e li assembla nel template
-3. **Prompt → LLM**: l'agente riceve un prompt denso e strutturato, non chat free-form
+Comunicazione via **state condivisi** (LangGraph) + **DB**, non chiamate dirette:
+1. **Moduli/extractor → DB**: ogni componente scrive output strutturati (`module_outputs`, `states`, `reports`)
+2. **DB → agenti**: ogni agente riceve dal DB **solo** i campi che gli servono (evitare context rot: degrado oltre ~50-60% di contesto riempito)
+3. **Agenti → state**: gli analisti compilano lo `research_state`; l'orchestratore lo legge e decide quando "ho info sufficienti"
 
-Questo evita l'effetto "telefono senza fili" (degradazione informazioni nei prompt lunghi).
+Dare a ogni agente solo l'informazione necessaria evita sia l'effetto "telefono senza fili" sia il context rot dei prompt sovraccarichi.
 
 ---
 
@@ -143,8 +157,10 @@ Questo evita l'effetto "telefono senza fili" (degradazione informazioni nei prom
 |-------|-----|--------|
 | Track 1 | Luca solo | [[build/modules/exchange-db]] |
 | Track 2 | Luca + Salvatore | [[build/modules/quant-backtesting]] |
-| Track 3 | dopo Track 1 | [[build/modules/llm-agent-system]] |
-| Post-MVP | tutto il team | Risk Analyst, News Agent, Security Module, Portfolio Allocator |
+| Track 3 | dopo Track 1 | [[build/modules/llm-agent-system]] (riscrittura del grafo su base TradingAgents) |
+| Post-MVP | tutto il team | Risk Analyst completo, desk di monitoring/evaluation, extractor adattivi, dashboard/Telegram |
+
+> **Approccio sviluppo (2026-05-29)**: si riscrive il grafo tenendo la base di TradingAgents (tool `dataflows` + LLM clients), rifacendo da capo node/edge/state/tool e system prompt. 4 task di engineering: **agenti, state, system prompt, tool**.
 
 ---
 

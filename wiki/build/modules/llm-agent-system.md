@@ -16,28 +16,30 @@ related:
   - "[[build/modules/quant-backtesting]]"
   - "[[build/modules/risk-management]]"
   - "[[references/tradingagents-code-wiki]]"
-  - "[[references/external/trading-agents-framework]]"
+  - "[[references/external/paper-trading-agents]]"
   - "[[references/videochiamata-luca-salvatore-2026-05-29]]"
 ---
 
-# LLM Agent System — Prompt Builder + Trader
+# LLM Agent System
 
-Il componente che assembla tutti gli output del sistema e invoca l'LLM per la decisione di trade finale.
+Il sistema di agenti LLM che produce la tesi di investimento (`research_state`), la sottopone al gate del rischio e la converte in trade. La conversione finale è una **funzione Python deterministica**, non un agente.
 
 ---
 
 ## Funzione
 
-1. **Prompt Builder**: legge dal DB gli output di tutti i moduli (Quant Agent, News Agent, Risk Analyst, ecc.) e li assembla deterministicamente in un prompt strutturato per l'LLM
-2. **LLM Trader**: riceve il prompt, ragiona dentro i paletti definiti dal Risk Analyst, produce un JSON con la proposta di trade
+1. **Analisti (LLM + tool)**: market, sentiment, fondamentali, technical. Leggono dal DB **solo** i campi che servono ed elaborano in un loop di conversazione fino a compilare lo `research_state`.
+2. **`research_state`**: tesi di investimento completa — `buy/hold/sell` + target price entrata/uscita + stop loss + sizing + pro/contro + livello di convinzione.
+3. **Risk Analyst (LLM reasoning + check Python)**: antitesi bear e guardrail; approva (~60-70%) o rimanda con razionale.
+4. **Trade (Python deterministico, NON agent)**: estrae la proposta dallo state, sceglie il miglior prezzo tra broker, esegue.
 
-Output JSON obbligatorio: `{ asset, direction, entry, SL, TP, leverage, reasoning }`.
+> **Nota (riconciliazione 2026-05-29)**: il precedente "LLM Trader che produce un JSON `{asset, direction, entry, SL, TP, leverage, reasoning}`" è **superato**. Quei campi non sono più l'output di un agente Trader: sono campi dello `research_state` compilato dagli analisti e validato dal Risk Analyst. L'esecuzione è deterministica (vedi decisione *Trader = funzione Python deterministica* in [[build/decision-log]]).
 
 ---
 
 ## Topologia agenti (design 2026-05-29)
 
-*Progettata sulla canvas `wiki/build/architecture/agents.canvas` durante la call pomeridiana del 29/05. Vedere [[references/videochiamata-luca-salvatore-2026-05-29]]. Questa è la vista concreta che raffina il principio astratto Ricercatori/Esecutori più in basso.*
+*Progettata sulla canvas `wiki/artifacts/architecture/agents.canvas` durante la call pomeridiana del 29/05. Vedere [[references/videochiamata-luca-salvatore-2026-05-29]]. Questa è la vista concreta che raffina il principio astratto Ricercatori/Esecutori più in basso.*
 
 Flusso principale (origination → trade):
 
@@ -103,6 +105,8 @@ Il sistema TradingAgents usa una proliferazione eccessiva di agenti con ruoli fr
 
 Ogni agente deve potersi collegare a tool completi e versatili. La selezione e progettazione dei tool è di **fondamentale rilevanza**: dare quanta più completezza di informazioni possibili con quanta meno latenza possibile.
 
+> **Indirizzo 2026-05-29 (daily note)**: *"dare all'agent tutti gli strumenti per calcolare indicatori ulteriori, con istruzioni a system prompt e tool appositi"*. Cioè: non pre-calcolare solo un set fisso di indicatori, ma esporre **tool parametrici di calcolo** che l'agente invoca on-demand seguendo il system prompt. Riferimento di prodotto: dashboard SFC ([https://sfc-fund.streamlit.app/](https://sfc-fund.streamlit.app/)). Coerente con il principio "tool parametrizzabili" (no valori hardcodati).
+
 Per ogni tool ereditato dal fork TradingAgents: valutare se tenerlo, potenziarlo o riscriverlo da zero.
 
 Fonti di ispirazione per i tool: sezione "Data Retrieval Tools and Utilities" di [[references/tradingagents-code-wiki]] — Fundamental Data e News/Insider Transactions tools sono buoni punti di partenza.
@@ -152,30 +156,33 @@ Il progetto utilizza **LangGraph** per orchestrare i workflow multi-agente e **L
 
 ## Gestione Leva con Opzioni (Call/Put)
 
-L'agente **Esecutore** (o il nodo esecutore preposto) gestisce la leva finanziaria in modo asimmetrico per mitigare il rischio di liquidità e margine:
+La leva finanziaria è gestita in modo asimmetrico per mitigare il rischio di liquidità e margine. **Dove vive la logica (riconciliazione 2026-05-29)**: non esiste più un "agente Esecutore" che decide la leva. Il **livello di convinzione** (`Strong Buy`/`Strong Sell`) è un campo dello `research_state` prodotto dagli analisti e **validato dal Risk Analyst**; l'acquisto effettivo delle opzioni è eseguito dalla **funzione Trade deterministica**, che traduce il segnale validato in ordine.
+
 - **Nessuna leva diretta a debito**: evitata all'inizio per i gravosi blocchi di capitale richiesti dai margini del broker.
 - **Esposizione derivata**: la leva si realizza acquistando opzioni (derivati).
-- **Trigger**:
-  - Segnale `Strong Buy` validato nel grafo → si propone l'acquisto di opzioni **Call** sul titolo.
-  - Segnale `Strong Sell` validato nel grafo → si propone l'acquisto di opzioni **Put** sul titolo.
+- **Trigger** (segnale validato nello state → esecuzione deterministica):
+  - `Strong Buy` validato → acquisto di opzioni **Call** sul titolo.
+  - `Strong Sell` validato → acquisto di opzioni **Put** sul titolo.
   - Segnali standard (`Buy`/`Sell`/`Hold`) → operatività standard in equity pura (spot) senza leva.
-- *Nota*: La logica di trigger della leva tramite derivati è legata unicamente al segnale di convinzione `Strong` prodotto dal sistema, indipendentemente da quale specifico agente lo genererà.
+- *Nota di design*: la rilevazione/validazione del segnale `Strong` è un **task di sistema** non legato a un tipo di agente specifico; in fase di mappatura del grafo LangGraph verrà assegnato al nodo più coerente (probabilmente l'aggregazione analisti → Risk Analyst). L'esecuzione resta deterministica.
 
 ---
 
 ## Dipendenze
 
-- Legge da: DB centrale (`module_outputs`, `market_data`, `portfolio_state`)
-- Produce: proposta trade JSON → Security Module
-- Upstream: [[build/modules/risk-management]] (paletti dello Statuto e limiti dinamici), [[build/modules/quant-backtesting]] (segnali quant)
-- Downstream: Security Module → Portfolio Allocator → [[build/modules/exchange-db]]
+- Legge da: DB centrale esteso (rendicontazione, dati live, log) → [[build/modules/exchange-db]]
+- Produce: `research_state` (tesi completa) → gate del Risk Analyst → funzione Trade deterministica
+- Upstream: [[build/modules/exchange-db]] (extractor + DB), [[build/modules/quant-backtesting]] (segnali quant per l'analista technical)
+- Downstream: [[build/modules/risk-management]] (gate bear + guardrail) → Trade deterministico → [[build/modules/exchange-db]] (esecuzione)
 
 ---
 
 ## TODO / Decisioni aperte
 
-- Frequenza di invocazione dell'LLM Trader (vincolo costo token + latenza moduli upstream)
-- Definire lo schema JSON dell'Esecutore per integrare i **Dynamic Temporal Checkpoints** (l'AI definisce il prossimo check temporale flessibile, es. *tomorrow* vs *1 week*)
+- Frequenza di attivazione degli agenti (vincolo costo token + latenza extractor); orientamento: asincrona su alert/periodical synthesis
+- Integrare i **Dynamic Temporal Checkpoints** nello `research_state` (l'AI definisce il prossimo check temporale flessibile, es. *tomorrow* vs *1 week*)
+- **Analisti: 2 o 4 agenti?** (vedi [[build/decision-log]]) e dove vive l'aggregazione del segnale `Strong`
 - Valutare architettura debate: quanti agenti, quali prospettive, se mantenerlo
-- Definire schema finale AgentState e output JSON del Trader
+- Definire schema finale dello `research_state` / `investment_state` (TypedDict + Pydantic)
+- Design del **desk di monitoring/evaluation** delle posizioni esistenti
 - Brainstorming: replicare i workflow degli uffici di un investitore istituzionale

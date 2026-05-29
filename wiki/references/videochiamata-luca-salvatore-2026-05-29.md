@@ -22,7 +22,7 @@ related:
 
 # Videochiamata Luca & Salvatore — 2026-05-29
 
-Due videochiamate nello stesso giorno (mattina + pomeriggio), in continuità. La mattina Luca spiega a Salvatore **come funziona TradingAgents** (il progetto di riferimento) sotto LangChain/LangGraph; il pomeriggio progettano insieme la **loro architettura custom** sulla canvas `wiki/build/architecture/agents.canvas`, lavorandoci direttamente.
+Due videochiamate nello stesso giorno (mattina + pomeriggio), in continuità. La mattina Luca spiega a Salvatore **come funziona TradingAgents** (il progetto di riferimento) sotto LangChain/LangGraph; il pomeriggio progettano insieme la **loro architettura custom** sulla canvas `wiki/artifacts/architecture/agents.canvas`, lavorandoci direttamente.
 
 > Fonti: `raw/archived/2026-05-29 11-08-30.txt` (call mattina) e `raw/archived/2026-05-29 14-41-53.txt` (call pomeriggio).
 
@@ -98,7 +98,7 @@ Per costruire il loro progetto, Luca individua **4 task di engineering**:
 
 ## Call 2 — Pomeriggio · Progettazione architettura custom (agents.canvas)
 
-> Lavoro diretto sulla canvas `wiki/build/architecture/agents.canvas`. Legenda colori: **arancione = agent**, **azzurro = state** (memoria breve termine), **verde = tool/script Python**, **viola = DB**.
+> Lavoro diretto sulla canvas `wiki/artifacts/architecture/agents.canvas`. Legenda colori: **arancione = agent**, **azzurro = state** (memoria breve termine), **verde = tool/script Python**, **viola = DB**.
 
 ### Layer Analisti
 - Figure individuate: **Fondamentali** (financials: bilanci, P/E, ecc.), **Market**, **Sentiment**, **Technical** (analisi dal grafico).

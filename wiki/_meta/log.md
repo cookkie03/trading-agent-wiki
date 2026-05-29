@@ -2,6 +2,26 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-05-29] lint + update | Ristrutturazione wiki post-call + ingest pending
+
+- **Trigger**: `/wiki-lint` — "rivediamo completamente la struttura della wiki per farla funzionare meglio con le cose discusse nelle ultime call"
+- **Lint**: 1 link rotto (`dev-roadmap.canvas`), 1 ambiguo (`trading-floor.canvas` duplicato), 1 orfana (`tradingagents-graph-schema`), 1 conflitto (Trader), 54 file spazzatura, 3 file pending. Freshness: nessun problema >90gg.
+- **Riallineamenti contenuto**:
+  - [[build/system-map]] riscritta sulla topologia 2026-05-29 (PM orchestratore → analisti → research_state → Risk Analyst gate → Trade deterministico; Layer DB esteso/Extractors/gate; protocollo state+DB con context rot; sequenza di sviluppo "riscrivere il grafo")
+  - [[build/modules/llm-agent-system]] **conflitto Trader risolto**: Funzione + sezione Leva riallineate (segnale `Strong` nel research_state validato dal Risk Analyst, esecuzione deterministica); Dipendenze/TODO aggiornati
+  - [[build/modules/exchange-db]] **schema DB consolidato** (5 tabelle core ↔ 4 aree logiche, mapping unico)
+- **Ingest pending**:
+  - daily-note 2026-05-28 (storage SQL vs JSON) → domanda aperta in [[build/modules/exchange-db]] e [[build/decision-log]]
+  - daily-note 2026-05-29 (tool per indicatori + SFC) → sezione tool-centric di [[build/modules/llm-agent-system]]
+  - transcript 05-13 → pagina [[references/videochiamata-luca-salvatore-2026-05-13]] già completa; archiviato, raw_source_path corretto
+- **Fix link rotti**: `ops/wiki-restructuring-plan` (2×), `external/trading-agents-framework` (2×), `tradingagents-graph.canvas` (2×, canvas eliminato da Luca)
+- **Pages updated**: [[build/system-map]], [[build/modules/llm-agent-system]], [[build/modules/exchange-db]], [[build/decision-log]], [[_meta/index]], [[references/videochiamata-luca-salvatore-2026-05-13]], [[references/tradingagents-code-wiki]], [[references/tradingagents-graph-schema]], [[_meta/hot-cache]]
+- **Deleted**: 54 frammenti `raw/audio/.txt*.txt`; stub `wiki/artifacts/artifact-workbench.md`
+- **Archived**: `raw/archived/daily-notes/2026-05-28.md`, `2026-05-29.md`; `raw/archived/audio/2026-05-13 13-14-17.txt` (+.tmp.mp3)
+- **Canvas**: Luca ha riorganizzato in Obsidian in parallelo → tutti sotto `artifacts/` (design in `artifacts/architecture/`); eliminati da lui `mvp-system-cycle.canvas`, `trading-floor.canvas` (root), `tradingagents-graph.canvas`. `wiki/build/architecture/` non esiste più.
+- **Conflicts**: il conflitto Trader (segnalato nell'ingest precedente) è stato **risolto** in questa sessione.
+- **Notes**: residuano 6 link rotti pre-esistenti minori (3 stub metriche da creare, 1 placeholder, 1 folder-link, 1 puntatore a raw archiviato). `mvp-prototype-design` resta sul vecchio ciclo (da allineare).
+
 ## [2026-05-29] ingest | Due videochiamate Luca & Salvatore 29/05 — LangChain/LangGraph + design architettura custom
 
 - **Type**: call (2 videochiamate, trascrizioni audio)

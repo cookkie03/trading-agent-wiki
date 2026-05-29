@@ -6,9 +6,9 @@ tags:
   - architecture
   - market-structure
   - infrastructure
-raw_source_path: "raw/audio/2026-05-13 13-14-17.m4a"
+raw_source_path: "raw/archived/audio/2026-05-13 13-14-17.txt"
 created: 2026-05-13
-updated: 2026-05-13
+updated: 2026-05-29
 status: active
 confidence: high
 related:
@@ -127,9 +127,7 @@ Luca ha mostrato a Salvatore la wiki su Obsidian. Conclusione immediata:
 
 > "Tutta questa parte di Wiki di cartelle delle wiki va ristrutturata da zero. In cui mettiamo tipo la cartella per le strategie, la cartella per i moduli — bisogna rifare tutta la suddivisione."
 
-**Stato**: pianificata, non ancora eseguita. Luca la farà con Claude in una sessione dedicata e poi spiegherà a Salvatore il risultato.
-
-Vedere [[ops/wiki-restructuring-plan]] per il piano dettagliato.
+**Stato**: ✅ eseguita (ristrutturazione 2026-05-23 in poi — struttura attuale per dominio: `build/`, `strategy/`, `references/`, `artifacts/`, `_meta/`).
 
 ---
 
@@ -261,7 +259,7 @@ Luca propende per il fork (lo ha detto nel daily note 2026-05-19 dopo aver letto
 | FX effect | Critico: sempre verificare l'effetto valutario su ricavi con forte esposizione internazionale |
 | Tool design | Parametrizzabili (no hardcoded), modulari, componibili in aggregazioni ("tavoli") |
 | Ruolo Salvatore | Market research, raccolta info, caricamento Raw/; NON creazione pagine wiki |
-| Wiki ristrutturazione | Pianificata con Claude, poi spiegata a Salvatore. Vedere [[ops/wiki-restructuring-plan]] |
+| Wiki ristrutturazione | ✅ Eseguita (dal 2026-05-23): struttura per dominio build/strategy/references/artifacts/_meta |
 | Order book crypto | Pubblico su Binance/Coinbase/Kraken — aggregabile via API |
 | Struttura agenti | Trading floor: Tavolo (News+Analista+Quant) → Risk Analyst → Trader |
 | Fork vs from scratch | Dibattito aperto. Luca propende per fork, da formalizzare |

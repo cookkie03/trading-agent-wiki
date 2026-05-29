@@ -14,8 +14,8 @@
 - [[build/decision-log]] — storico decisioni chiuse + decisioni ancora aperte
 - [[build/modules/exchange-db]] — Exchange + DB: connessione exchange, esecuzione ordini, DB centrale
 - [[build/modules/quant-backtesting]] — Quant Agent + Backtesting: strategia quantitativa, indicatori, backtest VectorBT
-- [[build/modules/llm-agent-system]] — LLM Agent System: Prompt Builder + LLM Trader (LangChain/LangGraph)
-- [[build/modules/risk-management]] — Risk Management: paletti dinamici upstream del Trader
+- [[build/modules/llm-agent-system]] — LLM Agent System: analisti → research_state → Risk Analyst → Trade deterministico (LangGraph)
+- [[build/modules/risk-management]] — Risk Management: Risk Analyst gate bear + guardrail deterministici da Statuto
 - [[build/ideas-log]] — log append-only delle idee di progetto (mai cancellare)
 
 ## References — Fonti ingestite
@@ -32,6 +32,7 @@
 - [[references/onboarding-wiki-workflow]] — metodo di lavoro e uso di Obsidian
 - [[references/trading-floor-canvas]] — schema architettura multi-agente
 - [[references/tradingagents-code-wiki]] — TradingAgents Code Wiki (documentazione tecnica del codebase: agenti, orchestrazione, data layer, LLM integration)
+- [[references/tradingagents-graph-schema]] — schema del grafo TradingAgents (nodi/edge/state), collegato ai canvas grafo
 - [[references/external/cvx-portfolio-optimizer]] — cvx-portfolio-optimizer (documentazione completa, merge con library-portfolio-optimizer)
 - [[references/tool-set-provider-dati-exchange]] — broker con API Python disponibili in Italia + provider dati gratuiti (stack raccomandato)
 - [[references/note-audio-salvatore-quant-strategy]] — note audio Salvatore su strategie quant: dual portfolio value+quant, mean reversion/stat arb
@@ -58,16 +59,21 @@
 - [[syntheses/notebooklm-research-2026-05-13]] — ricerca su TradingAgents, MarketSenseAI, Alpha Arena, Simone Rizzo
 
 ## Artifacts — Canvas e board
-*Schemi visuali, roadmap, board di lavoro.*
+*Schemi visuali, roadmap, board di lavoro. I canvas di architettura sono in `artifacts/architecture/`.*
 
-- [[wiki/artifacts/trading-floor.canvas]] — canvas architettura multi-agente
-- [[artifacts/mvp-system-cycle.canvas]] — ciclo operativo completo (MVP + post-MVP)
-- [[artifacts/dev-roadmap.canvas]] — roadmap di sviluppo (Track 1/2/3)
+**Canvas di design (architettura)** — in `artifacts/architecture/`
+- [[agents.canvas]] — **design corrente del sistema** (topologia 2026-05-29: analisti → research_state → Risk Analyst → Trade deterministico, PM orchestratore, DB esteso)
+- [[Architettura langchain.canvas]] — schema concettuale LangGraph (agente = system prompt + LLM + tool)
+- [[idea architettura.canvas]] — schizzo a layer (estrazione → DB → analisi → agenti)
+- [[trading-floor.canvas]] — schema trading floor (versione precedente: Tavolo → Risk → Trader)
+
+**Canvas di riferimento (fork TradingAgents)**
+- [[tradingagents-graph-finance.canvas]] — vista business del sistema TradingAgents
+
+**Board operative**
 - [[artifacts/luca-board]] — board di Luca (focus tecnico: AI, architettura, programmazione)
 - [[artifacts/salvatore-board]] — board di Salvatore (focus economico: mercati, strategie)
-- [[artifacts/artifact-workbench]] — ponte tra note e artifact
 - [[artifacts/kanban-project-status]] — kanban stato progetto
-- [[idea architettura.canvas]] — canvas architettura (artifact di lavoro)
 
 ## Meta
 - [[_meta/glossario]] — glossario termini del progetto

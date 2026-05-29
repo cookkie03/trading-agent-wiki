@@ -11,7 +11,6 @@ updated: 2026-05-21
 status: active
 confidence: high
 related:
-  - "[[references/external/trading-agents-framework]]"
   - "[[paper-trading-agents]]"
   - "[[build/system-map]]"
   - "[[build/modules/llm-agent-system]]"
