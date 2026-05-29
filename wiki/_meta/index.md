@@ -64,7 +64,7 @@
 *Schemi visuali, roadmap, board di lavoro. I canvas di architettura sono in `artifacts/architecture/`.*
 
 **Canvas di design (architettura)** — in `artifacts/architecture/`
-- [[agents.canvas]] — **design corrente del sistema** (topologia 2026-05-29: analisti → research_state → Risk Analyst → Trade deterministico, PM orchestratore, DB esteso)
+- [[architettura.canvas]] — **design corrente del sistema** (topologia 2026-05-29: analisti → research_state → Risk Analyst → Trade deterministico, PM orchestratore, DB esteso)
 - [[Architettura langchain.canvas]] — schema concettuale LangGraph (agente = system prompt + LLM + tool)
 - [[idea architettura.canvas]] — schizzo a layer (estrazione → DB → analisi → agenti)
 - [[trading-floor.canvas]] — schema trading floor (versione precedente: Tavolo → Risk → Trader)

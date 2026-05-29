@@ -1,5 +1,5 @@
 ---
-title: "Videochiamata Luca & Salvatore 2026-05-29 (due call)"
+title: Videochiamata Luca & Salvatore 2026-05-29 (due call)
 type: source
 tags:
   - source
@@ -8,7 +8,7 @@ tags:
   - infrastructure
 created: 2026-05-29
 updated: 2026-05-29
-raw_source_path: "raw/archived/2026-05-29 11-08-30.txt, raw/archived/2026-05-29 14-41-53.txt"
+raw_source_path: raw/archived/2026-05-29 11-08-30.txt, raw/archived/2026-05-29 14-41-53.txt
 confidence: high
 status: active
 related:
@@ -17,7 +17,7 @@ related:
   - "[[build/modules/risk-management]]"
   - "[[build/decision-log]]"
   - "[[references/tradingagents-code-wiki]]"
-  - "[[agents.canvas]]"
+  - "[[architettura.canvas]]"
 ---
 
 # Videochiamata Luca & Salvatore — 2026-05-29
