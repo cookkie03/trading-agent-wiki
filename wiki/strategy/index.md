@@ -5,7 +5,7 @@ tags:
   - strategy
   - market-structure
 created: 2026-05-14
-updated: 2026-05-22
+updated: 2026-05-29
 status: active
 area: strategy
 related:
@@ -48,11 +48,15 @@ Un file per ogni indicatore: cosa misura, come si interpreta, quali parametri ha
 
 *(Da popolare — Salvatore porta gli indicatori che usa)*
 
+> **In arrivo (2026-05-29)**: Salvatore convertirà in TXT/Obsidian il suo file **market driver** (4 macro-categorie, da arricchire) e preparerà un documento sugli **indicatori di valuation** delle stock. Vedere [[references/videochiamata-luca-salvatore-2026-05-29]].
+
 ---
 
 ## Metrics — Metriche di valutazione
 
 Un file per ogni metrica: come si calcola, cosa misura, quando è utile.
+
+- [[strategy/metrics/benchmark]] — il benchmark come riferimento della gestione attiva (S&P + 60/40 all-world)
 
 *(Da popolare — le principali sono già nel [[_meta/glossario]])*
 

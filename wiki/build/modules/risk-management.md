@@ -6,7 +6,7 @@ tags:
   - software
   - strategy
 created: 2026-05-13
-updated: 2026-05-27
+updated: 2026-05-29
 status: active
 priority: low
 area: software
@@ -14,11 +14,26 @@ related:
   - "[[build/system-map]]"
   - "[[build/modules/llm-agent-system]]"
   - "[[build/decision-log]]"
+  - "[[references/videochiamata-luca-salvatore-2026-05-29]]"
 ---
 
 # Risk Management
 
 Il guardiano del rischio. Opera **upstream** del Trader: imposta i paletti dinamici per il ciclo corrente prima che il Trader prenda qualsiasi decisione. Il Trader decide dentro quello spazio, non viene corretto fuori da esso.
+
+---
+
+## Risk Analyst come gate bear (design 2026-05-29)
+
+*Dalla call del 29/05 (vedere [[references/videochiamata-luca-salvatore-2026-05-29]]). Posiziona il Risk Analyst come gate unico tra il `research_state` degli analisti e il Trade.*
+
+- Gli analisti sono per natura **bullish**; il Risk Analyst è l'**antitesi bearish** che cerca di smontare ogni tesi (sostituisce il dibattito Bull/Bear e l'Head of Analyst, giudicato ridondante). "Quando acqua e fuoco si mettono d'accordo, la strategia è davvero buona".
+- Riceve il `research_state` (tesi completa con target entrata/uscita, stop loss, sizing) e dà **`approved` / `declined` + razionale**. Se approva → si va **direttamente al Trade** (funzione deterministica), senza ulteriori filtri.
+- **Soglia di approvazione ~60-70%** (non 100%): un bear puro non approverebbe mai. Sopra soglia → avanti.
+- Può **rimandare indietro con razionale**: es. "buona idea ma **target price troppo alto**" → abbassando il target (aspettando un ingresso più basso) la posizione può rientrare nel VaR. Esempio: con VaR 10.000€, target 50$ vs 30$ cambiano quantità e probabilità di realizzo.
+
+### Guardrail deterministici vs reasoning
+**Insight chiave**: se un guardrail è **misurabile numericamente**, non serve un agent — gli agent sono bravi nel **reasoning, non nei calcoli** (quelli li fanno bene le funzioni Python). → tradurre lo **Statuto da testuale a una scheda di parametri** (Excel-like) e misurarli **deterministicamente** (una serie di check approve/decline). Esempi di guardrail: max % su un singolo continente/area; **VaR di portafoglio max ~10%**; diversificazione per geografia, asset class, settore, duration (es. niente nuova posizione healthcare se già esposti). La componente **bearish/qualitativa** resta invece affidata al reasoning dell'agente.
 
 ---
 

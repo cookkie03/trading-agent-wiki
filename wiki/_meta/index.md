@@ -39,6 +39,7 @@
 - [[references/whatsapp-luca-salvatore-2026-05-22]] — test TradingAgents su NVDA: report PDF 30pp, feedback Salvatore, provider dati, costi LLM
 - [[references/conversazione-luca-salvatore-2026-05-26]] — feedback strutturato Salvatore su report: financial analysis core, no Bull/Bear agents, calendario economico
 - [[references/conversazione-luca-salvatore-2026-05-27]] — brainstorming architettura Ricercatori/Esecutori, Statuto del Fondo (10% cash reserve), opzioni leva, token cost estimator e Piero wealth manager site
+- [[references/videochiamata-luca-salvatore-2026-05-29]] — due call: spiegazione LangChain/LangGraph + TradingAgents; design architettura custom (analisti → research_state → Risk Analyst bear → Trade deterministico, PM orchestratore, DB esteso, OpenRouter+DeepSeek, portafoglio iniziale investito, benchmark)
 
 ## Strategy — Conoscenza di mercato
 *Approcci, indicatori, metriche: il dominio di Salvatore. Ogni elemento qui alimenta [[build/modules/quant-backtesting]].*
@@ -47,6 +48,7 @@
 - [[strategy/methods/trend-following]] — seguire il trend degli istituzionali
 - [[strategy/methods/factor-investing]] — fattori fondamentali e quantitativi (post-MVP)
 - [[strategy/methods/mean-reversion-stat-arb]] — mean reversion e statistical arbitrage / pairs trading (candidata Modulo C)
+- [[strategy/metrics/benchmark]] — benchmark della gestione attiva (S&P + 60/40 all-world)
 
 *(indicators/ e metrics/ si popolano man mano che Salvatore porta materiale)*
 

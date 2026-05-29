@@ -5,7 +5,7 @@ tags:
   - overview
   - strategy
 created: 2026-04-30
-updated: 2026-05-13
+updated: 2026-05-29
 status: active
 related: []
 confidence: high
@@ -21,7 +21,7 @@ Wiki operativa del progetto `trading-agent`. Raccoglie fonti, documenta il softw
 
 Un sistema multi-agente che replica e automatizza il workflow di un trader professionale: raccogliere informazioni, analizzare segnali quantitativi, decidere con un LLM, eseguire ordini deterministicamente.
 
-**Fase attuale**: sviluppo Modulo A (Exchange + DB) in parallelo con la progettazione di Modulo C (Quant + Backtesting). Paper trading su Binance Testnet.
+**Fase attuale**: design dell'architettura multi-agente **stock-only** (paper trading equity). Topologia 2026-05-29: analisti → research_state → Risk Analyst (gate bear) → Trade deterministico, con un Portfolio Manager orchestratore e un DB esteso. Stack: LangGraph + OpenRouter/DeepSeek V4 Pro. Si riscrive il grafo partendo dalla base di TradingAgents.
 
 ---
 

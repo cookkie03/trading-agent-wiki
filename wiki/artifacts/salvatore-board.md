@@ -18,6 +18,9 @@ kanban-plugin: board
 - [ ] **Valutare AlphaArena dal punto di vista trading** — le 5 LLM testate su Bitcoin hanno tradato in modo sensato economicamente? Hanno rispettato logiche di mercato reale o hanno fatto scelte casuali?
 - [ ] **Valutare NeuroEspresso dal punto di vista trading** — l'approccio multi-agente (economista, analista, trader separati) ha senso dal punto di vista di come funziona davvero una trading room?
 - [ ] **Raccogliere casi reali eventi → impatto prezzi** — esempi concreti: "quando è successo X, il prezzo di Y ha fatto Z". Questo è il dataset grezzo per la factor quantification
+- [ ] **Convertire il file market driver in TXT** — il file (PPT→PDF) dell'associazione, 4 macro-categorie di driver: portarlo in `raw/` come TXT e arricchirlo con descrizioni accurate. Include un driver dal sito Federal Reserve da monitorare (da call 2026-05-29)
+- [ ] **Preparare documento indicatori di valuation** — cosa analizzare nelle stock, da fare in collaborazione con l'associazione (ognuno ne cura uno); poi convertire in TXT e ingestare. Insieme ai market driver = "il vocabolario" di metriche per l'agent
+- [ ] **Formalizzare i fondamentali** — es. i 5 tipi di P/E e quali usare (Salvatore usa trailing vs current); riclassificare/arricchire (da call 2026-05-29)
 
 
 ## 🟡 In corso
@@ -28,8 +31,8 @@ kanban-plugin: board
 
 ## 🟠 Decisioni economiche da prendere
 
-- [ ] **Trading singolo vs Portfolio bilanciato** — questa è LA decisione più importante ora. Trading singolo è semplice da valutare (SL/TP). Portfolio bilanciato è più robusto ma richiede metriche diverse e orizzonte temporale più lungo. Qual è più adatto come primo sistema?
-- [ ] **Multi-asset o solo cripto come punto di partenza?** — Salvatore ha già espresso preferenza per asset tradizionali (equity/ETF) come base più solida. Cripto come side. Da confermare ufficialmente
+- [x] **Trading singolo vs Portfolio bilanciato** — ✅ 2026-05-29: **portfolio / mid-term**, no day trading (rischio blow-up + mancanza competenze day trading)
+- [x] **Multi-asset o solo cripto come punto di partenza?** — ✅ stock-only prima (2026-05-23), poi multi-asset. Benchmark: S&P + 60/40 all-world (vedi [[strategy/metrics/benchmark]])
 - [ ] **Regole del portafoglio — scrivere lo statuto** — partendo dall'esperienza di Starting Finance: max 5% per asset class, vendi a +100% di profitto, cash-out periodico. Portare queste regole formalmente al progetto
 - [ ] **Cash-out strategy: quale %?** — regola da stabilire a priori: quanti profitti vengono estratti periodicamente vs reinvestiti?
 - [ ] **Crypto vs Equity definitivo** — dai fondamentali: quale mercato ha più razionalità per un sistema quantitativo? Crypto più accessibile ma rumoroso; equity più storia e logica fondamentale

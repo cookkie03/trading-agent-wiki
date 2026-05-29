@@ -5,7 +5,7 @@ tags:
   - decision
   - strategy
 created: 2026-04-30
-updated: 2026-05-27
+updated: 2026-05-29
 status: active
 related:
   - "[[build/system-map]]"
@@ -56,6 +56,16 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 | 2026-05-27 | **Leva controllata via Opzioni (Call/Put)** | Leva a debito diretta vietata causa margini elevati. La leva si attiva solo su segnali ad altissima convinzione validati dal sistema (`Strong Buy` / `Strong Sell`), acquistando opzioni Call/Put. L'assegnazione finale del calcolo della convinzione all'agente o nodo più coerente avverrà in fase di costruzione del grafo dopo aver elencato tutti i compiti. |
 | 2026-05-27 | **Costo API LLM equiparato a commissioni** | Il costo dei token OpenRouter consumati dagli agenti viene stimato in fiat ($/€) e trattato come una commissione del broker, detratta dal profitto atteso per calcolare la net performance. |
 | 2026-05-27 | **Business Model: Open Source + Friends Performance Fee** | Il codice rimarrà open source su GitHub come portfolio per Luca. La monetizzazione avverrà tramite sito performance pubblico ("Piero") gestendo capitali di amici stretti con contratti privati di scarico responsabilità e fee del 1% sui soli profitti generati. |
+| 2026-05-29 | **Portfolio / mid-term confermato, NO day trading** | Day trading troppo speculativo (rischio blow-up in leva) e fuori dalle competenze del team; il portafoglio mid-term è gestibile, diversificabile, reso più facile dall'AI e non richiede presenza 24/7. Chiude la decisione aperta "Trading singolo vs Portfolio bilanciato". |
+| 2026-05-29 | **DeepSeek V4 Pro via OpenRouter** come modello principale | Su report NVDA reale (163k input + 20k output token): ~$0,09 vs ~10× di Claude Sonnet 4.6. Modelli cinesi ~10× più economici (efficienza forzata dal ban GPU USA), open source/eseguibili in locale. OpenRouter come router unico verso tutti i provider per agilità. Privacy dati non considerata un problema. |
+| 2026-05-29 | **Trader = funzione Python deterministica (NON agent)** | La conversione `research_state → transazione` non richiede un LLM: una funzione estrae i campi della proposta ed esegue; la scelta del miglior prezzo tra broker è deterministica. Supera l'idea precedente di "LLM Trader". |
+| 2026-05-29 | **Head of Analyst eliminato; Risk Analyst = gate bear unico** | L'Head of Analyst (moderatore anti-bias) è ridondante: gli analisti sono la tesi bullish, il Risk Analyst è l'antitesi bearish. Se il Risk Analyst approva (soglia ~60-70%) si va direttamente al Trade. |
+| 2026-05-29 | **Guardrail deterministici da Statuto-schema** | I guardrail misurabili numericamente (VaR ~10%, % max per area/settore, diversificazione, duration) sono check Python deterministici, non compiti dell'agente (l'LLM è bravo nel reasoning, non nei calcoli). Lo Statuto testuale va tradotto in scheda parametri. |
+| 2026-05-29 | **Riscrivere il grafo, tenere base TradingAgents** | Si tengono i tool di estrazione (`dataflows`) e gli LLM clients di TradingAgents; si riscrivono da capo node/edge/state/tool, system prompt, si mettono gli output in un DB e si aggiungono agenti (es. backtesting). 4 task di engineering: agenti, state, system prompt, tool. |
+| 2026-05-29 | **Avvio con portafoglio già investito** | Il sistema deve **mantenere/ribilanciare**, non costruire da zero. Si parte con un portafoglio investito (es. top 10 in proporzione); l'**universo investibile** si fornisce come **lista** (sottostanti S&P / all-world ETF). Risolve anche l'attivazione (i movimenti di prezzo innescano il monitoraggio). |
+| 2026-05-29 | **Benchmark: S&P 500 + 60/40 all-world** | Una gestione attiva ha sempre un benchmark ("numero da superare"): S&P (US, trasparente) + 60/40 Vanguard all-world. Col 10% cash il portafoglio sarà ~50/40÷55/35. Idea: selezione attiva dei titoli S&P (universo ridotto, prendere il percentile migliore). |
+| 2026-05-29 | **Investment State come gate di completezza** | Non si fa trade finché l'`investment_state` non è completo (forza il passaggio per tutti gli analisti); si resetta automaticamente quando il blocco trade rileva la transazione. |
+| 2026-05-29 | **Attivazione via mercati efficienti (no push news)** | Le API funzionano solo a richiesta (no notifiche push). Soluzione: i prezzi riflettono le informazioni → un prezzo anomalo attiva l'agente di monitoring che cerca la spiegazione. Gli **alert** sono solo numerici/prezzo; le news entrano dagli extractor periodici. Coerente con l'orizzonte long-term. |
 
 ---
 
@@ -65,7 +75,7 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 |------|----------|-----------------|
 | **Strategia del fondo** | Orientamento: multi-factor fundamentals, ma non formalizzato con Salvatore | [[build/modules/quant-backtesting]] |
 | **Frequenza ciclo** | 4h vs 24h — dipende da backtest iniziali | [[build/modules/quant-backtesting]] |
-| **Trading singolo vs Portfolio bilanciato** | Architettura portfolio-first, MVP singolo asset. Metriche separate. Parzialmente risolto | [[build/mvp-prototype-design]] |
+| **Trading singolo vs Portfolio bilanciato** | ~~Aperta~~ → **CHIUSA 2026-05-29**: portfolio / mid-term confermato, no day trading. Vedere decisioni chiuse. | — |
 | **Multi-asset vs solo cripto** | ~~Aperta~~ → **CHIUSA 2026-05-23**: stock-only prima, poi multi-asset (commodities, BTC only, derivati). Vedere decisioni chiuse. | — |
 | **Cash-out strategy** | Quale % dei profitti estratta periodicamente? Regola da mettere nello statuto | [[build/modules/risk-management]] |
 | **Regole specifiche dello Statuto** | Esposizione massima per asset, vendite automatiche, max drawdown consentito. Statuto in stile istituzionale generico | [[build/modules/risk-management]] |
@@ -78,5 +88,8 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 | **Exchange decentralizzato (DEX)** | Quando ha senso passare a un DEX anonimo (no KYC) rispetto a Binance? | post-MVP |
 | **Struttura wiki quant** | Sezione strategie da costruire man mano che Salvatore porta materiale | [[_meta/index]] |
 | **Fork vs from scratch** | ~~Aperta~~ → **CHIUSA 2026-05-19**: fork da TradingAgents (TauricResearch) confermato. Vedere decisioni chiuse. | — |
-| **Self-scheduling vs cron** | Agenti che si auto-schedolano nell'output strutturato vs cron job fissi a intervalli prestabiliti (4h/24h) | [[build/modules/llm-agent-system]] |
+| **Self-scheduling vs cron** | Orientamento 2026-05-29: agenti **asincroni** attivati da **alert** (numerici/prezzo) o da **periodical synthesis** a intervalli fissi; adaptive extractor con frequenza variabile per rispettare i rate limit | [[build/modules/llm-agent-system]] |
+| **Analisti: 2 o 4 agenti?** | Tenere 4 ruoli separati (market, sentiment, fondamentale, technical) o 2 agenti con 2 moduli interni ciascuno. Da decidere a sviluppo | [[build/modules/llm-agent-system]] |
+| **Indicatori di sentiment** | Il sentiment non ha indicatori propri standard (solo indici di paura) → da inventare/definire. Posizione ibrida col technical | [[build/modules/quant-backtesting]] |
+| **Desk di monitoring/evaluation** | Serve un agente/desk che sorvegli le posizioni esistenti e rifaccia il processo quando le news cambiano la tesi (evita target obsoleti e posizioni di segno opposto). Design da definire | [[build/modules/llm-agent-system]] |
 | **Debate architecture** | ~~Aperta~~ → **CHIUSA 2026-05-26**: Bull/Bear agents eliminati. Risk debate da ridisegnare con meno agenti e system prompt mirati (la struttura a 3 agenti Risk potrebbe restare se efficientata). Vedere decisioni chiuse. | — |

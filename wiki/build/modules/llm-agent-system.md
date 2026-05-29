@@ -6,7 +6,7 @@ tags:
   - multi-agent
   - architecture
 created: 2026-05-13
-updated: 2026-05-27
+updated: 2026-05-29
 status: active
 priority: medium
 area: software
@@ -17,6 +17,7 @@ related:
   - "[[build/modules/risk-management]]"
   - "[[references/tradingagents-code-wiki]]"
   - "[[references/external/trading-agents-framework]]"
+  - "[[references/videochiamata-luca-salvatore-2026-05-29]]"
 ---
 
 # LLM Agent System — Prompt Builder + Trader
@@ -31,6 +32,45 @@ Il componente che assembla tutti gli output del sistema e invoca l'LLM per la de
 2. **LLM Trader**: riceve il prompt, ragiona dentro i paletti definiti dal Risk Analyst, produce un JSON con la proposta di trade
 
 Output JSON obbligatorio: `{ asset, direction, entry, SL, TP, leverage, reasoning }`.
+
+---
+
+## Topologia agenti (design 2026-05-29)
+
+*Progettata sulla canvas `wiki/build/architecture/agents.canvas` durante la call pomeridiana del 29/05. Vedere [[references/videochiamata-luca-salvatore-2026-05-29]]. Questa è la vista concreta che raffina il principio astratto Ricercatori/Esecutori più in basso.*
+
+Flusso principale (origination → trade):
+
+```
+Analyst Research (market + sentiment)  ┐
+Analyst Technical (fondamentale + tech)┘→ loop → research_state (alpha)
+   → Risk Analyst (guardrail + bear) → approve/decline+razionale
+      → [se approve] → Trade (funzione Python deterministica)
+```
+
+- **Analisti**: 4 ruoli — **Market**, **Sentiment**, **Fondamentali (financials)**, **Technical**. Aggregazione: sentiment→market, technical→fondamentali. Si valuta se tenerli **4 separati** oppure **2 agenti** con 2 moduli interni ciascuno (`Analyst Research` = market+sentiment, `Analyst Technical` = fondamentale+technical). I due branch fanno un **loop di conversazione** e convergono su un `research_state`.
+- **`research_state` = tesi di investimento completa**: non solo l'idea, ma `buy/hold/sell` + **target price entrata + target price uscita + stop loss + sizing** + dati a supporto (pro/contro) + piano operativo. Versionato (`alpha`/v1), esiti `approved`/`declined`.
+- **Head of Analyst eliminato**: era previsto un capo-moderatore per scindere il bias bullish degli analisti, ma è stato giudicato **ridondante**. Il contrappeso bearish è il Risk Analyst.
+- **Risk Analyst = antitesi bearish + guardrail** (dettaglio in [[build/modules/risk-management]]): se approva (soglia ~60-70%) si va **direttamente al Trade**, senza filtri intermedi. Può rimandare indietro con razionale (es. target price troppo alto).
+- **Trade = funzione Python deterministica, NON agent**: estrae la proposta dallo state ed esegue; la selezione del miglior prezzo tra broker è deterministica.
+- **Investment State = gate di completezza**: non si fa un trade finché l'`investment_state` non è completo (forza il passaggio per tutti gli analisti). Si **resetta automaticamente** quando il blocco trade rileva la transazione (state pieno → estrae trade → reset).
+
+### Portfolio Manager = orchestratore (CEO / "GOAT")
+- All'inizio è **l'umano** (override manuale); concettualmente è l'**agente orchestratore** con potere decisionale ed esecutivo. Metafora del **tavolo circolare**: tutti gli agenti si rifanno a lui, lui ha tool verso tutti e decide quando "ho informazioni sufficienti".
+- Si attiva in **2 casi**: (a) un **alert** (solo numerico/prezzo, dal calendario/target), (b) la **periodical synthesis** (state sintetico a intervalli fissi con rendicontazione + market). Resta per lo più libero, si attiva e orchestra (chiama agenti → far ragionare → trade → scrive nel DB). Può fare **override** (news contro l'idea → cancella la posizione).
+- **Desk di origination** (analisti) chiamato dal PM come un tool. Serve anche un **desk di monitoring/evaluation** che sorveglia le posizioni esistenti e rifà il processo se le news cambiano la tesi (evita di tenere target obsoleti o posizioni di segno opposto sullo stesso titolo).
+
+### Attivazione e mercati efficienti
+- Le **API funzionano solo a richiesta** (no push) → non si può essere notificati automaticamente di una news. Risoluzione: **teoria dei mercati efficienti** — i prezzi riflettono le informazioni; un prezzo anomalo attiva l'agente che monitora il portafoglio, che poi va a cercare la spiegazione (news, tassi). Facendo long-term non serve reazione istantanea.
+- Lo **switch di autonomia** si dà nel **system prompt**: un agente ben prompted, visto un prezzo anomalo, va da solo a cercare news/tassi. "Rendere ogni agente quanto più autonomo possibile" è il vero valore aggiunto dell'architettura.
+
+### Provider LLM: OpenRouter + DeepSeek V4 Pro
+- **OpenRouter** come router unico verso tutti i provider (agilità nel cambiare modello).
+- **DeepSeek V4 Pro** scelto come modello principale: sul report NVDA reale (163k input + 20k output token) costa **~$0,09**, contro ~10× di Claude Sonnet 4.6. Vedere costi in [[build/decision-log]] e [[build/stack]].
+
+### Efficienza ≠ numero di agenti (context rot)
+- Non limitare gli agenti per costo: **massimo risultato col minor costo evitando il context rot** (degrado drastico oltre ~50-60% di contesto riempito; benchmark *needle in a haystack*).
+- Pattern preferito: **~4 agenti** = 3 specializzati che compilano gli state + 1 **orchestratore** che legge lo state e richiama gli altri secondo necessità. Dare a ogni agente **solo** le info che servono (non troppe/ridondanti né troppo poche). Agenti **asincroni** (timer/eventi). Ruoli definiti **inequivocabilmente** nel system prompt.
 
 ---
 

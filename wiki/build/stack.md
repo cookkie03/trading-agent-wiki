@@ -5,12 +5,13 @@ tags:
   - build
   - infrastructure
 created: 2026-05-13
-updated: 2026-05-27
+updated: 2026-05-29
 status: active
 area: software
 related:
   - "[[build/system-map]]"
   - "[[build/modules/exchange-db]]"
+  - "[[references/videochiamata-luca-salvatore-2026-05-29]]"
 ---
 
 # Tech Stack
@@ -54,9 +55,26 @@ Scelte tecnologiche confermate per il progetto. Ogni voce ha una motivazione o u
 
 | Componente | Scelta | Motivazione |
 |------------|--------|-------------|
-| LLM principale | **DeepSeek** | Alpha Arena: 2° posto (+4.76%), 1/30 del costo di GPT-5. Miglior costo/perf disponibile |
+| Router LLM | **OpenRouter** | Intermediario unico verso tutti i provider (Anthropic, Google, Qwen, DeepSeek…). Agilità nel cambiare modello (confermato 2026-05-29) |
+| LLM principale | **DeepSeek V4 Pro** | Il più usato su OpenRouter per task finance. Su report NVDA reale (163k in + 20k out token): ~$0,09 vs ~10× di Sonnet 4.6. Open source, eseguibile in locale (vedi 2026-05-29) |
 | Output format | **JSON strutturato** | Tutti i framework convergono su questo. Parsing deterministico obbligatorio |
 | LLM da monitorare | **Qwen 3 Max** | Vincitore Alpha Arena (+22.88%). Non ancora facilmente accessibile via API |
+
+### Confronto costi modelli ($/milione di token, rilevato 2026-05-29)
+
+| Modello | Input | Output | Costo report NVDA (~183k token) |
+|---|---|---|---|
+| **DeepSeek V4 Pro** | ~0,40 | ~0,87 | **~$0,09** |
+| DeepSeek (provider US) | 1,3 | 2,6 | ~3× DeepSeek base |
+| Claude Sonnet 4.6 | 3 | 15 | ~10× DeepSeek |
+| GPT-5 (latest) | 5 | 30 | — |
+| Claude Opus 4.8 | 10 | 50 | — |
+
+## Storage storico (orientamento 2026-05-29)
+
+| Componente | Scelta | Motivazione |
+|------------|--------|-------------|
+| Storico long-term | **Hard disk esterni** + clustering/riassunto | Si salva tutto lo storico; oltre una soglia si clusterizza e riassume invece di troncare. Es. 20TB ~500€. Dati vecchi comunque recuperabili online |
 
 ## AI Agent Framework
 

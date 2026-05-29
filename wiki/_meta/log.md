@@ -2,6 +2,27 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-05-29] ingest | Due videochiamate Luca & Salvatore 29/05 — LangChain/LangGraph + design architettura custom
+
+- **Type**: call (2 videochiamate, trascrizioni audio)
+- **Sources raw**:
+  - `raw/archived/2026-05-29 11-08-30.txt` — call mattina (TradingAgents/LangGraph spiegato + decisione portfolio vs day-trading)
+  - `raw/archived/2026-05-29 14-41-53.txt` — call pomeriggio (design su `agents.canvas`)
+- **Pages created**:
+  - [[references/videochiamata-luca-salvatore-2026-05-29]]
+  - [[strategy/metrics/benchmark]]
+- **Pages updated**:
+  - [[build/modules/llm-agent-system]] (topologia agenti, Trade deterministico, PM orchestratore, context rot, OpenRouter/DeepSeek)
+  - [[build/modules/exchange-db]] (design DB esteso, extractors, market alert, retention)
+  - [[build/modules/risk-management]] (Risk Analyst gate bear + guardrail deterministici)
+  - [[build/modules/quant-backtesting]] (posizione TA/fondamentali/sentiment)
+  - [[build/decision-log]] (10 decisioni chiuse del 29/05 + aggiornate aperte)
+  - [[build/stack]] (OpenRouter, DeepSeek V4 Pro + costi, storage)
+  - [[wiki/overview]], [[strategy/index]], [[artifacts/luca-board]], [[artifacts/salvatore-board]], [[_meta/index]], [[_meta/hot-cache]]
+- **Conflicts**: segnalato (non risolto automaticamente) — vecchio "LLM Trader produce JSON" + "agente Esecutore gestisce leva" in [[build/modules/llm-agent-system]] vs nuovo "Trade = funzione Python deterministica". Da riconciliare dove vive la logica leva via opzioni.
+- **Skipped**: nessuno (`raw/notes/` conteneva solo `.DS_Store`)
+- **Notes**: Sessione di design molto densa. Confermato il pivot definitivo a gestione di portafoglio mid-term stock-only; definita la topologia del grafo da costruire (riscrittura su base TradingAgents), il DB esteso ispirato alla dashboard SFC, e lo stack LLM (OpenRouter + DeepSeek V4 Pro). [[build/system-map]] resta da allineare alla nuova topologia.
+
 ## [2026-05-27] update | Decoupling logic segnali Strong Buy/Sell da agenti specifici
 
 - **Change**: Scollegata esplicitamente la logica dei segnali ad alta convinzione (Strong Buy e Strong Sell) per la leva con opzioni da una tipologia rigida di agenti (come i "Ricercatori"). Il calcolo e la validazione della convinzione sono trattati come concetti/task di sistema, e l'assegnazione finale del ruolo all'agente o nodo più idoneo avverrà durante la mappatura granulare del grafo LangGraph.

@@ -6,7 +6,7 @@ tags:
   - strategy
   - software
 created: 2026-05-13
-updated: 2026-05-27
+updated: 2026-05-29
 status: active
 priority: high
 area: software
@@ -18,6 +18,7 @@ related:
   - "[[strategy/methods/trend-following]]"
   - "[[strategy/methods/factor-investing]]"
   - "[[syntheses/notebooklm-research-2026-05-13]]"
+  - "[[references/videochiamata-luca-salvatore-2026-05-29]]"
 ---
 
 # Quant Agent + Backtesting
@@ -51,6 +52,13 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 | Segnali di sentiment | Fear & Greed, news score | Fase successiva |
 
 **Principio di parametrizzazione**: ogni indicatore è un tool che accetta parametri in input (es. `moving_average(period=N)`), non valori hardcodati. L'agente può sperimentare diversi valori senza toccare il codice.
+
+### Posizione di Salvatore su TA, fondamentali e sentiment (2026-05-29)
+*Vedere [[references/videochiamata-luca-salvatore-2026-05-29]].*
+- **Analisi tecnica usata bene** (non "candele alla guru di Dubai"): minimi/massimi a **52 settimane**, range del prezzo e suoi sforamenti, **drawdown**, **volumi**, capire cosa è successo nel giorno di uno sforamento. Serve ad avere "il quadro" (come una dashboard vs dati grezzi), non a fare trading da grafico. Posizione **ibrida col sentiment**.
+- **Sentiment**: non ha indicatori propri standard (al massimo indici di paura) → **da inventare/definire**. Legge tweet/posizioni delle persone.
+- **Fondamentali**: non sono "pochi". Es. esistono **5 tipi di P/E** (normale/current, **trailing**, **forward**); Salvatore usa il confronto **trailing vs current** (capire se il calo è dovuto al prezzo o agli EPS). Dare un **tool** per calcolarli e lasciar combinare all'agente.
+- **Factor investing / regressioni / strumenti statistici**: utili ma "un'altra parte della finanza", competenze non ancora possedute → per ora fuori scope MVP.
 
 ---
 

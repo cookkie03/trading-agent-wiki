@@ -18,9 +18,14 @@ kanban-plugin: board
 - [ ] **Analizzare architettura tecnica di FinAgent** — clonare la repo, leggere il codice: come sono implementati gli agenti, quali framework usano, come comunicano tra loro, come gestiscono il prompt. ~50k stelle, Claude 4° contributore
 - [ ] **Analizzare AlphaArena** — come hanno fatto girare 5 LLM in parallelo su Bitcoin? Struttura del codice, gestione degli output, integrazione con l'exchange
 - [ ] **Analizzare NeuroEspresso (Silvio Baratto)** — repository: pattern multi-agente usato, struttura del codice, cosa è rimasto incompleto e perché
-- [ ] **Progettare schema del DB** — definire tabelle/collezioni per: Market State, Factor Store, Trade History + Reasoning Log, Portfolio State, Prompt Store. Scegliere tecnologia (PostgreSQL? SQLite? altro?)
+- [ ] **Progettare schema del DB esteso** — consolidare il design 2026-05-29: rendicontazione portafoglio (liquidità, distribuzione multi-filtro, P/L), dati live (prezzi, calendario, news, macro, insider, cambi), costituzione/statuto al centro, log (states/reports/transactions) + retention/clustering. Vedere [[build/modules/exchange-db]]
 - [ ] **Definire I/O spec per ogni modulo** — per ciascun modulo: cosa entra (formato, fonte), cosa esce (formato, destinazione nel DB). Priorità: Prompt Builder, News Module, Factor Quantification, Prediction Module
-- [ ] **Installare Obsidian sul nuovo PC e collegare Google Drive** — prerequisito per lavorare in autonomia sul vault
+- [ ] **Riscrivere il grafo LangGraph** — tenere `dataflows` + LLM clients di TradingAgents; riscrivere node/edge/state/tool secondo la topologia 2026-05-29 (analisti → research_state → Risk Analyst → Trade deterministico; PM orchestratore; investment_state gate). Vedere [[build/modules/llm-agent-system]]
+- [ ] **Implementare Extractors** — Extractors set + Adaptive extractor (frequenza per vicinanza al target, rispetto rate limit) + Market Alert agent + calendar tool. Vedere [[build/modules/exchange-db]]
+- [ ] **Configurare OpenRouter + DeepSeek V4 Pro** — setup del router e del modello principale
+- [ ] **Valutare canale Telegram "sala segnali"** — calendario, riassunti news, prezzi, trade, variazioni rilevanti (orario/giornaliero), alert interattivi
+- [ ] **Studiare corsi completi LangGraph e LangSmith** — finora solo i Quickstart; serve il Foundation/completo
+- [ ] **Ingestare il file market driver di Salvatore** — quando arriva in `raw/` come TXT (ricordarsi `/wiki-ingest` + aggiornare le board)
 
 
 ## 🟡 In corso
@@ -36,9 +41,10 @@ kanban-plugin: board
 - [ ] **Fine-tuning: quale framework e modello base?** — LoRA/QLoRA su modello open-source? Fine-tuning via API (OpenAI, Anthropic)? Quale modello base ha senso per questo dominio?
 - [ ] **Frequenza invocazione LLM Trader** — vincolo tecnico + costo API. I moduli richiedono da secondi a ~1 ora. Qual è il time period minimo che ha senso economicamente e tecnicamente?
 - [ ] **Includere modulo TA?** — rischio: TA mal calibrata corrompe il Prediction Module DL. Progettare come modulo opzionale e testare A/B (con/senza). Non decidere ora, ma pianificare il test
-- [ ] **Architettura multi-agente: framework o da zero?** — LangGraph, AutoGen, CrewAI, o implementation custom? I framework esistenti danno struttura ma aggiungono dipendenze
-- [ ] **Modelli open source cinesi (DeepSeek) su Google Cloud** — valutare costo vs performance per questo use case. Setup: Google Cloud GPU a consumo + modello open source scaricato. Alternativa a Anthropic/OpenAI API per ridurre costi di 20x
-- [ ] **Trading singolo vs Portfolio bilanciato** — impatta l'intera architettura. Da decidere insieme a Salvatore prima di costruire qualsiasi cosa
+- [x] **Architettura multi-agente: framework o da zero?** — ✅ 2026-05-29: **LangGraph**, riscrivendo il grafo ma tenendo come base i tool/LLM clients di TradingAgents
+- [x] **Provider LLM** — ✅ 2026-05-29: **OpenRouter + DeepSeek V4 Pro** (DeepSeek ~10× più economico di Sonnet; vedi [[build/stack]]). Supera l'ipotesi DeepSeek su Google Cloud
+- [x] **Trading singolo vs Portfolio bilanciato** — ✅ 2026-05-29: **portfolio / mid-term**, no day trading
+- [ ] **Analisti: 2 o 4 agenti?** — tenere market/sentiment/fondamentale/technical separati o accorpati in 2 agenti con moduli interni. Da decidere a sviluppo
 
 
 ## ✅ Fatto

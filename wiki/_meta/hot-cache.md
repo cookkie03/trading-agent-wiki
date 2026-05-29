@@ -3,9 +3,9 @@
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
 ## Sessione Corrente
-- **Data**: 2026-05-27
-- **Agent**: Antigravity
-- **Operazione principale**: Ingestione conversazione 27/05 (chat e 18 note vocali) + aggiornamento specifiche: suddivisione Ricercatori/Esecutori, Statuto deterministico (10% riserva liquidità), esposizione a leva con opzioni Call/Put, LLM Token Cost Estimator e modello business "Piero".
+- **Data**: 2026-05-29
+- **Agent**: Claude Code (Opus)
+- **Operazione principale**: Ingestione delle due videochiamate Luca & Salvatore del 29/05 (mattina: LangChain/LangGraph + TradingAgents spiegato, decisione portfolio vs day-trading; pomeriggio: design architettura custom su `agents.canvas`). Definita la topologia agenti, il design del DB esteso, scelta OpenRouter+DeepSeek V4 Pro, Trader deterministico, Risk Analyst come gate bear, portafoglio iniziale investito, benchmark.
 
 ## Stato attuale del progetto
 - Fase: **Design → sviluppo in preparazione**
@@ -51,39 +51,49 @@ wiki/
 ```
 
 ## Decisioni chiuse importanti (recenti)
-- **Suddivisione Ricercatori vs Esecutori** (2026-05-27)
-- **Statuto del Fondo & Riserva 10% cash** (2026-05-27)
-- **Leva controllata via Opzioni Call/Put** (2026-05-27)
-- **API LLM token cost equiparato a commissioni** (2026-05-27)
-- **Business Model: Open Source + Friends Performance Fee (Piero site)** (2026-05-27)
+- **Portfolio / mid-term confermato, NO day trading** (2026-05-29)
+- **OpenRouter + DeepSeek V4 Pro** come provider/modello principale (2026-05-29)
+- **Trader = funzione Python deterministica (NON agent)** (2026-05-29)
+- **Head of Analyst eliminato; Risk Analyst = gate bear unico** (2026-05-29)
+- **Guardrail deterministici da Statuto-schema** (2026-05-29)
+- **Avvio con portafoglio già investito** + universo investibile come lista (2026-05-29)
+- **Benchmark: S&P 500 + 60/40 all-world**, idea selezione attiva S&P (2026-05-29)
+- **Investment State come gate di completezza pre-trade** (2026-05-29)
+- **Riscrivere il grafo tenendo base TradingAgents** (2026-05-29)
+- **Suddivisione Ricercatori vs Esecutori**, **Statuto & 10% cash**, **Leva via Opzioni**, **Token cost = commissioni**, **Business Model Piero** (2026-05-27)
 
 ## Decisioni ancora aperte (priorità)
+- **Analisti: 2 o 4 agenti?** (market/sentiment/fondamentale/technical separati o accorpati) — a sviluppo
+- **Indicatori di sentiment**: da inventare (non esistono standard) — con Salvatore
+- **Desk di monitoring/evaluation**: design dell'agente che sorveglia le posizioni esistenti
 - **Strategia del fondo**: da formalizzare con Salvatore (orientamento: multi-factor)
 - **Frequenza ciclo**: 4h vs 24h (dipende da backtest)
 - **Regole specifiche dello Statuto**: esposizione massima, regole vendita, drawdown limite (in corso)
 - **Algoritmo di disinvestimento ottimale**: per recuperare liquidità senza violare il 10% cash (in corso)
-- **LLM Token Cost Estimator**: implementazione algoritmo e auto-ricarica (in corso)
 - **Dynamic Temporal Checkpoints**: feedback loop temporale gestito dall'AI (in corso)
 - **Exchange per paper trading equity**: Alpaca? Interactive Brokers? Da scegliere
 
 ## Pending ingest
-- `raw/audio/2026-05-13 13-14-17.m4a` — già in lista, richiede `/wiki-preprocess` (trascrizione mancante)
+- **File market driver di Salvatore** (4 macro-categorie) — atteso in `raw/` come TXT, da arricchire e ingestare in `strategy/indicators/`
+- **Documento indicatori di valuation** (Salvatore + associazione) — atteso, poi TXT + ingest
+- `raw/audio/2026-05-13 13-14-17.m4a` — richiede `/wiki-preprocess` (trascrizione mancante)
 - `raw/articles/TradingAgents Code Wiki.md` — source page creata; lasciato in raw per consultazione
-- `raw/articles/TradingAgents.md` / `.pdf` — già ingestato come `references/external/paper-trading-agents`
 
 ## Pagine create questa sessione
-- [[references/conversazione-luca-salvatore-2026-05-27]] — Ingestione brainstorming del 27/05 (chat e 18 note vocali trascritte)
+- [[references/videochiamata-luca-salvatore-2026-05-29]] — source page delle due call del 29/05
+- [[strategy/metrics/benchmark]] — benchmark della gestione attiva
 
 ## Pagine aggiornate questa sessione
-- [[build/modules/llm-agent-system]] — Ricercatori/Esecutori, opzioni leva, LangSmith
-- [[build/modules/risk-management]] — Statuto deterministico, riserva 10%, token cost estimator
-- [[build/decision-log]] — Nuove decisioni chiuse e aperte del 2026-05-27
-- [[_meta/index]] — Collegamento nuova source page
-- [[_meta/hot-cache]] — Aggiornamento contesto sessione
+- [[build/modules/llm-agent-system]] — topologia agenti 2026-05-29 (analisti, research_state, Risk Analyst gate, Trade deterministico, PM orchestratore, context rot, OpenRouter/DeepSeek)
+- [[build/modules/exchange-db]] — design DB esteso (rendicontazione, dati live, costituzione, log, retention, extractors, market alert)
+- [[build/modules/risk-management]] — Risk Analyst come gate bear + guardrail deterministici da Statuto-schema
+- [[build/modules/quant-backtesting]] — posizione TA/fondamentali/sentiment di Salvatore
+- [[build/decision-log]] — 10 decisioni chiuse del 29/05 + aggiornate le aperte
+- [[build/stack]] — OpenRouter, DeepSeek V4 Pro + tabella costi, storage storico
+- [[wiki/overview]], [[strategy/index]], [[artifacts/luca-board]], [[artifacts/salvatore-board]], [[_meta/index]]
 
 ## Pagine chiave da aggiornare prossima sessione
-- [[artifacts/luca-board]] — aggiornare task: Modulo A → Exchange + DB, togliere "LangGraph da imparare" (in corso), aggiungere "Studia il codice TradingAgents"
-- [[artifacts/salvatore-board]] — aggiornare con domande emerse: indicatori tecnici e performance (tutte), calendario economico, workflow analista istituzionale
-- [[build/system-map]] — aggiornare per riflettere scope stock-only e nuovi nomi componenti
-- [[strategy/methods/mean-reversion-stat-arb]] — da completare quando Salvatore finisce di leggere l'articolo
-- Decidere exchange per paper trading equity → aggiornare [[build/modules/exchange-db]] e [[build/stack]]
+- [[build/system-map]] — **da aggiornare**: riflette ancora la vecchia struttura; allineare alla topologia 2026-05-29 (analisti → research_state → Risk Analyst → Trade deterministico, PM orchestratore, DB esteso, extractors)
+- **Conflitto da risolvere** in [[build/modules/llm-agent-system]]: il vecchio "LLM Trader produce JSON" + "agente Esecutore gestisce la leva" vs nuovo "Trade = funzione deterministica". Da riconciliare dove vive la logica leva via opzioni (probabilmente nel research_state/Risk Analyst)
+- Consolidare lo **schema DB definitivo** unendo le 5 tabelle core con le 4 aree logiche 2026-05-29
+- Decidere exchange per paper trading equity → [[build/modules/exchange-db]] e [[build/stack]]
