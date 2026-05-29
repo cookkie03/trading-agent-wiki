@@ -60,7 +60,7 @@
 ## Artifacts — Canvas e board
 *Schemi visuali, roadmap, board di lavoro.*
 
-- [[trading-floor.canvas]] — canvas architettura multi-agente
+- [[wiki/artifacts/trading-floor.canvas]] — canvas architettura multi-agente
 - [[artifacts/mvp-system-cycle.canvas]] — ciclo operativo completo (MVP + post-MVP)
 - [[artifacts/dev-roadmap.canvas]] — roadmap di sviluppo (Track 1/2/3)
 - [[artifacts/luca-board]] — board di Luca (focus tecnico: AI, architettura, programmazione)

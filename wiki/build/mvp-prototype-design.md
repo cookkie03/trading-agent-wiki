@@ -13,7 +13,7 @@ related:
   - "[[build/system-map]]"
   - "[[build/decision-log]]"
   - "[[build/stack]]"
-  - "[[trading-floor.canvas]]"
+  - "[[wiki/artifacts/architecture/trading-floor.canvas]]"
 confidence: high
 priority: high
 area: software
@@ -71,7 +71,7 @@ Data Ingestion
 
 Il Risk Analyst Agent *precede* il Trader Agent — non lo valida dopo. Imposta i paletti dinamici per il ciclo corrente (VaR, esposizione massima, range SL/TP ammissibili) in base allo stato del mercato e del portafoglio. Il Trader decide *dentro* quello spazio, non viene corretto fuori da esso.
 
-Fonte: [[trading-floor.canvas]] — schema del trading floor con Analista, News Agent, Quant Agent (TAVOLO) → Risk Analyst → Trader.
+Fonte: [[wiki/artifacts/architecture/trading-floor.canvas]] — schema del trading floor con Analista, News Agent, Quant Agent (TAVOLO) → Risk Analyst → Trader.
 
 ### Backtesting integrato
 
@@ -159,5 +159,5 @@ Vedere [[syntheses/notebooklm-research-2026-05-13]] per la sintesi completa.
 - [[build/system-map]] — architettura completa del sistema
 - [[build/decision-log]] — decisioni prese e aperte
 - [[build/stack]] — tech stack scelto
-- [[trading-floor.canvas]] — schema trading floor (fonte del ciclo raffinato)
+- [[wiki/artifacts/architecture/trading-floor.canvas]] — schema trading floor (fonte del ciclo raffinato)
 - Sessione brainstorming: `raw/notes/sessione-brainstorming-2026-05-13.md`
