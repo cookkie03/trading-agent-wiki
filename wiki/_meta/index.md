@@ -65,7 +65,7 @@
 - [[artifacts/salvatore-board]] — board di Salvatore (focus economico: mercati, strategie)
 - [[artifacts/artifact-workbench]] — ponte tra note e artifact
 - [[artifacts/kanban-project-status]] — kanban stato progetto
-- [[artifacts/idea architettura.canvas]] — canvas architettura (artifact di lavoro)
+- [[idea architettura.canvas]] — canvas architettura (artifact di lavoro)
 
 ## Meta
 - [[_meta/glossario]] — glossario termini del progetto

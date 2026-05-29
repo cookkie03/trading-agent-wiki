@@ -10,21 +10,41 @@
           {
             "id": "1160b036b31b9fae",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "canvas",
               "state": {
-                "file": "wiki/artifacts/tradingagents-graph.canvas",
+                "file": "wiki/artifacts/tradingagents-graph-finance.canvas",
                 "viewState": {
-                  "x": -1070.0062142238796,
-                  "y": 3011.6970831405574,
-                  "zoom": -0.7363956764837101
+                  "x": 2371.745164984417,
+                  "y": -465.8411643258385,
+                  "zoom": -2.72057662200417
+                }
+              },
+              "pinned": true,
+              "icon": "lucide-layout-dashboard",
+              "title": "tradingagents-graph-finance"
+            }
+          },
+          {
+            "id": "0a3596d95fa45b93",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "wiki/build/architecture/agents.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
                 }
               },
               "icon": "lucide-layout-dashboard",
-              "title": "tradingagents-graph"
+              "title": "agents"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -186,20 +206,39 @@
   "left-ribbon": {
     "hiddenItems": {
       "daily-notes:Apri nota del giorno": false,
-      "obsidian-kanban:Create new board": false,
-      "obsidian-git:Open Git source control": false,
       "switcher:Apri selezione rapida": false,
       "graph:Apri vista grafo": false,
       "canvas:Crea nuova lavagna": false,
+      "obsidian-kanban:Create new board": false,
+      "bases:Crea nuova Base": false,
       "templates:Inserisci modello": false,
       "command-palette:Apri riquadro comandi": false,
-      "bases:Crea nuova Base": false
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1160b036b31b9fae",
+  "active": "0a3596d95fa45b93",
   "lastOpenFiles": [
-    "wiki/references/tradingagents-graph-schema.md",
+    "wiki/build/architecture/tools.canvas",
+    "wiki/build/architecture/agents.canvas",
+    "Senza nome.md",
+    "wiki/artifacts/tradingagents-graph-finance.canvas",
+    "wiki/build/architecture/Architettura langchain.canvas",
+    "wiki/artifacts/artifact-workbench.md",
+    "wiki/build/architecture/idea architettura.canvas",
+    "Pasted image 20260529112151.png",
+    "wiki/build/architecture",
+    "Pasted image 20260529112210.png",
     "wiki/artifacts/tradingagents-graph.canvas",
+    "raw/daily-notes/2026-05-29.md",
+    "Untitled Kanban.md",
+    "Untitled Kanban 1.md",
+    "raw/daily-notes/2026-05-28.md",
+    "raw/archived/articles/quant strategy/Quantitative Trading Strategies Alpha, Backtesting & Performance - Interactive.md",
+    "wiki/references/external/paper-trading-agents.md",
+    "wiki/references/conversazione-luca-salvatore-2026-04-28-30.md",
+    "wiki/artifacts/dev-roadmap.canvas",
+    "wiki/artifacts/trading-floor.canvas",
+    "wiki/references/tradingagents-graph-schema.md",
     "raw/archived/daily-notes/2026-05-19.md",
     "raw/archived/daily-notes/2026-05-22.md",
     "raw/archived/daily-notes/2026-05-23.md",
@@ -224,21 +263,9 @@
     "raw/archived/audio/WhatsApp Chat - Salvatore Luca/00000697-AUDIO-2026-05-22-16-35-42.opus.transcription.md",
     "raw/archived/audio/WhatsApp Chat - Salvatore Luca/00000697-AUDIO-2026-05-22-16-35-42.opus",
     "raw/archived/audio/WhatsApp Chat - Salvatore Luca/00000676-AUDIO-2026-05-22-16-31-06.opus.transcription.md",
-    "raw/archived/audio/WhatsApp Chat - Salvatore Luca/00000693-AUDIO-2026-05-22-16-34-38.opus",
     "raw/archived/audio/WhatsApp Chat - Salvatore Luca/00000639-PHOTO-2026-05-22-16-06-24.jpg",
     "raw/archived/audio/WhatsApp Chat - Salvatore Luca/00000664-AUDIO-2026-05-22-16-27-09.opus.transcription.md",
-    "raw/archived/audio/WhatsApp Audio 2026-05-27 at 10.57.39.md",
-    "raw/archived/audio/WhatsApp Audio 2026-05-27 at 10.56.11.md",
-    "raw/archived/audio/WhatsApp Audio 2026-05-27 at 10.52.45.md",
-    "raw/archived/audio/WhatsApp Audio 2026-05-27 at 10.52.00.md",
-    "raw/archived/audio/WhatsApp Audio 2026-05-27 at 10.49.17.md",
-    "raw/archived/audio/WhatsApp Audio 2026-05-27 at 10.47.59.md",
-    "raw/archived/audio/WhatsApp Audio 2026-05-27 at 10.34.44.md",
-    "raw/archived/audio/WhatsApp Audio 2026-05-27 at 10.31.24.md",
-    "raw/archived/audio/WhatsApp Audio 2026-05-27 at 10.30.29.md",
     "wiki/artifacts/mvp-system-cycle.canvas",
-    "wiki/artifacts/dev-roadmap.canvas",
-    "wiki/artifacts/idea architettura.canvas",
     "raw/audio/WhatsApp Chat - Salvatore Luca/00000639-PHOTO-2026-05-22-16-06-24.jpg",
     "raw/audio/WhatsApp Chat - Salvatore Gulisano/00000639-PHOTO-2026-05-22-16-06-24.jpg",
     "WhatsApp Chat - Salvatore Gulisano/00000639-PHOTO-2026-05-22-16-06-24.jpg"
