@@ -26,6 +26,13 @@ Il sistema di agenti LLM che produce la tesi di investimento (`research_state`),
 
 ---
 
+## Riferimenti di codice (repo esterni)
+
+- **Prompt Builder + LLM JSON strict**: [[references/external/rizzo-trading-agent]] — `main.py` assembla il contesto multi-sorgente con tag XML (`<indicatori>`, `<news>`, `<sentiment>`, `<forecast>`) e lo inietta in `system_prompt.txt`; `trading_agent.py` usa OpenAI Structured Output JSON Schema **strict** (template diretto del nostro contratto decisione→ordine). `system_prompt.txt` contiene regole anti-overtrading e attenzione ai costi.
+- **LLM → views (Black-Litterman)**: [[references/external/cvx-portfolio-optimizer]] — `api/baml_src/GenerateViews.baml` mostra il pattern production-grade "fattori per asset → views con confidence→Idzorek alpha" da adattare se adottiamo il ponte LLM↔Quant.
+
+---
+
 ## Funzione
 
 1. **Analisti (LLM + tool)**: market, sentiment, fondamentali, technical. Leggono dal DB **solo** i campi che servono ed elaborano in un loop di conversazione fino a compilare lo `research_state`.

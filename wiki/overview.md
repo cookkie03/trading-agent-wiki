@@ -30,7 +30,7 @@ Un sistema multi-agente che replica e automatizza il workflow di un trader profe
 | Vuoi... | Vai a... |
 |---------|----------|
 | Capire come funziona il sistema | [[build/system-map]] |
-| Vedere cosa si sta costruendo ora | [[artifacts/luca-board]] · [[artifacts/salvatore-board]] |
+| Vedere cosa si sta costruendo ora | [[artifacts/project-board]] |
 | Vedere il piano MVP completo | [[build/mvp-prototype-design]] |
 | Trovare un termine che non conosci | [[_meta/glossario]] |
 | Vedere tutte le decisioni prese | [[build/decision-log]] |

@@ -24,6 +24,15 @@ Il componente fondante. Costruisce la pipe vuota: connessione all'exchange, esec
 
 ---
 
+## Riferimenti di codice (repo esterni)
+
+- **Schema DB context→operation con FK**: [[references/external/rizzo-trading-agent]] — `db_utils.py` (schema Postgres completo) collega ogni decisione del bot al contesto esatto (prompt + indicatori + news + sentiment + forecast) → tracciabilità totale e dataset pronto per backtest/eval.
+- **Esecuzione ordini**: [[references/external/rizzo-trading-agent]] — `hyperliquid_trader.py` (validazione input → size dal balance → market order + SL trigger `reduce_only`); `utils.py` per la reconciliation degli SL esterni via diff di snapshot.
+- **Architettura backend a layer + broker sync**: [[references/external/cvx-portfolio-optimizer]] — `api/` (FastAPI: models→repositories→services→routers, middleware, Alembic, docker-compose) e `services/broker_sync_service.py` + `trading212/`.
+- **Modello transaction-based** (posizioni derivate dalle transazioni): [[references/external/sfc-portfolio-tracker]] — `fund_manager.py`.
+
+---
+
 ## Cosa fa
 
 - Si connette all'**exchange** (paper trading, zero rischio reale) tramite interfaccia astratta

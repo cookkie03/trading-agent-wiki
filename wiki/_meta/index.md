@@ -33,7 +33,9 @@
 - [[references/trading-floor-canvas]] — schema architettura multi-agente
 - [[references/tradingagents-code-wiki]] — TradingAgents Code Wiki (documentazione tecnica del codebase: agenti, orchestrazione, data layer, LLM integration)
 - [[references/tradingagents-graph-schema]] — schema del grafo TradingAgents (nodi/edge/state), collegato ai canvas grafo
-- [[references/external/cvx-portfolio-optimizer]] — cvx-portfolio-optimizer (documentazione completa, merge con library-portfolio-optimizer)
+- [[references/external/cvx-portfolio-optimizer]] — cvx-portfolio-optimizer / `portopt` (libreria quant **+ piattaforma full-stack**: FastAPI, Angular, CLI, scheduler, LLM-views via BAML, broker sync)
+- [[references/external/rizzo-trading-agent]] — Rizzo AI Academy: agente LLM di trading **funzionante** (crypto/Hyperliquid, GPT-5.1 JSON strict, multi-sorgente, Postgres) — codice riusabile MIT
+- [[references/external/sfc-portfolio-tracker]] — SFC: tracker/dashboard fondo EUR in Streamlit (analytics, NAV history, performance/benchmark attribution, PyPortfolioOpt) — catalogo completo KPI dashboard
 - [[references/tool-set-provider-dati-exchange]] — broker con API Python disponibili in Italia + provider dati gratuiti (stack raccomandato)
 - [[references/note-audio-salvatore-quant-strategy]] — note audio Salvatore su strategie quant: dual portfolio value+quant, mean reversion/stat arb
 - [[references/quantitative-trading-strategies-brenndoerfer]] — articolo Brenndoerfer su quant trading: alpha, backtesting, metriche performance (con codice Python)
@@ -71,8 +73,7 @@
 - [[tradingagents-graph-finance.canvas]] — vista business del sistema TradingAgents
 
 **Board operative**
-- [[artifacts/luca-board]] — board di Luca (focus tecnico: AI, architettura, programmazione)
-- [[artifacts/salvatore-board]] — board di Salvatore (focus economico: mercati, strategie)
+- [[artifacts/project-board]] — board unica di progetto (tecnico/Luca + mercato/Salvatore + stato progetto), consolida le ex luca-board, salvatore-board e kanban-project-status
 
 ## Meta
 - [[_meta/glossario]] — glossario termini del progetto

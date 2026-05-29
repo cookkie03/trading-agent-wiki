@@ -290,3 +290,16 @@
 - **Pages updated**: [[theory/modular-trading-agent-architecture]], [[build/system-map]], [[_meta/index]]
 - **Contradictions**: nessuna
 - **Notes**: Ingest completa di materiale tecnico di frontiera. TradingAgents introduce il protocollo di comunicazione strutturata e il team di analisti/debater. Portfolio Optimizer (cvx-optimizer) fornisce il motore per il Portfolio Management quantitativo e l'integrazione di opinioni (views) via Black-Litterman. Alpha Arena fornisce benchmark comparativi tra LLM. La system map ora include esplicitamente il portfolio manager e il protocollo di comunicazione strutturato.
+
+## [2026-05-29] ingest+update | Ingest 3 repo GitHub + consolidamento board (migrazione da copia Downloads)
+
+- **Type**: code-ingest + consolidamento artifact
+- **Contesto**: il lavoro era stato fatto per errore su una copia git in `~/Downloads/trading-agent-wiki` (repo senza commit, lineage più vecchio). Migrato qui sul vault vero in modo **chirurgico** (solo i deliverable di sessione, innestati sul contenuto attuale di DST). Backup del vault creato in `~/Downloads/trading-agent-wiki-iCloud-backup-<timestamp>` prima del merge.
+- **Pages created**: [[references/external/rizzo-trading-agent]], [[references/external/sfc-portfolio-tracker]], [[artifacts/project-board]]
+- **Pages updated**: [[references/external/cvx-portfolio-optimizer]] (sezione piattaforma full-stack + BAML LLM-views + frontmatter), [[build/modules/exchange-db]], [[build/modules/quant-backtesting]], [[build/modules/risk-management]], [[build/modules/llm-agent-system]] (sezioni "Riferimenti di codice (repo esterni)"), [[_meta/index]], [[overview]]
+- **Pages deleted**: artifacts/luca-board.md, artifacts/salvatore-board.md (consolidate in project-board; kanban-project-status già rimossa in precedenza)
+- **Sources**: github.com/SilvioBaratto/optimizer, github.com/Rizzo-AI-Academy/rizzo-trading-agent, github.com/Sbirrondi/sfc-portfolio-tracker
+- **Consolidamento board**: project-board ricostruita dal contenuto ATTUALE di luca-board + salvatore-board in DST (NON dalle versioni vecchie di Downloads): preserva decisioni risolte 2026-05-29 (LangGraph, OpenRouter+DeepSeek V4 Pro, portfolio/mid-term, stock-only+benchmark) e i task nuovi (grafo LangGraph, Extractors, market driver, valuation, P/E). Colonne per stato + marker dominio (🛠/📈/🔀). Decisioni storiche superate annotate inline (*aggiornata:*).
+- **Conflicts**: nessuna perdita. Verificato che DST non conteneva alcun deliverable di sessione; che la kanban-project-status cancellata era la versione generica (nessun item unico); che le board DST erano più recenti delle versioni di Downloads (→ ricostruzione da DST).
+- **Skipped**: NON migrati gli altri file divergenti tra le due copie (decision-log, stack, system-map, tradingagents-*, ecc.): appartengono al lineage e non fanno parte di questa sessione.
+- **Notes**: i raw non archiviati (sorgenti = URL GitHub). La copia Downloads resta intatta come riferimento.

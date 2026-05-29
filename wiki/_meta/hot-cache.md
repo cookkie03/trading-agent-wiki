@@ -6,6 +6,7 @@
 - **Data**: 2026-05-29
 - **Agent**: Claude Code (Opus)
 - **Operazione principale**: **Lint + ristrutturazione** della wiki per allinearla alle call del 29/05 (segue l'ingest delle due videochiamate fatto in precedenza nella stessa giornata). Riscritta `system-map` sulla topologia 29/05, riconciliato il conflitto Trader in `llm-agent-system`, consolidato lo schema DB in `exchange-db`, ingeriti i 3 file pending (daily-notes 28/29 + transcript 05-13). Cleanup: rimossi 54 frammenti spazzatura in `raw/audio/`, rimossa la stub `artifact-workbench`, fixati link rotti. Canvas riorganizzati da Luca in Obsidian (in parallelo) → tutti sotto `artifacts/`.
+- **Operazione successiva (migrazione)**: ingest di 3 repo GitHub (`rizzo-trading-agent`, `sfc-portfolio-tracker`, full-stack di `cvx-portfolio-optimizer`) con sezioni "Riferimenti di codice" nei 4 moduli build, e **consolidamento delle 3 board kanban in [[artifacts/project-board]]** (board unica, colonne per stato + marker dominio 🛠/📈/🔀). Lavoro originariamente svolto per errore sulla copia `~/Downloads/trading-agent-wiki`, poi migrato qui in modo chirurgico. project-board ricostruita dal contenuto **attuale** di DST (decisioni risolte 29/05 preservate). Backup pre-merge in `~/Downloads/trading-agent-wiki-iCloud-backup-<ts>`.
 
 ## Stato attuale del progetto
 - Fase: **Design → sviluppo in preparazione**

@@ -27,6 +27,15 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 
 ---
 
+## Riferimenti di codice (repo esterni)
+
+- **Indicatori tecnici (lib `ta`)**: [[references/external/rizzo-trading-agent]] — `indicators.py` (EMA, MACD, RSI 7/14, ATR, pivot points, doppio output testo+JSON per prompt e DB).
+- **Metriche performance/rischio (pandas puro, quasi copia-incollabili)**: [[references/external/sfc-portfolio-tracker]] — `analytics.py` (Sharpe, Sortino, Calmar, max DD, VaR, CVaR, alpha/beta) e `analytics_plus.py` (QuantStats + PyPortfolioOpt: efficient frontier, Monte Carlo, risk contribution). Catalogo KPI completo nella pagina del tracker.
+- **Ricostruzione curva equity giornaliera per backtest**: [[references/external/sfc-portfolio-tracker]] — `build_nav_history.py`.
+- **Motore quant completo (sklearn API)**: [[references/external/cvx-portfolio-optimizer]] — libreria `optimizer/` (moments, optimization, validation Walk-Forward/CPCV, scoring, factors).
+
+---
+
 ## Cosa fa
 
 - Implementa la **strategia quantitativa** scelta (vedi sotto)

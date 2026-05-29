@@ -23,6 +23,14 @@ Il guardiano del rischio. Opera **upstream** del Trader: imposta i paletti dinam
 
 ---
 
+## Riferimenti di codice (repo esterni)
+
+- **Stop-loss & guardie**: [[references/external/rizzo-trading-agent]] — `hyperliquid_trader._place_stop_loss` (SL trigger `reduce_only`), `utils.check_stop_loss` (rileva SL scattati), regole anti-overtrading in `system_prompt.txt`. *Nota*: loro affidano molte regole al prompt; noi le vogliamo deterministiche a monte (Statuto Python).
+- **Principio deterministico LLM→matematica**: [[references/external/cvx-portfolio-optimizer]] — `GenerateViews.baml` + `risk_budget_service`/`risk_analytics_service`: l'LLM produce views/opinioni, la matematica decide i pesi entro i vincoli. Allineato al nostro Statuto.
+- **Metriche di rischio per i paletti**: [[references/external/sfc-portfolio-tracker]] — `analytics.py`/`analytics_plus.py` (max drawdown, VaR/CVaR, volatilità, duration FI per sensitivity ai tassi).
+
+---
+
 ## Risk Analyst come gate bear (design 2026-05-29)
 
 *Dalla call del 29/05 (vedere [[references/videochiamata-luca-salvatore-2026-05-29]]). Posiziona il Risk Analyst come gate unico tra il `research_state` degli analisti e il Trade.*
