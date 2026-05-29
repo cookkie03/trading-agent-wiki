@@ -100,7 +100,7 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 
 ## Come contribuisce Salvatore
 
-Salvatore porta il contenuto della strategia in **[[strategy/]]** — questo modulo lo implementa:
+Salvatore porta il contenuto della strategia in **[[strategy/index]]** — questo modulo lo implementa:
 1. Porta in `raw/` indicatori tecnici, strategie, casi reali, paper
 2. L'agente ingesta e struttura il materiale in `strategy/methods/`, `strategy/indicators/`, `strategy/metrics/`
 3. Quando un metodo è validato, Luca costruisce il tool Python corrispondente qui

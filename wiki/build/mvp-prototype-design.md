@@ -7,13 +7,13 @@ tags:
   - mvp
   - design
 created: 2026-05-13
-updated: 2026-05-13
+updated: 2026-05-29
 status: active
 related:
   - "[[build/system-map]]"
   - "[[build/decision-log]]"
   - "[[build/stack]]"
-  - "[[wiki/artifacts/architecture/trading-floor.canvas]]"
+  - "[[trading-floor.canvas]]"
 confidence: high
 priority: high
 area: software
@@ -25,53 +25,11 @@ Design del prototipo funzionante del trading agent. Prodotto nella sessione di b
 
 ## Obiettivo del prototipo
 
-Agente autonomo su **paper trading** (Binance Testnet) con backtesting robusto continuativo e produzione di metriche affidabili a due livelli: per-trade e portfolio.
+Agente autonomo su **paper trading equity** (exchange stock da scegliere — Alpaca/IB) con backtesting robusto continuativo e produzione di metriche affidabili a due livelli: per-trade e portfolio.
 
 Nessun capitale reale. Nessuna supervisione umana obbligatoria nel loop. Validazione del sistema su dati storici e in real-time simulato prima di andare live.
 
-## Decisioni fondanti
-
-| Tema | Scelta |
-|------|--------|
-| Architettura | Monolite modulare (Opzione A) |
-| Mercato | Crypto / Binance Testnet |
-| Orizzonte trade | Swing trading (candele 4h / daily, giorni-settimane) |
-| Portfolio vs Singolo | Portfolio-first nell'architettura, singolo asset nell'MVP deployment |
-| Backtesting | Stesso codice del live, Exchange Module cambia backend |
-| LLM | DeepSeek (costo 1/20 rispetto a modelli americani) |
-| Principio guida | Deterministico: LLM solo per ragionamento, tutto il resto Python |
-
-## Architettura — Ciclo operativo
-
-Il sistema gira come processo Python schedulato (loop interno o cron). Frequenza: ogni 4h o 24h in modalità swing.
-
-```
-Data Ingestion
-  │
-  ├── TAVOLO (moduli analisi, in parallelo):
-  │     ├── Analista      → ratio finanziari, validazione news
-  │     ├── News Agent    → sentiment elaborato sulle news
-  │     └── Quant Agent   → backtest/forecasting sull'asset
-  │
-  ├── Risk Analyst Agent  ← legge output TAVOLO + stato portafoglio corrente
-  │     └── produce: briefing rischio (VaR, esposizione max, range SL/TP ammissibili, go/no-go)
-  │
-  ├── Prompt Builder      → assembla deterministicamente tutti gli output in un prompt
-  │
-  ├── Trader Agent (LLM)  ← legge briefing rischio + output TAVOLO via Prompt Builder
-  │     └── produce: asset, direction, entry, SL, TP, size (entro i paletti del Risk Analyst)
-  │
-  ├── Security Module     → hard limits deterministici — statuto del fondo, no LLM
-  ├── Portfolio Allocator → size finale in base al portafoglio corrente
-  ├── Exchange Module     → Binance Testnet (paper) | replay storico (backtest)
-  └── Logger              → trade, chain-of-thought LLM, metriche nel DB
-```
-
-### Nota architetturale chiave: Risk Analyst è upstream
-
-Il Risk Analyst Agent *precede* il Trader Agent — non lo valida dopo. Imposta i paletti dinamici per il ciclo corrente (VaR, esposizione massima, range SL/TP ammissibili) in base allo stato del mercato e del portafoglio. Il Trader decide *dentro* quello spazio, non viene corretto fuori da esso.
-
-Fonte: [[wiki/artifacts/architecture/trading-floor.canvas]] — schema del trading floor con Analista, News Agent, Quant Agent (TAVOLO) → Risk Analyst → Trader.
+> **Decisioni fondanti e architettura**: non duplicate qui. Le scelte chiave (monolite modulare, swing trading, principio deterministico, stock-only, OpenRouter/DeepSeek, ecc.) sono in [[build/decision-log]]; la **topologia operativa aggiornata** (analisti → research_state → Risk Analyst → Trade deterministico) è in [[build/system-map]]. Questa pagina si concentra su **cosa deve produrre l'MVP** (metriche, sequenza di sviluppo, insight implementativi).
 
 ### Backtesting integrato
 
@@ -99,38 +57,35 @@ Il resto del ciclo è identico. Questo garantisce che il backtest testa esattame
 
 ## DB centrale
 
-Postgres (produzione) / SQLite (sviluppo locale). Ogni modulo legge e scrive solo le proprie tabelle. Il Prompt Builder ha accesso in lettura a tutto. Il Logger ha accesso in scrittura a tutto.
+Postgres (produzione) / SQLite (sviluppo locale). Schema completo (5 tabelle core ↔ 4 aree logiche) in [[build/modules/exchange-db]].
 
 ## Sequenza di sviluppo
 
-### Track 1 — Luca (sviluppo solo)
-**Modulo A: Exchange Module + DB**
-- Connessione Binance Testnet
+### Track 1 — Luca (sviluppo solo) → [[build/modules/exchange-db]]
+- Connessione all'exchange equity (paper trading API — Alpaca/IB da scegliere)
 - Esecuzione ordini paper (limit order con SL/TP)
-- Schema DB con tabelle: market_data, trades, portfolio_state, module_outputs, logs
+- Schema DB con le 5 tabelle core
 - Logger base
 
 Obiettivo: pipe vuoto funzionante, dati reali che scorrono nel DB.
 
-### Track 2 — Luca + Salvatore (sessioni di progettazione, in parallelo con Track 1)
-**Modulo C: Quant Agent + Backtesting**
+### Track 2 — Luca + Salvatore (in parallelo con Track 1) → [[build/modules/quant-backtesting]]
 - Definizione della strategia quantitativa (multi-factor fundamentals è l'orientamento)
-- Scelta framework backtesting: vectorbt vs backtesting.py (da decidere)
-- Download dati storici Binance
+- Framework backtesting: **VectorBT** (deciso)
+- Download dati storici equity
 - Prime metriche su dati reali
 
-### Track 3 — dopo Track 1 completato, Track 2 progettato
-**Modulo D: Prompt Builder + LLM Trader**
+### Track 3 — dopo Track 1, Track 2 progettato → [[build/modules/llm-agent-system]]
 - Il sistema arriva qui con dati REALI già nel DB (non fittizi)
-- Integrazione DeepSeek API
-- Primo ciclo completo: dati → prompt → decisione → esecuzione paper → log
+- Riscrittura del grafo su base TradingAgents + integrazione OpenRouter/DeepSeek
+- Primo ciclo completo: dati → analisti → research_state → Risk Analyst → Trade deterministico → log
 
 ## Moduli successivi (post-MVP)
-Dopo che A + C + D girano insieme:
-1. Risk Analyst Agent (upstream del Trader)
-2. News Agent / Analista (completamento TAVOLO)
-3. Security Module (hard limits — statuto del fondo)
-4. Portfolio Allocator dinamico
+Dopo che i tre track girano insieme:
+1. Risk Analyst completo (gate bear + guardrail deterministici da Statuto)
+2. Desk di monitoring/evaluation delle posizioni
+3. Extractor adattivi + Market Alert (calendar tool)
+4. Dashboard Streamlit + canale Telegram
 5. RL/Weighting Module (ponderazione dinamica dei moduli)
 6. Fine-Tuning Module
 
@@ -148,7 +103,7 @@ Dalla ricerca su TradingAgents, MarketSenseAI, Alpha Arena e Simone Rizzo:
 
 - **SL/TP sono hard constraint**: senza di essi, win rate 66% porta comunque a drawdown devastanti (Simone Rizzo, settimana 1 senza SL/TP)
 - **Output LLM = JSON obbligatorio**: tutti i sistemi impongono risposta esclusivamente JSON con campi fissi (operazione, simbolo, direzione, leva, reasoning)
-- **Pivot Points**: aggiungere al Prompt Builder — tutti i sistemi pratici li usano come riferimenti spaziali per l'LLM
+- **Pivot Points**: esporli come tool/contesto agli analisti — tutti i sistemi pratici li usano come riferimenti spaziali per l'LLM
 - **Prophet non affidabile**: non regge sui crolli improvvisi, genera previsioni bullish in mercati bearish — non usarlo come modulo di forecast principale
 - **Quick Thinker + Deep Thinker**: DeepSeek (economico) per raccolta dati, DeepSeek o modello più capace solo per la decisione finale
 - **Rebalancing Gate**: eseguire ordini solo se drift dai pesi target > soglia (es. 5%) — evita overtrading
@@ -159,5 +114,5 @@ Vedere [[syntheses/notebooklm-research-2026-05-13]] per la sintesi completa.
 - [[build/system-map]] — architettura completa del sistema
 - [[build/decision-log]] — decisioni prese e aperte
 - [[build/stack]] — tech stack scelto
-- [[wiki/artifacts/architecture/trading-floor.canvas]] — schema trading floor (fonte del ciclo raffinato)
-- Sessione brainstorming: `raw/notes/sessione-brainstorming-2026-05-13.md`
+- [[trading-floor.canvas]] — schema trading floor (versione storica; topologia attuale in [[build/system-map]])
+- Sessione brainstorming: `raw/archived/notes/sessione-brainstorming-2026-05-13.md`

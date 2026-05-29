@@ -73,7 +73,6 @@
 **Board operative**
 - [[artifacts/luca-board]] — board di Luca (focus tecnico: AI, architettura, programmazione)
 - [[artifacts/salvatore-board]] — board di Salvatore (focus economico: mercati, strategie)
-- [[artifacts/kanban-project-status]] — kanban stato progetto
 
 ## Meta
 - [[_meta/glossario]] — glossario termini del progetto

@@ -68,9 +68,11 @@ related:
 
 ## Metriche di valutazione
 
-- [[strategy/metrics/sharpe-ratio]] — rischio/rendimento
-- [[strategy/metrics/win-rate]] — % operazioni chiuse in profitto
-- [[strategy/metrics/max-drawdown]] — perdita massima
+- **Sharpe ratio** — rischio/rendimento
+- **Win rate** — % operazioni chiuse in profitto
+- **Max drawdown** — perdita massima
+
+*(pagine dedicate in `strategy/metrics/` da creare quando servono; vedi [[strategy/metrics/benchmark]])*
 
 ---
 

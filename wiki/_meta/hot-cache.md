@@ -93,9 +93,13 @@ wiki/
 - 🗑️ rimossi: 54 frammenti spazzatura `raw/audio/.txt*.txt`, stub `artifacts/artifact-workbench.md`
 - 📦 archiviati: daily-notes 28/29, transcript+mp3 05-13
 
+## Cleanup pass 2 (stessa sessione)
+- ✅ [[build/mvp-prototype-design]] — rimosso ciclo operativo vecchio + decisioni fondanti (duplicavano system-map/decision-log); allineato a stock-only + topologia 29/05; mantenuti metriche a due livelli e insight NotebookLM
+- 🗑️ rimosso `artifacts/kanban-project-status.md` — fermo al 06/05, `type:ops` (ruolo eliminato), "Blocked: Crypto vs Equity" già deciso, soppiantato da luca-board + salvatore-board. Sistemati i link in index e videochiamata-04-30
+- 🔧 risolti tutti i link rotti minori: `[[strategy/]]`→`[[strategy/index]]`, stub metriche in trend-following → testo, puntatore raw in ideas-log → path archiviato
+- **Stato link**: 0 link rotti reali nella wiki
+
 ## Da fare prossima sessione
-- [[build/mvp-prototype-design]] — ancora sul vecchio ciclo (trading-floor): allineare alla topologia 29/05 o marcare come storico
-- Creare gli stub metriche linkati da [[strategy/methods/trend-following]]: `sharpe-ratio`, `max-drawdown`, `win-rate` (in `strategy/metrics/`)
 - Decidere **forma di storage per area** (SQL/JSON/time-series) + exchange paper trading equity
 - Decidere **analisti 2 vs 4** e dove vive l'aggregazione del segnale `Strong`
-- Link rotti minori residui (pre-esistenti): `[[strategy/]]` in quant-backtesting, `[[nome pagina]]` placeholder kanban
+- Creare pagine metriche (`sharpe-ratio`, `max-drawdown`, `win-rate`) in `strategy/metrics/` solo quando servono davvero

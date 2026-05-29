@@ -20,7 +20,16 @@
 - **Archived**: `raw/archived/daily-notes/2026-05-28.md`, `2026-05-29.md`; `raw/archived/audio/2026-05-13 13-14-17.txt` (+.tmp.mp3)
 - **Canvas**: Luca ha riorganizzato in Obsidian in parallelo → tutti sotto `artifacts/` (design in `artifacts/architecture/`); eliminati da lui `mvp-system-cycle.canvas`, `trading-floor.canvas` (root), `tradingagents-graph.canvas`. `wiki/build/architecture/` non esiste più.
 - **Conflicts**: il conflitto Trader (segnalato nell'ingest precedente) è stato **risolto** in questa sessione.
-- **Notes**: residuano 6 link rotti pre-esistenti minori (3 stub metriche da creare, 1 placeholder, 1 folder-link, 1 puntatore a raw archiviato). `mvp-prototype-design` resta sul vecchio ciclo (da allineare).
+- **Notes**: vedi anche il cleanup pass 2 sotto.
+
+## [2026-05-29] cleanup | Rimozione ridondanze + link rotti residui
+
+- **Trigger**: richiesta utente — "tenere tutto pulito, togliere informazioni ridondanti, file non essenziali"
+- **Refactor**: [[build/mvp-prototype-design]] — rimossi *Ciclo operativo* (vecchia topologia, duplicava [[build/system-map]]) e *Decisioni fondanti* (duplicavano [[build/decision-log]], con dati stale su crypto/Binance/DeepSeek 1/20); allineato a stock-only + topologia 29/05; **mantenuti** metriche a due livelli, backtesting integrato, sequenza track, insight NotebookLM
+- **Deleted**: `wiki/artifacts/kanban-project-status.md` — stale (06/05), `type:ops` (ruolo eliminato dalla taxonomy), "Blocked: Crypto vs Equity" già chiuso, ridondante con [[artifacts/luca-board]] + [[artifacts/salvatore-board]] + [[build/decision-log]]. Riferimenti sistemati in [[_meta/index]] e [[references/videochiamata-luca-salvatore-2026-04-30]]
+- **Link rotti risolti**: `[[strategy/]]`→`[[strategy/index]]` (quant-backtesting); 3 stub metriche in [[strategy/methods/trend-following]] → testo semplice; `[[raw/daily-notes/2026-05-19]]` in [[build/ideas-log]] → path archiviato
+- **Pages updated**: [[build/mvp-prototype-design]], [[_meta/index]], [[references/videochiamata-luca-salvatore-2026-04-30]], [[build/modules/quant-backtesting]], [[strategy/methods/trend-following]], [[build/ideas-log]], [[_meta/hot-cache]]
+- **Stato finale**: 0 link rotti reali nella wiki
 
 ## [2026-05-29] ingest | Due videochiamate Luca & Salvatore 29/05 — LangChain/LangGraph + design architettura custom
 

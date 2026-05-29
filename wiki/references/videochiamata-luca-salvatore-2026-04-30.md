@@ -15,8 +15,6 @@ status: reviewed
 related:
   - "[[references/conversazione-luca-salvatore-2026-04-28-30]]"
   - "[[build/system-map]]"
-  - "[[artifacts/kanban-project-status]]"
-  - "[[build/system-map]]"
 ---
 
 # Videochiamata Luca-Salvatore (2026-04-30)

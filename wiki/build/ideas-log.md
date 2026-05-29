@@ -89,7 +89,7 @@ Questo calendario è input rilevante per gli agenti che devono contestualizzare 
 
 ## 2026-05-21 — Da lettura TradingAgents Code Wiki
 
-*Fonte: [[raw/daily-notes/2026-05-19]] + [[references/tradingagents-code-wiki]]*
+*Fonte: `raw/archived/daily-notes/2026-05-19.md` + [[references/tradingagents-code-wiki]]*
 
 ### Architettura e Agenti
 
