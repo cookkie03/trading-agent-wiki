@@ -53,8 +53,13 @@ Le **5 tabelle core** sono la base SQL minima; il design organizza i dati in **4
 ### Retention / clustering
 La memoria cresce troppo → niente troncamento secco: **clusterizzare + riassumere + cancellare progressivamente** tenendo i riassunti. Ipotesi: ~5 anni giornaliero, 5-10 settimanale, 10-30 mensile. Hardware: hard disk esterni (es. 20TB ~500€). Molti dati vecchi sono recuperabili online (Yahoo Finance; Reuters ora a pagamento).
 
-### Forma di storage (domanda aperta — 2026-05-28)
-Luca: *"meglio SQL o JSON per i dati? quale forma per quale dato?"* → da decidere per area: relazionale (SQL) per rendicontazione/transazioni strutturate; JSON/documentale per states e output LLM annidati; eventuale time-series store per i dati live. Vedi [[system/decision-log]].
+### Forma di storage (decisione 2026-06-02)
+**Principalmente time-series**, ma con DB e **architetture a oggetti internamente** (Luca: *"qualcosa di time-series, ma con db e architetture anche ad oggetti internamente al db"*). Lettura per area:
+- **Dati live / prezzi / macro** → time-series (cuore del sistema);
+- **Rendicontazione** → modello a oggetti (riga = posizione, colonne = caratteristiche);
+- **States e output LLM annidati** → forma documentale/JSON (forma fine ancora da assegnare).
+
+Resta aperta solo la **forma fine per i singoli stati annidati**. Vedi [[system/decision-log]] e [[system/state-schemas]].
 
 ---
 
@@ -68,11 +73,28 @@ Primo set di tool degli agenti. Si agganciano al DB (**DB-first**), non ai vendo
 | **Adaptive extractor** | Frequenza **adattiva** in base alla vicinanza al target (entro ~30% dal target → alta frequenza/"modalità rischio"; lontano → daily). Risparmia compute e rispetta i **rate limit** delle API. |
 | **Market Alert** | Riceve dagli adaptive extractor; unico tool = **calendar tool** che scrive eventi nel **calendario economico** (es. data uscita prodotto, trimestrali). |
 | **calendar tool** | Scrive/legge gli eventi del calendario economico; alla corrispondenza data/ora scatta l'**alert** (solo numerico/prezzo) verso il Portfolio Manager. |
-| **mantainer** | Processo di manutenzione (non-LLM) che tiene aggiornati/ricalcolati i **dati technical** e la **rendicontazione portafoglio** nel DB. *(Nodo nuovo del canvas — ruolo esatto da confermare in fase di design del grafo.)* |
+| **mantainer** | Processo di manutenzione (non-LLM, blocco verde/technical sul canvas) che **trasforma i dati `technical`/`transactions` in `rendicontazione`** (portfolio accounting) e la tiene aggiornata nel DB. *Ruolo confermato in call 2026-06-02*: «un mantainer che trasforma i technical in rendicontazione». È il ponte deterministico transazioni → metriche di portafoglio. |
 
 **Look-ahead bias — doppia data**: ogni informazione nel DB ha `publication_date` (quando ottenuta/pubblicata) e `reference_date` (data a cui si riferisce). Più preciso del semplice `curr_date` filtering.
 
 **Indicatori calcolati dal DB**: nessun calcolo on-the-fly — gli indicatori si calcolano con formule che richiamano i dati grezzi già nel DB.
+
+### Queue system + check presenza (decisione 2026-06-02)
+Gli extractor si chiamano **solo se l'informazione non è già nel DB**. Flusso:
+1. **Check preventivo nel DB**: se il dato c'è → si legge da lì, fine (nessuna richiesta esterna).
+2. Se manca → la richiesta entra in una **coda (queue)**; **un extractor per vendor** consuma la sua coda e **autogestisce i rate limit** di estrazione.
+3. Il check avviene *prima* di accodare, per non riempire la coda di richieste inutili.
+
+Si estraggono dai vendor **solo le osservazioni grezze**; le metriche derivate (P/E, ratio, ecc.) si **calcolano internamente** dai dati grezzi già nel DB (vedi [[system/modules/quant-backtesting]]).
+
+---
+
+## Operatività & resilienza
+
+- **Deploy**: il sistema gira sul **Minisforum (mini-server) di Luca, acceso 24/7 in casa** (decisione 2026-06-02).
+- **Secrets**: chiavi API (OpenRouter, broker, data vendor) in **`.env` locale** per ora.
+- **Graceful shutdown & recovery** *(aperto)*: serve un meccanismo di **inizializzazione** e di **ripresa dal punto precedente** in caso di crash a metà ciclo (ordine inviato non loggato, state parzialmente compilato). Il checkpointing SQLite di LangGraph è la base, ma la strategia di recovery è da definire. → [[system/decision-log]].
+- **Orario di mercato / weekend**: gli extractor e gli alert devono conoscere le ore di mercato e i festivi (da definire).
 
 ---
 

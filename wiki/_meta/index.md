@@ -14,6 +14,10 @@
 - [[system/data-providers]] — broker con API Python in Italia + provider dati (stack raccomandato)
 - [[system/decision-log]] — storico decisioni chiuse + decisioni ancora aperte
 - [[system/ideas-log]] — log append-only delle idee di progetto (mai cancellare)
+- [[system/state-schemas]] — schema di `research_state`/`investment_state` (contratto dati tra agenti) 🛠
+- [[system/position-sizing]] — dimensionamento posizioni (relativo, conviction, Kelly) 🛠
+- [[system/rating-scoring]] — sistema di rating/scoring (conviction · agenti · asset) 🛠
+- [[system/parallelism-design]] — orchestrazione multi-ticker e criteri "info sufficienti" 🛠
 
 ### Moduli — aree del sistema (da `architettura.canvas`)
 - [[system/modules/data-layer]] — DB centrale (4 aree logiche) + Extraction (extractors, adaptive, market alert, calendar tool, mantainer)
@@ -30,6 +34,7 @@
 - [[strategy/methods/mean-reversion-stat-arb]] — mean reversion e statistical arbitrage / pairs trading
 - [[strategy/methods/dual-portfolio]] — idea dual portfolio value + quant (embrionale, Salvatore)
 - [[strategy/metrics/benchmark]] — benchmark della gestione attiva (S&P + 60/40 all-world)
+- [[strategy/questions-for-salvatore]] — foglio domande aperte per Salvatore (VaR, overfitting, opzioni, fattori) 📈
 
 *(indicators/ e metrics/ si popolano man mano che Salvatore porta materiale)*
 

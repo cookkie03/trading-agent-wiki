@@ -55,13 +55,24 @@ La conversione `research_state → transazione` **non richiede un LLM**: una fun
 
 ---
 
-## Exchange (paper trading)
+## Exchange (paper trading) — broker intercambiabili
 
-- Si connette all'**exchange** tramite **interfaccia astratta** (paper trading, zero rischio reale): cambio exchange = cambio config.
+**Design deciso (2026-06-02)**: un **file-adapter (wrapper) per ogni broker** che traduce le API del servizio in un'**interfaccia interna standardizzata** e leggibile dal programma. Il broker si cambia esattamente come in TradingAgents si cambia il provider LLM (Luca: *«io devo poter cambiare facilmente il broker del progetto»*).
+
+```
+        ┌─ alpaca_adapter.py ─┐
+core  ──┤  ibkr_adapter.py    ├── interfaccia interna standard (place_order, get_positions, get_fees…)
+        └─ ..._adapter.py    ─┘
+```
+
+- **MVP**: **Alpaca** (paper US equity, developer-first, gratuito).
+- **Produzione**: **IBKR** — la transizione deve essere **facile**, i due broker **intercambiabili** (stesso contratto I/O, cambia solo l'adapter attivo).
 - Espone un'interfaccia identica per il backend **backtest** ([[system/modules/quant-backtesting]]): stessa logica del codice live, replay su dati storici.
 - Logga ogni evento in `transactions` (area Log del DB → [[system/modules/data-layer]]).
+- CCXT resta candidato come layer per il futuro multi-asset, ma per l'equity gli SDK ufficiali (Alpaca/`ib_insync`) sono più adatti. Provider in [[system/data-providers]].
 
-> **Nota scope (2026-05-23)**: progetto **stock-only** (non crypto). L'exchange per la fase demo/paper non è ancora scelto (Alpaca, Interactive Brokers o altri). CCXT è il candidato come layer di astrazione, ma potrebbe non coprire tutti gli exchange equity → valutare librerie dedicate (es. `alpaca-trade-api`). Provider in [[system/data-providers]].
+### Transaction cost auto-adattivo (decisione 2026-06-02)
+Niente costo hardcodato. L'adapter del broker **espone le commissioni reali applicate sul momento**, in funzione di broker, tipo di asset, size e quant'altro. Il costo (più il costo token del ciclo) è sottratto dal profitto atteso per ottenere la **net performance**. Così il backtest e il live usano lo stesso modello di costo, sempre aggiornato. Vedi [[system/modules/quant-backtesting]].
 
 ---
 
@@ -76,9 +87,11 @@ La conversione `research_state → transazione` **non richiede un LLM**: una fun
 
 ## Domande aperte
 
-- **Exchange per paper trading stock**: Alpaca (API gratuite US equity) vs Interactive Brokers (copertura ampia, setup complesso) vs altri.
-- **CCXT per equity**: verificare la copertura o usare libreria dedicata.
-- **Meccanismo di disinvestimento ottimale**: come scegliere deterministicamente quale asset vendere per liberare liquidità senza intaccare il 10% cash (logica Statuto in [[system/modules/agents]]).
+- ~~**Exchange per paper trading**~~ → **CHIUSO**: Alpaca per MVP, IBKR per prod, adapter intercambiabili (vedi sopra).
+- **`entry_price` del limit order**: come si calcola (pivot / % sotto prezzo / range 52w)? Da strutturare bene → [[system/state-schemas]].
+- **Position sizing**: formula da definire (relativo al portafoglio, scalato per conviction) → [[system/position-sizing]].
+- **Meccanismo di disinvestimento ottimale**: quale asset vendere per liberare liquidità senza intaccare il 10% cash → [[system/rating-scoring]] + logica Statuto in [[system/modules/agents]].
+- **Sizing opzioni**: diverso dall'equity spot, fuori MVP → [[strategy/questions-for-salvatore]].
 
 ---
 

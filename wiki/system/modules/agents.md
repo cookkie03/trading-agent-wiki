@@ -55,7 +55,8 @@ Il PM è un **agente LLM** con potere decisionale ed esecutivo (il "CEO" / "GOAT
 
 - **Si attiva in 2 casi**: (a) un **alert** (solo numerico/prezzo, dal calendario/target via [[system/modules/data-layer]]); (b) la **periodical synthesis** (state sintetico a intervalli fissi con rendicontazione + market). Per il resto resta libero, si attiva e orchestra: chiama agenti → li fa ragionare → genera trade → scrive nel DB.
 - **Override**: news contro l'idea → cancella/ribalta la posizione.
-- **Desk di origination** (i due desk analisti) chiamati dal PM come tool. Serve anche un **desk di monitoring/evaluation** che sorveglia le posizioni esistenti e rifà il processo quando le news cambiano la tesi (evita target obsoleti o posizioni di segno opposto sullo stesso titolo).
+- **Desk di origination** (i due desk analisti) chiamati dal PM come tool. Serve anche un **desk di monitoring/evaluation** che sorveglia le posizioni esistenti e rifà il processo quando le news cambiano la tesi (evita target obsoleti o posizioni di segno opposto sullo stesso titolo). **Punto di partenza per il design: la dashboard SFC Streamlit** ([[prior-art/libraries/sfc-portfolio-tracker]]) — decisione 2026-06-02.
+- **Orchestrazione multi-ticker** (come il PM analizza N ticker in parallelo senza mescolare gli state) e **criteri di "info sufficienti"** (quando decidere di fare/non fare un trade, evitando loop infiniti): alternative di design in **[[system/parallelism-design]]**.
 
 ### Attivazione e mercati efficienti
 Le **API funzionano solo a richiesta** (no push news). Risoluzione via **teoria dei mercati efficienti**: i prezzi riflettono le informazioni → un **prezzo anomalo** attiva il monitoring, che poi cerca la spiegazione (news, tassi). Coerente col mid-term: non serve reazione istantanea. Lo **switch di autonomia** si dà nel **system prompt**: "rendere ogni agente quanto più autonomo possibile" è il vero valore aggiunto.
@@ -74,7 +75,9 @@ Due desk (decisione consolidata dal canvas, chiude il dubbio "2 vs 4 agenti"):
 I due desk fanno un **loop di conversazione** e convergono su un `research_state`.
 
 ### `research_state` = tesi di investimento completa
-Non solo l'idea, ma: `buy/hold/sell` + **target price entrata + uscita + stop loss + sizing** + pro/contro + livello di **convinzione**. Versionato (`alpha`/v1), esiti `approved`/`declined`.
+Non solo l'idea, ma: `buy/hold/sell` + **target price entrata + uscita + stop loss + sizing** + pro/contro + livello di **convinzione**. Versionato (`alpha`/v1), esiti `approved`/`declined`. **Schema dettagliato e contratto dei campi → [[system/state-schemas]]** (tutti i campi obbligatori; `position_sizing` incluso, vedi [[system/position-sizing]]).
+
+> **Conviction level** assegnato dal **Portfolio Manager** date le info degli analisti (decisione 2026-06-02). Fa parte del più ampio [[system/rating-scoring]] (conviction sul trade · scoring del lavoro degli agenti · rating asset per il disinvestimento).
 
 > **Head of Analyst eliminato**: il moderatore anti-bias era ridondante. Gli analisti sono la tesi bullish, il Risk Analyst è l'antitesi bearish.
 
@@ -153,11 +156,15 @@ Obiettivo: **pochi schema potenti e dettagliati**, non tanti frammentati. Patter
 
 ## TODO / Decisioni aperte
 
-- Integrare i **Dynamic Temporal Checkpoints** nello `research_state` (l'AI definisce il prossimo check temporale).
+- Schema finale di `research_state` / `investment_state` → **bozza in [[system/state-schemas]]** (da raffinare).
+- Formula di **position sizing** → **[[system/position-sizing]]**.
+- **Orchestrazione multi-ticker** + criteri "info sufficienti" + max iterazioni → **[[system/parallelism-design]]**.
+- Sistema di **rating/scoring** (conviction, agenti, asset) → **[[system/rating-scoring]]**.
+- Integrare i **Dynamic Temporal Checkpoints** nello state (`next_check_date`).
 - Dove vive l'aggregazione/validazione del segnale `Strong`.
-- Valutare l'architettura **debate** del Risk (quanti agenti, quali prospettive, se mantenerla efficientata).
-- Schema finale di `research_state` / `investment_state` (TypedDict + Pydantic).
-- Design del **desk di monitoring/evaluation** delle posizioni esistenti.
-- Ruolo esatto del nodo **`mantainer`** nel grafo.
+- Valutare l'architettura **debate** del Risk (quanti agenti, quali prospettive).
+- Design del **desk di monitoring/evaluation** (partire da SFC Streamlit).
+- ~~Ruolo del nodo `mantainer`~~ → **confermato** (technical → rendicontazione, vedi [[system/modules/data-layer]]).
+- Regole dello **Statuto**: capire quali info dargli e in quale forma (template/wireframe) — vedi [[system/decision-log]].
 
 *Vedi [[system/decision-log]] per le decisioni aperte e [[system/architecture]] per la vista d'insieme.*

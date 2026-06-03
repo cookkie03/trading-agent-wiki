@@ -2,6 +2,17 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-03] review pre-sviluppo | Risposte di Luca alle lacune → nuove pagine + board come hub
+
+- **Trigger**: "cosa manca da capire/decidere prima dello sviluppo" → analisi lacune → Luca risponde punto per punto (chat 2026-06-02, si ferma a metà) → "sistemami tutto" + "usa la board come centrale operativa con riferimenti" + "salva la convenzione in CLAUDE.md" + "distingui owner pagine/task".
+- **Lette le 2 call del 2026-05-29** (`raw/archived/`): confermato ruolo `mantainer` (technical → rendicontazione) e modello di attivazione (alert prezzo/news + periodical synthesis).
+- **Nuove pagine create**: [[system/state-schemas]], [[system/position-sizing]] (con spiegazione Kelly), [[system/rating-scoring]], [[system/parallelism-design]], [[strategy/questions-for-salvatore]].
+- **Pagine aggiornate**: [[system/decision-log]] (9 decisioni chiuse nuove + tabella aperte con colonna Owner + riferimenti), [[system/modules/data-layer]] (storage time-series, mantainer confermato, queue extractor, deploy/recovery), [[system/modules/execution]] (adapter broker intercambiabili, transaction cost auto-adattivo), [[system/modules/agents]] (conviction dal PM, monitoring da SFC, link), [[system/modules/quant-backtesting]] (calcolo fattori interno, VectorBT, link Salvatore), [[system/stack]] (broker Alpaca→IBKR), [[_meta/glossario]] (Kelly, overfitting, conviction, adapter, time-series, subgraph), [[system/ideas-log]] (sezione 2026-06-02).
+- **Board ridisegnata** ([[artifacts/project-board]]): centrale operativa, owner 🛠/📈/🔀 + `→ [[pagina]]` su ogni card, prossimi 2 passi in testa.
+- **CLAUDE.md**: nuova sezione "Centrale operativa — la Board" (convenzione board-hub, owner, riferimenti, creare pagine).
+- **Meta**: [[_meta/index]] (6 link nuovi), [[_meta/hot-cache]] (sessione + decisioni). `taxonomy.md` invariato.
+- **Da riprendere**: punti dell'analisi lacune a cui Luca non ha ancora risposto (B3 parziale, ecc.).
+
 ## [2026-05-29] refactor strutturale | Riorganizzazione completa per argomento + moduli da canvas
 
 - **Trigger**: "rifattorizzare completamente la struttura tree e di file della wiki" → "eliminiamo references" → "i moduli vanno rifatti, non rispettano `architettura.canvas`"

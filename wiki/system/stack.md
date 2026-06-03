@@ -31,9 +31,12 @@ Scelte tecnologiche confermate per il progetto. Ogni voce ha una motivazione o u
 
 | Componente | Scelta | Motivazione |
 |------------|--------|-------------|
-| Exchange MVP | **Binance Testnet** | Paper trading, zero rischio, API complete, dati storici |
-| Libreria exchange | **CCXT** | Supporta 100+ exchange con stessa interfaccia — cambio exchange = cambio config |
+| Broker MVP | **Alpaca** (paper) | US equity, developer-first, paper gratuito globale. Stock-only (2026-05-23) |
+| Broker prod | **Interactive Brokers (IBKR)** | Copertura ampia (equity int.le, futures, opzioni), API robusta, disponibile in Italia |
+| Astrazione broker | **Adapter per broker** | Un wrapper per broker che traduce l'API in interfaccia interna standard → broker intercambiabili come i provider LLM (2026-06-02). Vedi [[system/modules/execution]] |
+| Libreria | Alpaca SDK / `ib_insync` · CCXT per futuro multi-asset | SDK ufficiali per equity; CCXT come layer quando si allarga oltre l'equity |
 | Tipo ordini | **Limit order + SL + TP** | Obbligatori, hard constraint. Senza SL/TP → drawdown devastanti |
+| Costi transazione | **Auto-adattivi dall'adapter** | Commissioni reali esposte dal broker sul momento (no hardcoded) → net performance |
 
 ## Database
 

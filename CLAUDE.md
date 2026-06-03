@@ -24,6 +24,15 @@ Inizio sessione — leggere in ordine:
 2. `wiki/overview.md`
 3. pagine operative o build collegate (vedere hot-cache per i link rilevanti)
 
+## Centrale operativa — la Board
+
+`wiki/artifacts/project-board.md` è la **centrale operativa** e il **file di partenza per le valutazioni umane**. Regole:
+
+1. **Riferimento sempre presente**: ogni card azionabile (task, decisione, idea) termina con il link alla pagina di dettaglio `→ [[pagina]]`. Niente voci "orfane": se una cosa va decisa/fatta, deve puntare a dove si approfondisce. Se la pagina non esiste ancora, **crearla**.
+2. **Owner esplicito**: ogni card e ogni pagina indica per chi è — 🛠 Luca (software) · 📈 Salvatore (mercato) · 🔀 condiviso. Sulle pagine l'owner si esprime col campo frontmatter `area` (`software`/`strategy`/`market`/…) e, dove utile, col marker nell'index.
+3. **La board è uno specchio aggiornato**: ad ogni sessione, ogni nuova decisione/idea/task — anche non richiesto esplicitamente — va riflesso nella board, nella categoria giusta (💡 Idee · 🔴 Da fare · 🟡 In corso · 🟠 Decisioni da prendere · ✅ Fatto). Le decisioni chiuse migrano in ✅ e nel `decision-log`.
+4. **Creare pagine quando serve**: salvare le informazioni in pagine dedicate, facilmente consultabili da un umano, ogni volta che è utile — non lasciarle solo nei log o nella chat.
+
 ## Regole Fondamentali
 
 1. `raw/` è la zona di ingresso. Dopo l'ingest i file vanno in `raw/archived/` — non si cancellano.

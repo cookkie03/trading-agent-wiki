@@ -5,7 +5,7 @@ tags:
   - build
   - roadmap
 created: 2026-05-21
-updated: 2026-05-27
+updated: 2026-06-03
 status: active
 area: software
 ---
@@ -13,6 +13,33 @@ area: software
 # Ideas Log
 
 File append-only per le idee emerse durante lo sviluppo del progetto. Non si cancella mai nulla; al massimo si aggiunge una nota di stato o si categorizza.
+
+---
+
+## 2026-06-02 — Sessione di review pre-sviluppo (Luca)
+
+*Fonte: chat 2026-06-02 + call 2026-05-29. Idee/spunti emersi mentre Luca rispondeva all'analisi delle lacune.*
+
+### Sistema di rating/scoring a livelli
+Valutazioni "a level" con punteggi categorizzati in più punti del sistema: conviction sul trade, **valutazione del lavoro di ogni agente** (capire cosa migliorare e come), rating degli asset per il disinvestimento. → formalizzata in [[system/rating-scoring]].
+
+### Scheda ticker auto-aggiornante
+Un DB dove ogni ticker ha la sua scheda/page con valutazione corrente, che si auto-aggiorna; gli agenti devono distinguere e cancellare le info vecchie/obsolete/confutate. Difficile ma potente. → [[system/parallelism-design]] (alternativa B).
+
+### Layer di "valutatori" per ticker
+Layer intermedio tra PM e desk: un valutatore per ticker, ognuno in un thread separato, chiama i desk analisti. Parallelismo + isolamento. → [[system/parallelism-design]] (alternativa A).
+
+### "News anomale" come miccia dell'origination
+L'origination di un'idea parte da una miccia: news anomale / cose strane che arrivano dal blocco `market` (viola) verso il centro del grafo. Possibile terzo tipo di alert che attiva il PM (oltre a prezzo-target e periodical synthesis): *"l'idea è valida, facciamola"*.
+
+### "TV/dashboard del DB" (TG24)
+Una vista in stile canale di news che mostra lo stato del DB (portafoglio, mercati): nel DB c'è tutto, la dashboard lo espone. Collegata alla periodical synthesis verso il PM e alla dashboard SFC.
+
+### Auto-finanziamento crediti OpenRouter
+Prelevare parte dei profitti per ricaricare automaticamente i crediti API (i costi token sono equiparati a commissioni). Prospettiva avanzata.
+
+### Cash-out mensile
+Ogni mese trasformare il *tot %* del guadagno del mese (dall'ultimo cash-out) in bonifico verso IBAN/conto deposito. Da formalizzare nello Statuto a progetto finito.
 
 ---
 

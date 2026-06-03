@@ -66,31 +66,58 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 | 2026-05-29 | **Benchmark: S&P 500 + 60/40 all-world** | Una gestione attiva ha sempre un benchmark ("numero da superare"): S&P (US, trasparente) + 60/40 Vanguard all-world. Col 10% cash il portafoglio sarà ~50/40÷55/35. Idea: selezione attiva dei titoli S&P (universo ridotto, prendere il percentile migliore). |
 | 2026-05-29 | **Investment State come gate di completezza** | Non si fa trade finché l'`investment_state` non è completo (forza il passaggio per tutti gli analisti); si resetta automaticamente quando il blocco trade rileva la transazione. |
 | 2026-05-29 | **Attivazione via mercati efficienti (no push news)** | Le API funzionano solo a richiesta (no notifiche push). Soluzione: i prezzi riflettono le informazioni → un prezzo anomalo attiva l'agente di monitoring che cerca la spiegazione. Gli **alert** sono solo numerici/prezzo; le news entrano dagli extractor periodici. Coerente con l'orizzonte long-term. |
+| 2026-06-02 | **Broker intercambiabili via wrapper/adapter** | Un file-adapter per broker (uno per Alpaca, uno per IBKR…) che traduce le API del servizio in un'interfaccia interna standardizzata. Il broker si cambia come si cambia il provider LLM in TradingAgents. **Alpaca per l'MVP** (paper US equity, developer-first), transizione a **IBKR** resa facile. Vedi [[system/modules/execution]]. |
+| 2026-06-02 | **Storage: principalmente time-series** | Forma di storage prevalentemente **time-series**, ma con DB e **architetture a oggetti** internamente (riga=posizione/oggetto, colonne=caratteristiche). Chiude in parte la domanda aperta "forma di storage per area". Vedi [[system/modules/data-layer]]. |
+| 2026-06-02 | **Approccio incrementale (alpha-first)** | Prima mettere in funzione un software con un'**idea base** che gira, poi aggiungere pezzi per migliorarlo (fattori, sizing avanzato, backtesting, scoring…). Vale anche per la raccolta dello storico dati: si raccoglie *mentre* l'alpha gira. Survivorship bias e robustezza statistica si affrontano a sistema maturo. |
+| 2026-06-02 | **Extractor: DB-first con queue + check presenza** | Gli extractor si chiamano **solo se l'info non è già nel DB** (check preventivo *prima* di accodare la richiesta). Un extractor per vendor che riceve le richieste in un **queue system** e autogestisce i rate limit di estrazione. Vedi [[system/modules/data-layer]]. |
+| 2026-06-02 | **Transaction cost auto-adattivo** | Niente costo hardcodato: una struttura che presenta agli agenti **le commissioni reali applicate sul momento**, in funzione di broker, tipo di asset, size, ecc. Sottratte dal profitto atteso (net performance). Vedi [[system/modules/quant-backtesting]] e [[system/modules/execution]]. |
+| 2026-06-02 | **Conviction level assegnato dal Portfolio Manager** | Il `conviction_level` del trade è assegnato dal **PM** date le informazioni degli analisti. Da confermare in fase di mappatura del grafo. Vedi [[system/rating-scoring]] e [[system/state-schemas]]. |
+| 2026-06-02 | **Ruolo del `mantainer` confermato** | Processo non-LLM che **trasforma i dati `technical`/transactions in `rendicontazione`** (portfolio accounting) e la tiene aggiornata nel DB. Vedi [[system/modules/data-layer]]. |
+| 2026-06-02 | **Deploy su mini-server di casa** | Il sistema gira sul **Minisforum (mini-server) di Luca, acceso 24/7 in casa**. Secrets in **`.env` locale** per ora. Vedi [[system/modules/data-layer]]. |
+| 2026-06-02 | **`research_state`: tutti i campi obbligatori; sizing incluso** | Tutti i campi del `research_state` sono obbligatori (gate di completezza). Il `position_sizing` è un **campo dello state** da cui la funzione Trade estrae l'ordine. Vedi [[system/state-schemas]]. |
 
 ---
 
 ## Decisioni ancora aperte
 
-| Tema | Contesto | Dove si risolve |
-|------|----------|-----------------|
-| **Strategia del fondo** | Orientamento: multi-factor fundamentals, ma non formalizzato con Salvatore | [[system/modules/quant-backtesting]] |
-| **Frequenza ciclo** | 4h vs 24h — dipende da backtest iniziali | [[system/modules/quant-backtesting]] |
-| **Trading singolo vs Portfolio bilanciato** | ~~Aperta~~ → **CHIUSA 2026-05-29**: portfolio / mid-term confermato, no day trading. Vedere decisioni chiuse. | — |
-| **Multi-asset vs solo cripto** | ~~Aperta~~ → **CHIUSA 2026-05-23**: stock-only prima, poi multi-asset (commodities, BTC only, derivati). Vedere decisioni chiuse. | — |
-| **Cash-out strategy** | Quale % dei profitti estratta periodicamente? Regola da mettere nello statuto | [[system/modules/agents]] |
-| **Regole specifiche dello Statuto** | Esposizione massima per asset, vendite automatiche, max drawdown consentito. Statuto in stile istituzionale generico | [[system/modules/agents]] |
-| **Meccanismo di disinvestimento ottimale** | Come calcolare deterministicamente quale asset vendere per fare spazio a nuove idee senza intaccare il 10% cash | [[system/modules/agents]] |
-| **Algoritmo token cost estimator** | Implementazione del tracciamento token e logica di ricarica automatica API | [[system/modules/agents]] |
-| **Includere modulo TA?** | Rischio di corrompere il Prediction Module DL. Test A/B con/senza | [[system/modules/quant-backtesting]] |
-| **Frequenza invocazione LLM Trader** | Vincolo tecnico + costo API. Dipende da tempo elaborazione moduli | [[system/modules/agents]] |
-| **Dynamic Temporal Checkpoints** | Definizione dell'autolimitazione temporale del Trader nel JSON structured (prossimo check controllato dall'AI) | [[system/modules/agents]] |
-| **Fine-tuning vs Continuous Learning** | Continuous learning real-time è problema aperto; fine-tuning periodico più praticabile | post-MVP |
-| **Exchange decentralizzato (DEX)** | Quando ha senso passare a un DEX anonimo (no KYC) rispetto a Binance? | post-MVP |
-| **Struttura wiki quant** | Sezione strategie da costruire man mano che Salvatore porta materiale | [[_meta/index]] |
-| **Fork vs from scratch** | ~~Aperta~~ → **CHIUSA 2026-05-19**: fork da TradingAgents (TauricResearch) confermato. Vedere decisioni chiuse. | — |
-| **Self-scheduling vs cron** | Orientamento 2026-05-29: agenti **asincroni** attivati da **alert** (numerici/prezzo) o da **periodical synthesis** a intervalli fissi; adaptive extractor con frequenza variabile per rispettare i rate limit | [[system/modules/agents]] |
-| **Analisti: 2 o 4 agenti?** | Tenere 4 ruoli separati (market, sentiment, fondamentale, technical) o 2 agenti con 2 moduli interni ciascuno. Da decidere a sviluppo | [[system/modules/agents]] |
-| **Indicatori di sentiment** | Il sentiment non ha indicatori propri standard (solo indici di paura) → da inventare/definire. Posizione ibrida col technical | [[system/modules/quant-backtesting]] |
-| **Desk di monitoring/evaluation** | Serve un agente/desk che sorvegli le posizioni esistenti e rifaccia il processo quando le news cambiano la tesi (evita target obsoleti e posizioni di segno opposto). Design da definire | [[system/modules/agents]] |
-| **Forma di storage per area** | SQL relazionale vs JSON/documentale vs time-series: quale per quale dato (rendicontazione, states, dati live)? Forme non ancora considerate? (daily note 2026-05-28) | [[system/modules/data-layer]] |
-| **Debate architecture** | ~~Aperta~~ → **CHIUSA 2026-05-26**: Bull/Bear agents eliminati. Risk debate da ridisegnare con meno agenti e system prompt mirati (la struttura a 3 agenti Risk potrebbe restare se efficientata). Vedere decisioni chiuse. | — |
+> Owner: 🛠 Luca (software) · 📈 Salvatore (mercato) · 🔀 condiviso.
+
+| Owner | Tema | Contesto | Dove si risolve |
+|-------|------|----------|-----------------|
+| 🛠 | **Schema `research_state`/`investment_state`** | Prima bozza pronta; campi e tipi da raffinare con Luca | [[system/state-schemas]] |
+| 🛠 | **Formula di position sizing** | Relativo al portafoglio (deciso); scalato per conviction; Kelly come obiettivo evolutivo | [[system/position-sizing]] |
+| 🛠 | **`entry_price` per i limit order** | Da strutturare bene (pivot? % sotto prezzo? range 52w?). Punto da valutare con attenzione | [[system/state-schemas]] |
+| 🛠 | **Parallelismo multi-ticker** | Layer valutatori / scheda DB auto-aggiornante / ibrido / coda / screening. Subgraph vs nodi | [[system/parallelism-design]] |
+| 🔀 | **Criteri "info sufficienti" del PM + max iterazioni** | Quando decidere di fare/non fare un trade; evitare loop infiniti | [[system/parallelism-design]] |
+| 🛠 | **Graceful shutdown & recovery** | Meccanismo di inizializzazione e ripresa dal punto precedente dopo un crash (checkpointing LangGraph) | [[system/modules/data-layer]] |
+| 📈 | **VaR: quale e come** | Parametrico/storico/MonteCarlo, VaR vs CVaR, lookback, VaR incrementale | [[strategy/questions-for-salvatore]] |
+| 📈 | **Prevenzione overfitting** | Walk-forward, in/out-of-sample, CPCV | [[strategy/questions-for-salvatore]] |
+| 📈 | **Test statistici sul benchmark** | Dimostrare significatività vs S&P/60-40 | [[strategy/questions-for-salvatore]] |
+| 📈 | **Base dei rating asset (disinvestimento)** | Su cosa basare lo score e come tenerlo aggiornato | [[system/rating-scoring]] · [[strategy/questions-for-salvatore]] |
+| 📈 | **Strategia opzioni (leva)** | Strike/scadenza/contratti/dati. Fuori MVP | [[strategy/questions-for-salvatore]] |
+| 📈 | **Strategia del fondo** | Orientamento: multi-factor fundamentals, ma non formalizzato con Salvatore | [[system/modules/quant-backtesting]] |
+| 🔀 | **Frequenza ciclo** | 4h vs 24h — dipende da backtest iniziali | [[system/modules/quant-backtesting]] |
+| 📈 | **Cash-out strategy** | Orientamento (Luca 2026-06-02): ogni mese trasformare il *tot %* del guadagno del mese (dall'ultimo cash-out) in bonifico verso IBAN/conto deposito. Da formalizzare nello Statuto, **a progetto finito**. | [[system/modules/agents]] |
+| 📈 | **Regole specifiche dello Statuto** | Esposizione massima per asset, vendite automatiche, max drawdown. Statuto istituzionale generico. Prima capire *quali info* dargli e in *quale forma* (template/wireframe) | [[system/modules/agents]] |
+| 🛠 | **Meccanismo di disinvestimento ottimale** | Come scegliere deterministicamente quale asset vendere senza intaccare il 10% cash. Legato ai rating asset | [[system/rating-scoring]] · [[system/modules/execution]] |
+| 🛠 | **Algoritmo token cost estimator** | Tracciamento token e ricarica automatica API. Vedi anche transaction cost auto-adattivo | [[system/modules/agents]] |
+| 🔀 | **Includere modulo TA?** | Rischio di corrompere il modulo di predizione. Test A/B con/senza | [[system/modules/quant-backtesting]] |
+| 🛠 | **Dynamic Temporal Checkpoints** | `next_check_date` nello state: prossimo check deciso dall'AI | [[system/state-schemas]] · [[system/modules/agents]] |
+| 🛠 | **Fine-tuning vs Continuous Learning** | Continuous learning real-time è problema aperto; fine-tuning periodico più praticabile | post-MVP |
+| 🛠 | **Exchange decentralizzato (DEX)** | Quando ha senso passare a un DEX anonimo (no KYC)? | post-MVP |
+| 📈 | **Struttura wiki quant** | Sezione strategie da costruire man mano che Salvatore porta materiale | [[_meta/index]] |
+| 🛠 | **Analisti: 2 o 4 agenti?** | 4 ruoli separati o 2 agenti con 2 moduli interni ciascuno. Da decidere a sviluppo | [[system/modules/agents]] |
+| 📈 | **Indicatori di sentiment** | Nessun indicatore standard (solo indici di paura) → da inventare. Posizione ibrida col technical | [[system/modules/quant-backtesting]] · [[strategy/questions-for-salvatore]] |
+| 🔀 | **Desk di monitoring/evaluation** | Agente che sorveglia le posizioni e rifà il processo quando le news cambiano la tesi. **Partire dalla dashboard SFC Streamlit** | [[system/modules/agents]] |
+| 🛠 | **Forma di storage fine per area** | Time-series deciso come base; resta da assegnare la forma fine per stato/dato (states annidati → JSON?) | [[system/modules/data-layer]] |
+
+### Decisioni aperte ora chiuse
+| Tema | Esito |
+|------|-------|
+| Trading singolo vs Portfolio bilanciato | **CHIUSA 2026-05-29**: portfolio / mid-term, no day trading |
+| Multi-asset vs solo cripto | **CHIUSA 2026-05-23**: stock-only, poi multi-asset |
+| Fork vs from scratch | **CHIUSA 2026-05-19**: fork da TradingAgents |
+| Debate architecture | **CHIUSA 2026-05-26**: Bull/Bear eliminati |
+| Self-scheduling vs cron | **CHIUSA 2026-05-29**: alert (prezzo/news) + periodical synthesis a intervalli fissi |
+| Forma di storage (base) | **CHIUSA 2026-06-02**: principalmente time-series + oggetti |
+| Frequenza invocazione (vincolo tecnico) | Confluita in "Frequenza ciclo" + transaction/token cost |

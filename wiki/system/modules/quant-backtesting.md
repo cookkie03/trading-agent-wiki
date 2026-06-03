@@ -61,6 +61,10 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 
 **Principio di parametrizzazione**: ogni indicatore è un tool che accetta parametri in input (es. `moving_average(period=N)`), non valori hardcodati. L'agente può sperimentare diversi valori senza toccare il codice.
 
+**Principio di calcolo interno (2026-06-02)**: dai vendor si estraggono **solo le osservazioni grezze**; tutte le metriche calcolabili (P/E e i suoi 5 tipi, ratio, metriche derivate) si **calcolano internamente** dai dati grezzi già nel DB e si riscrivono nel DB. Questo centralizza accesso in lettura/scrittura e riduce le chiamate esterne. Luca: *«i dati calcolabili si calcolano internamente senza richieste, da lì si calcolano anche le metriche derivate, estraendo dai vendor solo le osservazioni»*.
+
+**Fattori come "vocabolario" per l'agente**: i fattori devono poter essere **calcolati in grande quantità**; sarà l'agente AI a saperli usare/combinare/valutare. Compito di Luca: dargli gli **strumenti** (tool di calcolo), non la logica d'uso. Salvatore prepara il vocabolario di metriche (market driver + indicatori di valuation) → [[strategy/questions-for-salvatore]]. Approccio **incrementale**: prima un set base funzionante, poi si aggiungono fattori.
+
 ### Posizione di Salvatore su TA, fondamentali e sentiment (2026-05-29)
 *Fonte: call del 2026-05-29.*
 - **Analisi tecnica usata bene** (non "candele alla guru di Dubai"): minimi/massimi a **52 settimane**, range del prezzo e suoi sforamenti, **drawdown**, **volumi**, capire cosa è successo nel giorno di uno sforamento. Serve ad avere "il quadro" (come una dashboard vs dati grezzi), non a fare trading da grafico. Posizione **ibrida col sentiment**.
@@ -72,10 +76,12 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 
 ## Tech
 
-- **VectorBT**: framework backtesting. Gestisce costi di transazione (10bps per trade). Stessa logica del codice live.
+- **VectorBT**: framework Python di backtesting **vettorizzato** (lavora su intere serie storiche con pandas/numpy, molto veloce — testa molte combinazioni di parametri in poco tempo). Usato da MarketSenseAI. Spiegazione nel [[_meta/glossario]].
+- **Costi di transazione**: niente più "10bps fisso" → modello **auto-adattivo** che usa le commissioni reali esposte dall'adapter del broker ([[system/modules/execution]]).
 - **Dati**: da `market_data` nel DB di [[system/modules/data-layer]] (OHLCV stock, timeframe 4h/daily)
 - **Metriche obbligatorie**: Sharpe ratio, Sortino ratio, Max Drawdown, Win Rate, Calmar ratio
-- **Insidie da evitare**: look-ahead bias (non usare dati non ancora disponibili al momento del trade)
+- **Insidie da evitare**: look-ahead bias; **overfitting** e **significatività statistica vs benchmark** → da definire con Salvatore in [[strategy/questions-for-salvatore]].
+- **Storico dati**: non abbiamo ancora anni di storico → si raccoglie *mentre* l'alpha gira; il modulo backtesting si aggiunge incrementalmente. Survivorship bias affrontato a sistema maturo.
 
 ---
 
@@ -91,11 +97,11 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 
 > Queste domande bloccano o influenzano la progettazione del modulo.
 
-- **Quale strategia quantitativa esatta?** Multi-factor è l'orientamento, ma Salvatore deve portare i fattori concreti. *Da risolvere in sessione con Salvatore.*
+- **Quale strategia quantitativa esatta?** Multi-factor è l'orientamento, ma Salvatore deve portare i fattori concreti → [[strategy/questions-for-salvatore]].
+- **VaR, overfitting, test statistici sul benchmark** → tutti da definire con Salvatore in [[strategy/questions-for-salvatore]].
 - **Frequenza ciclo: 4h vs 24h?** Dipende dai primi backtest — quale timeframe ha più segnale/rumore per swing trading equity?
 - **Modulo TA da includere?** Rischio: TA mal calibrata corrompe l'output. Progettare come modulo opzionale e testare A/B (con/senza).
 - **Multi-asset o singolo asset nel backtest iniziale?** MVP singolo asset, ma il codice deve supportare multi-asset per il futuro.
-- **Quanti dati storici necessari?** Per avere backtest statisticamente significativi su swing trading equity.
 
 ---
 

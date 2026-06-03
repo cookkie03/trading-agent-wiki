@@ -3,10 +3,14 @@
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
 ## Sessione Corrente
-- **Data**: 2026-05-29
+- **Data**: 2026-06-03
 - **Agent**: Claude Code (Opus)
-- **Operazione principale**: **Refactor strutturale completo del wiki**. (1) `build/` → `system/`; (2) `references/` **eliminata**: prior-art esterno → `prior-art/{tradingagents,libraries,papers}/`, le 8 call + handwritten-notes **dissolte** (sostanza già nelle pagine tematiche, grezzi in `raw/archived/`, provenienza ora inline come date), note-audio-salvatore → nuova `strategy/methods/dual-portfolio`, tool-set → `system/data-providers`, onboarding → `_meta/`, trading-floor-canvas → `artifacts/`. (3) **Moduli ricreati sul canvas `architettura.canvas`**: i 4 file legacy (exchange-db/llm-agent-system/risk-management + quant) sostituiti da **`data-layer` · `agents` · `execution` · `quant-backtesting`**. (4) Riscritti tutti i wikilink path-qualified + bare; aggiornati taxonomy, index, overview; `log.md` lasciato come storico.
-- **Decisioni di struttura prese con Luca**: dissolvi-del-tutto le call (date inline, no journal); naming inglese; PM = **agente LLM orchestratore** (umano solo override iniziale); decomposizione moduli **per aree del canvas** (4 file).
+- **Operazione principale**: **Review pre-sviluppo + risposta alle lacune**. Luca ha risposto a un'analisi delle cose ancora da decidere/capire. Create **5 nuove pagine** (`system/state-schemas`, `system/position-sizing`, `system/rating-scoring`, `system/parallelism-design`, `strategy/questions-for-salvatore`); aggiornati decision-log, data-layer, execution, agents, quant-backtesting, stack, glossario, ideas-log, index. **Board ridisegnata come centrale operativa** (owner + riferimento pagina su ogni card). Nuova sezione in **CLAUDE.md** che formalizza la board come hub + convenzione owner/riferimenti.
+- **Prossimi due passi concordati**: 1) strutturare lo schema dello state ([[system/state-schemas]]); 2) definire la formula di position sizing ([[system/position-sizing]]).
+- **Da riprendere**: Luca si è fermato a metà — ci sono altri punti dell'analisi delle lacune a cui non ha ancora risposto (riprende domani).
+
+### Sessione precedente (2026-05-29)
+- **Refactor strutturale completo del wiki**: `build/`→`system/`, `references/` eliminata, moduli ricreati su `architettura.canvas` (`data-layer`/`agents`/`execution`/`quant-backtesting`). Decisioni: dissolvi le call (date inline); naming inglese; PM = agente LLM orchestratore.
 
 ## Stato attuale del progetto
 - Fase: **Design → sviluppo in preparazione**
@@ -48,6 +52,14 @@ wiki/
 - **quant-backtesting** — strategia quant + VectorBT (offline, non nel canvas)
 
 ## Decisioni chiuse importanti (recenti)
+- **Broker intercambiabili via adapter** — Alpaca MVP → IBKR prod (2026-06-02)
+- **Storage principalmente time-series + oggetti** (2026-06-02)
+- **Extractor DB-first con queue + check presenza** (2026-06-02)
+- **Transaction cost auto-adattivo** (no hardcoded) (2026-06-02)
+- **Conviction level assegnato dal PM** (2026-06-02)
+- **`mantainer` = technical → rendicontazione** (confermato 2026-06-02)
+- **Deploy su mini-server di casa 24/7 + .env locale** (2026-06-02)
+- **Approccio incrementale (alpha-first)** (2026-06-02)
 - **Portfolio / mid-term confermato, NO day trading** (2026-05-29)
 - **OpenRouter + DeepSeek V4 Pro** come provider/modello principale (2026-05-29)
 - **Trader = funzione Python deterministica (NON agent)** (2026-05-29)
@@ -62,8 +74,10 @@ wiki/
 - **Statuto & 10% cash · Leva via Opzioni · Token cost = commissioni · Business Model Piero** (2026-05-27)
 
 ## Decisioni ancora aperte (priorità)
-- **Forma di storage per area** (SQL/JSON/time-series) + exchange paper trading equity
-- **Ruolo esatto del nodo `mantainer`** nel grafo (nuovo dal canvas)
+> Lista completa e navigabile in [[artifacts/project-board]] (sezione 🟠) e [[system/decision-log]].
+- **Schema state** + **formula position sizing** (i due prossimi passi)
+- **`entry_price` limit order** · **parallelismo multi-ticker** · **criteri info-sufficienti**
+- **VaR / overfitting / test benchmark / rating asset / opzioni** → [[strategy/questions-for-salvatore]]
 - **Indicatori di sentiment**: da inventare — con Salvatore
 - **Desk di monitoring/evaluation**: design dell'agente che sorveglia le posizioni
 - **Strategia del fondo**: da formalizzare con Salvatore (multi-factor)
@@ -78,7 +92,8 @@ wiki/
 - `raw/daily-notes/model.md` = template vuoto (resta)
 
 ## Da fare prossima sessione
-- Verificare in Obsidian che la graph view non abbia orfani inattesi dopo il refactor
-- Confermare con Luca il ruolo del nodo **`mantainer`** e completare i moduli se serve
-- Decidere **forma di storage per area** + exchange paper trading equity
+- **Riprendere i punti dell'analisi lacune a cui Luca non ha ancora risposto** (si è fermato a metà)
+- Iniziare a **strutturare lo schema dello state** con Luca → [[system/state-schemas]]
+- Poi **formula di position sizing** → [[system/position-sizing]]
+- Verificare in Obsidian che la graph view non abbia orfani inattesi
 - Creare pagine metriche (`sharpe-ratio`, `max-drawdown`, `win-rate`) in `strategy/metrics/` solo quando servono

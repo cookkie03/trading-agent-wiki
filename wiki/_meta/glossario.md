@@ -5,7 +5,7 @@ tags:
   - glossary
   - reference
 created: 2026-05-13
-updated: 2026-05-13
+updated: 2026-06-03
 status: active
 area: ops
 ---
@@ -65,6 +65,15 @@ Libreria Python che ti permette di parlare con quasi tutti gli exchange (Binance
 **Tool parametrizzabile**
 Un modulo/funzione che accetta parametri in input invece di avere valori hardcodati. Es: non "calcola media mobile a 50" ma "calcola media mobile con period=N". L'AI può sperimentare diversi parametri senza toccare il codice.
 
+**Adapter / Wrapper (broker)**
+Un file che "traduce" l'API di un servizio esterno (es. Alpaca, IBKR) in un'interfaccia interna standard usata dal programma. Cambiare broker = cambiare adapter, senza toccare il resto del codice — come si cambia provider LLM in TradingAgents. Vedi [[system/modules/execution]].
+
+**Time-series DB**
+Database ottimizzato per dati indicizzati nel tempo (prezzi, indicatori, serie macro): scrittura/lettura efficiente di sequenze temporali. Forma di storage prevalente scelta per il progetto, affiancata da strutture a oggetti per la rendicontazione. Vedi [[system/modules/data-layer]].
+
+**Subgraph (LangGraph)**
+Un grafo annidato dentro un altro, con il proprio state isolato, che restituisce al grafo padre solo il risultato. Utile per analizzare più ticker in parallelo senza mescolarne gli state. Vedi [[system/parallelism-design]].
+
 ---
 
 ## Termini di Analisi Quantitativa
@@ -98,6 +107,15 @@ Più prudente del VaR: stima la perdita media nei peggiori scenari (quelli oltre
 
 **Pivot Points**
 Livelli di prezzo calcolati matematicamente dalle candele precedenti (high, low, close). Usati come riferimenti spaziali per l'LLM: "il prezzo è sopra o sotto il pivot? Vicino a supporto o resistenza?". Tutti i sistemi pratici analizzati li includono nel prompt.
+
+**Kelly Criterion**
+Formula che dice quale **frazione del capitale** puntare su un'operazione per massimizzare la crescita nel lungo periodo: `f* = p − q/b` (p = prob. vincita, q = prob. perdita, b = rapporto vincita/perdita). Es: 60% di vincita con payoff 1:1 → punta il 20%. Nel progetto lega la **size alla qualità del segnale** (conviction + storico). In pratica si usa *frazionario* (half-Kelly) perché è molto aggressivo e dipende da stime affidabili. Dettagli in [[system/position-sizing]].
+
+**Overfitting**
+Quando una strategia è "cucita" così bene sui dati storici che funziona solo sul passato e fallisce sul futuro. Si combatte con walk-forward, split in/out-of-sample, CPCV e pochi parametri liberi. Tema aperto da affrontare con Salvatore.
+
+**Conviction Level**
+Quanto il sistema è convinto di un'idea (`Strong Buy`/`Buy`/`Hold`/`Sell`/`Strong Sell`, eventualmente con score numerico). Assegnato dal Portfolio Manager. Scala il position sizing e sblocca la leva via opzioni sui segnali `Strong`. Vedi [[system/rating-scoring]].
 
 ---
 
