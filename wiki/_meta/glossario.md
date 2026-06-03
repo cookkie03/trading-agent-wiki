@@ -30,6 +30,9 @@ Ordini automatici che chiudono una posizione quando il prezzo raggiunge un certo
 - **Take Profit**: obiettivo di profitto (es. "esci se guadagni il 7%")
 → Obbligatori nel nostro sistema. Senza di essi, anche con un win rate del 66% si può subire un drawdown devastante (evidenza: progetto Simone Rizzo).
 
+**Trailing Stop Loss**
+Stop loss "dinamico" che segue il prezzo quando va a favore: se il prezzo sale, lo stop sale con lui (mantenendo una distanza fissa); se il prezzo scende, lo stop resta fermo. Blocca progressivamente il profitto e chiude in automatico se il trend si inverte. È uno dei meccanismi di **disinvestimento automatico** (vedi [[system/rating-scoring]]).
+
 **Long / Short**
 - **Long**: scommetto che il prezzo salirà (compro)
 - **Short**: scommetto che il prezzo scenderà (vendo allo scoperto)

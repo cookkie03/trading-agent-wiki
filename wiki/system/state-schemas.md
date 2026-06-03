@@ -59,7 +59,7 @@ In pratica: **un unico schema**, due stati di maturità. Il `position_sizing` vi
 | `as_of_date` | date | data dell'analisi |
 | `current_price` | float | dal DB |
 | `portfolio_context` | obj | siamo già investiti su questo ticker? quanto? (dalla rendicontazione) |
-| `past_context` | str | "lezioni apprese" da analisi precedenti sullo stesso ticker (pattern *past_context* di TradingAgents) |
+| `past_context` | str | "lezioni apprese" da analisi precedenti sullo stesso ticker (pattern *past_context* di TradingAgents). **Include il feedback post-trade segmentato per meccanismo di uscita** (come sono andati i trade passati a seconda di TP/SL/trailing/rating-based) → [[system/rating-scoring]] §4 |
 
 ### Sezione B — Analisi (chi scrive: i due desk)
 | Campo | Tipo | Compilato da |

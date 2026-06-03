@@ -11,7 +11,7 @@
 - **Board ridisegnata** ([[artifacts/project-board]]): centrale operativa, owner 🛠/📈/🔀 + `→ [[pagina]]` su ogni card, prossimi 2 passi in testa.
 - **CLAUDE.md**: nuova sezione "Centrale operativa — la Board" (convenzione board-hub, owner, riferimenti, creare pagine).
 - **Meta**: [[_meta/index]] (6 link nuovi), [[_meta/hot-cache]] (sessione + decisioni). `taxonomy.md` invariato.
-- **Da riprendere**: punti dell'analisi lacune a cui Luca non ha ancora risposto (B3 parziale, ecc.).
+- **Follow-up 2026-06-03**: Luca conferma di aver commentato l'intera analisi. Aggiunti: **subgraph come pattern granulare** ([[system/parallelism-design]]); **disinvestimento a 2 livelli** automatico/valutato ([[system/rating-scoring]], [[system/modules/execution]]); **alternative di attivazione alert** esplicitate ([[system/modules/data-layer]]); **trailing stop loss** in glossario; punto **legale parcheggiato** ([[system/ideas-log]]). Corretta la nota "fermato a metà" in hot-cache.
 
 ## [2026-05-29] refactor strutturale | Riorganizzazione completa per argomento + moduli da canvas
 

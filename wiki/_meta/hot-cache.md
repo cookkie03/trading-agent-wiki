@@ -7,7 +7,7 @@
 - **Agent**: Claude Code (Opus)
 - **Operazione principale**: **Review pre-sviluppo + risposta alle lacune**. Luca ha risposto a un'analisi delle cose ancora da decidere/capire. Create **5 nuove pagine** (`system/state-schemas`, `system/position-sizing`, `system/rating-scoring`, `system/parallelism-design`, `strategy/questions-for-salvatore`); aggiornati decision-log, data-layer, execution, agents, quant-backtesting, stack, glossario, ideas-log, index. **Board ridisegnata come centrale operativa** (owner + riferimento pagina su ogni card). Nuova sezione in **CLAUDE.md** che formalizza la board come hub + convenzione owner/riferimenti.
 - **Prossimi due passi concordati**: 1) strutturare lo schema dello state ([[system/state-schemas]]); 2) definire la formula di position sizing ([[system/position-sizing]]).
-- **Da riprendere**: Luca si è fermato a metà — ci sono altri punti dell'analisi delle lacune a cui non ha ancora risposto (riprende domani).
+- **Luca ha rivisto e commentato l'intera analisi delle lacune** (tutti i punti B + C). Input aggiuntivi 2026-06-03: **subgraph come pattern granulare** per collegare parti diverse del sistema ([[system/parallelism-design]]); **disinvestimento a 2 livelli** (automatico via TP/trailing stop + valutato rating-based) ([[system/rating-scoring]], [[system/modules/execution]]).
 
 ### Sessione precedente (2026-05-29)
 - **Refactor strutturale completo del wiki**: `build/`→`system/`, `references/` eliminata, moduli ricreati su `architettura.canvas` (`data-layer`/`agents`/`execution`/`quant-backtesting`). Decisioni: dissolvi le call (date inline); naming inglese; PM = agente LLM orchestratore.
@@ -92,7 +92,6 @@ wiki/
 - `raw/daily-notes/model.md` = template vuoto (resta)
 
 ## Da fare prossima sessione
-- **Riprendere i punti dell'analisi lacune a cui Luca non ha ancora risposto** (si è fermato a metà)
 - Iniziare a **strutturare lo schema dello state** con Luca → [[system/state-schemas]]
 - Poi **formula di position sizing** → [[system/position-sizing]]
 - Verificare in Obsidian che la graph view non abbia orfani inattesi

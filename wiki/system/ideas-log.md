@@ -41,6 +41,12 @@ Prelevare parte dei profitti per ricaricare automaticamente i crediti API (i cos
 ### Cash-out mensile
 Ogni mese trasformare il *tot %* del guadagno del mese (dall'ultimo cash-out) in bonifico verso IBAN/conto deposito. Da formalizzare nello Statuto a progetto finito.
 
+### Feedback post-trade per meccanismo di uscita
+Un sistema che fa notare agli agenti **come sono andati i trade precedenti a seconda del meccanismo di disinvestimento** adottato (TP / SL / trailing stop / rating-based). Prerequisito: campo `exit_reason` su ogni transazione. La sintesi rientra nel `past_context` degli agenti. → formalizzato in [[system/rating-scoring]] §4.
+
+### ⏸️ Parcheggiato — aspetti legali (B8)
+Gestione capitali di terzi (modello "Piero") e privacy dei dati passati agli LLM: **tenuti nel cassetto** per scelta di Luca (2026-06-02), da riprendere *se e quando* il progetto funziona. In Italia gestire denaro di terzi può configurare abusivismo finanziario (art. 166 TUF) → consulenza legale **prima** del live, non blocca lo sviluppo software.
+
 ---
 
 ## 2026-05-22 — Idee architetturali e organizzative

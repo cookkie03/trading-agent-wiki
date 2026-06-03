@@ -42,6 +42,7 @@ sources:
 - [ ] 🛠 **Auto-finanziamento crediti OpenRouter** — ricarica API dai profitti → [[system/modules/agents]]
 - [ ] 🛠 **Volume Spike Detection** — rilevatore picchi anomali di volume (baseline rolling, z-score) → [[system/modules/quant-backtesting]]
 - [ ] 🛠 **Logging strutturato della chain-of-thought** — base per scoring agenti, RL e fine-tuning → [[system/rating-scoring]]
+- [ ] 🛠 **Feedback post-trade per meccanismo di uscita** — `exit_reason` su ogni trade + sintesi nel `past_context` per gli agenti → [[system/rating-scoring]]
 - [ ] 🛠 **Continuous Learning real-time** — fine-tuning su streaming (post-fine-tuning batch) → [[system/decision-log]]
 - [ ] 📈 **Strategia Sentiment degli Analisti** — replicare il pattern che genera il consenso e tradare prima della folla → [[system/ideas-log]]
 - [ ] 📈 **Stop loss istituzionali a domino** — sfruttare le soglie psicologiche degli SL → [[strategy/methods/trend-following]]

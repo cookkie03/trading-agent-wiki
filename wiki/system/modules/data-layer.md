@@ -73,6 +73,15 @@ Primo set di tool degli agenti. Si agganciano al DB (**DB-first**), non ai vendo
 | **Adaptive extractor** | Frequenza **adattiva** in base alla vicinanza al target (entro ~30% dal target → alta frequenza/"modalità rischio"; lontano → daily). Risparmia compute e rispetta i **rate limit** delle API. |
 | **Market Alert** | Riceve dagli adaptive extractor; unico tool = **calendar tool** che scrive eventi nel **calendario economico** (es. data uscita prodotto, trimestrali). |
 | **calendar tool** | Scrive/legge gli eventi del calendario economico; alla corrispondenza data/ora scatta l'**alert** (solo numerico/prezzo) verso il Portfolio Manager. |
+
+#### Tipi di alert / trigger di attivazione del PM (alternative — da decidere con Salvatore)
+Luca: *«come si attivano gli alert lo decidiamo io e Salvatore»*. Alternative da valutare (combinabili):
+1. **Alert di prezzo/target**: il prezzo di una posizione si avvicina al target → l'adaptive extractor entra in "modalità rischio" (alta frequenza) e notifica il PM. *(già previsto)*
+2. **Periodical synthesis**: stato sintetico a intervalli fissi (rendicontazione + market) → il PM si attiva comunque a cadenza regolare. *(già previsto)*
+3. **Soglia di variazione**: variazione di prezzo oltre ±X% o ±N deviazioni standard (definizione di "prezzo anomalo").
+4. **News anomale**: una news rilevante dal blocco `market` come *miccia* dell'origination → terzo trigger ("idea valida, valutala").
+5. **Evento da calendario**: trimestrali, dati macro, eventi schedulati → alert alla scadenza.
+6. **`next_check_date` scaduto**: una posizione chiede di essere rivalutata (Dynamic Temporal Checkpoint).
 | **mantainer** | Processo di manutenzione (non-LLM, blocco verde/technical sul canvas) che **trasforma i dati `technical`/`transactions` in `rendicontazione`** (portfolio accounting) e la tiene aggiornata nel DB. *Ruolo confermato in call 2026-06-02*: «un mantainer che trasforma i technical in rendicontazione». È il ponte deterministico transazioni → metriche di portafoglio. |
 
 **Look-ahead bias — doppia data**: ogni informazione nel DB ha `publication_date` (quando ottenuta/pubblicata) e `reference_date` (data a cui si riferisce). Più preciso del semplice `curr_date` filtering.

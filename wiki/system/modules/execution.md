@@ -53,6 +53,11 @@ La conversione `research_state → transazione` **non richiede un LLM**: una fun
 - **Ordini**: limit order + **Stop Loss + Take Profit** sempre obbligatori (hard constraint).
 - **Leva via opzioni**: se lo state porta un segnale `Strong` validato, la funzione traduce il segnale in acquisto di opzioni **Call** (`Strong Buy`) o **Put** (`Strong Sell`). Logica di validazione in [[system/modules/agents]].
 
+### Disinvestimento automatico
+Una parte del disinvestimento è **deterministica e automatica**: TP, SL e **trailing stop loss** armati sull'ordine chiudono la posizione senza intervento dell'agente. È il livello 1 del disinvestimento; il livello 2 (valutazione periodica rating-based di cosa vendere per far spazio) vive in [[system/rating-scoring]]. Distinto dal **cash-out** (estrazione profitti verso IBAN, vedi Statuto in [[system/modules/agents]]).
+
+**Logging del meccanismo di uscita**: ogni chiusura registra in `transactions` il campo **`exit_reason`** (`take_profit`/`stop_loss`/`trailing_stop`/`rating_based`/`manual_override`/`option_expiry`). È il prerequisito per il feedback post-trade segmentato per tipo di uscita → [[system/rating-scoring]] §4.
+
 ---
 
 ## Exchange (paper trading) — broker intercambiabili
