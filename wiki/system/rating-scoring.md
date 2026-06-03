@@ -15,6 +15,7 @@ related:
   - "[[system/position-sizing]]"
   - "[[system/modules/agents]]"
   - "[[system/modules/execution]]"
+  - "[[system/learning-feedback-loop]]"
 confidence: low
 ---
 
@@ -41,7 +42,7 @@ Quanto il sistema è convinto di un'idea di investimento. Vive nel `research_sta
 
 Punteggio sulla **qualità del lavoro di ciascun agente/modulo**, per capire cosa funziona e cosa migliorare.
 
-- **Obiettivo**: categorie di punteggio che evidenzino *dove* il sistema sbaglia (quale desk, quale fattore, quale fase). Base per il futuro **RL / Weighting Module** (ponderazione dinamica dei moduli) e per il fine-tuning.
+- **Obiettivo**: categorie di punteggio che evidenzino *dove* il sistema sbaglia (quale desk, quale fattore, quale fase). Base per il futuro **RL / Weighting Module** (ponderazione dinamica dei moduli) e per il fine-tuning. È un pezzo del più ampio [[system/learning-feedback-loop]] (§3-§4 lì): lo scoring è insieme *output* della reportistica diagnostica e *input* della ponderazione dei pesi.
 - **Su cosa basarlo (proposta)**: confrontare a posteriori la tesi di ogni agente con l'esito reale del trade — l'agente che aveva ragione vede salire il suo score, chi sbaglia sistematicamente lo vede scendere. Richiede il **logging strutturato della chain-of-thought** (già in board) e lo storico esiti.
 - **Stato**: richiede storico → realisticamente **post-MVP**, ma lo schema dei log va predisposto da subito perché i dati siano raccolti fin dall'alpha.
 
@@ -72,7 +73,7 @@ I due livelli convivono: l'automatico protegge in tempo reale, il valutato ottim
 
 > Luca: *«bisognerà inserire un sistema che permette di far notare agli agent come sono andati i trade precedenti a seconda di quali meccanismi di disinvestimento sono stati adottati»*.
 
-Anello di apprendimento: il sistema deve **misurare l'esito dei trade segmentato per tipo di uscita** e **restituirlo agli agenti** perché ne tengano conto.
+Anello di apprendimento: il sistema deve **misurare l'esito dei trade segmentato per tipo di uscita** e **restituirlo agli agenti** perché ne tengano conto. È un caso particolare della reportistica diagnostica del [[system/learning-feedback-loop]] (§2 e §5 lì).
 
 - **Prerequisito (logging)**: ogni transazione registra un campo **`exit_reason`** — `take_profit` / `stop_loss` / `trailing_stop` / `rating_based` (disinvestimento valutato) / `manual_override` / `option_expiry`. Vive in `transactions` → [[system/modules/data-layer]] e [[system/modules/execution]].
 - **Analisi**: aggregare P&L, win rate, holding period per `exit_reason` (es. *"i trailing stop ci hanno fatto uscire troppo presto sui trend forti"* / *"gli stop loss hard hanno salvato il -30% in N casi"*).

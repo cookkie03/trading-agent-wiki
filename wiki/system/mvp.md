@@ -86,8 +86,11 @@ Dopo che i tre track girano insieme:
 2. Desk di monitoring/evaluation delle posizioni
 3. Extractor adattivi + Market Alert (calendar tool)
 4. Dashboard Streamlit + canale Telegram
-5. RL/Weighting Module (ponderazione dinamica dei moduli)
-6. Fine-Tuning Module
+5. Reportistica diagnostica "cosa va male" (modulo Python + narrazione) → [[system/learning-feedback-loop]]
+6. RL/Weighting Module (ponderazione dinamica dei pesi agenti) → [[system/learning-feedback-loop]]
+7. Fine-Tuning Module
+
+> Substrato da predisporre **da subito**: logging strutturato chain-of-thought + match tesi-per-agente↔esito + `exit_reason`. Senza, il loop di apprendimento (punti 5-6) non ha dati. Vedi [[system/learning-feedback-loop]] §1.
 
 ## Decisioni ancora aperte
 

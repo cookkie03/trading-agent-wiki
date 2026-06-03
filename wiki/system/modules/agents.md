@@ -160,6 +160,7 @@ Obiettivo: **pochi schema potenti e dettagliati**, non tanti frammentati. Patter
 - Formula di **position sizing** → **[[system/position-sizing]]**.
 - **Orchestrazione multi-ticker** + criteri "info sufficienti" + max iterazioni → **[[system/parallelism-design]]**.
 - Sistema di **rating/scoring** (conviction, agenti, asset) → **[[system/rating-scoring]]**.
+- **Loop di valutazione/apprendimento** (reportistica "cosa va male", scoring agenti, ponderazione pesi, feedback post-trade) → **[[system/learning-feedback-loop]]**. Aperto: punto di aggancio della ponderazione pesi (input PM vs nodo aggregazione) — tensione con "conviction dal PM".
 - Integrare i **Dynamic Temporal Checkpoints** nello state (`next_check_date`).
 - Dove vive l'aggregazione/validazione del segnale `Strong`.
 - Valutare l'architettura **debate** del Risk (quanti agenti, quali prospettive).

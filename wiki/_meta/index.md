@@ -18,6 +18,7 @@
 - [[system/position-sizing]] — dimensionamento posizioni (relativo, conviction, Kelly) 🛠
 - [[system/rating-scoring]] — sistema di rating/scoring (conviction · agenti · asset) 🛠
 - [[system/parallelism-design]] — orchestrazione multi-ticker e criteri "info sufficienti" 🛠
+- [[system/learning-feedback-loop]] — loop di valutazione/auto-miglioramento (reportistica "cosa va male" · scoring agenti · ponderazione pesi · feedback post-trade) 🛠
 
 ### Moduli — aree del sistema (da `architettura.canvas`)
 - [[system/modules/data-layer]] — DB centrale (4 aree logiche) + Extraction (extractors, adaptive, market alert, calendar tool, mantainer)

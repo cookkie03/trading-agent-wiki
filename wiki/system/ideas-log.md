@@ -44,6 +44,9 @@ Ogni mese trasformare il *tot %* del guadagno del mese (dall'ultimo cash-out) in
 ### Feedback post-trade per meccanismo di uscita
 Un sistema che fa notare agli agenti **come sono andati i trade precedenti a seconda del meccanismo di disinvestimento** adottato (TP / SL / trailing stop / rating-based). Prerequisito: campo `exit_reason` su ogni transazione. La sintesi rientra nel `past_context` degli agenti. → formalizzato in [[system/rating-scoring]] §4.
 
+### Loop di valutazione e auto-miglioramento (unificazione 2026-06-03)
+Quattro idee emerse in momenti diversi sono lo stesso macro-blocco e sono state unificate in [[system/learning-feedback-loop]]: **reportistica "cosa va male"** (modulo Python deterministico + narrazione LLM — opzione scelta per ora, non un agente dedicato), **scoring del lavoro degli agenti**, **ponderazione dinamica dei pesi** (l'agente che ci azzecca pesa di più; punto di aggancio aperto, in tensione con "conviction dal PM"), **feedback post-trade per meccanismo di uscita**. Substrato di logging (chain-of-thought + tesi-per-agente↔esito + `exit_reason`) da predisporre **da subito**; report e pesi restano post-MVP.
+
 ### ⏸️ Parcheggiato — aspetti legali (B8)
 Gestione capitali di terzi (modello "Piero") e privacy dei dati passati agli LLM: **tenuti nel cassetto** per scelta di Luca (2026-06-02), da riprendere *se e quando* il progetto funziona. In Italia gestire denaro di terzi può configurare abusivismo finanziario (art. 166 TUF) → consulenza legale **prima** del live, non blocca lo sviluppo software.
 

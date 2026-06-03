@@ -131,8 +131,11 @@ Output: `research_state` versionato (`alpha`/v1) con esiti `approved`/`declined`
 |------------|----------|-------|
 | Streamlit Dashboard | Sola lettura: equity curve, posizioni, metriche (rif. dashboard SFC) | Post-MVP |
 | Canale Telegram "sala segnali" | Calendario, riassunti news, prezzi, trade, variazioni rilevanti | Post-MVP |
-| RL / Weighting Module | Ponderazione dinamica dei moduli su esiti storici | Post-MVP avanzato |
+| **Reportistica diagnostica** | "Cosa va male": post-mortem periodico (modulo Python + narrazione LLM) → [[system/learning-feedback-loop]] | MVP→post-MVP |
+| RL / Weighting Module | Ponderazione dinamica dei pesi degli agenti su esiti storici → [[system/learning-feedback-loop]] | Post-MVP avanzato |
 | Fine-Tuning Module | Riaddestramento LLM su storico del progetto | Post-MVP avanzato |
+
+> Questi componenti fanno parte di un unico **loop di valutazione e auto-miglioramento** — substrato di logging, reportistica diagnostica, scoring agenti, ponderazione pesi, feedback post-trade: vedi [[system/learning-feedback-loop]].
 
 ---
 
