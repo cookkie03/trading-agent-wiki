@@ -2,6 +2,17 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-04] validazione collettiva investment_state + flag spiegazione opzione C
+
+- **Input Luca**: tra le opzioni del PM/software, includere la **validazione dell'`investment_state` da parte di tutti gli agenti**, dediti ad assicurare sempre **completezza · correttezza · esaustività delle fonti**.
+- **Registrato**: sezione *Validazione collettiva* in [[system/state-schemas]] (sign-off di tutti gli agenti, `send_back` su lacuna, da decidere se nodo esplicito o responsabilità nel system prompt) + nota nel gate di [[system/modules/execution]] + card in board.
+- **Flag**: Luca segnala di **non aver capito la parte sulla "validazione dello schema dello state"** (opzione C / sealing). Aggiunto un callout *"in parole semplici"* (analogia brutta→raccoglitore) in [[system/state-schemas]]; **da rispiegare a voce** alla ripresa.
+
+## [2026-06-04] istruzione PM "nel dubbio chiedi sempre"
+
+- **Input Luca**: il PM, decisore finale, va istruito (system prompt) a **chiedere SEMPRE ulteriori info ai desk** quando ha dubbi/indecisioni, *anche per le piccolezze*, prima di decidere.
+- **Registrato**: bias "nel dubbio, chiedi" in [[system/parallelism-design]] (sezione criteri info-sufficienti) bilanciato coi tetti anti-loop (rete di sicurezza, non scusa per decidere su info parziale; **no-trade preferibile** a basi incerte) + nota nel PM di [[system/modules/agents]] + card in board (system prompt).
+
 ## [2026-06-04] chiusura punti state + pesi agenti dal backtest
 
 - **`entry_price` APPROVATO** da Luca (*«leggendolo mi sembra ok»*) → decisione chiusa in [[system/decision-log]], board → ✅, [[system/state-schemas]] sezione marcata approvata.
@@ -9,6 +20,8 @@
 - **State annidati**: Luca non ha preferenza, vuole valutare le opzioni → scritte in [[system/state-schemas]] le **3 opzioni A (piatto) / B (sotto-state) / C (ibrido)**; resta **aperta** (board 🟠).
 - **Forma fine di storage**: chiarito cosa significava (come persistere il documento-state annidato) → orientamento **JSON/JSONB** in colonna, niente secondo DB. In [[system/state-schemas]] + [[system/modules/data-layer]].
 - **Pesi degli agenti dal backtest** (input Luca): la ponderazione dinamica dei desk è un **output del backtesting validatore** (hit-rate per-agente), non un parametro a mano → [[system/learning-feedback-loop]] §4 + [[system/modules/quant-backtesting]] + board.
+- **Precisazione pesi (Luca)**: i pesi sono **indicazione, non regola** — contesto/awareness in input al PM, non automatismo che scavalca il giudizio; aggancio risolto come **(a) input al PM** (scioglie la tensione con "conviction dal PM"). Seconda funzione: **diagnostica** su cosa/come migliorare agenti e tool collegati. Decisione chiusa + §4 e punti aperti aggiornati.
+- **State annidati**: Luca sceglie **orientamento C (ibrido)**, da *validare al massimo* → in [[system/state-schemas]] aggiunta la strategia di validazione a basso rework (sealing piatto→annidato). Schema dello state **chiuso a livello di design**.
 
 ## [2026-06-04] commenti Luca su entry_price + cross-link glossario
 

@@ -69,12 +69,10 @@ Niente del resto è possibile senza i dati grezzi. Da predisporre **da subito** 
 L'agente che storicamente ci azzecca **pesa di più** nell'aggregazione della tesi; chi sbaglia sistematicamente pesa meno. Pattern concettuale: **[[_meta/glossario#Opinion Pooling|Opinion Pooling]] / [[_meta/glossario#Black-Litterman|Black-Litterman]]** (i pesi/confidence aggiornati sugli esiti storici per-agente) → [[prior-art/libraries/cvx-portfolio-optimizer]], glossario.
 
 - **I pesi li calcola il backtesting system** (input di Luca 2026-06-04): la ponderazione dei vari agenti non è un parametro a mano, ma un **output del [[system/modules/quant-backtesting]] in modalità validatore continuo/asincrono** — lo stesso motore che ri-tara le soglie (R:R, k_*, soglie Statuto) misura anche la *hit-rate per-agente* sullo storico (dal §1) e ne deriva i pesi. Vantaggio: i pesi si aggiornano sui dati reali via via che entrano, con la stessa cautela anti-overfitting (walk-forward / out-of-sample → [[strategy/questions-for-salvatore]]). Sono parametri di configurazione esterni, non hardcodati.
+- **⚠️ I pesi sono un'INDICAZIONE, non una REGOLA** (precisazione di Luca 2026-06-04): il backtesting sui pesi **non sostituisce** il giudizio dell'agente. Serve come **informazione/contesto aggiuntivo** che si passa al PM per dargli più *awareness* — "storicamente di questo desk ti puoi fidare di più/di meno" — lasciando a lui la decisione. Non un automatismo che scavalca il reasoning. Questo **scioglie la tensione** con "conviction dal PM": il PM resta decisore, il backtest lo informa.
+- **Seconda funzione del backtest sui pesi — diagnostica** (Luca 2026-06-04): oltre a pesare, serve a **capire cosa e come migliorare** gli agenti e i **tool collegati** a ciascuno (quale desk/tool performa peggio e perché). Si lega a §2 (reportistica) e §3 (scoring): la hit-rate per-agente è anche un puntatore a dove intervenire.
 - **Stato**: **post-MVP avanzato** (richiede storico significativo). Resta tale.
-- **Punto di aggancio — DA DECIDERE** (tensione con una decisione già presa): oggi la **[[_meta/glossario#Conviction Level|conviction]] la assegna il PM in modo qualitativo** (decisione 2026-06-02). I pesi la renderebbero quantitativa. Tre alternative:
-  - (a) i pesi entrano come **input al PM** (il PM resta decisore, ma vede "quanto fidarsi" di ciascun desk);
-  - (b) i pesi alimentano un **nodo di aggregazione** che precede il PM;
-  - (c) i pesi diventano le **confidence del Black-Litterman** che traduce le views in allocazione.
-  Preferenza provvisoria: **(a)** — minore stravolgimento del grafo, il PM resta CEO. Da confermare in fase di mappatura del grafo.
+- **Punto di aggancio — orientamento (a)** (2026-06-04, dato il framing "indicazione non regola"): i pesi entrano come **input/contesto al PM** (il PM resta decisore, ma vede "quanto fidarsi" di ciascun desk). Le alternative scartate restavano: (b) nodo di aggregazione che precede il PM; (c) confidence del Black-Litterman. La (a) è coerente con "il backtest informa, non comanda". Da confermare in fase di mappatura del grafo.
 
 ### 5. Feedback post-trade per meccanismo di uscita
 → dettaglio in [[system/rating-scoring]] §4. Esiti dei trade **segmentati per `exit_reason`** (TP / SL / trailing / rating-based), restituiti agli agenti nel `past_context`. È un caso particolare di reporting (§2) che chiude il loop con lo scoring (§3): un agente che apre tesi chiuse sistematicamente in stop loss perde score.
@@ -96,7 +94,7 @@ L'agente che storicamente ci azzecca **pesa di più** nell'aggregazione della te
 ## Punti aperti (in board)
 
 - **Reporting: modulo deterministico + narrazione vs agente LLM** — tenuto come modulo (preferenza 2026-06-03), non definitivo.
-- **Pesi: punto di aggancio** (input PM / nodo aggregazione / confidence Black-Litterman) — tensione con "conviction dal PM".
+- ~~**Pesi: punto di aggancio**~~ → **risolto 2026-06-04**: i pesi sono **input/contesto al PM** (indicazione, non regola); tensione con "conviction dal PM" sciolta. Resta da implementare in fase di grafo.
 - **Schema del log tesi-per-agente↔esito** — forma da definire insieme allo [[system/state-schemas]] (serve poter ricostruire chi ha detto cosa).
 
 ---

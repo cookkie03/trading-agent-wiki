@@ -101,6 +101,14 @@ In pratica: **un unico schema**, due stati di maturità. Il `position_sizing` vi
 
 Quando: `risk_verdict == approved` **e** tutti i campi obbligatori sono compilati → lo state diventa `investment_state` (sigillato). La funzione Trade ([[system/modules/execution]]) ne estrae `{ticker, direction, entry_price, stop_loss, take_profit, position_sizing, conviction_level}` e costruisce l'ordine. **Reset automatico** dello state quando la transazione è rilevata.
 
+### Validazione collettiva dell'`investment_state` (opzione — input di Luca 2026-06-04)
+Oltre al gate di completezza (deterministico) e al gate bear del Risk Analyst, si valuta un passo di **validazione da parte di *tutti* gli agenti** prima del sealing: ogni agente del desk ha anche il ruolo di **validatore**, dedito ad assicurare sempre **completezza · correttezza · esaustività delle fonti** dello state.
+- **Completezza**: nessun campo obbligatorio lasciato debole o "tanto per"; le sezioni di propria competenza sono davvero coperte.
+- **Correttezza**: i numeri e le affermazioni sono coerenti con i dati nel DB (niente valori inventati o contraddittori).
+- **Esaustività delle fonti**: sono state consultate *tutte* le fonti rilevanti disponibili, non solo le prime trovate (lega all'istruzione del PM *"nel dubbio, chiedi sempre"* → [[system/modules/agents]]).
+- **Esito**: se un validatore segnala una lacuna, lo state **torna indietro** (`send_back`) per essere completato, prima del sealing. È un sign-off collettivo, non solo del Risk.
+- **Da decidere in fase di grafo**: se è un passo *esplicito* (un nodo di validazione che interpella ogni agente) o una *responsabilità diffusa* scritta nel system prompt di ciascun agente. Tracciato in [[artifacts/project-board]].
+
 ---
 
 ## `entry_price` — struttura (✅ approvata 2026-06-04)
@@ -179,7 +187,15 @@ A runtime lo state lavora **piatto** (i nodi mutano i campi facilmente); quando 
 
 > **Asse diverso (non confondere)**: i **subgraph per-ticker** ([[system/parallelism-design]]) isolano *uno state per ticker* (isolamento *tra* ticker). Gli state annidati riguardano la struttura *dentro* il singolo ticker. Le due scelte sono indipendenti e componibili.
 
-**Da decidere insieme**: A / B / C.
+**Orientamento (2026-06-04): C**, da **validare al massimo** prima di consolidarlo (Luca: *«questa opzione mi piace di più, avviciniamoci, ma cerchiamo di validare la scelta al massimo»*).
+
+> 🟢 **In parole semplici** (da rispiegare a voce a Luca — flag 2026-06-04): pensa allo state come a un **modulo da compilare**. Opzione A = un unico foglio lungo. Opzione B = un raccoglitore con sezioni etichettate. Opzione C = mentre lavori riempi un **foglio di brutta** veloce (A), e solo alla fine lo **archivi ordinato nel raccoglitore** (B) per conservarlo. "Validare la scelta C" vuol dire solo questo: **non ci impegniamo adesso** — partiamo dalla brutta, e se vediamo che serve il raccoglitore lo aggiungiamo dopo. Cambiare idea costa poco perché "l'archiviazione" è **un solo pezzo di codice** da scrivere (la *funzione di sealing*). Tutto qui — niente di più complicato.
+
+**Come validare la scelta** (a basso costo): l'Opzione C ha il pregio che il confine *piatto-a-runtime → annidato-in-storage* è una singola **funzione di sealing**. Quindi si può:
+1. partire con lo state piatto (A) durante l'engineering del grafo;
+2. introdurre il sealing verso il documento annidato (B) quando si persiste;
+3. se in corso d'opera la struttura annidata non serve, si resta su A senza riscrivere i nodi.
+Di fatto C **non vincola** in anticipo: valida la scelta *usandola*, con rischio di rework minimo. Decisione finale in fase di mappatura del grafo.
 
 ---
 
@@ -197,7 +213,7 @@ Si aggancia all'Opzione C sopra (sealing → documento JSON). Decisione di forma
 ## Punti aperti (da risolvere insieme)
 
 - ~~**Granularità `conviction_level`**~~ → **CHIUSO 2026-06-04**: **enum** a 5 livelli (`Strong Buy`/`Buy`/`Hold`/`Sell`/`Strong Sell`), non score 0-100. Vedi [[system/rating-scoring]].
-- **Quanti state annidati?** A / B / C → vedi sezione dedicata sopra. **Da decidere insieme.**
+- **Quanti state annidati?** → **orientamento C (ibrido), da validare in fase di grafo** (rework minimo grazie al sealing). Vedi sezione dedicata sopra.
 - **Forma fine di storage** dello state → vedi sezione sopra (orientamento JSON/JSONB). → [[system/modules/data-layer]].
 
 ---

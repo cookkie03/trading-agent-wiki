@@ -6,7 +6,7 @@ tags:
   - architecture
   - multi-agent
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-04
 status: draft
 priority: high
 area: software
@@ -97,6 +97,11 @@ Il PM è un agente che decide autonomamente quando *«ho info sufficienti»* per
 - **Budget di iterazioni/token per ciclo**: tetto massimo di chiamate agli analisti; oltre il tetto, decide con ciò che ha o passa (no trade).
 - **Stabilità della tesi**: se due interrogazioni successive degli analisti non cambiano la tesi → informazione satura, si decide.
 - **Completezza dello state**: il gate di completezza ([[system/state-schemas]]) è già un criterio minimo necessario.
+
+### Bias "nel dubbio, chiedi sempre" (istruzione di system prompt — input di Luca 2026-06-04)
+Siccome **il PM è il decisore finale**, il suo system prompt deve istruirlo a **non decidere mai su un'indecisione o un dubbio**: ogni volta che è incerto — *anche sulle piccolezze* — deve **interrogare di nuovo i desk** per ulteriori informazioni, **sempre**, prima di chiudere la tesi. Default verso l'**approfondimento**, non verso il "decido con quel che ho".
+
+Equilibrio con l'anti-loop: i tetti sopra (budget iterazioni, stabilità tesi) sono una **rete di sicurezza per non andare all'infinito**, *non* una scusa per decidere su informazione parziale. Ordine di priorità: **prima chiarisci il dubbio chiedendo ai desk**, e solo quando il dubbio è *davvero* irrisolvibile entro il budget → allora decidi con ciò che hai o **scegli il no-trade** (l'astensione è sempre un'opzione lecita e preferibile a un trade su basi incerte). → istruzione da formalizzare nel system prompt, vedi [[system/modules/agents]].
 
 ---
 

@@ -95,14 +95,15 @@ sources:
 - [ ] 🔀 **Criteri "info sufficienti" del PM + max iterazioni** — quando fare/non fare un trade → [[system/parallelism-design]]
 - [ ] 🛠 **Forma fine di storage per gli state annidati** — JSON/documentale dentro il time-series → [[system/modules/data-layer]]
 - [ ] 🛠 **Comportamento di ogni agente del desk** — cosa fa esattamente Market/Sentiment/Technical/Fondamentali (input, tool, output, stop) → [[system/modules/agents]]
+- [ ] 🛠 **System prompt PM: "nel dubbio, chiedi sempre"** — istruire il PM a interrogare di nuovo i desk a ogni incertezza (anche piccola); no-trade preferibile a basi incerte → [[system/modules/agents]] · [[system/parallelism-design]]
+- [ ] 🛠 **Validazione collettiva dell'`investment_state`** — tutti gli agenti validano completezza·correttezza·esaustività fonti prima del sealing (nodo esplicito o responsabilità nel system prompt?) → [[system/state-schemas]]
 - [ ] 🛠 **Includere il modulo TA?** — opzionale, test A/B con/senza → [[system/modules/quant-backtesting]]
 - [ ] 🛠 **Analisti: 2 o 4 agenti?** — accorpati o separati, da decidere a sviluppo → [[system/modules/agents]]
 - [ ] 🛠 **Come implementare il Prompt Builder / system prompt?** — il lavoro più grande è sui system prompt → [[system/modules/agents]]
 - [ ] 🛠 **Token cost estimator** — tracciamento token + ricarica automatica → [[system/modules/agents]]
 - [ ] 🔀 **Frequenza ciclo** — 4h vs 24h, dipende dai backtest → [[system/modules/quant-backtesting]]
 - [ ] 🔀 **Desk di monitoring/evaluation** — design, partire da SFC Streamlit → [[system/modules/agents]]
-- [ ] 🛠 **Punto di aggancio della ponderazione pesi** — input al PM / nodo di aggregazione / confidence Black-Litterman? Tensione con "conviction dal PM". I **pesi li calcola il backtesting system** (hit-rate per-agente) → [[system/learning-feedback-loop]]
-- [ ] 🛠 **Quanti state annidati** — A (piatto) / B (sotto-state) / C (ibrido progressivo). Da valutare insieme → [[system/state-schemas]]
+- [ ] 🛠 **Quanti state annidati** — orientamento **C (ibrido)**, da validare in fase di grafo (rework minimo via sealing) → [[system/state-schemas]]
 - [ ] 📈 **VaR: quale e come** — parametrico/storico/MonteCarlo, VaR vs CVaR, lookback → [[strategy/questions-for-salvatore]]
 - [ ] 📈 **Prevenzione overfitting** — walk-forward, in/out-of-sample, CPCV → [[strategy/questions-for-salvatore]]
 - [ ] 📈 **Test statistici sul benchmark** — significatività vs S&P/60-40 → [[strategy/questions-for-salvatore]]
@@ -115,6 +116,7 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **Decisione: pesi agenti = indicazione, non regola** ✅ 2026-06-04 — il backtest informa il PM (contesto/awareness) + diagnostica "cosa migliorare", non scavalca il giudizio; aggancio come input al PM → [[system/learning-feedback-loop]]
 - [x] 🛠 **Decisione: aggregazione `direction`/`conviction` al PM** ✅ 2026-06-04 — ogni desk propone, il PM aggrega e decide → [[system/state-schemas]]
 - [x] 🛠 **Decisione: struttura `entry_price`** ✅ 2026-06-04 — backbone ATR (k_entry scalato per conviction, guardrail R:R 1.5); numeri da tarare in backtest → [[system/state-schemas]]
 - [x] 🛠 **Decisione: conviction level = enum** ✅ 2026-06-04 — 5 livelli, non score 0-100 → [[system/rating-scoring]]

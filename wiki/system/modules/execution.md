@@ -42,6 +42,8 @@ research_state (approvato dal Risk Analyst)
 
 Nessun trade finché l'`investment_state` non è **completo** (forza il passaggio per tutti i desk analisti + gate Risk). Si **resetta automaticamente** quando il blocco Trade rileva la transazione: *state pieno → estrae trade → reset*. Schema in [[system/modules/agents]] (TypedDict/Pydantic).
 
+> **Validazione collettiva (opzione, 2026-06-04)**: oltre al gate deterministico di completezza e al gate bear del Risk, si valuta un sign-off di **tutti gli agenti** che garantiscono completezza · correttezza · esaustività delle fonti dello state; se uno segnala una lacuna → `send_back` prima del sealing. Dettaglio in [[system/state-schemas]].
+
 ---
 
 ## Trade — funzione Python deterministica (NON agent)

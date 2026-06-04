@@ -11,8 +11,10 @@
   - **Nuovo**: [[system/investment-state-template]] (menu completo per Salvatore) · disinvestimento come batch di trade del PM · tool iniezione portafoglio · comportamento per-agente (aperto) · legenda colori canvas in [[_meta/taxonomy]].
   - **Glossario cross-linkato**: 145 link su 27 pagine (script `tmp/glosslink.py`, prima occorrenza, no tabelle). Aggiunti **ATR** e **Risk/Reward** al glossario. Spiegato leva-via-opzioni vs margine.
   - **Decisioni chiuse (seconda tornata 2026-06-04)**: `entry_price` **APPROVATO**; **aggregazione** `direction`/`conviction` = ogni desk propone, **PM aggrega e decide** (campo `agent_opinions`); **forma storage** = orientamento JSON/JSONB in colonna (no secondo DB).
-  - **Pesi degli agenti** = output del **backtesting validatore** (hit-rate per-agente), non a mano → [[system/learning-feedback-loop]] §4.
-  - **Unico punto state ancora APERTO**: **quanti state annidati** — opzioni A (piatto) / B (sotto-state) / C (ibrido progressivo) scritte in [[system/state-schemas]], da scegliere insieme.
+  - **Pesi degli agenti** = output del **backtesting validatore** (hit-rate per-agente) ma **indicazione, non regola**: contesto/awareness in input al PM, non automatismo (scioglie tensione con "conviction dal PM") + funzione diagnostica "cosa migliorare di agenti e tool" → [[system/learning-feedback-loop]] §4.
+  - **State annidati**: **orientamento C (ibrido)** scelto da Luca, *da validare al massimo* in fase di grafo (rework minimo via funzione di sealing) → [[system/state-schemas]]. Lo schema dello state è di fatto **chiuso a livello di design** (restano solo numeri da tarare in backtest e validazione di C).
+  - **Istruzione PM "nel dubbio chiedi sempre"** (Luca): il PM decisore deve sempre interrogare di nuovo i desk a ogni incertezza, anche piccola, prima di decidere; no-trade preferibile a basi incerte. Tetti anti-loop = rete di sicurezza. → [[system/parallelism-design]] · [[system/modules/agents]] · card system-prompt in board.
+  - **Validazione collettiva investment_state** (opzione, Luca): tutti gli agenti validano completezza·correttezza·esaustività fonti prima del sealing (`send_back` su lacuna) → [[system/state-schemas]] · [[system/modules/execution]].
 
 ### Sessione 2026-06-03
 - **Operazione**: **Review pre-sviluppo + risposta alle lacune**. Luca ha risposto a un'analisi delle cose ancora da decidere/capire. Create **5 nuove pagine** (`system/state-schemas`, `system/position-sizing`, `system/rating-scoring`, `system/parallelism-design`, `strategy/questions-for-salvatore`); aggiornati decision-log, data-layer, execution, agents, quant-backtesting, stack, glossario, ideas-log, index. **Board ridisegnata come centrale operativa** (owner + riferimento pagina su ogni card). Nuova sezione in **CLAUDE.md** che formalizza la board come hub + convenzione owner/riferimenti.
@@ -103,7 +105,8 @@ wiki/
 - `raw/daily-notes/model.md` = template vuoto (resta)
 
 ## Da fare prossima sessione
-- Iniziare a **strutturare lo schema dello state** con Luca → [[system/state-schemas]]
-- Poi **formula di position sizing** → [[system/position-sizing]]
+- ⚠️ **Rispiegare a voce a Luca la "validazione dell'opzione C / sealing"** dello state — non gli era chiaro; in [[system/state-schemas]] c'è già un callout *"in parole semplici"* (analogia brutta→raccoglitore) da cui partire.
+- ✅ Schema dello state **completato a livello di design** (entry_price, conviction enum, aggregazione PM, storage JSON, state annidati→C da validare, validazione collettiva opzione).
+- Passo concordato n°2: **formula di position sizing** → [[system/position-sizing]]
 - Verificare in Obsidian che la graph view non abbia orfani inattesi
 - Creare pagine metriche (`sharpe-ratio`, `max-drawdown`, `win-rate`) in `strategy/metrics/` solo quando servono
