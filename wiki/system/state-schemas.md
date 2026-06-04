@@ -6,7 +6,7 @@ tags:
   - architecture
   - multi-agent
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-04
 status: draft
 priority: high
 area: software
@@ -102,9 +102,44 @@ Quando: `risk_verdict == approved` **e** tutti i campi obbligatori sono compilat
 
 ---
 
+## `entry_price` — proposta di struttura (da approvare)
+
+> Questo era il punto che Luca voleva *«strutturare bene»*. Qui c'è una **proposta con un default motivato**, non una decisione presa: serve solo un sì/no o un "cambia questo".
+
+### Il problema
+Per un limit order non basta «compra ora al prezzo di mercato». Nello swing trading si entra meglio su un **pullback** o a un **livello tecnicamente sensato**. Ma i criteri ingenui non reggono:
+- **% fissa sotto il prezzo** (es. −2%): arbitraria, ignora la volatilità. −2% su un titolo tranquillo è tanto, su uno volatile è rumore.
+- **Pivot/supporti**: tecnicamente sensati ("compra al supporto") ma fragili da far calcolare in modo affidabile e oggettivo a un LLM.
+- **Range 52 settimane**: è un segnale di *contesto*, non un trigger d'entrata.
+
+### Proposta: backbone deterministico in unità di ATR
+Usare l'**ATR (Average True Range)** come unità di misura comune a entry, stop e target — la stessa scelta già fatta per il volatility-adjustment del [[system/position-sizing]] (v2). Così i tre prezzi sono coerenti e normalizzati per la volatilità del singolo titolo.
+
+```
+entry_price  = current_price − k_entry · ATR     (per un BUY; simmetrico per un SELL)
+stop_loss    = entry_price   − k_stop  · ATR
+take_profit  = entry_price   + k_tp    · ATR
+```
+
+- `ATR` calcolato in modo deterministico in [[system/modules/quant-backtesting]] (es. 14 periodi).
+- `k_entry`, `k_stop`, `k_tp` sono coefficienti, **non prezzi inventati dall'LLM**. L'agente ragiona in "quanti ATR", la funzione Python traduce in prezzo. Questo toglie all'LLM il compito fragile di sparare numeri assoluti.
+
+### Due agganci che rendono il tutto sensato
+1. **L'entry dipende dalla conviction.** Più sei convinto, meno pretendi lo sconto (sei disposto a "inseguire"); meno sei convinto, più pretendi un pullback profondo prima di entrare. Quindi `k_entry` **decresce** al crescere del `conviction_level`. Esempio indicativo: Strong Buy → `k_entry ≈ 0` (vicino al mercato), Buy → `k_entry ≈ 0.5`, segnale debole → `k_entry ≈ 1.0`.
+2. **Vincolo di coerenza Risk/Reward.** Un guardrail deterministico (Sezione D) verifica che `(k_tp / k_stop) ≥ soglia` (es. R:R ≥ 1.5). Se la tesi propone un target troppo vicino rispetto allo stop, lo state **non passa il gate**. Questo impedisce trade con payoff asimmetrico sfavorevole a monte, senza che nessun agente debba "ricordarsi" di controllarlo.
+
+### Ciclo di vita dell'ordine (limit che non viene colpito)
+Se il prezzo non raggiunge mai `entry_price`, l'ordine **non è eterno**: scade alla `next_check_date` (il Dynamic Temporal Checkpoint già nello state). Alla scadenza la posizione mancata torna in valutazione — non resta un limit appeso a tempo indeterminato. La gestione concreta (cancel & rivaluta) vive nella funzione Trade → [[system/modules/execution]].
+
+### Cosa cambia nello schema (Sezione C)
+`entry_price`, `stop_loss`, `take_profit` restano campi-prezzo nello state (ciò che Trade consuma), ma **a monte** l'agente compila i coefficienti `k_entry / k_stop / k_tp` e la funzione Python deterministica li converte in prezzi usando `current_price` e `ATR`. Da decidere se persistere anche i `k_*` nello state (utile per il feedback post-trade: capire se gli sconti richiesti erano troppo aggressivi).
+
+**Default che propongo per la prima alpha**: ATR(14), `k_stop = 2`, `k_tp = 3` (R:R = 1.5), `k_entry` scalato per conviction come sopra. Numeri da tarare in backtest, ma è uno scheletro che parte.
+
+---
+
 ## Punti aperti (da risolvere insieme)
 
-- **`entry_price` — come si calcola?** Limit order: pivot points? % sotto il prezzo corrente? Range a 52 settimane? È il punto che Luca vuole *«strutturare bene, da valutare con più attenzione»*. → tracciato in [[artifacts/project-board]].
 - **Granularità `conviction_level`**: enum (Strong/Normal) o score 0-100? Vedi [[system/rating-scoring]].
 - **Quanti state separati?** Un solo state ricco vs sub-state annidati (TradingAgents usa state dentro state, es. `trade_proposal` contiene `trader_action`). Decidere in fase di engineering del grafo.
 - **Schema della tabella DB** che persiste gli state: forma ancora da decidere (Luca: *«non lo so»*) → [[system/modules/data-layer]] (orientamento: JSON/documentale per gli state annidati, vedi decisione storage).

@@ -2,6 +2,13 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-04] design state | Proposta struttura `entry_price` (backbone ATR)
+
+- **Trigger**: "riprendiamo". Ripartenza dallo Step 1 (schema dello state). Sessione condotta da Claude (Luca preferiva reagire più che decidere a freddo).
+- **Lavoro**: progettata e scritta in [[system/state-schemas]] la **proposta per `entry_price`** del limit order — chiude il punto che Luca voleva "strutturare bene". Backbone in **unità di ATR** (coerente col volatility-adjustment del [[system/position-sizing]]): `entry/stop/tp` derivati da `current_price` ± `k·ATR`; l'LLM ragiona in coefficienti `k_*` (non prezzi assoluti), la funzione Python traduce in prezzo. Due agganci: `k_entry` **scalato per conviction** (più convinto → meno sconto), e **guardrail R:R** deterministico (`k_tp/k_stop ≥ soglia`, default 1.5) nel gate di rischio. Ciclo di vita del limit non colpito → scadenza alla `next_check_date`. Default prima alpha: ATR(14), `k_stop=2`, `k_tp=3`.
+- **Stato**: è una **proposta da approvare**, non una decisione presa. Board aggiornata (card `entry_price` → "proposta pronta"), `entry_price` rimosso dai punti aperti di state-schemas.
+- **Aperti residui state**: granularità conviction, n. state annidati, storage state, dove avviene l'aggregazione.
+
 ## [2026-06-03] review pre-sviluppo | Risposte di Luca alle lacune → nuove pagine + board come hub
 
 - **Trigger**: "cosa manca da capire/decidere prima dello sviluppo" → analisi lacune → Luca risponde punto per punto (chat 2026-06-02, si ferma a metà) → "sistemami tutto" + "usa la board come centrale operativa con riferimenti" + "salva la convenzione in CLAUDE.md" + "distingui owner pagine/task".

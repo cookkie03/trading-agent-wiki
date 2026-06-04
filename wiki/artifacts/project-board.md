@@ -7,7 +7,7 @@ tags:
   - execution
   - architecture
 created: 2026-04-30
-updated: 2026-06-03
+updated: 2026-06-04
 status: active
 related:
   - "[[system/architecture]]"
@@ -87,7 +87,7 @@ sources:
 
 ## 🟠 Decisioni da prendere
 
-- [ ] 🛠 **`entry_price` del limit order** — pivot / % sotto prezzo / range 52w? Da strutturare bene → [[system/state-schemas]]
+- [ ] 🛠 **`entry_price` del limit order** — 💬 *proposta pronta da approvare*: backbone ATR (entry/stop/tp in unità ATR, `k_entry` scalato per conviction, guardrail R:R) → [[system/state-schemas]]
 - [ ] 🛠 **Parallelismo multi-ticker + subgraph vs nodi** — scegliere tra le alternative A–E → [[system/parallelism-design]]
 - [ ] 🔀 **Criteri "info sufficienti" del PM + max iterazioni** — quando fare/non fare un trade → [[system/parallelism-design]]
 - [ ] 🛠 **Forma fine di storage per gli state annidati** — JSON/documentale dentro il time-series → [[system/modules/data-layer]]
