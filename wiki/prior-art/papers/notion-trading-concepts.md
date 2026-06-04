@@ -45,9 +45,9 @@ L'analisi tecnica viene utilizzata per individuare potenziali zone di inversione
 - `Immagine_2022-02-05_143149.png`: Grafico a linee "Compounding Wins", che dimostra l'impatto esponenziale positivo dell'incremento progressivo del rischio dopo una serie di trade vincenti.
 
 ## 3. Gestione Operativa e Risk Management
-- **Risk to Reward (R/R)** e **Win Rate**: Metriche chiave per misurare un Trading System.
+- **Risk to Reward (R/R)** e **[[_meta/glossario#Win Rate|Win Rate]]**: Metriche chiave per misurare un Trading System.
 - **Gestione posizione**: Stop Loss (fisso, trailing, a chiusura candela), Take Profit, Break-Even, Parziali.
-- **Position Sizing**: Allocazione dinamica tramite *Compounding Wins* (aumentare il rischio dopo successi) e *Cutting Losses* (diminuire il rischio dopo perdite). Formula di Kelly citata per ottimizzare la \% del capitale.
+- **Position Sizing**: Allocazione dinamica tramite *Compounding Wins* (aumentare il rischio dopo successi) e *Cutting Losses* (diminuire il rischio dopo perdite). Formula di [[_meta/glossario#Kelly Criterion|Kelly]] citata per ottimizzare la \% del capitale.
 
 ## 4. Rendita Passiva (CeFi e DeFi)
 - **Staking e Lending**: Fornire valuta come validatore o prestatore.

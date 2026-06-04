@@ -34,7 +34,7 @@ related:
 
 ## Cosa richiede
 
-- Indicatori tecnici per rilevare il trend (MACD, RSI, medie mobili, Pivot Points)
+- Indicatori tecnici per rilevare il trend (MACD, RSI, medie mobili, [[_meta/glossario#Pivot Points|Pivot Points]])
 - Segnali di conferma del breakout (volume anomalo, rottura livelli chiave)
 - SL/TP definiti per limitare il rischio di falsi segnali
 
@@ -67,9 +67,9 @@ related:
 
 ## Metriche di valutazione
 
-- **Sharpe ratio** — rischio/rendimento
-- **Win rate** — % operazioni chiuse in profitto
-- **Max drawdown** — perdita massima
+- **[[_meta/glossario#Sharpe Ratio|Sharpe ratio]]** — rischio/rendimento
+- **[[_meta/glossario#Win Rate|Win rate]]** — % operazioni chiuse in profitto
+- **[[_meta/glossario#Drawdown|Max drawdown]]** — perdita massima
 
 *(pagine dedicate in `strategy/metrics/` da creare quando servono; vedi [[strategy/metrics/benchmark]])*
 

@@ -5,7 +5,7 @@ tags:
   - decision
   - strategy
 created: 2026-04-30
-updated: 2026-05-29
+updated: 2026-06-04
 status: active
 related:
   - "[[system/architecture]]"
@@ -75,6 +75,12 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 | 2026-06-02 | **Ruolo del `mantainer` confermato** | Processo non-LLM che **trasforma i dati `technical`/transactions in `rendicontazione`** (portfolio accounting) e la tiene aggiornata nel DB. Vedi [[system/modules/data-layer]]. |
 | 2026-06-02 | **Deploy su mini-server di casa** | Il sistema gira sul **Minisforum (mini-server) di Luca, acceso 24/7 in casa**. Secrets in **`.env` locale** per ora. Vedi [[system/modules/data-layer]]. |
 | 2026-06-02 | **`research_state`: tutti i campi obbligatori; sizing incluso** | Tutti i campi del `research_state` sono obbligatori (gate di completezza). Il `position_sizing` è un **campo dello state** da cui la funzione Trade estrae l'ordine. Vedi [[system/state-schemas]]. |
+| 2026-06-04 | **Autonomia totale: nessun input umano oltre l'accensione** | Il sistema non richiede interventi umani se non avviare il software, che fa partire da solo i timer della *periodical synthesis* e il *meccanismo di alert*. L'override umano resta una possibilità nelle prime fasi, non un requisito operativo. Vedi [[system/modules/agents]]. |
+| 2026-06-04 | **PM attivato anche dal `next_check_date` scaduto** | Terzo trigger di attivazione del Portfolio Manager oltre ad alert e periodical synthesis: quando scade il Dynamic Temporal Checkpoint di un investimento precedente, il PM viene richiamato per rivalutare quella posizione. Vedi [[system/modules/agents]] e [[system/modules/data-layer]]. |
+| 2026-06-04 | **Backtesting = validatore continuo e asincrono delle soglie** | Il backtesting non è una tantum: gira come job asincrono permanente che ri-valida di continuo tutte le soglie/rapporti tarati a monte (R:R 1.5, `k_stop`/`k_tp`, periodo ATR, soglie Statuto, moltiplicatori sizing). Implica parametri come configurazione esterna, non hardcodati. Vedi [[system/modules/quant-backtesting]]. |
+| 2026-06-04 | **Conviction level = enum (non score 0-100)** | Il `conviction_level` si esprime con un **enum** (`Strong Buy`/`Buy`/`Hold`/`Sell`/`Strong Sell`), non con un punteggio numerico 0-100. Chiude la domanda aperta sulla granularità. Vedi [[system/rating-scoring]] e [[system/state-schemas]]. |
+| 2026-06-04 | **Aggregazione `direction`/`conviction` al nodo PM** | Ogni agente del desk esprime la propria opinione (inclusa `suggested_direction` + `suggested_conviction`); il **Portfolio Manager** raccoglie tutte le opinioni e prende la **decisione finale** (non un nodo desk separato). Orientamento di Luca. Coerente con "conviction assegnato dal PM". Vedi [[system/state-schemas]] e [[system/modules/agents]]. |
+| 2026-06-04 | **Struttura `entry_price` = backbone ATR** | Entry/stop/take-profit derivati da `current_price ± k·ATR`: l'LLM produce i coefficienti `k_entry`/`k_stop`/`k_tp` (non prezzi assoluti), una funzione Python li traduce in prezzo. `k_entry` scalato per conviction (più convinto → meno sconto); guardrail deterministico R:R = `k_tp/k_stop` ≥ soglia (default 1.5); limit non colpito → scade alla `next_check_date`. Impianto approvato da Luca; i numeri (ATR 14, k_stop=2, k_tp=3, soglia 1.5) si tarano in backtest. Vedi [[system/state-schemas]]. |
 
 ---
 
@@ -86,7 +92,7 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 |-------|------|----------|-----------------|
 | 🛠 | **Schema `research_state`/`investment_state`** | Prima bozza pronta; campi e tipi da raffinare con Luca | [[system/state-schemas]] |
 | 🛠 | **Formula di position sizing** | Relativo al portafoglio (deciso); scalato per conviction; Kelly come obiettivo evolutivo | [[system/position-sizing]] |
-| 🛠 | **`entry_price` per i limit order** | Da strutturare bene (pivot? % sotto prezzo? range 52w?). Punto da valutare con attenzione | [[system/state-schemas]] |
+| 🛠 | **Comportamento di ogni agente del desk** | Cosa fa esattamente Market/Sentiment/Technical/Fondamentali: input, tool propri, output nello state, criteri di stop. Livello sotto il system prompt | [[system/modules/agents]] |
 | 🛠 | **Parallelismo multi-ticker** | Layer valutatori / scheda DB auto-aggiornante / ibrido / coda / screening. Subgraph vs nodi | [[system/parallelism-design]] |
 | 🔀 | **Criteri "info sufficienti" del PM + max iterazioni** | Quando decidere di fare/non fare un trade; evitare loop infiniti | [[system/parallelism-design]] |
 | 🛠 | **Graceful shutdown & recovery** | Meccanismo di inizializzazione e ripresa dal punto precedente dopo un crash (checkpointing LangGraph) | [[system/modules/data-layer]] |
@@ -120,4 +126,6 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 | Debate architecture | **CHIUSA 2026-05-26**: Bull/Bear eliminati |
 | Self-scheduling vs cron | **CHIUSA 2026-05-29**: alert (prezzo/news) + periodical synthesis a intervalli fissi |
 | Forma di storage (base) | **CHIUSA 2026-06-02**: principalmente time-series + oggetti |
+| Granularità conviction level | **CHIUSA 2026-06-04**: enum (5 livelli), non score 0-100 |
+| Struttura `entry_price` | **CHIUSA 2026-06-04**: backbone ATR (k scalati per conviction + guardrail R:R); numeri da tarare in backtest |
 | Frequenza invocazione (vincolo tecnico) | Confluita in "Frequenza ciclo" + transaction/token cost |

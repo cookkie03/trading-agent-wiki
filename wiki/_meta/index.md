@@ -15,6 +15,7 @@
 - [[system/decision-log]] — storico decisioni chiuse + decisioni ancora aperte
 - [[system/ideas-log]] — log append-only delle idee di progetto (mai cancellare)
 - [[system/state-schemas]] — schema di `research_state`/`investment_state` (contratto dati tra agenti) 🛠
+- [[system/investment-state-template]] — template-menu completo dell'`investment_state` da definire con Salvatore (potare/modificare) 🔀
 - [[system/position-sizing]] — dimensionamento posizioni (relativo, conviction, Kelly) 🛠
 - [[system/rating-scoring]] — sistema di rating/scoring (conviction · agenti · asset) 🛠
 - [[system/parallelism-design]] — orchestrazione multi-ticker e criteri "info sufficienti" 🛠

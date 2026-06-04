@@ -2,6 +2,24 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-04] chiusura punti state + pesi agenti dal backtest
+
+- **`entry_price` APPROVATO** da Luca (*«leggendolo mi sembra ok»*) → decisione chiusa in [[system/decision-log]], board → ✅, [[system/state-schemas]] sezione marcata approvata.
+- **Aggregazione `direction`/`conviction`**: Luca chiarisce il suo modello → **deciso**: ogni desk propone (`suggested_direction`/`suggested_conviction`), il **PM aggrega e decide**. Aggiunto campo `agent_opinions` allo schema; nota in [[system/modules/agents]]; decisione chiusa.
+- **State annidati**: Luca non ha preferenza, vuole valutare le opzioni → scritte in [[system/state-schemas]] le **3 opzioni A (piatto) / B (sotto-state) / C (ibrido)**; resta **aperta** (board 🟠).
+- **Forma fine di storage**: chiarito cosa significava (come persistere il documento-state annidato) → orientamento **JSON/JSONB** in colonna, niente secondo DB. In [[system/state-schemas]] + [[system/modules/data-layer]].
+- **Pesi degli agenti dal backtest** (input Luca): la ponderazione dinamica dei desk è un **output del backtesting validatore** (hit-rate per-agente), non un parametro a mano → [[system/learning-feedback-loop]] §4 + [[system/modules/quant-backtesting]] + board.
+
+## [2026-06-04] commenti Luca su entry_price + cross-link glossario
+
+- **Trigger**: Luca legge la proposta `entry_price` e dà 9 commenti + input successivi, poi "aggiorna tutti i riferimenti del glossario".
+- **Risposte/spiegazioni**: aggiunti al glossario **ATR** e **Risk/Reward Ratio** con formule complete; spiegato (in chat + pagine) il *perché leva via opzioni e non margine* → nota in [[strategy/questions-for-salvatore]] §4. Aggiunto esplicativo ATR/R:R in [[system/state-schemas]].
+- **Decisioni chiuse (2026-06-04)**: **autonomia totale** (nessun input umano oltre l'accensione, auto-start timer+alert); **PM attivato anche dal `next_check_date` scaduto** (terzo trigger); **backtesting = validatore continuo e asincrono** delle soglie (R:R, k_*, ATR, Statuto); **conviction = enum** (non score 0-100). Tutte in [[system/decision-log]] + board.
+- **Nuove registrazioni**: disinvestimento come **batch di trade coordinati** del PM (solo se tutto analizzato) → [[system/rating-scoring]]; **tool di iniezione stato portafoglio** obbligatorio → [[system/modules/agents]]; **comportamento per-agente del desk** da approfondire → [[system/modules/agents]] (decisione aperta); **legenda colori canvas** (viola=DB·arancio=agent·verde=tool·azzurro=state) → [[_meta/taxonomy]].
+- **Nuova pagina**: [[system/investment-state-template]] — template-menu completo dell'`investment_state` da affrontare con Salvatore (marcatori CORE/OPZIONALE/DA VALUTARE, sezioni A–F + guardrail).
+- **Cross-link glossario**: script una-tantum (`tmp/glosslink.py`) → **145 link** al glossario su 27 pagine, prima occorrenza per termine, escluse tabelle (pipe)/code/heading/frontmatter. Verificato: 0 link in tabelle, 0 annidati, anchor tutti validi.
+- **Aggiornati**: [[system/modules/agents]], [[system/modules/quant-backtesting]], [[system/rating-scoring]], [[system/state-schemas]], [[system/investment-state-template]], [[strategy/questions-for-salvatore]], [[system/decision-log]], [[_meta/glossario]], [[_meta/taxonomy]], [[_meta/index]], [[artifacts/project-board]] + i 27 file cross-linkati.
+
 ## [2026-06-04] design state | Proposta struttura `entry_price` (backbone ATR)
 
 - **Trigger**: "riprendiamo". Ripartenza dallo Step 1 (schema dello state). Sessione condotta da Claude (Luca preferiva reagire più che decidere a freddo).

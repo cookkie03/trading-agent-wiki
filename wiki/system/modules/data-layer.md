@@ -54,12 +54,12 @@ Le **5 tabelle core** sono la base SQL minima; il design organizza i dati in **4
 La memoria cresce troppo → niente troncamento secco: **clusterizzare + riassumere + cancellare progressivamente** tenendo i riassunti. Ipotesi: ~5 anni giornaliero, 5-10 settimanale, 10-30 mensile. Hardware: hard disk esterni (es. 20TB ~500€). Molti dati vecchi sono recuperabili online (Yahoo Finance; Reuters ora a pagamento).
 
 ### Forma di storage (decisione 2026-06-02)
-**Principalmente time-series**, ma con DB e **architetture a oggetti internamente** (Luca: *"qualcosa di time-series, ma con db e architetture anche ad oggetti internamente al db"*). Lettura per area:
+**Principalmente [[_meta/glossario#Time-series DB|time-series]]**, ma con DB e **architetture a oggetti internamente** (Luca: *"qualcosa di time-series, ma con db e architetture anche ad oggetti internamente al db"*). Lettura per area:
 - **Dati live / prezzi / macro** → time-series (cuore del sistema);
 - **Rendicontazione** → modello a oggetti (riga = posizione, colonne = caratteristiche);
 - **States e output LLM annidati** → forma documentale/JSON (forma fine ancora da assegnare).
 
-Resta aperta solo la **forma fine per i singoli stati annidati**. Vedi [[system/decision-log]] e [[system/state-schemas]].
+Resta aperta solo la **forma fine per i singoli stati annidati** (orientamento 2026-06-04: **colonna JSON/JSONB** dentro una tabella — campi-chiave come colonne per filtrare + l'intero state come blob JSON; niente secondo DB documentale). Vedi [[system/decision-log]] e [[system/state-schemas]] (sezione *Forma fine di storage*).
 
 ---
 
@@ -84,7 +84,7 @@ Luca: *«come si attivano gli alert lo decidiamo io e Salvatore»*. Alternative 
 6. **`next_check_date` scaduto**: una posizione chiede di essere rivalutata (Dynamic Temporal Checkpoint).
 | **mantainer** | Processo di manutenzione (non-LLM, blocco verde/technical sul canvas) che **trasforma i dati `technical`/`transactions` in `rendicontazione`** (portfolio accounting) e la tiene aggiornata nel DB. *Ruolo confermato in call 2026-06-02*: «un mantainer che trasforma i technical in rendicontazione». È il ponte deterministico transazioni → metriche di portafoglio. |
 
-**Look-ahead bias — doppia data**: ogni informazione nel DB ha `publication_date` (quando ottenuta/pubblicata) e `reference_date` (data a cui si riferisce). Più preciso del semplice `curr_date` filtering.
+**[[_meta/glossario#Look-Ahead Bias|Look-ahead bias]] — doppia data**: ogni informazione nel DB ha `publication_date` (quando ottenuta/pubblicata) e `reference_date` (data a cui si riferisce). Più preciso del semplice `curr_date` filtering.
 
 **Indicatori calcolati dal DB**: nessun calcolo on-the-fly — gli indicatori si calcolano con formule che richiamano i dati grezzi già nel DB.
 

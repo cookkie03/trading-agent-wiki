@@ -94,7 +94,7 @@ Calcolo indicatori con la libreria `ta` su candele dell'exchange. Da riusare per
 - mini-cache su `meta_and_asset_ctxs` (TTL 2s) per funding/OI/mark price
 - `analyze_multiple_tickers(tickers)` → ritorna `(stringa_per_prompt, lista_json_per_DB)`
 
-Pattern utile: **doppio output** (testo human-readable per l'LLM + JSON strutturato per il DB). `INTERVAL_TO_MS` mappa timeframe→millisecondi.
+Pattern utile: **doppio output** (testo human-readable per l'LLM + [[_meta/glossario#JSON strutturato|JSON strutturato]] per il DB). `INTERVAL_TO_MS` mappa timeframe→millisecondi.
 
 ### `forecaster.py` — Forecasting Prophet (classe `HyperliquidForecaster`)
 Usa **Facebook Prophet** per prevedere il prezzo a +1 step su 15m e 1h. Fetcha candele, costruisce DataFrame `ds`/`y`, `Prophet(daily_seasonality=True, weekly_seasonality=True)`, `predict` → restituisce `yhat`, `yhat_lower`, `yhat_upper` e variazione % attesa. **Spunto** per un modulo di forecasting statistico complementare all'LLM (da valutare per swing daily/4h: Prophet o alternative).
@@ -156,7 +156,7 @@ Definisce il ruolo ("cryptocurrency trading AI"), inietta `Portfolio Data` e `<c
 ## Takeaway per il progetto
 
 1. **Lo scheletro end-to-end del nostro MVP esiste già qui** e si può clonare adattandolo: raccolta feature → prompt builder con tag XML → LLM JSON strict → esecuzione validata → logging completo su Postgres.
-2. **Structured Output JSON Schema strict** (OpenAI) è il meccanismo per garantire output parsabile dall'LLM — equivalente al nostro vincolo "output JSON obbligatorio" (noi su DeepSeek, vedi [[system/stack]]).
+2. **Structured Output JSON Schema strict** (OpenAI) è il meccanismo per garantire output parsabile dall'LLM — equivalente al nostro vincolo "output JSON obbligatorio" (noi su [[_meta/glossario#DeepSeek|DeepSeek]], vedi [[system/stack]]).
 3. **Schema DB context→operation con FK** = tracciabilità totale e dataset di training/eval già strutturato.
 4. **Esecuzione**: validazione input → size dal balance → market order + SL trigger `reduce_only` è il template del modulo Exchange.
 5. **Reconciliation degli stop-loss esterni** via diff di snapshot è un pattern da adottare.

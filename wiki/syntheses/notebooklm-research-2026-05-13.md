@@ -50,13 +50,13 @@ Il framework più completo analizzato. Struttura in divisioni:
 
 **Comunicazione strutturata** (non chat): gli agenti si scambiano report e JSON strutturati. Il linguaggio naturale è riservato *solo* ai dibattiti Bull/Bear. Questo evita l'effetto "telefono senza fili" (perdita di informazioni nei prompt lunghi).
 
-**Quick Thinker + Deep Thinker**: modelli economici e veloci (es. gpt-4.1-nano) per raccolta dati e news, modelli potenti e costosi solo per la decisione finale. Pattern consolidato e validato.
+**[[_meta/glossario#Quick Thinker + Deep Thinker|Quick Thinker]] + Deep Thinker**: modelli economici e veloci (es. gpt-4.1-nano) per raccolta dati e news, modelli potenti e costosi solo per la decisione finale. Pattern consolidato e validato.
 
 ### MarketSenseAI 2.0 — 5 agenti in pipeline lineare
 
-- News Agent → Fundamentals Agent (con "Chain-of-Agents" a 3 livelli per 10-Q/10-K) → Dynamics Agent (prezzi + Sharpe) → Macroeconomic Agent (RAG + HyDE) → **Signal Agent** (CoT finale → buy/hold/sell)
+- News Agent → Fundamentals Agent (con "Chain-of-Agents" a 3 livelli per 10-Q/10-K) → Dynamics Agent (prezzi + [[_meta/glossario#Sharpe Ratio|Sharpe]]) → Macroeconomic Agent (RAG + HyDE) → **Signal Agent** (CoT finale → buy/hold/sell)
 - Flusso lineare e modulare; ogni agente è un nodo indipendente
-- Usa VectorBT Pro per backtesting
+- Usa [[_meta/glossario#VectorBT|VectorBT]] Pro per backtesting
 
 ### AlpacaTradingAgent — adattamento di TradingAgents per Alpaca
 
@@ -67,7 +67,7 @@ Il framework più completo analizzato. Struttura in divisioni:
 
 ### Nota su Risk Management Upstream vs Downstream
 
-In TradingAgents il Risk Management Team *valuta la proposta* del Trader (downstream). Nel nostro design il Risk Analyst è **upstream** (imposta i paletti prima della decisione). Entrambi gli approcci sono validi; l'approccio upstream è più adatto allo swing trading perché riduce il costo di cicli rifiutati.
+In TradingAgents il Risk Management Team *valuta la proposta* del Trader (downstream). Nel nostro design il Risk Analyst è **upstream** (imposta i paletti prima della decisione). Entrambi gli approcci sono validi; l'approccio upstream è più adatto allo [[_meta/glossario#Swing Trading|swing trading]] perché riduce il costo di cicli rifiutati.
 
 ---
 
@@ -79,12 +79,12 @@ In TradingAgents il Risk Management Team *valuta la proposta* del Trader (downst
 
 ### Framework alternativi analizzati
 
-- **skfolio + scikit-learn**: motore di cvx-portfolio-optimizer. Pipeline completa dai prezzi all'ottimizzazione. Walk-Forward Backtesting + CPCV (Combinatorial Purged Cross-Validation). Per portfolio optimization, non per strategy testing.
-- **Motori custom / paper trading**: Alpha Arena usa `src/trading_bot.py` custom su dati storici a 3 minuti. TradingAgents avanza giorno per giorno sui dati storici. Simone Rizzo usa PostgreSQL + cron ogni 15 minuti.
+- **skfolio + scikit-learn**: motore di cvx-portfolio-optimizer. Pipeline completa dai prezzi all'ottimizzazione. [[_meta/glossario#Walk-Forward Backtesting|Walk-Forward]] Backtesting + [[_meta/glossario#CPCV (Combinatorial Purged Cross-Validation)|CPCV]] (Combinatorial Purged Cross-Validation). Per portfolio optimization, non per strategy testing.
+- **Motori custom / [[_meta/glossario#Paper Trading / Testnet|paper trading]]**: [[_meta/glossario#Alpha Arena|Alpha Arena]] usa `src/trading_bot.py` custom su dati storici a 3 minuti. TradingAgents avanza giorno per giorno sui dati storici. Simone Rizzo usa PostgreSQL + cron ogni 15 minuti.
 
 ### Insidie critiche nel backtesting
 
-- **Look-Ahead Bias**: usare dati di bilancio *prima* della loro pubblicazione reale. La funzione `align_to_pit` di skfolio impone il ritardo corretto (45gg per 10-Q, 90gg per 10-K).
+- **[[_meta/glossario#Look-Ahead Bias|Look-Ahead Bias]]**: usare dati di bilancio *prima* della loro pubblicazione reale. La funzione `align_to_pit` di skfolio impone il ritardo corretto (45gg per 10-Q, 90gg per 10-K).
 - **Survivorship Bias**: escludere aziende delisted. cvx-optimizer sostituisce l'ultimo prezzo valido con un "delisting return" realistico (es. -30%).
 - **Costi di transazione obbligatori**: MarketSenseAI applica 10bps per trade. Senza, i risultati sono gonfiati. Strategie ad alta frequenza soffrono enormemente.
 - **Purging ed Embargoing** (CPCV): eliminare i dati adiacenti al confine training/test per evitare distorsioni da autocorrelazione.
@@ -93,10 +93,10 @@ In TradingAgents il Risk Management Team *valuta la proposta* del Trader (downst
 
 **Strategie e portafogli**:
 - Sharpe Ratio (più usato)
-- Sortino Ratio (penalizza solo downside volatility)
-- Maximum Drawdown + Calmar Ratio
+- [[_meta/glossario#Sortino Ratio|Sortino]] Ratio (penalizza solo downside volatility)
+- Maximum [[_meta/glossario#Drawdown|Drawdown]] + Calmar Ratio
 - Information Ratio vs benchmark
-- Win Rate + Profit Factor
+- [[_meta/glossario#Win Rate|Win Rate]] + Profit Factor
 - Cumulative e Annualized Return
 
 **Predizione (ML)**:
@@ -119,7 +119,7 @@ Competizione con 10.000$ reali in leva su contratti perpetui crypto (2 settimane
 | GPT-5 | >-50% | Tra i peggiori |
 | Gemini 2.5 Pro | >-50% | Più iperattivo — più trade |
 
-**Solo Qwen 3 Max e DeepSeek battono il buy-and-hold su BTC.**
+**Solo [[_meta/glossario#Qwen 3 Max|Qwen 3 Max]] e [[_meta/glossario#DeepSeek|DeepSeek]] battono il buy-and-hold su BTC.**
 
 ### Causa principale delle perdite: overtrading + assenza SL/TP
 
@@ -138,7 +138,7 @@ Competizione con 10.000$ reali in leva su contratti perpetui crypto (2 settimane
 Tutti i sistemi usano lo stesso pattern:
 
 1. **Ruolo + stato portafoglio** (capitale totale, liquidità, posizioni aperte)
-2. **Dati strutturati**: indicatori TA (MACD, RSI, Pivot Points), forecasting ML, news e sentiment (Fear & Greed)
+2. **Dati strutturati**: indicatori TA (MACD, RSI, [[_meta/glossario#Pivot Points|Pivot Points]]), forecasting ML, news e sentiment (Fear & Greed)
 3. **Input multi-agente** (se presente): report JSON degli analisti, sintesi dibattiti Bull/Bear
 4. **Regole operative**: vincoli stringenti (es. "una sola posizione per coin", "operazioni ammesse: open/close/hold")
 5. **Formato output obbligatorio**: risposta *esclusivamente* come oggetto JSON con campi: operazione, simbolo, direzione, leva, reasoning
@@ -150,9 +150,9 @@ Tutti i sistemi usano lo stesso pattern:
 La serie video "Creo il mio Trading AI Agent" è il caso più vicino al nostro approccio.
 
 **Architettura**:
-- Exchange: Hyperliquid (DEX, leva fino a 40x), integrazione Python via **CCXT**
+- Exchange: Hyperliquid (DEX, leva fino a 40x), integrazione Python via **[[_meta/glossario#CCXT|CCXT]]**
 - DB: **PostgreSQL** — salva stato ogni 15 minuti (storico portafoglio, decisioni, indicatori, forecast vs reale)
-- Deploy: **Railway** come Cron Job ogni 15 minuti
+- Deploy: **Railway** come [[_meta/glossario#Cron Job|Cron Job]] ogni 15 minuti
 - Dashboard: generata con vibe-coding, mostra equity curve, posizioni, win rate, JSON reasoning dell'LLM
 
 **Moduli costruiti**:
@@ -178,13 +178,13 @@ La serie video "Creo il mio Trading AI Agent" è il caso più vicino al nostro a
 Il pattern standard per tradurre una decisione LLM in pesi concreti:
 
 1. LLM produce "views" strutturate: `{"BTCUSDT": 0.05, "confidence": 0.7}` (rendimento atteso + confidenza)
-2. Le views vengono iniettate in **Black-Litterman** o **Entropy Pooling**
+2. Le views vengono iniettate in **[[_meta/glossario#Black-Litterman|Black-Litterman]]** o **[[_meta/glossario#Entropy Pooling|Entropy Pooling]]**
 3. Python calcola i pesi ottimali incrociando views + covarianza storica (zero token)
-4. **Rebalancing Gate**: eseguire ordini *solo se* drift dai pesi target > soglia (es. 5%) — evita overtrading
+4. **[[_meta/glossario#Rebalancing Gate|Rebalancing Gate]]**: eseguire ordini *solo se* drift dai pesi target > soglia (es. 5%) — evita overtrading
 
 ### Tecniche di risk management disponibili
 
-- **CVaR** (Conditional Value at Risk): più robusto del VaR per i code tail risk
+- **[[_meta/glossario#CVaR (Conditional Value at Risk)|CVaR]]** (Conditional Value at Risk): più robusto del [[_meta/glossario#VaR (Value at Risk)|VaR]] per i code tail risk
 - **CDaR** (Conditional Drawdown at Risk): ottimizza il drawdown atteso nei peggiori scenari
 - **Max Drawdown constraint**: hard limit sul drawdown massimo tollerato
 - **Robust Mean-Risk**: si protegge da stime errate usando "insiemi di incertezza ellissoidali"
@@ -192,7 +192,7 @@ Il pattern standard per tradurre una decisione LLM in pesi concreti:
 
 ### Entropy Pooling — più potente di Black-Litterman
 
-Permette viste su qualsiasi momento statistico: varianza, correlazione, skewness, curtosi, CVaR — non solo rendimenti attesi. Supporta disuguaglianze (`BTCUSDT >= 0.03`). In un sistema multi-agent, **Opinion Pooling** aggrega forecast di più agenti con pesi di probabilità.
+Permette viste su qualsiasi momento statistico: varianza, correlazione, skewness, curtosi, CVaR — non solo rendimenti attesi. Supporta disuguaglianze (`BTCUSDT >= 0.03`). In un sistema multi-agent, **[[_meta/glossario#Opinion Pooling|Opinion Pooling]]** aggrega forecast di più agenti con pesi di probabilità.
 
 ---
 

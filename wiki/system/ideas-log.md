@@ -21,7 +21,7 @@ File append-only per le idee emerse durante lo sviluppo del progetto. Non si can
 *Fonte: chat 2026-06-02 + call 2026-05-29. Idee/spunti emersi mentre Luca rispondeva all'analisi delle lacune.*
 
 ### Sistema di rating/scoring a livelli
-Valutazioni "a level" con punteggi categorizzati in più punti del sistema: conviction sul trade, **valutazione del lavoro di ogni agente** (capire cosa migliorare e come), rating degli asset per il disinvestimento. → formalizzata in [[system/rating-scoring]].
+Valutazioni "a level" con punteggi categorizzati in più punti del sistema: [[_meta/glossario#Conviction Level|conviction]] sul trade, **valutazione del lavoro di ogni agente** (capire cosa migliorare e come), rating degli asset per il disinvestimento. → formalizzata in [[system/rating-scoring]].
 
 ### Scheda ticker auto-aggiornante
 Un DB dove ogni ticker ha la sua scheda/page con valutazione corrente, che si auto-aggiorna; gli agenti devono distinguere e cancellare le info vecchie/obsolete/confutate. Difficile ma potente. → [[system/parallelism-design]] (alternativa B).
@@ -42,7 +42,7 @@ Prelevare parte dei profitti per ricaricare automaticamente i crediti API (i cos
 Ogni mese trasformare il *tot %* del guadagno del mese (dall'ultimo cash-out) in bonifico verso IBAN/conto deposito. Da formalizzare nello Statuto a progetto finito.
 
 ### Feedback post-trade per meccanismo di uscita
-Un sistema che fa notare agli agenti **come sono andati i trade precedenti a seconda del meccanismo di disinvestimento** adottato (TP / SL / trailing stop / rating-based). Prerequisito: campo `exit_reason` su ogni transazione. La sintesi rientra nel `past_context` degli agenti. → formalizzato in [[system/rating-scoring]] §4.
+Un sistema che fa notare agli agenti **come sono andati i trade precedenti a seconda del meccanismo di disinvestimento** adottato (TP / SL / [[_meta/glossario#Trailing Stop Loss|trailing stop]] / rating-based). Prerequisito: campo `exit_reason` su ogni transazione. La sintesi rientra nel `past_context` degli agenti. → formalizzato in [[system/rating-scoring]] §4.
 
 ### Loop di valutazione e auto-miglioramento (unificazione 2026-06-03)
 Quattro idee emerse in momenti diversi sono lo stesso macro-blocco e sono state unificate in [[system/learning-feedback-loop]]: **reportistica "cosa va male"** (modulo Python deterministico + narrazione LLM — opzione scelta per ora, non un agente dedicato), **scoring del lavoro degli agenti**, **ponderazione dinamica dei pesi** (l'agente che ci azzecca pesa di più; punto di aggancio aperto, in tensione con "conviction dal PM"), **feedback post-trade per meccanismo di uscita**. Substrato di logging (chain-of-thought + tesi-per-agente↔esito + `exit_reason`) da predisporre **da subito**; report e pesi restano post-MVP.
@@ -136,7 +136,7 @@ Questo calendario è input rilevante per gli agenti che devono contestualizzare 
 
 ### Self-Scheduling Workflows
 
-Idea: eliminare i cron job fissi. Gli LLM includono nei loro output strutturati **il momento in cui ritengono opportuno eseguire nuove analisi**, usando tool appositi che risvegliano altri agenti quando serve. Esempio: un agente apre una posizione che ritiene debba restare tale per X giorni → nell'output inserisce di essere richiamato tra X giorni per il controllo.
+Idea: eliminare i [[_meta/glossario#Cron Job|cron job]] fissi. Gli LLM includono nei loro output strutturati **il momento in cui ritengono opportuno eseguire nuove analisi**, usando tool appositi che risvegliano altri agenti quando serve. Esempio: un agente apre una posizione che ritiene debba restare tale per X giorni → nell'output inserisce di essere richiamato tra X giorni per il controllo.
 
 Alternativa ancora aperta: analisi periodica a intervalli prestabiliti (es. ogni 4h) per decidere se aprire/chiudere/hold.
 
@@ -144,7 +144,7 @@ Alternativa ancora aperta: analisi periodica a intervalli prestabiliti (es. ogni
 
 - **DB-first per tutti i dati**: al posto di chiamare vendor on-demand, ogni dato viene salvato subito nel DB centrale; i tool si agganciano al DB (non ai vendor). Da valutare: gestione informazioni molto recenti non ancora nel DB
 - **Workflow deterministici per il fetching**: per ogni provider, sfruttare al massimo i rate limit dei piani gratuiti e caricare dati aggiornati nel DB
-- **Gestione look-ahead bias**: salvare due date per ogni informazione — (1) data di ottenimento/pubblicazione, (2) data a cui l'informazione si riferisce (es. ultimo giorno del trimestre per i bilanci)
+- **Gestione [[_meta/glossario#Look-Ahead Bias|look-ahead bias]]**: salvare due date per ogni informazione — (1) data di ottenimento/pubblicazione, (2) data a cui l'informazione si riferisce (es. ultimo giorno del trimestre per i bilanci)
 - **Indicatori calcolati automaticamente**: ogni indicatore calcolabile va calcolato dal DB con formule che richiamano i dati grezzi già presenti — no calcolo on-the-fly
 - **Deduplicazione deterministica**: per dati provenienti da più vendor, workflow deterministici per gestire i duplicati
 - **Standardizzazione formati**: ogni modulo estrae e standardizza in formati comuni all'intero sistema (es. exchange intercambiabile tra demo e reale)

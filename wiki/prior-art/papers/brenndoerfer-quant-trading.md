@@ -120,7 +120,7 @@ I market maker forniscono liquidità offrendo continuamente di comprare e vender
 
 Opera su timeframe misurati in microsecondi/secondi. Latency arbitrage, electronic market making, statistical patterns nell'order flow. Richiede infrastruttura tecnologica specializzata.
 
-**Non applicabile al nostro progetto** (incompatibile con costo token LLM e orizzonte swing trading).
+**Non applicabile al nostro progetto** (incompatibile con costo token LLM e orizzonte [[_meta/glossario#Swing Trading|swing trading]]).
 
 ---
 
@@ -139,7 +139,7 @@ Buone idee vengono da: research accademica, osservazione industry, analisi strut
 - Identificare i dati necessari
 - Sourcing e acquisizione
 - Cleaning e validazione
-- **Point-in-time alignment** (critico!): usare solo informazioni disponibili al momento storico della decisione. I dati finanziari vengono spesso rivisti — usare dati revised introduce look-ahead bias.
+- **Point-in-time alignment** (critico!): usare solo informazioni disponibili al momento storico della decisione. I dati finanziari vengono spesso rivisti — usare dati revised introduce [[_meta/glossario#Look-Ahead Bias|look-ahead bias]].
 
 ### Fase 3: Signal Construction
 
@@ -165,7 +165,7 @@ def calculate_momentum_signal(prices, lookback=12, skip=1):
 
 ### Fase 4: Model Building e Backtesting
 
-Applica la strategia ai dati storici. **Fase più pericolosa** per overfitting.
+Applica la strategia ai dati storici. **Fase più pericolosa** per [[_meta/glossario#Overfitting|overfitting]].
 
 **Framework backtesting rigoroso deve**:
 - Rispettare la freccia del tempo: usare solo informazioni disponibili al punto decisionale
@@ -186,12 +186,12 @@ Per 100 test al 5%: probabilità del 99.4% di trovare almeno un falso positivo.
 - Out-of-sample testing: riservare dati mai usati durante lo sviluppo
 - False discovery rate control (Benjamini-Hochberg)
 
-**Bootstrap Sharpe test**: testare statisticamente se lo Sharpe ratio è significativamente maggiore di zero.
+**Bootstrap [[_meta/glossario#Sharpe Ratio|Sharpe]] test**: testare statisticamente se lo Sharpe ratio è significativamente maggiore di zero.
 
 ### Fase 6: Risk Assessment
 
 **Domande chiave**:
-- Drawdown analysis: quali sono le perdite peggiori storiche? Quanto ci ha messo il recovery?
+- [[_meta/glossario#Drawdown|Drawdown]] analysis: quali sono le perdite peggiori storiche? Quanto ci ha messo il recovery?
 - Tail risk: i ritorni sono normalmente distribuiti o ci sono fat tails?
 - Correlation regime: come performa la strategia in diverse condizioni di mercato?
 - Leverage implications: come impattano i costi di borrowing e i margin requirements?
@@ -210,7 +210,7 @@ $$\text{Sharpe Ratio} = \frac{E[r_p - r_f]}{\sigma_p}$$
 
 ### Sortino Ratio
 
-$$\text{Sortino Ratio} = \frac{E[r_p - r_f]}{\sigma_{\text{down}}}$$
+$$\text{[[_meta/glossario#Sortino Ratio|Sortino]] Ratio} = \frac{E[r_p - r_f]}{\sigma_{\text{down}}}$$
 
 - Come Sharpe ma penalizza solo la volatilità al ribasso
 - Migliore per strategie con distribuzione dei ritorni asimmetrica
@@ -232,7 +232,7 @@ $$\text{Information Ratio} = \frac{E[r_p - r_b]}{\sigma_{r_p - r_b}}$$
 
 ### Win Rate e Profit Factor
 
-- **Win Rate**: percentuale di trade positivi
+- **[[_meta/glossario#Win Rate|Win Rate]]**: percentuale di trade positivi
 - **Profit Factor**: gross profit / gross loss. >1 = profittevole
 
 ---
@@ -274,7 +274,7 @@ Costi reali includono:
 
 ### Paper Trading e Simulazione
 
-Prima di rischiare capitale reale, testare in ambiente paper trading. Valida:
+Prima di rischiare capitale reale, testare in ambiente [[_meta/glossario#Paper Trading / Testnet|paper trading]]. Valida:
 - L'infrastruttura di execution funziona correttamente
 - I data feed sono affidabili e tempestivi
 - L'order management gestisce edge cases
@@ -288,7 +288,7 @@ $$f^* = \frac{bp - (1-p)}{b} = \frac{p(b+1) - 1}{b}$$
 - $p$: probabilità di un trade vincente
 - $b$: win/loss ratio (guadagno medio / perdita media)
 
-In pratica si usa **fractional Kelly** (half Kelly o quarter Kelly) per margine di sicurezza contro errori di stima dei parametri.
+In pratica si usa **fractional [[_meta/glossario#Kelly Criterion|Kelly]]** (half Kelly o quarter Kelly) per margine di sicurezza contro errori di stima dei parametri.
 
 ### Monitoring e Adaptation
 

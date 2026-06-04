@@ -44,6 +44,7 @@ sources:
 - [ ] 🛠 **Reportistica diagnostica "cosa va male"** — modulo Python (metriche) + narrazione LLM, agganciato alla periodical synthesis → [[system/learning-feedback-loop]]
 - [ ] 🛠 **Ponderazione dinamica dei pesi degli agenti** — l'agente che ci azzecca pesa di più (Opinion Pooling / Black-Litterman), post-MVP → [[system/learning-feedback-loop]]
 - [ ] 🛠 **Feedback post-trade per meccanismo di uscita** — `exit_reason` su ogni trade + sintesi nel `past_context` per gli agenti → [[system/rating-scoring]]
+- [ ] 🛠 **Disinvestimento come batch di trade coordinati** — il PM emette vendite+acquisto in un ciclo per far spazio, solo se tutto analizzato a sufficienza → [[system/rating-scoring]]
 - [ ] 🛠 **Continuous Learning real-time** — fine-tuning su streaming (post-fine-tuning batch) → [[system/decision-log]]
 - [ ] 📈 **Strategia Sentiment degli Analisti** — replicare il pattern che genera il consenso e tradare prima della folla → [[system/ideas-log]]
 - [ ] 📈 **Stop loss istituzionali a domino** — sfruttare le soglie psicologiche degli SL → [[strategy/methods/trend-following]]
@@ -55,6 +56,9 @@ sources:
 
 - [ ] 🛠 **Strutturare lo schema dello state** (PROSSIMO PASSO 1) — raffinare campi/tipi di research_state/investment_state → [[system/state-schemas]]
 - [ ] 🛠 **Definire la formula di position sizing** (PROSSIMO PASSO 2) — relativo, scalato per conviction, Kelly evolutivo → [[system/position-sizing]]
+- [ ] 🔀 **Definire l'`investment_state` con Salvatore** — partire dal template-menu completo, potare/modificare insieme → [[system/investment-state-template]]
+- [ ] 🛠 **Tool di iniezione dello stato del portafoglio** — foto aggiornata (cassa, posizioni, P/L) nel contesto dell'agente → [[system/modules/agents]]
+- [ ] 🛠 **Backtesting continuo e asincrono come validatore delle soglie** — valida di continuo R:R, k_stop/k_tp e ogni rapporto tarato a monte → [[system/modules/quant-backtesting]]
 - [ ] 🛠 **Implementare gli adapter broker** — wrapper Alpaca (MVP) + interfaccia interna standard, IBKR intercambiabile → [[system/modules/execution]]
 - [ ] 🛠 **Progettare lo schema del DB esteso** — 4 aree (rendicontazione/dati live/statuto/log), storage time-series + oggetti → [[system/modules/data-layer]]
 - [ ] 🛠 **Implementare il queue system degli extractor** — un extractor per vendor, check presenza DB, autogestione rate limit → [[system/modules/data-layer]]
@@ -87,18 +91,18 @@ sources:
 
 ## 🟠 Decisioni da prendere
 
-- [ ] 🛠 **`entry_price` del limit order** — 💬 *proposta pronta da approvare*: backbone ATR (entry/stop/tp in unità ATR, `k_entry` scalato per conviction, guardrail R:R) → [[system/state-schemas]]
 - [ ] 🛠 **Parallelismo multi-ticker + subgraph vs nodi** — scegliere tra le alternative A–E → [[system/parallelism-design]]
 - [ ] 🔀 **Criteri "info sufficienti" del PM + max iterazioni** — quando fare/non fare un trade → [[system/parallelism-design]]
 - [ ] 🛠 **Forma fine di storage per gli state annidati** — JSON/documentale dentro il time-series → [[system/modules/data-layer]]
-- [ ] 🛠 **Granularità del conviction level** — enum vs score 0-100 → [[system/rating-scoring]]
+- [ ] 🛠 **Comportamento di ogni agente del desk** — cosa fa esattamente Market/Sentiment/Technical/Fondamentali (input, tool, output, stop) → [[system/modules/agents]]
 - [ ] 🛠 **Includere il modulo TA?** — opzionale, test A/B con/senza → [[system/modules/quant-backtesting]]
 - [ ] 🛠 **Analisti: 2 o 4 agenti?** — accorpati o separati, da decidere a sviluppo → [[system/modules/agents]]
 - [ ] 🛠 **Come implementare il Prompt Builder / system prompt?** — il lavoro più grande è sui system prompt → [[system/modules/agents]]
 - [ ] 🛠 **Token cost estimator** — tracciamento token + ricarica automatica → [[system/modules/agents]]
 - [ ] 🔀 **Frequenza ciclo** — 4h vs 24h, dipende dai backtest → [[system/modules/quant-backtesting]]
 - [ ] 🔀 **Desk di monitoring/evaluation** — design, partire da SFC Streamlit → [[system/modules/agents]]
-- [ ] 🛠 **Punto di aggancio della ponderazione pesi** — input al PM / nodo di aggregazione / confidence Black-Litterman? Tensione con "conviction dal PM" → [[system/learning-feedback-loop]]
+- [ ] 🛠 **Punto di aggancio della ponderazione pesi** — input al PM / nodo di aggregazione / confidence Black-Litterman? Tensione con "conviction dal PM". I **pesi li calcola il backtesting system** (hit-rate per-agente) → [[system/learning-feedback-loop]]
+- [ ] 🛠 **Quanti state annidati** — A (piatto) / B (sotto-state) / C (ibrido progressivo). Da valutare insieme → [[system/state-schemas]]
 - [ ] 📈 **VaR: quale e come** — parametrico/storico/MonteCarlo, VaR vs CVaR, lookback → [[strategy/questions-for-salvatore]]
 - [ ] 📈 **Prevenzione overfitting** — walk-forward, in/out-of-sample, CPCV → [[strategy/questions-for-salvatore]]
 - [ ] 📈 **Test statistici sul benchmark** — significatività vs S&P/60-40 → [[strategy/questions-for-salvatore]]
@@ -111,6 +115,11 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **Decisione: aggregazione `direction`/`conviction` al PM** ✅ 2026-06-04 — ogni desk propone, il PM aggrega e decide → [[system/state-schemas]]
+- [x] 🛠 **Decisione: struttura `entry_price`** ✅ 2026-06-04 — backbone ATR (k_entry scalato per conviction, guardrail R:R 1.5); numeri da tarare in backtest → [[system/state-schemas]]
+- [x] 🛠 **Decisione: conviction level = enum** ✅ 2026-06-04 — 5 livelli, non score 0-100 → [[system/rating-scoring]]
+- [x] 🛠 **Decisione: autonomia totale** ✅ 2026-06-04 — nessun input umano oltre l'accensione (auto-start timer + alert) → [[system/modules/agents]]
+- [x] 🛠 **Decisione: PM si attiva anche al `next_check_date` scaduto** ✅ 2026-06-04 — terzo trigger oltre alert + periodical synthesis → [[system/modules/agents]]
 - [x] 🔀 **Decisione: broker intercambiabili via adapter** ✅ 2026-06-02 — Alpaca MVP → IBKR prod → [[system/modules/execution]]
 - [x] 🔀 **Decisione: storage principalmente time-series + oggetti** ✅ 2026-06-02 → [[system/modules/data-layer]]
 - [x] 🔀 **Decisione: approccio incrementale (alpha-first)** ✅ 2026-06-02 → [[system/decision-log]]

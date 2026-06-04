@@ -34,18 +34,18 @@ Libreria Python per la costruzione e l'ottimizzazione di portafogli quantitativi
 - **Preprocessing**: validazione dati, outlier treatment, imputation
 - **Pre-selection**: filtri per varianza, correlazione, dominanza, scadenza
 - **Moments**: 5 stimatori di rendimento atteso e 11 di covarianza; supporta HMM per regimi di mercato
-- **Views — Black-Litterman & Entropy Pooling**: integra le views (previsioni LLM) nell'ottimizzazione matematica
+- **Views — [[_meta/glossario#Black-Litterman|Black-Litterman]] & [[_meta/glossario#Entropy Pooling|Entropy Pooling]]**: integra le views (previsioni LLM) nell'ottimizzazione matematica
 - **Optimization**: oltre 10 modelli (Mean-Risk, Risk Budgeting, HRP, HERC, NCO, robust ellipsoidal)
-- **Validation**: Walk-Forward, Combinatorial Purged CV (CPCV)
+- **Validation**: [[_meta/glossario#Walk-Forward Backtesting|Walk-Forward]], Combinatorial Purged CV ([[_meta/glossario#CPCV (Combinatorial Purged Cross-Validation)|CPCV]])
 - **Regime detection (HMM)**: adatta il modello di rischio al regime di mercato
-- **Scoring**: 19 metriche di performance (Sharpe, Sortino, Calmar, ecc.)
+- **Scoring**: 19 metriche di performance ([[_meta/glossario#Sharpe Ratio|Sharpe]], [[_meta/glossario#Sortino Ratio|Sortino]], Calmar, ecc.)
 - **Factors**: 17 fattori in 9 gruppi per la selezione degli asset
 
 ## Ruolo nel progetto
 
 Motore di calcolo candidato per il **Portfolio Allocator** (post-MVP). Implementa deterministicamente:
 - Traduzione delle views LLM in pesi portfolio (via Black-Litterman / Entropy Pooling)
-- Ribilanciamento con Rebalancing Gate
+- Ribilanciamento con [[_meta/glossario#Rebalancing Gate|Rebalancing Gate]]
 - Hard limits (statuto del fondo)
 - Il design "Config + Factory" è compatibile con il layer DB: la configurazione del portafoglio può essere salvata nel DB e riletta deterministicamente
 - Le "Views" sono il punto di contatto ideale tra LLM e Quant: l'LLM produce un'opinione e la libreria la integra matematicamente
@@ -86,7 +86,7 @@ Pattern chiave (in `GenerateViews.baml`): l'LLM riceve **fattori quantitativi pe
 
 ### Cosa estrarre / a cui ispirarsi per il nostro progetto
 1. **Architettura backend FastAPI a layer** (models→repositories→services→routers + middleware + Alembic) = blueprint diretto per il nostro backend e il DB centrale ([[system/modules/data-layer]]).
-2. **BAML per le funzioni LLM** (output strutturato + Ollama/cloud intercambiabili) = alternativa o complemento al nostro "JSON obbligatorio su DeepSeek"; `GenerateViews` è il template del ponte LLM→Black-Litterman ([[system/modules/agents]]).
+2. **BAML per le funzioni LLM** (output strutturato + Ollama/cloud intercambiabili) = alternativa o complemento al nostro "JSON obbligatorio su [[_meta/glossario#DeepSeek|DeepSeek]]"; `GenerateViews` è il template del ponte LLM→Black-Litterman ([[system/modules/agents]]).
 3. **`broker_sync_service` + `trading212`** = riferimento per il modulo Exchange (anche se equity europeo).
 4. **Background jobs + scheduler + Alembic + docker-compose** = infrastruttura operativa già risolta.
 5. La **libreria `optimizer/`** resta il motore quant candidato (vedi sopra) — ora sappiamo che esiste anche tutto il "contorno" applicativo a cui guardare.

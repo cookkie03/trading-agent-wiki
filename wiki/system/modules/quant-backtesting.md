@@ -6,7 +6,7 @@ tags:
   - strategy
   - software
 created: 2026-05-13
-updated: 2026-05-29
+updated: 2026-06-04
 status: active
 priority: high
 area: software
@@ -28,8 +28,8 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 
 ## Riferimenti di codice (repo esterni)
 
-- **Indicatori tecnici (lib `ta`)**: [[prior-art/libraries/rizzo-trading-agent]] — `indicators.py` (EMA, MACD, RSI 7/14, ATR, pivot points, doppio output testo+JSON per prompt e DB).
-- **Metriche performance/rischio (pandas puro, quasi copia-incollabili)**: [[prior-art/libraries/sfc-portfolio-tracker]] — `analytics.py` (Sharpe, Sortino, Calmar, max DD, VaR, CVaR, alpha/beta) e `analytics_plus.py` (QuantStats + PyPortfolioOpt: efficient frontier, Monte Carlo, risk contribution). Catalogo KPI completo nella pagina del tracker.
+- **Indicatori tecnici (lib `ta`)**: [[prior-art/libraries/rizzo-trading-agent]] — `indicators.py` (EMA, MACD, RSI 7/14, [[_meta/glossario#ATR (Average True Range)|ATR]], [[_meta/glossario#Pivot Points|pivot points]], doppio output testo+JSON per prompt e DB).
+- **Metriche performance/rischio (pandas puro, quasi copia-incollabili)**: [[prior-art/libraries/sfc-portfolio-tracker]] — `analytics.py` ([[_meta/glossario#Sharpe Ratio|Sharpe]], [[_meta/glossario#Sortino Ratio|Sortino]], Calmar, max DD, [[_meta/glossario#VaR (Value at Risk)|VaR]], [[_meta/glossario#CVaR (Conditional Value at Risk)|CVaR]], alpha/beta) e `analytics_plus.py` (QuantStats + PyPortfolioOpt: efficient frontier, Monte Carlo, risk contribution). Catalogo KPI completo nella pagina del tracker.
 - **Ricostruzione curva equity giornaliera per backtest**: [[prior-art/libraries/sfc-portfolio-tracker]] — `build_nav_history.py`.
 - **Motore quant completo (sklearn API)**: [[prior-art/libraries/cvx-portfolio-optimizer]] — libreria `optimizer/` (moments, optimization, validation Walk-Forward/CPCV, scoring, factors).
 
@@ -38,14 +38,35 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 ## Cosa fa
 
 - Implementa la **strategia quantitativa** scelta (vedi sotto)
-- Esegue **backtest robusti** sui dati storici in `market_data` (via VectorBT)
+- Esegue **backtest robusti** sui dati storici in `market_data` (via [[_meta/glossario#VectorBT|VectorBT]])
 - Calcola indicatori tecnici parametrizzabili (RSI, MACD, Pivot Points, medie mobili...)
 - Produce output strutturato nel DB → `module_outputs` (per il Prompt Builder)
 - Genera metriche di valutazione per ogni strategia testata
 
 ## Output atteso
 
-> Prime metriche su dati reali: Sharpe ratio, win rate, drawdown per la strategia scelta.
+> Prime metriche su dati reali: Sharpe ratio, [[_meta/glossario#Win Rate|win rate]], [[_meta/glossario#Drawdown|drawdown]] per la strategia scelta.
+
+---
+
+## Backtesting come validatore continuo delle soglie (input di Luca 2026-06-04)
+
+> Luca: *«il backtesting deve servire come metodo per validare costantemente tutte le soglie, tutti i rapporti definiti a monte (es. [[_meta/glossario#Risk/Reward Ratio (R:R)|R:R]] 1.5), e deve essere continuo e asincrono»*.
+
+Il backtesting **non è un'attività una-tantum** che si fa prima di partire: è un **processo permanente** che gira **in parallelo e in asincrono** rispetto al ciclo operativo, con il compito di **tarare e ri-validare di continuo i parametri "definiti a monte"**. Sono parametri-soglia oggi fissati a mano (default ragionevoli) che il backtest deve confermare o correggere sui dati reali via via che si accumulano:
+
+- **R:R minimo** (default ≥ 1.5) e i coefficienti **`k_stop` / `k_tp` / `k_entry`** in unità di ATR → [[system/state-schemas]];
+- periodo dell'**ATR** (default 14) e altri parametri degli indicatori;
+- soglie dello **Statuto** (VaR max ~10%, cap settore/area, soglia di approvazione Risk ~60-70%) → [[system/modules/agents]];
+- moltiplicatori del **position sizing** per livello di [[_meta/glossario#Conviction Level|conviction]] → [[system/position-sizing]];
+- soglie di attivazione degli **alert** (±X%, N deviazioni standard) → [[system/modules/data-layer]];
+- **pesi degli agenti** (ponderazione dinamica): la hit-rate storica per-agente → pesi nell'aggregazione del PM (input di Luca 2026-06-04) → [[system/learning-feedback-loop]] §4.
+
+**Implicazioni di design**:
+- gira come **job asincrono** separato dal ciclo decisionale (non blocca il PM), sul mini-server 24/7;
+- **continuo**: ri-esegue man mano che entrano nuovi dati di mercato e nuovi esiti di trade reali;
+- **chiude il loop** con il [[system/learning-feedback-loop]]: i risultati possono *proporre* nuovi valori-soglia, applicati con cautela (validazione [[_meta/glossario#Walk-Forward Backtesting|walk-forward]] / out-of-sample per non overfittare → [[strategy/questions-for-salvatore]]);
+- ogni parametro tarabile va quindi tenuto come **configurazione esterna**, non hardcodato, così il backtest può scriverne di aggiornati.
 
 ---
 
@@ -77,10 +98,10 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 ## Tech
 
 - **VectorBT**: framework Python di backtesting **vettorizzato** (lavora su intere serie storiche con pandas/numpy, molto veloce — testa molte combinazioni di parametri in poco tempo). Usato da MarketSenseAI. Spiegazione nel [[_meta/glossario]].
-- **Costi di transazione**: niente più "10bps fisso" → modello **auto-adattivo** che usa le commissioni reali esposte dall'adapter del broker ([[system/modules/execution]]).
+- **Costi di transazione**: niente più "10bps fisso" → modello **auto-adattivo** che usa le commissioni reali esposte dall'[[_meta/glossario#Adapter / Wrapper (broker)|adapter]] del broker ([[system/modules/execution]]).
 - **Dati**: da `market_data` nel DB di [[system/modules/data-layer]] (OHLCV stock, timeframe 4h/daily)
 - **Metriche obbligatorie**: Sharpe ratio, Sortino ratio, Max Drawdown, Win Rate, Calmar ratio
-- **Insidie da evitare**: look-ahead bias; **overfitting** e **significatività statistica vs benchmark** → da definire con Salvatore in [[strategy/questions-for-salvatore]].
+- **Insidie da evitare**: [[_meta/glossario#Look-Ahead Bias|look-ahead bias]]; **[[_meta/glossario#Overfitting|overfitting]]** e **significatività statistica vs benchmark** → da definire con Salvatore in [[strategy/questions-for-salvatore]].
 - **Storico dati**: non abbiamo ancora anni di storico → si raccoglie *mentre* l'alpha gira; il modulo backtesting si aggiunge incrementalmente. Survivorship bias affrontato a sistema maturo.
 
 ---
@@ -99,7 +120,7 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 
 - **Quale strategia quantitativa esatta?** Multi-factor è l'orientamento, ma Salvatore deve portare i fattori concreti → [[strategy/questions-for-salvatore]].
 - **VaR, overfitting, test statistici sul benchmark** → tutti da definire con Salvatore in [[strategy/questions-for-salvatore]].
-- **Frequenza ciclo: 4h vs 24h?** Dipende dai primi backtest — quale timeframe ha più segnale/rumore per swing trading equity?
+- **Frequenza ciclo: 4h vs 24h?** Dipende dai primi backtest — quale timeframe ha più segnale/rumore per [[_meta/glossario#Swing Trading|swing trading]] equity?
 - **Modulo TA da includere?** Rischio: TA mal calibrata corrompe l'output. Progettare come modulo opzionale e testare A/B (con/senza).
 - **Multi-asset o singolo asset nel backtest iniziale?** MVP singolo asset, ma il codice deve supportare multi-asset per il futuro.
 

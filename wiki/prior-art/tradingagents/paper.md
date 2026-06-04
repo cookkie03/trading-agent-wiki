@@ -59,7 +59,7 @@ Il framework supera i limiti dei sistemi a singolo agente o dei sistemi multi-ag
 - **Backbone LLM Strategico**: 
   - Modelli "Quick-thinking" (GPT-4o-mini) per task semplici, summarization e recupero dati.
   - Modelli "Deep-thinking" (o1-preview) per decision-making e analisi complessa.
-- **Superiorità**: Il framework ha superato i baseline (Buy & Hold, MACD, SMA) in Cumulative Return e Sharpe Ratio, mantenendo un Maximum Drawdown contenuto.
+- **Superiorità**: Il framework ha superato i baseline (Buy & Hold, MACD, SMA) in Cumulative Return e [[_meta/glossario#Sharpe Ratio|Sharpe]] Ratio, mantenendo un Maximum [[_meta/glossario#Drawdown|Drawdown]] contenuto.
 
 ## Relazione con il Progetto
 - Conferma la validità dell'architettura multi-agente modulare.
@@ -69,7 +69,7 @@ Il framework supera i limiti dei sistemi a singolo agente o dei sistemi multi-ag
 ## Pattern adottati nel nostro progetto
 
 - **Comunicazione strutturata via JSON** (non chat free-form) tra agenti — evita l'effetto "telefono senza fili"
-- **Quick Thinker + Deep Thinker**: modelli economici per raccolta dati, modelli capaci solo per la decisione finale
+- **[[_meta/glossario#Quick Thinker + Deep Thinker|Quick Thinker]] + Deep Thinker**: modelli economici per raccolta dati, modelli capaci solo per la decisione finale
 - **Risk Management upstream** (nostra variante): nel TradingAgents originale il Risk Team valuta *dopo* il Trader; nel nostro design il Risk Analyst agisce *prima*, impostando i paletti
 
 Per i dettagli implementativi del codebase vedere [[prior-art/tradingagents/code-wiki]].

@@ -6,7 +6,7 @@ tags:
   - multi-agent
   - architecture
 created: 2026-05-13
-updated: 2026-05-29
+updated: 2026-06-04
 status: active
 priority: high
 area: software
@@ -44,7 +44,7 @@ Portfolio Manager (agente orchestratore / CEO)
 ## Riferimenti di codice (repo esterni)
 
 - **Prompt Builder + LLM JSON strict**: [[prior-art/libraries/rizzo-trading-agent]] — `main.py` assembla il contesto multi-sorgente con tag XML (`<indicatori>`, `<news>`, `<sentiment>`, `<forecast>`) iniettato in `system_prompt.txt`; `trading_agent.py` usa Structured Output JSON Schema **strict** (template del nostro contratto decisione→ordine), con regole anti-overtrading e attenzione ai costi.
-- **LLM → views (Black-Litterman)**: [[prior-art/libraries/cvx-portfolio-optimizer]] — `api/baml_src/GenerateViews.baml`: pattern "fattori per asset → views con confidence → Idzorek alpha". L'LLM produce opinioni, la matematica decide i pesi entro i vincoli.
+- **LLM → views ([[_meta/glossario#Black-Litterman|Black-Litterman]])**: [[prior-art/libraries/cvx-portfolio-optimizer]] — `api/baml_src/GenerateViews.baml`: pattern "fattori per asset → views con confidence → Idzorek alpha". L'LLM produce opinioni, la matematica decide i pesi entro i vincoli.
 - **Tool ispirazione**: sezione "Data Retrieval Tools and Utilities" di [[prior-art/tradingagents/code-wiki]] (Fundamental Data, News/Insider Transactions tools).
 
 ---
@@ -53,10 +53,13 @@ Portfolio Manager (agente orchestratore / CEO)
 
 Il PM è un **agente LLM** con potere decisionale ed esecutivo (il "CEO" / "GOAT" del tavolo circolare): ha tool verso tutti gli agenti, li chiama come tool, e decide quando *"ho informazioni sufficienti"*. L'umano interviene solo come **override iniziale** finché il sistema non è affidabile (traiettoria augmentation → autonomy).
 
-- **Si attiva in 2 casi**: (a) un **alert** (solo numerico/prezzo, dal calendario/target via [[system/modules/data-layer]]); (b) la **periodical synthesis** (state sintetico a intervalli fissi con rendicontazione + market). Per il resto resta libero, si attiva e orchestra: chiama agenti → li fa ragionare → genera trade → scrive nel DB.
+- **Trigger di attivazione**: il PM **non** si attiva solo in 2 casi. Le casistiche (elenco di riferimento in [[system/modules/data-layer]]) sono: (a) **alert** numerico/prezzo (target/calendario); (b) **periodical synthesis** (state sintetico a intervalli fissi, rendicontazione + market); (c) **`next_check_date` scaduto** di un investimento precedente → il Dynamic Temporal Checkpoint richiama il PM per rivalutare quella posizione *(input di Luca 2026-06-04)*; (d) news anomale / soglia di variazione (alternative ancora da decidere). Per il resto resta libero e orchestra: chiama agenti → li fa ragionare → genera trade → scrive nel DB.
 - **Override**: news contro l'idea → cancella/ribalta la posizione.
 - **Desk di origination** (i due desk analisti) chiamati dal PM come tool. Serve anche un **desk di monitoring/evaluation** che sorveglia le posizioni esistenti e rifà il processo quando le news cambiano la tesi (evita target obsoleti o posizioni di segno opposto sullo stesso titolo). **Punto di partenza per il design: la dashboard SFC Streamlit** ([[prior-art/libraries/sfc-portfolio-tracker]]) — decisione 2026-06-02.
 - **Orchestrazione multi-ticker** (come il PM analizza N ticker in parallelo senza mescolare gli state) e **criteri di "info sufficienti"** (quando decidere di fare/non fare un trade, evitando loop infiniti): alternative di design in **[[system/parallelism-design]]**.
+
+### Autonomia totale: nessun input umano oltre l'accensione (input di Luca 2026-06-04)
+Il sistema **non deve richiedere alcun intervento umano** se non l'**accensione del software**. All'avvio il programma fa partire **da solo** i timer della *periodical synthesis* e il *meccanismo di alert*; da lì in poi il PM si auto-attiva sui trigger sopra e opera senza supervisione. L'override umano resta come *possibilità* nelle prime fasi (finché il sistema non è affidabile), non come *requisito* operativo. → decisione in [[system/decision-log]].
 
 ### Attivazione e mercati efficienti
 Le **API funzionano solo a richiesta** (no push news). Risoluzione via **teoria dei mercati efficienti**: i prezzi riflettono le informazioni → un **prezzo anomalo** attiva il monitoring, che poi cerca la spiegazione (news, tassi). Coerente col mid-term: non serve reazione istantanea. Lo **switch di autonomia** si dà nel **system prompt**: "rendere ogni agente quanto più autonomo possibile" è il vero valore aggiunto.
@@ -77,7 +80,9 @@ I due desk fanno un **loop di conversazione** e convergono su un `research_state
 ### `research_state` = tesi di investimento completa
 Non solo l'idea, ma: `buy/hold/sell` + **target price entrata + uscita + stop loss + sizing** + pro/contro + livello di **convinzione**. Versionato (`alpha`/v1), esiti `approved`/`declined`. **Schema dettagliato e contratto dei campi → [[system/state-schemas]]** (tutti i campi obbligatori; `position_sizing` incluso, vedi [[system/position-sizing]]).
 
-> **Conviction level** assegnato dal **Portfolio Manager** date le info degli analisti (decisione 2026-06-02). Fa parte del più ampio [[system/rating-scoring]] (conviction sul trade · scoring del lavoro degli agenti · rating asset per il disinvestimento).
+> **[[_meta/glossario#Conviction Level|Conviction level]]** assegnato dal **Portfolio Manager** date le info degli analisti (decisione 2026-06-02). Fa parte del più ampio [[system/rating-scoring]] (conviction sul trade · scoring del lavoro degli agenti · rating asset per il disinvestimento).
+
+> **Aggregazione `direction` + `conviction`** (deciso 2026-06-04): ogni desk lascia nello state la **propria proposta** (`suggested_direction` + `suggested_conviction`); il **PM raccoglie tutte le opinioni e decide** quella finale — l'aggregazione vive nel nodo PM, non in un nodo desk separato. In prospettiva i **pesi** con cui il PM fida ciascun desk vengono dalla hit-rate storica calcolata dal backtesting → [[system/learning-feedback-loop]] §4. Vedi schema in [[system/state-schemas]].
 
 > **Head of Analyst eliminato**: il moderatore anti-bias era ridondante. Gli analisti sono la tesi bullish, il Risk Analyst è l'antitesi bearish.
 
@@ -90,7 +95,7 @@ Posizionato come **gate unico** tra il `research_state` e il Trade.
 - Gli analisti sono per natura **bullish**; il Risk Analyst è l'**antitesi bearish** che cerca di smontare ogni tesi. *"Quando acqua e fuoco si mettono d'accordo, la strategia è davvero buona."*
 - Riceve il `research_state` e dà **`approved` / `declined` + razionale**. Se approva → si va **direttamente** a Investment State → Trade.
 - **Soglia ~60-70%** (non 100%: un bear puro non approverebbe mai).
-- Può **rimandare indietro con razionale**: es. *target price troppo alto* → abbassandolo la posizione rientra nel VaR (con VaR 10.000€, target 50$ vs 30$ cambiano quantità e probabilità di realizzo).
+- Può **rimandare indietro con razionale**: es. *target price troppo alto* → abbassandolo la posizione rientra nel [[_meta/glossario#VaR (Value at Risk)|VaR]] (con VaR 10.000€, target 50$ vs 30$ cambiano quantità e probabilità di realizzo).
 
 ### Guardrail deterministici vs reasoning
 **Insight chiave**: se un guardrail è **misurabile numericamente**, non serve un agente — gli agenti sono bravi nel **reasoning, non nei calcoli**. → tradurre lo **Statuto da testuale a scheda di parametri** e misurarlo **deterministicamente** (check Python approve/decline). Esempi: max % su singola area/continente; **VaR di portafoglio max ~10%**; diversificazione per geografia/asset class/settore/duration (es. niente nuova posizione healthcare se già esposti). La componente **bearish/qualitativa** resta affidata al reasoning dell'agente.
@@ -124,6 +129,8 @@ Ogni chiamata LLM (via **OpenRouter**) ha un costo in token. Trattamento economi
 
 **Tool-centric design**: dare quanta più completezza informativa con la minor latenza. Esporre **tool parametrici di calcolo** che l'agente invoca on-demand (non solo un set fisso pre-calcolato). Per ogni tool ereditato dal fork TradingAgents: tenere, potenziare o riscrivere.
 
+> **Tool obbligatorio — iniezione dello stato del portafoglio** (input di Luca 2026-06-04): tra i tool deve esserci quello che **inietta lo stato corrente del portafoglio** (rendicontazione: liquidità, posizioni, distribuzione, P/L) nel contesto dell'agente che ragiona. Senza la foto aggiornata di "dove siamo investiti e con quanta cassa", nessuna decisione di sizing/disinvestimento è sensata. Legge dall'area *rendicontazione* del DB → [[system/modules/data-layer]].
+
 ---
 
 ## State Management e Schemas
@@ -142,7 +149,7 @@ Obiettivo: **pochi schema potenti e dettagliati**, non tanti frammentati. Patter
 - **LangSmith (UI/CLI)** come interfaccia centrale per debug, logging, monitoring ed **evaluation**: configurare metriche e raffinare i prompt visualmente prima di consolidarli nel codice.
 
 ### Provider LLM: OpenRouter + DeepSeek V4 Pro
-**OpenRouter** come router unico verso tutti i provider (agilità). **DeepSeek V4 Pro** modello principale: sul report NVDA reale (163k input + 20k output token) costa **~$0,09**, contro ~10× di Claude Sonnet 4.6. Vedi [[system/decision-log]] e [[system/stack]].
+**OpenRouter** come router unico verso tutti i provider (agilità). **[[_meta/glossario#DeepSeek|DeepSeek V4 Pro]]** modello principale: sul report NVDA reale (163k input + 20k output token) costa **~$0,09**, contro ~10× di Claude Sonnet 4.6. Vedi [[system/decision-log]] e [[system/stack]].
 
 ---
 
@@ -163,6 +170,7 @@ Obiettivo: **pochi schema potenti e dettagliati**, non tanti frammentati. Patter
 - **Loop di valutazione/apprendimento** (reportistica "cosa va male", scoring agenti, ponderazione pesi, feedback post-trade) → **[[system/learning-feedback-loop]]**. Aperto: punto di aggancio della ponderazione pesi (input PM vs nodo aggregazione) — tensione con "conviction dal PM".
 - Integrare i **Dynamic Temporal Checkpoints** nello state (`next_check_date`).
 - Dove vive l'aggregazione/validazione del segnale `Strong`.
+- **Comportamento di ogni singolo agente del desk** (input di Luca 2026-06-04): da decidere e approfondire nel dettaglio *cosa fa esattamente* ciascun agente (Market, Sentiment, Technical, Fondamentali) — input, tool propri, output nel `research_state`, stile di ragionamento, criteri di stop. È il livello sotto il "Prompt Builder / system prompt": prima il comportamento, poi il prompt che lo realizza.
 - Valutare l'architettura **debate** del Risk (quanti agenti, quali prospettive).
 - Design del **desk di monitoring/evaluation** (partire da SFC Streamlit).
 - ~~Ruolo del nodo `mantainer`~~ → **confermato** (technical → rendicontazione, vedi [[system/modules/data-layer]]).

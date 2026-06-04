@@ -21,11 +21,11 @@ Ricerca comparativa sulle performance di trading di diversi modelli di frontiera
 ## Key Takeaways
 
 - Analizza come diversi LLM gestiscono il trading di asset (spesso crypto o tech stock).
-- Valuta la capacità di ragionamento finanziario, l'aderenza ai vincoli e la performance finale (Sharpe Ratio, rendimenti).
+- Valuta la capacità di ragionamento finanziario, l'aderenza ai vincoli e la performance finale ([[_meta/glossario#Sharpe Ratio|Sharpe]] Ratio, rendimenti).
 - I modelli di frontiera (Claude 3.5 Sonnet, GPT-4o) mostrano capacità diverse nella gestione del rischio vs cattura del rendimento.
 - Sottolinea l'importanza di prompt strutturati e della gestione della memoria per evitare drift nelle decisioni.
 
 ## Relazione con il Progetto
 
-- Supporta la scelta dei modelli (es. l'uso di modelli cinesi come DeepSeek per efficienza o Sonnet per ragionamento).
+- Supporta la scelta dei modelli (es. l'uso di modelli cinesi come [[_meta/glossario#DeepSeek|DeepSeek]] per efficienza o Sonnet per ragionamento).
 - Fornisce benchmark esterni per validare le aspettative di performance del nostro sistema.

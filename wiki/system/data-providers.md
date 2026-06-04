@@ -20,7 +20,7 @@ related:
 
 Panoramica dei broker con API Python disponibili in Italia e dei provider di dati di mercato gratuiti, con raccomandazioni per lo stack del trading agent. Fonte: note raw compilate (probabile output di ricerca AI su Claude/ChatGPT).
 
-> **Distinzione fondamentale**: il broker serve principalmente per **eseguire ordini** (e per il paper trading dell'MVP). La **popolazione del DB** (prezzi storici, fondamentali, news, macro, sentiment) avviene tramite data vendor separati. Le due cose si sovrappongono solo parzialmente — IBKR ad esempio può fornire entrambe, ma non è detto sia la scelta ottimale per ogni tipo di dato.
+> **Distinzione fondamentale**: il broker serve principalmente per **eseguire ordini** (e per il [[_meta/glossario#Paper Trading / Testnet|paper trading]] dell'MVP). La **popolazione del DB** (prezzi storici, fondamentali, news, macro, sentiment) avviene tramite data vendor separati. Le due cose si sovrappongono solo parzialmente — IBKR ad esempio può fornire entrambe, ma non è detto sia la scelta ottimale per ogni tipo di dato.
 
 ---
 

@@ -6,7 +6,7 @@ tags:
   - architecture
   - multi-agent
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-04
 status: draft
 priority: medium
 area: software
@@ -30,11 +30,11 @@ confidence: low
 Quanto il sistema è convinto di un'idea di investimento. Vive nel `research_state` ([[system/state-schemas]]).
 
 - **Chi lo assegna**: probabilmente il **Portfolio Manager**, date le informazioni degli analisti (Luca: *«probabilmente lo dovrebbe dare il portfolio manager date le info degli analisti»*). Da confermare in fase di mappatura del grafo.
-- **Forma**: enum (`Strong Buy` / `Buy` / `Hold` / `Sell` / `Strong Sell`) — eventualmente affiancato da uno **score numerico 0-100** per granularità.
+- **Forma**: **enum** (`Strong Buy` / `Buy` / `Hold` / `Sell` / `Strong Sell`) — **deciso 2026-06-04** (Luca: *«il [[_meta/glossario#Conviction Level|conviction]] pensavo di farlo tramite enum e non come score 0-100»*). Niente punteggio numerico 0-100: i 5 livelli bastano e mappano direttamente su moltiplicatori di sizing e sblocco leva.
 - **Usi**:
   - sblocca la **leva via opzioni** solo sui segnali `Strong` (vedi [[system/modules/agents]]);
   - scala il **position sizing** ([[system/position-sizing]]);
-  - stima `p` per un eventuale Kelly frazionario.
+  - stima `p` per un eventuale [[_meta/glossario#Kelly Criterion|Kelly]] frazionario.
 
 ---
 
@@ -57,15 +57,18 @@ Punteggio aggiornato per ogni ticker, usato per decidere **cosa vendere** quando
   - **forza relativa del segnale corrente** vs quando si è entrati (il segnale è ancora valido?);
   - **distanza dal target / stop**: una posizione vicina al TP o che ha rotto la tesi è candidata all'uscita;
   - **decadimento temporale**: una tesi vecchia non rivalidata pesa meno;
-  - **contributo al rischio di portafoglio** (una posizione che gonfia il VaR o concentra un settore è candidata).
+  - **contributo al rischio di portafoglio** (una posizione che gonfia il [[_meta/glossario#VaR (Value at Risk)|VaR]] o concentra un settore è candidata).
 - **Come tenerlo aggiornato**: o ricalcolo periodico (mantainer/quant), o "scheda ticker auto-aggiornante" (vedi alternativa in [[system/parallelism-design]]).
 
 ### Due livelli di disinvestimento (chiarimento 2026-06-03)
 Il disinvestimento non è solo una decisione "ragionata": gran parte avviene **automaticamente**. Distinguere:
-1. **Disinvestimento automatico (deterministico)**: scatta da meccanismi già armati sull'ordine — **Take Profit**, **Stop Loss**, **trailing stop loss** e simili. Non richiede valutazione dell'agente: è la funzione Trade/Exchange che li gestisce ([[system/modules/execution]]).
+1. **Disinvestimento automatico (deterministico)**: scatta da meccanismi già armati sull'ordine — **Take Profit**, **Stop Loss**, **[[_meta/glossario#Trailing Stop Loss|trailing stop loss]]** e simili. Non richiede valutazione dell'agente: è la funzione Trade/Exchange che li gestisce ([[system/modules/execution]]).
 2. **Disinvestimento valutato (rating-based)**: la valutazione **periodica** (ogni `next_check_date` o al bisogno) di cosa conviene chiudere per far spazio a nuove idee, usando i rating sopra. Luca: *«valutare periodicamente cosa poter disinvestire, considerando che ci saranno Take Profit, trailing stop loss e altri meccanismi di disinvestimento automatico»*.
 
 I due livelli convivono: l'automatico protegge in tempo reale, il valutato ottimizza l'allocazione nel medio termine.
+
+### Disinvestimento come "trade multipli per far spazio" (input di Luca 2026-06-04)
+Il disinvestimento valutato (livello 2) può essere realizzato **come capacità del PM di emettere più trade in un solo ciclo**: di fronte a una nuova opportunità con portafoglio quasi pieno, il PM produce un *insieme coordinato* di ordini — una o più **vendite** che liberano liquidità + l'**acquisto** della nuova idea — invece di un singolo ordine isolato. Condizione vincolante (Luca): questo avviene **solo se tutti gli aspetti sono stati analizzati a sufficienza** — ogni vendita proposta passa per la stessa rivalutazione (rating asset aggiornato, tesi ancora valida?) e per il gate del Risk Analyst, esattamente come un acquisto. Niente vendite "al volo" non motivate: la liberazione di spazio è una decisione analizzata, non un effetto collaterale. Implica che la funzione Trade ([[system/modules/execution]]) sappia eseguire un **batch di ordini atomico** per ciclo. Aggancio con l'orchestrazione multi-ticker → [[system/parallelism-design]].
 
 ---
 
@@ -76,7 +79,7 @@ I due livelli convivono: l'automatico protegge in tempo reale, il valutato ottim
 Anello di apprendimento: il sistema deve **misurare l'esito dei trade segmentato per tipo di uscita** e **restituirlo agli agenti** perché ne tengano conto. È un caso particolare della reportistica diagnostica del [[system/learning-feedback-loop]] (§2 e §5 lì).
 
 - **Prerequisito (logging)**: ogni transazione registra un campo **`exit_reason`** — `take_profit` / `stop_loss` / `trailing_stop` / `rating_based` (disinvestimento valutato) / `manual_override` / `option_expiry`. Vive in `transactions` → [[system/modules/data-layer]] e [[system/modules/execution]].
-- **Analisi**: aggregare P&L, win rate, holding period per `exit_reason` (es. *"i trailing stop ci hanno fatto uscire troppo presto sui trend forti"* / *"gli stop loss hard hanno salvato il -30% in N casi"*).
+- **Analisi**: aggregare P&L, [[_meta/glossario#Win Rate|win rate]], holding period per `exit_reason` (es. *"i trailing stop ci hanno fatto uscire troppo presto sui trend forti"* / *"gli stop loss hard hanno salvato il -30% in N casi"*).
 - **Ritorno agli agenti**: questa sintesi entra nel **`past_context`** dello state ([[system/state-schemas]]) — le "lezioni apprese" che gli analisti e il PM ricevono in input quando rivalutano un ticker. Chiude il loop con lo **scoring del lavoro degli agenti** (§2): un agente che apre tesi chiuse sistematicamente in stop loss perde score.
 - **Stato**: richiede storico → il *valore* arriva col tempo, ma il campo `exit_reason` e il logging vanno predisposti **da subito** perché i dati si accumulino dall'alpha.
 

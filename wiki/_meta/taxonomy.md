@@ -41,6 +41,17 @@ Le skill wiki-* non usano mai path hardcodati: leggono sempre questa tabella.
 | notes     | `raw/notes/`      |
 | archived  | `raw/archived/`   |
 
+## Convenzione colori — `artifacts/architettura.canvas`
+
+> Legenda ufficiale dei colori del canvas dell'architettura (input di Luca 2026-06-04). Da rispettare quando si legge o si modifica il canvas. Il numero è il valore `color` nel JSON Canvas di Obsidian.
+
+| Colore | `color` | Significato |
+|--------|---------|-------------|
+| 🟣 Viola | `6` | **Database** (nodi/aree del DB) |
+| 🟠 Arancione | `2` | **Agent** (PM, desk analisti, Risk Analyst) |
+| 🟢 Verde | `4` | **Tool** (extractor, calendar tool, mantainer, Trade, alert…) |
+| 🔵 Azzurro | `5` | **State** (Investment State, periodical synthesis…) |
+
 ## Tag Taxonomy — Trading Agent
 
 > Solo questi tag sono canonici. Aggiungere qui nuovi tag prima di usarli in modo stabile.

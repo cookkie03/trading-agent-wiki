@@ -56,9 +56,9 @@ Modulo puro pandas/numpy, **direttamente riusabile** nel nostro **Quant/Backtest
 
 ### `analytics_plus.py` — Analisi avanzata (★ QuantStats + PyPortfolioOpt)
 Integra **QuantStats** e **PyPortfolioOpt** (lazy import per non rompere se mancano). Sovrapponibile alle funzioni di [[prior-art/libraries/cvx-portfolio-optimizer]], ma con un'API molto più semplice — utile come **alternativa leggera** o per la dashboard:
-- `advanced_risk_metrics(returns, benchmark)` — VaR, CVaR, Calmar, Information Ratio, ecc.
+- `advanced_risk_metrics(returns, benchmark)` — [[_meta/glossario#VaR (Value at Risk)|VaR]], [[_meta/glossario#CVaR (Conditional Value at Risk)|CVaR]], Calmar, Information Ratio, ecc.
 - `rolling_statistics(returns, window)` — Sharpe/Sortino/Vol/Beta rolling
-- `drawdown_details(returns)` — tabella dei drawdown
+- `drawdown_details(returns)` — tabella dei [[_meta/glossario#Drawdown|drawdown]]
 - `montecarlo_simulation(returns, n_sims=500, n_days=252)` — proiezione Monte Carlo
 - `optimize_max_sharpe`, `optimize_min_volatility`, `optimize_hrp` — ottimizzazione pesi (PyPortfolioOpt)
 - `efficient_frontier_curve(prices, n_points)` — frontiera efficiente
@@ -118,7 +118,7 @@ Per ogni posizione: `avg_cost`, `current_price`, `quantity`, `invested_capital`,
 - **Grafico NAV vs Benchmark** ribasato a 100, selettore periodo YTD/1M/3M/6M/1Y/Dall'Inizio → 3 metriche: SFC Fund %, Benchmark %, **Alpha** (differenza).
 - **Performance Overview (tabella)**: per YTD, 1M, 3M, 6M, 1Y, Since Inception → Fondo %, Benchmark %, Alpha (= Fondo − Bench).
 - **Asset Allocation (donut)**: peso % per macro_class `= current_value/nav_total` + Liquidità.
-- **P&L Breakdown & Risk**: Non Realizzato €, Realizzato+Div €, Investito Totale €, Controvalore € · **Volatilità Annualizzata**, **Sharpe Ratio** (rf 2%), **Max Drawdown**, split Equity %/Fixed Income % (su NAV) — calcolati dalla serie NAV.
+- **P&L Breakdown & Risk**: Non Realizzato €, Realizzato+Div €, Investito Totale €, Controvalore € · **Volatilità Annualizzata**, **[[_meta/glossario#Sharpe Ratio|Sharpe]] Ratio** (rf 2%), **Max Drawdown**, split Equity %/Fixed Income % (su NAV) — calcolati dalla serie NAV.
 - **Top & Bottom Performers**: posizioni ordinate per `pnl_pct`.
 - **Top 10 Holdings (tabella)**: nome, classe, valuta, costo, prezzo, investito, valore, P&L, P&L %, **peso `= current_value/nav_total`**.
 
@@ -130,7 +130,7 @@ Per ogni posizione: `avg_cost`, `current_price`, `quantity`, `invested_capital`,
 
 ### 3. 📈 Performance — `performance_report()` (frequenza auto-rilevata)
 Calcola e mostra (tutte le metriche del report):
-- **Total Return**, **Annualized Return**, **Annualized Volatility**, **Sharpe Ratio**, **Sortino Ratio**, **Max Drawdown**, **Calmar Ratio**, **VaR (95%)**, **CVaR (95%)**, **Best/Worst Day|Week|Month** (in base alla frequenza), **Positive Days/Weeks/Months %**, **Observations** (n°), **Data Frequency**.
+- **Total Return**, **Annualized Return**, **Annualized Volatility**, **Sharpe Ratio**, **[[_meta/glossario#Sortino Ratio|Sortino]] Ratio**, **Max Drawdown**, **Calmar Ratio**, **VaR (95%)**, **CVaR (95%)**, **Best/Worst Day|Week|Month** (in base alla frequenza), **Positive Days/Weeks/Months %**, **Observations** (n°), **Data Frequency**.
 - Se c'è benchmark: **Alpha (ann.)**, **Beta**, **R²**, **Tracking Error**, **Information Ratio**, **Correlation**, **Benchmark Return**, **Benchmark Ann. Return**, **Benchmark Volatility**.
 - Inoltre: curva cumulata ribasata, **serie drawdown** (`drawdown_series`), **heatmap rendimenti mensili** (`monthly_returns_table`), barre P&L per posizione (top 10 / bottom 5).
 
@@ -139,7 +139,7 @@ Metriche raggruppate (tutte mostrate come st.metric):
 - **Performance**: CAGR, Sharpe, Sortino, Calmar, **Omega**.
 - **Rischio**: Volatilità Ann., Max Drawdown, VaR 95%, CVaR 95%, **Recovery Factor**, **Ulcer Index**.
 - **Distribuzione**: **Skew**, **Kurtosis**, **Tail Ratio**.
-- **Win/Loss**: **Win Rate**, Best Day, Worst Day, **Profit Factor**, **Payoff Ratio**, **Kelly Criterion**.
+- **Win/Loss**: **[[_meta/glossario#Win Rate|Win Rate]]**, Best Day, Worst Day, **Profit Factor**, **Payoff Ratio**, **[[_meta/glossario#Kelly Criterion|Kelly Criterion]]**.
 - **vs Benchmark**: Information Ratio, **Treynor Ratio**, Alpha, Beta.
 - **Rolling stats** (`rolling_statistics`, finestra 21/42/63/126/252 gg): **Rolling Sharpe**, **Rolling Sortino**, **Rolling Volatility**.
 - **Drawdown analysis** (`drawdown_details`): serie drawdown + tabella Top 10 periodi di drawdown (inizio, fine, durata, profondità).

@@ -21,7 +21,7 @@ Wiki operativa del progetto `trading-agent`. Raccoglie fonti, documenta il softw
 
 Un sistema multi-agente che replica e automatizza il workflow di un trader professionale: raccogliere informazioni, analizzare segnali quantitativi, decidere con un LLM, eseguire ordini deterministicamente.
 
-**Fase attuale**: design dell'architettura multi-agente **stock-only** (paper trading equity). Topologia 2026-05-29: analisti → research_state → Risk Analyst (gate bear) → Trade deterministico, con un Portfolio Manager orchestratore e un DB esteso. Stack: LangGraph + OpenRouter/DeepSeek V4 Pro. Si riscrive il grafo partendo dalla base di TradingAgents.
+**Fase attuale**: design dell'architettura multi-agente **stock-only** ([[_meta/glossario#Paper Trading / Testnet|paper trading]] equity). Topologia 2026-05-29: analisti → research_state → Risk Analyst (gate bear) → Trade deterministico, con un Portfolio Manager orchestratore e un DB esteso. Stack: LangGraph + OpenRouter/DeepSeek V4 Pro. Si riscrive il grafo partendo dalla base di TradingAgents.
 
 ---
 

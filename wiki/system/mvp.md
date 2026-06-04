@@ -25,11 +25,11 @@ Design del prototipo funzionante del trading agent. Prodotto nella sessione di b
 
 ## Obiettivo del prototipo
 
-Agente autonomo su **paper trading equity** (exchange stock da scegliere — Alpaca/IB) con backtesting robusto continuativo e produzione di metriche affidabili a due livelli: per-trade e portfolio.
+Agente autonomo su **[[_meta/glossario#Paper Trading / Testnet|paper trading]] equity** (exchange stock da scegliere — Alpaca/IB) con backtesting robusto continuativo e produzione di metriche affidabili a due livelli: per-trade e portfolio.
 
 Nessun capitale reale. Nessuna supervisione umana obbligatoria nel loop. Validazione del sistema su dati storici e in real-time simulato prima di andare live.
 
-> **Decisioni fondanti e architettura**: non duplicate qui. Le scelte chiave (monolite modulare, swing trading, principio deterministico, stock-only, OpenRouter/DeepSeek, ecc.) sono in [[system/decision-log]]; la **topologia operativa aggiornata** (analisti → research_state → Risk Analyst → Trade deterministico) è in [[system/architecture]]. Questa pagina si concentra su **cosa deve produrre l'MVP** (metriche, sequenza di sviluppo, insight implementativi).
+> **Decisioni fondanti e architettura**: non duplicate qui. Le scelte chiave ([[_meta/glossario#Monolite Modulare|monolite modulare]], [[_meta/glossario#Swing Trading|swing trading]], principio deterministico, stock-only, OpenRouter/DeepSeek, ecc.) sono in [[system/decision-log]]; la **topologia operativa aggiornata** (analisti → research_state → Risk Analyst → Trade deterministico) è in [[system/architecture]]. Questa pagina si concentra su **cosa deve produrre l'MVP** (metriche, sequenza di sviluppo, insight implementativi).
 
 ### Backtesting integrato
 
@@ -49,11 +49,11 @@ Il resto del ciclo è identico. Questo garantisce che il backtest testa esattame
 - Quali moduli avevano confermato la tesi
 
 ### Portfolio
-- Drawdown corrente e massimo
+- [[_meta/glossario#Drawdown|Drawdown]] corrente e massimo
 - Rendimento cumulativo
-- Sharpe ratio
+- [[_meta/glossario#Sharpe Ratio|Sharpe ratio]]
 - Esposizione per asset e per asset class
-- Win rate, average win/loss ratio
+- [[_meta/glossario#Win Rate|Win rate]], average win/loss ratio
 
 ## DB centrale
 
@@ -63,7 +63,7 @@ Postgres (produzione) / SQLite (sviluppo locale). Schema completo (5 tabelle cor
 
 ### Track 1 — Luca (sviluppo solo) → [[system/modules/data-layer]]
 - Connessione all'exchange equity (paper trading API — Alpaca/IB da scegliere)
-- Esecuzione ordini paper (limit order con SL/TP)
+- Esecuzione ordini paper ([[_meta/glossario#Limit Order|limit order]] con SL/TP)
 - Schema DB con le 5 tabelle core
 - Logger base
 
@@ -71,7 +71,7 @@ Obiettivo: pipe vuoto funzionante, dati reali che scorrono nel DB.
 
 ### Track 2 — Luca + Salvatore (in parallelo con Track 1) → [[system/modules/quant-backtesting]]
 - Definizione della strategia quantitativa (multi-factor fundamentals è l'orientamento)
-- Framework backtesting: **VectorBT** (deciso)
+- Framework backtesting: **[[_meta/glossario#VectorBT|VectorBT]]** (deciso)
 - Download dati storici equity
 - Prime metriche su dati reali
 
@@ -102,14 +102,14 @@ Dopo che i tre track girano insieme:
 
 ## Insights da progetti simili (NotebookLM 2026-05-13)
 
-Dalla ricerca su TradingAgents, MarketSenseAI, Alpha Arena e Simone Rizzo:
+Dalla ricerca su TradingAgents, MarketSenseAI, [[_meta/glossario#Alpha Arena|Alpha Arena]] e Simone Rizzo:
 
 - **SL/TP sono hard constraint**: senza di essi, win rate 66% porta comunque a drawdown devastanti (Simone Rizzo, settimana 1 senza SL/TP)
 - **Output LLM = JSON obbligatorio**: tutti i sistemi impongono risposta esclusivamente JSON con campi fissi (operazione, simbolo, direzione, leva, reasoning)
-- **Pivot Points**: esporli come tool/contesto agli analisti — tutti i sistemi pratici li usano come riferimenti spaziali per l'LLM
+- **[[_meta/glossario#Pivot Points|Pivot Points]]**: esporli come tool/contesto agli analisti — tutti i sistemi pratici li usano come riferimenti spaziali per l'LLM
 - **Prophet non affidabile**: non regge sui crolli improvvisi, genera previsioni bullish in mercati bearish — non usarlo come modulo di forecast principale
-- **Quick Thinker + Deep Thinker**: DeepSeek (economico) per raccolta dati, DeepSeek o modello più capace solo per la decisione finale
-- **Rebalancing Gate**: eseguire ordini solo se drift dai pesi target > soglia (es. 5%) — evita overtrading
+- **[[_meta/glossario#Quick Thinker + Deep Thinker|Quick Thinker]] + Deep Thinker**: [[_meta/glossario#DeepSeek|DeepSeek]] (economico) per raccolta dati, DeepSeek o modello più capace solo per la decisione finale
+- **[[_meta/glossario#Rebalancing Gate|Rebalancing Gate]]**: eseguire ordini solo se drift dai pesi target > soglia (es. 5%) — evita overtrading
 
 Vedere [[syntheses/notebooklm-research-2026-05-13]] per la sintesi completa.
 

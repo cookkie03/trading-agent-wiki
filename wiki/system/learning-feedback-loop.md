@@ -6,7 +6,7 @@ tags:
   - architecture
   - multi-agent
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-04
 status: draft
 priority: medium
 area: software
@@ -57,7 +57,7 @@ Niente del resto è possibile senza i dati grezzi. Da predisporre **da subito** 
 **Opzione scelta (per ora, 2026-06-03)**: *non* un agente LLM dedicato, ma un **modulo Python deterministico** che calcola la diagnosi + un **passo di narrazione LLM** sopra il risultato.
 
 - **Cosa produce**: il post-mortem periodico — non i numeri grezzi della dashboard, ma la *sintesi del perché*: quale desk ha sbagliato sistematicamente, quale fattore non ha tenuto, quale meccanismo di uscita è costato (collegamento a §5), quali settori/regimi ci penalizzano.
-- **Metriche**: riusa l'analytics stile SFC (`performance_contribution.py`, attribution vs benchmark, win rate / profit factor / drawdown per categoria) → [[prior-art/libraries/sfc-portfolio-tracker]] e [[system/modules/quant-backtesting]].
+- **Metriche**: riusa l'analytics stile SFC (`performance_contribution.py`, attribution vs benchmark, [[_meta/glossario#Win Rate|win rate]] / profit factor / [[_meta/glossario#Drawdown|drawdown]] per categoria) → [[prior-art/libraries/sfc-portfolio-tracker]] e [[system/modules/quant-backtesting]].
 - **Innesco**: si aggancia naturalmente alla **periodical synthesis** che già attiva il PM ([[system/modules/agents]]) — la sintesi periodica *contiene* la diagnosi.
 - **Destinatari doppi**: (a) **umano** via dashboard/Telegram (Layer 5); (b) **agenti** via `past_context` (§5).
 - **Perché modulo e non agente**: coerenza col principio "LLM solo per il reasoning finale"; la diagnosi è fatta di conti, l'agente non deve calcolarli. *Tenuto come opzione, non vincolo definitivo.*
@@ -66,10 +66,11 @@ Niente del resto è possibile senza i dati grezzi. Da predisporre **da subito** 
 → dettaglio in [[system/rating-scoring]] §2. Punteggio categorizzato sulla **qualità del lavoro di ciascun agente/modulo**: confronta a posteriori la tesi di ogni agente (dal §1) con l'esito reale. Evidenzia *dove* il sistema sbaglia (quale desk, quale fattore, quale fase). È sia output del reporting (§2) sia input dei pesi (§4).
 
 ### 4. Ponderazione dinamica dei pesi (RL / Weighting Module)
-L'agente che storicamente ci azzecca **pesa di più** nell'aggregazione della tesi; chi sbaglia sistematicamente pesa meno. Pattern concettuale: **Opinion Pooling / Black-Litterman** (i pesi/confidence aggiornati sugli esiti storici per-agente) → [[prior-art/libraries/cvx-portfolio-optimizer]], glossario.
+L'agente che storicamente ci azzecca **pesa di più** nell'aggregazione della tesi; chi sbaglia sistematicamente pesa meno. Pattern concettuale: **[[_meta/glossario#Opinion Pooling|Opinion Pooling]] / [[_meta/glossario#Black-Litterman|Black-Litterman]]** (i pesi/confidence aggiornati sugli esiti storici per-agente) → [[prior-art/libraries/cvx-portfolio-optimizer]], glossario.
 
+- **I pesi li calcola il backtesting system** (input di Luca 2026-06-04): la ponderazione dei vari agenti non è un parametro a mano, ma un **output del [[system/modules/quant-backtesting]] in modalità validatore continuo/asincrono** — lo stesso motore che ri-tara le soglie (R:R, k_*, soglie Statuto) misura anche la *hit-rate per-agente* sullo storico (dal §1) e ne deriva i pesi. Vantaggio: i pesi si aggiornano sui dati reali via via che entrano, con la stessa cautela anti-overfitting (walk-forward / out-of-sample → [[strategy/questions-for-salvatore]]). Sono parametri di configurazione esterni, non hardcodati.
 - **Stato**: **post-MVP avanzato** (richiede storico significativo). Resta tale.
-- **Punto di aggancio — DA DECIDERE** (tensione con una decisione già presa): oggi la **conviction la assegna il PM in modo qualitativo** (decisione 2026-06-02). I pesi la renderebbero quantitativa. Tre alternative:
+- **Punto di aggancio — DA DECIDERE** (tensione con una decisione già presa): oggi la **[[_meta/glossario#Conviction Level|conviction]] la assegna il PM in modo qualitativo** (decisione 2026-06-02). I pesi la renderebbero quantitativa. Tre alternative:
   - (a) i pesi entrano come **input al PM** (il PM resta decisore, ma vede "quanto fidarsi" di ciascun desk);
   - (b) i pesi alimentano un **nodo di aggregazione** che precede il PM;
   - (c) i pesi diventano le **confidence del Black-Litterman** che traduce le views in allocazione.

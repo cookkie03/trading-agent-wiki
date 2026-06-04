@@ -50,7 +50,7 @@ Strategia quantitativa che sfrutta la tendenza di asset correlati a tornare alla
 ### Perché è interessante
 
 - **Codificabile facilmente**: la logica è deterministica e basata su correlazione statistica
-- **Non richiede velocità elevatissima**: compatibile con orizzonte swing trading (4h/daily)
+- **Non richiede velocità elevatissima**: compatibile con orizzonte [[_meta/glossario#Swing Trading|swing trading]] (4h/daily)
 - **Non usa derivati**: si può implementare con posizioni long/short su equity o crypto
 - **Identificabile con funzioni Python semplici**: calcolo spread, z-score, soglie
 
@@ -152,7 +152,7 @@ Giorni/settimane. Richiede risk management sofisticato (da Brenndoerfer).
 
 1. Salvatore completa la lettura dell'articolo tecnico trovato
 2. Confronto Luca+Salvatore: includere come prima strategia in Modulo C?
-3. Se sì: implementare in VectorBT (framework già deciso per backtesting)
+3. Se sì: implementare in [[_meta/glossario#VectorBT|VectorBT]] (framework già deciso per backtesting)
 4. Testare su cripto (più facile per correlazioni e API pubbliche) o su equity?
 
 ---

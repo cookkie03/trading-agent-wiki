@@ -169,7 +169,7 @@ Dare a ogni agente solo l'informazione necessaria evita sia l'effetto "telefono 
 
 *Emersi dalla lettura del codebase TradingAgents — [[prior-art/tradingagents/code-wiki]]*
 
-**Look-ahead bias — doppia data**: ogni informazione nel DB ha due date distinte:
+**[[_meta/glossario#Look-Ahead Bias|Look-ahead bias]] — doppia data**: ogni informazione nel DB ha due date distinte:
 - `publication_date`: quando è stata ottenuta/pubblicata (es. giorno di pubblicazione delle trimestrali)
 - `reference_date`: la data a cui l'informazione si riferisce (es. ultimo giorno del trimestre)
 

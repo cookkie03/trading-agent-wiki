@@ -5,7 +5,7 @@ tags:
   - glossary
   - reference
 created: 2026-05-13
-updated: 2026-06-03
+updated: 2026-06-04
 status: active
 area: ops
 ---
@@ -110,6 +110,27 @@ Più prudente del VaR: stima la perdita media nei peggiori scenari (quelli oltre
 
 **Pivot Points**
 Livelli di prezzo calcolati matematicamente dalle candele precedenti (high, low, close). Usati come riferimenti spaziali per l'LLM: "il prezzo è sopra o sotto il pivot? Vicino a supporto o resistenza?". Tutti i sistemi pratici analizzati li includono nel prompt.
+
+**ATR (Average True Range)**
+Misura **quanto si muove mediamente** un titolo per periodo, nelle sue unità di prezzo ($). Si parte dal *True Range* di ogni giorno:
+```
+TR = max(
+    high − low,                  (escursione del giorno)
+    |high − close_precedente|,   (gap rispetto a ieri, verso l'alto)
+    |low  − close_precedente|    (gap rispetto a ieri, verso il basso)
+)
+ATR = media( TR ) su N periodi   (tipicamente N = 14)
+```
+Titolo "nervoso" → ATR alto; tranquillo → ATR basso. È solo volatilità (non dice la direzione). Nel progetto è l'**unità di misura comune** per entry/stop/take-profit: "1 ATR sotto" significa lo stesso *in termini di rischio* su titoli diversi. Vedi [[system/state-schemas]].
+
+**Risk/Reward Ratio (R:R)**
+Rapporto tra quanto puoi **guadagnare** e quanto **rischi** su un singolo trade:
+```
+Rischio = entry − stop_loss     = k_stop · ATR
+Reward  = take_profit − entry   = k_tp   · ATR
+R:R     = Reward / Rischio       = k_tp / k_stop
+```
+Es: `k_stop=2`, `k_tp=3` → R:R = 1.5 (rischi 1 per puntare a 1.5). Nel progetto un **guardrail deterministico** scarta i trade con R:R sotto soglia (default ≥ 1.5): con un buon R:R si è profittevoli anche con win rate < 50% — è il `b` (payoff) del [[#Kelly Criterion]]. Vedi [[system/state-schemas]].
 
 **Kelly Criterion**
 Formula che dice quale **frazione del capitale** puntare su un'operazione per massimizzare la crescita nel lungo periodo: `f* = p − q/b` (p = prob. vincita, q = prob. perdita, b = rapporto vincita/perdita). Es: 60% di vincita con payoff 1:1 → punta il 20%. Nel progetto lega la **size alla qualità del segnale** (conviction + storico). In pratica si usa *frazionario* (half-Kelly) perché è molto aggressivo e dipende da stime affidabili. Dettagli in [[system/position-sizing]].

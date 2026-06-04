@@ -6,7 +6,7 @@ tags:
   - quant
   - roadmap
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-04
 status: active
 priority: high
 area: strategy
@@ -26,11 +26,11 @@ confidence: high
 
 ## 1. VaR di portafoglio — quale e come
 
-Il VaR (~10%) è il guardrail principale dello Statuto, ma **il metodo non è definito**. Luca: *«deve capire Salvatore come gestirlo, come renderlo, quale usare»*.
+Il [[_meta/glossario#VaR (Value at Risk)|VaR]] (~10%) è il guardrail principale dello Statuto, ma **il metodo non è definito**. Luca: *«deve capire Salvatore come gestirlo, come renderlo, quale usare»*.
 
 Da decidere:
 - **Tipo**: parametrico (varianza-covarianza) / storico / Monte Carlo?
-- **VaR o CVaR** (CVaR considera il rischio di coda — vedi [[_meta/glossario]])?
+- **VaR o [[_meta/glossario#CVaR (Conditional Value at Risk)|CVaR]]** (CVaR considera il rischio di coda — vedi [[_meta/glossario]])?
 - **Lookback** (su quanti dati storici si stima)?
 - **VaR incrementale**: come si calcola l'impatto sul VaR di una *nuova* posizione proposta, per il check deterministico pre-trade?
 
@@ -38,12 +38,12 @@ Da decidere:
 
 ## 2. Prevenzione dell'overfitting nel backtesting
 
-Luca: *«non ho idea di come evitare l'overfitting»* → da discutere con Salvatore.
+Luca: *«non ho idea di come evitare l'[[_meta/glossario#Overfitting|overfitting]]»* → da discutere con Salvatore.
 
 Il rischio: ottimizzare una strategia così bene sui dati storici che funziona solo sul passato e fallisce sul futuro. Tecniche da valutare (vedi glossario):
-- **Walk-forward**: addestra su un periodo, testa sul successivo, avanza.
+- **[[_meta/glossario#Walk-Forward Backtesting|Walk-forward]]**: addestra su un periodo, testa sul successivo, avanza.
 - **In-sample / out-of-sample split**.
-- **CPCV** (Combinatorial Purged Cross-Validation).
+- **[[_meta/glossario#CPCV (Combinatorial Purged Cross-Validation)|CPCV]]** (Combinatorial Purged Cross-Validation).
 - Regola pratica: meno parametri liberi = meno overfitting.
 
 ---
@@ -60,12 +60,14 @@ Come dimostrare che la strategia **batte il benchmark (S&P / 60-40) in modo stat
 
 > Luca: *«salva tutto in un foglio per Salvatore, se lo sbologna lui o ne parliamo nella prossima call; non è urgente per mettere il tutto in funzione»*. → **fuori MVP**, ma da chiarire prima di abilitare la leva.
 
+> **Perché opzioni e non margine** (chiarimento per Luca, 2026-06-04 — da confermare con Salvatore): rispetto alla leva a margine (debito), le opzioni *long* hanno **perdita massima limitata al premio** e **nessun rischio di margin call / liquidazione forzata** — cruciale per un sistema autonomo 24/7. In cambio si paga il decadimento temporale (theta) e serve azzeccare il timing: per questo la leva è ammessa **solo sui segnali `Strong`**, dove la convinzione giustifica il premio. Vedi anche [[system/modules/agents]] (Gestione Leva con Opzioni). Resta da confermare con Salvatore che questa sia la motivazione e non ce ne siano altre (es. fiscali/operative).
+
 La decisione "leva solo via opzioni Call/Put su segnali `Strong`" è presa, ma mancano i parametri operativi:
 - **Strike**: at-the-money? out-of-the-money? Come si sceglie?
 - **Scadenza**: in funzione dell'orizzonte del trade (1 mese? 3 mesi?).
 - **Quanti contratti**: il sizing delle opzioni è diverso da quello dell'equity spot.
 - **Dati**: chi fornisce la catena delle opzioni? (Non è nei data provider attuali — Alpaca paper non copre opzioni reali, IBKR sì.)
-- **Implicazione broker**: se vogliamo opzioni in paper trading serve IBKR, non Alpaca. Per l'MVP **niente opzioni** → semplifica.
+- **Implicazione broker**: se vogliamo opzioni in [[_meta/glossario#Paper Trading / Testnet|paper trading]] serve IBKR, non Alpaca. Per l'MVP **niente opzioni** → semplifica.
 
 ---
 

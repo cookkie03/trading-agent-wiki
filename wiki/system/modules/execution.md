@@ -50,11 +50,11 @@ La conversione `research_state → transazione` **non richiede un LLM**: una fun
 
 > **Nota (riconciliazione 2026-05-29)**: il precedente "LLM Trader che produce un JSON `{asset, direction, entry, SL, TP, leverage, reasoning}`" è **superato**. Quei campi sono ora campi dello `research_state` compilato dagli analisti e validato dal Risk Analyst. Vedi *Trader = funzione Python deterministica* in [[system/decision-log]].
 
-- **Ordini**: limit order + **Stop Loss + Take Profit** sempre obbligatori (hard constraint).
+- **Ordini**: [[_meta/glossario#Limit Order|limit order]] + **Stop Loss + Take Profit** sempre obbligatori (hard constraint).
 - **Leva via opzioni**: se lo state porta un segnale `Strong` validato, la funzione traduce il segnale in acquisto di opzioni **Call** (`Strong Buy`) o **Put** (`Strong Sell`). Logica di validazione in [[system/modules/agents]].
 
 ### Disinvestimento automatico
-Una parte del disinvestimento è **deterministica e automatica**: TP, SL e **trailing stop loss** armati sull'ordine chiudono la posizione senza intervento dell'agente. È il livello 1 del disinvestimento; il livello 2 (valutazione periodica rating-based di cosa vendere per far spazio) vive in [[system/rating-scoring]]. Distinto dal **cash-out** (estrazione profitti verso IBAN, vedi Statuto in [[system/modules/agents]]).
+Una parte del disinvestimento è **deterministica e automatica**: TP, SL e **[[_meta/glossario#Trailing Stop Loss|trailing stop loss]]** armati sull'ordine chiudono la posizione senza intervento dell'agente. È il livello 1 del disinvestimento; il livello 2 (valutazione periodica rating-based di cosa vendere per far spazio) vive in [[system/rating-scoring]]. Distinto dal **cash-out** (estrazione profitti verso IBAN, vedi Statuto in [[system/modules/agents]]).
 
 **Logging del meccanismo di uscita**: ogni chiusura registra in `transactions` il campo **`exit_reason`** (`take_profit`/`stop_loss`/`trailing_stop`/`rating_based`/`manual_override`/`option_expiry`). È il prerequisito per il feedback post-trade segmentato per tipo di uscita → [[system/rating-scoring]] §4.
 
@@ -62,7 +62,7 @@ Una parte del disinvestimento è **deterministica e automatica**: TP, SL e **tra
 
 ## Exchange (paper trading) — broker intercambiabili
 
-**Design deciso (2026-06-02)**: un **file-adapter (wrapper) per ogni broker** che traduce le API del servizio in un'**interfaccia interna standardizzata** e leggibile dal programma. Il broker si cambia esattamente come in TradingAgents si cambia il provider LLM (Luca: *«io devo poter cambiare facilmente il broker del progetto»*).
+**Design deciso (2026-06-02)**: un **file-adapter ([[_meta/glossario#Adapter / Wrapper (broker)|wrapper]]) per ogni broker** che traduce le API del servizio in un'**interfaccia interna standardizzata** e leggibile dal programma. Il broker si cambia esattamente come in TradingAgents si cambia il provider LLM (Luca: *«io devo poter cambiare facilmente il broker del progetto»*).
 
 ```
         ┌─ alpaca_adapter.py ─┐
@@ -74,7 +74,7 @@ core  ──┤  ibkr_adapter.py    ├── interfaccia interna standard (plac
 - **Produzione**: **IBKR** — la transizione deve essere **facile**, i due broker **intercambiabili** (stesso contratto I/O, cambia solo l'adapter attivo).
 - Espone un'interfaccia identica per il backend **backtest** ([[system/modules/quant-backtesting]]): stessa logica del codice live, replay su dati storici.
 - Logga ogni evento in `transactions` (area Log del DB → [[system/modules/data-layer]]).
-- CCXT resta candidato come layer per il futuro multi-asset, ma per l'equity gli SDK ufficiali (Alpaca/`ib_insync`) sono più adatti. Provider in [[system/data-providers]].
+- [[_meta/glossario#CCXT|CCXT]] resta candidato come layer per il futuro multi-asset, ma per l'equity gli SDK ufficiali (Alpaca/`ib_insync`) sono più adatti. Provider in [[system/data-providers]].
 
 ### Transaction cost auto-adattivo (decisione 2026-06-02)
 Niente costo hardcodato. L'adapter del broker **espone le commissioni reali applicate sul momento**, in funzione di broker, tipo di asset, size e quant'altro. Il costo (più il costo token del ciclo) è sottratto dal profitto atteso per ottenere la **net performance**. Così il backtest e il live usano lo stesso modello di costo, sempre aggiornato. Vedi [[system/modules/quant-backtesting]].
@@ -92,9 +92,9 @@ Niente costo hardcodato. L'adapter del broker **espone le commissioni reali appl
 
 ## Domande aperte
 
-- ~~**Exchange per paper trading**~~ → **CHIUSO**: Alpaca per MVP, IBKR per prod, adapter intercambiabili (vedi sopra).
+- ~~**Exchange per [[_meta/glossario#Paper Trading / Testnet|paper trading]]**~~ → **CHIUSO**: Alpaca per MVP, IBKR per prod, adapter intercambiabili (vedi sopra).
 - **`entry_price` del limit order**: come si calcola (pivot / % sotto prezzo / range 52w)? Da strutturare bene → [[system/state-schemas]].
-- **Position sizing**: formula da definire (relativo al portafoglio, scalato per conviction) → [[system/position-sizing]].
+- **Position sizing**: formula da definire (relativo al portafoglio, scalato per [[_meta/glossario#Conviction Level|conviction]]) → [[system/position-sizing]].
 - **Meccanismo di disinvestimento ottimale**: quale asset vendere per liberare liquidità senza intaccare il 10% cash → [[system/rating-scoring]] + logica Statuto in [[system/modules/agents]].
 - **Sizing opzioni**: diverso dall'equity spot, fuori MVP → [[strategy/questions-for-salvatore]].
 

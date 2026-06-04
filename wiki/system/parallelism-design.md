@@ -49,7 +49,7 @@ Portfolio Manager
 - Ogni valutatore esegue i desk analisti in un **thread separato** → isolamento naturale degli state, parallelismo reale.
 - **Pro**: scala bene, ogni ticker ha contesto pulito, parallelizzabile.
 - **Contro**: costo token moltiplicato per N; serve un meccanismo per decidere *quali* ticker valutare (non tutti, ogni volta).
-- **In LangGraph**: pattern *map* / subgraph per-ticker con state isolato (checkpointing per-ticker, già previsto nello stack).
+- **In LangGraph**: pattern *map* / [[_meta/glossario#Subgraph (LangGraph)|subgraph]] per-ticker con state isolato (checkpointing per-ticker, già previsto nello stack).
 
 ---
 
@@ -73,7 +73,7 @@ Scheda ticker nel DB (B) come **cache/stato persistente**, ma quando il PM decid
 Il PM non valuta N ticker in parallelo ma mantiene una **coda prioritizzata**: i ticker entrano in coda quando un alert li segnala (prezzo anomalo, news, trimestrale imminente) o quando lo `next_check_date` scade. Si processano i primi K per ciclo. Risolve il "quali ticker valutare" e tiene sotto controllo costo/rate-limit. Combinabile con A o C.
 
 ### E — Due livelli di profondità (screening → deep dive)
-Uno **screening** economico e veloce (modello piccolo / calcolo deterministico) gira su tutto l'universo e produce solo un punteggio grezzo; solo i ticker che superano una soglia ricevono il **deep dive** dei desk (costoso). Pattern *Quick Thinker + Deep Thinker* (vedi [[_meta/glossario]]). Riduce drasticamente il costo.
+Uno **screening** economico e veloce (modello piccolo / calcolo deterministico) gira su tutto l'universo e produce solo un punteggio grezzo; solo i ticker che superano una soglia ricevono il **deep dive** dei desk (costoso). Pattern *[[_meta/glossario#Quick Thinker + Deep Thinker|Quick Thinker]] + Deep Thinker* (vedi [[_meta/glossario]]). Riduce drasticamente il costo.
 
 ---
 

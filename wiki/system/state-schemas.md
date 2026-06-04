@@ -69,6 +69,7 @@ In pratica: **un unico schema**, due stati di maturità. Il `position_sizing` vi
 | `fundamental_view` | str | Analyst Technical (Fondamentali) |
 | `technical_view` | str | Analyst Technical (Technical) |
 | `key_factors` | list[obj] | fattori rilevanti calcolati + come letti (vedi [[system/modules/quant-backtesting]]) |
+| `agent_opinions` | list[obj] | **opinione per-agente**: ogni desk lascia la sua `suggested_direction` + `suggested_conviction` + breve razionale. Il **PM le aggrega** nella decisione finale (Sezione C) → vedi *Aggregazione* sotto |
 
 ### Sezione C — Tesi & proposta (chi scrive: aggregazione desk → PM)
 | Campo | Tipo | Valori / note |
@@ -102,18 +103,18 @@ Quando: `risk_verdict == approved` **e** tutti i campi obbligatori sono compilat
 
 ---
 
-## `entry_price` — proposta di struttura (da approvare)
+## `entry_price` — struttura (✅ approvata 2026-06-04)
 
-> Questo era il punto che Luca voleva *«strutturare bene»*. Qui c'è una **proposta con un default motivato**, non una decisione presa: serve solo un sì/no o un "cambia questo".
+> Questo era il punto che Luca voleva *«strutturare bene»*. **Approvato da Luca il 2026-06-04** (*«l'entry price leggendolo mi sembra ok»*). I valori numerici (ATR 14, k_stop=2, k_tp=3, soglia R:R 1.5) restano da **tarare in backtest** ([[system/modules/quant-backtesting]]) — è l'impianto a essere deciso, non i numeri esatti.
 
 ### Il problema
-Per un limit order non basta «compra ora al prezzo di mercato». Nello swing trading si entra meglio su un **pullback** o a un **livello tecnicamente sensato**. Ma i criteri ingenui non reggono:
+Per un [[_meta/glossario#Limit Order|limit order]] non basta «compra ora al prezzo di mercato». Nello [[_meta/glossario#Swing Trading|swing trading]] si entra meglio su un **pullback** o a un **livello tecnicamente sensato**. Ma i criteri ingenui non reggono:
 - **% fissa sotto il prezzo** (es. −2%): arbitraria, ignora la volatilità. −2% su un titolo tranquillo è tanto, su uno volatile è rumore.
 - **Pivot/supporti**: tecnicamente sensati ("compra al supporto") ma fragili da far calcolare in modo affidabile e oggettivo a un LLM.
 - **Range 52 settimane**: è un segnale di *contesto*, non un trigger d'entrata.
 
 ### Proposta: backbone deterministico in unità di ATR
-Usare l'**ATR (Average True Range)** come unità di misura comune a entry, stop e target — la stessa scelta già fatta per il volatility-adjustment del [[system/position-sizing]] (v2). Così i tre prezzi sono coerenti e normalizzati per la volatilità del singolo titolo.
+Usare l'**[[_meta/glossario#ATR (Average True Range)|ATR]] (Average True Range)** come unità di misura comune a entry, stop e target — la stessa scelta già fatta per il volatility-adjustment del [[system/position-sizing]] (v2). Così i tre prezzi sono coerenti e normalizzati per la volatilità del singolo titolo.
 
 ```
 entry_price  = current_price − k_entry · ATR     (per un BUY; simmetrico per un SELL)
@@ -124,8 +125,12 @@ take_profit  = entry_price   + k_tp    · ATR
 - `ATR` calcolato in modo deterministico in [[system/modules/quant-backtesting]] (es. 14 periodi).
 - `k_entry`, `k_stop`, `k_tp` sono coefficienti, **non prezzi inventati dall'LLM**. L'agente ragiona in "quanti ATR", la funzione Python traduce in prezzo. Questo toglie all'LLM il compito fragile di sparare numeri assoluti.
 
+### Come si calcolano ATR e R:R (per capirci)
+- **ATR (Average True Range)** = media su N periodi (tipicamente 14) del *True Range* giornaliero, dove `TR = max( high−low ; |high−close_prec| ; |low−close_prec| )`. Misura quanto si muove mediamente il titolo per periodo, **nelle sue unità di prezzo** ($). Titolo "nervoso" → ATR alto; tranquillo → ATR basso. È solo volatilità: per questo lo uso come unità di misura comune.
+- **[[_meta/glossario#Risk/Reward Ratio (R:R)|Risk/Reward]] (R:R)** = `(take_profit − entry) / (entry − stop_loss) = k_tp / k_stop`. È quanto puoi guadagnare diviso quanto rischi. Con `k_stop=2`, `k_tp=3` → R:R = 1.5: rischi 1 per puntare a 1.5. La soglia "≥ 1.5" scarta i trade col target troppo vicino allo stop — con un buon R:R si è profittevoli anche azzeccandone <50% (è il `b` di [[_meta/glossario#Kelly Criterion|Kelly]] → [[system/position-sizing]]).
+
 ### Due agganci che rendono il tutto sensato
-1. **L'entry dipende dalla conviction.** Più sei convinto, meno pretendi lo sconto (sei disposto a "inseguire"); meno sei convinto, più pretendi un pullback profondo prima di entrare. Quindi `k_entry` **decresce** al crescere del `conviction_level`. Esempio indicativo: Strong Buy → `k_entry ≈ 0` (vicino al mercato), Buy → `k_entry ≈ 0.5`, segnale debole → `k_entry ≈ 1.0`.
+1. **L'entry dipende dalla [[_meta/glossario#Conviction Level|conviction]].** Più sei convinto, meno pretendi lo sconto (sei disposto a "inseguire"); meno sei convinto, più pretendi un pullback profondo prima di entrare. Quindi `k_entry` **decresce** al crescere del `conviction_level`. Esempio indicativo: Strong Buy → `k_entry ≈ 0` (vicino al mercato), Buy → `k_entry ≈ 0.5`, segnale debole → `k_entry ≈ 1.0`.
 2. **Vincolo di coerenza Risk/Reward.** Un guardrail deterministico (Sezione D) verifica che `(k_tp / k_stop) ≥ soglia` (es. R:R ≥ 1.5). Se la tesi propone un target troppo vicino rispetto allo stop, lo state **non passa il gate**. Questo impedisce trade con payoff asimmetrico sfavorevole a monte, senza che nessun agente debba "ricordarsi" di controllarlo.
 
 ### Ciclo di vita dell'ordine (limit che non viene colpito)
@@ -138,12 +143,62 @@ Se il prezzo non raggiunge mai `entry_price`, l'ordine **non è eterno**: scade 
 
 ---
 
+## Aggregazione `direction` + `conviction` (✅ deciso 2026-06-04)
+
+Orientamento di Luca: **ogni agente esprime la propria opinione** — inclusa una proposta di direzione e convinzione — e il **Portfolio Manager raccoglie le opinioni di tutti i desk e prende la decisione finale**. Quindi:
+- l'aggregazione che produce `direction` + `conviction_level` **definitivi** avviene al **nodo PM** (non a un nodo desk separato);
+- ogni desk lascia nello state anche la **propria proposta** `suggested_direction` + `suggested_conviction` (campo per-agente in Sezione B), che il PM pondera prima di sigillare la decisione.
+
+Coerente con la decisione "conviction assegnato dal PM" → [[system/modules/agents]], [[system/rating-scoring]].
+
+---
+
+## Quanti state annidati? — opzioni a confronto (da decidere insieme)
+
+Domanda: lo state è **un unico oggetto piatto** con tutti i campi (sezioni A–F), oppure un **oggetto padre che contiene sotto-state tipizzati** (un blocco per sezione)?
+
+### Opzione A — State unico "piatto"
+Un solo TypedDict/Pydantic con tutti i campi allo stesso livello.
+- ✅ Semplice da leggere, serializzare, debuggare; un solo schema.
+- ✅ I nodi leggono/scrivono campi senza navigare gerarchie.
+- ❌ Diventa grande; meno modulare; un blocco (es. il gate rischio) non è riusabile da solo.
+- ❌ Più facile che nodi diversi tocchino campi non loro (meno incapsulamento).
+
+### Opzione B — Sotto-state annidati
+Uno state padre con sotto-oggetti tipizzati: `identity`, `portfolio_context`, `desk_analysis`, `proposal`, `risk_gate`, `meta`.
+- ✅ Modulare: ogni blocco si valida/passa indipendentemente (es. `risk_gate` come sub-schema riusabile).
+- ✅ Rispecchia 1:1 le sezioni A–F; chiaro "chi possiede cosa".
+- ✅ È il pattern di TradingAgents (`investment_debate_state`, `risk_debate_state` annidati).
+- ❌ Schema più complesso; accesso annidato (`state.proposal.entry_price`); serializzazione un filo più involuta.
+
+### Opzione C — Ibrido / progressivo *(orientamento di partenza)*
+A runtime lo state lavora **piatto** (i nodi mutano i campi facilmente); quando viene **sigillato** (`research_state` → `investment_state`) si **struttura in blocchi annidati** per la persistenza.
+- ✅ Best of both: nodi semplici a runtime, documento strutturato in storage.
+- ✅ Si aggancia alla forma di storage documentale (JSON annidato) → vedi sotto.
+- ❌ Serve una funzione di "sealing" che mappa piatto → strutturato.
+
+> **Asse diverso (non confondere)**: i **subgraph per-ticker** ([[system/parallelism-design]]) isolano *uno state per ticker* (isolamento *tra* ticker). Gli state annidati riguardano la struttura *dentro* il singolo ticker. Le due scelte sono indipendenti e componibili.
+
+**Da decidere insieme**: A / B / C.
+
+---
+
+## Forma fine di storage dello state (chiarimento 2026-06-04)
+
+La decisione grossa è presa (**time-series + oggetti**, 2026-06-02). Resta da fissare *in che forma concreta* persiste un `investment_state`, che è un **documento ricco e annidato** (liste `pro`/`contro`, sotto-oggetti `guardrail_checks`, …) — non un dato time-series semplice. Opzioni:
+- **Colonna JSON/JSONB** *(orientamento)*: tabella con i campi-chiave come colonne (per filtrare) + l'intero state come blob JSON in una colonna. Flessibile, niente secondo DB.
+- **DB documentale** (Mongo…): naturale per gli annidati, ma è un secondo database da gestire.
+- **Relazionale normalizzato**: una tabella per sotto-struttura — rigido, troppi join, sovra-ingegnerizzato.
+
+Si aggancia all'Opzione C sopra (sealing → documento JSON). Decisione di forma in [[system/modules/data-layer]].
+
+---
+
 ## Punti aperti (da risolvere insieme)
 
-- **Granularità `conviction_level`**: enum (Strong/Normal) o score 0-100? Vedi [[system/rating-scoring]].
-- **Quanti state separati?** Un solo state ricco vs sub-state annidati (TradingAgents usa state dentro state, es. `trade_proposal` contiene `trader_action`). Decidere in fase di engineering del grafo.
-- **Schema della tabella DB** che persiste gli state: forma ancora da decidere (Luca: *«non lo so»*) → [[system/modules/data-layer]] (orientamento: JSON/documentale per gli state annidati, vedi decisione storage).
-- **Dove avviene l'aggregazione** che produce `direction` + `conviction_level`: nodo PM o nodo di aggregazione desk? → [[system/modules/agents]].
+- ~~**Granularità `conviction_level`**~~ → **CHIUSO 2026-06-04**: **enum** a 5 livelli (`Strong Buy`/`Buy`/`Hold`/`Sell`/`Strong Sell`), non score 0-100. Vedi [[system/rating-scoring]].
+- **Quanti state annidati?** A / B / C → vedi sezione dedicata sopra. **Da decidere insieme.**
+- **Forma fine di storage** dello state → vedi sezione sopra (orientamento JSON/JSONB). → [[system/modules/data-layer]].
 
 ---
 

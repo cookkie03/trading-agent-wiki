@@ -130,7 +130,7 @@ Componenti chiave:
 - Reddit: `fetch_reddit_posts` da subreddits specifici per ticker
 - StockTwits: `fetch_stocktwits_messages` con sentiment bullish/bearish count
 
-**Look-Ahead Bias Prevention**:
+**[[_meta/glossario#Look-Ahead Bias|Look-Ahead Bias]] Prevention**:
 - `_filter_reports_by_date` (alpha_vantage_fundamentals) → esclude report con `fiscalDateEnding > curr_date`
 - `filter_financials_by_date` (stockstats_utils) → filtra colonne yfinance per data
 - `load_ohlcv` → tronca OHLCV a `curr_date_dt`
@@ -144,7 +144,7 @@ Componenti chiave:
 - `BaseLLMClient` → interfaccia astratta con `get_llm()` e `validate_model()`
 - `create_llm_client(provider, model)` → factory con lazy loading degli SDK
 - `normalize_content()` → converte output strutturato in plain string
-- Provider wrapper: `NormalizedChatAnthropic`, `NormalizedChatOpenAI`, `NormalizedChatGoogleGenerativeAI`, `NormalizedAzureChatOpenAI`
+- Provider [[_meta/glossario#Adapter / Wrapper (broker)|wrapper]]: `NormalizedChatAnthropic`, `NormalizedChatOpenAI`, `NormalizedChatGoogleGenerativeAI`, `NormalizedAzureChatOpenAI`
 - `DeepSeekChatOpenAI` → gestisce `reasoning_content` round-trip per thinking-mode
 
 **ModelCapabilities** (capabilities.py): per ogni modello dichiara supporto per `tool_choice`, `json_mode`, `json_schema`, `reasoning_split`. Lookup: exact match → regex → default.
