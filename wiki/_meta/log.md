@@ -2,6 +2,13 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-04] DB — accesso, performance, minimizzazione query, forma fisica
+
+- **Domanda Luca**: stato attuale del DB, quando/da chi è interrogato, come gestirlo, tecniche per velocizzare read/write, come interrogarlo il meno possibile, che forma avrebbe.
+- **Creata pagina** [[system/db-access-performance]]: stato attuale (design, non implementato) · tabelle read/write per attore · gestione a layer (models→repo→service) · tecniche scrittura (batch/COPY, pooling, partitioning) e lettura (indici mirati, BRIN, GIN su JSONB, materialized view, indicatori pre-calcolati) · **minimizzazione query** (check-presenza, snapshot di ciclo in memoria = tool iniezione portafoglio, periodical synthesis, read-through cache, no N+1) · **forma fisica proposta**: PostgreSQL + **TimescaleDB** (hypertable time-series + relazionale + JSONB).
+- **Decisioni aperte aggiunte**: TimescaleDB vs Postgres vanilla; cache in-process vs Redis → [[system/decision-log]] + board (🟠).
+- **Aggiornati**: [[_meta/index]], [[system/modules/data-layer]] (callout link), [[system/decision-log]], [[artifacts/project-board]].
+
 ## [2026-06-04] validazione collettiva investment_state + flag spiegazione opzione C
 
 - **Input Luca**: tra le opzioni del PM/software, includere la **validazione dell'`investment_state` da parte di tutti gli agenti**, dediti ad assicurare sempre **completezza · correttezza · esaustività delle fonti**.

@@ -61,6 +61,8 @@ La memoria cresce troppo → niente troncamento secco: **clusterizzare + riassum
 
 Resta aperta solo la **forma fine per i singoli stati annidati** (orientamento 2026-06-04: **colonna JSON/JSONB** dentro una tabella — campi-chiave come colonne per filtrare + l'intero state come blob JSON; niente secondo DB documentale). Vedi [[system/decision-log]] e [[system/state-schemas]] (sezione *Forma fine di storage*).
 
+> **Accesso e performance** — *quando* il DB è interrogato (read/write per attore), tecniche per velocizzare lettura/scrittura, approcci per **interrogarlo il meno possibile** (snapshot di ciclo, read-through cache, check-presenza) e **forma fisica** proposta (PostgreSQL + TimescaleDB, hypertable/oggetti/JSONB): dettaglio in [[system/db-access-performance]].
+
 ---
 
 ## Extraction — come i dati entrano nel DB

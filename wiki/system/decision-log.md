@@ -117,6 +117,8 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 | 📈 | **Indicatori di sentiment** | Nessun indicatore standard (solo indici di paura) → da inventare. Posizione ibrida col technical | [[system/modules/quant-backtesting]] · [[strategy/questions-for-salvatore]] |
 | 🔀 | **Desk di monitoring/evaluation** | Agente che sorveglia le posizioni e rifà il processo quando le news cambiano la tesi. **Partire dalla dashboard SFC Streamlit** | [[system/modules/agents]] |
 | 🛠 | **Forma di storage fine per area** | Time-series deciso come base; resta da assegnare la forma fine per stato/dato (states annidati → JSON?) | [[system/modules/data-layer]] |
+| 🛠 | **Motore DB: TimescaleDB vs Postgres vanilla** | Proposta: Postgres + estensione **TimescaleDB** (hypertable time-series + relazionale + JSONB in un solo motore). Alternativa: Postgres con partitioning manuale | [[system/db-access-performance]] |
+| 🛠 | **Cache: in-process vs Redis** | Read-through cache per dati caldi (prezzo corrente, `charter`). In-process per l'MVP; **Redis** solo se il carico cresce | [[system/db-access-performance]] |
 
 ### Decisioni aperte ora chiuse
 | Tema | Esito |
