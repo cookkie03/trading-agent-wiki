@@ -36,7 +36,7 @@ Portfolio Manager (agente orchestratore / CEO)
   └─► Risk Analyst (antitesi bear + guardrail da Statuto) → approve (~60-70%) / decline+razionale
                                                            │
                                                            ▼  (se approve)
-                                          Investment State → Trade  →  [[system/modules/execution]]
+                %%  %%                          Investment State → Trade  →  [[system/modules/execution]]
 ```
 
 ---
