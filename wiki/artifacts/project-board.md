@@ -86,6 +86,7 @@ sources:
 
 ## 🟡 In corso
 
+- [ ] 🛠 **Roadmap di adattamento del fork** — gap analysis fatta (tengo/elimino/aggiungo); milestone M0→M6. Prossimo: M0 wiring OpenRouter+DeepSeek + run as-is, poi M1 grafo "nostro" → [[system/fork-gap-analysis]]
 - [ ] 🛠 **Progettazione architettura software** — design-first, I/O per ogni modulo, schema DB, flusso end-to-end → [[system/architecture]]
 - [ ] 🛠 **Studio wiki in autonomia** — leggere tutta la wiki prima della prossima sessione con Salvatore → [[_meta/index]]
 - [ ] 🛠 **Modulo analisi documenti** — legge documenti ed estrae info strutturate → [[system/modules/data-layer]]

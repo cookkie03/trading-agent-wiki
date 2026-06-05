@@ -5,7 +5,15 @@
 ## Sessione Corrente
 - **Data**: 2026-06-06
 - **Agent**: Claude Code (Opus 4.8)
-- **Operazione principale**: catena desk completata a livello di design — **tool** ([[system/tools-inventory]]) → **comportamento** ([[system/agent-behaviors]]) → **system prompt** ([[system/system-prompts]]) → **topologia grafo/parallelismo** ([[system/parallelism-design]]). Tutti impianti approvati da Luca.
+- **Operazione principale**: catena desk completata a livello di design — **tool** ([[system/tools-inventory]]) → **comportamento** ([[system/agent-behaviors]]) → **system prompt** ([[system/system-prompts]]) → **topologia grafo/parallelismo** ([[system/parallelism-design]]) → **gap analysis fork↔design** ([[system/fork-gap-analysis]]). **Svolta**: il design è di fatto chiuso, si passa all'adattamento del fork (codice).
+
+### Design 2026-06-06 — gap analysis fork TradingAgents ↔ design (ponte al codice)
+- **Fork** in `/Users/luca/Desktop/trading-agent` (`cookkie03/trading-agent`, vivo, produce report). **Copre gran parte del design**: 4 analisti, PM, grafo LangGraph, tool (incl. reddit/stocktwits), structured output, multi-provider, quick/deep think, checkpoint, output_language=English, past_context.
+- **Creata** [[system/fork-gap-analysis]]: TENGO/ELIMINO/AGGIUNGO + roadmap **M0→M6** (M0 wiring OpenRouter+DeepSeek+run as-is · M1 grafo nostro · M2 DB · M3 rischio+trade deterministico · M4 esecuzione broker · M5 funnel · M6 leva/learning).
+- **ELIMINO**: bull/bear + research_manager, risk debate 3→1, LLM trader→Python, 4 analisti→2 desk. **AGGIUNGO**: DB centrale, esecuzione broker, sizing/ATR/Statuto, funnel multi-ticker, OpenRouter+DeepSeek. **Differenza chiave**: PM fork=giudice finale → nostro=orchestratore in cima (riscrivere `graph/setup.py`).
+- **graphify**: `graphify-out/` già nel fork (2026-05-26), conferma la mappa; ri-girare dopo modifiche.
+- **Punto aperto**: ordine **M1 vs M2** (grafo-prima vs DB-prima) — proposta M1 prima, da confermare.
+- **Dir di lavoro codice**: `/Users/luca/Desktop/trading-agent` (aggiunta come working dir).
 
 ### Design 2026-06-06 — topologia parallelismo multi-ticker (architettura a imbuto)
 - **Decisione**: alternative A–E **composte** in un **funnel** → **E** screening deterministico (modulo Python/quant, **non LLM**) → **D** coda di priorità → **A** deep-dive subgraph per-ticker (i 6 agenti) → **B/C** scheda ticker nel DB. Subgraph vs nodi già deciso (subgraph). → [[system/parallelism-design]].

@@ -2,6 +2,16 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] Gap analysis fork TradingAgents ↔ design (ponte verso il codice)
+
+- **Contesto**: Luca ha aggiunto la dir `/Users/luca/Desktop/trading-agent` (fork vivo di TradingAgents, repo `cookkie03/trading-agent`, già produce report NVDA/MONC.MI) e ha chiesto: altra progettazione o codice? Risposta: il fork copre gran parte del design → basta progettazione astratta, serve **adattare il fork**.
+- **Ispezione fork**: `tradingagents/` (agents/dataflows/graph/llm_clients), `default_config.py`, `graph/setup.py`, `agent_states.py`, `schemas.py`, `trader.py`, elenco tool. Già presenti: 4 analisti, PM, grafo LangGraph, tool (incl. **reddit + stocktwits**), structured output, multi-provider, quick/deep think, checkpoint, `output_language=English`, `past_context`.
+- **Creata** [[system/fork-gap-analysis]]: mappa **TENGO** (tool, vendor, grafo, structured, multi-LLM) / **ELIMINO** (bull/bear + research_manager, risk debate 3→1, LLM trader→Python, 4 analisti→2 desk, debate-state) / **AGGIUNGO** (DB centrale, esecuzione broker, logica rischio nostra, funnel multi-ticker, conviction enum, trigger autonomi, prompt nostri, OpenRouter+DeepSeek). + **roadmap M0→M6** (M0 wiring+validazione · M1 grafo nostro · M2 DB · M3 rischio+trade deterministico · M4 esecuzione · M5 funnel · M6 leva/learning).
+- **Differenza strutturale chiave**: nel fork il PM è **giudice finale** (pipeline), nel nostro design è **orchestratore in cima** → `graph/setup.py` da riscrivere.
+- **graphify**: `graphify-out/` già presente nel fork (run 2026-05-26, 1192 nodi/818 edge); le community **confermano** la mappa della gap analysis. Da ri-girare dopo le modifiche al grafo.
+- **Punto aperto**: ordine **M1 vs M2** (snellire-grafo-prima vs DB-prima) — proposta M1 prima (definisce cosa persistere), da confermare con Luca.
+- **Registrato**: [[_meta/index]] (nuova voce); board → 🟡 In corso "Roadmap di adattamento del fork".
+
 ## [2026-06-06] Topologia parallelismo multi-ticker — architettura a imbuto
 
 - **Richiesta Luca**: al bivio design/codice, scelto di chiudere l'ultima decisione architetturale (parallelismo). Poi domande puntuali sullo **screening**.
