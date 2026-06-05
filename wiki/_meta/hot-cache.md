@@ -19,9 +19,15 @@
 - **Metodo**: contratti congelati (storage/domain) + test-oracolo + slice verticali; il parallelo-agenti va dietro contratti congelati.
 - **4° branch** `feat/data-ingestion` (da `feat/storage-layer`, commit d2a6783) — `tradingagents/ingestion/`: `ingest_price_bars` DB-first (check-presenza + write-through, `YFinanceFetcher`) + `screen_ticker` deterministico → `ticker_card.screening_score`. 5 unit + 1 integration yfinance.
 - **5° branch** `feat/indicators` (integra TUTTO, commit 9a0fda4) — `tradingagents/indicators/` (ATR/RSI/SMA/EMA/52w/drawdown + `atr_from_db`) + **test E2E** ingest→ATR→livelli→sizing→trade (no LLM).
-- **Stato test totale**: storage 7 · domain 15 · trade 5 · ingestion 5 · indicators 7 · E2E 1 = **40 verdi** (+1 integration yfinance). Su `feat/indicators` girano tutti insieme.
-- **Catena deterministica completa**: yfinance → `price_bars` → indicatori/ATR → `atr_levels` → `position_size` → Trade → DB. Manca solo il "cervello" LLM in mezzo (= grafo, lato Luca) che riempie view/direction dello state.
-- **Prossimi pezzi**: queue/adaptive extractor (rate-limit) + mantainer; vendor news/fondamentali/macro→DB; mappare `agents/schemas.py` del fork sui nostri enum; broker adapter (M4). Grafo = lato Luca.
+- **6° branch** `feat/broker-adapter` (da `feat/trade-execution`, commit 14e2dc6) — `tradingagents/broker/` (`Broker` protocol + `PaperBroker` idempotente + `AlpacaBroker` paper REST) + `execution/submit.py` (`submit_trade`/`execute_thesis`/`reconcile_open_trades` = graceful recovery). 5 unit + 1 integration Alpaca.
+- **Stato test totale**: storage 7 · domain 15 · trade 5 · ingestion 5 · indicators 7 · E2E 1 · broker 5 = **45 verdi** (+2 integration: yfinance, Alpaca-gated).
+- **Catena deterministica completa**: yfinance → `price_bars` → indicatori/ATR → `atr_levels` → `position_size` → Trade → **broker (paper) → reconcile**. Manca solo il "cervello" LLM in mezzo (= grafo, lato Luca) che riempie view/direction dello state.
+- **⚠️ Due linee d'integrazione divergenti**: `feat/indicators` (ha ingestion+indicators) e `feat/broker-adapter` (ha broker). Per l'alpha completa vanno unite → decisione PR a Luca; eventualmente creare un branch `feat/alpha-core` che le merge.
+- **Prossimi pezzi**: branch unico `feat/alpha-core` (merge tutto) + cycle runner (screening→coda→[grafo]→execute) ; queue/adaptive extractor + mantainer; IBKR adapter; vendor news/fondamentali/macro→DB; mappare `agents/schemas.py` sui nostri enum. Grafo = lato Luca.
+
+### Design 2026-06-06 — Trigger Engine + Cost accounting (input Luca, aperti)
+- **Trigger Engine centralizzato** → [[system/trigger-engine]]: un componente unico raccoglie alert·`next_check_date`·calendario·periodical synthesis·news, normalizza in `TriggerEvent`, immette nella **coda D del funnel**. "Perché si sveglia" (engine) vs "come decide" (funnel). Da implementare nel cycle runner.
+- **Cost accounting a runtime** → [[system/cost-accounting]]: commissioni broker + token cost in 3 momenti — stima pre-trade (guardrail **net-EV / R:R-after-cost** → no-trade se i costi non sono coperti) · consuntivo post-fill (campi su `trade`) · net performance al learning loop. `CommissionModel` nell'adapter broker; token meter nel wrapper LLM. Aperto.
 
 ### Design 2026-06-06 — gap analysis fork TradingAgents ↔ design (ponte al codice)
 - **Fork** in `/Users/luca/Desktop/trading-agent` (`cookkie03/trading-agent`, vivo, produce report). **Copre gran parte del design**: 4 analisti, PM, grafo LangGraph, tool (incl. reddit/stocktwits), structured output, multi-provider, quick/deep think, checkpoint, output_language=English, past_context.

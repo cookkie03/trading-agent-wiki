@@ -63,7 +63,7 @@ sources:
 - [ ] 🔀 **Definire l'`investment_state` con Salvatore** — partire dal template-menu completo, potare/modificare insieme → [[system/investment-state-template]]
 - [ ] 🛠 **Tool di iniezione dello stato del portafoglio** — foto aggiornata (cassa, posizioni, P/L) nel contesto dell'agente → [[system/modules/agents]]
 - [ ] 🛠 **Backtesting continuo e asincrono come validatore delle soglie** — valida di continuo R:R, k_stop/k_tp e ogni rapporto tarato a monte → [[system/modules/quant-backtesting]]
-- [ ] 🛠 **Implementare gli adapter broker** — wrapper Alpaca (MVP) + interfaccia interna standard, IBKR intercambiabile → [[system/modules/execution]]
+- [ ] 🛠 **Adapter broker: completare** — interfaccia + PaperBroker + Alpaca paper fatti (`feat/broker-adapter`); resta **IBKR** (prod), bracket completo, fill parziali → [[system/modules/execution]]
 - [ ] 🛠 **Progettare lo schema del DB esteso** — 4 aree (rendicontazione/dati live/statuto/log), storage time-series + oggetti; accesso/performance/forma fisica → [[system/modules/data-layer]] · [[system/db-access-performance]]
 - [ ] 🛠 **Implementare il queue system degli extractor** — un extractor per vendor, check presenza DB, autogestione rate limit → [[system/modules/data-layer]]
 - [ ] 🛠 **Riscrivere il grafo LangGraph** — node/edge/state/tool sulla topologia 2026-05-29 → [[system/modules/agents]]
@@ -96,6 +96,8 @@ sources:
 
 ## 🟠 Decisioni da prendere
 
+- [ ] 🛠 **Trigger Engine centralizzato** — un unico componente che raccoglie alert·next_check_date·calendario·synthesis·news e li immette nella coda del funnel (input Luca 2026-06-06); da validare in fase di cycle runner → [[system/trigger-engine]]
+- [ ] 🛠 **Cost accounting a runtime** — commissioni broker + token cost: stima pre-trade (guardrail net-EV) · consuntivo post-fill · net performance al learning loop (input Luca 2026-06-06) → [[system/cost-accounting]]
 - [ ] 🛠 **Implementare lo slice MVP del parallelismo** — coda di priorità (D) + subgraph per-ticker (A); screening (E) e scheda DB (B/C) come strati successivi → [[system/parallelism-design]]
 - [ ] 🔀 **Criteri "info sufficienti" del PM + max iterazioni** — quando fare/non fare un trade → [[system/parallelism-design]]
 - [ ] 🛠 **Forma fine di storage per gli state annidati** — JSON/documentale dentro il time-series → [[system/modules/data-layer]]
@@ -120,6 +122,7 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **CODICE: broker adapter + esecuzione (alpha v0)** ✅ 2026-06-06 — `tradingagents/broker/` branch `feat/broker-adapter`: `Broker` intercambiabile + `PaperBroker` (idempotente) + `AlpacaBroker` (paper REST); `submit_trade`/`execute_thesis`/`reconcile_open_trades` (broker=source of truth → graceful recovery). 5 unit + 1 integration Alpaca → [[system/modules/execution]]
 - [x] 🛠 **CODICE: indicatori + backbone E2E deterministica (alpha v0)** ✅ 2026-06-06 — `tradingagents/indicators/` branch `feat/indicators` (integra tutto): `compute_indicator` (ATR/RSI/SMA/EMA/52w/drawdown) + `atr_from_db`; **test E2E** ingest→ATR→livelli→sizing→trade (no LLM). 40 test "nostri" verdi → [[system/modules/quant-backtesting]] · [[system/modules/execution]]
 - [x] 🛠 **CODICE: connettori dati + screening (alpha v0)** ✅ 2026-06-06 — `tradingagents/ingestion/` branch `feat/data-ingestion`: `ingest_price_bars` DB-first (check-presenza + write-through) via `YFinanceFetcher`; `screen_ticker` deterministico → `ticker_card.screening_score` (coda funnel); 5 unit + 1 integration yfinance verdi → [[system/modules/data-layer]] · [[system/parallelism-design]]
 - [x] 🛠 **CODICE: Trade deterministico (alpha v0)** ✅ 2026-06-06 — `tradingagents/execution/` branch `feat/trade-execution`: state approvato → ordine via risk engine, `client_order_id` idempotente, `inject_portfolio_state`; 5 test integrazione. Trader = funzione Python (no LLM) → [[system/modules/execution]]

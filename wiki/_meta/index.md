@@ -25,6 +25,8 @@
 - [[system/agent-behaviors]] — comportamento per-agente del desk (Market · Sentiment · Technical · Fondamentali: input · tool · output · ragionamento · stop) 🛠
 - [[system/system-prompts]] — metodo di prompt engineering + scheletro a 7 blocchi + tutti e 6 i system prompt (4 desk + PM + Risk, in inglese) 🛠
 - [[system/fork-gap-analysis]] — confronto fork TradingAgents ↔ design: tengo/elimino/aggiungo + roadmap milestone di codice (ponte design→codice) 🛠
+- [[system/trigger-engine]] — centralizzazione dei trigger (alert · next_check_date · calendario · synthesis) → coda del funnel 🛠
+- [[system/cost-accounting]] — gestione a runtime di commissioni + token cost (stima pre-trade · consuntivo · learning) 🛠
 
 ### Moduli — aree del sistema (da `architettura.canvas`)
 - [[system/modules/data-layer]] — DB centrale (4 aree logiche) + Extraction (extractors, adaptive, market alert, calendar tool, mantainer)

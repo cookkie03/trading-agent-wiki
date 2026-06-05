@@ -2,6 +2,24 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] DESIGN — Trigger Engine centralizzato + Cost accounting a runtime
+
+- **Input di Luca** (due temi di design, da segnare e pensare):
+  1. **Centralizzare i trigger** (alert, `next_check_date`, calendario economico, periodical synthesis, news). Valutazione: ottima idea, si salda col funnel. → creata [[system/trigger-engine]]: un **Trigger Engine** raccoglie tutte le sorgenti, normalizza in `TriggerEvent`, immette nella **coda di priorità D** ([[system/parallelism-design]]); il PM consuma una sola coda (dedup, priorità, rate-limit, audit "perché mi sono svegliato"). Il Trigger Engine = il "perché", il funnel = il "come".
+  2. **Commissioni a runtime**. → creata [[system/cost-accounting]]: gestione in 3 momenti — pre-trade (stima `CommissionModel` per broker + token-cost → guardrail **net-EV / R:R al netto dei costi** → no-trade se i costi non sono coperti), post-fill (commissione reale + token-cost sul `trade`), accounting/learning (net performance reale). Token metering per ciclo + budget anti-overtrading opzionale. Consolida le decisioni esistenti (transaction cost auto-adattivo · token cost = commissione).
+- **Registrato**: 2 nuove pagine + [[_meta/index]] + board 🟠 (2 card) + [[system/decision-log]] (2 decisioni aperte).
+- **Stato**: entrambi **proposti/aperti**, da implementare nel cycle runner (trigger) e nell'adapter broker + Trade gate (cost).
+
+## [2026-06-06] CODICE — broker adapter + esecuzione (branch feat/broker-adapter)
+
+- **Branch** `feat/broker-adapter` (commit 14e2dc6, base `feat/trade-execution`).
+- **`tradingagents/broker/`**: `base.py` (`Broker` protocol + `OrderRequest`/`BrokerOrder`/`OrderStatus`), `paper.py` (`PaperBroker` in-process: fill istantanei, **idempotente su `client_order_id`**, traccia cassa/posizioni), `alpaca.py` (`AlpacaBroker` REST paper via `requests`, integration).
+- **`execution/submit.py`**: `submit_trade` (pending→broker→aggiorna status/broker_order_id), `execute_thesis` (size+record+submit end-to-end), `reconcile_open_trades` (rilegge il broker come **source of truth** → la routine di graceful recovery decisa nella wiki).
+- **`.env.example`**: `ALPACA_API_KEY`/`ALPACA_SECRET_KEY`.
+- **Test**: 5 unit (PaperBroker idempotenza, submit, execute_thesis, reconcile) + 1 integration Alpaca gated. Suite branch: **32 verdi**.
+- **NB branching**: esistono due linee d'integrazione divergenti — `feat/indicators` (storage+domain+execution+ingestion+indicators) e `feat/broker-adapter` (storage+domain+execution+broker). Per l'alpha completa andranno unite (decisione PR a Luca).
+- **Registrato**: [[system/modules/execution]] (callout broker); board ✅ + card adapter broker aggiornata (resta IBKR); hot-cache.
+
 ## [2026-06-06] CODICE — indicatori + backbone deterministica E2E (branch feat/indicators)
 
 - **Branch** `feat/indicators` (commit 9a0fda4) = **integrazione di tutto** (merge `feat/trade-execution` + `feat/data-ingestion`): storage + domain + execution + ingestion + indicators.

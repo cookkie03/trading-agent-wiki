@@ -21,7 +21,9 @@ related:
 
 La coda deterministica del sistema: dal `research_state` approvato all'ordine eseguito sull'exchange. Mappa i nodi `Investment State`, `Trade` e l'uscita verso `transactions` di `architettura.canvas`. **Niente LLM qui**: tutto è Python puro.
 
-> 🟢 **Trade deterministico implementato (alpha v0, 2026-06-06)** — `tradingagents/execution/trade.py` (branch `feat/trade-execution`): `can_trade` (gate: approvato·completo·azionabile·prezzato) → `build_trade` (state → `OrderProposal` via risk engine + ATR levels) → `persist_trade` (con `client_order_id` idempotente) → `inject_portfolio_state` (tool G) → `propose_and_record` end-to-end. 5 test integrazione. **Manca ancora**: adapter broker reale (Alpaca/IBKR) + esecuzione effettiva (M4). Vedi [[system/fork-gap-analysis]].
+> 🟢 **Trade deterministico implementato (alpha v0, 2026-06-06)** — `tradingagents/execution/trade.py` (branch `feat/trade-execution`): `can_trade` (gate: approvato·completo·azionabile·prezzato) → `build_trade` (state → `OrderProposal` via risk engine + ATR levels) → `persist_trade` (con `client_order_id` idempotente) → `inject_portfolio_state` (tool G) → `propose_and_record` end-to-end. 5 test integrazione.
+
+> 🟢 **Broker adapter implementato (alpha v0, 2026-06-06)** — pacchetto `tradingagents/broker/` (branch `feat/broker-adapter`): interfaccia `Broker` intercambiabile + `PaperBroker` (simulatore in-process, fill istantanei, **idempotente su `client_order_id`**, traccia cassa/posizioni) + `AlpacaBroker` (REST paper via `requests`, integration). In `execution/submit.py`: `submit_trade`, `execute_thesis` (size+record+submit), `reconcile_open_trades` (**broker = source of truth → graceful recovery**). 5 test unit + 1 integration Alpaca gated. **Manca ancora**: IBKR adapter (prod), esecuzione bracket completa, gestione fill parziali. Vedi [[system/fork-gap-analysis]] (M4).
 
 ```
 research_state (approvato dal Risk Analyst)
