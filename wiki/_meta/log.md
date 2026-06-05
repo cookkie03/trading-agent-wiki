@@ -2,12 +2,24 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-05] ingest | Conversazione Luca↔Salvatore 2026-06-04 sera + Indicatori Macro
+
+- **Type**: call (15 messaggi audio WhatsApp + export chat) + documento strategia (Indicatori Macro)
+- **Source audio**: `raw/audio/WhatsApp Audio 2026-06-04 at 19.59.54` → `21.59.32` (15 file .txt + .opus)
+- **Source chat**: `raw/daily-notes/2026-06-04.md` (chat export Luca↔Salvatore + conversazione Claude su broker)
+- **Source documento**: `Indicatori per Analisi Macroeconomica.md` (vault root — non archiviato per istruzione esplicita)
+- **Pages created**: [[strategy/indicators/macro-indicators]]
+- **Pages updated**: [[system/modules/quant-backtesting]], [[system/decision-log]], [[system/ideas-log]], [[artifacts/project-board]], [[_meta/index]]
+- **Archived**: `raw/audio/*.txt` → `raw/archived/audio/` (file .opus lasciati in place)
+- **Conflicts**: nessuno
+- **Notes**: backtesting equivoco chiarito (deterministico, non AI simulation); policy capitale (no investimento prima della prova); collaboratori pipeline (Zappa, Trezzi, SIM); eToro copy trading come canale monetizzazione futuro; Salvatore sta completando il documento indicatori (12 categorie, per ora PIL completo + Consumi iniziato)
+
 ## [2026-06-04] DB — accesso, performance, minimizzazione query, forma fisica
 
 - **Domanda Luca**: stato attuale del DB, quando/da chi è interrogato, come gestirlo, tecniche per velocizzare read/write, come interrogarlo il meno possibile, che forma avrebbe.
 - **Creata pagina** [[system/db-access-performance]]: stato attuale (design, non implementato) · tabelle read/write per attore · gestione a layer (models→repo→service) · tecniche scrittura (batch/COPY, pooling, partitioning) e lettura (indici mirati, BRIN, GIN su JSONB, materialized view, indicatori pre-calcolati) · **minimizzazione query** (check-presenza, snapshot di ciclo in memoria = tool iniezione portafoglio, periodical synthesis, read-through cache, no N+1) · **forma fisica proposta**: PostgreSQL + **TimescaleDB** (hypertable time-series + relazionale + JSONB).
-- **Decisioni aperte aggiunte**: TimescaleDB vs Postgres vanilla; cache in-process vs Redis → [[system/decision-log]] + board (🟠).
-- **Aggiornati**: [[_meta/index]], [[system/modules/data-layer]] (callout link), [[system/decision-log]], [[artifacts/project-board]].
+- **Decisioni CHIUSE da Luca**: **motore DB = PostgreSQL + TimescaleDB**; **cache = in-process per l'MVP, Redis idea futura** (solo se il sistema diventa multi-processo). Spiegato a Luca perché Redis aggiunge un processo+invalidazione separati e non vale finché c'è un solo processo. → [[system/decision-log]] (chiuse) + board (✅).
+- **Aggiornati**: [[_meta/index]], [[system/modules/data-layer]] (callout link), [[system/decision-log]], [[artifacts/project-board]], [[system/db-access-performance]].
 
 ## [2026-06-04] validazione collettiva investment_state + flag spiegazione opzione C
 

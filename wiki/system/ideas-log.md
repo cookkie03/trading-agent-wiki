@@ -16,6 +16,46 @@ File append-only per le idee emerse durante lo sviluppo del progetto. Non si can
 
 ---
 
+## 2026-06-04 (sera) — Conversazione Luca↔Salvatore + Claude
+
+*Fonte: audio WhatsApp 2026-06-04 (15 messaggi vocali, 19:59–21:59) + chat export + conversazione Claude in daily-notes.*
+
+### Copy trading come canale di monetizzazione (eToro + ZuluTrade)
+
+Dalla ricerca Claude su piattaforme di copy trading, emerge un modello di monetizzazione diretto che si sposa perfettamente col progetto:
+
+- **eToro Pro Investor Program**: eToro paga fino all'**1.5% degli AUC (Asset Under Copy) mensili** ai trader del programma. Requisiti: account 2+ mesi, equity > $1.000, risk score ≤ 7 per 6 mesi, almeno 1 copier.
+- **eToro Agent Portfolios**: API key dedicate collegabili a script Python / bot / agenti LLM. Esempi reali: agente che monitora il VIX via API e ruota verso posizioni difensive quando supera 25. Accesso API inizialmente riservato ai Popular Investor → flywheel naturale.
+- **ZuluTrade come secondo canale**: Signal Provider via REST API, collegabile a broker di propria scelta (più aperto di eToro, meno selettivo).
+- **Architettura raccomandata (Claude, 2026-06-04)**:
+  - Fase 1: Alpaca (execution, US stocks, gratis) + eToro (costruisci track record, replica manuale o via API)
+  - Fase 2: IBKR come execution engine (global, multi-asset) + eToro come copy trading layer
+
+**Implicazione progettuale**: il bot diventa il "prodotto", la piattaforma è il marketplace regolamentato. Legalità confermata (CONSOB) — è la piattaforma a pagare il trader, non gli utenti a passare denaro.
+
+**Nota Luca** (2026-06-04 audio 21:23): *"teniamocelo buono, per ora stai buono, poi in caso lo sentiamo"* — idea da tenere nel cassetto fino al paper trading funzionante.
+
+### Collaboratori potenziali identificati (Salvatore, 2026-06-04)
+
+Pipeline di persone da coinvolgere quando il sistema sarà funzionante per review/feedback:
+
+1. **Diego Zappa** (prof. di Statistica) — primo interlocutor ideale: ha fatto trading su mercati come side quest, ha una tesi su trading strategy con Python, è un professore → disponibile, utile, vicino agli studenti.
+2. **Dennis Canzi** — incontrato all'esame di Etica, potrebbe facilitare l'introduzione a Zappa.
+3. **Trezzi** — "router commerciale": non necessariamente esperto, ma utile per presentarci a persone del settore (es. correlatore di tesi).
+4. **Trader della SIM** — traders incontrati da Salvatore in una SIM, sembravano disponibili.
+
+**Principio condiviso** (Luca + Salvatore): il feedback esterno si chiede quando il sistema è **finito** (agenti costruiti, prima della demo live), non durante la build. Salvatore (audio 21:12): *"il parere è da chiedere nel momento in cui hai una cosa finita"*.
+
+### Politica finanziaria — nessun investimento di capitale prima della prova
+
+Posizione esplicita di Luca (audio 21:45, ribadita):
+- **NO** investimento di risparmi propri nel progetto prima della prova su demo
+- Il progetto nasce per **guadagnare**, non per richiedere capitale
+- Percorso: 1) dimostrare che funziona in paper trading → 2) reinvestire i guadagni per migliorare il sistema (es. backtesting, infrastruttura)
+- Salvatore (audio 21:48): stessa situazione — 10K per il master, 300€ sul conto corrente, non disponibile a investire
+
+---
+
 ## 2026-06-02 — Sessione di review pre-sviluppo (Luca)
 
 *Fonte: chat 2026-06-02 + call 2026-05-29. Idee/spunti emersi mentre Luca rispondeva all'analisi delle lacune.*

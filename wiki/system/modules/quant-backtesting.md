@@ -49,6 +49,25 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 
 ---
 
+## Backtesting — chiarimento architetturale (2026-06-04 serale)
+
+> *Fonte: conversazione audio Luca↔Salvatore 2026-06-04 sera.*
+
+**Cosa è il backtesting nel nostro contesto**: prendere la strategia e chiedersi *"se l'avessimo applicata dal 2004 al 2025, come sarebbe andata?"*. Si fa girare la simulazione molte volte (es. 40.000 — stile Monte Carlo) su dati storici per stimare la distribuzione dei rendimenti.
+
+**Equivoco chiarito**: il backtesting nel nostro sistema **non coinvolge l'AI durante la simulazione** — è un processo **deterministico** (regole Python: se succede X entra, se succede Y esci). L'AI non gira 40.000 volte: girerebbe un costo di token insostenibile. Invece:
+- si costruiscono **script Python con regole deterministiche** che simulano le condizioni di entrata/uscita
+- su questi script si fanno girare le simulazioni
+- il risultato (hit-rate, rendimento medio, drawdown) *poi* informa il PM e i pesi degli agenti
+
+**Dati storici**: già risolti — il DB interno conterrà serie storiche (da yfinance / Alpha Vantage). VectorBT opera direttamente su queste serie. Il backtesting legge dal DB, nessuna API che esplode.
+
+**VectorBT** (decisione già presa): vettorizzato su pandas/numpy, testa molte combinazioni di parametri rapidamente senza loop Python pesanti. Ideale per questo approccio.
+
+**Posizione di Salvatore** (2026-06-04): disponibile a spiegare parametri e output del backtesting chiaramente, "come se lo spiegassi a un Down" — Luca deve capire cosa vuole in input e cosa si aspetta in output. Da fare in chiamata dedicata.
+
+---
+
 ## Backtesting come validatore continuo delle soglie (input di Luca 2026-06-04)
 
 > Luca: *«il backtesting deve servire come metodo per validare costantemente tutte le soglie, tutti i rapporti definiti a monte (es. [[_meta/glossario#Risk/Reward Ratio (R:R)|R:R]] 1.5), e deve essere continuo e asincrono»*.

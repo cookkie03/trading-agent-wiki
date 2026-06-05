@@ -100,7 +100,7 @@ Principio: **una lettura per ciclo, non N**. Leve (dalla più al meno già decis
 
 ## 6. Che forma avrebbe il DB
 
-**Proposta (da validare): PostgreSQL + estensione TimescaleDB** — un solo motore che copre i tre regimi di dati, niente secondo database.
+**Deciso (2026-06-04): PostgreSQL + estensione TimescaleDB** — un solo motore che copre i tre regimi di dati, niente secondo database.
 
 | Regime | Contenuto | Forma fisica |
 |--------|-----------|--------------|
@@ -113,9 +113,11 @@ Perché Timescale: è il "matrimonio" naturale tra l'orientamento *«principalme
 
 ---
 
-## Decisioni aperte di questa pagina
-- 🛠 **Confermare TimescaleDB** come estensione di Postgres (vs Postgres "vanilla" con partitioning manuale).
-- 🛠 **Cache**: in-process per l'MVP vs **Redis** dedicato (introdurlo solo se il carico lo giustifica).
+## Decisioni chiuse di questa pagina
+- ✅ **Motore = PostgreSQL + TimescaleDB** (2026-06-04): hypertable time-series + relazionale/oggetti + JSONB in un solo motore.
+- ✅ **Cache = in-process per l'MVP** (2026-06-04): read-through in-process per i dati caldi finché il sistema è un singolo processo. **Redis** resta **idea futura**, da introdurre solo quando/se il sistema si spezza in più processi che devono condividere la cache — solo allora vale il costo di un server Redis + invalidazione separati.
+
+## Decisioni ancora aperte
 - 🛠 **Graceful shutdown & recovery**: già aperta in [[system/modules/data-layer]] — la strategia di ripresa dal checkpoint resta da definire.
 
 ---

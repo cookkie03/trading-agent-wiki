@@ -39,7 +39,10 @@
 - [[strategy/metrics/benchmark]] — benchmark della gestione attiva (S&P + 60/40 all-world)
 - [[strategy/questions-for-salvatore]] — foglio domande aperte per Salvatore (VaR, overfitting, opzioni, fattori) 📈
 
-*(indicators/ e metrics/ si popolano man mano che Salvatore porta materiale)*
+**Indicatori:**
+- [[strategy/indicators/macro-indicators]] — framework indicatori macroeconomici (PIL, inflazione, lavoro, politica monetaria, liquidità, obbligazioni, credito, valute, volatilità, flussi, driver azionari) — 12 categorie, draft Salvatore in corso 📈
+
+*(metrics/ si popola man mano)*
 
 ## Prior-art — Sistemi, paper e librerie esterni
 *Materiale esterno studiato o forkato. Riferimento durante lo sviluppo.*

@@ -3,8 +3,19 @@
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
 ## Sessione Corrente
-- **Data**: 2026-06-04
-- **Agent**: Claude Code (Opus)
+- **Data**: 2026-06-05
+- **Agent**: Claude Code (Sonnet 4.6)
+- **Operazione principale**: **Ingest conversazione Luca↔Salvatore 2026-06-04 sera** (15 audio WhatsApp + chat export + doc indicatori macro).
+
+### Ingest 2026-06-05
+- **Creata**: [[strategy/indicators/macro-indicators]] — 12 categorie indicatori macro (PIL completo, Consumi iniziato, Salvatore continua)
+- **Chiarito**: backtesting = deterministico Python su DB storico, NON simulazione AI (equivoco risolto) → [[system/modules/quant-backtesting]]
+- **Nuove decisioni**: no capitale prima della prova · feedback esterni solo a sistema finito
+- **Nuove idee**: copy trading eToro Pro Investor (1.5% AUC/mese) + ZuluTrade · pipeline collaboratori (Diego Zappa primo, poi Trezzi + traders SIM)
+- **Archiviati**: 15 .txt trascrizioni audio → `raw/archived/audio/`
+- **NON mosso**: `Indicatori per Analisi Macroeconomica.md` (file di lavoro Salvatore al vault root)
+
+### Sessione 2026-06-04
 - **Operazione principale**: **Step 1 — design `entry_price`** + **commenti di Luca** + **cross-link glossario**. Sessione condotta da Claude (Luca preferiva reagire).
   - **`entry_price`**: ✅ **APPROVATO da Luca 2026-06-04** — backbone **ATR** (entry/stop/tp = `current_price ± k·ATR`, l'LLM dà i coefficienti `k_*`, Python traduce), `k_entry` **scalato per conviction**, **guardrail R:R** (default 1.5), limit non colpito → scade alla `next_check_date`. Numeri (ATR 14, k_stop=2, k_tp=3, soglia 1.5) da tarare in backtest. Decisione chiusa in [[system/decision-log]].
   - **Decisioni chiuse 2026-06-04**: autonomia totale (nessun input umano oltre l'accensione) · PM attivato anche dal `next_check_date` · backtesting = validatore continuo/asincrono delle soglie · **conviction = enum** (non 0-100).
@@ -15,7 +26,7 @@
   - **State annidati**: **orientamento C (ibrido)** scelto da Luca, *da validare al massimo* in fase di grafo (rework minimo via funzione di sealing) → [[system/state-schemas]]. Lo schema dello state è di fatto **chiuso a livello di design** (restano solo numeri da tarare in backtest e validazione di C).
   - **Istruzione PM "nel dubbio chiedi sempre"** (Luca): il PM decisore deve sempre interrogare di nuovo i desk a ogni incertezza, anche piccola, prima di decidere; no-trade preferibile a basi incerte. Tetti anti-loop = rete di sicurezza. → [[system/parallelism-design]] · [[system/modules/agents]] · card system-prompt in board.
   - **Validazione collettiva investment_state** (opzione, Luca): tutti gli agenti validano completezza·correttezza·esaustività fonti prima del sealing (`send_back` su lacuna) → [[system/state-schemas]] · [[system/modules/execution]].
-  - **DB — accesso/performance** (domanda Luca): creata [[system/db-access-performance]] — quando/da chi è interrogato (read/write per attore), tecniche read/write (batch/COPY, pooling, BRIN, GIN su JSONB, materialized view), **minimizzazione query** (check-presenza, snapshot di ciclo in memoria, periodical synthesis, read-through cache), **forma fisica proposta = PostgreSQL + TimescaleDB** (hypertable + relazionale + JSONB). Aperte: TimescaleDB vs Postgres vanilla; cache in-process vs Redis (board 🟠).
+  - **DB — accesso/performance** (domanda Luca): creata [[system/db-access-performance]] — quando/da chi è interrogato (read/write per attore), tecniche read/write (batch/COPY, pooling, BRIN, GIN su JSONB, materialized view), **minimizzazione query** (check-presenza, snapshot di ciclo in memoria, periodical synthesis, read-through cache), **DECISO** (Luca 2026-06-04): motore = **PostgreSQL + TimescaleDB** (hypertable + relazionale + JSONB); **cache = in-process** per l'MVP, **Redis idea futura** (solo se multi-processo). Chiuse in [[system/decision-log]] + board ✅.
 
 ### Sessione 2026-06-03
 - **Operazione**: **Review pre-sviluppo + risposta alle lacune**. Luca ha risposto a un'analisi delle cose ancora da decidere/capire. Create **5 nuove pagine** (`system/state-schemas`, `system/position-sizing`, `system/rating-scoring`, `system/parallelism-design`, `strategy/questions-for-salvatore`); aggiornati decision-log, data-layer, execution, agents, quant-backtesting, stack, glossario, ideas-log, index. **Board ridisegnata come centrale operativa** (owner + riferimento pagina su ogni card). Nuova sezione in **CLAUDE.md** che formalizza la board come hub + convenzione owner/riferimenti.
@@ -100,8 +111,8 @@ wiki/
 - **Dynamic Temporal Checkpoints**: feedback loop temporale gestito dall'AI
 
 ## Pending ingest
-- **File market driver di Salvatore** (4 macro-categorie) — atteso in `raw/` come TXT → `strategy/indicators/`
-- **Documento indicatori di valuation** (Salvatore) — atteso, poi TXT + ingest
+- **Indicatori per Analisi Macroeconomica.md** (vault root) — **parziale**: PIL completo, Consumi appena iniziato; Salvatore sta completando le sezioni 2-12. Quando finito → aggiornare [[strategy/indicators/macro-indicators]]
+- **Documento indicatori di valuation** (Salvatore) — atteso, poi TXT + ingest (ognuno dell'associazione cura un indicatore stock)
 - `raw/articles/AlphaArena/` + `optimizer/` + `TradingAgents*` — in raw per consultazione (pagine prior-art già esistenti)
 - `raw/daily-notes/model.md` = template vuoto (resta)
 

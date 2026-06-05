@@ -50,6 +50,8 @@ sources:
 - [ ] 📈 **Stop loss istituzionali a domino** — sfruttare le soglie psicologiche degli SL → [[strategy/methods/trend-following]]
 - [ ] 📈 **Quantificazione eventi rari** — gestire eventi mai visti (categoria più vicina vs unknown) → [[strategy/questions-for-salvatore]]
 - [ ] 📈 **Analisi paper di finanza** — raccogliere e ingestare paper accademici sui fattori → [[strategy/index]]
+- [ ] 🔀 **Copy trading come canale di monetizzazione** — eToro Pro Investor Program (1.5% AUC/mese) + ZuluTrade come secondo canale; collegare bot Python via Agent Portfolios API. Da attivare dopo il paper trading → [[system/ideas-log]]
+- [ ] 🔀 **Coinvolgere collaboratori esterni per review** — Pipeline: Diego Zappa (primo, prof. statistico + trader), Trezzi (connector), traders SIM. Solo quando il sistema è funzionante → [[system/ideas-log]]
 
 
 ## 🔴 Da fare
@@ -94,8 +96,6 @@ sources:
 - [ ] 🛠 **Parallelismo multi-ticker + subgraph vs nodi** — scegliere tra le alternative A–E → [[system/parallelism-design]]
 - [ ] 🔀 **Criteri "info sufficienti" del PM + max iterazioni** — quando fare/non fare un trade → [[system/parallelism-design]]
 - [ ] 🛠 **Forma fine di storage per gli state annidati** — JSON/documentale dentro il time-series → [[system/modules/data-layer]]
-- [ ] 🛠 **Motore DB: TimescaleDB vs Postgres vanilla** — hypertable+relazionale+JSONB in un solo motore, oppure partitioning manuale → [[system/db-access-performance]]
-- [ ] 🛠 **Cache: in-process vs Redis** — read-through per dati caldi (prezzo, Statuto); Redis solo se il carico cresce → [[system/db-access-performance]]
 - [ ] 🛠 **Comportamento di ogni agente del desk** — cosa fa esattamente Market/Sentiment/Technical/Fondamentali (input, tool, output, stop) → [[system/modules/agents]]
 - [ ] 🛠 **System prompt PM: "nel dubbio, chiedi sempre"** — istruire il PM a interrogare di nuovo i desk a ogni incertezza (anche piccola); no-trade preferibile a basi incerte → [[system/modules/agents]] · [[system/parallelism-design]]
 - [ ] 🛠 **Validazione collettiva dell'`investment_state`** — tutti gli agenti validano completezza·correttezza·esaustività fonti prima del sealing (nodo esplicito o responsabilità nel system prompt?) → [[system/state-schemas]]
@@ -118,6 +118,8 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **Decisione: motore DB = PostgreSQL + TimescaleDB** ✅ 2026-06-04 — un solo motore: hypertable time-series + relazionale/oggetti + JSONB per gli state → [[system/db-access-performance]]
+- [x] 🛠 **Decisione: cache in-process per l'MVP, Redis idea futura** ✅ 2026-06-04 — read-through in-process finché singolo processo; Redis solo se multi-processo → [[system/db-access-performance]]
 - [x] 🛠 **Decisione: pesi agenti = indicazione, non regola** ✅ 2026-06-04 — il backtest informa il PM (contesto/awareness) + diagnostica "cosa migliorare", non scavalca il giudizio; aggancio come input al PM → [[system/learning-feedback-loop]]
 - [x] 🛠 **Decisione: aggregazione `direction`/`conviction` al PM** ✅ 2026-06-04 — ogni desk propone, il PM aggrega e decide → [[system/state-schemas]]
 - [x] 🛠 **Decisione: struttura `entry_price`** ✅ 2026-06-04 — backbone ATR (k_entry scalato per conviction, guardrail R:R 1.5); numeri da tarare in backtest → [[system/state-schemas]]
@@ -137,6 +139,10 @@ sources:
 - [x] 🛠 **Decisione: framework = LangGraph (base TradingAgents)** ✅ 2026-05-29 → [[system/stack]]
 - [x] 🛠 **Decisione: provider LLM = OpenRouter + DeepSeek V4 Pro** ✅ 2026-05-29 → [[system/stack]]
 - [x] 🛠 **Decisione: design-first** → [[system/decision-log]]
+- [x] 🔀 **Decisione: backtesting = deterministico Python, non simulazione AI** ✅ 2026-06-04 sera — VectorBT su DB storico interno (yfinance/AlphaVantage); l'AI non gira durante la simulazione → [[system/modules/quant-backtesting]]
+- [x] 🔀 **Decisione: nessun investimento di capitale prima della prova** ✅ 2026-06-04 sera — solo reinvestimento dei guadagni → [[system/decision-log]]
+- [x] 🔀 **Decisione: feedback esterni solo a sistema finito** ✅ 2026-06-04 sera → [[system/ideas-log]]
+- [x] 📈 **Indicatori macro avanzati (PIL, consumi, inflazione…)** ✅ 2026-06-05 — primo draft Salvatore ingestato → [[strategy/indicators/macro-indicators]]
 - [x] 🛠 **Inizializzazione wiki + repository Git**
 - [x] 🔀 **Videochiamate 04-30, 05-06, 05-29** — architettura, TA, topologia agenti → [[system/architecture]]
 - [x] 📈 **Presentazione factor investing / meccanismi di esecuzione / benchmark settore** → [[strategy/methods/factor-investing]]
