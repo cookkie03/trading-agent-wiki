@@ -95,7 +95,7 @@ sources:
 
 ## 🟠 Decisioni da prendere
 
-- [ ] 🛠 **Parallelismo multi-ticker + subgraph vs nodi** — scegliere tra le alternative A–E → [[system/parallelism-design]]
+- [ ] 🛠 **Implementare lo slice MVP del parallelismo** — coda di priorità (D) + subgraph per-ticker (A); screening (E) e scheda DB (B/C) come strati successivi → [[system/parallelism-design]]
 - [ ] 🔀 **Criteri "info sufficienti" del PM + max iterazioni** — quando fare/non fare un trade → [[system/parallelism-design]]
 - [ ] 🛠 **Forma fine di storage per gli state annidati** — JSON/documentale dentro il time-series → [[system/modules/data-layer]]
 - [ ] 🔀 **Enumerare le fonti/tool di sentiment** — Reddit/StockTwits/X + news-sentiment + API dedicate, massima copertura; si interseca con "indicatori di sentiment" (Salvatore) → [[system/tools-inventory]] · [[strategy/questions-for-salvatore]]
@@ -119,6 +119,7 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **Topologia parallelismo multi-ticker = architettura a imbuto** ✅ 2026-06-06 — funnel E(screening deterministico)→D(coda)→A(subgraph per-ticker)→B/C(scheda DB); subgraph come pattern; screening = modulo Python non-LLM che scrive `screening_score` nella scheda. MVP parte da D+A → [[system/parallelism-design]]
 - [x] 🛠 **Tutti e 6 i system prompt + metodo prompt-eng** ✅ 2026-06-06 — principio "separa comportamento/forma/tool" + 7 principi + scheletro a 7 blocchi + Technical/Market/Sentiment/Fondamentali + PM (orchestratore) + Risk (gate bear) scritti per intero, **in inglese** → [[system/system-prompts]]
 - [x] 🛠 **Decisione: comportamento per-agente del desk (impianto)** ✅ 2026-06-06 — Market/Sentiment/Technical/Fondamentali: input·tool·output·ragionamento·stop. News/sentiment per tipo di info (Market=catalizzatori · Sentiment=mood multi-fonte incl. social); tutti contribuiscono alla direzione; stop auto + PM richiama → [[system/agent-behaviors]]
 - [x] 🛠 **Decisione: inventario tool agenti (impianto)** ✅ 2026-06-06 — 9 famiglie (prezzi · indicatori · fondamentali · news/sentiment · macro · calendario · portafoglio · opzioni · guardrail) + 2 regole (parametrici · write-through); portfolio auto+richiamabile, `compute_indicator` parametrico; restano solo i vendor → [[system/tools-inventory]]

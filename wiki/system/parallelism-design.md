@@ -6,8 +6,8 @@ tags:
   - architecture
   - multi-agent
 created: 2026-06-03
-updated: 2026-06-04
-status: draft
+updated: 2026-06-06
+status: active
 priority: high
 area: software
 related:
@@ -15,12 +15,41 @@ related:
   - "[[system/state-schemas]]"
   - "[[system/architecture]]"
   - "[[system/rating-scoring]]"
-confidence: low
+  - "[[system/modules/data-layer]]"
+confidence: medium
 ---
 
 # Parallelismo & Orchestrazione multi-ticker
 
-> Come fa il Portfolio Manager a far analizzare **più ticker** senza che gli state si mescolino e senza saturare il contesto degli agenti. Tema aperto importante (Luca: *«ci sono diverse alternative da valutare, anche con Salvatore»*). Qui le due idee di Luca + alternative aggiunte. Da decidere in fase di engineering del grafo.
+> Come fa il Portfolio Manager a far analizzare **più ticker** senza che gli state si mescolino e senza saturare il contesto degli agenti. Qui le due idee di Luca + alternative aggiunte, e l'**architettura decisa** che le compone.
+
+---
+
+## ✅ Decisione (2026-06-06): architettura a imbuto (funnel)
+
+> Le alternative A–E **non sono opzioni in competizione**: rispondono a domande diverse e si **compongono** in un'unica pipeline. *Quali ticker?* → D (coda) + E (screening). *Come analizzo in isolamento?* → A (subgraph per-ticker). *Dove vive lo stato?* → B (scheda DB) → con A = C. **Nodi vs subgraph già deciso** (subgraph come pattern strutturale, 2026-06-03).
+
+```
+TRIGGER (alert · periodical synthesis · next_check_date)
+   │
+   ▼
+[E] SCREENING deterministico   ← Quick Thinker: gira sull'universo a costo ~0, scrive screening_score nella scheda ticker
+   │
+   ▼
+[D] CODA DI PRIORITÀ           ← legge gli score + i trigger, ordina i ticker; non si valuta tutto ogni volta
+   │
+   ▼
+[A] DEEP-DIVE per-ticker       ← subgraph isolato per i top-K: crea il research_state, lancia i 6 agenti
+   │                              (anti context-rot, niente mescolamento tra ticker)
+   ▼
+[B/C] SCHEDA TICKER nel DB      ← il subgraph legge la scheda come base e riscrive la valutazione aggiornata
+```
+
+**Perché regge**: gli LLM costosi toccano **solo i pochi titoli sopravvissuti** allo screening; tutto il resto è calcolo deterministico trascurabile. È il modello di un fondo vero (screener quantitativo → analisi profonda sui superstiti).
+
+**Staleness di B — risolta da cose già decise**: ogni fatto nella scheda ha `publication_date`/`reference_date` + confidence; il mantainer marca stale ciò che è vecchio/contraddetto; e gli agenti fanno **real-time-first** sui dati decision-critical → la scheda è una *base*, non un *oracolo* ([[system/modules/agents]]).
+
+**Ordine di implementazione (alpha-first)**: progettato tutto adesso, ma l'MVP parte da **D + A** (coda + subgraph per-ticker); **E** (screening) e **B/C** (scheda) si aggiungono come strati successivi senza rework, perché i punti di aggancio sono già definiti.
 
 ---
 
@@ -74,6 +103,23 @@ Il PM non valuta N ticker in parallelo ma mantiene una **coda prioritizzata**: i
 
 ### E — Due livelli di profondità (screening → deep dive)
 Uno **screening** economico e veloce (modello piccolo / calcolo deterministico) gira su tutto l'universo e produce solo un punteggio grezzo; solo i ticker che superano una soglia ricevono il **deep dive** dei desk (costoso). Pattern *[[_meta/glossario#Quick Thinker + Deep Thinker|Quick Thinker]] + Deep Thinker* (vedi [[_meta/glossario]]). Riduce drasticamente il costo.
+
+---
+
+## Screening (E) — design dettagliato (deciso 2026-06-06)
+
+Risposte alle domande di Luca sul "come si tiene in piedi" lo screening.
+
+| Domanda | Decisione |
+|---------|-----------|
+| **È un agente LLM?** | **No — modulo deterministico** (Python/quant), il "Quick Thinker". Deve girare su molti titoli a costo ~0: un LLM violerebbe il principio *costo-token = commissione*. Un modello *cheap* solo se in futuro servisse un filtro qualitativo; default = calcolo. |
+| **Usa le info passate?** | **Sì**: segnali quant già nel DB (momentum, volatilità/ATR, distanza da 52w high/low, variazione %, z-score volumi, eventuali ratio fondamentali) + pesi dal **feedback storico** del [[system/learning-feedback-loop]]. Produce un **ranking grezzo, non una tesi**. |
+| **Chi lo aggiorna?** | **Nessun attore nuovo**: gli **extractor** portano i dati freschi, il **mantainer/quant** ricalcola gli score. È un **job deterministico periodico** (+ on-trigger). Lo screening è una *vista derivata* che si ricalcola all'arrivo di dati nuovi. → [[system/modules/data-layer]]. |
+| **Quali titoli?** | **Due popolazioni**: (1) **portafoglio** — monitorato *sempre* (posizioni aperte = capitale esposto), canale garantito; (2) **universo investibile** (lista S&P/all-world) — scansionato per origination, meno spesso (costo). |
+| **Ogni quanto?** | Allineato al ciclo: scansione larga alla **periodical synthesis**; singolo ticker **on-trigger** (alert / `next_check_date`). Portafoglio più frequente, universo più rado. **Non real-time** (mid-term). |
+| **Dove scrive?** | **Non sullo `state` classico** (quello è per-ticker, in lavorazione, di proprietà dei desk). Scrive nel **DB, nella scheda ticker** (B/C): `screening_score`, `rank`, `last_screened_at` + i segnali grezzi. La **coda D legge questi score**; il `research_state` nasce *solo quando* un ticker supera lo screening ed entra nel deep-dive A. |
+
+**Aggancio al resto**: lo screening è il primo stadio dell'imbuto sopra → alimenta la coda D, che seleziona i top-K per il deep-dive A, che riscrive la scheda. Confine netto tra **stato persistente per-ticker** (scheda nel DB, sintetico, sempre presente) e **stato di lavorazione** (`research_state`, effimero, creato solo per i ticker in analisi).
 
 ---
 

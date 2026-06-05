@@ -5,7 +5,13 @@
 ## Sessione Corrente
 - **Data**: 2026-06-06
 - **Agent**: Claude Code (Opus 4.8)
-- **Operazione principale**: catena desk completata a livello di design — **tool** ([[system/tools-inventory]]) → **comportamento** ([[system/agent-behaviors]]) → **system prompt** ([[system/system-prompts]]). Tutti impianti approvati da Luca.
+- **Operazione principale**: catena desk completata a livello di design — **tool** ([[system/tools-inventory]]) → **comportamento** ([[system/agent-behaviors]]) → **system prompt** ([[system/system-prompts]]) → **topologia grafo/parallelismo** ([[system/parallelism-design]]). Tutti impianti approvati da Luca.
+
+### Design 2026-06-06 — topologia parallelismo multi-ticker (architettura a imbuto)
+- **Decisione**: alternative A–E **composte** in un **funnel** → **E** screening deterministico (modulo Python/quant, **non LLM**) → **D** coda di priorità → **A** deep-dive subgraph per-ticker (i 6 agenti) → **B/C** scheda ticker nel DB. Subgraph vs nodi già deciso (subgraph). → [[system/parallelism-design]].
+- **Screening** (6 domande di Luca): non-agente · usa info passate (segnali quant + feedback) · aggiornato da extractor+mantainer · 2 popolazioni (portafoglio sempre + universo per origination) · cadenza periodical-synthesis + on-trigger · scrive `screening_score` nella **scheda ticker del DB**, NON sullo state classico.
+- **MVP**: prima **D+A**, poi E e B/C senza rework. Restano da tarare numeri/soglie (soglia screening, K, cadenze, segnali dello score).
+- **Bivio design/codice**: topologia = ultima vera decisione architetturale. Restano: **schema DB concreto** (= ponte al codice) + criteri info-sufficienti/anti-loop. Il resto = implementazione o Salvatore.
 
 ### Design 2026-06-06 — system prompt degli agenti
 - **Creata** [[system/system-prompts]]: metodo prompt-eng (principio separazione comportamento/forma/tool + 7 principi) + **scheletro a 7 blocchi** + **tutti e 6 i system prompt scritti per intero** (Technical · Market · Sentiment · Fondamentali · **PM** orchestratore · **Risk** gate bear), in inglese. **IMPIANTO APPROVATO.**

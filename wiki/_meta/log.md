@@ -2,6 +2,15 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] Topologia parallelismo multi-ticker — architettura a imbuto
+
+- **Richiesta Luca**: al bivio design/codice, scelto di chiudere l'ultima decisione architetturale (parallelismo). Poi domande puntuali sullo **screening**.
+- **Decisione**: le alternative A–E **si compongono** in un **funnel** (non competono): **E** screening deterministico → **D** coda di priorità → **A** deep-dive subgraph per-ticker → **B/C** scheda ticker nel DB. Subgraph vs nodi già deciso (subgraph). Aggiunta sezione "Decisione (2026-06-06): architettura a imbuto" in [[system/parallelism-design]] (status draft→active).
+- **Screening — design dettagliato** (risposte alle 6 domande di Luca): **non è un agente** (modulo deterministico Python/quant, Quick Thinker); **usa info passate** (segnali quant nel DB + feedback storico); **lo aggiornano extractor + mantainer** (job periodico, nessun attore nuovo); **2 popolazioni** (portafoglio sempre + universo investibile per origination); **cadenza** periodical synthesis + on-trigger; **scrive nella scheda ticker del DB** (`screening_score`/`rank`/`last_screened_at`), **non** sullo state classico. Confine netto stato-persistente (scheda) vs stato-di-lavorazione (`research_state`).
+- **Ordine MVP**: D+A prima, E e B/C come strati successivi senza rework (alpha-first, ma agganci già definiti).
+- **Registrato**: decisione chiusa in [[system/decision-log]] (+ riga "ora chiusa"); open row rifocalizzata su "numeri e soglie"; board → ✅ Fatto + card 🟠 trasformata in task MVP; [[system/parallelism-design]] (2 sezioni nuove).
+- **Bivio design/codice**: la topologia era l'ultima vera decisione architetturale software. Restano da progettare: schema DB concreto (= ponte al codice) + criteri info-sufficienti/anti-loop (piccolo). Il resto è implementazione o richiede Salvatore.
+
 ## [2026-06-06] System prompt degli agenti — metodo + 4 prompt desk
 
 - **Richiesta Luca**: *«proviamo ad andare avanti, per i system prompt bisogna formarsi come veri prompt engineer»*. Sessione condotta da Claude (formazione distillata + proposta + reazione).
