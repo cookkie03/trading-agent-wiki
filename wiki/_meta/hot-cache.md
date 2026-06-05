@@ -3,9 +3,15 @@
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
 ## Sessione Corrente
-- **Data**: 2026-06-05
-- **Agent**: Claude Code (Sonnet 4.6)
-- **Operazione principale**: **Ingest conversazione Luca↔Salvatore 2026-06-04 sera** (15 audio WhatsApp + chat export + doc indicatori macro).
+- **Data**: 2026-06-06
+- **Agent**: Claude Code (Opus 4.8)
+- **Operazione principale**: **Inventario tool agenti** — creata [[system/tools-inventory]], impianto approvato da Luca.
+
+### Design 2026-06-06 — inventario tool degli agenti
+- **Creata** [[system/tools-inventory]]: **9 famiglie** di tool (A prezzi · B indicatori · C fondamentali · D news/sentiment · E macro · F calendario · G portafoglio · H opzioni · I guardrail=non-tool), ognuna con 5 etichette (cosa · live/storico · write-through · agente · vendor). 2 regole trasversali: **parametrici mai hardcoded** + dato live torna all'agente *e* copia nel DB. **IMPIANTO APPROVATO da Luca.**
+- **Scelte di Luca**: `inject_portfolio_state` = **auto a ogni ciclo + richiamabile**; indicatori = **un tool parametrico** `compute_indicator`; vendor live MVP = **decidiamo dopo** (candidato Finnhub).
+- **Resta aperto**: solo i **vendor** (live MVP + opzioni), a implementazione del data-layer → [[system/tools-inventory]] · decision-log (open row "Tool agenti: vendor").
+- **Prossimo passo naturale**: **comportamento per-agente** (quali tool usa ogni desk Market/Sentiment/Technical/Fondamentali, in che ordine, criterio di stop) → [[system/modules/agents]].
 
 ### Design 2026-06-05 — position sizing + autonomia informativa + tool
 - **Position sizing** (passo n°2): modello **risk-based** in [[system/position-sizing]] — budget di rischio % scalato per conviction → quantità da `stop_distance = k_stop × ATR` + **portfolio heat**. Volatility-adjustment *gratis*. **IMPIANTO APPROVATO da Luca**; restano solo i numeri (1% risk, heat 5–6%, cap 10%) da tarare in backtest.
@@ -129,6 +135,7 @@ wiki/
 - ✅ **Opzione C rispiegata a voce** (2026-06-05) — Luca non la ricordava; spiegata in chat (brutta→raccoglitore, sealing = una funzione). Resta solo da *validare in fase di grafo*.
 - 🔵 **Reazione di Luca al modello risk-based di position sizing** → [[system/position-sizing]] (proposto, in attesa).
 - ✅ Schema dello state **completato a livello di design** (entry_price, conviction enum, aggregazione PM, storage JSON, state annidati→C da validare, validazione collettiva opzione).
-- 🔵 **Selezione dei tool da costruire per gli agenti** (nuovo, da Luca) → [[system/modules/agents]].
+- ✅ **Selezione dei tool da costruire per gli agenti** (2026-06-06) — impianto approvato, inventario in [[system/tools-inventory]]; restano solo i vendor.
+- 🔵 **Comportamento per-agente del desk** — prossimo passo naturale dopo l'inventario tool → [[system/modules/agents]].
 - Verificare in Obsidian che la graph view non abbia orfani inattesi
 - Creare pagine metriche (`sharpe-ratio`, `max-drawdown`, `win-rate`) in `strategy/metrics/` solo quando servono

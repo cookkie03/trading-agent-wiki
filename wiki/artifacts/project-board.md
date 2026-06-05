@@ -59,7 +59,7 @@ sources:
 
 - [ ] 🛠 **Strutturare lo schema dello state** (PROSSIMO PASSO 1) — raffinare campi/tipi di research_state/investment_state → [[system/state-schemas]]
 - [ ] 🛠 **Position sizing: tarare i numeri** — impianto risk-based approvato; restano base_risk_%, multiplier per conviction, heat_max_%, cap titolo/settore → backtest → [[system/position-sizing]]
-- [ ] 🛠 **Selezione dei tool da costruire per gli agenti** — inventario tool (real-time vs storico, write-through, quali agenti, parametri, vendor); parte dai dataflows TradingAgents + tool propri → [[system/modules/agents]]
+- [ ] 🛠 **Tool agenti: fissare i vendor** — impianto inventario approvato; restano solo i vendor dei dati live (candidato Finnhub) e il vendor opzioni (IBKR vs Tradier), da decidere a implementazione del data-layer → [[system/tools-inventory]]
 - [ ] 🔀 **Definire l'`investment_state` con Salvatore** — partire dal template-menu completo, potare/modificare insieme → [[system/investment-state-template]]
 - [ ] 🛠 **Tool di iniezione dello stato del portafoglio** — foto aggiornata (cassa, posizioni, P/L) nel contesto dell'agente → [[system/modules/agents]]
 - [ ] 🛠 **Backtesting continuo e asincrono come validatore delle soglie** — valida di continuo R:R, k_stop/k_tp e ogni rapporto tarato a monte → [[system/modules/quant-backtesting]]
@@ -119,6 +119,7 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **Decisione: inventario tool agenti (impianto)** ✅ 2026-06-06 — 9 famiglie (prezzi · indicatori · fondamentali · news/sentiment · macro · calendario · portafoglio · opzioni · guardrail) + 2 regole (parametrici · write-through); portfolio auto+richiamabile, `compute_indicator` parametrico; restano solo i vendor → [[system/tools-inventory]]
 - [x] 🛠 **Decisione: position sizing = risk-based (impianto)** ✅ 2026-06-05 — rischio % scalato per conviction → quantità dallo stop ATR + portfolio heat; numeri da tarare → [[system/position-sizing]]
 - [x] 🛠 **Decisione: state annidati = Opzione C (ibrido)** ✅ 2026-06-05 — piatto a runtime → annidato al sealing; da validare in fase di grafo → [[system/state-schemas]]
 - [x] 🛠 **Decisione: autonomia informativa real-time first + write-through** ✅ 2026-06-05 — gli agenti chiamano prima il tool real-time (anche più volte, per verificare); il tool consegna all'agente e copia nel DB (centro unico); check-presenza DB-first resta per lo storico → [[system/modules/agents]] · [[system/modules/data-layer]]

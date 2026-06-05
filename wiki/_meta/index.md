@@ -21,6 +21,7 @@
 - [[system/parallelism-design]] — orchestrazione multi-ticker e criteri "info sufficienti" 🛠
 - [[system/learning-feedback-loop]] — loop di valutazione/auto-miglioramento (reportistica "cosa va male" · scoring agenti · ponderazione pesi · feedback post-trade) 🛠
 - [[system/db-access-performance]] — accesso al DB: quando/da chi è interrogato, tecniche di performance, minimizzazione query, forma fisica (Timescale/JSONB) 🛠
+- [[system/tools-inventory]] — inventario dei tool che gli agenti possono chiamare (9 famiglie · live/storico · write-through · vendor) 🛠
 
 ### Moduli — aree del sistema (da `architettura.canvas`)
 - [[system/modules/data-layer]] — DB centrale (4 aree logiche) + Extraction (extractors, adaptive, market alert, calendar tool, mantainer)

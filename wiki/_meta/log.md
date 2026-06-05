@@ -2,6 +2,14 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] Inventario tool agenti — impianto approvato
+
+- **Richiesta Luca**: scegliere su cosa lavorare; ha scelto **"Tool degli agenti"** (la cosa che aveva messo lui sul piatto il 2026-06-05). Sessione condotta da Claude con proposta concreta + reazione di Luca.
+- **Creata** [[system/tools-inventory]]: inventario dei tool che gli agenti possono chiamare. **9 famiglie** (A prezzi & quote · B indicatori tecnici · C fondamentali · D news/sentiment · E macro · F calendario · G portafoglio · H opzioni · I guardrail=non-tool LLM), ognuna con **5 etichette** (cosa · live/storico · write-through · agente · vendor). **2 regole trasversali**: parametrici mai hardcoded · il dato live torna all'agente *e* scrive copia nel DB. Marcata distinzione tool ereditabili da TradingAgents `dataflows` vs da costruire.
+- **Scelte di Luca (AskUserQuestion)**: (1) `inject_portfolio_state` = **auto a ogni ciclo + richiamabile**; (2) indicatori tecnici = **un solo tool parametrico** `compute_indicator(ticker, indicator, params)`; (3) vendor live MVP = **decidiamo dopo** (candidato Finnhub annotato). Impianto + 9 famiglie + 2 regole **approvati**.
+- **Registrato**: decisione chiusa in [[system/decision-log]] (+ riga "ora chiusa"); open row rifocalizzata su "vendor"; TODO in [[system/modules/agents]] barrato e linkato; [[_meta/index]] (nuova voce); board → card ✅ Fatto + 🔴 reworded "fissare i vendor".
+- **Prossimo collegato**: **comportamento per-agente** (quali tool usa ogni desk, in che ordine, criterio di stop) → [[system/modules/agents]].
+
 ## [2026-06-05] ingest | Conversazione Luca↔Salvatore 2026-06-04 sera + Indicatori Macro
 
 - **Type**: call (15 messaggi audio WhatsApp + export chat) + documento strategia (Indicatori Macro)
