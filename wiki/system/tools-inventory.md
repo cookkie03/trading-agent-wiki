@@ -46,10 +46,10 @@ Molti tool esistono già come `dataflows` di TradingAgents (sezione "Data Retrie
 ## Inventario per famiglie
 
 ### A — Prezzi & quote
-| Tool | Live/Storico | Write-through | Agente | Vendor |
-|------|--------------|---------------|--------|--------|
-| `get_realtime_quote(ticker)` — prezzo/bid/ask corrente | **live** | ✅ | Technical, PM | Finnhub · Alpaca |
-| **`get_ohlcv_history(ticker, start, end, interval)`** — barre OHLCV | storico (DB-first) | n/a (già in DB) | Technical | yfinance (dev) · Twelve Data (prod) |
+| Tool                                                                | Live/Storico       | Write-through   | Agente        | Vendor                              |
+| ------------------------------------------------------------------- | ------------------ | --------------- | ------------- | ----------------------------------- |
+| `get_realtime_quote(ticker)` — prezzo/bid/ask corrente              | **live**           | ✅               | Technical, PM | Finnhub · Alpaca                    |
+| **`get_ohlcv_history(ticker, start, end, interval)`** — barre OHLCV | storico (DB-first) | n/a (già in DB) | Technical     | yfinance (dev) · Twelve Data (prod) |
 
 ### B — Indicatori tecnici (calcolo parametrico, on-demand)
 | Tool | Live/Storico | Write-through | Agente | Vendor |
@@ -60,11 +60,11 @@ Molti tool esistono già come `dataflows` di TradingAgents (sezione "Data Retrie
 > L'ATR usato dal sizing/`entry_price` arriva da qui ([[system/position-sizing]]). Indicatori "caldi" possono essere **pre-calcolati** in materialized view ([[system/db-access-performance]]); il tool resta per richieste parametriche fuori dal set pre-calcolato.
 
 ### C — Fondamentali
-| Tool | Live/Storico | Write-through | Agente | Vendor |
-|------|--------------|---------------|--------|--------|
-| **`get_financials(ticker, statement, period)`** — balance / income / cashflow | storico (DB-first, `publication_date`) | n/a | Fondamentali | Alpha Vantage · yfinance |
-| `get_ratios(ticker)` — P/E (trailing vs current), P/B, ROE, margini | semi-storico | — | Fondamentali | Alpha Vantage · yfinance |
-| **`get_earnings(ticker)`** — storico + prossimi earnings | semi-live | ✅ (prossimo) | Fondamentali | Finnhub · AV |
+| Tool                                                                          | Live/Storico                           | Write-through | Agente       | Vendor                   |
+| ----------------------------------------------------------------------------- | -------------------------------------- | ------------- | ------------ | ------------------------ |
+| **`get_financials(ticker, statement, period)`** — balance / income / cashflow | storico (DB-first, `publication_date`) | n/a           | Fondamentali | Alpha Vantage · yfinance |
+| `get_ratios(ticker)` — P/E (trailing vs current), P/B, ROE, margini           | semi-storico                           | —             | Fondamentali | Alpha Vantage · yfinance |
+| **`get_earnings(ticker)`** — storico + prossimi earnings                      | semi-live                              | ✅ (prossimo)  | Fondamentali | Finnhub · AV             |
 
 ### D — News & sentiment
 | Tool | Live/Storico | Write-through | Agente | Vendor |
