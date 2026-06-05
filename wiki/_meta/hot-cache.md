@@ -7,6 +7,14 @@
 - **Agent**: Claude Code (Sonnet 4.6)
 - **Operazione principale**: **Ingest conversazione Luca↔Salvatore 2026-06-04 sera** (15 audio WhatsApp + chat export + doc indicatori macro).
 
+### Design 2026-06-05 — position sizing + autonomia informativa + tool
+- **Position sizing** (passo n°2): modello **risk-based** in [[system/position-sizing]] — budget di rischio % scalato per conviction → quantità da `stop_distance = k_stop × ATR` + **portfolio heat**. Volatility-adjustment *gratis*. **IMPIANTO APPROVATO da Luca**; restano solo i numeri (1% risk, heat 5–6%, cap 10%) da tarare in backtest.
+- **Opzione C (state annidati) CONFERMATA** da Luca dopo spiegazione a voce (piatto a runtime → annidato al sealing; sealing = una funzione). Da validare in fase di grafo. → [[system/state-schemas]].
+- **Idea sul piatto**: **intervento agenti sul sizing** (da valutare rischi/benefici; via di mezzo = fattore ±X% clampato) → [[system/position-sizing]] · [[system/ideas-log]].
+- **Autonomia informativa real-time first + write-through** (DECISO, input Luca): agenti chiamano info aggiornate in autonomia, anche più volte; **prima il tool real-time**, che consegna all'agente + **copia nel DB** (centro unico). DB-first = solo per storico/immutabile. → [[system/modules/agents]] · [[system/modules/data-layer]].
+- **Selezione tool da costruire** (input Luca): aggiunto come cosa a cui pensare → TODO [[system/modules/agents]] + board.
+- **Opzione C** rispiegata a voce a Luca (non la ricordava) — vedi chat; flag in "Da fare" risolto.
+
 ### Ingest 2026-06-05
 - **Creata**: [[strategy/indicators/macro-indicators]] — 12 categorie indicatori macro (PIL completo, Consumi iniziato, Salvatore continua)
 - **Chiarito**: backtesting = deterministico Python su DB storico, NON simulazione AI (equivoco risolto) → [[system/modules/quant-backtesting]]
@@ -118,8 +126,9 @@ wiki/
 - `raw/daily-notes/model.md` = template vuoto (resta)
 
 ## Da fare prossima sessione
-- ⚠️ **Rispiegare a voce a Luca la "validazione dell'opzione C / sealing"** dello state — non gli era chiaro; in [[system/state-schemas]] c'è già un callout *"in parole semplici"* (analogia brutta→raccoglitore) da cui partire.
+- ✅ **Opzione C rispiegata a voce** (2026-06-05) — Luca non la ricordava; spiegata in chat (brutta→raccoglitore, sealing = una funzione). Resta solo da *validare in fase di grafo*.
+- 🔵 **Reazione di Luca al modello risk-based di position sizing** → [[system/position-sizing]] (proposto, in attesa).
 - ✅ Schema dello state **completato a livello di design** (entry_price, conviction enum, aggregazione PM, storage JSON, state annidati→C da validare, validazione collettiva opzione).
-- Passo concordato n°2: **formula di position sizing** → [[system/position-sizing]]
+- 🔵 **Selezione dei tool da costruire per gli agenti** (nuovo, da Luca) → [[system/modules/agents]].
 - Verificare in Obsidian che la graph view non abbia orfani inattesi
 - Creare pagine metriche (`sharpe-ratio`, `max-drawdown`, `win-rate`) in `strategy/metrics/` solo quando servono

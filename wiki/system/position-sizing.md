@@ -6,8 +6,8 @@ tags:
   - strategy
   - execution
 created: 2026-06-03
-updated: 2026-06-03
-status: draft
+updated: 2026-06-05
+status: active
 priority: high
 area: software
 related:
@@ -33,18 +33,53 @@ confidence: medium
 
 ---
 
-## Idea concordata: sizing scalato per conviction
+## Modello proposto (v1): risk-based sizing — si aggancia all'ATR · ✅ impianto approvato da Luca 2026-06-05
 
-Far dipendere la dimensione dal **`conviction_level`** dello state (Luca: *«l'idea di farlo dipendere da un [[_meta/glossario#Conviction Level|conviction level]] è molto valida»*). Logica di massima:
+> Proposta di Claude 2026-06-05, **impianto approvato da Luca** (*«mi convince»*) — restano da tarare i numeri in backtest. Sfrutta il fatto che la **distanza dallo stop è già nello state** (backbone ATR del [[system/state-schemas]]): `stop_distance = k_stop × ATR`. Questo permette il metodo di sizing più solido e usato dai professionisti — il **fixed-fractional risk** — invece di un peso % a occhio.
+
+**Idea in una frase**: non decidi *quanto comprare*, decidi **quanto sei disposto a perdere** se il trade va male; siccome sai già *a che prezzo metti lo stop* (distanza ATR), la **quantità da comprare si calcola da sola**.
 
 ```
-size_% = base_weight × conviction_multiplier
-         (poi cappato dai vincoli di Statuto: max % per titolo/settore, riserva 10% cash)
+1. Budget di rischio del trade (quanto posso perdere):
+   risk_%       = base_risk_% × conviction_multiplier
+   euro_a_rischio = valore_portafoglio × risk_%
+
+2. Distanza dallo stop (GIÀ nota dallo state — backbone ATR):
+   stop_distance = k_stop × ATR        (€ persi per azione se scatta lo stop)
+
+3. Quantità → la size cade fuori da sola:
+   quantità          = euro_a_rischio / stop_distance
+   valore_posizione  = quantità × entry_price
+
+4. Cap deterministici (Statuto), applicati DOPO:
+   - max % per titolo / settore
+   - riserva 10% cash sempre intoccabile
+   - portfolio heat: somma dei rischi aperti ≤ heat_max_%
+   - VaR
 ```
 
-- `base_weight`: peso "neutro" di una posizione tipica (es. 1/N dell'universo target).
-- `conviction_multiplier`: cresce con la convinzione (es. Hold→0, Buy→1×, Strong Buy→1.5× + sblocco leva via opzioni).
-- **Cap deterministici** applicati dopo: lo Statuto taglia qualsiasi size che violi [[_meta/glossario#VaR (Value at Risk)|VaR]], % max per area/settore, riserva cash. Vedi guardrail in [[system/modules/agents]].
+**Perché è elegante**: fa il **volatility-adjustment gratis**. Un titolo molto volatile ha un ATR grande → stop più largo → `stop_distance` grande → **quantità più piccola** a parità di euro rischiati. Un titolo tranquillo → posizione più grande. Il rischio per trade resta costante anche se i titoli hanno volatilità diverse. (È il punto che in bozza era rimandato a "v2": qui arriva da solo.)
+
+**Conviction scala il *budget di rischio*, non il peso** (così la convinzione e il rischio parlano la stessa lingua):
+
+| `conviction_level` | `conviction_multiplier` | Effetto |
+|--------------------|-------------------------|---------|
+| Strong Buy / Strong Sell | ~1.5–2.0× | più rischio sul trade + sblocco leva via opzioni |
+| Buy / Sell | 1.0× | rischio base |
+| Hold | 0 | nessun trade |
+
+**Numeri di partenza (da tarare in backtest, come per l'`entry_price`)**:
+- `base_risk_%` = **1%** del portafoglio per trade (classico, prudente).
+- `heat_max_%` = **5–6%** di rischio aperto totale su tutte le posizioni (il *portfolio heat*: se sommando i rischi di tutte le posizioni aperte superi questa soglia, non apri altro finché non chiudi qualcosa).
+- `max % per titolo` ≈ 10%, cap di settore dallo Statuto.
+
+> **Portfolio heat** = la somma di "quanto perderei se *tutti* gli stop aperti scattassero insieme". Tenerlo sotto una soglia evita che, sommando tanti trade "piccoli e sicuri", il portafoglio sia in realtà esposto a un crollo correlato. È una rete di sicurezza sopra il sizing del singolo trade.
+
+---
+
+## Come si lega alla conviction (nota)
+
+Far dipendere la dimensione dal **`conviction_level`** dello state era l'idea originale di Luca (*«l'idea di farlo dipendere da un [[_meta/glossario#Conviction Level|conviction level]] è molto valida»*). Nel modello sopra la conviction **scala il budget di rischio** (`conviction_multiplier`), non un peso % diretto: stesso spirito, ma ancorato al rischio reale del trade invece che a una percentuale arbitraria. I **cap deterministici** dello Statuto tagliano sempre qualsiasi size che violi [[_meta/glossario#VaR (Value at Risk)|VaR]], % max per area/settore, riserva cash. Vedi guardrail in [[system/modules/agents]].
 
 ---
 
@@ -77,18 +112,34 @@ f* = p − q/b
 
 Allineato al principio di Luca *«prima un software con un'idea base, poi mano a mano aggiungere pezzi»*:
 
-1. **v0 (prima alpha)**: sizing % fisso (es. peso uguale 1/N), cap da Statuto. Semplice, parte subito.
-2. **v1**: sizing scalato per `conviction_level` (multiplier discreto).
-3. **v2**: sizing volatility-adjusted (size inversamente proporzionale alla volatilità del titolo, es. via [[_meta/glossario#ATR (Average True Range)|ATR]] — più volatile = posizione più piccola a parità di rischio).
-4. **v3**: Kelly frazionario, quando lo storico permette di stimare `p` e `b` per agente/strategia.
+1. **v0 (prima alpha)**: sizing % fisso (es. peso uguale 1/N), cap da Statuto. Il più semplice possibile, per far partire la pipeline.
+2. **v1 (modello proposto sopra)**: **risk-based** — budget di rischio % scalato per conviction, quantità derivata dallo stop ATR. Include **già** il volatility-adjustment (lo stop = `k_stop × ATR` rende la size inversamente proporzionale alla volatilità) + **portfolio heat** come cap aggregato.
+3. **v2**: raffinamenti — correlazione tra posizioni (heat "vero" tiene conto di quanto i titoli si muovono insieme), non solo somma lineare dei rischi.
+4. **v3**: Kelly frazionario, quando lo storico permette di stimare `p` e `b` per agente/strategia (→ stima dinamica del `base_risk_%` invece che fisso).
+
+---
+
+## Idea da valutare: intervento degli agenti sul sizing (Luca 2026-06-05)
+
+> Luca tiene **sul piatto** l'idea di **permettere agli agenti di intervenire sul position sizing**, *come idea da valutare* — vanno prima **indagati rischi e benefici**, non è una decisione presa.
+
+Il modello v1 è **deterministico** (Python calcola la quantità dal rischio e dallo stop). L'idea è dare all'agente un margine per *aggiustare* la size.
+
+- **Potenziali benefici**: l'agente coglie contesto che la formula non vede (liquidità anomala, event risk imminente, correlazione con posizioni già in portafoglio, sfumature di convinzione oltre l'enum).
+- **Potenziali rischi**: rompe il [[_meta/glossario#Principio Deterministico|principio deterministico]] e la pulizia del guardrail di rischio; gli LLM sono **deboli sui numeri**; rischio di **sovraesposizione**; più difficile da backtestare e da rendere riproducibile.
+- **Possibile via di mezzo da indagare**: l'agente **non** scavalca i cap dello Statuto né calcola la quantità; propone solo un **fattore di aggiustamento limitato** (es. ±X%) che la funzione deterministica **clampa** dentro i limiti duri. Determinismo sulle barriere di sicurezza, discrezionalità solo nel margine.
+
+→ Da approfondire prima di decidere. Registrata anche come idea in [[artifacts/project-board]] e [[system/ideas-log]].
 
 ---
 
 ## Punti aperti
 
-- Valore esatto di `base_weight` e dei moltiplicatori per livello di convinzione.
-- Se e quando introdurre il volatility-adjustment (lega al VaR → da capire con Salvatore, vedi [[strategy/questions-for-salvatore]]).
+- ~~Reazione di Luca al modello risk-based~~ → **impianto APPROVATO** 2026-06-05; restano i numeri.
+- Numeri esatti: `base_risk_%` (1%?), `conviction_multiplier` per livello, `heat_max_%` (5–6%?), cap per titolo/settore → da **tarare in backtest** (stesso meccanismo dell'`entry_price`).
+- `heat_max_%` lineare vs corretto per correlazione (v1 vs v2).
 - Interazione sizing ↔ leva via opzioni: il sizing di un'opzione è diverso da quello dell'equity spot (vedi [[system/modules/execution]]).
+- Aggancio a VaR/CVaR dello Statuto → da chiudere con Salvatore (vedi [[strategy/questions-for-salvatore]]).
 
 ---
 

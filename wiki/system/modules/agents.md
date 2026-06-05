@@ -132,6 +132,12 @@ Ogni chiamata LLM (via **OpenRouter**) ha un costo in token. Trattamento economi
 
 > **Tool obbligatorio — iniezione dello stato del portafoglio** (input di Luca 2026-06-04): tra i tool deve esserci quello che **inietta lo stato corrente del portafoglio** (rendicontazione: liquidità, posizioni, distribuzione, P/L) nel contesto dell'agente che ragiona. Senza la foto aggiornata di "dove siamo investiti e con quanta cassa", nessuna decisione di sizing/disinvestimento è sensata. Legge dall'area *rendicontazione* del DB → [[system/modules/data-layer]].
 
+> **Autonomia informativa: real-time tool first, write-through sul DB** (input di Luca 2026-06-05): mentre ragiona su un `investment_state`, l'agente deve essere **estremamente autonomo nel chiamare informazioni aggiornate** — anche **più volte**, per *essere sicuro* del dato e per **verificare aggiornamenti** durante il ragionamento. Regola di precedenza: l'agente prova **prima il tool specifico che estrae l'info in real time** (non il DB), proprio per garantirsi la freschezza nel momento della decisione. Il tool **consegna il dato all'agente *e* manda una copia al DB** (pattern *write-through*): così il **DB resta il centro unico delle informazioni** senza che l'agente debba accontentarsi di un dato potenzialmente vecchio. Si sposa con l'istruzione *"nel dubbio, chiedi sempre"* e con l'autonomia totale. **Riconciliazione con il DB-first** (no contraddizione): vedi nota sotto e in [[system/modules/data-layer]].
+>
+> - **Dato live / decision-critical** (prezzo corrente, ultima news, quote opzioni): **real-time tool first** → copia in DB. La freschezza vale il costo (token/API trattati come commissioni).
+> - **Dato storico / immutabile** (barre passate, bilanci depositati): vale ancora il **check-presenza DB-first** ([[system/modules/data-layer]]) — inutile ri-scaricare ciò che non cambia.
+> - Restano attivi i guardrail dell'**adaptive extractor** (frequenza/rate-limit) come rete contro chiamate eccessive.
+
 ---
 
 ## State Management e Schemas
@@ -172,6 +178,7 @@ Obiettivo: **pochi schema potenti e dettagliati**, non tanti frammentati. Patter
 - Integrare i **Dynamic Temporal Checkpoints** nello state (`next_check_date`).
 - Dove vive l'aggregazione/validazione del segnale `Strong`.
 - **Comportamento di ogni singolo agente del desk** (input di Luca 2026-06-04): da decidere e approfondire nel dettaglio *cosa fa esattamente* ciascun agente (Market, Sentiment, Technical, Fondamentali) — input, tool propri, output nel `research_state`, stile di ragionamento, criteri di stop. È il livello sotto il "Prompt Builder / system prompt": prima il comportamento, poi il prompt che lo realizza.
+- **Selezione dei tool da costruire per gli agenti** (input di Luca 2026-06-05): definire l'**inventario dei tool** da sviluppare/ereditare — per ciascuno: cosa estrae/calcola, real-time vs storico (regola *real-time first + write-through*, vedi sopra), quali agenti lo usano, parametri, fonte/vendor, copia in DB. Parte dai `dataflows` ereditati da TradingAgents (Fundamental, News/Insider, ecc.) + i tool propri del progetto (iniezione portafoglio, calcolo indicatori, calendar, alert). Strettamente legato al "comportamento per-agente" (ogni agente ha i suoi tool).
 - Valutare l'architettura **debate** del Risk (quanti agenti, quali prospettive).
 - Design del **desk di monitoring/evaluation** (partire da SFC Streamlit).
 - ~~Ruolo del nodo `mantainer`~~ → **confermato** (technical → rendicontazione, vedi [[system/modules/data-layer]]).

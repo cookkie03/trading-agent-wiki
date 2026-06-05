@@ -16,6 +16,17 @@ File append-only per le idee emerse durante lo sviluppo del progetto. Non si can
 
 ---
 
+## 2026-06-05 — Sessione design (position sizing)
+
+### Intervento degli agenti sul position sizing (idea da valutare)
+Luca tiene **sul piatto** l'idea di permettere agli agenti di **intervenire sul position sizing** calcolato deterministicamente — come *idea da valutare*, non decisione presa: vanno prima indagati rischi e benefici.
+- **Benefici potenziali**: l'agente coglie contesto che la formula risk-based non vede (liquidità anomala, event risk, correlazione col portafoglio esistente, sfumature di convinzione oltre l'enum).
+- **Rischi potenziali**: rompe il principio deterministico; gli LLM sono deboli sui numeri; rischio di sovraesposizione; più difficile da backtestare/riprodurre.
+- **Via di mezzo da indagare**: l'agente non scavalca i cap dello Statuto né calcola la quantità, ma propone un **fattore di aggiustamento limitato** (es. ±X%) che la funzione deterministica **clampa** entro i limiti duri.
+→ Dettaglio in [[system/position-sizing]].
+
+---
+
 ## 2026-06-04 (sera) — Conversazione Luca↔Salvatore + Claude
 
 *Fonte: audio WhatsApp 2026-06-04 (15 messaggi vocali, 19:59–21:59) + chat export + conversazione Claude in daily-notes.*

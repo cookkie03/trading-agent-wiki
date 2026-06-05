@@ -14,6 +14,19 @@
 - **Conflicts**: nessuno
 - **Notes**: backtesting equivoco chiarito (deterministico, non AI simulation); policy capitale (no investimento prima della prova); collaboratori pipeline (Zappa, Trezzi, SIM); eToro copy trading come canale monetizzazione futuro; Salvatore sta completando il documento indicatori (12 categorie, per ora PIL completo + Consumi iniziato)
 
+## [2026-06-05] Position sizing (modello risk-based) + autonomia informativa + tool da costruire
+
+- **Position sizing** (passo concordato n°2): proposto in [[system/position-sizing]] il modello **risk-based / fixed-fractional** che si aggancia all'`entry_price` ATR — budget di rischio % (scalato per conviction) → quantità derivata da `stop_distance = k_stop × ATR`, + **portfolio heat** come cap aggregato. Vantaggio: volatility-adjustment *gratis*. Numeri di partenza (1% risk, heat 5–6%, cap titolo 10%) da tarare in backtest. Pagina passata a `status: active`. In attesa di reazione di Luca (decisione aperta aggiornata).
+- **Autonomia informativa real-time first + write-through** (input Luca): gli agenti chiamano info aggiornate in autonomia, anche più volte per verificare; **prima il tool real-time** (non il DB), che **consegna all'agente + copia nel DB** (DB = centro unico). Riconciliato col DB-first: check-presenza per lo storico, real-time-first per il live. → decisione chiusa in [[system/decision-log]] + callout in [[system/modules/agents]] + sezione in [[system/modules/data-layer]] + board ✅.
+- **Selezione tool da costruire** (input Luca): aggiunto come cosa a cui pensare — inventario tool (real-time/storico, write-through, agente, parametri, vendor), parte dai dataflows TradingAgents + tool propri → TODO in [[system/modules/agents]] + decision-log (aperta) + card board.
+- **Prossimo**: spiegazione a voce dell'opzione C (Luca non ricorda cosa sia) — fatta in chat in questa sessione.
+
+## [2026-06-05] approvazioni Luca: sizing impianto + opzione C + idea agenti-sul-sizing
+
+- **Position sizing impianto APPROVATO** (Luca: *«mi convince»*) → decisione chiusa in [[system/decision-log]]; [[system/position-sizing]] sezione marcata approvata; board card → ✅ + reworded "tarare i numeri". Restano solo i numeri da backtest.
+- **Opzione C (state annidati) CONFERMATA** (Luca: *«ho capito e secondo me ci sta»*) dopo spiegazione a voce → [[system/state-schemas]] sezione marcata confermata; decisione chiusa in [[system/decision-log]]; board card 🟠→✅.
+- **Idea da valutare — intervento agenti sul sizing** (Luca, *sul piatto*): indagare rischi (rompe determinismo, LLM debole sui numeri, sovraesposizione) vs benefici (contesto non catturato); via di mezzo = fattore ±X% clampato dai cap. → [[system/position-sizing]] (sezione) + [[system/ideas-log]] + decision-log (aperta) + card 💡 board.
+
 ## [2026-06-04] Graceful shutdown & recovery — design (Luca non conosce i DB → spiegazione dal basso)
 
 - **Richiesta Luca**: discutere graceful shutdown & recovery, premettendo di non aver mai studiato i database. Sessione condotta da Claude con spiegazione in parole semplici.

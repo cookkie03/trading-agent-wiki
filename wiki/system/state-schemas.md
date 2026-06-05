@@ -179,7 +179,7 @@ Uno state padre con sotto-oggetti tipizzati: `identity`, `portfolio_context`, `d
 - ✅ È il pattern di TradingAgents (`investment_debate_state`, `risk_debate_state` annidati).
 - ❌ Schema più complesso; accesso annidato (`state.proposal.entry_price`); serializzazione un filo più involuta.
 
-### Opzione C — Ibrido / progressivo *(orientamento di partenza)*
+### Opzione C — Ibrido / progressivo · ✅ CONFERMATA da Luca 2026-06-05
 A runtime lo state lavora **piatto** (i nodi mutano i campi facilmente); quando viene **sigillato** (`research_state` → `investment_state`) si **struttura in blocchi annidati** per la persistenza.
 - ✅ Best of both: nodi semplici a runtime, documento strutturato in storage.
 - ✅ Si aggancia alla forma di storage documentale (JSON annidato) → vedi sotto.
@@ -187,9 +187,9 @@ A runtime lo state lavora **piatto** (i nodi mutano i campi facilmente); quando 
 
 > **Asse diverso (non confondere)**: i **subgraph per-ticker** ([[system/parallelism-design]]) isolano *uno state per ticker* (isolamento *tra* ticker). Gli state annidati riguardano la struttura *dentro* il singolo ticker. Le due scelte sono indipendenti e componibili.
 
-**Orientamento (2026-06-04): C**, da **validare al massimo** prima di consolidarlo (Luca: *«questa opzione mi piace di più, avviciniamoci, ma cerchiamo di validare la scelta al massimo»*).
+**Decisione (2026-06-05): C confermata** — spiegata a voce a Luca, che ha capito e approvato (*«ho capito e secondo me ci sta come scelta»*). Resta solo da **validare in fase di grafo** (rework minimo, vedi sotto). Storico: orientamento espresso il 2026-06-04 (*«questa opzione mi piace di più, avviciniamoci, ma cerchiamo di validare la scelta al massimo»*).
 
-> 🟢 **In parole semplici** (da rispiegare a voce a Luca — flag 2026-06-04): pensa allo state come a un **modulo da compilare**. Opzione A = un unico foglio lungo. Opzione B = un raccoglitore con sezioni etichettate. Opzione C = mentre lavori riempi un **foglio di brutta** veloce (A), e solo alla fine lo **archivi ordinato nel raccoglitore** (B) per conservarlo. "Validare la scelta C" vuol dire solo questo: **non ci impegniamo adesso** — partiamo dalla brutta, e se vediamo che serve il raccoglitore lo aggiungiamo dopo. Cambiare idea costa poco perché "l'archiviazione" è **un solo pezzo di codice** da scrivere (la *funzione di sealing*). Tutto qui — niente di più complicato.
+> 🟢 **In parole semplici** (spiegato a voce a Luca 2026-06-05): pensa allo state come a un **modulo da compilare**. Opzione A = un unico foglio lungo. Opzione B = un raccoglitore con sezioni etichettate. Opzione C = mentre lavori riempi un **foglio di brutta** veloce (A), e solo alla fine lo **archivi ordinato nel raccoglitore** (B) per conservarlo. "Validare la scelta C" vuol dire solo questo: **non ci impegniamo adesso** — partiamo dalla brutta, e se vediamo che serve il raccoglitore lo aggiungiamo dopo. Cambiare idea costa poco perché "l'archiviazione" è **un solo pezzo di codice** da scrivere (la *funzione di sealing*). Tutto qui — niente di più complicato.
 
 **Come validare la scelta** (a basso costo): l'Opzione C ha il pregio che il confine *piatto-a-runtime → annidato-in-storage* è una singola **funzione di sealing**. Quindi si può:
 1. partire con lo state piatto (A) durante l'engineering del grafo;
@@ -213,7 +213,7 @@ Si aggancia all'Opzione C sopra (sealing → documento JSON). Decisione di forma
 ## Punti aperti (da risolvere insieme)
 
 - ~~**Granularità `conviction_level`**~~ → **CHIUSO 2026-06-04**: **enum** a 5 livelli (`Strong Buy`/`Buy`/`Hold`/`Sell`/`Strong Sell`), non score 0-100. Vedi [[system/rating-scoring]].
-- **Quanti state annidati?** → **orientamento C (ibrido), da validare in fase di grafo** (rework minimo grazie al sealing). Vedi sezione dedicata sopra.
+- **Quanti state annidati?** → **Opzione C (ibrido) CONFERMATA (2026-06-05)**, da validare in fase di grafo (rework minimo grazie al sealing). Vedi sezione dedicata sopra.
 - **Forma fine di storage** dello state → vedi sezione sopra (orientamento JSON/JSONB). → [[system/modules/data-layer]].
 
 ---

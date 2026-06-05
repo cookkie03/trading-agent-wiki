@@ -98,6 +98,13 @@ Gli extractor si chiamano **solo se l'informazione non è già nel DB**. Flusso:
 
 Si estraggono dai vendor **solo le osservazioni grezze**; le metriche derivate (P/E, ratio, ecc.) si **calcolano internamente** dai dati grezzi già nel DB (vedi [[system/modules/quant-backtesting]]).
 
+#### Real-time first + write-through, durante il ragionamento (input di Luca 2026-06-05)
+Il check-presenza DB-first **non** significa che l'agente si accontenti del dato in DB quando deve decidere. Distinzione per tipo di dato:
+- **Dato live / decision-critical** (prezzo corrente, ultima news, quote opzioni): mentre ragiona su un `investment_state`, l'agente **prova prima il tool real-time** (anche più volte, per verificare aggiornamenti ed esserne sicuro). Il tool **consegna all'agente e scrive una copia nel DB** (*write-through*): il DB resta il **centro unico** delle informazioni, ma l'agente non rischia di decidere su un dato vecchio.
+- **Dato storico / immutabile** (barre passate, bilanci depositati): vale il **check-presenza** sopra — non si ri-scarica ciò che non cambia.
+
+Non c'è contraddizione: il check-presenza ottimizza il *bulk* e lo storico; il real-time-first garantisce la *freschezza* nel momento della decisione. I rate limit restano gestiti dall'**adaptive extractor**. Dettaglio del comportamento agente in [[system/modules/agents]].
+
 ---
 
 ## Operatività & resilienza

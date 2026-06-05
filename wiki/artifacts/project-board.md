@@ -45,6 +45,7 @@ sources:
 - [ ] 🛠 **Ponderazione dinamica dei pesi degli agenti** — l'agente che ci azzecca pesa di più (Opinion Pooling / Black-Litterman), post-MVP → [[system/learning-feedback-loop]]
 - [ ] 🛠 **Feedback post-trade per meccanismo di uscita** — `exit_reason` su ogni trade + sintesi nel `past_context` per gli agenti → [[system/rating-scoring]]
 - [ ] 🛠 **Disinvestimento come batch di trade coordinati** — il PM emette vendite+acquisto in un ciclo per far spazio, solo se tutto analizzato a sufficienza → [[system/rating-scoring]]
+- [ ] 🛠 **Intervento degli agenti sul position sizing** — idea da valutare (rischi: rompe determinismo, LLM debole sui numeri, sovraesposizione; benefici: contesto non catturato dalla formula; via di mezzo = fattore ±X% clampato dai cap) → [[system/position-sizing]]
 - [ ] 🛠 **Continuous Learning real-time** — fine-tuning su streaming (post-fine-tuning batch) → [[system/decision-log]]
 - [ ] 📈 **Strategia Sentiment degli Analisti** — replicare il pattern che genera il consenso e tradare prima della folla → [[system/ideas-log]]
 - [ ] 📈 **Stop loss istituzionali a domino** — sfruttare le soglie psicologiche degli SL → [[strategy/methods/trend-following]]
@@ -57,7 +58,8 @@ sources:
 ## 🔴 Da fare
 
 - [ ] 🛠 **Strutturare lo schema dello state** (PROSSIMO PASSO 1) — raffinare campi/tipi di research_state/investment_state → [[system/state-schemas]]
-- [ ] 🛠 **Definire la formula di position sizing** (PROSSIMO PASSO 2) — relativo, scalato per conviction, Kelly evolutivo → [[system/position-sizing]]
+- [ ] 🛠 **Position sizing: tarare i numeri** — impianto risk-based approvato; restano base_risk_%, multiplier per conviction, heat_max_%, cap titolo/settore → backtest → [[system/position-sizing]]
+- [ ] 🛠 **Selezione dei tool da costruire per gli agenti** — inventario tool (real-time vs storico, write-through, quali agenti, parametri, vendor); parte dai dataflows TradingAgents + tool propri → [[system/modules/agents]]
 - [ ] 🔀 **Definire l'`investment_state` con Salvatore** — partire dal template-menu completo, potare/modificare insieme → [[system/investment-state-template]]
 - [ ] 🛠 **Tool di iniezione dello stato del portafoglio** — foto aggiornata (cassa, posizioni, P/L) nel contesto dell'agente → [[system/modules/agents]]
 - [ ] 🛠 **Backtesting continuo e asincrono come validatore delle soglie** — valida di continuo R:R, k_stop/k_tp e ogni rapporto tarato a monte → [[system/modules/quant-backtesting]]
@@ -105,7 +107,6 @@ sources:
 - [ ] 🛠 **Token cost estimator** — tracciamento token + ricarica automatica → [[system/modules/agents]]
 - [ ] 🔀 **Frequenza ciclo** — 4h vs 24h, dipende dai backtest → [[system/modules/quant-backtesting]]
 - [ ] 🔀 **Desk di monitoring/evaluation** — design, partire da SFC Streamlit → [[system/modules/agents]]
-- [ ] 🛠 **Quanti state annidati** — orientamento **C (ibrido)**, da validare in fase di grafo (rework minimo via sealing) → [[system/state-schemas]]
 - [ ] 📈 **VaR: quale e come** — parametrico/storico/MonteCarlo, VaR vs CVaR, lookback → [[strategy/questions-for-salvatore]]
 - [ ] 📈 **Prevenzione overfitting** — walk-forward, in/out-of-sample, CPCV → [[strategy/questions-for-salvatore]]
 - [ ] 📈 **Test statistici sul benchmark** — significatività vs S&P/60-40 → [[strategy/questions-for-salvatore]]
@@ -118,6 +119,9 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **Decisione: position sizing = risk-based (impianto)** ✅ 2026-06-05 — rischio % scalato per conviction → quantità dallo stop ATR + portfolio heat; numeri da tarare → [[system/position-sizing]]
+- [x] 🛠 **Decisione: state annidati = Opzione C (ibrido)** ✅ 2026-06-05 — piatto a runtime → annidato al sealing; da validare in fase di grafo → [[system/state-schemas]]
+- [x] 🛠 **Decisione: autonomia informativa real-time first + write-through** ✅ 2026-06-05 — gli agenti chiamano prima il tool real-time (anche più volte, per verificare); il tool consegna all'agente e copia nel DB (centro unico); check-presenza DB-first resta per lo storico → [[system/modules/agents]] · [[system/modules/data-layer]]
 - [x] 🛠 **Decisione: graceful shutdown & recovery (design)** ✅ 2026-06-04 — broker=verità + riconciliazione + intent log + client order id anti-doppione; recovery automatico e loggato (no intervento umano); analisi a metà → ricomincia pulita → [[system/modules/data-layer]]
 - [x] 🛠 **Decisione: motore DB = PostgreSQL + TimescaleDB** ✅ 2026-06-04 — un solo motore: hypertable time-series + relazionale/oggetti + JSONB per gli state → [[system/db-access-performance]]
 - [x] 🛠 **Decisione: cache in-process per l'MVP, Redis idea futura** ✅ 2026-06-04 — read-through in-process finché singolo processo; Redis solo se multi-processo → [[system/db-access-performance]]
