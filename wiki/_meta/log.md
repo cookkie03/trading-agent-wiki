@@ -2,6 +2,14 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] CODICE — indicatori + backbone deterministica E2E (branch feat/indicators)
+
+- **Branch** `feat/indicators` (commit 9a0fda4) = **integrazione di tutto** (merge `feat/trade-execution` + `feat/data-ingestion`): storage + domain + execution + ingestion + indicators.
+- **`tradingagents/indicators/`**: `core.py` (ATR, RSI, SMA, EMA, 52w high/low, max_drawdown — puro Python; `compute_indicator` = tool famiglia B) + `db.py` (`atr_from_db`, `indicator_snapshot` leggono `price_bars`). Chiude il gap: il risk engine voleva l'ATR come input, ora lo si calcola dai dati.
+- **Test E2E** (`tests/test_pipeline_e2e.py`): la **spina deterministica senza LLM** — ingest barre → ATR dal DB → `atr_levels` → `position_size` → `propose_and_record` → ordine persistito + lookup idempotente. È lo scheletro su cui il grafo LLM si innesta (deve solo riempire view/direction dello state).
+- **Test**: 8 nuovi (7 indicatori + 1 E2E); **40 test "nostri" verdi** sull'intera catena integrata.
+- **Registrato**: board ✅; [[system/modules/quant-backtesting]] (indicatori) + [[system/modules/execution]]; hot-cache.
+
 ## [2026-06-06] CODICE — connettori dati + screening (branch feat/data-ingestion)
 
 - **Branch** `feat/data-ingestion` (commit d2a6783, base `feat/storage-layer`).

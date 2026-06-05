@@ -17,8 +17,10 @@
 - **Committato** (sì, stavolta) sui 3 branch; `my-main` intatto. PR le decide Luca.
 - **Divisione lavoro**: Luca = grafo (M1); Claude = dati/dominio/esecuzione deterministica (M2-M3).
 - **Metodo**: contratti congelati (storage/domain) + test-oracolo + slice verticali; il parallelo-agenti va dietro contratti congelati.
-- **4° branch** `feat/data-ingestion` (da `feat/storage-layer`, commit d2a6783) — `tradingagents/ingestion/`: `ingest_price_bars` DB-first (check-presenza + write-through, `YFinanceFetcher`) + `screen_ticker` deterministico → `ticker_card.screening_score`. 5 unit + 1 integration yfinance verdi.
-- **Stato test totale**: storage 7 · domain 15 · trade 5 · ingestion 5(+1 integ) = **32+1 verdi**.
+- **4° branch** `feat/data-ingestion` (da `feat/storage-layer`, commit d2a6783) — `tradingagents/ingestion/`: `ingest_price_bars` DB-first (check-presenza + write-through, `YFinanceFetcher`) + `screen_ticker` deterministico → `ticker_card.screening_score`. 5 unit + 1 integration yfinance.
+- **5° branch** `feat/indicators` (integra TUTTO, commit 9a0fda4) — `tradingagents/indicators/` (ATR/RSI/SMA/EMA/52w/drawdown + `atr_from_db`) + **test E2E** ingest→ATR→livelli→sizing→trade (no LLM).
+- **Stato test totale**: storage 7 · domain 15 · trade 5 · ingestion 5 · indicators 7 · E2E 1 = **40 verdi** (+1 integration yfinance). Su `feat/indicators` girano tutti insieme.
+- **Catena deterministica completa**: yfinance → `price_bars` → indicatori/ATR → `atr_levels` → `position_size` → Trade → DB. Manca solo il "cervello" LLM in mezzo (= grafo, lato Luca) che riempie view/direction dello state.
 - **Prossimi pezzi**: queue/adaptive extractor (rate-limit) + mantainer; vendor news/fondamentali/macro→DB; mappare `agents/schemas.py` del fork sui nostri enum; broker adapter (M4). Grafo = lato Luca.
 
 ### Design 2026-06-06 — gap analysis fork TradingAgents ↔ design (ponte al codice)

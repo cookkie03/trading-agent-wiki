@@ -120,6 +120,7 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **CODICE: indicatori + backbone E2E deterministica (alpha v0)** ✅ 2026-06-06 — `tradingagents/indicators/` branch `feat/indicators` (integra tutto): `compute_indicator` (ATR/RSI/SMA/EMA/52w/drawdown) + `atr_from_db`; **test E2E** ingest→ATR→livelli→sizing→trade (no LLM). 40 test "nostri" verdi → [[system/modules/quant-backtesting]] · [[system/modules/execution]]
 - [x] 🛠 **CODICE: connettori dati + screening (alpha v0)** ✅ 2026-06-06 — `tradingagents/ingestion/` branch `feat/data-ingestion`: `ingest_price_bars` DB-first (check-presenza + write-through) via `YFinanceFetcher`; `screen_ticker` deterministico → `ticker_card.screening_score` (coda funnel); 5 unit + 1 integration yfinance verdi → [[system/modules/data-layer]] · [[system/parallelism-design]]
 - [x] 🛠 **CODICE: Trade deterministico (alpha v0)** ✅ 2026-06-06 — `tradingagents/execution/` branch `feat/trade-execution`: state approvato → ordine via risk engine, `client_order_id` idempotente, `inject_portfolio_state`; 5 test integrazione. Trader = funzione Python (no LLM) → [[system/modules/execution]]
 - [x] 🛠 **CODICE: modello di dominio + risk engine (alpha v0)** ✅ 2026-06-06 — `tradingagents/domain/` branch `feat/domain-model`: enum Direction 5-livelli, schemi Pydantic `research_state` (+seal Opzione C), sizing risk-based + ATR levels + guardrail Statuto; 15 test → [[system/state-schemas]] · [[system/position-sizing]]
