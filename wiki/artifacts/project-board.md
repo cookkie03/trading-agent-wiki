@@ -120,6 +120,7 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **CODICE: strato dati implementato (alpha v0)** ✅ 2026-06-06 — `tradingagents/storage/` (SQLAlchemy 2.0): 4 aree + scheda ticker + research_state JSON; SQLite→Timescale-ready; 7 test verdi. Primo pezzo di codice "nostro" sul fork → [[system/modules/data-layer]] · [[system/fork-gap-analysis]]
 - [x] 🛠 **Topologia parallelismo multi-ticker = architettura a imbuto** ✅ 2026-06-06 — funnel E(screening deterministico)→D(coda)→A(subgraph per-ticker)→B/C(scheda DB); subgraph come pattern; screening = modulo Python non-LLM che scrive `screening_score` nella scheda. MVP parte da D+A → [[system/parallelism-design]]
 - [x] 🛠 **Tutti e 6 i system prompt + metodo prompt-eng** ✅ 2026-06-06 — principio "separa comportamento/forma/tool" + 7 principi + scheletro a 7 blocchi + Technical/Market/Sentiment/Fondamentali + PM (orchestratore) + Risk (gate bear) scritti per intero, **in inglese** → [[system/system-prompts]]
 - [x] 🛠 **Decisione: comportamento per-agente del desk (impianto)** ✅ 2026-06-06 — Market/Sentiment/Technical/Fondamentali: input·tool·output·ragionamento·stop. News/sentiment per tipo di info (Market=catalizzatori · Sentiment=mood multi-fonte incl. social); tutti contribuiscono alla direzione; stop auto + PM richiama → [[system/agent-behaviors]]

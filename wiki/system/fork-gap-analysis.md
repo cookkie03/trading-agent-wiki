@@ -87,7 +87,7 @@ Ogni milestone lascia un sistema che gira. Ordine pensato per **validare presto*
 
 - **M0 — Wiring & validazione** (~1 sessione): impostare OpenRouter + DeepSeek (`.env`, config) e far girare il fork **as-is** su un ticker, per confermare che funziona per noi. Quick win, nessuna modifica strutturale.
 - **M1 — Grafo "nostro"**: snellire (rimuovere bull/bear + research_manager, collassare risk debate → Risk gate singolo), rimappare i 4 analisti sui **2 desk**, mettere il **PM come orchestratore**, sostituire i **system prompt** con i nostri. Output ancora file-based, single-ticker.
-- **M2 — DB layer**: schema concreto 4 aree + **scheda ticker**, persistere gli output, DB-first. È il "ponte" già individuato.
+- **M2 — DB layer** · 🟢 **avviato (alpha v0, 2026-06-06)**: implementato `tradingagents/storage/` — spina SQLAlchemy (4 aree + scheda ticker + research_state JSON), SQLite→Timescale-ready, 7 test verdi. Restano: connettori extractor → DB, mantainer, materialized view/indici. È il "ponte" già individuato.
 - **M3 — Rischio & Trade deterministico**: Trader Python, sizing risk-based, entry/stop/tp ATR, guardrail Statuto.
 - **M4 — Esecuzione**: adapter broker (Alpaca paper) + flusso ordini.
 - **M5 — Funnel multi-ticker**: screening (E) + coda (D) + subgraph per-ticker (A) + scheda (B/C).
@@ -96,5 +96,6 @@ Ogni milestone lascia un sistema che gira. Ordine pensato per **validare presto*
 > L'ordine M0→M2 è il punto delicato: si può anche fare il DB **prima** di snellire il grafo. Proposta: prima snellire (M1) perché definisce *cosa* persistere, poi DB (M2). Da confermare con Luca.
 
 ## Punto aperto
-- **Ordine M1 vs M2** (snellire-grafo-prima vs DB-prima) — da confermare.
-- Verificare il dettaglio di `graph/trading_graph.py`, `propagation.py`, `analyst_execution.py` prima di toccare la topologia.
+- ~~**Ordine M1 vs M2**~~ → **risolto in parallelo (2026-06-06)**: Luca prende **M1 (grafo)** in autonomia, Claude costruisce **M2 (strato dati)** — i due procedono in parallelo perché lo storage è il contratto su cui il grafo poggia, non collide. Divisione del lavoro: il pezzo strutturale più rischioso (topologia) resta umano.
+- Verificare il dettaglio di `graph/trading_graph.py`, `propagation.py`, `analyst_execution.py` prima di toccare la topologia (lato M1, Luca).
+- **Metodo di sviluppo** (discusso 2026-06-06): la visione "wiki-come-spec → agenti paralleli finché il codice combacia" è valida come nord, ma va resa convergente con: contratti congelati (lo storage è il primo) + test di accettazione come oracolo + slice verticali incrementali + review umana ai confini. Il parallelo serve sulle parti larghe e indipendenti *dietro contratti congelati*, non sul tutto in un colpo.

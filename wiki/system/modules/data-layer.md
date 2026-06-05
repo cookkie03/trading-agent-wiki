@@ -25,6 +25,8 @@ Il componente fondante. Costruisce la pipe vuota su cui poggia tutto il resto: i
 
 > L'esecuzione ordini e l'exchange sono trattati in [[system/modules/execution]]. Qui sta solo *come i dati entrano e vivono nel DB*.
 
+> 🟢 **Implementato (alpha v0, 2026-06-06)** — pacchetto `tradingagents/storage/` nel repo `/Users/luca/Desktop/trading-agent`: spina dorsale SQLAlchemy 2.0 che copre le **4 aree** + la **scheda ticker** + la persistenza dello `research_state`. SQLite di default (zero setup), pronto per PostgreSQL+TimescaleDB (`price_bars` → hypertable). 7 test di accettazione verdi (`tests/test_storage.py`). Dettaglio in [[system/fork-gap-analysis]] (milestone M2). Tabelle: `instruments`, `ticker_card`, `price_bars` (double-date anti look-ahead), `research_states` (JSON), `portfolio_snapshots`, `trades` (con `client_order_id` idempotente), `charter` (Statuto parametrico). Helper di accesso in `storage/repository.py` = il **contratto** che grafo/agenti useranno.
+
 ---
 
 ## Riferimenti di codice (repo esterni)

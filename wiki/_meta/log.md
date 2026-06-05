@@ -2,6 +2,20 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] CODICE — strato dati (alpha v0) implementato nel fork
+
+- **Svolta**: Luca dà il via al codice (*"rendiamo trading-agent una prima versione alpha"*), prende il **grafo** in autonomia, delega a Claude *"vedi cosa ha senso fare ma parti"*. Scelta: costruire lo **strato dati** (M2), il gap più grosso e il contratto su cui il grafo poggia → lavoro parallelo non-collidente.
+- **Discussione metodo**: la visione di Luca "wiki-spec → agenti paralleli finché il codice combacia" valutata onestamente — valida come nord, ma da rendere convergente (contratti congelati + test-oracolo + slice verticali + review umana). Lo storage è il **primo contratto congelato**.
+- **Implementato** in `/Users/luca/Desktop/trading-agent`, pacchetto `tradingagents/storage/`:
+  - `models.py` — 7 tabelle SQLAlchemy 2.0 sulle 4 aree wiki: `instruments`, `ticker_card` (scheda funnel), `price_bars` (time-series, double-date anti look-ahead), `research_states` (JSON, sealing Opzione C), `portfolio_snapshots` (rendicontazione), `trades` (`client_order_id` idempotente), `charter` (Statuto parametrico).
+  - `database.py` — engine/session/`init_db`; SQLite default (`~/.tradingagents/`), Postgres/Timescale-ready (hypertable `price_bars` su dialetto postgres).
+  - `repository.py` — helper tipati = contratto di accesso (upsert instrument/scheda, top_screened per la coda D, save/latest research_state, insert price bars, snapshot portafoglio, record_trade + lookup idempotente, charter get/set).
+  - `tests/test_storage.py` — **7 test di accettazione, tutti verdi** (oracolo del data-layer).
+  - deps: `sqlalchemy>=2.0` in `pyproject.toml`; `TRADINGAGENTS_DATABASE_URL` in `.env.example`.
+- **Verifica**: `uv run pytest tests/test_storage.py` → 7 passed; suite completa colleziona 239 test senza errori (additivo, non rompe nulla).
+- **Registrato**: [[system/modules/data-layer]] (callout "Implementato alpha v0"); [[system/fork-gap-analysis]] (M2 avviato, ordine M1/M2 risolto in parallelo); board ✅ Fatto; [[_meta/index]] invariato.
+- **NB**: codice **non committato** (Luca non l'ha chiesto) — file nuovi in working tree del fork.
+
 ## [2026-06-06] Gap analysis fork TradingAgents ↔ design (ponte verso il codice)
 
 - **Contesto**: Luca ha aggiunto la dir `/Users/luca/Desktop/trading-agent` (fork vivo di TradingAgents, repo `cookkie03/trading-agent`, già produce report NVDA/MONC.MI) e ha chiesto: altra progettazione o codice? Risposta: il fork copre gran parte del design → basta progettazione astratta, serve **adattare il fork**.
