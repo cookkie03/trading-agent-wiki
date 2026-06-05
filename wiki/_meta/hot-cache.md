@@ -5,7 +5,18 @@
 ## Sessione Corrente
 - **Data**: 2026-06-06
 - **Agent**: Claude Code (Opus 4.8)
-- **Operazione principale**: **Inventario tool agenti** — creata [[system/tools-inventory]], impianto approvato da Luca.
+- **Operazione principale**: catena desk completata a livello di design — **tool** ([[system/tools-inventory]]) → **comportamento** ([[system/agent-behaviors]]) → **system prompt** ([[system/system-prompts]]). Tutti impianti approvati da Luca.
+
+### Design 2026-06-06 — system prompt degli agenti
+- **Creata** [[system/system-prompts]]: metodo prompt-eng (principio separazione comportamento/forma/tool + 7 principi) + **scheletro a 7 blocchi** + **tutti e 6 i system prompt scritti per intero** (Technical · Market · Sentiment · Fondamentali · **PM** orchestratore · **Risk** gate bear), in inglese. **IMPIANTO APPROVATO.**
+- **Scelte di Luca**: prompt **in inglese** (doc resta IT).
+- **Resta**: consolidamento nel **Prompt Builder** (assemblaggio prompt + contesto XML + schema strict) + rifinitura iterativa LangSmith.
+
+### Design 2026-06-06 — comportamento per-agente del desk
+- **Creata** [[system/agent-behaviors]]: per i 4 agenti (Market · Sentiment · Technical · Fondamentali) **5 dimensioni** (input · tool · output nello state · ragionamento · stop). **IMPIANTO APPROVATO.**
+- **Scelte di Luca**: (1) news/sentiment **per tipo di informazione** — Market=catalizzatori, Sentiment=mood da **più fonti** (social/Reddit/StockTwits/X + news-sentiment); (2) **tutti contribuiscono alla direzione** (contributo primario per specialità, ma libertà su tutto); (3) **stop = auto-stop + PM può richiamare**.
+- **Sotto-lavoro aperto**: enumerare le **fonti/tool di sentiment** (famiglia D di [[system/tools-inventory]] già aggiornata con split `get_news`/`get_news_sentiment`/`get_social_sentiment`) — si interseca con "indicatori di sentiment" (Salvatore).
+- **Prossimo passo**: scrivere i **system prompt** che realizzano questi comportamenti (Prompt Builder) → [[system/modules/agents]].
 
 ### Design 2026-06-06 — inventario tool degli agenti
 - **Creata** [[system/tools-inventory]]: **9 famiglie** di tool (A prezzi · B indicatori · C fondamentali · D news/sentiment · E macro · F calendario · G portafoglio · H opzioni · I guardrail=non-tool), ognuna con 5 etichette (cosa · live/storico · write-through · agente · vendor). 2 regole trasversali: **parametrici mai hardcoded** + dato live torna all'agente *e* copia nel DB. **IMPIANTO APPROVATO da Luca.**
@@ -136,6 +147,8 @@ wiki/
 - 🔵 **Reazione di Luca al modello risk-based di position sizing** → [[system/position-sizing]] (proposto, in attesa).
 - ✅ Schema dello state **completato a livello di design** (entry_price, conviction enum, aggregazione PM, storage JSON, state annidati→C da validare, validazione collettiva opzione).
 - ✅ **Selezione dei tool da costruire per gli agenti** (2026-06-06) — impianto approvato, inventario in [[system/tools-inventory]]; restano solo i vendor.
-- 🔵 **Comportamento per-agente del desk** — prossimo passo naturale dopo l'inventario tool → [[system/modules/agents]].
+- ✅ **Comportamento per-agente del desk** (2026-06-06) — impianto approvato → [[system/agent-behaviors]]. Resta: scrivere i system prompt + enumerare le fonti di sentiment.
+- ✅ **Tutti e 6 i system prompt + metodo** (2026-06-06) — 4 desk + PM + Risk, in inglese → [[system/system-prompts]].
+- 🔵 **Consolidare il Prompt Builder** (assemblaggio prompt + contesto XML + schema strict) + rifinitura iterativa LangSmith → [[system/system-prompts]] · [[system/modules/agents]].
 - Verificare in Obsidian che la graph view non abbia orfani inattesi
 - Creare pagine metriche (`sharpe-ratio`, `max-drawdown`, `win-rate`) in `strategy/metrics/` solo quando servono

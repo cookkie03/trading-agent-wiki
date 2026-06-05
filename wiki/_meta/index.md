@@ -22,6 +22,8 @@
 - [[system/learning-feedback-loop]] — loop di valutazione/auto-miglioramento (reportistica "cosa va male" · scoring agenti · ponderazione pesi · feedback post-trade) 🛠
 - [[system/db-access-performance]] — accesso al DB: quando/da chi è interrogato, tecniche di performance, minimizzazione query, forma fisica (Timescale/JSONB) 🛠
 - [[system/tools-inventory]] — inventario dei tool che gli agenti possono chiamare (9 famiglie · live/storico · write-through · vendor) 🛠
+- [[system/agent-behaviors]] — comportamento per-agente del desk (Market · Sentiment · Technical · Fondamentali: input · tool · output · ragionamento · stop) 🛠
+- [[system/system-prompts]] — metodo di prompt engineering + scheletro a 7 blocchi + tutti e 6 i system prompt (4 desk + PM + Risk, in inglese) 🛠
 
 ### Moduli — aree del sistema (da `architettura.canvas`)
 - [[system/modules/data-layer]] — DB centrale (4 aree logiche) + Extraction (extractors, adaptive, market alert, calendar tool, mantainer)

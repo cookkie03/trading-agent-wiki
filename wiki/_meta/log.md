@@ -2,6 +2,24 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] System prompt degli agenti — metodo + 4 prompt desk
+
+- **Richiesta Luca**: *«proviamo ad andare avanti, per i system prompt bisogna formarsi come veri prompt engineer»*. Sessione condotta da Claude (formazione distillata + proposta + reazione).
+- **Creata** [[system/system-prompts]]: (1) **principio di separazione** comportamento/forma-output/tool; (2) **7 principi** di prompt engineering adottati; (3) **scheletro a 7 blocchi** riutilizzabile; (4) i **4 system prompt del desk scritti per intero** (Technical · Market · Sentiment · Fondamentali). Realizza i comportamenti di [[system/agent-behaviors]] usando i tool di [[system/tools-inventory]].
+- **Scelte di Luca (AskUserQuestion)**: (1) **lingua dei prompt = inglese** (doc resta IT); (2) scrivere **gli altri 3 desk** adesso (Market/Sentiment/Fondamentali) — fatto. PM e Risk rimandati.
+- **Registrato**: decisione chiusa in [[system/decision-log]]; [[_meta/index]] (nuova voce); board → card ✅ Fatto + card Prompt Builder rifocalizzata (restano PM+Risk); [[system/modules/agents]] (decisione aperta Prompt Builder ora linkata).
+- **Aggiornamento (stessa sessione)**: scritti anche i **2 prompt speciali** — **PM** (orchestratore: chiama i desk come tool, "nel dubbio chiedi sempre", aggrega e decide direction/conviction, set ATR-coefficient stance + next_check_date, flag leva) e **Risk Analyst** (gate bear: guardrail deterministici binding da `<guardrail_checks>`, verdict approved/declined/send_back soglia ~60-70%, validazione leva). Ora **tutti e 6** i prompt esistono come bozze v0. Open point #4 chiuso; status pagina resta `active`.
+- **Prossimo**: consolidamento nel **Prompt Builder** (assemblaggio prompt + contesto XML + JSON-strict, pattern rizzo) + rifinitura iterativa via LangSmith.
+
+## [2026-06-06] Comportamento per-agente del desk — impianto approvato
+
+- **Richiesta Luca**: *«proviamo anche il comportamento per-agente»*. Sessione condotta da Claude (proposta + reazione).
+- **Creata** [[system/agent-behaviors]]: per ognuno dei 4 agenti (Market · Sentiment · Technical · Fondamentali) definite **5 dimensioni** — input · tool (dall'inventario [[system/tools-inventory]]) · output nello state ([[system/state-schemas]]) · stile di ragionamento · criterio di stop. + 5 comportamenti trasversali.
+- **Scelte di Luca (AskUserQuestion + note)**: (1) **news/sentiment spartiti per tipo di informazione** — Market=catalizzatori macro/settore, Sentiment=mood/posizionamento da **più fonti possibili** (vendor news + social/forum Reddit·StockTwits·X + piattaforme sentiment dedicate); (2) **tutti contribuiscono alla direzione** — ognuno col contributo primario della sua specialità (Market→direzione contesto, Technical→entry/livelli) ma libero di esprimersi su tutto, PM aggrega; (3) **stop = auto-stop + il PM può richiamare**.
+- **Sotto-lavoro generato**: enumerare le **fonti/tool di sentiment** (famiglia D di [[system/tools-inventory]] aggiornata: split `get_news`/`get_news_sentiment`/`get_social_sentiment`); si interseca con "indicatori di sentiment" (Salvatore).
+- **Registrato**: decisione chiusa in [[system/decision-log]] (+ riga "ora chiusa"); open row trasformata in "fonti sentiment"; TODO in [[system/modules/agents]] barrato e linkato; [[_meta/index]] (nuova voce); board → card ✅ Fatto + 🟠→🔴 "fonti sentiment".
+- **Prossimo collegato**: scrivere i **system prompt** che realizzano questi comportamenti (Prompt Builder) → [[system/modules/agents]].
+
 ## [2026-06-06] Inventario tool agenti — impianto approvato
 
 - **Richiesta Luca**: scegliere su cosa lavorare; ha scelto **"Tool degli agenti"** (la cosa che aveva messo lui sul piatto il 2026-06-05). Sessione condotta da Claude con proposta concreta + reazione di Luca.

@@ -98,12 +98,12 @@ sources:
 - [ ] 🛠 **Parallelismo multi-ticker + subgraph vs nodi** — scegliere tra le alternative A–E → [[system/parallelism-design]]
 - [ ] 🔀 **Criteri "info sufficienti" del PM + max iterazioni** — quando fare/non fare un trade → [[system/parallelism-design]]
 - [ ] 🛠 **Forma fine di storage per gli state annidati** — JSON/documentale dentro il time-series → [[system/modules/data-layer]]
-- [ ] 🛠 **Comportamento di ogni agente del desk** — cosa fa esattamente Market/Sentiment/Technical/Fondamentali (input, tool, output, stop) → [[system/modules/agents]]
+- [ ] 🔀 **Enumerare le fonti/tool di sentiment** — Reddit/StockTwits/X + news-sentiment + API dedicate, massima copertura; si interseca con "indicatori di sentiment" (Salvatore) → [[system/tools-inventory]] · [[strategy/questions-for-salvatore]]
 - [ ] 🛠 **System prompt PM: "nel dubbio, chiedi sempre"** — istruire il PM a interrogare di nuovo i desk a ogni incertezza (anche piccola); no-trade preferibile a basi incerte → [[system/modules/agents]] · [[system/parallelism-design]]
 - [ ] 🛠 **Validazione collettiva dell'`investment_state`** — tutti gli agenti validano completezza·correttezza·esaustività fonti prima del sealing (nodo esplicito o responsabilità nel system prompt?) → [[system/state-schemas]]
 - [ ] 🛠 **Includere il modulo TA?** — opzionale, test A/B con/senza → [[system/modules/quant-backtesting]]
 - [ ] 🛠 **Analisti: 2 o 4 agenti?** — accorpati o separati, da decidere a sviluppo → [[system/modules/agents]]
-- [ ] 🛠 **Come implementare il Prompt Builder / system prompt?** — il lavoro più grande è sui system prompt → [[system/modules/agents]]
+- [ ] 🛠 **Consolidare il Prompt Builder** — tutti e 6 i system prompt scritti (bozze v0); resta l'assemblaggio prompt+contesto XML+schema strict + la rifinitura iterativa LangSmith → [[system/system-prompts]] · [[prior-art/libraries/rizzo-trading-agent]]
 - [ ] 🛠 **Token cost estimator** — tracciamento token + ricarica automatica → [[system/modules/agents]]
 - [ ] 🔀 **Frequenza ciclo** — 4h vs 24h, dipende dai backtest → [[system/modules/quant-backtesting]]
 - [ ] 🔀 **Desk di monitoring/evaluation** — design, partire da SFC Streamlit → [[system/modules/agents]]
@@ -119,6 +119,8 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **Tutti e 6 i system prompt + metodo prompt-eng** ✅ 2026-06-06 — principio "separa comportamento/forma/tool" + 7 principi + scheletro a 7 blocchi + Technical/Market/Sentiment/Fondamentali + PM (orchestratore) + Risk (gate bear) scritti per intero, **in inglese** → [[system/system-prompts]]
+- [x] 🛠 **Decisione: comportamento per-agente del desk (impianto)** ✅ 2026-06-06 — Market/Sentiment/Technical/Fondamentali: input·tool·output·ragionamento·stop. News/sentiment per tipo di info (Market=catalizzatori · Sentiment=mood multi-fonte incl. social); tutti contribuiscono alla direzione; stop auto + PM richiama → [[system/agent-behaviors]]
 - [x] 🛠 **Decisione: inventario tool agenti (impianto)** ✅ 2026-06-06 — 9 famiglie (prezzi · indicatori · fondamentali · news/sentiment · macro · calendario · portafoglio · opzioni · guardrail) + 2 regole (parametrici · write-through); portfolio auto+richiamabile, `compute_indicator` parametrico; restano solo i vendor → [[system/tools-inventory]]
 - [x] 🛠 **Decisione: position sizing = risk-based (impianto)** ✅ 2026-06-05 — rischio % scalato per conviction → quantità dallo stop ATR + portfolio heat; numeri da tarare → [[system/position-sizing]]
 - [x] 🛠 **Decisione: state annidati = Opzione C (ibrido)** ✅ 2026-06-05 — piatto a runtime → annidato al sealing; da validare in fase di grafo → [[system/state-schemas]]

@@ -67,11 +67,16 @@ Molti tool esistono già come `dataflows` di TradingAgents (sezione "Data Retrie
 | **`get_earnings(ticker)`** — storico + prossimi earnings                      | semi-live                              | ✅ (prossimo)  | Fondamentali | Finnhub · AV             |
 
 ### D — News & sentiment
+> **Divisione per tipo di informazione** (Luca 2026-06-06): **Market** usa le news come *catalizzatori* macro/settore; **Sentiment** copre il *mood/posizionamento* attingendo a **quante più fonti possibili** — vendor di notizie **+ social/forum** (Reddit, StockTwits, X) **+ piattaforme di sentiment dedicate**. L'elenco dei tool/fonti sentiment è un **sotto-lavoro aperto** (vedi sotto), legato all'aperto *"indicatori di sentiment"* con Salvatore.
+
 | Tool | Live/Storico | Write-through | Agente | Vendor |
 |------|--------------|---------------|--------|--------|
-| **`get_news(ticker, since)`** — news recenti per ticker | **live** | ✅ | Market, Sentiment | Finnhub |
-| `get_sentiment(ticker)` — sentiment aggregato news/social | **live** | ✅ | Sentiment | Finnhub · AV |
+| **`get_news(ticker, since)`** — news recenti (come catalizzatori) | **live** | ✅ | Market | Finnhub |
+| `get_news_sentiment(ticker)` — tono/sentiment delle news | **live** | ✅ | Sentiment | Finnhub · AV |
+| `get_social_sentiment(ticker, platform)` — **aggregatore social/forum**: Reddit, StockTwits, X/Twitter | **live** | ✅ | Sentiment | *da definire (multi-vendor)* |
 | **`get_insider_transactions(ticker)`** — insider trades | semi-live | ✅ | Sentiment, Fondamentali | Finnhub |
+
+> **Sotto-lavoro aperto — fonti di sentiment**: enumerare e validare le piattaforme/API da cui pescare sentiment (Reddit/PRAW, StockTwits, X, news-sentiment, eventuali servizi dedicati) e come aggregarle in `get_social_sentiment`. L'obiettivo di Luca è la **massima copertura di fonti**. Si interseca con la definizione degli *indicatori di sentiment* con Salvatore → [[strategy/questions-for-salvatore]].
 
 ### E — Macro
 | Tool | Live/Storico | Write-through | Agente | Vendor |
