@@ -21,6 +21,8 @@ related:
 
 La coda deterministica del sistema: dal `research_state` approvato all'ordine eseguito sull'exchange. Mappa i nodi `Investment State`, `Trade` e l'uscita verso `transactions` di `architettura.canvas`. **Niente LLM qui**: tutto è Python puro.
 
+> 🟢 **Trade deterministico implementato (alpha v0, 2026-06-06)** — `tradingagents/execution/trade.py` (branch `feat/trade-execution`): `can_trade` (gate: approvato·completo·azionabile·prezzato) → `build_trade` (state → `OrderProposal` via risk engine + ATR levels) → `persist_trade` (con `client_order_id` idempotente) → `inject_portfolio_state` (tool G) → `propose_and_record` end-to-end. 5 test integrazione. **Manca ancora**: adapter broker reale (Alpaca/IBKR) + esecuzione effettiva (M4). Vedi [[system/fork-gap-analysis]].
+
 ```
 research_state (approvato dal Risk Analyst)
    → Investment State (gate di completezza)

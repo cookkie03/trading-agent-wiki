@@ -25,6 +25,8 @@ confidence: medium
 
 Riferimenti d'impianto: lo state in LangGraph è una struttura (TypedDict/Pydantic) che i nodi del grafo leggono e scrivono — vedi la spiegazione di Salvatore in call (*«è come un template Word/Excel dove ogni nodo compila il suo paragrafo/cella»*). Pattern ereditato da TradingAgents → [[prior-art/tradingagents/graph-schema]].
 
+> 🟢 **Implementato (alpha v0, 2026-06-06)** — `tradingagents/domain/state.py` + `enums.py` (branch `feat/domain-model`): `ResearchState` Pydantic con `AgentOpinion`, `Levels` (coeff. ATR + prezzi), `RiskGate`; enum `Direction` a 5 livelli e `RiskVerdict`; `is_complete()` = gate di completezza; `seal()` = documento annidato Opzione C. 15 test. Vedi [[system/fork-gap-analysis]].
+
 ---
 
 ## Chiarimento di naming (importante)

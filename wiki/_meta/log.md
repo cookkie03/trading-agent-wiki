@@ -2,6 +2,18 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] CODICE — sessione autonoma a branch (storage + dominio + trade)
+
+- **Mandato Luca**: *"vai vai, continua con tutto quello che serve al codice per rispettare la wiki, partendo dal codice attuale; fai i test, lavora per branch e committa in autonomia, poi valuto io le PR"*. → autonomia piena, slice verticali testate e committate; PR decide Luca.
+- **Branch del fork** (`/Users/luca/Desktop/trading-agent`, base `my-main`):
+  1. `feat/storage-layer` (commit b5a16e4) — pacchetto `tradingagents/storage/` (vedi entry sotto), 7 test.
+  2. `feat/domain-model` (commit 80bc978) — `tradingagents/domain/`: `enums.py` (Direction 5-livelli + RiskVerdict), `state.py` (ResearchState Pydantic = research_state/investment_state, gate completezza, `seal()` Opzione C), `risk.py` (ATR levels, R:R guardrail, conviction multiplier, sizing risk-based con heat+cap, guardrail Statuto). 15 test. Realizza [[system/state-schemas]] + [[system/position-sizing]].
+  3. `feat/trade-execution` (commit 296a1ce, merge di 1+2) — `tradingagents/execution/trade.py`: Trade deterministico (no LLM) state→ordine via risk engine, `client_order_id` idempotente, `inject_portfolio_state` (tool G), `propose_and_record` end-to-end. 5 test integrazione. Realizza [[system/modules/execution]].
+- **Test**: `uv run pytest` → **27/27 verdi** sul branch d'integrazione (7 storage + 15 dominio + 5 trade). I test sono l'**oracolo** (metodo concordato).
+- **Strategia branch**: tre PR indipendenti/impilabili; `feat/trade-execution` include gli altri due via merge. Luca decide ordine PR.
+- **Divisione lavoro**: Claude = fondazione dati/dominio/esecuzione deterministica; Luca = grafo (M1).
+- **Registrato**: [[system/modules/data-layer]] · [[system/modules/execution]] · [[system/state-schemas]] · [[system/position-sizing]] (callout "implementato"); board 3× ✅; [[system/fork-gap-analysis]].
+
 ## [2026-06-06] CODICE — strato dati (alpha v0) implementato nel fork
 
 - **Svolta**: Luca dà il via al codice (*"rendiamo trading-agent una prima versione alpha"*), prende il **grafo** in autonomia, delega a Claude *"vedi cosa ha senso fare ma parti"*. Scelta: costruire lo **strato dati** (M2), il gap più grosso e il contratto su cui il grafo poggia → lavoro parallelo non-collidente.

@@ -22,6 +22,8 @@ confidence: medium
 
 > Come si decide **quanto** comprare/vendere. È il secondo deliverable concordato con Luca, subito dopo lo [[system/state-schemas]]. Il `position_sizing` è un campo dello state da cui la funzione Trade deterministica estrae l'ordine.
 
+> 🟢 **Implementato (alpha v0, 2026-06-06)** — `tradingagents/domain/risk.py` (branch `feat/domain-model`): `position_size()` risk-based (`risk_% = base_risk_% × conviction_multiplier` → `quantità = euro_a_rischio / stop_distance`) con cap di **portfolio heat** e cap per-titolo; `atr_levels()` per entry/stop/tp; `risk_reward()`/`passes_risk_reward()`; `check_guardrails()`. I **numeri** (1% risk, heat 6%, cap 10%, R:R 1.5) sono i default del codice, da tarare in backtest. 15 test. Vedi [[system/fork-gap-analysis]].
+
 ---
 
 ## Principio cardine (deciso)

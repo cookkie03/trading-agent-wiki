@@ -7,13 +7,17 @@
 - **Agent**: Claude Code (Opus 4.8)
 - **Operazione principale**: **passaggio al CODICE.** Design chiuso; primo codice "nostro" sul fork = **strato dati** ([[system/modules/data-layer]] · pacchetto `tradingagents/storage/`). Catena di design alle spalle: tool → comportamento → system prompt → topologia → gap analysis.
 
-### CODICE 2026-06-06 — strato dati implementato (alpha v0)
-- **Dove**: `/Users/luca/Desktop/trading-agent/tradingagents/storage/` (`models.py`, `database.py`, `repository.py`) + `tests/test_storage.py`.
-- **Cosa**: 7 tabelle SQLAlchemy 2.0 = 4 aree wiki + **scheda ticker** + `research_states` JSON. SQLite default, Postgres/Timescale-ready. **7 test verdi.** `sqlalchemy>=2.0` in pyproject; `TRADINGAGENTS_DATABASE_URL` in `.env.example`. **Non committato.**
-- **Run test**: `uv run pytest tests/test_storage.py` (nel repo del fork; `uv run`, non il venv diretto — pytest sta lì).
-- **Divisione lavoro**: Luca = grafo (M1, in autonomia); Claude = strato dati (M2) → paralleli, lo storage è il contratto su cui il grafo poggia.
-- **Metodo concordato**: contratti congelati (storage = primo) + test-oracolo + slice verticali + review umana; il parallelo-agenti serve dietro contratti congelati, non sul tutto in un colpo.
-- **Prossimi pezzi M2**: connettori extractor→DB (riusare `dataflows/` del fork), mantainer (technical→rendicontazione), indici/materialized view. Poi M3 (rischio+trade deterministico).
+### CODICE 2026-06-06 — sessione autonoma a branch (storage + dominio + trade)
+- **Mandato**: autonomia piena — branch + test + commit io, PR le valuta Luca.
+- **3 branch nel fork** (`/Users/luca/Desktop/trading-agent`, base `my-main`):
+  1. `feat/storage-layer` — `tradingagents/storage/` (4 aree + scheda ticker + research_states JSON; SQLite→Timescale; +`sqlalchemy` pyproject, `TRADINGAGENTS_DATABASE_URL` env). 7 test.
+  2. `feat/domain-model` — `tradingagents/domain/`: enums (Direction 5-livelli), state Pydantic (gate completezza + `seal()` Opzione C), risk engine (ATR levels, R:R, sizing risk-based + heat/cap, guardrail Statuto). 15 test.
+  3. `feat/trade-execution` (merge 1+2) — `tradingagents/execution/trade.py`: Trade deterministico, `client_order_id` idempotente, `inject_portfolio_state`, `propose_and_record`. 5 test.
+- **Test**: `uv run pytest` → **27/27 verdi** sul branch d'integrazione. (pytest sta in `uv run`, non nel `.venv`.)
+- **Committato** (sì, stavolta) sui 3 branch; `my-main` intatto. PR le decide Luca.
+- **Divisione lavoro**: Luca = grafo (M1); Claude = dati/dominio/esecuzione deterministica (M2-M3).
+- **Metodo**: contratti congelati (storage/domain) + test-oracolo + slice verticali; il parallelo-agenti va dietro contratti congelati.
+- **Prossimi pezzi**: connettori `dataflows/`→DB + mantainer; mappare gli schemi del fork (`agents/schemas.py`) sui nostri enum; snellire il grafo (lato Luca). Poi broker adapter (M4).
 
 ### Design 2026-06-06 — gap analysis fork TradingAgents ↔ design (ponte al codice)
 - **Fork** in `/Users/luca/Desktop/trading-agent` (`cookkie03/trading-agent`, vivo, produce report). **Copre gran parte del design**: 4 analisti, PM, grafo LangGraph, tool (incl. reddit/stocktwits), structured output, multi-provider, quick/deep think, checkpoint, output_language=English, past_context.
