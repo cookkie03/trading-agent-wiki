@@ -49,22 +49,17 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 
 ---
 
-## Backtesting — chiarimento architetturale (2026-06-04 serale)
+## Cos'è il backtesting nel nostro sistema
 
-> *Fonte: conversazione audio Luca↔Salvatore 2026-06-04 sera.*
+Il backtesting è la risposta alla domanda: *"se avessimo applicato questa strategia dal 2004 al 2025, com'è andata?"*
 
-**Cosa è il backtesting nel nostro contesto**: prendere la strategia e chiedersi *"se l'avessimo applicata dal 2004 al 2025, come sarebbe andata?"*. Si fa girare la simulazione molte volte (es. 40.000 — stile Monte Carlo) su dati storici per stimare la distribuzione dei rendimenti.
+Si costruiscono **script Python con regole deterministiche** di entrata/uscita (es. "entra se succede X, esci se succede Y"), li si fa girare su serie storiche del DB interno (yfinance / Alpha Vantage) — con VectorBT come motore (vettorizzato, veloce, molte combinazioni in parallelo). Si fanno girare molte simulazioni in stile Monte Carlo per ottenere la distribuzione dei rendimenti. L'AI **non gira durante la simulazione** — il processo è puramente Python deterministico.
 
-**Equivoco chiarito**: il backtesting nel nostro sistema **non coinvolge l'AI durante la simulazione** — è un processo **deterministico** (regole Python: se succede X entra, se succede Y esci). L'AI non gira 40.000 volte: girerebbe un costo di token insostenibile. Invece:
-- si costruiscono **script Python con regole deterministiche** che simulano le condizioni di entrata/uscita
-- su questi script si fanno girare le simulazioni
-- il risultato (hit-rate, rendimento medio, drawdown) *poi* informa il PM e i pesi degli agenti
+L'output (hit-rate, rendimento medio, drawdown per configurazione e per agente) alimenta poi: la taratura delle soglie operative + i pesi degli agenti nel learning loop → [[system/learning-feedback-loop]].
 
-**Dati storici**: già risolti — il DB interno conterrà serie storiche (da yfinance / Alpha Vantage). VectorBT opera direttamente su queste serie. Il backtesting legge dal DB, nessuna API che esplode.
+**Dati**: già risolti — il DB interno storico (yfinance per dev, Alpha Vantage / Twelve Data per prod). Nessuna API esterna da chiamare durante la simulazione; si legge dal DB.
 
-**VectorBT** (decisione già presa): vettorizzato su pandas/numpy, testa molte combinazioni di parametri rapidamente senza loop Python pesanti. Ideale per questo approccio.
-
-**Posizione di Salvatore** (2026-06-04): disponibile a spiegare parametri e output del backtesting chiaramente, "come se lo spiegassi a un Down" — Luca deve capire cosa vuole in input e cosa si aspetta in output. Da fare in chiamata dedicata.
+**Prossimo passo con Salvatore**: definire in dettaglio input (quali regole, quali parametri), output atteso e come leggere i risultati — da fare in chiamata.
 
 ---
 

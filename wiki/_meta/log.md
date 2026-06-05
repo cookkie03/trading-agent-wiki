@@ -14,6 +14,14 @@
 - **Conflicts**: nessuno
 - **Notes**: backtesting equivoco chiarito (deterministico, non AI simulation); policy capitale (no investimento prima della prova); collaboratori pipeline (Zappa, Trezzi, SIM); eToro copy trading come canale monetizzazione futuro; Salvatore sta completando il documento indicatori (12 categorie, per ora PIL completo + Consumi iniziato)
 
+## [2026-06-04] Graceful shutdown & recovery — design (Luca non conosce i DB → spiegazione dal basso)
+
+- **Richiesta Luca**: discutere graceful shutdown & recovery, premettendo di non aver mai studiato i database. Sessione condotta da Claude con spiegazione in parole semplici.
+- **Spiegati** (chat + glossario): transazione/atomicità, broker=source of truth, riconciliazione, intent log (diario delle intenzioni), idempotenza/client order id, checkpoint LangGraph. Aggiunte 3 voci al glossario: **Transazione/Atomicità**, **Riconciliazione**, **Idempotenza/Client order id**.
+- **Design deciso** (sezione dedicata in [[system/modules/data-layer]]): routine di init al boot = riconciliazione col broker + controllo intent log; policy = analisi a metà → scarta e ricomincia pulita, ordine a metà → riconciliazione; atomicità copre il crash a metà-scrittura.
+- **Scelta di Luca (AskUserQuestion)**: su disallineamento DB↔broker → **allinea da solo + logga, senza intervento umano** (coerente con autonomia totale). Checkpoint LangGraph per riprendere a metà = ottimizzazione futura, non MVP.
+- **Registrato**: decisione chiusa in [[system/decision-log]] (+ riga "ora chiusa"); card board 🔴→reworded "Implementare" + card ✅ Fatto; [[_meta/glossario]] (3 voci); [[system/modules/data-layer]] (rimossa apertura, aggiunta sezione design).
+
 ## [2026-06-04] DB — accesso, performance, minimizzazione query, forma fisica
 
 - **Domanda Luca**: stato attuale del DB, quando/da chi è interrogato, come gestirlo, tecniche per velocizzare read/write, come interrogarlo il meno possibile, che forma avrebbe.

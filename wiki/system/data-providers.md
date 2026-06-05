@@ -176,8 +176,11 @@ Free tier disponibile con dataset come WIKI EOD Stock Prices.
 ## Stack raccomandato per il Trading Agent
 
 ### Esecuzione ordini (broker)
-- **MVP / paper trading**: Alpaca — API developer-first, zero commission, paper trading identico al live
+- **MVP / paper trading**: Alpaca — API developer-first, zero commission, US stocks only, paper trading identico al live
 - **Produzione**: IBKR — copre tutto (equity internazionale, futures, opzioni), API robusta, disponibile in Italia
+
+### Copy trading / monetizzazione
+- **Darwinex** — progettata per algo trader: collega Python → MT5 → Darwinex → DARWIN (prodotto finanziario verificato FCA). Compenso: 20% performance fee. Integrazione diretta con IBKR. Da attivare dopo il paper trading. → [[system/ideas-log]]
 
 ### Popolazione DB (data vendor, separati dal broker)
 - **Prezzi OHLCV storici + fondamentali**: `yfinance` per il dev → Alpha Vantage o Twelve Data per la produzione

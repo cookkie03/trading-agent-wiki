@@ -77,6 +77,15 @@ Database ottimizzato per dati indicizzati nel tempo (prezzi, indicatori, serie m
 **Subgraph (LangGraph)**
 Un grafo annidato dentro un altro, con il proprio state isolato, che restituisce al grafo padre solo il risultato. Utile per analizzare più ticker in parallelo senza mescolarne gli state. Vedi [[system/parallelism-design]].
 
+**Transazione (DB) / Atomicità**
+Un blocco di scritture nel database trattato come **una cosa sola**: o si salva tutto, o non si salva niente. Non esistono "mezze scritture". È la proprietà che protegge il sistema da un crash a metà salvataggio. Motivo per cui si usa un database serio (Postgres) e non un file. Vedi [[system/modules/data-layer]].
+
+**Riconciliazione**
+Confrontare lo stato registrato nel DB con la **realtà sul broker** (posizioni, ordini aperti, cassa) e allineare il DB a quest'ultima. Il broker è la *source of truth* sui soldi; il DB ne è lo specchio. Si esegue al riavvio (recovery) e per gli stop-loss esterni. Vedi [[system/modules/data-layer]].
+
+**Idempotenza / Client order id**
+Un'operazione è *idempotente* se eseguirla due volte produce lo stesso effetto di eseguirla una volta. In pratica: a ogni ordine si assegna un **id univoco generato da noi** (client order id); se dopo un crash l'ordine viene re-inviato, il broker riconosce l'id e **non lo esegue due volte**. Protegge dal comprare/vendere in doppio durante il recovery. Vedi [[system/modules/data-layer]].
+
 ---
 
 ## Termini di Analisi Quantitativa

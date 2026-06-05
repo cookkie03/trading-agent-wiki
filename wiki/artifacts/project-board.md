@@ -50,7 +50,7 @@ sources:
 - [ ] 📈 **Stop loss istituzionali a domino** — sfruttare le soglie psicologiche degli SL → [[strategy/methods/trend-following]]
 - [ ] 📈 **Quantificazione eventi rari** — gestire eventi mai visti (categoria più vicina vs unknown) → [[strategy/questions-for-salvatore]]
 - [ ] 📈 **Analisi paper di finanza** — raccogliere e ingestare paper accademici sui fattori → [[strategy/index]]
-- [ ] 🔀 **Copy trading come canale di monetizzazione** — eToro Pro Investor Program (1.5% AUC/mese) + ZuluTrade come secondo canale; collegare bot Python via Agent Portfolios API. Da attivare dopo il paper trading → [[system/ideas-log]]
+- [ ] 🔀 **Copy trading come canale di monetizzazione** — Darwinex (20% performance fee, FCA, Python→MT5→DARWIN, integrazione diretta IBKR). Da attivare dopo il paper trading → [[system/ideas-log]]
 - [ ] 🔀 **Coinvolgere collaboratori esterni per review** — Pipeline: Diego Zappa (primo, prof. statistico + trader), Trezzi (connector), traders SIM. Solo quando il sistema è funzionante → [[system/ideas-log]]
 
 
@@ -67,7 +67,7 @@ sources:
 - [ ] 🛠 **Riscrivere il grafo LangGraph** — node/edge/state/tool sulla topologia 2026-05-29 → [[system/modules/agents]]
 - [ ] 🛠 **Configurare OpenRouter + DeepSeek V4 Pro** — setup router e modello → [[system/stack]]
 - [ ] 🛠 **Studiare i corsi completi LangGraph e LangSmith** — finora solo Quickstart → [[system/stack]]
-- [ ] 🛠 **Definire meccanismo di graceful shutdown & recovery** — inizializzazione + ripresa dal punto precedente → [[system/modules/data-layer]]
+- [ ] 🛠 **Implementare graceful shutdown & recovery** — design fatto (riconciliazione broker + intent log + client order id); resta da scrivere la routine di init → [[system/modules/data-layer]]
 - [ ] 🛠 **Predisporre il substrato di logging del learning loop** — chain-of-thought + match tesi-per-agente↔esito + `exit_reason`, **da subito** → [[system/learning-feedback-loop]]
 - [ ] 🛠 **Valutare canale Telegram "sala segnali"** — calendario, news, prezzi, trade, alert → [[system/architecture]]
 - [ ] 🛠 **Analizzare FinAgent / AlphaArena / NeuroEspresso (tecnico)** — struttura codice, agenti, comunicazione → [[prior-art/papers/alpha-arena]]
@@ -118,6 +118,7 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **Decisione: graceful shutdown & recovery (design)** ✅ 2026-06-04 — broker=verità + riconciliazione + intent log + client order id anti-doppione; recovery automatico e loggato (no intervento umano); analisi a metà → ricomincia pulita → [[system/modules/data-layer]]
 - [x] 🛠 **Decisione: motore DB = PostgreSQL + TimescaleDB** ✅ 2026-06-04 — un solo motore: hypertable time-series + relazionale/oggetti + JSONB per gli state → [[system/db-access-performance]]
 - [x] 🛠 **Decisione: cache in-process per l'MVP, Redis idea futura** ✅ 2026-06-04 — read-through in-process finché singolo processo; Redis solo se multi-processo → [[system/db-access-performance]]
 - [x] 🛠 **Decisione: pesi agenti = indicazione, non regola** ✅ 2026-06-04 — il backtest informa il PM (contesto/awareness) + diagnostica "cosa migliorare", non scavalca il giudizio; aggancio come input al PM → [[system/learning-feedback-loop]]

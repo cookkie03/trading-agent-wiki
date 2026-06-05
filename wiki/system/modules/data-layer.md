@@ -104,8 +104,38 @@ Si estraggono dai vendor **solo le osservazioni grezze**; le metriche derivate (
 
 - **Deploy**: il sistema gira sul **Minisforum (mini-server) di Luca, acceso 24/7 in casa** (decisione 2026-06-02).
 - **Secrets**: chiavi API (OpenRouter, broker, data vendor) in **`.env` locale** per ora.
-- **Graceful shutdown & recovery** *(aperto)*: serve un meccanismo di **inizializzazione** e di **ripresa dal punto precedente** in caso di crash a metà ciclo (ordine inviato non loggato, state parzialmente compilato). Il checkpointing SQLite di LangGraph è la base, ma la strategia di recovery è da definire. → [[system/decision-log]].
+- **Graceful shutdown & recovery**: design definito 2026-06-04 — vedi sezione dedicata sotto.
 - **Orario di mercato / weekend**: gli extractor e gli alert devono conoscere le ore di mercato e i festivi (da definire).
+
+### Graceful shutdown & recovery (design 2026-06-04)
+
+Il sistema gira 24/7 su un mini-server domestico: prima o poi si spegnerà nel momento sbagliato (corrente, riavvio OS, crash da bug). Lo **shutdown gentile** (chiudere le scritture in corso prima di fermarsi) si fa *quando possibile*, ma non è garantibile → il cuore è il **recovery** al riavvio.
+
+**Cosa può rompersi**, per gravità:
+1. **Analisi a metà** (nessun ordine emesso): uno `state` parzialmente compilato. *Poco grave* — nulla di reale è successo.
+2. **Scrittura DB a metà**: risolta **dal database stesso** — ogni scrittura è una **transazione atomica** (tutto-o-niente), non esistono righe a metà.
+3. **Ordine emesso ma non loggato** (crash tra invio al broker e scrittura nel DB): il DB non sa di una posizione che sul broker *esiste davvero*. È il caso pericoloso.
+
+**Strumenti del design:**
+- **Transazione atomica** (caso 2): tutte le scritture critiche sono all-or-nothing → niente stato corrotto a metà.
+- **Broker = source of truth, DB = specchio** (caso 3): sui soldi/posizioni la verità sta sul broker. → **riconciliazione**.
+- **Intent log (diario delle intenzioni)**: prima di inviare un ordine si scrive l'intenzione (`pending`) con un id univoco; dopo conferma si scrive `confirmed`. Al riavvio, ogni `pending` senza `confirmed` → si interroga il broker su quell'id.
+- **[[_meta/glossario#Idempotenza|Client order id]] (chiave anti-doppione)**: ogni ordine porta un id univoco generato da noi → un eventuale re-invio dopo il crash **non** esegue due volte (il broker riconosce il duplicato).
+- **Checkpoint del grafo**: LangGraph salva già lo `state` dopo ogni nodo (SQLite). Disponibile per *riprendere* un'analisi, ma non necessario nell'MVP (vedi policy sotto).
+
+**Routine di inizializzazione (al boot, sempre, prima del ciclo normale):**
+1. **Riconciliazione col broker**: «cosa possiedo davvero? quali ordini sono aperti? quanta cassa?» → si allinea il `portfolio_state` alla realtà.
+2. **Controllo intent log**: ogni intenzione `pending` non confermata → verifica sul broker via client order id; aggiorna il DB di conseguenza.
+3. Solo dopo, riparte il ciclo normale (timer + alert).
+
+**Policy di recovery (decisa 2026-06-04):**
+
+| Cosa era in corso al crash | Comportamento al riavvio |
+|---|---|
+| **Analisi** (nessun soldo mosso) | **Scarta e ricomincia pulita** — rifarla costa poco ed è sicuro. *(Il checkpoint LangGraph per riprendere a metà resta ottimizzazione futura, non MVP.)* |
+| **Ordine** (soldi reali) | **Riconciliazione**: broker = verità, allinea il DB; intent log + client order id evitano doppioni. |
+
+In caso di **disallineamento DB↔broker** rilevato dalla riconciliazione: il sistema **allinea automaticamente il DB alla realtà del broker e logga lo scostamento**, poi riprende — **senza richiedere intervento umano** (coerente con la decisione *autonomia totale*; Luca 2026-06-04). L'override umano resta possibile nelle prime fasi, non è un requisito.
 
 ---
 

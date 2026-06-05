@@ -20,20 +20,32 @@ File append-only per le idee emerse durante lo sviluppo del progetto. Non si can
 
 *Fonte: audio WhatsApp 2026-06-04 (15 messaggi vocali, 19:59–21:59) + chat export + conversazione Claude in daily-notes.*
 
-### Copy trading come canale di monetizzazione (eToro + ZuluTrade)
+### Copy trading come canale di monetizzazione — Darwinex
 
-Dalla ricerca Claude su piattaforme di copy trading, emerge un modello di monetizzazione diretto che si sposa perfettamente col progetto:
+Modello legale: non gestisci i soldi di nessuno — la piattaforma regolamentata replica le tue operazioni e ti paga una fee. Tu sei un "trader pubblico".
 
-- **eToro Pro Investor Program**: eToro paga fino all'**1.5% degli AUC (Asset Under Copy) mensili** ai trader del programma. Requisiti: account 2+ mesi, equity > $1.000, risk score ≤ 7 per 6 mesi, almeno 1 copier.
-- **eToro Agent Portfolios**: API key dedicate collegabili a script Python / bot / agenti LLM. Esempi reali: agente che monitora il VIX via API e ruota verso posizioni difensive quando supera 25. Accesso API inizialmente riservato ai Popular Investor → flywheel naturale.
-- **ZuluTrade come secondo canale**: Signal Provider via REST API, collegabile a broker di propria scelta (più aperto di eToro, meno selettivo).
-- **Architettura raccomandata (Claude, 2026-06-04)**:
-  - Fase 1: Alpaca (execution, US stocks, gratis) + eToro (costruisci track record, replica manuale o via API)
-  - Fase 2: IBKR come execution engine (global, multi-asset) + eToro come copy trading layer
+**Darwinex — la scelta principale** (fonte: Claude 2026-06-04):
+- Progettata nativamente per **trader algoritmici**: colleghi il bot via Python → MT5 → Darwinex
+- Crei un **DARWIN** (prodotto finanziario tuo, verificato da terzi)
+- Compenso: **20% performance fee** sui profitti degli investitori (meritocratico — guadagni solo se guadagnano loro)
+- Regolatore: FCA (UK)
+- Asset: Forex, CFD su azioni, indici, crypto
+- Il track record è pubblico e verificabile → valore anche come portfolio professionale
 
-**Implicazione progettuale**: il bot diventa il "prodotto", la piattaforma è il marketplace regolamentato. Legalità confermata (CONSOB) — è la piattaforma a pagare il trader, non gli utenti a passare denaro.
+```
+Bot Python → MT5 (via lib `MetaTrader5`) → Darwinex account → DARWIN → investitori lo copiano → 20% performance fee
+```
 
-**Nota Luca** (2026-06-04 audio 21:23): *"teniamocelo buono, per ora stai buono, poi in caso lo sentiamo"* — idea da tenere nel cassetto fino al paper trading funzionante.
+**Stack broker definitivo** (Luca 2026-06-04):
+- Alpaca: US stocks only, MVP/paper trading
+- IBKR: scaling geografico e multi-asset (Darwinex ha integrazione diretta IBKR dal sito)
+- Darwinex: layer di monetizzazione copy trading
+
+**Alternative valutate e scartate per il nostro caso**:
+- eToro: pensata per trader manuali, API molto limitata/non ufficiale — difficile da agganciare a un bot
+- ZuluTrade: principalmente Forex, meno adatto per equity/multi-asset
+
+**Nota Luca** (2026-06-04): *"per ora stai buono, poi in caso lo sentiamo"* — da attivare dopo il paper trading funzionante.
 
 ### Collaboratori potenziali identificati (Salvatore, 2026-06-04)
 
