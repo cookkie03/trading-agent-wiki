@@ -2,6 +2,16 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] CODICE — connettori dati + screening (branch feat/data-ingestion)
+
+- **Branch** `feat/data-ingestion` (commit d2a6783, base `feat/storage-layer`).
+- **`tradingagents/ingestion/`**:
+  - `price_ingest.py` — `PriceFetcher` (protocol), `YFinanceFetcher` (adapter reale via yfinance), `ingest_price_bars()` **DB-first**: check-presenza (no ri-download dello storico immutabile, confronto ts normalizzato naive per SQLite) + write-through su `price_bars` con double-date.
+  - `screening.py` — `compute_screening_signals()` deterministico (total_return, avg_range_pct, momentum_ratio, range_position → score [0,1]; no LLM = Quick Thinker) + `screen_ticker()` che legge le barre dal DB e scrive `ticker_card.screening_score` → input della coda di priorità del funnel.
+- **Test**: 5 unit (fake fetcher offline + check-presenza dedup + screening) + 1 **integration yfinance reale** → tutti verdi. Bug risolto in corsa: confronto ts tz-aware vs naive (SQLite) → normalizzato.
+- **Nota**: i `dataflows/` del fork restituiscono testo per LLM; questa è la via strutturata che popola il DB. Mancano: queue + adaptive extractor (rate-limit), mantainer, vendor news/fondamentali/macro.
+- **Registrato**: [[system/modules/data-layer]] (callout connettori); board ✅; [[system/parallelism-design]] (screening ora ha il primo codice).
+
 ## [2026-06-06] CODICE — sessione autonoma a branch (storage + dominio + trade)
 
 - **Mandato Luca**: *"vai vai, continua con tutto quello che serve al codice per rispettare la wiki, partendo dal codice attuale; fai i test, lavora per branch e committa in autonomia, poi valuto io le PR"*. → autonomia piena, slice verticali testate e committate; PR decide Luca.

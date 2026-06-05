@@ -17,7 +17,9 @@
 - **Committato** (sì, stavolta) sui 3 branch; `my-main` intatto. PR le decide Luca.
 - **Divisione lavoro**: Luca = grafo (M1); Claude = dati/dominio/esecuzione deterministica (M2-M3).
 - **Metodo**: contratti congelati (storage/domain) + test-oracolo + slice verticali; il parallelo-agenti va dietro contratti congelati.
-- **Prossimi pezzi**: connettori `dataflows/`→DB + mantainer; mappare gli schemi del fork (`agents/schemas.py`) sui nostri enum; snellire il grafo (lato Luca). Poi broker adapter (M4).
+- **4° branch** `feat/data-ingestion` (da `feat/storage-layer`, commit d2a6783) — `tradingagents/ingestion/`: `ingest_price_bars` DB-first (check-presenza + write-through, `YFinanceFetcher`) + `screen_ticker` deterministico → `ticker_card.screening_score`. 5 unit + 1 integration yfinance verdi.
+- **Stato test totale**: storage 7 · domain 15 · trade 5 · ingestion 5(+1 integ) = **32+1 verdi**.
+- **Prossimi pezzi**: queue/adaptive extractor (rate-limit) + mantainer; vendor news/fondamentali/macro→DB; mappare `agents/schemas.py` del fork sui nostri enum; broker adapter (M4). Grafo = lato Luca.
 
 ### Design 2026-06-06 — gap analysis fork TradingAgents ↔ design (ponte al codice)
 - **Fork** in `/Users/luca/Desktop/trading-agent` (`cookkie03/trading-agent`, vivo, produce report). **Copre gran parte del design**: 4 analisti, PM, grafo LangGraph, tool (incl. reddit/stocktwits), structured output, multi-provider, quick/deep think, checkpoint, output_language=English, past_context.
