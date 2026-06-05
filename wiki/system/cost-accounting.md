@@ -54,4 +54,6 @@ confidence: medium
 | token meter | wrapper LLM / client OpenRouter |
 
 ## Stato
-**Aperto / da progettare** (2026-06-06). Card in [[artifacts/project-board]]; decisione aperta in [[system/decision-log]].
+> 🟢 **Prima implementazione (alpha v0, 2026-06-06)** — `tradingagents/broker/commission.py` (`CommissionModel`: Zero/PerTrade/PerShare/Percent) + `tradingagents/execution/costs.py` (`expected_reward`/`expected_risk`, `assess_costs` = **guardrail net-EV**); integrato nel `run_cycle` ([[system/trigger-engine]]): prima di eseguire, se la ricompensa potenziale non copre commissione + token cost → **no-trade** (`skipped_cost`). **Mancano ancora**: consuntivo post-fill (campi `commission`/`token_cost` sul `trade`), token metering reale da OpenRouter, fee auto-adattiva dal broker live.
+
+Resto **aperto / da progettare**. Card in [[artifacts/project-board]]; decisione in [[system/decision-log]].

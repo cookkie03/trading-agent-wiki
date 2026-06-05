@@ -62,4 +62,6 @@ Tutte le sorgenti producono lo stesso oggetto → la coda è omogenea e ordinabi
 - Logging di ogni evento (audit "perché mi sono svegliato") → learning loop.
 
 ## Stato
-Design **proposto** (2026-06-06), da validare in fase di grafo/cycle runner. Card in [[artifacts/project-board]]; decisione aperta in [[system/decision-log]].
+> 🟢 **Prima implementazione (alpha v0, 2026-06-06)** — `tradingagents/orchestration/triggers.py` (branch `feat/alpha-core`): `TriggerEvent` + `collect_triggers()` che unisce **due checkpoint** (`next_check_date` scaduti) + **screening candidates** (top-K da `ticker_card`), con dedup per simbolo (il checkpoint ha precedenza) e ordinamento per priorità. È la coda unica che il `run_cycle` consuma. **Mancano ancora**: price alert, calendario, news come sorgenti; persistenza `trigger_events` + scheduler periodico.
+
+Design **proposto** completo sopra; prima fetta implementata. Card in [[artifacts/project-board]]; decisione in [[system/decision-log]].

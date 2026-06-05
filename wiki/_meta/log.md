@@ -2,6 +2,17 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] CODICE — alpha-core unificato + cycle runner (branch feat/alpha-core)
+
+- **Branch** `feat/alpha-core` = **unione di tutte le linee** (merge `feat/indicators` + `feat/broker-adapter`): storage+domain+execution+ingestion+indicators+broker. Merge pulito; **full suite 276 verdi** subito dopo il merge (incl. ~239 test del fork → conferma che il nostro codice è interamente additivo).
+- **`tradingagents/orchestration/`** (cycle runner):
+  - `triggers.py` — **Trigger Engine** (prima implementazione di [[system/trigger-engine]]): `TriggerEvent` + `collect_triggers` = due checkpoint (`next_check_date`) + screening top-K da `ticker_card`, dedup per simbolo (checkpoint precedenza) + ordinati per priorità → coda unica.
+  - `analyze.py` — `Analyzer` protocol (**hook dove si innesta il grafo LLM di Luca**) + `hold_analyzer` stub (testabile senza LLM).
+  - `cycle.py` — `run_cycle`: trigger → analyze → **cost gate** → execute, ritorna `CycleReport`.
+- **Cost accounting** (prima implementazione di [[system/cost-accounting]]): `broker/commission.py` (`CommissionModel`: Zero/PerTrade/PerShare/Percent) + `execution/costs.py` (`assess_costs` = guardrail net-EV) integrato nel `run_cycle` (no-trade se la ricompensa non copre i costi).
+- **Test**: 7 nuovi (commission, cost guardrail, triggers, cycle stub/buy/cost-skip); **full suite 283 verdi**.
+- **Stato branch**: `feat/alpha-core` è la linea completa e runnabile (manca solo il grafo reale al posto dello stub). `my-main` intatto.
+
 ## [2026-06-06] DESIGN — Trigger Engine centralizzato + Cost accounting a runtime
 
 - **Input di Luca** (due temi di design, da segnare e pensare):

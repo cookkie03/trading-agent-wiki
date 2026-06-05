@@ -22,8 +22,14 @@
 - **6° branch** `feat/broker-adapter` (da `feat/trade-execution`, commit 14e2dc6) — `tradingagents/broker/` (`Broker` protocol + `PaperBroker` idempotente + `AlpacaBroker` paper REST) + `execution/submit.py` (`submit_trade`/`execute_thesis`/`reconcile_open_trades` = graceful recovery). 5 unit + 1 integration Alpaca.
 - **Stato test totale**: storage 7 · domain 15 · trade 5 · ingestion 5 · indicators 7 · E2E 1 · broker 5 = **45 verdi** (+2 integration: yfinance, Alpaca-gated).
 - **Catena deterministica completa**: yfinance → `price_bars` → indicatori/ATR → `atr_levels` → `position_size` → Trade → **broker (paper) → reconcile**. Manca solo il "cervello" LLM in mezzo (= grafo, lato Luca) che riempie view/direction dello state.
-- **⚠️ Due linee d'integrazione divergenti**: `feat/indicators` (ha ingestion+indicators) e `feat/broker-adapter` (ha broker). Per l'alpha completa vanno unite → decisione PR a Luca; eventualmente creare un branch `feat/alpha-core` che le merge.
-- **Prossimi pezzi**: branch unico `feat/alpha-core` (merge tutto) + cycle runner (screening→coda→[grafo]→execute) ; queue/adaptive extractor + mantainer; IBKR adapter; vendor news/fondamentali/macro→DB; mappare `agents/schemas.py` sui nostri enum. Grafo = lato Luca.
+- **7° branch** `feat/alpha-core` (commit e4466a9) = **unione di TUTTO** (merge `feat/indicators` + `feat/broker-adapter`) + `tradingagents/orchestration/` (cycle runner). È la linea completa e runnabile.
+  - `triggers.py` = Trigger Engine (`collect_triggers`: checkpoint + screening, dedup/priorità → coda unica).
+  - `analyze.py` = `Analyzer` hook (**qui si innesta il grafo di Luca**) + `hold_analyzer` stub.
+  - `cycle.py` = `run_cycle` (trigger→analyze→**cost gate**→execute, ritorna `CycleReport`).
+  - cost: `broker/commission.py` + `execution/costs.py` (`assess_costs` net-EV) nel gate.
+- **Stato test totale**: **283 verdi** (incl. ~239 del fork) su `feat/alpha-core`. (+2 integration: yfinance, Alpaca-gated.)
+- **7 branch**, `my-main` intatto. `feat/alpha-core` = capolinea: catena completa **trigger → screening → [analyze=grafo] → cost gate → trade → broker → reconcile**. Manca solo il grafo reale al posto di `hold_analyzer`.
+- **Prossimi pezzi**: il grafo LLM (lato Luca) che implementa `Analyzer`; mappare `agents/schemas.py` del fork → `ResearchState`; consuntivo costi post-fill + token metering; price-alert/calendario nel Trigger Engine; IBKR adapter; vendor news/fondamentali/macro→DB; queue persistente + scheduler.
 
 ### Design 2026-06-06 — Trigger Engine + Cost accounting (input Luca, aperti)
 - **Trigger Engine centralizzato** → [[system/trigger-engine]]: un componente unico raccoglie alert·`next_check_date`·calendario·periodical synthesis·news, normalizza in `TriggerEvent`, immette nella **coda D del funnel**. "Perché si sveglia" (engine) vs "come decide" (funnel). Da implementare nel cycle runner.
