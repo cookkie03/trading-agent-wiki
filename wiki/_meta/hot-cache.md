@@ -5,7 +5,17 @@
 ## Sessione Corrente
 - **Data**: 2026-06-06
 - **Agent**: Claude Code (Opus 4.8)
-- **Operazione principale**: **passaggio al CODICE.** Design chiuso; primo codice "nostro" sul fork = **strato dati** ([[system/modules/data-layer]] · pacchetto `tradingagents/storage/`). Catena di design alle spalle: tool → comportamento → system prompt → topologia → gap analysis.
+- **Operazione principale**: **REBUILD del repo a nostra immagine** (branch `feat/rebuild`). Decisione di Luca: niente adattamento al fork; rimossa la loro topologia, tenuta solo l'infra, **state/nodi/edge ricostruiti dal wiki**. Repo ora runnabile end-to-end.
+
+### CODICE 2026-06-06 — REBUILD (branch feat/rebuild) — STATO PIÙ RECENTE
+- **Rimosso**: tutta la topologia TradingAgents (`agents/` con analysts/researchers/managers/risk_mgmt/trader/schemas/agent_states, `graph/`, `cli/`, `main.py`) + i loro test. **Tenuto**: `llm_clients/`, `dataflows/`, `structured.py`(→`brain/`).
+- **Brain** = `tradingagents/brain/` **LangGraph nostra topologia**: state=`ResearchState`; `START→market→sentiment→technical→fundamentals→PM→Risk→(loop "nel dubbio chiedi", cap)→END`. PM aggrega; Risk gate singolo con guardrail deterministici binding. 6 system prompt nostri in `brain/prompts.py`. `StructuredLLM`+`ForkStructuredLLM` (OpenRouter/DeepSeek).
+- **Runnabile**: `python -m tradingagents.cli AAPL …` (`app.run_once`: ingest→screen→trigger→brain→cost gate→execute). Offline testabile con fake LLM/fetcher.
+- **Test**: **180 verdi** (i nostri + l'infra tenuta), +2 integration (yfinance, Alpaca). `my-main` intatto; tutto su `feat/rebuild`.
+- **Pacchetti nostri**: `storage · domain · indicators · ingestion · brain · execution · broker · orchestration · app/cli`.
+- **Mancano (prossimi)**: vendor news/fondamentali/macro→DB (ora i desk Market/Sentiment/Fondamentali hanno placeholder); consuntivo costi post-fill + token metering; price-alert/calendario nel Trigger Engine; IBKR; impostare provider DeepSeek/OpenRouter in `.env` per girare live; tarare i numeri in backtest.
+
+### (storico) passaggio al CODICE — primo codice sul fork = strato dati
 
 ### CODICE 2026-06-06 — sessione autonoma a branch (storage + dominio + trade)
 - **Mandato**: autonomia piena — branch + test + commit io, PR le valuta Luca.

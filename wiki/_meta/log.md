@@ -2,6 +2,15 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] CODICE — REBUILD del repo a nostra immagine (branch feat/rebuild)
+
+- **Decisione di Luca**: non adattarci al fork, **rifare tutto** tenendo solo l'infra; state/nodi/edge **devono corrispondere alla wiki**, nessun adattamento. Poi Luca si stacca chiedendo lavoro autonomo per ~50 min.
+- **Prune** (commit 0e41f1e): rimossi `agents/{analysts,researchers,managers,risk_mgmt,trader,schemas}`, `agents/utils/agent_states` + tutto `agents/`, `graph/`, `cli/`, `main.py` e i loro test (analyst_execution, structured_agents, signal_processing, memory_log, checkpoint_resume, crypto_asset_mode, ticker_symbol_handling). Tenuti: `llm_clients/`, `dataflows/`, `structured.py`→`brain/`. `pyproject` ripulito. **Suite 175 verdi.**
+- **Brain** (commit 90035db): `tradingagents/brain/` = **LangGraph nostra topologia**. `state.py`=ResearchState come state; nodi market/sentiment/technical/fundamentals → PM (aggrega direction/conviction + k-ATR) → Risk (gate bear singolo, guardrail deterministici **binding**) → loop "nel dubbio chiedi" (capped) → END. `schemas.py` (DeskOpinion/PMDecision/RiskDecision), `prompts.py` (i 6 system prompt nostri, EN), `llm.py` (StructuredLLM + ForkStructuredLLM OpenRouter/DeepSeek), `context.py`. `make_brain_analyzer` lo innesta nel `run_cycle`. 4 test offline (fake LLM: tesi BUY approvata, override hard-guardrail→SEND_BACK, HOLD senza livelli, esecuzione via cycle). **Suite 179.**
+- **App/CLI** (commit 422ff99): `app.run_once` (ingest→screen→cycle, dipendenze iniettate) + `cli.py` (`python -m tradingagents.cli AAPL …`, deps live yfinance+DeepSeek). Console script ripristinato. Test e2e offline. **Suite 180.**
+- **Stato**: `feat/rebuild` = repo a nostra immagine, runnabile end-to-end (brain reale via LLM, oppure stub/fake offline). Catena: ingest→price_bars→indicatori→screening→ticker_card→Trigger Engine→coda→**brain(2 desk→PM→Risk)**→cost gate→Trade→broker→reconcile.
+- **Registrato**: [[system/decision-log]] (rebuild chiuso), [[system/modules/agents]] (brain), board (3 ✅), hot-cache.
+
 ## [2026-06-06] CODICE — alpha-core unificato + cycle runner (branch feat/alpha-core)
 
 - **Branch** `feat/alpha-core` = **unione di tutte le linee** (merge `feat/indicators` + `feat/broker-adapter`): storage+domain+execution+ingestion+indicators+broker. Merge pulito; **full suite 276 verdi** subito dopo il merge (incl. ~239 test del fork → conferma che il nostro codice è interamente additivo).

@@ -21,6 +21,8 @@ related:
 
 # Agents — Portfolio Manager, Desk analisti, Risk Analyst
 
+> 🟢 **Implementato come grafo nostro (alpha v0, 2026-06-06)** — `tradingagents/brain/` (branch `feat/rebuild`), **LangGraph** costruito sulla **nostra** topologia (non quella del fork, rimossa): `START → market → sentiment → technical → fundamentals → PM → Risk → (loop "nel dubbio chiedi", capped) → END`. State = `ResearchState`; nodi = i nostri agenti; PM aggrega `agent_opinions` → direction/conviction + coefficienti ATR; Risk = **gate bear singolo** con `check_guardrails` deterministici **binding** (R:R fallito → SEND_BACK a prescindere dall'LLM). I 6 system prompt in `brain/prompts.py`. Seam `StructuredLLM` (+ `ForkStructuredLLM` su OpenRouter/DeepSeek). Si innesta nel `run_cycle` via `make_brain_analyzer`. 4 test offline. Vedi [[system/system-prompts]] · [[system/fork-gap-analysis]].
+
 Il cuore di ragionamento del sistema: gli agenti LLM che producono la tesi di investimento (`research_state`) e la sottopongono al gate del rischio. Mappa il gruppo **desk (workflow)** di `architettura.canvas` più il nodo **Portfolio Manager**. La conversione finale in trade è deterministica e vive in [[system/modules/execution]].
 
 Topologia (canvas):
