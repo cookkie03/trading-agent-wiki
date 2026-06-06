@@ -122,7 +122,9 @@ sources:
 
 ## ✅ Fatto
 
-- [x] 🛠 **CODICE: tool layer (real-time-first + write-through) + heat reale** ✅ 2026-06-07 — `tools/`: `get_realtime_quote` (real-time first→DB), `get_open_positions_risk` (heat), `volume_spike`, `get_options_chain`; brain usa prezzo real-time-first e sizing con heat reale. *(tool-calling LLM-driven = rifinitura futura)* → [[system/tools-inventory]]
+- [x] 🛠 **CODICE: tool-calling autonomo degli agenti (Extractors set, canvas)** ✅ 2026-06-07 — gli agenti **emettono le tool call da soli** (LangChain `bind_tools` loop in `brain/llm.py`); `build_desk_tools` dà a ogni agente tutti i tool utili (extract→risponde→write-through DB); `Extractors` bundle. Allineato al canvas → [[system/canvas-code-mapping]] · [[system/tools-inventory]]
+- [x] 🛠 **CODICE: mantainer (transactions→rendicontazione)** ✅ 2026-06-07 — marca le posizioni a mercato e aggiorna lo snapshot portafoglio dal broker, a fine ciclo → [[system/modules/data-layer]]
+- [x] 🛠 **CODICE: tool layer (real-time-first + write-through) + heat reale** ✅ 2026-06-07 — `tools/`: `get_realtime_quote` (real-time first→DB), `get_open_positions_risk` (heat), `volume_spike`, `get_options_chain`; brain usa prezzo real-time-first e sizing con heat reale → [[system/tools-inventory]]
 - [x] 🛠 **CODICE: Statuto VaR + diversificazione settore** ✅ 2026-06-07 — guardrail `portfolio_var` + `sector_concentration` nel Risk gate → [[system/modules/agents]]
 - [x] 🛠 **CODICE: disinvestimento rating-based** ✅ 2026-06-07 — `disinvest_weakest` vende il più debole (conviction+score) per far spazio → [[system/rating-scoring]]
 - [x] 🛠 **CODICE: tool catena opzioni + selezione contratto** ✅ 2026-06-07 — `get_options_chain` + `select_contract` (strike ATM) + adapter yfinance → [[system/modules/execution]]

@@ -2,6 +2,15 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-07] CODICE — tool-calling autonomo degli agenti + allineamento canvas
+
+- **Input di Luca**: il tool-calling deve essere **emesso dai singoli agenti AI**; l'architettura deve rispettare `architettura.canvas`. Contesto: l'**Extractors set** = tutti gli strumenti che estraggono/calcolano/immettono; ogni agente ha tutti i tool utili al compito; i tool sono chiamati dagli agenti (o a eventi/ricorrenze), rispondono all'agente e salvano sul DB.
+- **Letto il canvas**: edge chiave `<agent> → Extractors set → DB`; desk Research(Market,Sentiment)/Technical(Tecnical,Fondamentali)/Risk; PM orchestratore; Investment State→Trade→transactions; mantainer technical→rendicontazione; alert/periodical synthesis→PM.
+- **Implementato tool-calling vero** (commit f4cb029): `brain/tooling.py` (`Extractors` bundle + `build_desk_tools` = StructuredTool LangChain per-agente, extract→risponde→write-through DB; ogni agente riceve tutti i tool utili); `brain/llm.py` `StructuredLLM.generate(..., tools=)` con **loop di tool-calling** (il modello emette le call, eseguiamo, ricicliamo, poi output strutturato) via `bind_tools`+`with_structured_output`; `brain/graph.py` i nodi desk+risk costruiscono i tool e li passano; `cli` cabla i fetcher live in `Extractors`. Test: gli agenti chiamano i tool da soli e fanno write-through (prezzo `rt` persistito).
+- **Mantainer** (commit e68b480): `execution/mantainer.py` marca le posizioni a mercato e aggiorna `portfolio_snapshots` dal broker, a fine ciclo.
+- **Allineamento canvas**: creata [[system/canvas-code-mapping]] (✅/🟡/🔴). Spina dorsale del canvas rispettata; restano 🔴 minori (tabelle FX/insider/calendario/report, adaptive extractor rate-limit, Market Alert/calendar trigger).
+- **Stato**: suite **213 verdi**.
+
 ## [2026-06-07] CODICE — chiusura 🔴 (tool layer, VaR/settore, disinvestimento, opzioni) (feat/rebuild, autonomo)
 
 - **Tool layer** (commit a7e8b9d): `tradingagents/tools/` = inventario wiki come callable reali. `get_realtime_quote` (**real-time first** via `live_fn` + **write-through** su interval `rt`, fallback DB), `get_open_positions_risk` (portfolio heat), `volume_spike`. Brain: PM prende il prezzo **real-time-first** (opz. `quote_fn`), Risk gate sizing con **heat reale**. *NB*: il tool-calling LLM-driven (l'agente che emette tool call da solo) resta rifinitura; qui i tool sono reali e usati, con la regola real-time-first applicata.
