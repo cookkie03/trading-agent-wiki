@@ -11,9 +11,12 @@
 - **Rimosso**: tutta la topologia TradingAgents (`agents/` con analysts/researchers/managers/risk_mgmt/trader/schemas/agent_states, `graph/`, `cli/`, `main.py`) + i loro test. **Tenuto**: `llm_clients/`, `dataflows/`, `structured.py`(→`brain/`).
 - **Brain** = `tradingagents/brain/` **LangGraph nostra topologia**: state=`ResearchState`; `START→market→sentiment→technical→fundamentals→PM→Risk→(loop "nel dubbio chiedi", cap)→END`. PM aggrega; Risk gate singolo con guardrail deterministici binding. 6 system prompt nostri in `brain/prompts.py`. `StructuredLLM`+`ForkStructuredLLM` (OpenRouter/DeepSeek).
 - **Runnabile**: `python -m tradingagents.cli AAPL …` (`app.run_once`: ingest→screen→trigger→brain→cost gate→execute). Offline testabile con fake LLM/fetcher.
-- **Test**: **180 verdi** (i nostri + l'infra tenuta), +2 integration (yfinance, Alpaca). `my-main` intatto; tutto su `feat/rebuild`.
+- **Test**: **185 verdi** (i nostri + l'infra tenuta), +2 integration (yfinance, Alpaca). `my-main` intatto; tutto su `feat/rebuild`.
 - **Pacchetti nostri**: `storage · domain · indicators · ingestion · brain · execution · broker · orchestration · app/cli`.
-- **Mancano (prossimi)**: vendor news/fondamentali/macro→DB (ora i desk Market/Sentiment/Fondamentali hanno placeholder); consuntivo costi post-fill + token metering; price-alert/calendario nel Trigger Engine; IBKR; impostare provider DeepSeek/OpenRouter in `.env` per girare live; tarare i numeri in backtest.
+- **Fatto anche (autonomo)**: Statuto parametrico nel DB che guida il Risk gate (`charter`+seed/load); consuntivo commissioni/token sul trade; **news→DB** + **fondamentali→DB** wired ai 4 desk; README riscritto; rimosse cartelle fantasma `agents/`/`graph/`.
+- **Test**: **188 verdi** su `feat/rebuild`.
+- **Restano placeholder solo**: **macro (FRED)** e **social-sentiment** (Reddit/StockTwits/X).
+- **Mancano (prossimi)**: macro+social→DB; token metering reale da OpenRouter; price-alert/calendario nel Trigger Engine; IBKR adapter; impostare provider DeepSeek/OpenRouter in `.env` per girare live; tarare i numeri in backtest; **decidere il merge/PR dei branch** (tutto su `feat/rebuild`).
 
 ### (storico) passaggio al CODICE — primo codice sul fork = strato dati
 

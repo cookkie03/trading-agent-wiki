@@ -2,6 +2,15 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] CODICE — Statuto DB-driven + consuntivo commissioni + news (feat/rebuild, autonomo)
+
+- **Lavoro autonomo** (Luca staccato ~50 min). Continuazione su `feat/rebuild`.
+- **Statuto parametrico** (commit 20153cc): `charter` table guida davvero il Risk gate. `repo.load_charter`/`seed_default_charter` (DEFAULT_CHARTER: min_risk_reward 1.5, max_position_pct .10, cash_reserve .10, max_var .10, base_risk .01, heat_max .06). Il brain carica le soglie dal DB; l'app le semina al bootstrap. **Consuntivo costi**: `Trade.commission`/`token_cost` registrati nel cycle (cost-accounting momento 2).
+- **README** (commit f89b92c): riscritto per l'architettura nostra (mappa codice→wiki, avvio, test).
+- **News → DB** (commit 93598eb): `NewsItem` + `ingest_news` (DB-first dedup) + `YFinanceNewsFetcher`; i desk **Market** (catalizzatori) e **Sentiment** (tono) ora leggono le news dal DB invece dei placeholder. CLI collega `YFinanceNewsFetcher`.
+- **Test**: suite a **185 verdi** (+2 integration). Restano placeholder solo: macro (FRED), fondamentali, social-sentiment.
+- **Registrato**: board (2 ✅), hot-cache.
+
 ## [2026-06-06] CODICE — REBUILD del repo a nostra immagine (branch feat/rebuild)
 
 - **Decisione di Luca**: non adattarci al fork, **rifare tutto** tenendo solo l'infra; state/nodi/edge **devono corrispondere alla wiki**, nessun adattamento. Poi Luca si stacca chiedendo lavoro autonomo per ~50 min.

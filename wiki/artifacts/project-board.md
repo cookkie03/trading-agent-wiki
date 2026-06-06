@@ -122,6 +122,8 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **CODICE: news → DB + desk Market/Sentiment reali** ✅ 2026-06-06 — `NewsItem` + `ingest_news` (DB-first dedup, `YFinanceNewsFetcher`); il brain legge le news dal DB (non più placeholder) → [[system/modules/data-layer]]
+- [x] 🛠 **CODICE: Statuto parametrico nel DB guida il Risk gate** ✅ 2026-06-06 — `charter` table + `seed_default_charter`/`load_charter`; il Risk gate carica le soglie dal DB; commissione/token-cost registrati sul trade (consuntivo) → [[system/cost-accounting]] · [[system/modules/agents]]
 - [x] 🛠 **CODICE: REBUILD del repo a nostra immagine** ✅ 2026-06-06 — branch `feat/rebuild`: rimossa la topologia TradingAgents (bull/bear, research manager, risk-debate a 3, trader-LLM, loro graph/state, cli/main), tenuta solo l'infra (`llm_clients`, `dataflows`, `structured`). → [[system/fork-gap-analysis]]
 - [x] 🛠 **CODICE: brain = grafo nostro (state/nodi/edge dal wiki)** ✅ 2026-06-06 — `tradingagents/brain/` LangGraph: 2 desk → PM aggrega → Risk-gate singolo → loop "nel dubbio chiedi"; `ResearchState` come state; 6 system prompt nostri; guardrail deterministici binding. 4 test offline (fake LLM) → [[system/modules/agents]] · [[system/system-prompts]]
 - [x] 🛠 **CODICE: entrypoint runnabile (app + cli)** ✅ 2026-06-06 — `python -m tradingagents.cli AAPL …`: ingest→screen→trigger→brain→cost gate→execute (paper). Test e2e offline verde → [[system/architecture]]
