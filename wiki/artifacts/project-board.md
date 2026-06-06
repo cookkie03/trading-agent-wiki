@@ -96,6 +96,8 @@ sources:
 
 ## 🟠 Decisioni da prendere
 
+- [ ] 🛠 **Memoria inter-task degli agenti** (da progettare/discutere, input Luca 2026-06-07) — come ricordare/recuperare i casi passati tra task per imparare dagli errori: riassunto rolling nel system prompt · tool di recupero super-parametrici (ticker/condizione/momento/esito) · `past_context` popolato · embeddings. Fondazione: `decision_log`+`exit_reason`+`past_context` → [[system/agent-memory]]
+- [ ] 🛠 **Deduplicazione DB di OGNI informazione salvata** (da fare SUCCESSIVAMENTE, input Luca 2026-06-07) — ogni singola info scritta nel DB (prezzi, news, social, macro, fondamentali, rt, ecc.) deve avere una dedup robusta/uniforme. Oggi: check-presenza/dedup_key per famiglia, ma non sistematica su tutto → [[system/modules/data-layer]]
 - [ ] 🛠 **Trigger Engine centralizzato** — un unico componente che raccoglie alert·next_check_date·calendario·synthesis·news e li immette nella coda del funnel (input Luca 2026-06-06); da validare in fase di cycle runner → [[system/trigger-engine]]
 - [ ] 🛠 **Cost accounting a runtime** — commissioni broker + token cost: stima pre-trade (guardrail net-EV) · consuntivo post-fill · net performance al learning loop (input Luca 2026-06-06) → [[system/cost-accounting]]
 - [ ] 🛠 **Implementare lo slice MVP del parallelismo** — coda di priorità (D) + subgraph per-ticker (A); screening (E) e scheda DB (B/C) come strati successivi → [[system/parallelism-design]]
@@ -122,6 +124,8 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **CODICE: context state per-agente (finestra di contesto cucita ad hoc)** ✅ 2026-06-07 — `brain/agent_context.py`: ogni agente ha il suo `AgentContext` strutturato a sezioni sul proprio compito (market: macro/catalysts/price/portfolio · technical: price/indicators/volume · …); parte dal contesto iniettato (warm start) e **accumula** i risultati dei tool **mantenendo la struttura**, **automantenendosi** per tutto il task (round + revisioni). Prima la memoria conversazionale veniva scartata → [[system/modules/agents]]
+- [x] 🛠 **CODICE: warm start (1° contesto iniettato) + tool-calling coesistono** ✅ 2026-06-07 — state vuoto → extractor pre-lanciati (`brain/warmup.py`); durante l'analisi gli agenti chiamano i tool → [[system/canvas-code-mapping]]
 - [x] 🛠 **CODICE: tool-calling autonomo degli agenti (Extractors set, canvas)** ✅ 2026-06-07 — gli agenti **emettono le tool call da soli** (LangChain `bind_tools` loop in `brain/llm.py`); `build_desk_tools` dà a ogni agente tutti i tool utili (extract→risponde→write-through DB); `Extractors` bundle. Allineato al canvas → [[system/canvas-code-mapping]] · [[system/tools-inventory]]
 - [x] 🛠 **CODICE: mantainer (transactions→rendicontazione)** ✅ 2026-06-07 — marca le posizioni a mercato e aggiorna lo snapshot portafoglio dal broker, a fine ciclo → [[system/modules/data-layer]]
 - [x] 🛠 **CODICE: tool layer (real-time-first + write-through) + heat reale** ✅ 2026-06-07 — `tools/`: `get_realtime_quote` (real-time first→DB), `get_open_positions_risk` (heat), `volume_spike`, `get_options_chain`; brain usa prezzo real-time-first e sizing con heat reale → [[system/tools-inventory]]

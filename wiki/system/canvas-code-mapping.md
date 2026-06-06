@@ -45,6 +45,8 @@ area: software
 | Extractors set (estrai/calcola/immetti) | `ingestion/` + `brain/tooling.py` (tool per-agente) | ✅ |
 | `<agent> → Extractors set → DB` (chiamata autonoma) | tool-calling LLM-driven in `brain/llm.py` + `graph.py` | ✅ |
 | Warm start: state vuoto → extractor pre-lanciati → 1° contesto iniettato | `brain/warmup.py` (in `analyze_symbol`) | ✅ |
+| Context state per-agente (finestra cucita ad hoc, automantenuta nel task) | `brain/agent_context.py` (in `BrainState.contexts`) | ✅ |
+| Deduplicazione uniforme di OGNI info salvata | per-famiglia (check-presenza/dedup_key) | 🟡 da rendere sistematica |
 | mantainer (technical → rendicontazione) | `execution/mantainer.py` | ✅ |
 | Adaptive extractor (rate-limit/frequenza) | — | 🔴 |
 | Market Alert / calendar tool → calendario | — | 🔴 |

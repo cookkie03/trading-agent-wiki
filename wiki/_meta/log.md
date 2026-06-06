@@ -2,6 +2,14 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-07] CODICE — warm start + context state per-agente
+
+- **Domande/indicazioni di Luca**: servono **sia** il contesto iniettato (primo prompt su task nuovo) **sia** il tool-calling successivo; e ogni agente deve avere il **suo state di contesto**, strutturato, cucito sul compito, che dura e si automantiene per tutto il task. Inoltre: prima gli agenti **non** avevano memoria della conversazione tra i giri (confermato: veniva scartata).
+- **Warm start** (commit 1a3efdf): `brain/warmup.py` — state/dati vuoti = trigger → pre-lancio degli extractor (senza chiamata dell'agente) → primo contesto iniettato popolato. Fill-if-missing. Coesiste col tool-calling durante l'analisi.
+- **Context per-agente** (commit 70aa694): `brain/agent_context.py` `AgentContext` + `make_agent_context` — finestra di contesto **per agente**, con **sezioni cucite sul compito** (market: macro/catalysts/price/portfolio · sentiment: news/social/… · technical: price/indicators/volume · fundamental: valuation/price · risk: …). Parte dal contesto iniettato, **accumula i tool result mantenendo la struttura**, **automantenuta** in `BrainState.contexts` per tutto il task (round + revisioni). `llm.generate(..., recorder=)` riporta ogni tool call al context dell'agente.
+- **Stato**: suite **216 verdi**.
+- **DA FARE SUCCESSIVAMENTE (input Luca)**: deduplicazione DB di **ogni singola informazione** salvata, in modo uniforme/sistematico. → board 🔴 + decision-log aperta.
+
 ## [2026-06-07] CODICE — tool-calling autonomo degli agenti + allineamento canvas
 
 - **Input di Luca**: il tool-calling deve essere **emesso dai singoli agenti AI**; l'architettura deve rispettare `architettura.canvas`. Contesto: l'**Extractors set** = tutti gli strumenti che estraggono/calcolano/immettono; ogni agente ha tutti i tool utili al compito; i tool sono chiamati dagli agenti (o a eventi/ricorrenze), rispondono all'agente e salvano sul DB.
