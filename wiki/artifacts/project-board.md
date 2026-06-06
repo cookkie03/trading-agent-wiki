@@ -122,6 +122,8 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **CODICE: leva via opzioni su segnali Strong** ✅ 2026-06-06 — la funzione Trade instrada Strong Buy→Call / Strong Sell→Put, standard→equity (no margine); `asset_type`/`option_type` fino al broker. Catena opzioni reale = follow-up → [[system/modules/execution]]
+- [x] 🛠 **CODICE: backtester deterministico (validatore soglie)** ✅ 2026-06-06 — `backtesting/` ATR long-only su barre storiche, riusa indicatori+risk engine; hit-rate/return/drawdown; VectorBT motore futuro → [[system/modules/quant-backtesting]]
 - [x] 🛠 **CODICE: gestione uscite (TP/SL) + lifecycle trade** ✅ 2026-06-06 — `execution/exits.py` `manage_exits` chiude le posizioni quando il prezzo tocca stop/target (`exit_reason`); il ciclo prima gestisce le uscite poi apre → [[system/modules/execution]]
 - [x] 🛠 **CODICE: learning-loop substrate** ✅ 2026-06-06 — `DecisionLog` (opinioni per-agente + esito + link al trade); ogni deep-dive logga la decisione → substrato per scoring/pesi → [[system/learning-feedback-loop]]
 - [x] 🛠 **CODICE: loop autonomo (periodical synthesis)** ✅ 2026-06-06 — `app.run_forever` + CLI `--loop`; tick ricorrente che rinfresca i dati e gira il ciclo → [[system/modules/agents]]

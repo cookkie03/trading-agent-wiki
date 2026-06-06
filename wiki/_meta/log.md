@@ -9,8 +9,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Loop autonomo** (commit ebfb316): `app.run_forever` (tick = periodical synthesis) + CLI `--loop SECONDS`; sleep iniettabile + max_cycles per i test.
 - **Learning substrate** (commit 4e3b7b1): `DecisionLog` (opinioni per-agente + esito + link trade + payload sigillato) + `Trade.exit_reason`; ogni deep-dive logga la decisione (qualsiasi esito) → substrato per matching tesi↔esito.
 - **Gestione uscite** (commit 30ae438): `execution/exits.py` `manage_exits` chiude le posizioni a stop/target con `exit_reason`; il ciclo gestisce le uscite **prima** di aprire nuove posizioni; `CycleReport.closed`.
-- **Stato**: suite **198 verdi**. Lifecycle del trade ora completo (entrata→uscita), il che alimenta il learning loop con esiti reali.
-- **Restano 🔴**: agenti che chiamano i tool da soli (real-time first, ora contesto iniettato); **backtesting** (VectorBT); **leva via opzioni**; Statuto VaR/settore; disinvestimento rating-based.
+- **Backtester** (commit 9e08efa): `backtesting/` deterministico long-only ATR su barre storiche (riusa indicatori+risk engine); hit-rate/return/drawdown; `run_backtest` dal DB; VectorBT motore futuro. Valida le soglie.
+- **Leva via opzioni** (commit a6c5f70): la funzione Trade instrada **Strong Buy→Call / Strong Sell→Put**, standard→equity (no margine); `asset_type`/`option_type` su OrderProposal→OrderRequest→Trade→broker. Catena opzioni reale (strike/scadenza) = follow-up.
+- **Stato**: suite **202 verdi**. Lifecycle trade completo; backtester e leva opzioni presenti.
+- **Restano 🔴**: agenti che chiamano i tool da soli (real-time first, ora contesto iniettato); Statuto **VaR/settore**; disinvestimento **rating-based**; catena opzioni reale.
 
 ## [2026-06-06] CODICE — provider OpenRouter + price-alert + macro/fondamentali (feat/rebuild, autonomo)
 

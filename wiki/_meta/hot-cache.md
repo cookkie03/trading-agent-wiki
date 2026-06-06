@@ -17,7 +17,8 @@
 - **Test**: **198 verdi** su `feat/rebuild`.
 - **Dati: COMPLETI** — i 4 desk leggono dal DB (macro FRED, news, social StockTwits, fondamentali, indicatori).
 - **Batch 🔴 fatto (autonomo)**: Statuto riserva 10% cash; **DTC `next_check_date` chiuso** (PM lo imposta, ciclo aggiorna scheda); **loop autonomo** (`run_forever` + CLI `--loop`); **learning substrate** (`DecisionLog` opinioni↔esito); **gestione uscite** TP/SL (`manage_exits`, lifecycle trade completo entrata→uscita).
-- **Restano 🔴**: agenti che chiamano i tool da soli (real-time first; ora contesto iniettato); **backtesting** (VectorBT); **leva via opzioni**; Statuto VaR/settore; disinvestimento rating-based.
+- **Altri 🔴 fatti**: **backtester deterministico** (`backtesting/`, valida soglie) + **leva via opzioni** (Strong→Call/Put nella funzione Trade).
+- **Restano 🔴**: agenti che chiamano i tool da soli (real-time first; ora contesto iniettato); Statuto **VaR/settore**; disinvestimento **rating-based**; catena opzioni reale (strike/scadenza).
 - **Altri (minori)**: token metering reale; calendario come trigger; queue/adaptive extractor + mantainer; IBKR; Reddit/X; `OPENROUTER_API_KEY` nel `.env` per il live; tarare numeri; **decidere PR dei branch**.
 
 ### (storico) passaggio al CODICE — primo codice sul fork = strato dati
