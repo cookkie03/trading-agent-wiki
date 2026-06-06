@@ -2,6 +2,16 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] CODICE — batch 🔴 (Statuto, DTC, loop, learning, uscite) (feat/rebuild, autonomo)
+
+Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
+- **Statuto riserva 10% cash** (commit 90d7982): `check_guardrails` enforce il cash-reserve quando c'è lo snapshot portafoglio; **DTC chiuso**: il PM imposta `next_check_date` (`PMDecision.next_check_days`), il ciclo aggiorna la **scheda ticker** (latest call + next_check_date) dopo ogni deep-dive (B/C).
+- **Loop autonomo** (commit ebfb316): `app.run_forever` (tick = periodical synthesis) + CLI `--loop SECONDS`; sleep iniettabile + max_cycles per i test.
+- **Learning substrate** (commit 4e3b7b1): `DecisionLog` (opinioni per-agente + esito + link trade + payload sigillato) + `Trade.exit_reason`; ogni deep-dive logga la decisione (qualsiasi esito) → substrato per matching tesi↔esito.
+- **Gestione uscite** (commit 30ae438): `execution/exits.py` `manage_exits` chiude le posizioni a stop/target con `exit_reason`; il ciclo gestisce le uscite **prima** di aprire nuove posizioni; `CycleReport.closed`.
+- **Stato**: suite **198 verdi**. Lifecycle del trade ora completo (entrata→uscita), il che alimenta il learning loop con esiti reali.
+- **Restano 🔴**: agenti che chiamano i tool da soli (real-time first, ora contesto iniettato); **backtesting** (VectorBT); **leva via opzioni**; Statuto VaR/settore; disinvestimento rating-based.
+
 ## [2026-06-06] CODICE — provider OpenRouter + price-alert + macro/fondamentali (feat/rebuild, autonomo)
 
 - **Provider full OpenRouter** (commit d2d3426, su richiesta di Luca): `default_config.py` → `llm_provider=openrouter`, `deep/quick_think=deepseek/deepseek-chat`; il client OpenAI-compatible auto-risolve il base_url OpenRouter → serve solo `OPENROUTER_API_KEY`. Aggiornati `test_env_overrides` (baseline) e `.env.example`.

@@ -122,6 +122,10 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **CODICE: gestione uscite (TP/SL) + lifecycle trade** ✅ 2026-06-06 — `execution/exits.py` `manage_exits` chiude le posizioni quando il prezzo tocca stop/target (`exit_reason`); il ciclo prima gestisce le uscite poi apre → [[system/modules/execution]]
+- [x] 🛠 **CODICE: learning-loop substrate** ✅ 2026-06-06 — `DecisionLog` (opinioni per-agente + esito + link al trade); ogni deep-dive logga la decisione → substrato per scoring/pesi → [[system/learning-feedback-loop]]
+- [x] 🛠 **CODICE: loop autonomo (periodical synthesis)** ✅ 2026-06-06 — `app.run_forever` + CLI `--loop`; tick ricorrente che rinfresca i dati e gira il ciclo → [[system/modules/agents]]
+- [x] 🛠 **CODICE: Statuto riserva 10% cash + DTC `next_check_date`** ✅ 2026-06-06 — guardrail cash-reserve nel Risk gate; il PM imposta `next_check_date`, il ciclo aggiorna la scheda ticker (loop checkpoint chiuso) → [[system/modules/agents]] · [[system/cost-accounting]]
 - [x] 🛠 **CODICE: provider full OpenRouter + DeepSeek** ✅ 2026-06-06 — default del progetto in `default_config.py` (base_url auto-risolto, serve solo `OPENROUTER_API_KEY`) → [[system/stack]]
 - [x] 🛠 **CODICE: Trigger Engine — price alert** ✅ 2026-06-06 — sorgente movimento anomalo `|Δ|>k·ATR` aggiunta a `collect_triggers` (checkpoint>price_alert>screening) → [[system/trigger-engine]]
 - [x] 🛠 **CODICE: TUTTI i desk leggono dati reali dal DB** ✅ 2026-06-06 — news + fondamentali + macro (FRED) + **social (StockTwits, keyless)** ingeriti DB-first; Market/Sentiment/Technical/Fondamentali wired. Nessun placeholder dati residuo → [[system/modules/data-layer]]

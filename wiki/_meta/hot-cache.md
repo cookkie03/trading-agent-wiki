@@ -14,9 +14,11 @@
 - **Test**: **185 verdi** (i nostri + l'infra tenuta), +2 integration (yfinance, Alpaca). `my-main` intatto; tutto su `feat/rebuild`.
 - **Pacchetti nostri**: `storage · domain · indicators · ingestion · brain · execution · broker · orchestration · app/cli`.
 - **Fatto anche (autonomo)**: Statuto parametrico nel DB che guida il Risk gate; consuntivo commissioni/token sul trade; **news+fondamentali+macro(FRED)→DB** wired ai desk; **provider full OpenRouter+DeepSeek** (default in `default_config.py`, serve solo `OPENROUTER_API_KEY`); **price-alert** nel Trigger Engine; README riscritto; rimosse cartelle fantasma.
-- **Test**: **194 verdi** su `feat/rebuild`.
-- **Dati: COMPLETI** — i 4 desk leggono dal DB: Market (macro FRED + news), Sentiment (news + social StockTwits keyless), Technical (indicatori da price_bars), Fondamentali (metrics yfinance). Nessun placeholder dati residuo.
-- **Mancano (prossimi)**: token metering reale da OpenRouter; **calendario** come sorgente trigger; queue/adaptive extractor + mantainer; IBKR adapter; Reddit/X social; mettere `OPENROUTER_API_KEY` nel `.env` per girare live; tarare i numeri in backtest; **decidere il merge/PR dei branch** (tutto su `feat/rebuild`).
+- **Test**: **198 verdi** su `feat/rebuild`.
+- **Dati: COMPLETI** — i 4 desk leggono dal DB (macro FRED, news, social StockTwits, fondamentali, indicatori).
+- **Batch 🔴 fatto (autonomo)**: Statuto riserva 10% cash; **DTC `next_check_date` chiuso** (PM lo imposta, ciclo aggiorna scheda); **loop autonomo** (`run_forever` + CLI `--loop`); **learning substrate** (`DecisionLog` opinioni↔esito); **gestione uscite** TP/SL (`manage_exits`, lifecycle trade completo entrata→uscita).
+- **Restano 🔴**: agenti che chiamano i tool da soli (real-time first; ora contesto iniettato); **backtesting** (VectorBT); **leva via opzioni**; Statuto VaR/settore; disinvestimento rating-based.
+- **Altri (minori)**: token metering reale; calendario come trigger; queue/adaptive extractor + mantainer; IBKR; Reddit/X; `OPENROUTER_API_KEY` nel `.env` per il live; tarare numeri; **decidere PR dei branch**.
 
 ### (storico) passaggio al CODICE — primo codice sul fork = strato dati
 
