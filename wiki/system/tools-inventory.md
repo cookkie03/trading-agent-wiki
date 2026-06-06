@@ -20,6 +20,8 @@ area: software
 
 # Tools Inventory — i tool che gli agenti possono chiamare
 
+> 🟢 **Implementato (alpha v0, 2026-06-07)** — pacchetti `tradingagents/ingestion/` (A prezzi · C fondamentali · D news+social · E macro) e `tradingagents/tools/` (`get_realtime_quote` **real-time-first + write-through**, `get_open_positions_risk` = heat, `volume_spike`, `get_options_chain`+`select_contract`). B indicatori = `indicators/`; G portafoglio = `inject_portfolio_state`; I guardrail = `domain/risk.check_guardrails`. *Resta rifinitura*: il **tool-calling LLM-driven** (l'agente che emette le call da sé) — oggi i tool sono reali e usati dal brain, con la regola real-time-first applicata, ma invocati deterministicamente.
+
 > **Stato: impianto approvato da Luca (2026-06-06).** Le 9 famiglie e le due regole trasversali sono confermate; 2 nodi risolti (portfolio auto+richiamabile · `compute_indicator` parametrico), restano aperti solo i vendor (live MVP + opzioni), da fissare a implementazione. Inventario di *cosa* gli agenti possono invocare durante il ragionamento. È il pezzo che rende concreta l'**autonomia informativa real-time first + write-through** decisa il 2026-06-05 ([[system/modules/agents]]). Il livello gemello è il **comportamento per-agente** (come ogni desk usa questi tool) → ancora aperto in [[system/modules/agents]].
 
 ## Come si legge un tool — le 5 etichette

@@ -122,6 +122,10 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **CODICE: tool layer (real-time-first + write-through) + heat reale** ✅ 2026-06-07 — `tools/`: `get_realtime_quote` (real-time first→DB), `get_open_positions_risk` (heat), `volume_spike`, `get_options_chain`; brain usa prezzo real-time-first e sizing con heat reale. *(tool-calling LLM-driven = rifinitura futura)* → [[system/tools-inventory]]
+- [x] 🛠 **CODICE: Statuto VaR + diversificazione settore** ✅ 2026-06-07 — guardrail `portfolio_var` + `sector_concentration` nel Risk gate → [[system/modules/agents]]
+- [x] 🛠 **CODICE: disinvestimento rating-based** ✅ 2026-06-07 — `disinvest_weakest` vende il più debole (conviction+score) per far spazio → [[system/rating-scoring]]
+- [x] 🛠 **CODICE: tool catena opzioni + selezione contratto** ✅ 2026-06-07 — `get_options_chain` + `select_contract` (strike ATM) + adapter yfinance → [[system/modules/execution]]
 - [x] 🛠 **CODICE: leva via opzioni su segnali Strong** ✅ 2026-06-06 — la funzione Trade instrada Strong Buy→Call / Strong Sell→Put, standard→equity (no margine); `asset_type`/`option_type` fino al broker. Catena opzioni reale = follow-up → [[system/modules/execution]]
 - [x] 🛠 **CODICE: backtester deterministico (validatore soglie)** ✅ 2026-06-06 — `backtesting/` ATR long-only su barre storiche, riusa indicatori+risk engine; hit-rate/return/drawdown; VectorBT motore futuro → [[system/modules/quant-backtesting]]
 - [x] 🛠 **CODICE: gestione uscite (TP/SL) + lifecycle trade** ✅ 2026-06-06 — `execution/exits.py` `manage_exits` chiude le posizioni quando il prezzo tocca stop/target (`exit_reason`); il ciclo prima gestisce le uscite poi apre → [[system/modules/execution]]

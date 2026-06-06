@@ -2,6 +2,14 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-07] CODICE — chiusura 🔴 (tool layer, VaR/settore, disinvestimento, opzioni) (feat/rebuild, autonomo)
+
+- **Tool layer** (commit a7e8b9d): `tradingagents/tools/` = inventario wiki come callable reali. `get_realtime_quote` (**real-time first** via `live_fn` + **write-through** su interval `rt`, fallback DB), `get_open_positions_risk` (portfolio heat), `volume_spike`. Brain: PM prende il prezzo **real-time-first** (opz. `quote_fn`), Risk gate sizing con **heat reale**. *NB*: il tool-calling LLM-driven (l'agente che emette tool call da solo) resta rifinitura; qui i tool sono reali e usati, con la regola real-time-first applicata.
+- **Statuto VaR + settore** (commit f85d848): guardrail `portfolio_var` (heat + rischio trade ≤ max_var) e `sector_concentration` (esposizione settore ≤ max_sector_pct); repo `instrument_sector`/`sector_exposure`; charter `max_sector_pct`.
+- **Disinvestimento rating-based** (commit fc8043e): `rank_holdings_by_weakness` + `disinvest_weakest` (vende il più debole per conviction+score, `exit_reason=rating`, set `protect`).
+- **Tool catena opzioni** (commit e808729): `get_options_chain` (live_fn iniettabile) + `select_contract` (strike più vicino) + `YFinanceOptionsFetcher`. Completa il percorso leva (Trade decide Call/Put → tool sceglie il contratto).
+- **Stato**: suite **211 verdi**. **Tutti i 🔴 della mappa di completezza affrontati.** Resta come rifinitura: tool-calling LLM-driven nel brain; catena opzioni reale in esecuzione; token metering reale.
+
 ## [2026-06-06] CODICE — batch 🔴 (Statuto, DTC, loop, learning, uscite) (feat/rebuild, autonomo)
 
 Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:

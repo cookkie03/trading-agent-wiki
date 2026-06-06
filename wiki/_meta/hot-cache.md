@@ -17,8 +17,9 @@
 - **Test**: **198 verdi** su `feat/rebuild`.
 - **Dati: COMPLETI** — i 4 desk leggono dal DB (macro FRED, news, social StockTwits, fondamentali, indicatori).
 - **Batch 🔴 fatto (autonomo)**: Statuto riserva 10% cash; **DTC `next_check_date` chiuso** (PM lo imposta, ciclo aggiorna scheda); **loop autonomo** (`run_forever` + CLI `--loop`); **learning substrate** (`DecisionLog` opinioni↔esito); **gestione uscite** TP/SL (`manage_exits`, lifecycle trade completo entrata→uscita).
-- **Altri 🔴 fatti**: **backtester deterministico** (`backtesting/`, valida soglie) + **leva via opzioni** (Strong→Call/Put nella funzione Trade).
-- **Restano 🔴**: agenti che chiamano i tool da soli (real-time first; ora contesto iniettato); Statuto **VaR/settore**; disinvestimento **rating-based**; catena opzioni reale (strike/scadenza).
+- **TUTTI i 🔴 affrontati (2026-06-07)**: backtester deterministico; leva opzioni (Strong→Call/Put) + tool catena opzioni; **tool layer** (`tools/`: get_realtime_quote real-time-first+write-through, get_open_positions_risk/heat, volume_spike) cablato nel brain; Statuto **VaR + settore**; **disinvestimento rating-based**.
+- **Restano solo rifiniture**: tool-calling **LLM-driven** nel brain (ora i tool sono reali e usati ma chiamati deterministicamente, non emessi dall'LLM); esecuzione catena opzioni reale; token metering reale; queue/adaptive extractor + mantainer; IBKR; Reddit/X; tarare numeri in backtest; `OPENROUTER_API_KEY` nel `.env` per il live; **PR dei branch**.
+- **Test**: **211 verdi** su `feat/rebuild`.
 - **Altri (minori)**: token metering reale; calendario come trigger; queue/adaptive extractor + mantainer; IBKR; Reddit/X; `OPENROUTER_API_KEY` nel `.env` per il live; tarare numeri; **decidere PR dei branch**.
 
 ### (storico) passaggio al CODICE — primo codice sul fork = strato dati
