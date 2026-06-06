@@ -44,6 +44,7 @@ area: software
 |--------|--------|--|
 | Extractors set (estrai/calcola/immetti) | `ingestion/` + `brain/tooling.py` (tool per-agente) | ✅ |
 | `<agent> → Extractors set → DB` (chiamata autonoma) | tool-calling LLM-driven in `brain/llm.py` + `graph.py` | ✅ |
+| Warm start: state vuoto → extractor pre-lanciati → 1° contesto iniettato | `brain/warmup.py` (in `analyze_symbol`) | ✅ |
 | mantainer (technical → rendicontazione) | `execution/mantainer.py` | ✅ |
 | Adaptive extractor (rate-limit/frequenza) | — | 🔴 |
 | Market Alert / calendar tool → calendario | — | 🔴 |
