@@ -13,10 +13,10 @@
 - **Runnabile**: `python -m tradingagents.cli AAPL …` (`app.run_once`: ingest→screen→trigger→brain→cost gate→execute). Offline testabile con fake LLM/fetcher.
 - **Test**: **185 verdi** (i nostri + l'infra tenuta), +2 integration (yfinance, Alpaca). `my-main` intatto; tutto su `feat/rebuild`.
 - **Pacchetti nostri**: `storage · domain · indicators · ingestion · brain · execution · broker · orchestration · app/cli`.
-- **Fatto anche (autonomo)**: Statuto parametrico nel DB che guida il Risk gate (`charter`+seed/load); consuntivo commissioni/token sul trade; **news→DB** + **fondamentali→DB** wired ai 4 desk; README riscritto; rimosse cartelle fantasma `agents/`/`graph/`.
-- **Test**: **188 verdi** su `feat/rebuild`.
-- **Restano placeholder solo**: **macro (FRED)** e **social-sentiment** (Reddit/StockTwits/X).
-- **Mancano (prossimi)**: macro+social→DB; token metering reale da OpenRouter; price-alert/calendario nel Trigger Engine; IBKR adapter; impostare provider DeepSeek/OpenRouter in `.env` per girare live; tarare i numeri in backtest; **decidere il merge/PR dei branch** (tutto su `feat/rebuild`).
+- **Fatto anche (autonomo)**: Statuto parametrico nel DB che guida il Risk gate; consuntivo commissioni/token sul trade; **news+fondamentali+macro(FRED)→DB** wired ai desk; **provider full OpenRouter+DeepSeek** (default in `default_config.py`, serve solo `OPENROUTER_API_KEY`); **price-alert** nel Trigger Engine; README riscritto; rimosse cartelle fantasma.
+- **Test**: **194 verdi** su `feat/rebuild`.
+- **Dati: COMPLETI** — i 4 desk leggono dal DB: Market (macro FRED + news), Sentiment (news + social StockTwits keyless), Technical (indicatori da price_bars), Fondamentali (metrics yfinance). Nessun placeholder dati residuo.
+- **Mancano (prossimi)**: token metering reale da OpenRouter; **calendario** come sorgente trigger; queue/adaptive extractor + mantainer; IBKR adapter; Reddit/X social; mettere `OPENROUTER_API_KEY` nel `.env` per girare live; tarare i numeri in backtest; **decidere il merge/PR dei branch** (tutto su `feat/rebuild`).
 
 ### (storico) passaggio al CODICE — primo codice sul fork = strato dati
 

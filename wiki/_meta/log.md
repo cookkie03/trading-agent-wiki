@@ -2,6 +2,15 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-06] CODICE — provider OpenRouter + price-alert + macro/fondamentali (feat/rebuild, autonomo)
+
+- **Provider full OpenRouter** (commit d2d3426, su richiesta di Luca): `default_config.py` → `llm_provider=openrouter`, `deep/quick_think=deepseek/deepseek-chat`; il client OpenAI-compatible auto-risolve il base_url OpenRouter → serve solo `OPENROUTER_API_KEY`. Aggiornati `test_env_overrides` (baseline) e `.env.example`.
+- **Trigger Engine — price alert** (commit 3c8370a): aggiunta sorgente `price_alerts` (movimento anomalo `|Δ|>k·ATR`, mercati efficienti) a `collect_triggers`; priorità checkpoint 1.0 > price_alert 0.9 > screening=score; dedup per simbolo. Test con barra-spike.
+- **Fondamentali → DB** (commit 084317e): `FundamentalSnapshot` + `ingest_fundamentals` + `YFinanceFundamentalsFetcher` (.info); desk Fondamentali legge i metrics.
+- **Macro (FRED) → DB** (commit 1f4c56f): `MacroPoint` + `ingest_macro` (DB-first dedup) + `FredFetcher` + `DEFAULT_MACRO_SERIES`; desk Market include lo snapshot macro. CLI usa FRED solo se `FRED_API_KEY` presente.
+- **Social-sentiment → DB** (commit 7be0626): `SocialPost` + `ingest_social` (DB-first dedup) + `StockTwitsFetcher` (stream pubblico **keyless**, reale); desk Sentiment legge i post social (con sentiment basic). CLI collega StockTwits.
+- **Stato**: suite **194 verdi**. **Tutti e 4 i desk leggono dati reali dal DB** — nessun placeholder dati residuo. Catena dati completa: prezzi+news+fondamentali+macro+social.
+
 ## [2026-06-06] CODICE — Statuto DB-driven + consuntivo commissioni + news (feat/rebuild, autonomo)
 
 - **Lavoro autonomo** (Luca staccato ~50 min). Continuazione su `feat/rebuild`.

@@ -122,6 +122,9 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **CODICE: provider full OpenRouter + DeepSeek** ✅ 2026-06-06 — default del progetto in `default_config.py` (base_url auto-risolto, serve solo `OPENROUTER_API_KEY`) → [[system/stack]]
+- [x] 🛠 **CODICE: Trigger Engine — price alert** ✅ 2026-06-06 — sorgente movimento anomalo `|Δ|>k·ATR` aggiunta a `collect_triggers` (checkpoint>price_alert>screening) → [[system/trigger-engine]]
+- [x] 🛠 **CODICE: TUTTI i desk leggono dati reali dal DB** ✅ 2026-06-06 — news + fondamentali + macro (FRED) + **social (StockTwits, keyless)** ingeriti DB-first; Market/Sentiment/Technical/Fondamentali wired. Nessun placeholder dati residuo → [[system/modules/data-layer]]
 - [x] 🛠 **CODICE: news → DB + desk Market/Sentiment reali** ✅ 2026-06-06 — `NewsItem` + `ingest_news` (DB-first dedup, `YFinanceNewsFetcher`); il brain legge le news dal DB (non più placeholder) → [[system/modules/data-layer]]
 - [x] 🛠 **CODICE: Statuto parametrico nel DB guida il Risk gate** ✅ 2026-06-06 — `charter` table + `seed_default_charter`/`load_charter`; il Risk gate carica le soglie dal DB; commissione/token-cost registrati sul trade (consuntivo) → [[system/cost-accounting]] · [[system/modules/agents]]
 - [x] 🛠 **CODICE: REBUILD del repo a nostra immagine** ✅ 2026-06-06 — branch `feat/rebuild`: rimossa la topologia TradingAgents (bull/bear, research manager, risk-debate a 3, trader-LLM, loro graph/state, cli/main), tenuta solo l'infra (`llm_clients`, `dataflows`, `structured`). → [[system/fork-gap-analysis]]
