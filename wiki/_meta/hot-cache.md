@@ -10,6 +10,8 @@
 - **Config**: nuove sezioni `[universe] [watchlist] [benchmark]` + `cycle.max_parallel`. Seed in `tradingagents/data/sp500.csv`.
 - **Test**: **190 verdi**. Fasi 1-5 committate; Fase 6 (wiki) in corso; **Fase 7 = daemon background start/stop** (richiesta Luca, da fare).
 - **Riferimento da studiare**: "hermes agent" (full Python) per autonomia/dinamicità → [[system/universe-watchlist]].
+- **Daemon (Fase 7, fatto)**: `python -m tradingagents.cli start|stop|status` — loop autonomo detached, PID+log in `~/.tradingagents/`. 193 test verdi.
+- **Da fare dopo (input Luca 2026-06-08)**: **dashboard read-only** stile SFC fund (Streamlit) per osservare il daemon → [[system/observability-dashboard]] (segnata, non implementata).
 
 ## Sessione Corrente
 - **Data**: 2026-06-06
