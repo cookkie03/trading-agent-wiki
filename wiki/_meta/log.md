@@ -2,6 +2,26 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-08] CODICE — Universo + Watchlist + Benchmark + Gerarchia agenti (branch feat/universe-watchlist)
+
+- **Cambio di paradigma** (Luca+Salvatore): autonomia sugli asset + benchmark. Piano approvato (`adaptive-nibbling-puzzle.md`). 5 fasi committate, 190 test verdi.
+- **Fase 1** (15b4ace) storage: `Instrument` (tradable/active/is_sp500/asset_class/last_synced_at), `TickerCard` (in_watchlist/…), nuova `TickerEvent`; repository universe/watchlist/eventi; config `[universe][watchlist][benchmark]` + `cycle.max_parallel`.
+- **Fase 2** (1747f01) universo: `broker.list_assets` (Alpaca `/v2/assets`; IBKR []→seed; Paper static); `tradingagents/data/sp500.csv`; `universe/` (Sp500Source, `sync_universe` con diff+inattivi, `seed_watchlist`).
+- **Fase 3** (5805514) benchmark dinamico (`benchmark.py`, simboli da config) + `performance.py` (alpha).
+- **Fase 4** (fd48914) funnel watchlist-driven: trigger da watchlist + `ticker_events` + alert; app/cli `symbols` opzionale → default watchlist + bootstrap; ingest benchmark.
+- **Fase 5** (923de73) gerarchia: `brain/director.py` `analyze_batch` (fan-out parallelo thread-pool, sessione per worker) + `execution/portfolio_risk.py` `admit_within_statute` (riserva/VaR/settore sul book); `run_cycle` ristrutturato (analyze→proposte→Statuto portafoglio→esecuzione seriale) + ammissione dinamica watchlist; **Risk Analyst su 2 livelli, non sostituito**.
+- **Fase 6** wiki: nuova [[system/universe-watchlist]]; aggiornati benchmark, parallelism-design, canvas-code-mapping, decision-log, board, index, hot-cache; segnato "hermes agent" come riferimento da studiare.
+- **Fase 7** (da fare): daemon background start/stop da terminale (richiesta Luca).
+
+## [2026-06-07] CODICE — config globale + broker configurabile + consolidamento
+
+- **Input di Luca**: serve un **file di configurazione globale** per tutti i parametri; mancava la **config del broker** (paper/live); e i due sistemi di config (`default_config` env-override + `config.toml`) vanno **consolidati** — decisione: **`.env` solo per le chiavi**, niente override di parametri via env.
+- **`config.toml` + `tradingagents/config.py`** (`Settings`: llm·broker·risk·charter·screening·cycle·data·costs): **fonte unica** dei parametri, con default di codice sotto. `load_settings()` = default < config.toml (nessun overlay env).
+- **Broker configurabile**: `[broker] provider=paper|alpaca, mode=paper|live`; `broker/alpaca.alpaca_base_url(mode)` (paper vs live); il CLI costruisce il broker da lì, con guardia se mancano le chiavi Alpaca.
+- **Consolidamento**: rimosso `_ENV_OVERRIDES`/`_apply_env_overrides` da `default_config.py`; il **modello LLM è sourced da `config.toml`** (single source); `default_config` resta solo per gli infra-default ereditati (vendors, cache path, benchmark). `.env.example` riscritto **solo segreti** (chiavi + DB connection). Rimosso `tests/test_env_overrides.py`.
+- **Visibilità modello**: il CLI stampa il modello effettivo all'avvio. `.env.example` ora include `FRED_API_KEY` (mancava).
+- **Stato**: suite **206 verdi**.
+
 ## [2026-06-07] CODICE — warm start + context state per-agente
 
 - **Domande/indicazioni di Luca**: servono **sia** il contesto iniettato (primo prompt su task nuovo) **sia** il tool-calling successivo; e ogni agente deve avere il **suo state di contesto**, strutturato, cucito sul compito, che dura e si automantiene per tutto il task. Inoltre: prima gli agenti **non** avevano memoria della conversazione tra i giri (confermato: veniva scartata).

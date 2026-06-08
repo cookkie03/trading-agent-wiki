@@ -70,6 +70,14 @@ area: software
 | Investment State (gate completezza) | `ResearchState.is_complete` / `seal()` | ✅ |
 | Trade (deterministico) | `execution/trade.py` | ✅ |
 | Trade → transactions | `trades` (broker + reconcile) | ✅ |
+| Broker intercambiabile (paper · Alpaca · IBKR) | `broker/` (PaperBroker · `alpaca.py` · `ibkr.py` TWS via ib_async) | ✅ |
+| Configurazione (broker paper/live, modelli, rischio, Statuto, …) | `config.toml` + `config.py` (fonte unica; `.env` = segreti) | ✅ |
+| Universo investibile (catalogo broker, riconciliato) | `universe/` (`list_assets`, `sync_universe`) + `instruments` flags | ✅ |
+| Watchlist dinamica (working set, membership ibrida) | `ticker_card.in_watchlist` + `seed_watchlist`/`_admit_watchlist` | ✅ |
+| Date asset → trigger automatici (auto-scheduling) | `ticker_events` + `event_checkpoints` | ✅ |
+| Benchmark da battere (dinamico) | `benchmark.py` + `performance.py` (`[benchmark] symbols`) | ✅ |
+| PM = Direttore (cosa analizzare, fan-out, Statuto portafoglio) | `brain/director.py` + `admit_within_statute` | ✅ |
+| Valutatore per-ticker (parallelo) | `analyze_batch` → `brain/graph.py` per simbolo | ✅ |
 
 ## Sintesi
 La spina dorsale del canvas è rispettata: **DB a 4 aree**, **desk → PM → Risk → Investment State → Trade**, e soprattutto **gli agenti chiamano l'Extractors set da soli** (tool-calling LLM-driven) che scrive nel DB. Restano 🔴 minori: tabelle dati FX/insider/calendario/report, adaptive extractor (rate-limit), Market Alert/calendar trigger.

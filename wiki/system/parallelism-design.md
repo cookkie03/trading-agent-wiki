@@ -25,6 +25,8 @@ confidence: medium
 
 ---
 
+> 🟢 **Implementato (2026-06-08, branch `feat/universe-watchlist`)** — fan-out parallelo reale: `brain/director.py:analyze_batch` lancia un **Valutatore per titolo** (il brain `analyze_symbol`) su un **thread pool** limitato (`[cycle] max_parallel`), ogni worker con la propria sessione DB; l'esecuzione ordini resta seriale. Sopra, il **Direttore** applica lo Statuto di portafoglio (`admit_within_statute`). Vincolo: SQLite + modelli free rate-limited → parallelismo modesto; Postgres + modelli a pagamento lo scalano. Dettaglio gerarchia in [[system/universe-watchlist]].
+
 ## ✅ Decisione (2026-06-06): architettura a imbuto (funnel)
 
 > Le alternative A–E **non sono opzioni in competizione**: rispondono a domande diverse e si **compongono** in un'unica pipeline. *Quali ticker?* → D (coda) + E (screening). *Come analizzo in isolamento?* → A (subgraph per-ticker). *Dove vive lo stato?* → B (scheda DB) → con A = C. **Nodi vs subgraph già deciso** (subgraph come pattern strutturale, 2026-06-03).

@@ -2,6 +2,15 @@
 
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
+## Sessione 2026-06-08 — Universo/Watchlist/Benchmark/Agenti (branch feat/universe-watchlist)
+- **Cambio di paradigma** (Luca+Salvatore): sistema autonomo anche sugli asset + benchmark da battere. Piano in `/Users/luca/.claude/plans/adaptive-nibbling-puzzle.md`.
+- **3 insiemi**: universo (broker-tradable, riconciliato via `list_assets`/`sync_universe`, inattivi marcati) ⊇ watchlist dinamica (ibrida, seed S&P500∩broker, ingressi da alert/news) ⊇ portfolio. Scheda ticker = hub; `ticker_events`→trigger (auto-scheduling).
+- **Benchmark dinamico** (`[benchmark] symbols`, default SPY, mai hardcoded) + alpha (`benchmark.py`/`performance.py`).
+- **Gerarchia agenti 3 livelli**: Direttore (PM: cosa analizzare + fan-out + Statuto portafoglio `admit_within_statute`) → Valutatore per-titolo (parallelo, `brain/director.py:analyze_batch`, thread pool `max_parallel`) → 4 desk. **Risk Analyst NON sostituito**: distinto su 2 livelli (titolo + portafoglio).
+- **Config**: nuove sezioni `[universe] [watchlist] [benchmark]` + `cycle.max_parallel`. Seed in `tradingagents/data/sp500.csv`.
+- **Test**: **190 verdi**. Fasi 1-5 committate; Fase 6 (wiki) in corso; **Fase 7 = daemon background start/stop** (richiesta Luca, da fare).
+- **Riferimento da studiare**: "hermes agent" (full Python) per autonomia/dinamicità → [[system/universe-watchlist]].
+
 ## Sessione Corrente
 - **Data**: 2026-06-06
 - **Agent**: Claude Code (Opus 4.8)
@@ -23,7 +32,8 @@
 - **Context state PER-AGENTE (2026-06-07)**: `brain/agent_context.py` — ogni agente ha la sua finestra di contesto **strutturata a sezioni cucite sul compito**, parte dal contesto iniettato e **accumula i tool result mantenendo la struttura**, **automantenuta per tutto il task** (round + revisioni). Prima la memoria conversazionale veniva scartata dopo ogni chiamata. Trasportato in `BrainState.contexts`.
 - **DA FARE SUCCESSIVAMENTE (input Luca)**: (1) **deduplicazione DB di OGNI singola informazione salvata** (uniforme/sistematica); (2) **memoria inter-task degli agenti** → [[system/agent-memory]] (riassunto rolling nel system prompt · tool di recupero super-parametrici per ticker/condizione/momento/esito · `past_context` popolato · embeddings; fondazione `decision_log`+`exit_reason`+`past_context` già presente). Entrambi in board 🔴 + decision-log.
 - **Restano solo rifiniture/canvas-minori**: tabelle FX/insider/calendario/report; adaptive extractor (rate-limit); Market Alert/calendar trigger; esecuzione catena opzioni reale; token metering reale; IBKR; Reddit/X; tarare numeri in backtest; `OPENROUTER_API_KEY` nel `.env` per il live; **PR dei branch**.
-- **Test**: **213 verdi** su `feat/rebuild`.
+- **Config globale consolidato (2026-06-07)**: `config.toml` (root) + `tradingagents/config.py` (`Settings`: llm·**broker**·risk·charter·screening·cycle·data·costs) = **fonte unica** dei parametri. **Decisione: `.env` solo segreti** — rimosso il meccanismo `TRADINGAGENTS_*` di override parametri (e `default_config` ora prende il modello da `config.toml`). Il **broker** (paper/alpaca, paper/live) si sceglie da `[broker]`; il CLI lo costruisce di conseguenza (guardia se mancano le chiavi Alpaca). `default_config` resta per gli infra-default ereditati (vendors, cache, benchmark). `.env.example` riscritto solo-segreti.
+- **Test**: **206 verdi** su `feat/rebuild` (rimosso il test del meccanismo env eliminato).
 - **Altri (minori)**: token metering reale; calendario come trigger; queue/adaptive extractor + mantainer; IBKR; Reddit/X; `OPENROUTER_API_KEY` nel `.env` per il live; tarare numeri; **decidere PR dei branch**.
 
 ### (storico) passaggio al CODICE — primo codice sul fork = strato dati

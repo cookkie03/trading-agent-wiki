@@ -27,6 +27,7 @@
 - [[system/fork-gap-analysis]] — confronto fork TradingAgents ↔ design: tengo/elimino/aggiungo + roadmap milestone di codice (ponte design→codice) 🛠
 - [[system/canvas-code-mapping]] — mappa di allineamento `architettura.canvas` ↔ codice (✅/🟡/🔴) 🛠
 - [[system/agent-memory]] — memoria degli agenti: intra-task (fatto) + inter-task (da progettare: riassunto rolling · tool di recupero parametrici · embeddings) 🛠
+- [[system/universe-watchlist]] — universo investibile + watchlist dinamica + gerarchia agenti (Direttore/Valutatore/desk) + benchmark dinamico 🛠
 - [[system/trigger-engine]] — centralizzazione dei trigger (alert · next_check_date · calendario · synthesis) → coda del funnel 🛠
 - [[system/cost-accounting]] — gestione a runtime di commissioni + token cost (stima pre-trade · consuntivo · learning) 🛠
 
