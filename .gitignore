@@ -3,3 +3,5 @@
 .trash/
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
+graphify-out/
+.graphify*
