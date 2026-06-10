@@ -1,0 +1,17 @@
+# Ignora cartelle di configurazione e plugin di Obsidian
+.obsidian/
+
+# Ignora cartelle relative agli agenti, skill e log interni
+.agents/
+.claude/
+.gemini/
+skills-lock.json
+storage_state.json
+
+# Ignora gli output di Graphify per evitare ricorsione
+graphify-out/
+.graphify*
+
+# File temporanei o conflitti
+conflict-files-obsidian-git.md
+*.DS_Store

@@ -16,9 +16,6 @@ Thumbs.db
 .obsidian/backups/
 .obsidian/sync/
 
-# Graphify / AI tool outputs
-graphify-out/
-.graphify*
 
 # Claude & Gemini caches / agent states
 .claude/
@@ -28,3 +25,11 @@ storage_state.json
 # Local Python cached files
 .pytest_cache/
 __pycache__/
+
+# Obsidian Git conflict files
+conflict-files-obsidian-git.md
+
+# Graphify cache
+graphify-out/cache/
+
+
