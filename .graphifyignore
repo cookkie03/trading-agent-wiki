@@ -1,17 +1,43 @@
-# Ignora cartelle di configurazione e plugin di Obsidian
-.obsidian/
-
-# Ignora cartelle relative agli agenti, skill e log interni
-.agents/
+# graphify ignore — trading-agent-wiki
+# Skip ALL non-code files (no LLM API key configured for semantic extraction)
+*.md
+*.txt
+*.rst
+*.html
+*.css
+*.scss
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+*.mp4
+*.mp3
+*.wav
+*.mov
+.env
+.env.*
+.DS_Store
+__pycache__/
+node_modules/
 .claude/
-.gemini/
-skills-lock.json
-storage_state.json
-
-# Ignora gli output di Graphify per evitare ricorsione
-graphify-out/
-.graphify*
-
-# File temporanei o conflitti
-conflict-files-obsidian-git.md
-*.DS_Store
+.agents/
+.trunk/
+.cursor/
+.kilo/
+.codex/
+.cliner/
+.copilot/
+.windsurf/
+.aider/
+.claw/
+.traes/
+.raw/
