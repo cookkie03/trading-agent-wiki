@@ -1,7 +1,30 @@
+# macOS / OS X system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-/raw/audio/2026-05-13 13-14-17.m4a.DS_Store
+# Obsidian specific files (these change constantly and cause merge conflicts)
 .trash/
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
+.obsidian/cache/
+.obsidian/cookies
+.obsidian/backups/
+.obsidian/sync/
+
+# Graphify / AI tool outputs
 graphify-out/
 .graphify*
+
+# Claude & Gemini caches / agent states
+.claude/
+.gemini/
+storage_state.json
+
+# Local Python cached files
+.pytest_cache/
+__pycache__/
