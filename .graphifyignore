@@ -1,11 +1,30 @@
 # graphify ignore — trading-agent-wiki
-# Skip ALL non-code files (no LLM API key configured for semantic extraction)
-*.md
-*.txt
-*.rst
-*.html
-*.css
-*.scss
+# Le pagine .md di wiki/ SONO incluse (knowledge base curata) per l'estrazione
+# semantica fatta da Hermes. Si escludono solo rumore di tooling e fonti grezze.
+
+# --- Tooling / config dell'editor (rumore: NON sono contenuto) ---
+.obsidian/
+.claude/
+.agents/
+.trunk/
+.cursor/
+.kilo/
+.codex/
+.cliner/
+.copilot/
+.windsurf/
+.aider/
+.claw/
+.traes/
+
+# --- Fonti grezze non curate (trascrizioni audio, articoli importati, ecc.) ---
+# Il contenuto strutturato vive in wiki/ — raw/ è la zona di ingresso pre-ingest.
+raw/
+
+# --- Output di graphify stesso ---
+graphify-out/
+
+# --- File binari / media (no estrazione utile) ---
 *.png
 *.jpg
 *.jpeg
@@ -23,21 +42,18 @@
 *.mp3
 *.wav
 *.mov
+*.m4a
+*.ogg
+*.canvas
+
+# --- Rumore di root (lockfile, stato browser, script di tooling) ---
+skills-lock.json
+storage_state.json
+update_graph.sh
+
+# --- Segreti ---
 .env
 .env.*
 .DS_Store
 __pycache__/
 node_modules/
-.claude/
-.agents/
-.trunk/
-.cursor/
-.kilo/
-.codex/
-.cliner/
-.copilot/
-.windsurf/
-.aider/
-.claw/
-.traes/
-.raw/
