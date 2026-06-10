@@ -1,0 +1,310 @@
+{
+  "main": {
+    "id": "8050c14c78e1bf7d",
+    "type": "split",
+    "children": [
+      {
+        "id": "81529866de88d28d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "124f4ed8f9045b2a",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "wiki/artifacts/architettura.canvas",
+                "viewState": {
+                  "x": -583.7953847809932,
+                  "y": 432.62909481568255,
+                  "zoom": -1.0184040763623532
+                }
+              },
+              "pinned": true,
+              "icon": "lucide-layout-dashboard",
+              "title": "architettura"
+            }
+          },
+          {
+            "id": "f9667a06c4ec1586",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "kanban",
+              "state": {
+                "file": "wiki/artifacts/project-board.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              },
+              "pinned": true,
+              "icon": "lucide-ghost",
+              "title": "kanban"
+            }
+          },
+          {
+            "id": "eb77006b60c36c6b",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/system/parallelism-design.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "parallelism-design"
+            }
+          },
+          {
+            "id": "99151243039d0185",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nuova scheda"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "494a9d57cfecf5f7",
+    "type": "split",
+    "children": [
+      {
+        "id": "aa91570993ede869",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a33a5ef0f6f34da0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Esplora risorse"
+            }
+          },
+          {
+            "id": "8447bfef77270793",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Ricerca"
+            }
+          },
+          {
+            "id": "6cf362cf496e2767",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Segnalibri"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 252.5
+  },
+  "right": {
+    "id": "4365d1ca707e791b",
+    "type": "split",
+    "children": [
+      {
+        "id": "2bae2f960680db2c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1bf74b2a07f22464",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Riferimenti"
+            }
+          },
+          {
+            "id": "519438d4f387abe0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Collegamenti in uscita"
+            }
+          },
+          {
+            "id": "1c9c952213e3b954",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etichette"
+            }
+          },
+          {
+            "id": "5ec9b1b12f817500",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Tutte le proprietà"
+            }
+          },
+          {
+            "id": "c4b4e561fbaf962a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "wiki/build/decision-log.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Struttura di decision-log"
+            }
+          },
+          {
+            "id": "797ee80e13297804",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "git-view"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 285.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "daily-notes:Apri nota del giorno": false,
+      "switcher:Apri selezione rapida": false,
+      "graph:Apri vista grafo": false,
+      "canvas:Crea nuova lavagna": false,
+      "bases:Crea nuova Base": false,
+      "templates:Inserisci modello": false,
+      "command-palette:Apri riquadro comandi": false
+    }
+  },
+  "active": "99151243039d0185",
+  "lastOpenFiles": [
+    "Indicatori per Analisi Macroeconomica.md",
+    "CLAUDE.md",
+    "wiki/system/agent-memory.md",
+    "wiki/system/canvas-code-mapping.md",
+    "raw/daily-notes/2026-06-06.md",
+    "wiki/system/parallelism-design.md",
+    "wiki/_meta/log.md.tmp.1660.9cf209e7a180",
+    "wiki/system/cost-accounting.md",
+    "wiki/system/trigger-engine.md",
+    "wiki/system/fork-gap-analysis.md",
+    "wiki/artifacts/project-board.md",
+    "wiki/system/system-prompts.md",
+    "wiki/system/tools-inventory.md",
+    "wiki/system/agent-behaviors.md",
+    "wiki/artifacts/architettura.canvas",
+    "raw/daily-notes/2026-06-04.md",
+    "raw/daily-notes/model.md",
+    "raw/daily-notes/2026-06-03.md",
+    "raw/archived/audio/WhatsApp Audio 2026-06-04 at 21.59.32.txt",
+    "raw/archived/audio/WhatsApp Audio 2026-06-04 at 21.56.52.txt",
+    "raw/archived/audio/WhatsApp Audio 2026-06-04 at 21.50.49.txt",
+    "raw/archived/audio/WhatsApp Audio 2026-06-04 at 21.50.11.txt",
+    "raw/archived/audio/WhatsApp Audio 2026-06-04 at 21.48.19.txt",
+    "raw/archived/audio/WhatsApp Audio 2026-06-04 at 21.48.06.txt",
+    "raw/archived/audio/WhatsApp Audio 2026-06-04 at 21.45.22.txt",
+    "raw/archived/audio/WhatsApp Audio 2026-06-04 at 21.43.23.txt",
+    "raw/archived/audio/WhatsApp Audio 2026-06-04 at 21.40.10.txt",
+    "wiki/strategy/indicators/macro-indicators.md",
+    "raw/daily-notes/2026-06-05.md",
+    "wiki/system/db-access-performance.md",
+    "wiki/system/state-schemas.md",
+    "wiki/system/modules/execution.md",
+    "wiki/system/modules/agents.md",
+    "wiki/system/investment-state-template.md",
+    "wiki/system/rating-scoring.md",
+    "wiki/system/modules/quant-backtesting.md",
+    "wiki/system/position-sizing.md",
+    "wiki/artifacts/architecture/trading-floor.canvas",
+    "wiki/artifacts/architecture/Architettura langchain.canvas",
+    "wiki/build/architecture/trading-floor.canvas",
+    "wiki/build/architecture/idea architettura.canvas",
+    "wiki/build/architecture/agents.canvas",
+    "wiki/build/architecture/Architettura langchain.canvas",
+    "wiki/artifacts/trading-floor.canvas",
+    "raw/archived/audio/WhatsApp Chat - Salvatore Luca/00000639-PHOTO-2026-05-22-16-06-24.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Position Sizing/Immagine_2022-02-05_143504.png",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Position Sizing/Immagine_2022-02-05_143149.png",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Operatività/indi8.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Glossario/Untitled.png",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/sd4.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/sd1.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/rsi1.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/rsi-3.jpg",
+    "raw/archived/articles/Private & Shared 2/Investimento e Trading/Elementi Grafici/pat5.jpg",
+    "wiki/artifacts/architecture/idea architettura.canvas",
+    "wiki/artifacts/architecture/agents.canvas"
+  ]
+}
