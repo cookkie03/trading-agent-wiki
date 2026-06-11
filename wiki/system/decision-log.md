@@ -5,7 +5,7 @@ tags:
   - decision
   - strategy
 created: 2026-04-30
-updated: 2026-06-04
+updated: 2026-06-10
 status: active
 related:
   - "[[system/architecture]]"
@@ -117,8 +117,6 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 | 🛠 | **Dashboard read-only osservabilità (SFC-style)** | Da fare *dopo* (input Luca 2026-06-08): fatta l'architettura a daemon, una dashboard Streamlit **di sola lettura** per osservare il sistema (portafoglio/NAV, watchlist/universo, decisioni/trade, alpha, log, stato daemon). Legge dal DB, non controlla mai. Si lega a LangSmith/LangGraph Studio per il tracing | [[system/observability-dashboard]] |
 | 🛠 | **Memoria inter-task degli agenti** | Da progettare/discutere *successivamente* (input Luca 2026-06-07): come ottimizzare la memoria persistente tra i task per imparare dai casi/errori passati — riassunto rolling nel system prompt · tool di recupero super-parametrici (ticker/condizione/momento/esito) · `past_context` popolato · embeddings · scoring agenti. Fondazione già presente (`decision_log`, `exit_reason`, `past_context`) | [[system/agent-memory]] · [[system/learning-feedback-loop]] |
 | 🛠 | **Deduplicazione DB di ogni info salvata** | Da fare *successivamente* (input Luca 2026-06-07): rendere la deduplicazione **uniforme e sistematica** su OGNI informazione scritta nel DB (oggi è per-famiglia: check-presenza prezzi/macro, dedup_key news/social). Evitare duplicati ovunque | [[system/modules/data-layer]] |
-| 🛠 | **Trigger Engine centralizzato** | Un unico componente raccoglie tutti i trigger (alert prezzo · `next_check_date` · periodical synthesis · calendario economico · news anomale), li normalizza in `TriggerEvent` e li immette nella coda di priorità del funnel; il PM consuma una sola coda. Input di Luca 2026-06-06 | [[system/trigger-engine]] |
-| 🛠 | **Cost accounting a runtime** | Come le commissioni entrano nelle decisioni mentre il software gira: stima pre-trade (`CommissionModel` + token cost → guardrail net-EV/R:R-after-cost), consuntivo post-fill (commissione reale + token cost sul trade), net performance al learning loop. Input di Luca 2026-06-06 | [[system/cost-accounting]] |
 | 🛠 | **Parallelismo: numeri e soglie** | Topologia decisa (funnel E→D→A→B/C, 2026-06-06); restano da tarare: soglia screening, K del top-K, cadenze, segnali quant esatti dello score | [[system/parallelism-design]] |
 | 🔀 | **Criteri "info sufficienti" del PM + max iterazioni** | Quando decidere di fare/non fare un trade; evitare loop infiniti | [[system/parallelism-design]] |
 | 📈 | **VaR: quale e come** | Parametrico/storico/MonteCarlo, VaR vs CVaR, lookback, VaR incrementale | [[strategy/questions-for-salvatore]] |
@@ -160,4 +158,6 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 | Selezione tool agenti (impianto) | **CHIUSA 2026-06-06**: 9 famiglie + 2 regole trasversali; portfolio auto+richiamabile, `compute_indicator` parametrico. Restano solo i vendor → [[system/tools-inventory]] |
 | Comportamento per-agente del desk (impianto) | **CHIUSA 2026-06-06**: 5 dimensioni per i 4 agenti; news/sentiment per tipo di info, tutti contribuiscono alla direzione, stop auto+PM-richiama. Resta da scrivere i system prompt → [[system/agent-behaviors]] |
 | Parallelismo multi-ticker (topologia) | **CHIUSA 2026-06-06**: architettura a imbuto E→D→A→B/C (screening deterministico + coda + subgraph per-ticker + scheda DB); MVP da D+A. Restano solo i numeri/soglie → [[system/parallelism-design]] |
+| Trigger Engine centralizzato | **CHIUSA 2026-06-06 · IMPLEMENTATO alpha v0**: `orchestration/triggers.py` (`TriggerEvent` + `collect_triggers()`: checkpoint `next_check_date` + price alert `\|Δ\|>k·ATR` + screening top-K, con dedup e priorità); coda unica consumata da `run_cycle`. Restano da implementare: calendario come sorgente, persistenza `trigger_events` + scheduler periodico → [[system/trigger-engine]] |
+| Cost accounting a runtime | **CHIUSA 2026-06-06 · IMPLEMENTATO alpha v0**: `broker/commission.py` (`CommissionModel`: Zero/PerTrade/PerShare/Percent) + `execution/costs.py` (`assess_costs` = guardrail net-EV) integrato in `run_cycle` (no-trade `skipped_cost` se la ricompensa non copre commissione + token cost). Restano: consuntivo post-fill sul `trade`, token metering reale OpenRouter, fee auto-adattiva broker live → [[system/cost-accounting]] |
 | Frequenza invocazione (vincolo tecnico) | Confluita in "Frequenza ciclo" + transaction/token cost |

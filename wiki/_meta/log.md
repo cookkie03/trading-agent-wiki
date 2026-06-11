@@ -2,6 +2,15 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-10] WIKI — allineamento decision-log/board al codice (analisi discrepanze via grafo)
+
+- **Contesto**: analisi discrepanze wiki↔codice tramite il knowledge graph unificato (Hermes). Trovato che alcune decisioni risultavano *aperte* in wiki ma erano già **implementate** nel codice (la wiki era indietro, non il codice).
+- **`decision-log.md`**: rimosse dalle "Decisioni aperte" **Trigger Engine centralizzato** e **Cost accounting a runtime** (erano 🛠 da fare); aggiunte alla tabella "Decisioni aperte ora chiuse" come **CHIUSA · IMPLEMENTATO alpha v0** con i riferimenti reali al codice (`orchestration/triggers.py` `collect_triggers`; `broker/commission.py` + `execution/costs.py` `assess_costs` nel `run_cycle`). Frontmatter `updated`→2026-06-10.
+- **`canvas-code-mapping.md`**: `market · insider trading` da 🔴 a 🟡 — è raggiungibile come dataflow on-demand (`dataflows/y_finance.get_insider_transactions` + Alpha Vantage), pur senza tabella DB dedicata. `updated`→2026-06-10.
+- **`project-board.md`**: rimosse le due card obsolete da "🟠 Decisioni da prendere" (Trigger Engine, Cost accounting) — già presenti in ✅ Fatto, era un'incoerenza interna.
+- **Restano discrepanze reali documentate**: VectorBT deciso ma non implementato (motore custom in `backtesting/engine.py`; VectorBT non in `pyproject.toml`) → in valutazione; codice non documentato (`ingestion/`, `tools/`, `universe/`, `daemon.py`).
+
+
 ## [2026-06-08] CODICE — Universo + Watchlist + Benchmark + Gerarchia agenti (branch feat/universe-watchlist)
 
 - **Cambio di paradigma** (Luca+Salvatore): autonomia sugli asset + benchmark. Piano approvato (`adaptive-nibbling-puzzle.md`). 5 fasi committate, 190 test verdi.

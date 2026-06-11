@@ -5,7 +5,7 @@ tags:
   - architecture
   - software
 created: 2026-06-07
-updated: 2026-06-07
+updated: 2026-06-10
 status: active
 related:
   - "[[artifacts/architettura.canvas]]"
@@ -26,7 +26,7 @@ area: software
 | market · prezzi di mercato | `price_bars` | ✅ |
 | market · indicatori macro | `macro_points` | ✅ |
 | market · news | `news_items` | ✅ |
-| market · insider trading | — | 🔴 |
+| market · insider trading | dataflow on-demand (`dataflows/y_finance.get_insider_transactions` + Alpha Vantage); nessuna tabella DB dedicata | 🟡 |
 | market · calendario economico | — | 🔴 |
 | market · tassi di cambio (FX) | — | 🔴 |
 | (sentiment social) | `social_posts` | ✅ |
