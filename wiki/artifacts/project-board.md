@@ -86,6 +86,7 @@ sources:
 
 ## 🟡 In corso
 
+- [ ] 🛠 **Merge del branch `feat/vectorbt-backtest` in main** — il backtesting (VectorBT default + job notturno 02:00 + sweep 3-D + walk-forward) è completo e testato (210 verdi) sul branch, ma **non su main** (dove VectorBT è stato revertato). Al merge serve attenzione: main ha un commit di *revert* di VectorBT v1 → un merge naïve potrebbe non riapplicare le modifiche; usare `git revert` del revert oppure rebase del branch su main → [[system/modules/quant-backtesting]] · [[system/decision-log]]
 - [ ] 🛠 **Roadmap di adattamento del fork** — gap analysis fatta (tengo/elimino/aggiungo); milestone M0→M6. Prossimo: M0 wiring OpenRouter+DeepSeek + run as-is, poi M1 grafo "nostro" → [[system/fork-gap-analysis]]
 - [ ] 🛠 **Progettazione architettura software** — design-first, I/O per ogni modulo, schema DB, flusso end-to-end → [[system/architecture]]
 - [ ] 🛠 **Studio wiki in autonomia** — leggere tutta la wiki prima della prossima sessione con Salvatore → [[_meta/index]]
@@ -122,6 +123,8 @@ sources:
 
 
 ## ✅ Fatto
+
+- [x] 🛠 **CODICE: backtesting cablato come job notturno + VectorBT default (branch)** ✅ 2026-06-11 — `backtesting/scheduler.py` (`run_nightly_backtest`+`nightly_loop`, default 02:00): sweep 3-D `k_stop`×`k_tp`×`atr_period` (ranking Sharpe) + **walk-forward** out-of-sample per simbolo watchlist → persiste in tabella `backtest_results`; opz. `apply_robust` scrive soglie mediane nel charter. VectorBT engine di default; CLI `backtest --nightly/--apply-robust`; daemon `start` lancia un 2° processo. 210 test verdi. ⚠️ su branch **`feat/vectorbt-backtest`** (NON ancora su main; main revertato) → [[system/modules/quant-backtesting]]
 
 - [x] 🛠 **CODICE: backtesting VectorBT come 2° backend (affiancato)** ✅ 2026-06-10 — `backtesting/engine_vbt.py`: motore vettorizzato dietro lo **stesso** `BacktestResult`; selettore `config.toml [backtest] engine=custom|vectorbt` (`BacktestSettings`); `sweep(k_stop_grid, k_tp_grid)` per validare le soglie in massa; stesso sizing risk-based del custom (`position_size`) → riconciliati (n.trade/hit-rate/segno concordano). Extra opzionale `backtest` (`uv add --optional backtest vectorbt`, fuori dal runtime 24/7). 6 nuovi test + suite **200 verdi**. Custom resta default = verità 1:1 col live → [[system/modules/quant-backtesting]]
 

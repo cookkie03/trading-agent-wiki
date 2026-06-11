@@ -7,7 +7,7 @@ tags:
   - mvp
   - design
 created: 2026-05-13
-updated: 2026-05-29
+updated: 2026-06-11
 status: active
 related:
   - "[[system/architecture]]"
@@ -33,11 +33,9 @@ Nessun capitale reale. Nessuna supervisione umana obbligatoria nel loop. Validaz
 
 ### Backtesting integrato
 
-Nessuna logica duplicata. L'Exchange Module ha due backend:
-- **Live**: chiama Binance Testnet API
-- **Backtest**: replay su dati storici Binance scaricati
+> ⚙️ **Aggiornamento (branch `feat/vectorbt-backtest`)**: il backtesting è ora un **job notturno schedulato** separato (motore **VectorBT**, sweep 3-D + walk-forward), non un backend dell'Exchange. Dettaglio completo in [[system/modules/quant-backtesting]]. Resta valido il principio sotto: stessa logica ATR + sizing del live (riconciliazione col motore `custom`).
 
-Il resto del ciclo è identico. Questo garantisce che il backtest testa esattamente il codice che gira in produzione.
+Principio invariato: nessuna logica duplicata. Il backtest riusa **gli stessi** indicatori (`indicators.core`) e lo stesso risk engine (`domain.risk.position_size`) del sistema live, così ciò che valida è esattamente ciò che gira in produzione. Gira di notte (mercati chiusi), tara le soglie (`k_stop`/`k_tp`/ATR), **non** coinvolge l'AI e **non** gira nel ciclo di trading.
 
 ## Metriche a due livelli
 

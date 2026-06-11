@@ -2,6 +2,17 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-11] CODICE — backtest cablato come job notturno + VectorBT default (branch feat/vectorbt-backtest)
+
+- **Richiesta di Luca**: cablare il backtesting come job schedulato di notte + VectorBT come motore di default al massimo delle potenzialità. Tutto isolato su un **branch dedicato**.
+- **VectorBT default + potenziato**: `config.toml [backtest] engine="vectorbt"`; `BacktestResult` esteso (sharpe/sortino/calmar/profit_factor); `sweep` 3-D (`k_stop`×`k_tp`×`atr_period`, default 5×4×3, ranking Sharpe, skip R:R<1); nuovo `walk_forward` (out-of-sample, anti-overfitting → `robust_params`).
+- **Job notturno**: `backtesting/scheduler.py` (`run_nightly_backtest`, `seconds_until_hour`, `nightly_loop` @ 02:00); persistenza in tabella `backtest_results` (`BacktestResultRow`); opz. `apply_robust` scrive le soglie mediane nel `charter`. CLI `backtest` (`--nightly`/`--apply-robust`); il daemon `start` lancia un 2° processo detached (PID/log `~/.tradingagents/backtest.*`), `stop`/`status` gestiscono entrambi.
+- **Config**: `[backtest]` esteso (engine, grids, nightly_hour, lookback, rank_by, wf_splits). VectorBT resta extra opzionale (`uv sync --extra backtest`), fuori dal runtime core.
+- **Test**: +13 (vbt esteso, walk-forward, scheduler timing/persistenza/loop) → suite **210 verdi**. Smoke end-to-end ok (2 simboli, griglia 60 combo, persistenza, timing 02:00).
+- **Git**: lavoro su **`feat/vectorbt-backtest`** (commit `83639c5`+`46b3260`, pushato). Su `main` il commit VectorBT v1 (`dd359fa`) è stato **revertato** (`d36bad3`, pushato) → main pulito da VectorBT in attesa del merge. Nota: un eventuale auto-sync committa il workspace da solo; il merge futuro va gestito (revert-del-revert o rebase) perché main ha un revert.
+- **WIKI**: `quant-backtesting.md` (sezione Tech riscritta: vbt default, sweep 3-D, walk-forward, job notturno, banner stato-branch), `mvp.md` (backtesting integrato → job notturno), `decision-log.md` (decisione 2026-06-11), `project-board.md` (card ✅ aggiornata + card 🟡 "merge branch").
+
+
 ## [2026-06-10] CODICE+WIKI — backtesting VectorBT come 2° backend (discrepanza 1 chiusa)
 
 - **Contesto**: il decision-log decideva "framework backtesting = VectorBT" ma il codice aveva solo un motore custom (VectorBT nemmeno installato). Discrepanza chiusa implementando VectorBT come backend **affiancato**, non sostitutivo.
