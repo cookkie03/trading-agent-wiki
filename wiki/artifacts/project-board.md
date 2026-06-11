@@ -123,6 +123,8 @@ sources:
 
 ## ✅ Fatto
 
+- [x] 🛠 **CODICE: backtesting VectorBT come 2° backend (affiancato)** ✅ 2026-06-10 — `backtesting/engine_vbt.py`: motore vettorizzato dietro lo **stesso** `BacktestResult`; selettore `config.toml [backtest] engine=custom|vectorbt` (`BacktestSettings`); `sweep(k_stop_grid, k_tp_grid)` per validare le soglie in massa; stesso sizing risk-based del custom (`position_size`) → riconciliati (n.trade/hit-rate/segno concordano). Extra opzionale `backtest` (`uv add --optional backtest vectorbt`, fuori dal runtime 24/7). 6 nuovi test + suite **200 verdi**. Custom resta default = verità 1:1 col live → [[system/modules/quant-backtesting]]
+
 - [x] 🛠 **CODICE: ambiente unico = uv (`.venv`)** ✅ 2026-06-07 — pytest come dev-dep nel `pyproject`; `uv sync` provisiona un solo `.venv` (runtime+dev+ib_async); tutto via `uv run`. Risolto il mismatch venv↔pyenv (test che mentivano). Rimossi 2 test orfani del `cli/` fork → [[system/stack]]
 - [x] 🛠 **CODICE: broker Interactive Brokers via TWS API (`ib_async`)** ✅ 2026-06-07 — `broker/ibkr.py` (lo strumento IBKR più completo): connect/placeOrder/positions/accountSummary; config `[broker] provider=ibkr` + host/port/client_id (7497 paper/7496 live). Alpaca verificato sulle doc ufficiali. → [[system/modules/execution]] · [[system/data-providers]]
 - [x] 🛠 **CODICE: daemon background (start/stop/status)** ✅ 2026-06-08 — `python -m tradingagents.cli start|stop|status`; loop autonomo detached, PID+log in `~/.tradingagents/`, conferma a video → [[system/universe-watchlist]]

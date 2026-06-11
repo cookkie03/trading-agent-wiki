@@ -2,6 +2,15 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-10] CODICE+WIKI — backtesting VectorBT come 2° backend (discrepanza 1 chiusa)
+
+- **Contesto**: il decision-log decideva "framework backtesting = VectorBT" ma il codice aveva solo un motore custom (VectorBT nemmeno installato). Discrepanza chiusa implementando VectorBT come backend **affiancato**, non sostitutivo.
+- **CODICE** (`trading-agent`): `backtesting/engine_vbt.py` (motore vettorizzato dietro lo stesso `BacktestResult`, `vbt.Portfolio.from_signals` con `sl_stop`/`tp_stop` + sizing risk-based via `position_size` per coerenza col custom) + `sweep(k_stop_grid, k_tp_grid)`; `__init__.py` selettore `backtest(..., engine=)`; `config.py` `BacktestSettings` + `config.toml [backtest]`; dipendenza opzionale `[project.optional-dependencies] backtest = ["vectorbt>=1.0"]` (`uv add --optional backtest`). 6 nuovi test (`tests/test_backtesting_vbt.py`, skip se l'extra manca) + suite 200 verdi.
+- **Riconciliazione**: custom (intra-bar) e vectorbt (bar-level) concordano su n.trade/hit-rate/segno del rendimento con sizing allineato; non bit-identici — documentato come insidia.
+- **Integrazione**: confermato che il backtest **non è un tool degli agenti** e **non gira nel ciclo** (resta job offline/asincrono che tara le soglie); aggancio scheduler ancora da fare.
+- **WIKI**: `quant-backtesting.md` (due backend + insidia riconciliazione + nota integrazione), `decision-log.md` (decisione 2026-06-10), `project-board.md` (card ✅).
+
+
 ## [2026-06-10] WIKI — allineamento decision-log/board al codice (analisi discrepanze via grafo)
 
 - **Contesto**: analisi discrepanze wiki↔codice tramite il knowledge graph unificato (Hermes). Trovato che alcune decisioni risultavano *aperte* in wiki ma erano già **implementate** nel codice (la wiki era indietro, non il codice).

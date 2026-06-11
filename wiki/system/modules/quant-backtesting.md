@@ -6,7 +6,7 @@ tags:
   - strategy
   - software
 created: 2026-05-13
-updated: 2026-06-04
+updated: 2026-06-10
 status: active
 priority: high
 area: software
@@ -111,12 +111,24 @@ Il backtesting **non è un'attività una-tantum** che si fa prima di partire: è
 
 ## Tech
 
+### Due backend affiancati (stesso contratto `BacktestResult`)
+Implementati in `tradingagents/backtesting/`, selezionabili via `config.toml [backtest] engine`:
+
+- **`custom`** (default) — `engine.py`: motore **event-driven** scritto a mano, scorre le barre intra-bar (`low`/`high`), riusa **le stesse** `indicators.core.atr` + `domain.risk.position_size` del sistema live. È la **verità 1:1 col live**: ciò che valida è esattamente ciò che gira in produzione. Long-only, una posizione alla volta, nessun costo.
+- **`vectorbt`** — `engine_vbt.py`: motore **vettorizzato** (richiede l'extra `backtest`: `uv sync --extra backtest`). Stessa logica ATR (`k_entry`/`k_stop`/`k_tp`) e **stesso sizing risk-based** (`position_size`), ma simulato con `vbt.Portfolio.from_signals` (stop/target nativi `sl_stop`/`tp_stop`, `fees` supportate). Serve per **velocità e sweep**.
+  - **`sweep(bars, k_stop_grid, k_tp_grid, …)`** — testa una griglia di soglie in un colpo e le ordina per rendimento. È il "validatore continuo delle soglie" del [[system/decision-log]] 2026-06-04.
 - **VectorBT**: framework Python di backtesting **vettorizzato** (lavora su intere serie storiche con pandas/numpy, molto veloce — testa molte combinazioni di parametri in poco tempo). Usato da MarketSenseAI. Spiegazione nel [[_meta/glossario]].
-- **Costi di transazione**: niente più "10bps fisso" → modello **auto-adattivo** che usa le commissioni reali esposte dall'[[_meta/glossario#Adapter / Wrapper (broker)|adapter]] del broker ([[system/modules/execution]]).
-- **Dati**: da `market_data` nel DB di [[system/modules/data-layer]] (OHLCV stock, timeframe 4h/daily)
-- **Metriche obbligatorie**: Sharpe ratio, Sortino ratio, Max Drawdown, Win Rate, Calmar ratio
+
+> ⚠️ **Insidia nota (riconciliazione)**: VectorBT applica gli stop a livello di **barra** (vettorizzato), il custom **intra-barra** su `low`/`high`. I due **concordano sul segno e l'ordine di grandezza** (verificato con sizing allineato: stesso n. trade e hit-rate, rendimenti vicini), ma **non sono bit-identici**. Prima di tarare soglie in produzione con VectorBT, riconciliare sempre su un caso noto col motore custom.
+
+### Resto del tech
+- **Costi di transazione**: niente più "10bps fisso" → modello **auto-adattivo** che usa le commissioni reali esposte dall'[[_meta/glossario#Adapter / Wrapper (broker)|adapter]] del broker ([[system/modules/execution]]). Il backend vectorbt accetta `fees` per simularli; il custom oggi li ignora.
+- **Dati**: da `price_bars` nel DB di [[system/modules/data-layer]] (OHLCV stock, timeframe 4h/daily), via `indicators.db.recent_bars`.
+- **Metriche**: il custom calcola hit-rate, return, max drawdown; il backend vectorbt espone anche Sharpe/Sortino/Calmar/profit factor via `pf.stats()` (mappabili in `BacktestResult`).
 - **Insidie da evitare**: [[_meta/glossario#Look-Ahead Bias|look-ahead bias]]; **[[_meta/glossario#Overfitting|overfitting]]** e **significatività statistica vs benchmark** → da definire con Salvatore in [[strategy/questions-for-salvatore]].
 - **Storico dati**: non abbiamo ancora anni di storico → si raccoglie *mentre* l'alpha gira; il modulo backtesting si aggiunge incrementalmente. Survivorship bias affrontato a sistema maturo.
+
+> **Integrazione nel sistema**: il backtest **non è un tool degli agenti** e **non gira nel ciclo di trading** (l'AI non gira durante la simulazione — decisione 2026-06-04). È un **job offline/asincrono** che legge il DB storico, tara le soglie (`k_stop`/`k_tp`/ATR/sizing) e alimenta il [[system/learning-feedback-loop]]. Gli agenti ne consumano *indirettamente* l'output (le soglie tarate in `config.toml`/`charter`), non lo invocano mai. **Aggancio runtime ancora da fare**: lo scheduler asincrono che lo lancia periodicamente.
 
 ---
 
@@ -124,8 +136,8 @@ Il backtesting **non è un'attività una-tantum** che si fa prima di partire: è
 
 | Tema | Scelta |
 |------|--------|
-| Framework backtesting | VectorBT (fonte: MarketSenseAI) |
-| Costi transazione | Simulare sempre (10bps per trade minimo) |
+| Framework backtesting | **Due backend** (2026-06-10): `custom` event-driven 1:1 col live (default) + `vectorbt` vettorizzato per sweep/metriche. VectorBT fonte: MarketSenseAI |
+| Costi transazione | Simulare sempre (`fees` nel backend vectorbt; auto-adattivo dal broker a sistema maturo) |
 | Principio | Tool parametrizzabili, non hardcodati |
 
 ## Domande aperte
