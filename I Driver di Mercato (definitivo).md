@@ -16,7 +16,7 @@ Indicatori: GDP, CPI, PMI, NFP, VIX, TIPS, DXY, PCE
 7. Mercati Obbligazionari — Curva Rendimenti, TIPS, Term Premium
 8. Condizioni del Credito — Spread IG/HY, Financial Conditions
 9. Valute e Materie Prime — DXY, FX, Petrolio, Metalli
-10. Volatilita e Rischio — VIX, Indice MOVE
+10. Volatilità e Rischio — VIX, Indice MOVE
 11. Flussi e Posizionamento — Flussi ETF, CFTC Positioning
 12. Driver Azionari — EPS, Revisioni Utili, Guidance
 
@@ -216,7 +216,7 @@ Rappresenta la previsione implicita del mercato sul CPI medio nei prossimi dieci
 
 Range normale: 2.0-2.5%
 Livelli di attenzione:
-- Sopra 3%: mercato teme perdita di credibilita della Fed
+- Sopra 3%: mercato teme perdita di credibilità della Fed
 - Sotto 1.5%: preoccupazioni deflazionistiche dominanti
 
 I breakeven reagiscono rapidamente alle variazioni del prezzo del petrolio, agli shock geopolitici e alla comunicazione della Fed.
