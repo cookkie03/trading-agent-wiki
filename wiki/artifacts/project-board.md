@@ -1,5 +1,6 @@
 ---
-title: "Project Board — Trading Agent"
+
+title: Project Board — Trading Agent
 type: artifact
 tags:
   - artifact
@@ -22,15 +23,8 @@ kanban-plugin: board
 sources:
   - "[[prior-art/papers/notion-trading-concepts]]"
   - "[[artifacts/trading-floor]]"
----
 
-> # 🧭 Centrale operativa del progetto
-> Questo è il **file di partenza** per ogni valutazione umana: ogni voce dice **chi** (owner) e **dove approfondire** (pagina specifica). Da qui si naviga al resto della wiki.
->
-> **Owner**: 🛠 Luca (software) · 📈 Salvatore (mercato) · 🔀 condiviso.
-> **Convenzione**: ogni card azionabile termina con il link alla pagina di riferimento `→ [[pagina]]`. Le decisioni chiuse sono in [[system/decision-log]]; il dettaglio domande mercato in [[strategy/questions-for-salvatore]].
->
-> **🎯 Prossimi due passi concordati (2026-06-02)**: 1) strutturare lo schema dello state → [[system/state-schemas]]; 2) definire la formula di position sizing → [[system/position-sizing]].
+---
 
 ## 💡 Idee
 
@@ -86,9 +80,10 @@ sources:
 
 ## 🟡 In corso
 
+- [ ] 🛠 Salvatore: **Studio wiki in autonomia** — leggere tutta la wiki prima della prossima sessione → [[_meta/index]]
+- [ ] 🛠 Luca: **Studio wiki in autonomia** — leggere tutta la wiki prima della prossima sessione → [[_meta/index]]
 - [ ] 🛠 **Roadmap di adattamento del fork** — gap analysis fatta (tengo/elimino/aggiungo); milestone M0→M6. Prossimo: M0 wiring OpenRouter+DeepSeek + run as-is, poi M1 grafo "nostro" → [[system/fork-gap-analysis]]
 - [ ] 🛠 **Progettazione architettura software** — design-first, I/O per ogni modulo, schema DB, flusso end-to-end → [[system/architecture]]
-- [ ] 🛠 **Studio wiki in autonomia** — leggere tutta la wiki prima della prossima sessione con Salvatore → [[_meta/index]]
 - [ ] 🛠 **Modulo analisi documenti** — legge documenti ed estrae info strutturate → [[system/modules/data-layer]]
 - [ ] 📈 **Definire cosa replica il bot nel mondo reale** — workflow del trader tipo → [[strategy/index]]
 - [ ] 📈 **Raccolta di meccanismi di mercato** — ogni osservazione modellabile nel vault → [[strategy/index]]
