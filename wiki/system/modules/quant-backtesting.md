@@ -6,7 +6,7 @@ tags:
   - strategy
   - software
 created: 2026-05-13
-updated: 2026-06-11
+updated: 2026-06-04
 status: active
 priority: high
 area: software
@@ -111,35 +111,12 @@ Il backtesting **non è un'attività una-tantum** che si fa prima di partire: è
 
 ## Tech
 
-> 🌿 **Stato (2026-06-11)**: l'evoluzione descritta in questa sezione (VectorBT default, sweep 3-D, walk-forward, **job notturno schedulato**) vive sul branch **`feat/vectorbt-backtest`**, non ancora su `main`. Su `main` il backend VectorBT è stato *revertato* (resta solo il motore `custom`): main è pulito da VectorBT in attesa del merge del branch. Vedi [[system/decision-log]] 2026-06-11.
-
-### Due backend affiancati (stesso contratto `BacktestResult`)
-Implementati in `tradingagents/backtesting/`, selezionabili via `config.toml [backtest] engine`:
-
-- **`vectorbt`** (default sul branch) — `engine_vbt.py`: motore **vettorizzato** (richiede l'extra `backtest`: `uv sync --extra backtest`). Stessa logica ATR (`k_entry`/`k_stop`/`k_tp`) e **stesso sizing risk-based** (`position_size`) del custom, ma simulato con `vbt.Portfolio.from_signals` (stop/target nativi `sl_stop`/`tp_stop`, `fees` supportate). Calcola anche **Sharpe/Sortino/Calmar/profit_factor**. Serve per **velocità, sweep e walk-forward**.
-- **`custom`** — `engine.py`: motore **event-driven** scritto a mano, scorre le barre intra-bar (`low`/`high`), riusa **le stesse** `indicators.core.atr` + `domain.risk.position_size`. È la **verità 1:1 col live** e resta come riferimento/riconciliazione. Long-only, una posizione alla volta, nessun costo.
-
-> ⚠️ **Insidia nota (riconciliazione)**: VectorBT applica gli stop a livello di **barra** (vettorizzato), il custom **intra-barra** su `low`/`high`. I due **concordano sul segno e l'ordine di grandezza** (verificato con sizing allineato: stesso n. trade e hit-rate, rendimenti vicini), ma **non sono bit-identici**. Prima di tarare soglie in produzione con VectorBT, riconciliare sempre su un caso noto col motore custom.
-
-### VectorBT al massimo: sweep 3-D + walk-forward
-- **`sweep(bars, k_stop_grid, k_tp_grid, atr_period_grid, rank_by)`** — grid-search su **3 dimensioni** (`k_stop` × `k_tp` × `atr_period`), default 5×4×3 = 60 combinazioni per simbolo. Scarta le combo con R:R < 1, ordina per `rank_by` (default **`sharpe`**, più robusto del return puro; alternative: sortino/calmar/total_return/profit_factor). È il "validatore continuo delle soglie" del [[system/decision-log]] 2026-06-04.
-- **`walk_forward(bars, …, n_splits)`** — validazione **out-of-sample** (anti-overfitting): per ogni fold tara i parametri in-sample e li misura out-of-sample; restituisce `oos_mean_sharpe`/`oos_mean_return` e i **`robust_params`** (combo più frequente tra i fold). Affronta la richiesta di walk-forward / significatività di [[strategy/questions-for-salvatore]].
-
-### Job notturno schedulato (il backtest cablato nel sistema)
-- **`backtesting/scheduler.py`**: `run_nightly_backtest` gira lo sweep + walk-forward su **ogni simbolo della watchlist** (fallback: universo), **persiste** i risultati nel DB e — se `apply_robust` — scrive le soglie **mediane** (conservativo) nel `charter`.
-- **Timing**: `seconds_until_hour(hour)` + `nightly_loop` dormono fino all'ora configurata (default **02:00**, mercati chiusi) e ripetono ogni notte; un errore in una run viene loggato e **non uccide mai** lo scheduler.
-- **Persistenza**: tabella **`backtest_results`** (`BacktestResultRow`) con best-params + metriche (Sharpe/Sortino/Calmar) + esito walk-forward (`oos_mean_sharpe`, `robust_params`) + payload (top-5 sweep + fold). La leggerà la dashboard di osservabilità / il learning loop; **non** alimenta il ciclo live direttamente.
-- **CLI**: `python -m tradingagents.cli backtest` (one-shot), `--nightly` (loop notturno), `--apply-robust` (scrive le soglie nel charter).
-- **Daemon**: `cli start` lancia un **secondo processo detached** per il job notturno (PID/log separati in `~/.tradingagents/backtest.{pid,log}`); `stop`/`status` gestiscono entrambi i processi. Configurabile via `[backtest] nightly_enabled` / `nightly_hour`.
-
-### Resto del tech
-- **Costi di transazione**: niente più "10bps fisso" → modello **auto-adattivo** che usa le commissioni reali esposte dall'[[_meta/glossario#Adapter / Wrapper (broker)|adapter]] del broker ([[system/modules/execution]]). Il backend vectorbt accetta `fees` per simularli; il custom oggi li ignora.
-- **Dati**: da `price_bars` nel DB di [[system/modules/data-layer]] (OHLCV stock, timeframe 4h/daily), via `indicators.db.recent_bars` (default `lookback=750` barre per simbolo).
-- **Metriche**: il custom calcola hit-rate, return, max drawdown; il backend vectorbt espone anche **Sharpe/Sortino/Calmar/profit factor** (popolati in `BacktestResult`).
-- **Insidie da evitare**: [[_meta/glossario#Look-Ahead Bias|look-ahead bias]]; **[[_meta/glossario#Overfitting|overfitting]]** (mitigato dal walk-forward) e **significatività statistica vs benchmark** → da definire con Salvatore in [[strategy/questions-for-salvatore]].
+- **VectorBT**: framework Python di backtesting **vettorizzato** (lavora su intere serie storiche con pandas/numpy, molto veloce — testa molte combinazioni di parametri in poco tempo). Usato da MarketSenseAI. Spiegazione nel [[_meta/glossario]].
+- **Costi di transazione**: niente più "10bps fisso" → modello **auto-adattivo** che usa le commissioni reali esposte dall'[[_meta/glossario#Adapter / Wrapper (broker)|adapter]] del broker ([[system/modules/execution]]).
+- **Dati**: da `market_data` nel DB di [[system/modules/data-layer]] (OHLCV stock, timeframe 4h/daily)
+- **Metriche obbligatorie**: Sharpe ratio, Sortino ratio, Max Drawdown, Win Rate, Calmar ratio
+- **Insidie da evitare**: [[_meta/glossario#Look-Ahead Bias|look-ahead bias]]; **[[_meta/glossario#Overfitting|overfitting]]** e **significatività statistica vs benchmark** → da definire con Salvatore in [[strategy/questions-for-salvatore]].
 - **Storico dati**: non abbiamo ancora anni di storico → si raccoglie *mentre* l'alpha gira; il modulo backtesting si aggiunge incrementalmente. Survivorship bias affrontato a sistema maturo.
-
-> **Integrazione nel sistema**: il backtest **non è un tool degli agenti** e **non gira nel ciclo di trading** (l'AI non gira durante la simulazione — decisione 2026-06-04). È un **job offline/asincrono notturno** che legge il DB storico, tara le soglie (`k_stop`/`k_tp`/ATR/sizing) e alimenta il [[system/learning-feedback-loop]]. Gli agenti ne consumano *indirettamente* l'output (le soglie tarate in `config.toml`/`charter`), non lo invocano mai. ✅ **Aggancio runtime fatto** (branch): scheduler notturno nel daemon.
 
 ---
 
@@ -147,8 +124,8 @@ Implementati in `tradingagents/backtesting/`, selezionabili via `config.toml [ba
 
 | Tema | Scelta |
 |------|--------|
-| Framework backtesting | **Due backend** (2026-06-10): `custom` event-driven 1:1 col live (default) + `vectorbt` vettorizzato per sweep/metriche. VectorBT fonte: MarketSenseAI |
-| Costi transazione | Simulare sempre (`fees` nel backend vectorbt; auto-adattivo dal broker a sistema maturo) |
+| Framework backtesting | VectorBT (fonte: MarketSenseAI) |
+| Costi transazione | Simulare sempre (10bps per trade minimo) |
 | Principio | Tool parametrizzabili, non hardcodati |
 
 ## Domande aperte

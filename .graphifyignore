@@ -1,59 +1,17 @@
-# graphify ignore — trading-agent-wiki
-# Le pagine .md di wiki/ SONO incluse (knowledge base curata) per l'estrazione
-# semantica fatta da Hermes. Si escludono solo rumore di tooling e fonti grezze.
-
-# --- Tooling / config dell'editor (rumore: NON sono contenuto) ---
+# Ignora cartelle di configurazione e plugin di Obsidian
 .obsidian/
-.claude/
+
+# Ignora cartelle relative agli agenti, skill e log interni
 .agents/
-.trunk/
-.cursor/
-.kilo/
-.codex/
-.cliner/
-.copilot/
-.windsurf/
-.aider/
-.claw/
-.traes/
-
-# --- Fonti grezze non curate (trascrizioni audio, articoli importati, ecc.) ---
-# Il contenuto strutturato vive in wiki/ — raw/ è la zona di ingresso pre-ingest.
-raw/
-
-# --- Output di graphify stesso ---
-graphify-out/
-
-# --- File binari / media (no estrazione utile) ---
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.svg
-*.ico
-*.pdf
-*.doc
-*.docx
-*.xls
-*.xlsx
-*.ppt
-*.pptx
-*.mp4
-*.mp3
-*.wav
-*.mov
-*.m4a
-*.ogg
-*.canvas
-
-# --- Rumore di root (lockfile, stato browser, script di tooling) ---
+.claude/
+.gemini/
 skills-lock.json
 storage_state.json
-update_graph.sh
 
-# --- Segreti ---
-.env
-.env.*
-.DS_Store
-__pycache__/
-node_modules/
+# Ignora gli output di Graphify per evitare ricorsione
+graphify-out/
+.graphify*
+
+# File temporanei o conflitti
+conflict-files-obsidian-git.md
+*.DS_Store

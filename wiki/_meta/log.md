@@ -2,35 +2,6 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
-## [2026-06-11] CODICE — backtest cablato come job notturno + VectorBT default (branch feat/vectorbt-backtest)
-
-- **Richiesta di Luca**: cablare il backtesting come job schedulato di notte + VectorBT come motore di default al massimo delle potenzialità. Tutto isolato su un **branch dedicato**.
-- **VectorBT default + potenziato**: `config.toml [backtest] engine="vectorbt"`; `BacktestResult` esteso (sharpe/sortino/calmar/profit_factor); `sweep` 3-D (`k_stop`×`k_tp`×`atr_period`, default 5×4×3, ranking Sharpe, skip R:R<1); nuovo `walk_forward` (out-of-sample, anti-overfitting → `robust_params`).
-- **Job notturno**: `backtesting/scheduler.py` (`run_nightly_backtest`, `seconds_until_hour`, `nightly_loop` @ 02:00); persistenza in tabella `backtest_results` (`BacktestResultRow`); opz. `apply_robust` scrive le soglie mediane nel `charter`. CLI `backtest` (`--nightly`/`--apply-robust`); il daemon `start` lancia un 2° processo detached (PID/log `~/.tradingagents/backtest.*`), `stop`/`status` gestiscono entrambi.
-- **Config**: `[backtest]` esteso (engine, grids, nightly_hour, lookback, rank_by, wf_splits). VectorBT resta extra opzionale (`uv sync --extra backtest`), fuori dal runtime core.
-- **Test**: +13 (vbt esteso, walk-forward, scheduler timing/persistenza/loop) → suite **210 verdi**. Smoke end-to-end ok (2 simboli, griglia 60 combo, persistenza, timing 02:00).
-- **Git**: lavoro su **`feat/vectorbt-backtest`** (commit `83639c5`+`46b3260`, pushato). Su `main` il commit VectorBT v1 (`dd359fa`) è stato **revertato** (`d36bad3`, pushato) → main pulito da VectorBT in attesa del merge. Nota: un eventuale auto-sync committa il workspace da solo; il merge futuro va gestito (revert-del-revert o rebase) perché main ha un revert.
-- **WIKI**: `quant-backtesting.md` (sezione Tech riscritta: vbt default, sweep 3-D, walk-forward, job notturno, banner stato-branch), `mvp.md` (backtesting integrato → job notturno), `decision-log.md` (decisione 2026-06-11), `project-board.md` (card ✅ aggiornata + card 🟡 "merge branch").
-
-
-## [2026-06-10] CODICE+WIKI — backtesting VectorBT come 2° backend (discrepanza 1 chiusa)
-
-- **Contesto**: il decision-log decideva "framework backtesting = VectorBT" ma il codice aveva solo un motore custom (VectorBT nemmeno installato). Discrepanza chiusa implementando VectorBT come backend **affiancato**, non sostitutivo.
-- **CODICE** (`trading-agent`): `backtesting/engine_vbt.py` (motore vettorizzato dietro lo stesso `BacktestResult`, `vbt.Portfolio.from_signals` con `sl_stop`/`tp_stop` + sizing risk-based via `position_size` per coerenza col custom) + `sweep(k_stop_grid, k_tp_grid)`; `__init__.py` selettore `backtest(..., engine=)`; `config.py` `BacktestSettings` + `config.toml [backtest]`; dipendenza opzionale `[project.optional-dependencies] backtest = ["vectorbt>=1.0"]` (`uv add --optional backtest`). 6 nuovi test (`tests/test_backtesting_vbt.py`, skip se l'extra manca) + suite 200 verdi.
-- **Riconciliazione**: custom (intra-bar) e vectorbt (bar-level) concordano su n.trade/hit-rate/segno del rendimento con sizing allineato; non bit-identici — documentato come insidia.
-- **Integrazione**: confermato che il backtest **non è un tool degli agenti** e **non gira nel ciclo** (resta job offline/asincrono che tara le soglie); aggancio scheduler ancora da fare.
-- **WIKI**: `quant-backtesting.md` (due backend + insidia riconciliazione + nota integrazione), `decision-log.md` (decisione 2026-06-10), `project-board.md` (card ✅).
-
-
-## [2026-06-10] WIKI — allineamento decision-log/board al codice (analisi discrepanze via grafo)
-
-- **Contesto**: analisi discrepanze wiki↔codice tramite il knowledge graph unificato (Hermes). Trovato che alcune decisioni risultavano *aperte* in wiki ma erano già **implementate** nel codice (la wiki era indietro, non il codice).
-- **`decision-log.md`**: rimosse dalle "Decisioni aperte" **Trigger Engine centralizzato** e **Cost accounting a runtime** (erano 🛠 da fare); aggiunte alla tabella "Decisioni aperte ora chiuse" come **CHIUSA · IMPLEMENTATO alpha v0** con i riferimenti reali al codice (`orchestration/triggers.py` `collect_triggers`; `broker/commission.py` + `execution/costs.py` `assess_costs` nel `run_cycle`). Frontmatter `updated`→2026-06-10.
-- **`canvas-code-mapping.md`**: `market · insider trading` da 🔴 a 🟡 — è raggiungibile come dataflow on-demand (`dataflows/y_finance.get_insider_transactions` + Alpha Vantage), pur senza tabella DB dedicata. `updated`→2026-06-10.
-- **`project-board.md`**: rimosse le due card obsolete da "🟠 Decisioni da prendere" (Trigger Engine, Cost accounting) — già presenti in ✅ Fatto, era un'incoerenza interna.
-- **Restano discrepanze reali documentate**: VectorBT deciso ma non implementato (motore custom in `backtesting/engine.py`; VectorBT non in `pyproject.toml`) → in valutazione; codice non documentato (`ingestion/`, `tools/`, `universe/`, `daemon.py`).
-
-
 ## [2026-06-08] CODICE — Universo + Watchlist + Benchmark + Gerarchia agenti (branch feat/universe-watchlist)
 
 - **Cambio di paradigma** (Luca+Salvatore): autonomia sugli asset + benchmark. Piano approvato (`adaptive-nibbling-puzzle.md`). 5 fasi committate, 190 test verdi.

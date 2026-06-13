@@ -86,7 +86,6 @@ sources:
 
 ## 🟡 In corso
 
-- [ ] 🛠 **Merge del branch `feat/vectorbt-backtest` in main** — il backtesting (VectorBT default + job notturno 02:00 + sweep 3-D + walk-forward) è completo e testato (210 verdi) sul branch, ma **non su main** (dove VectorBT è stato revertato). Al merge serve attenzione: main ha un commit di *revert* di VectorBT v1 → un merge naïve potrebbe non riapplicare le modifiche; usare `git revert` del revert oppure rebase del branch su main → [[system/modules/quant-backtesting]] · [[system/decision-log]]
 - [ ] 🛠 **Roadmap di adattamento del fork** — gap analysis fatta (tengo/elimino/aggiungo); milestone M0→M6. Prossimo: M0 wiring OpenRouter+DeepSeek + run as-is, poi M1 grafo "nostro" → [[system/fork-gap-analysis]]
 - [ ] 🛠 **Progettazione architettura software** — design-first, I/O per ogni modulo, schema DB, flusso end-to-end → [[system/architecture]]
 - [ ] 🛠 **Studio wiki in autonomia** — leggere tutta la wiki prima della prossima sessione con Salvatore → [[_meta/index]]
@@ -100,6 +99,8 @@ sources:
 - [ ] 🛠 **Dashboard read-only osservabilità (stile SFC fund, Streamlit)** (input Luca 2026-06-08) — dopo l'architettura a daemon, l'utente osserva il sistema *in sola lettura*: portafoglio/NAV, watchlist+universo, decisioni/trade, alpha vs benchmark, log. Legge dal DB (`~/.tradingagents/`), **non controlla mai**. Da fare in un secondo momento → [[system/observability-dashboard]]
 - [ ] 🛠 **Memoria inter-task degli agenti** (da progettare/discutere, input Luca 2026-06-07) — come ricordare/recuperare i casi passati tra task per imparare dagli errori: riassunto rolling nel system prompt · tool di recupero super-parametrici (ticker/condizione/momento/esito) · `past_context` popolato · embeddings. Fondazione: `decision_log`+`exit_reason`+`past_context` → [[system/agent-memory]]
 - [ ] 🛠 **Deduplicazione DB di OGNI informazione salvata** (da fare SUCCESSIVAMENTE, input Luca 2026-06-07) — ogni singola info scritta nel DB (prezzi, news, social, macro, fondamentali, rt, ecc.) deve avere una dedup robusta/uniforme. Oggi: check-presenza/dedup_key per famiglia, ma non sistematica su tutto → [[system/modules/data-layer]]
+- [ ] 🛠 **Trigger Engine centralizzato** — un unico componente che raccoglie alert·next_check_date·calendario·synthesis·news e li immette nella coda del funnel (input Luca 2026-06-06); da validare in fase di cycle runner → [[system/trigger-engine]]
+- [ ] 🛠 **Cost accounting a runtime** — commissioni broker + token cost: stima pre-trade (guardrail net-EV) · consuntivo post-fill · net performance al learning loop (input Luca 2026-06-06) → [[system/cost-accounting]]
 - [ ] 🛠 **Implementare lo slice MVP del parallelismo** — coda di priorità (D) + subgraph per-ticker (A); screening (E) e scheda DB (B/C) come strati successivi → [[system/parallelism-design]]
 - [ ] 🔀 **Criteri "info sufficienti" del PM + max iterazioni** — quando fare/non fare un trade → [[system/parallelism-design]]
 - [ ] 🛠 **Forma fine di storage per gli state annidati** — JSON/documentale dentro il time-series → [[system/modules/data-layer]]
@@ -123,10 +124,6 @@ sources:
 
 
 ## ✅ Fatto
-
-- [x] 🛠 **CODICE: backtesting cablato come job notturno + VectorBT default (branch)** ✅ 2026-06-11 — `backtesting/scheduler.py` (`run_nightly_backtest`+`nightly_loop`, default 02:00): sweep 3-D `k_stop`×`k_tp`×`atr_period` (ranking Sharpe) + **walk-forward** out-of-sample per simbolo watchlist → persiste in tabella `backtest_results`; opz. `apply_robust` scrive soglie mediane nel charter. VectorBT engine di default; CLI `backtest --nightly/--apply-robust`; daemon `start` lancia un 2° processo. 210 test verdi. ⚠️ su branch **`feat/vectorbt-backtest`** (NON ancora su main; main revertato) → [[system/modules/quant-backtesting]]
-
-- [x] 🛠 **CODICE: backtesting VectorBT come 2° backend (affiancato)** ✅ 2026-06-10 — `backtesting/engine_vbt.py`: motore vettorizzato dietro lo **stesso** `BacktestResult`; selettore `config.toml [backtest] engine=custom|vectorbt` (`BacktestSettings`); `sweep(k_stop_grid, k_tp_grid)` per validare le soglie in massa; stesso sizing risk-based del custom (`position_size`) → riconciliati (n.trade/hit-rate/segno concordano). Extra opzionale `backtest` (`uv add --optional backtest vectorbt`, fuori dal runtime 24/7). 6 nuovi test + suite **200 verdi**. Custom resta default = verità 1:1 col live → [[system/modules/quant-backtesting]]
 
 - [x] 🛠 **CODICE: ambiente unico = uv (`.venv`)** ✅ 2026-06-07 — pytest come dev-dep nel `pyproject`; `uv sync` provisiona un solo `.venv` (runtime+dev+ib_async); tutto via `uv run`. Risolto il mismatch venv↔pyenv (test che mentivano). Rimossi 2 test orfani del `cli/` fork → [[system/stack]]
 - [x] 🛠 **CODICE: broker Interactive Brokers via TWS API (`ib_async`)** ✅ 2026-06-07 — `broker/ibkr.py` (lo strumento IBKR più completo): connect/placeOrder/positions/accountSummary; config `[broker] provider=ibkr` + host/port/client_id (7497 paper/7496 live). Alpaca verificato sulle doc ufficiali. → [[system/modules/execution]] · [[system/data-providers]]
