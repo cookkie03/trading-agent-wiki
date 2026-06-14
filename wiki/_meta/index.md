@@ -63,6 +63,7 @@
 - [[prior-art/tradingagents/graph-schema]] — schema del grafo TradingAgents (nodi/edge/state)
 
 ### Librerie / progetti riusabili
+- [[prior-art/libraries/datapizza-ai]] — **🤖 PoC in corso** — Datapizza AI framework (agenti + RAG + pipeline, multi-provider, MCP, structured output) — branch `feat/datapizza-migration` 🛠
 - [[prior-art/libraries/cvx-portfolio-optimizer]] — cvx-portfolio-optimizer / `portopt` (libreria quant + piattaforma full-stack: FastAPI, Angular, CLI, scheduler, LLM-views via BAML, broker sync)
 - [[prior-art/libraries/rizzo-trading-agent]] — Rizzo AI Academy: agente LLM di trading funzionante (GPT JSON strict, multi-sorgente, Postgres) — codice riusabile MIT
 - [[prior-art/libraries/sfc-portfolio-tracker]] — SFC: tracker/dashboard fondo in Streamlit (analytics, NAV history, performance/benchmark attribution, PyPortfolioOpt)

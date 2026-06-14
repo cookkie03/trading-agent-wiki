@@ -2,6 +2,15 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-15] MIGRAZIONE — LangGraph → Datapizza AI (branch feat/datapizza-migration)
+
+- **Branch**: `feat/datapizza-migration` su `trading-agent/`
+- **Framework**: [Datapizza AI](https://docs.datapizza.ai/0.1.0/) — agenti + RAG + pipeline, multi-provider (OpenAI, VertexAI, Ollama), MCP, structured output, multi-agent patterns (handoffs, agents-as-tools)
+- **Wiki page**: [[prior-art/libraries/datapizza-ai]]
+- **Stato**: documentazione studiata, analisi mapping LangGraph ↔ Datapizza avviata, PoC da implementare
+- **Motivazione**: semplificazione dell'orchestrazione, meno boilerplate, structured output nativo, migliore osservabilità
+- **Prossimo passo**: implementazione PoC di `brain/analyst_research` e `brain/pm` come Datapizza agents
+
 ## [2026-06-08] CODICE — Universo + Watchlist + Benchmark + Gerarchia agenti (branch feat/universe-watchlist)
 
 - **Cambio di paradigma** (Luca+Salvatore): autonomia sugli asset + benchmark. Piano approvato (`adaptive-nibbling-puzzle.md`). 5 fasi committate, 190 test verdi.
