@@ -50,7 +50,7 @@
 - [[strategy/questions-for-salvatore]] — foglio domande aperte per Salvatore (VaR, overfitting, opzioni, fattori) 📈
 
 **Indicatori:**
-- [[strategy/indicators/macro-indicators]] — framework indicatori macroeconomici (PIL, inflazione, lavoro, politica monetaria, liquidità, obbligazioni, credito, valute, volatilità, flussi, driver azionari) — 12 categorie, draft Salvatore in corso 📈
+- [[strategy/indicators/macro-indicators]] — framework indicatori macroeconomici (PIL, inflazione, lavoro, politica monetaria, liquidità, obbligazioni, credito, valute, volatilità, flussi, driver azionari) — 12 categorie complete 📈
 
 *(metrics/ si popola man mano)*
 

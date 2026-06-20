@@ -635,3 +635,12 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
   - Refactor: `dashboard/app.py` → `dashboard/pages/` + `dashboard/components/`
   - Nuovi moduli: `universe/`, `indicators/`, `benchmark.py`, `performance.py`, `daemon.py`
 - **Notes**: grafo unificato ricostruito. Report HTML aggiornato.
+
+## [2026-06-20] ingest | Ingest indicatori macroeconomici (Salvatore definitivo)
+
+- **Type**: document / note
+- **Pages created**: nessuna
+- **Pages updated**: [[strategy/indicators/macro-indicators]], [[_meta/index]], [[_meta/hot-cache]]
+- **Contradictions**: nessuna
+- **Notes**: Ingestite le sezioni da 2 a 12 del documento `I Driver di Mercato (definitivo).md` redatto da Salvatore, completando così il framework degli indicatori macroeconomici del vault. Il file sorgente è stato archiviato in `raw/archived/`.
+- **Archiviazione**: Archiviate le note giornaliere vecchie (2026-06-03 fino al 2026-06-06) e i file audio `.opus` in `raw/archived/` per mantenere la cartella `raw/` pulita.

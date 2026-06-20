@@ -212,7 +212,6 @@ wiki/
 - **Dynamic Temporal Checkpoints**: feedback loop temporale gestito dall'AI
 
 ## Pending ingest
-- **Indicatori per Analisi Macroeconomica.md** (vault root) — **parziale**: PIL completo, Consumi appena iniziato; Salvatore sta completando le sezioni 2-12. Quando finito → aggiornare [[strategy/indicators/macro-indicators]]
 - **Documento indicatori di valuation** (Salvatore) — atteso, poi TXT + ingest (ognuno dell'associazione cura un indicatore stock)
 - `raw/articles/AlphaArena/` + `optimizer/` + `TradingAgents*` — in raw per consultazione (pagine prior-art già esistenti)
 - `raw/daily-notes/model.md` = template vuoto (resta)
@@ -239,6 +238,8 @@ wiki/
 - **Branch**: `feat/refactor-pipeline` → push su origin
 
 ### WIKI — Sync + graphify rebuild (questa sessione)
+- Ingestite macro-info da `I Driver di Mercato (definitivo).md` in [[strategy/indicators/macro-indicators]] (12 categorie complete) e archiviato il file sorgente
+- Archiviati i file audio `.opus` e le note giornaliere vecchie in `raw/archived/`
 - Aggiornate pagine: [[system/architecture]], [[system/stack]], [[system/modules/agents]], [[prior-art/libraries/datapizza-ai]], [[_meta/index]]
 - Grafo unificato: 3817 nodi, 5674 edges (codice 1366 + wiki 2451, merge)
 - Hot cache aggiornato
