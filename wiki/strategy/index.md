@@ -46,9 +46,7 @@ Ogni metodo descrive una strategia o un approccio: come funziona, quando funzion
 
 Un file per ogni indicatore: cosa misura, come si interpreta, quali parametri ha.
 
-*(Da popolare — Salvatore porta gli indicatori che usa)*
-
-> **In arrivo (2026-05-29)**: Salvatore convertirà in TXT/Obsidian il suo file **market driver** (4 macro-categorie, da arricchire) e preparerà un documento sugli **indicatori di valuation** delle stock (emerso nella call del 2026-05-29).
+*(Da popolare — Salvatore porta gli indicatori che usa)* %%TASK: aggiornare sezione%%
 
 ---
 
