@@ -80,7 +80,7 @@
 
 **Canvas di design**
 - [[architettura.canvas]] — **design corrente del sistema** (topologia 2026-05-29: DB-hub + extraction · PM orchestratore · Analyst Research/Technical · Risk Analyst · Investment State · Trade)
-- [[Architettura langchain.canvas]] — schema concettuale LangGraph (agente = system prompt + LLM + tool) — in `artifacts/architecture/`
+- [[idea-grafi.canvas]] — schema concettuale LangGraph (agente = system prompt + LLM + tool) — in `artifacts/architecture/`
 - [[trading-floor.canvas]] — schema trading floor (versione precedente) — in `artifacts/architecture/`
 - [[tradingagents-graph-finance.canvas]] — vista business del sistema TradingAgents
 
