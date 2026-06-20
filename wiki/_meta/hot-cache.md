@@ -227,3 +227,22 @@ wiki/
 - 🔵 **Consolidare il Prompt Builder** (assemblaggio prompt + contesto XML + schema strict) + rifinitura iterativa LangSmith → [[system/system-prompts]] · [[system/modules/agents]].
 - Verificare in Obsidian che la graph view non abbia orfani inattesi
 - Creare pagine metriche (`sharpe-ratio`, `max-drawdown`, `win-rate`) in `strategy/metrics/` solo quando servono
+
+## Sessione 2026-06-20 — Refactor pipeline + migrazione Datapizza + sync wiki
+
+### CODICE — Refactor pipeline (branch feat/refactor-pipeline, 2026-06-15 → 2026-06-20)
+- **Storage refactor**: `storage/models.py` → `storage/models/` (7 submodules: instrument, market, portfolio, research, trade, backtest, charter); `storage/repository.py` → `storage/repository/` (8 submodules: instrument, market, portfolio, research, trades, events, charter, ticker)
+- **Dashboard refactor**: `dashboard/app.py` → `dashboard/pages/` (overview, ticker, trades, decisions, watchlist, system) + `dashboard/components/` (sidebar, metrics)
+- **Migrazione Datapizza AI** (2026-06-17): rimossi LangGraph, LangChain, `llm_clients/`, `structured.py`, LangSmith. Grafo agenti in `brain/datapizza_graph.py` + `datapizza_director.py` + `datapizza_llm.py` + `datapizza_tools.py`
+- **Dipendenze**: `datapizza-ai>=0.1.0` (nuovo), rimossi `langchain`, `langchain-core`, `langgraph`, `langsmith`
+- **Test**: 133 passati (pytest)
+- **Branch**: `feat/refactor-pipeline` → push su origin
+
+### WIKI — Sync + graphify rebuild (questa sessione)
+- Aggiornate pagine: [[system/architecture]], [[system/stack]], [[system/modules/agents]], [[prior-art/libraries/datapizza-ai]], [[_meta/index]]
+- Grafo unificato: 3817 nodi, 5674 edges (codice 1366 + wiki 2451, merge)
+- Hot cache aggiornato
+
+### Stato prossimo
+- Branch `feat/refactor-pipeline` da mergiare in main
+- Prossimi passi: test E2E, backtest, validazione numeri

@@ -615,3 +615,23 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Conflicts**: nessuna perdita. Verificato che DST non conteneva alcun deliverable di sessione; che la kanban-project-status cancellata era la versione generica (nessun item unico); che le board DST erano più recenti delle versioni di Downloads (→ ricostruzione da DST).
 - **Skipped**: NON migrati gli altri file divergenti tra le due copie (decision-log, stack, system-map, tradingagents-*, ecc.): appartengono al lineage e non fanno parte di questa sessione.
 - **Notes**: i raw non archiviati (sorgenti = URL GitHub). La copia Downloads resta intatta come riferimento.
+
+## [2026-06-20] update | Sync wiki dal codice + rebuild grafo unificato
+
+- **Type**: project-sync + graphify rebuild
+- **Contesto**: aggiornamento wiki per riflettere i cambiamenti al codice dal 2026-06-14 (ultimo graphify rebuild). 12+ commit di refactor sul branch `feat/refactor-pipeline`.
+- **Graphify**: rebuild grafo codice (`trading-agent/`: 1366 nodi, 3403 edge, 74 communities) + grafo wiki (`trading-agent-wiki/`: 2451 nodi, 2271 edge, 325 communities) → merge → **3817 nodi, 5674 edges** in `graphify-out/graph.json`.
+- **Pages updated**:
+  - [[system/architecture]] — sezione "Sequenza di sviluppo" aggiornata (track 1-3 ✅), rimosso riferimento LangGraph, aggiunto framework Datapizza AI
+  - [[system/architecture]] — "Protocollo di comunicazione": LangGraph → Datapizza AI graph
+  - [[system/stack]] — sezione "AI Agent Framework" riscritta: Datapizza AI al posto di LangChain/LangGraph/LangSmith; aggiunta struttura moduli completa e dipendenze pyproject.toml
+  - [[system/modules/agents]] — box stato aggiornato: Datapizza AI al posto di LangGraph; riferimenti file aggiornati
+  - [[prior-art/libraries/datapizza-ai]] — da draft a active; rimossa mappatura "ipotetica"; aggiunta implementazione effettiva con file chiave e mappatura reale
+  - [[_meta/index]] — riga datapizza-ai: "PoC in corso" → "✅ Framework principale"
+- **Cambiamenti chiave documentati**:
+  - Migrazione completa LangGraph → Datapizza AI (2026-06-17)
+  - Rimossi: `llm_clients/`, `structured.py`, LangChain/LangGraph/LangSmith deps
+  - Refactor: `storage/models.py` → `storage/models/` submodules, `storage/repository.py` → `storage/repository/` submodules
+  - Refactor: `dashboard/app.py` → `dashboard/pages/` + `dashboard/components/`
+  - Nuovi moduli: `universe/`, `indicators/`, `benchmark.py`, `performance.py`, `daemon.py`
+- **Notes**: grafo unificato ricostruito. Report HTML aggiornato.

@@ -5,7 +5,7 @@ tags:
   - build
   - architecture
 created: 2026-04-30
-updated: 2026-05-29
+updated: 2026-06-20
 status: active
 priority: high
 area: software
@@ -141,7 +141,7 @@ Output: `research_state` versionato (`alpha`/v1) con esiti `approved`/`declined`
 
 ## Protocollo di comunicazione
 
-Comunicazione via **state condivisi** (LangGraph) + **DB**, non chiamate dirette:
+Comunicazione via **state condivisi** (Datapizza AI graph) + **DB**, non chiamate dirette:
 1. **Moduli/extractor → DB**: ogni componente scrive output strutturati (`module_outputs`, `states`, `reports`)
 2. **DB → agenti**: ogni agente riceve dal DB **solo** i campi che gli servono (evitare context rot: degrado oltre ~50-60% di contesto riempito)
 3. **Agenti → state**: gli analisti compilano lo `research_state`; l'orchestratore lo legge e decide quando "ho info sufficienti"
@@ -152,14 +152,14 @@ Dare a ogni agente solo l'informazione necessaria evita sia l'effetto "telefono 
 
 ## Sequenza di sviluppo
 
-| Track | Chi | Moduli |
-|-------|-----|--------|
-| Track 1 | Luca solo | [[system/modules/data-layer]] |
-| Track 2 | Luca + Salvatore | [[system/modules/quant-backtesting]] |
-| Track 3 | dopo Track 1 | [[system/modules/agents]] (riscrittura del grafo su base TradingAgents) |
-| Post-MVP | tutto il team | Risk Analyst completo, desk di monitoring/evaluation, extractor adattivi, dashboard/Telegram |
+| Track | Stato | Moduli |
+|-------|-------|--------|
+| Track 1 | ✅ Fatto | `storage/` (splittato in `models/` + `repository/` submodules), `domain/`, `ingestion/`, `indicators/`, `broker/`, `execution/`, `dataflows/` |
+| Track 2 | ✅ Fatto | `orchestration/` (cycle, triggers, datapizza_analyze), `brain/` (Datapizza AI graph), `backtesting/`, `benchmark/`, `performance/` |
+| Track 3 | ✅ Fatto | `brain/` (Datapizza AI, non LangGraph), `universe/`, `dashboard/` (splittato in pages/components) |
+| Post-MVP | Aperto | Risk Analyst completo, desk monitoring, adaptive extractor, dashboard/Telegram, learning loop |
 
-> **Approccio sviluppo (2026-05-29)**: si riscrive il grafo tenendo la base di TradingAgents (tool `dataflows` + LLM clients), rifacendo da capo node/edge/state/tool e system prompt. 4 task di engineering: **agenti, state, system prompt, tool**.
+**Framework orchestration (2026-06-17)**: migrazione completa da LangGraph a **Datapizza AI** (`datapizza-ai>=0.1.0`). Rimossi `llm_clients/`, `structured.py`, tutte le dipendenze LangChain/LangGraph. Il grafo degli agenti è ora in `brain/datapizza_graph.py` con `datapizza_director.py` e `datapizza_llm.py`. Vedi [[prior-art/libraries/datapizza-ai]].
 
 ---
 

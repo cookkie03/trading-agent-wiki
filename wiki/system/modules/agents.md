@@ -6,7 +6,7 @@ tags:
   - multi-agent
   - architecture
 created: 2026-05-13
-updated: 2026-06-04
+updated: 2026-06-20
 status: active
 priority: high
 area: software
@@ -21,9 +21,9 @@ related:
 
 # Agents — Portfolio Manager, Desk analisti, Risk Analyst
 
-> 🟢 **Implementato come grafo nostro (alpha v0, 2026-06-06)** — `tradingagents/brain/` (branch `feat/rebuild`), **LangGraph** costruito sulla **nostra** topologia (non quella del fork, rimossa): `START → market → sentiment → technical → fundamentals → PM → Risk → (loop "nel dubbio chiedi", capped) → END`. State = `ResearchState`; nodi = i nostri agenti; PM aggrega `agent_opinions` → direction/conviction + coefficienti ATR; Risk = **gate bear singolo** con `check_guardrails` deterministici **binding** (R:R fallito → SEND_BACK a prescindere dall'LLM). I 6 system prompt in `brain/prompts.py`. Seam `StructuredLLM` (+ `ForkStructuredLLM` su OpenRouter/DeepSeek). Si innesta nel `run_cycle` via `make_brain_analyzer`. Vedi [[system/system-prompts]] · [[system/fork-gap-analysis]].
+> 🟢 **Implementato (2026-06-20)** — `tradingagents/brain/`, grafo **Datapizza AI** (migrazione completa da LangGraph, 2026-06-17): `brain/datapizza_graph.py` (grafo agenti), `brain/datapizza_director.py` (orchestratore), `brain/datapizza_llm.py` (LLM wrapper), `brain/datapizza_tools.py` (tool binding). Topologia: `START → desk (market/sentiment/technical/fundamentals) → PM → Risk → (loop "nel dubbio chiedi", capped) → END`. State = `ResearchState`; PM aggrega `agent_opinions` → direction/conviction + coefficienti ATR; Risk = **gate bear singolo** con `check_guardrails` deterministici **binding**. 6 system prompt in `brain/prompts.py`. Si innesta nel `run_cycle` via `orchestration/datapizza_analyze.py`. Vedi [[system/system-prompts]] · [[system/fork-gap-analysis]] · [[prior-art/libraries/datapizza-ai]].
 >
-> **Tool-calling autonomo (2026-06-07)** — coerente col canvas (`<agent> → Extractors set → DB`): ogni agente **emette le tool call da sé** (loop `bind_tools` in `brain/llm.py`); `build_desk_tools` (`brain/tooling.py`) dà a ciascun agente **tutti i tool utili al compito** (quote real-time-first, prices/news/fundamentals/macro/social = extractor che fetch→rispondono→write-through DB, indicators, volume, portfolio_risk). Mappa canvas↔codice in [[system/canvas-code-mapping]].
+> **Tool-calling autonomo (2026-06-07)** — ogni agente emette le tool call da sé; `datapizza_tools.py` dà a ciascun agente tutti i tool utili (quote real-time-first, prices/news/fundamentals/macro/social = extractor che fetch→rispondono→write-through DB, indicators, volume, portfolio_risk).
 
 Il cuore di ragionamento del sistema: gli agenti LLM che producono la tesi di investimento (`research_state`) e la sottopongono al gate del rischio. Mappa il gruppo **desk (workflow)** di `architettura.canvas` più il nodo **Portfolio Manager**. La conversione finale in trade è deterministica e vive in [[system/modules/execution]].
 
