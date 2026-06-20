@@ -74,7 +74,7 @@
 - [[prior-art/papers/notion-trading-concepts]] — export Notion su trading e investimenti (concetti fondamentali)
 
 ## Syntheses — Analisi trasversali
-- [[syntheses/notebooklm-research-2026-05-13]] — ricerca su TradingAgents, MarketSenseAI, Alpha Arena, Simone Rizzo
+- [[notebooklm-research-2026-05-13]] — ricerca su TradingAgents, MarketSenseAI, Alpha Arena, Simone Rizzo
 
 ## Artifacts — Canvas e board
 

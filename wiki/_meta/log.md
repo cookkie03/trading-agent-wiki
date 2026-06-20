@@ -489,12 +489,12 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 
 ## [2026-05-13] artifact | Canvas + Glossario — artifact duraturi per il team
 - **Pages created**: [[artifacts/mvp-system-cycle.canvas]], [[artifacts/dev-roadmap.canvas]], [[ops/glossario]]
-- **Pages updated**: [[syntheses/notebooklm-research-2026-05-13]] (aggiunti riferimenti precisi ai paper), [[_meta/index]]
+- **Pages updated**: [[notebooklm-research-2026-05-13]] (aggiunti riferimenti precisi ai paper), [[_meta/index]]
 - **Notes**: canvas del ciclo operativo e roadmap di sviluppo per spiegare a Salvatore; glossario aggiornabile in italiano; tabella riferimenti ai paper nella synthesis
 
 ## [2026-05-13] synthesis | Ricerca NotebookLM — Approcci da progetti simili AI+Finance
 - **Type**: research session (NotebookLM query su 43 fonti)
-- **Pages created**: [[syntheses/notebooklm-research-2026-05-13]]
+- **Pages created**: [[notebooklm-research-2026-05-13]]
 - **Pages updated**: [[system/mvp]], [[decisions/decision-log]], [[_meta/index]]
 - **Decisioni chiuse**:
   - Framework backtesting: **VectorBT** (usato da MarketSenseAI)

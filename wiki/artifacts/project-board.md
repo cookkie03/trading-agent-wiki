@@ -67,7 +67,7 @@ sources:
 - [ ] 🛠 **Predisporre il substrato di logging del learning loop** — chain-of-thought + match tesi-per-agente↔esito + `exit_reason`, **da subito** → [[system/learning-feedback-loop]]
 - [ ] 🛠 **Valutare canale Telegram "sala segnali"** — calendario, news, prezzi, trade, alert → [[system/architecture]]
 - [ ] 🛠 **Analizzare FinAgent / AlphaArena / NeuroEspresso (tecnico)** — struttura codice, agenti, comunicazione → [[prior-art/papers/alpha-arena]]
-- [ ] 🛠 **Studiare il Cornell Paper** — fonte citata, da reperire → [[syntheses/notebooklm-research-2026-05-13]]
+- [ ] 🛠 **Studiare il Cornell Paper** — fonte citata, da reperire → [[notebooklm-research-2026-05-13]]
 - [ ] 📈 **Preparare il foglio "Domande per Salvatore"** — VaR, overfitting, test benchmark, opzioni, rating asset → [[strategy/questions-for-salvatore]]
 - [ ] 📈 **Preparare documento indicatori di valuation** — cosa analizzare nelle stock (associazione) → [[strategy/questions-for-salvatore]]
 - [ ] 📈 **Formalizzare i fondamentali** — es. i 5 tipi di P/E, trailing vs current → [[system/modules/quant-backtesting]]
