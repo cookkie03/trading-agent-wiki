@@ -16,7 +16,7 @@ related:
 
 # Benchmark
 
-Una gestione **attiva** ha **sempre un benchmark**: un indice di riferimento, "un numero da superare" (principio del fondo attivo, ricordato da Salvatore da "Atrezzi"). Senza benchmark non c'è un target misurabile né senso nell'investire attivamente (altrimenti meglio comprare un ETF passivo).
+Una gestione **attiva** ha **sempre un benchmark**: un indice di riferimento, "un numero da superare" (principio del fondo attivo, ricordato da Salvatore da "Trezzi"). Senza benchmark non c'è un target misurabile né senso nell'investire attivamente (altrimenti meglio comprare un ETF passivo).
 
 > 🟢 **Implementato (2026-06-08)** — benchmark **dinamico** (`tradingagents/benchmark.py` + `performance.py`): simboli **solo da config** (`[benchmark] symbols`, lista cambiabile; default **SPY**), mai hardcoded; si calcola l'**alpha** (rendimento portafoglio − benchmark). L'**universo investibile** è ora di prima classe (catalogo broker riconciliato) con la **watchlist dinamica** come working set → [[system/universe-watchlist]].
 
