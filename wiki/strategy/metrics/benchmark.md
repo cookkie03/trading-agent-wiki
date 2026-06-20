@@ -22,11 +22,11 @@ Una gestione **attiva** ha **sempre un benchmark**: un indice di riferimento, "u
 
 ## Scelta per il progetto (2026-05-29)
 - **S&P 500** — US, pubbliche, trasparenti, in inglese, info facilmente raggiungibili.
-- **60/40 Vanguard all-world** — riferimento già usato su `trading-agent.lucamanca.synology.me`.
+- **60/40 Vanguard all-world
 - Con la **riserva del 10% di liquidità**, il portafoglio sarà ~**50/40 ÷ 55/35** + 10% cash → un po' meno investito del benchmark, ma puntando a una **selezione attiva** migliore.
 
 ## Idea: selezione attiva dei titoli S&P
-Ridurre l'universo investibile ai **500 titoli dell'S&P**, prendere il **percentile migliore** e battere l'indice. Considerato "l'unico modo realistico per battere l'S&P": universo piccolo, dati trasparenti, niente mercati emerging poco trasparenti.
+Ridurre l'universo investibile ai **titoli del benchmark** (e.g. i titoli dell'S&P500), prendere il **percentile migliore** e battere l'indice. Considerato "l'unico modo realistico per battere il benchmark": universo piccolo, dati trasparenti, niente mercati emerging poco trasparenti.
 
 ## Dati di riferimento (al 2026-05-29)
 - S&P 500: **+29%** sugli ultimi 12 mesi, **+10% YTD**.
