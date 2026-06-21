@@ -22,6 +22,7 @@ related:
 # Data Layer — DB centrale + Extraction
 
 Il componente fondante. Costruisce la pipe vuota su cui poggia tutto il resto: il **DB centrale** (unico punto di verità) e il livello di **estrazione** che lo alimenta. Mappa le due aree sinistre di `architettura.canvas` ([[artifacts/trading-floor]] e i canvas in `artifacts/architecture/`): il grande gruppo **DB** e i tool di estrazione (`Extractors set`, `Adaptive extractor`, `Market Alert`, `calendar tool`, `mantainer`).
+%%tutta la parte di tool di estrazione sarà da riprogettare, centralizzare ed efficientare, separare per funzioni, ecc... ingenerizzarla bene%%
 
 > L'esecuzione ordini e l'exchange sono trattati in [[system/modules/execution]]. Qui sta solo *come i dati entrano e vivono nel DB*.
 
