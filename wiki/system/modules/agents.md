@@ -159,13 +159,14 @@ Obiettivo: **pochi schema potenti e dettagliati**, non tanti frammentati. Patter
 
 ---
 
-## Orchestrazione e Tracciamento: LangGraph + LangSmith
+## Orchestrazione e Tracciamento: LangGraph + LangSmith %%obsoleto, ora siamo a datapizza AI come framewrok, langchain ecosystem dismesso%% 
 
 - **LangGraph** orchestra i workflow multi-agente, **LangChain** definisce nodi/agenti (fork da TradingAgents). `StateGraph` (nodi = agenti, edge = logica condizionale), `ConditionalLogic` per routing dinamico, `Propagator` per inizializzare lo state, checkpointing SQLite per-ticker.
 - **LangSmith (UI/CLI)** come interfaccia centrale per debug, logging, monitoring ed **evaluation**: configurare metriche e raffinare i prompt visualmente prima di consolidarli nel codice.
 
-### Provider LLM: OpenRouter + DeepSeek V4 Pro
+### Provider LLM: OpenRouter con DeepSeek V4 Pro
 **OpenRouter** come router unico verso tutti i provider (agilità). **[[_meta/glossario#DeepSeek|DeepSeek V4 Pro]]** modello principale: sul report NVDA reale (163k input + 20k output token) costa **~$0,09**, contro ~10× di Claude Sonnet 4.6. Vedi [[system/decision-log]] e [[system/stack]].
+%% anche se alla fine, per quanto riguarda il PM, utilizzerei comunque un modello claude di frontiera, tenendo Deep seek per gli altri agent%%
 
 ---
 
