@@ -25,10 +25,12 @@ related:
 >
 > **Tool-calling autonomo (2026-06-07)** — ogni agente emette le tool call da sé; `datapizza_tools.py` dà a ciascun agente tutti i tool utili (quote real-time-first, prices/news/fundamentals/macro/social = extractor che fetch→rispondono→write-through DB, indicators, volume, portfolio_risk).
 
-Il cuore di ragionamento del sistema: gli agenti LLM che producono la tesi di investimento (`research_state`) e la sottopongono al gate del rischio. Mappa il gruppo **desk (workflow)** di `architettura.canvas` più il nodo **Portfolio Manager**. La conversione finale in trade è deterministica e vive in [[system/modules/execution]].
+^01280b
+
+Il cuore di ragionamento del sistema: gli agenti LLM che producono la tesi di investimento (`research_state`) e la sottopongono al gate del rischio. Mappa il gruppo **desk (workflow)** di `[[architettura.canvas]]` più il nodo **Portfolio Manager**. La conversione finale in trade è deterministica e vive in [[system/modules/execution]].
 
 Topologia (canvas):
-
+%%questa parte e topologia è molto rappresentativa, vale la pena valorizzarla%%
 ```
 Portfolio Manager (agente orchestratore / CEO)
   │  ◄── attivato da: alert numerico | periodical synthesis
@@ -48,6 +50,7 @@ Portfolio Manager (agente orchestratore / CEO)
 ## Riferimenti di codice (repo esterni)
 
 - **Prompt Builder + LLM JSON strict**: [[prior-art/libraries/rizzo-trading-agent]] — `main.py` assembla il contesto multi-sorgente con tag XML (`<indicatori>`, `<news>`, `<sentiment>`, `<forecast>`) iniettato in `system_prompt.txt`; `trading_agent.py` usa Structured Output JSON Schema **strict** (template del nostro contratto decisione→ordine), con regole anti-overtrading e attenzione ai costi.
+  %%ha senso ispriarsi a [[rizzo-trading-agent]] per l'engine che inietta i prompt e come prompt builder, ma come knowledge e engineering dei prompt vale la pena riferirsi al codice della repo di  [[code-wiki]]%%
 - **LLM → views ([[_meta/glossario#Black-Litterman|Black-Litterman]])**: [[prior-art/libraries/cvx-portfolio-optimizer]] — `api/baml_src/GenerateViews.baml`: pattern "fattori per asset → views con confidence → Idzorek alpha". L'LLM produce opinioni, la matematica decide i pesi entro i vincoli.
 - **Tool ispirazione**: sezione "Data Retrieval Tools and Utilities" di [[prior-art/tradingagents/code-wiki]] (Fundamental Data, News/Insider Transactions tools).
 
@@ -55,19 +58,20 @@ Portfolio Manager (agente orchestratore / CEO)
 
 ## Portfolio Manager — agente orchestratore (CEO)
 
-Il PM è un **agente LLM** con potere decisionale ed esecutivo (il "CEO" / "GOAT" del tavolo circolare): ha tool verso tutti gli agenti, li chiama come tool, e decide quando *"ho informazioni sufficienti"*. L'umano interviene solo come **override iniziale** finché il sistema non è affidabile (traiettoria augmentation → autonomy).
+Il PM è un **agente LLM** con potere decisionale ed esecutivo (il "CEO" / "GOAT" del tavolo circolare): ha tool verso tutti gli agenti, li chiama come tool, e decide quando *"ho informazioni sufficienti"*. 
 
-- **Trigger di attivazione**: il PM **non** si attiva solo in 2 casi. Le casistiche (elenco di riferimento in [[system/modules/data-layer]]) sono: (a) **alert** numerico/prezzo (target/calendario); (b) **periodical synthesis** (state sintetico a intervalli fissi, rendicontazione + market); (c) **`next_check_date` scaduto** di un investimento precedente → il Dynamic Temporal Checkpoint richiama il PM per rivalutare quella posizione *(input di Luca 2026-06-04)*; (d) news anomale / soglia di variazione (alternative ancora da decidere). Per il resto resta libero e orchestra: chiama agenti → li fa ragionare → genera trade → scrive nel DB.
+- **Trigger di attivazione**: Le casistiche di attivazione (elenco di riferimento in [[system/modules/data-layer]]) sono: (a) **alert** numerico/prezzo (target/calendario); (b) **periodical synthesis** (state sintetico a intervalli fissi, rendicontazione + market); (c) **`next_check_date` scaduto** di un investimento precedente → il Dynamic Temporal Checkpoint richiama il PM per rivalutare quella posizione *(input di Luca 2026-06-04)*; (d) news anomale / soglia di variazione (alternative ancora da decidere). Per il resto resta libero e orchestra: chiama agenti → li fa ragionare → genera trade → scrive nel DB.
 - **Override**: news contro l'idea → cancella/ribalta la posizione.
 - **Istruzione "nel dubbio, chiedi sempre"** (input di Luca 2026-06-04): essendo il decisore finale, il system prompt del PM deve imporgli di **non risolvere mai un dubbio da solo** — in caso di incertezza, *anche minima*, **interroga di nuovo i desk** per più informazioni, **sempre**, prima di chiudere la tesi. Default verso l'approfondimento; i tetti anti-loop ([[system/parallelism-design]]) sono solo rete di sicurezza, e l'**astensione (no-trade)** è preferibile a un trade su basi incerte.
-- **Desk di origination** (i due desk analisti) chiamati dal PM come tool. Serve anche un **desk di monitoring/evaluation** che sorveglia le posizioni esistenti e rifà il processo quando le news cambiano la tesi (evita target obsoleti o posizioni di segno opposto sullo stesso titolo). **Punto di partenza per il design: la dashboard SFC Streamlit** ([[prior-art/libraries/sfc-portfolio-tracker]]) — decisione 2026-06-02.
+- **Desk di origination** (i due desk analisti) chiamati dal PM come tool. Serve anche un **desk di monitoring/evaluation** che sorveglia le posizioni esistenti e rifà il processo quando le news cambiano la tesi (evita target obsoleti o posizioni di segno opposto sullo stesso titolo). **Punto di partenza per il design: la dashboard SFC Streamlit** ([[prior-art/libraries/sfc-portfolio-tracker]]) — decisione 2026-06-02. %%????? non ho capito%%
 - **Orchestrazione multi-ticker** (come il PM analizza N ticker in parallelo senza mescolare gli state) e **criteri di "info sufficienti"** (quando decidere di fare/non fare un trade, evitando loop infiniti): alternative di design in **[[system/parallelism-design]]**.
 
 ### Autonomia totale: nessun input umano oltre l'accensione (input di Luca 2026-06-04)
 Il sistema **non deve richiedere alcun intervento umano** se non l'**accensione del software**. All'avvio il programma fa partire **da solo** i timer della *periodical synthesis* e il *meccanismo di alert*; da lì in poi il PM si auto-attiva sui trigger sopra e opera senza supervisione. L'override umano resta come *possibilità* nelle prime fasi (finché il sistema non è affidabile), non come *requisito* operativo. → decisione in [[system/decision-log]].
 
 ### Attivazione e mercati efficienti
-Le **API funzionano solo a richiesta** (no push news). Risoluzione via **teoria dei mercati efficienti**: i prezzi riflettono le informazioni → un **prezzo anomalo** attiva il monitoring, che poi cerca la spiegazione (news, tassi). Coerente col mid-term: non serve reazione istantanea. Lo **switch di autonomia** si dà nel **system prompt**: "rendere ogni agente quanto più autonomo possibile" è il vero valore aggiunto.
+Le **API funzionano solo a richiesta** (no push news). Risoluzione via **teoria dei mercati efficienti**: i prezzi riflettono le informazioni → un **prezzo anomalo** attiva il monitoring, che poi cerca la spiegazione (news, tassi). Coerente col mid-term: non serve reazione istantanea. Lo **switch di autonomia** si dà nel **system prompt**: "rendere ogni agente quanto più autonomo possibile" è il vero valore aggiunto.%% non ho capito quest'ultima frase%%
+
 
 ---
 
@@ -80,14 +84,15 @@ Due desk (decisione consolidata dal canvas, chiude il dubbio "2 vs 4 agenti"):
 | **Analyst Research** | **Market** + **Sentiment** | Contesto di mercato/macro; sentiment news/social (indicatori da definire, aggrega su Market). |
 | **Analyst Technical** | **Technical** + **Fondamentali (financials)** | Segnali tecnici/quantitativi → [[system/modules/quant-backtesting]]; financials e ratio (es. P/E trailing vs current), aggrega sul Technical. |
 
-I due desk fanno un **loop di conversazione** e convergono su un `research_state`.
+I due desk saranno in grado anche di conversare tra di loro oltre che con il PM in un **loop di conversazione** e convergono su un `research_state`.
 
 ### `research_state` = tesi di investimento completa
 Non solo l'idea, ma: `buy/hold/sell` + **target price entrata + uscita + stop loss + sizing** + pro/contro + livello di **convinzione**. Versionato (`alpha`/v1), esiti `approved`/`declined`. **Schema dettagliato e contratto dei campi → [[system/state-schemas]]** (tutti i campi obbligatori; `position_sizing` incluso, vedi [[system/position-sizing]]).
 
 > **[[_meta/glossario#Conviction Level|Conviction level]]** assegnato dal **Portfolio Manager** date le info degli analisti (decisione 2026-06-02). Fa parte del più ampio [[system/rating-scoring]] (conviction sul trade · scoring del lavoro degli agenti · rating asset per il disinvestimento).
 
-> **Aggregazione `direction` + `conviction`** (deciso 2026-06-04): ogni desk lascia nello state la **propria proposta** (`suggested_direction` + `suggested_conviction`); il **PM raccoglie tutte le opinioni e decide** quella finale — l'aggregazione vive nel nodo PM, non in un nodo desk separato. In prospettiva i **pesi** con cui il PM fida ciascun desk vengono dalla hit-rate storica calcolata dal backtesting → [[system/learning-feedback-loop]] §4. Vedi schema in [[system/state-schemas]].
+>  **Aggregazione `direction` + `conviction`**  %%da capire se implementare%% 
+> (deciso 2026-06-04): ogni desk lascia nello state la **propria proposta** (`suggested_direction` + `suggested_conviction`); il **PM raccoglie tutte le opinioni e decide** quella finale — l'aggregazione vive nel nodo PM, non in un nodo desk separato. In prospettiva i **pesi** con cui il PM fida ciascun desk vengono dalla hit-rate storica calcolata dal backtesting → [[system/learning-feedback-loop]] §4. Vedi schema in [[system/state-schemas]].
 
 > **Head of Analyst eliminato**: il moderatore anti-bias era ridondante. Gli analisti sono la tesi bullish, il Risk Analyst è l'antitesi bearish.
 
@@ -95,7 +100,7 @@ Non solo l'idea, ma: `buy/hold/sell` + **target price entrata + uscita + stop lo
 
 ## Risk Analyst — gate bear + guardrail da Statuto
 
-Posizionato come **gate unico** tra il `research_state` e il Trade.
+Posizionato come **gate unico** tra il `research_state` e il Trade. %% da definire meglio, perché nella mia idea personale e in quella di salvatore, all'inizio il risk analyst aveva lo stesso ruolo degli altri analyst desks e si posizionava in quell'ottica li, ma anche come viene descritta di seguito è una buona idea, valutare%%
 
 - Gli analisti sono per natura **bullish**; il Risk Analyst è l'**antitesi bearish** che cerca di smontare ogni tesi. *"Quando acqua e fuoco si mettono d'accordo, la strategia è davvero buona."*
 - Riceve il `research_state` e dà **`approved` / `declined` + razionale**. Se approva → si va **direttamente** a Investment State → Trade.
