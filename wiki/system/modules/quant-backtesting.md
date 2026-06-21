@@ -1,5 +1,5 @@
 ---
-title: "Quant Agent + Backtesting"
+title: Quant Agent + Backtesting
 type: build
 tags:
   - build
@@ -17,7 +17,7 @@ related:
   - "[[strategy/index]]"
   - "[[strategy/methods/trend-following]]"
   - "[[strategy/methods/factor-investing]]"
-  - "[[syntheses/notebooklm-research-2026-05-13]]"
+  - "[[notebooklm-research-2026-05-13]]"
 ---
 
 # Quant Agent + Backtesting

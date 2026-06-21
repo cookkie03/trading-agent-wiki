@@ -67,9 +67,8 @@ sources:
 - [ ] 🛠 **Predisporre il substrato di logging del learning loop** — chain-of-thought + match tesi-per-agente↔esito + `exit_reason`, **da subito** → [[system/learning-feedback-loop]]
 - [ ] 🛠 **Valutare canale Telegram "sala segnali"** — calendario, news, prezzi, trade, alert → [[system/architecture]]
 - [ ] 🛠 **Analizzare FinAgent / AlphaArena / NeuroEspresso (tecnico)** — struttura codice, agenti, comunicazione → [[prior-art/papers/alpha-arena]]
-- [ ] 🛠 **Studiare il Cornell Paper** — fonte citata, da reperire → [[syntheses/notebooklm-research-2026-05-13]]
+- [ ] 🛠 **Studiare il Cornell Paper** — fonte citata, da reperire → [[notebooklm-research-2026-05-13]]
 - [ ] 📈 **Preparare il foglio "Domande per Salvatore"** — VaR, overfitting, test benchmark, opzioni, rating asset → [[strategy/questions-for-salvatore]]
-- [ ] 📈 **Convertire il file market driver in TXT** — 4 macro-categorie + driver Federal Reserve, arricchito → [[strategy/questions-for-salvatore]]
 - [ ] 📈 **Preparare documento indicatori di valuation** — cosa analizzare nelle stock (associazione) → [[strategy/questions-for-salvatore]]
 - [ ] 📈 **Formalizzare i fondamentali** — es. i 5 tipi di P/E, trailing vs current → [[system/modules/quant-backtesting]]
 - [ ] 📈 **Lista di fattori candidati** — categoria, misurabilità, strumento impattato → [[system/modules/quant-backtesting]]
@@ -187,6 +186,7 @@ sources:
 - [x] 🔀 **Decisione: nessun investimento di capitale prima della prova** ✅ 2026-06-04 sera — solo reinvestimento dei guadagni → [[system/decision-log]]
 - [x] 🔀 **Decisione: feedback esterni solo a sistema finito** ✅ 2026-06-04 sera → [[system/ideas-log]]
 - [x] 📈 **Indicatori macro avanzati (PIL, consumi, inflazione…)** ✅ 2026-06-05 — primo draft Salvatore ingestato → [[strategy/indicators/macro-indicators]]
+- [x] 📈 **Convertire/ingestire file market driver (macro-indicatori)** ✅ 2026-06-20 — Ingestiti interamente i 12 macro-driver completati da Salvatore (definitivo) in [[strategy/indicators/macro-indicators]]
 - [x] 🛠 **Inizializzazione wiki + repository Git**
 - [x] 🔀 **Videochiamate 04-30, 05-06, 05-29** — architettura, TA, topologia agenti → [[system/architecture]]
 - [x] 📈 **Presentazione factor investing / meccanismi di esecuzione / benchmark settore** → [[strategy/methods/factor-investing]]

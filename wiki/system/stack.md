@@ -5,7 +5,7 @@ tags:
   - build
   - infrastructure
 created: 2026-05-13
-updated: 2026-05-29
+updated: 2026-06-20
 status: active
 area: software
 related:
@@ -82,16 +82,98 @@ Scelte tecnologiche confermate per il progetto. Ogni voce ha una motivazione o u
 
 | Componente | Scelta | Motivazione |
 |------------|--------|-------------|
-| Framework agenti | **LangChain** | Confermato 2026-05-23. Ecosistema maturo, ben mantenuto, usato anche da TradingAgents (base del fork) |
-| Workflow / grafi | **LangGraph** | StateGraph con nodi = agenti, edges = logica condizionale, checkpointing SQLite per-ticker |
-| Debug agenti | **LangSmith** | Piattaforma di tracing e debugging integrata nell'ecosistema LangChain |
-| Evaluation | **LangSmith CLI** | Evaluation automatica degli agenti nel terminale (VS Code) |
-| Verifica grafi | **Mermaid (LangGraph built-in)** | LangGraph genera diagrammi Mermaid dei grafi — usare per verificare struttura con coding agent |
+| Framework agenti | **Datapizza AI** (`datapizza-ai>=0.1.0`) | Confermato 2026-06-17. Migrazione completa da LangGraph. Multi-provider, MCP, structured output, RAG, pipeline. Vedi [[prior-art/libraries/datapizza-ai]] |
+| Workflow / grafi | **Datapizza AI Graph** | Grafo agenti in `brain/datapizza_graph.py` con `datapizza_director.py` (orchestratore) e `datapizza_llm.py` (LLM wrapper) |
+| LLM router | **Datapizza LLM layer** | Supporto multi-provider (OpenRouter, DeepSeek, Anthropic, Google…) con interfaccia unificata |
+| Debug/Evaluation | *Da definire* | LangSmith rimosso con LangGraph; valutare opzioni Datapizza-native |
+| Verifica grafi | *Da definire* | Mermaid LangGraph non più disponibile |
 
-### Struttura repo (orientamento 2026-05-23)
+**Rimosso (2026-06-17)**: LangGraph, LangChain, `llm_clients/`, `structured.py`, `LangSmith`. Il grafo è ora 100% Datapizza AI.
 
-- Un subfolder per ogni componente/agente del sistema
-- Un subfolder dedicato alle **liste di tool** disponibili per gli agenti
+### Dipendenze principali (pyproject.toml, 2026-06-20)
+
+```
+datapizza-ai>=0.1.0    # Orchestrazione agenti (al posto di LangGraph)
+sqlalchemy>=2.0        # ORM / DB
+yfinance>=0.2.63       # Dati mercato
+stockstats>=0.6.5      # Indicatori tecnici
+streamlit>=1.58.0      # Dashboard
+plotly>=6.8.0          # Grafici dashboard
+ib_async>=2.0          # IBKR adapter
+backtrader>=1.9.78     # Backtesting (legacy)
+vectorbt>=1.0          # Backtesting (primario, optional)
+redis>=6.2.0           # Cache/SSE
+typer>=0.21.0          # CLI
+rich>=14.0             # Output terminale
+```
+
+### Struttura moduli (2026-06-20)
+
+```
+tradingagents/
+├── app.py                  # Entry point applicativo
+├── cli.py                  # CLI (typer)
+├── config.py               # Settings (broker, risk, charter, screening, cycle, data, costs)
+├── default_config.py       # Default infrastrutturali (vendors, cache, benchmark)
+├── daemon.py               # Daemon background (start/stop/status)
+├── benchmark.py            # Benchmark dinamico
+├── performance.py          # Metriche performance
+├── brain/                  # Datapizza AI graph + agenti
+│   ├── datapizza_graph.py  # Grafo agenti (START→desk→PM→Risk→END)
+│   ├── datapizza_director.py # Orchestratore (direttore/valutatore/desk)
+│   ├── datapizza_llm.py    # LLM wrapper
+│   ├── datapizza_tools.py  # Tool binding per agenti
+│   ├── prompts.py          # 6 system prompt (desk + PM + Risk)
+│   ├── schemas.py          # ResearchState / InvestmentState
+│   ├── agent_context.py    # Contesto per-agente
+│   ├── context.py          # Context management
+│   └── warmup.py           # Warm start (extractor pre-launch)
+├── storage/                # DB layer
+│   ├── database.py         # Connessione DB
+│   ├── models/             # SQLAlchemy models (splittati)
+│   │   ├── instrument.py · market.py · portfolio.py
+│   │   ├── research.py · trade.py · backtest.py · charter.py
+│   └── repository/         # Repository pattern (splittati)
+│       ├── instrument.py · market.py · portfolio.py
+│       ├── research.py · trades.py · events.py · charter.py
+├── domain/                 # Dominio
+│   ├── enums.py            # Direction, Conviction, ecc.
+│   ├── state.py            # Pydantic state
+│   └── risk.py             # Risk engine (ATR, R:R, sizing, guardrail)
+├── ingestion/              # Ingresso dati
+│   ├── price_ingest.py · news_ingest.py · social_ingest.py
+│   ├── fundamentals_ingest.py · macro_ingest.py
+│   └── screening.py        # Screening deterministico
+├── indicators/             # Indicatori tecnici
+│   ├── core.py · db.py
+├── broker/                 # Adapter broker
+│   ├── base.py · paper.py · alpaca.py · ibkr.py
+│   └── commission.py
+├── execution/              # Esecuzione trade
+│   ├── trade.py · submit.py · exits.py · costs.py
+│   ├── portfolio_risk.py · mantainer.py · disinvest.py
+│   └── helpers.py
+├── orchestration/          # Ciclo di vita
+│   ├── cycle.py            # run_cycle / run_forever
+│   ├── triggers.py         # Trigger Engine
+│   └── datapizza_analyze.py # Analyzer hook per Datapizza
+├── dataflows/              # Vendor data fetchers
+│   ├── y_finance.py · yfinance_news.py
+│   ├── stocktwits.py · reddit.py
+│   ├── alpha_vantage_*.py (stock/indicator/news/fundamentals/common)
+│   ├── stockstats_utils.py · interface.py · utils.py · config.py
+├── tools/                  # Tool per agenti
+│   ├── market.py · options.py · portfolio.py
+├── universe/               # Universo investibile
+│   ├── sources.py · sync.py
+├── backtesting/            # Backtesting
+│   ├── engine.py · engine_vbt.py · scheduler.py
+└── dashboard/              # Streamlit dashboard
+    ├── app.py              # App entry
+    ├── db_reader.py · metrics.py
+    ├── components/         # Sidebar, metrics components
+    └── pages/              # Overview, ticker, trades, decisions, watchlist, system
+```
 
 ## Post-MVP (non decidere ora)
 

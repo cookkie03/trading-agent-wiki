@@ -52,6 +52,7 @@ Ogni agente è definito da: **Input** (cosa riceve) · **Tool** (quali tool dell
 - **Output**: `technical_view` — trend, momentum, supporti/resistenze, picchi di volume. **Fornisce l'ATR** che alimenta `entry_price`/`stop_loss`/`take_profit` ([[system/state-schemas]]) e il volatility-adjustment del [[system/position-sizing]]. Riga in `agent_opinions` (contributo primario: **i livelli di entry/stop/target**).
 - **Ragionamento**: trend-following + livelli tecnici; **quantifica la volatilità** (è il fornitore dei numeri ATR per tutto il resto della pipeline).
 - **Stop**: coperti trend + momentum + volatilità (ATR) + livelli chiave.
+  %% qui per ogni output e ragionamento dell'agent, bisognerà definire i tool adatti per velocizzare ed efficientare nel produrre questi calcoli e questi valori in modo deterministico%%
 
 ### Fondamentali (financials) — salute & valuation (bottom-up)
 - **Input**: `ticker`.
@@ -59,6 +60,10 @@ Ogni agente è definito da: **Input** (cosa riceve) · **Tool** (quali tool dell
 - **Output**: `fundamental_view` — salute del bilancio, valuation, crescita, **prossimi earnings come rischio-evento** (gap). Riga in `agent_opinions`.
 - **Ragionamento**: **bottom-up** sul valore intrinseco; flag esplicito se ci sono earnings imminenti (rischio gap che cambia il profilo di rischio del trade).
 - **Stop**: coperti bilancio + ratio + calendario earnings del titolo.
+
+---
+
+%% qui manca il risk analista, definito e descritto come tutti gli altri agent%%
 
 ---
 
@@ -83,3 +88,4 @@ Ogni agente è definito da: **Input** (cosa riceve) · **Tool** (quali tool dell
 
 ## Prossimo passo collegato
 Una volta fissato il comportamento, si scrive il **system prompt** di ciascun agente che lo realizza (Prompt Builder) → [[system/modules/agents]] (decisione aperta).
+

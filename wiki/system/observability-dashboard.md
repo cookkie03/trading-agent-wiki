@@ -1,44 +1,87 @@
 ---
-title: "Dashboard di osservabilità (read-only)"
+title: "Dashboard di osservabilità"
 type: build
 tags:
   - architecture
   - software
   - ux
+  - streamlit
+  - nas
+  - deploy
 created: 2026-06-08
-updated: 2026-06-08
-status: draft
-priority: medium
+updated: 2026-06-13
+status: active
+priority: high
 area: software
 related:
   - "[[system/universe-watchlist]]"
   - "[[system/modules/data-layer]]"
   - "[[prior-art/libraries/sfc-portfolio-tracker]]"
-  - "[[strategy/metrics/benchmark]]"
-confidence: medium
+confidence: high
 ---
 
 # Dashboard di osservabilità (read-only)
 
-> Input di Luca (2026-06-08): fatta l'architettura a **daemon** (il sistema gira in background con `start`/`stop`), l'utente deve poterlo **osservare** tramite una dashboard **di sola lettura**, ispirata a **SFC fund** (Streamlit). **Da progettare/implementare in un secondo momento** — qui solo l'impostazione.
-
-## Principio
-**Osserva, non controlla.** La dashboard legge dal DB (`~/.tradingagents/trading_agent.db` o Postgres) e non invia mai comandi al sistema: il daemon resta l'unico a operare. Nessun pulsante che muove ordini.
-
-## Cosa mostra (bozza)
-- **Portafoglio / rendicontazione**: liquidità, posizioni, distribuzione, P/L, NAV nel tempo (`portfolio_snapshots`).
-- **Performance vs benchmark**: rendimento vs SPY (o i benchmark configurati) → **alpha** (`performance.py`).
-- **Universo & Watchlist**: dimensione universo riconciliato, watchlist corrente con motivo/score, ingressi/uscite.
-- **Decisioni & trade**: ultime tesi (`research_states`/`decision_log`), trade aperti/chiusi con `exit_reason`, opinioni per-agente.
-- **Eventi & trigger**: `ticker_events` imminenti, alert, perché il sistema si è svegliato.
-- **Stato sistema**: daemon running/stopped (PID), ultimo ciclo, log recenti.
-
-## Riferimento
-**SFC portfolio tracker** (Streamlit) → [[prior-art/libraries/sfc-portfolio-tracker]]: analytics, NAV history, attribution, PyPortfolioOpt. Punto di partenza per layout e metriche.
-
-## Note tecniche (future)
-- Streamlit app separata che apre il DB in sola lettura (o repliche/materialized view per non contendere il lock con il daemon).
-- Si lega a **LangSmith / LangGraph Studio** per il tracing degli agenti (osservabilità del ragionamento), complementare alla dashboard di portafoglio.
+> ✅ **Implementata e in produzione** (2026-06-13). Streamlit app multi-pagina, dark theme SFC, accessibile su `https://trading.lucamanca.synology.me`.
 
 ## Stato
-**Aperto / da fare dopo.** Card in [[artifacts/project-board]]; decisione in [[system/decision-log]].
+
+| Componente | Stato | Note |
+|------------|-------|------|
+| Dashboard Streamlit | ✅ Running | `http://100.74.207.0:8501` → 200 |
+| Trading-agent daemon | ✅ Running | PaperBroker, primo ciclo in corso |
+| DB SQLite | ✅ Popolato | 55 ticker, 2 posizioni, NAV $100k |
+| Reverse proxy NAS | ✅ Configurato | `trading.lucamanca.synology.me` → `100.74.207.0:8501` |
+
+## Architettura
+
+```
+Browser → https://trading.lucamanca.synology.me:443
+            ↓
+       Synology NAS (reverse proxy)
+            ↓
+       http://100.74.207.0:8501 (Debian/TailScale)
+            ↓
+       Streamlit → tradingagents/dashboard/app.py
+            ↓
+       SQLite DB → ~/.tradingagents/trading_agent.db
+```
+
+## URL
+
+**Dashboard**: `https://trading.lucamanca.synology.me`
+
+## Avvio / Gestione
+
+```bash
+# Trading-agent daemon
+uv run python -m tradingagents.cli start
+uv run python -m tradingagents.cli status
+uv run python -m tradingagents.cli stop
+tail -f ~/.tradingagents/agent.log
+
+# Streamlit dashboard
+uv run streamlit run tradingagents/dashboard/app.py \
+    --server.headless=true \
+    --server.port=8501 \
+    --server.address=0.0.0.0
+```
+
+## Pagine dashboard
+1. **📊 Dashboard** — KPI (NAV, Sharpe, Max DD, Calmar, vol), grafico NAV vs SPY, drawdown, ultimi trade
+2. **📋 Watchlist** — tabella watchlist con score/direction, dettaglio ticker con candlestick + decision log
+3. **🧠 Decisioni** — decision log con filtri, opinioni per-agente, payload research state
+4. **💹 Trades** — tabella trade con filtri, metriche TP/SL
+5. **📈 Ticker** — analisi singolo simbolo, candlestick, news
+6. **⚙️ Sistema** — stato DB, posizioni, log daemon
+
+## Troubleshooting
+
+### Dashboard non raggiungibile dal browser
+1. Verifica Streamlit: `curl -I http://localhost:8501` → 200
+2. Verifica reverse proxy NAS: log del NAS
+3. Se caricamento infinito: WebSocket bloccato → verificare che il proxy supporti WS upgrade
+
+### Dashboard bianca / errore
+- Controllare log: `journalctl -u trading-agent-dashboard` o output del processo
+- Verificare che il DB esista: `ls -la ~/.tradingagents/trading_agent.db`

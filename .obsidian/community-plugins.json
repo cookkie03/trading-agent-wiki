@@ -2,5 +2,6 @@
   "obsidian-kanban",
   "obsidian-git",
   "editing-toolbar",
-  "find-and-replace-in-selection"
+  "find-and-replace-in-selection",
+  "dataview"
 ]

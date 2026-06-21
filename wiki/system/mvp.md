@@ -111,7 +111,7 @@ Dalla ricerca su TradingAgents, MarketSenseAI, [[_meta/glossario#Alpha Arena|Alp
 - **[[_meta/glossario#Quick Thinker + Deep Thinker|Quick Thinker]] + Deep Thinker**: [[_meta/glossario#DeepSeek|DeepSeek]] (economico) per raccolta dati, DeepSeek o modello più capace solo per la decisione finale
 - **[[_meta/glossario#Rebalancing Gate|Rebalancing Gate]]**: eseguire ordini solo se drift dai pesi target > soglia (es. 5%) — evita overtrading
 
-Vedere [[syntheses/notebooklm-research-2026-05-13]] per la sintesi completa.
+Vedere [[notebooklm-research-2026-05-13]] per la sintesi completa.
 
 ## Riferimenti
 - [[system/architecture]] — architettura completa del sistema

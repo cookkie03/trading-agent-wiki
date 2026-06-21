@@ -1,5 +1,5 @@
 ---
-title: "Rizzo Trading Agent (Rizzo AI Academy)"
+title: Rizzo Trading Agent (Rizzo AI Academy)
 type: source
 tags:
   - multi-agent
@@ -7,7 +7,7 @@ tags:
   - quant
   - software
   - architecture
-raw_source_path: "https://github.com/Rizzo-AI-Academy/rizzo-trading-agent"
+raw_source_path: https://github.com/Rizzo-AI-Academy/rizzo-trading-agent
 created: 2026-05-29
 updated: 2026-05-29
 status: active
@@ -20,7 +20,7 @@ related:
   - "[[system/modules/quant-backtesting]]"
   - "[[system/modules/agents]]"
   - "[[prior-art/papers/alpha-arena]]"
-  - "[[syntheses/notebooklm-research-2026-05-13]]"
+  - "[[notebooklm-research-2026-05-13]]"
 ---
 
 # Rizzo Trading Agent (Rizzo AI Academy)

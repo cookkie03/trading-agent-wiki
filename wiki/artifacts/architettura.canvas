@@ -8,12 +8,12 @@
 		{"id":"408046c23e576637","type":"group","x":680,"y":10,"width":300,"height":200,"color":"2","label":"Analyst Research"},
 		{"id":"592454ab2cdda50d","type":"group","x":680,"y":320,"width":300,"height":200,"color":"2","label":"Analyst Technical"},
 		{"id":"c0103145077cb40d","type":"text","text":"costituzione","x":-1540,"y":-180,"width":250,"height":60,"color":"6"},
-		{"id":"23298215ceb45062","type":"text","text":"tassi di cambio","x":-1200,"y":270,"width":250,"height":60,"color":"6"},
 		{"id":"30196590ecd5919f","type":"text","text":"state periodical sysntesis","x":-640,"y":-40,"width":250,"height":60,"color":"5"},
 		{"id":"e8011f99d5ba5f7d","type":"text","text":"alert","x":-640,"y":-210,"width":250,"height":60,"color":"4"},
 		{"id":"5ebb4f1fae5faac6","type":"text","text":"Market Alert","x":-526,"y":300,"width":250,"height":60,"color":"2"},
 		{"id":"cf2cf77573694a40","type":"text","text":"calendar tool","x":-765,"y":210,"width":250,"height":60,"color":"4"},
 		{"id":"7fdc927afbafc9e3","type":"text","text":"log","x":-1540,"y":300,"width":250,"height":60,"color":"6"},
+		{"id":"8bd5dc0c45213ad6","type":"text","text":"Extractors set","x":-515,"y":520,"width":250,"height":60,"color":"4"},
 		{"id":"61913c7a199602d6","type":"text","text":"states","x":-1540,"y":380,"width":250,"height":60,"color":"6"},
 		{"id":"8a95af0a08fdfdea","type":"text","text":"report","x":-1540,"y":460,"width":250,"height":60,"color":"6"},
 		{"id":"c1569b10d4237447","type":"text","text":"transactions","x":-1540,"y":540,"width":250,"height":60,"color":"6"},
@@ -21,11 +21,11 @@
 		{"id":"627f9bf10d82b88f","type":"text","text":"distribuzione portafoglio con più filtri","x":-1540,"y":40,"width":250,"height":60,"color":"6"},
 		{"id":"dafcbd0dc619a539","type":"text","text":"P/L e metriche di performance portafoglio","x":-1540,"y":120,"width":250,"height":60,"color":"6"},
 		{"id":"3501924d82287c4c","type":"text","text":"prezzi di mercato","x":-1200,"y":-130,"width":250,"height":60,"color":"6"},
-		{"id":"8bd5dc0c45213ad6","type":"text","text":"Extractors set","x":-515,"y":520,"width":250,"height":60,"color":"4"},
 		{"id":"e629032f22b353e6","type":"text","text":"mantainer","x":-1840,"y":220,"width":250,"height":60,"color":"4"},
+		{"id":"09b2e357f4003d6d","type":"text","text":"calendario economico","x":-1200,"y":-50,"width":250,"height":60,"color":"6"},
+		{"id":"23298215ceb45062","type":"text","text":"tassi di cambio","x":-1200,"y":270,"width":250,"height":60,"color":"6"},
 		{"id":"327facd254304bf9","type":"text","text":"indicatori macro","x":-1200,"y":110,"width":250,"height":60,"color":"6"},
 		{"id":"269d4251a76014a0","type":"text","text":"insider trading","x":-1200,"y":190,"width":250,"height":60,"color":"6"},
-		{"id":"09b2e357f4003d6d","type":"text","text":"calendario economico","x":-1200,"y":-50,"width":250,"height":60,"color":"6"},
 		{"id":"ccb4fdbe7eda5060","type":"text","text":"news","x":-1200,"y":30,"width":250,"height":60,"color":"6"},
 		{"id":"5a60d83a9faf6c67","type":"text","text":"Portfolio manager (CEO, human)","x":-120,"y":160,"width":250,"height":60,"color":"2"},
 		{"id":"7d86e86f7265d115","type":"text","text":"Adaptive extractor","x":-950,"y":-380,"width":250,"height":50,"color":"4"},
@@ -35,7 +35,8 @@
 		{"id":"9d71da539485d7e1","type":"text","text":"Fondamentali (financials)","x":702,"y":440,"width":250,"height":60,"color":"2"},
 		{"id":"69e019ff85d7b241","type":"text","text":"Risk Analyst (statuto, bear)","x":702,"y":560,"width":250,"height":60,"color":"2"},
 		{"id":"21ba9a61417f165c","type":"text","text":"Tecnical","x":702,"y":340,"width":250,"height":60,"color":"2"},
-		{"id":"1ee7a468ac55c8a5","type":"text","text":"Investment State","x":160,"y":620,"width":250,"height":60,"color":"5"}
+		{"id":"1ee7a468ac55c8a5","type":"text","text":"Investment State","x":160,"y":620,"width":250,"height":60,"color":"5"},
+		{"id":"404edc5bf484c463","type":"text","text":"Analyzer (potenzialmente multiplo)","x":210,"y":-70,"width":250,"height":60,"color":"2"}
 	],
 	"edges":[
 		{"id":"a1b06c41dab6e530","fromNode":"7d86e86f7265d115","fromSide":"bottom","toNode":"bf2a803a8c5e52dc","toSide":"top"},
@@ -56,11 +57,11 @@
 		{"id":"900afaba529fadc8","fromNode":"8bd5dc0c45213ad6","fromSide":"right","toNode":"5a60d83a9faf6c67","toSide":"left"},
 		{"id":"669a29cb1e736867","fromNode":"69e019ff85d7b241","fromSide":"left","toNode":"8bd5dc0c45213ad6","toSide":"right"},
 		{"id":"63f5cf252201267c","fromNode":"ccb4fdbe7eda5060","fromSide":"right","toNode":"408046c23e576637","toSide":"left"},
-		{"id":"7f6386eed3e899cc","fromNode":"5a60d83a9faf6c67","fromSide":"right","toNode":"c632176506f565ee","toSide":"left"},
-		{"id":"42e678a49534e2c9","fromNode":"5a60d83a9faf6c67","fromSide":"right","toNode":"a96ecfb39005c9da","toSide":"left"},
-		{"id":"2198e0bfcfdfa31b","fromNode":"5a60d83a9faf6c67","fromSide":"right","toNode":"21ba9a61417f165c","toSide":"left"},
-		{"id":"618dacaa590428f6","fromNode":"5a60d83a9faf6c67","fromSide":"right","toNode":"9d71da539485d7e1","toSide":"left"},
-		{"id":"c0664cc287773a1b","fromNode":"5a60d83a9faf6c67","fromSide":"right","toNode":"69e019ff85d7b241","toSide":"left"},
+		{"id":"7f6386eed3e899cc","fromNode":"404edc5bf484c463","fromSide":"right","toNode":"c632176506f565ee","toSide":"left"},
+		{"id":"42e678a49534e2c9","fromNode":"404edc5bf484c463","fromSide":"right","toNode":"a96ecfb39005c9da","toSide":"left"},
+		{"id":"2198e0bfcfdfa31b","fromNode":"404edc5bf484c463","fromSide":"right","toNode":"21ba9a61417f165c","toSide":"left"},
+		{"id":"618dacaa590428f6","fromNode":"404edc5bf484c463","fromSide":"right","toNode":"9d71da539485d7e1","toSide":"left"},
+		{"id":"c0664cc287773a1b","fromNode":"404edc5bf484c463","fromSide":"right","toNode":"69e019ff85d7b241","toSide":"left"},
 		{"id":"1a6f764db0618156","fromNode":"c632176506f565ee","fromSide":"right","toNode":"a96ecfb39005c9da","toSide":"right"},
 		{"id":"f82a368338482de2","fromNode":"c632176506f565ee","fromSide":"right","toNode":"21ba9a61417f165c","toSide":"right"},
 		{"id":"147fe5cd69900717","fromNode":"c632176506f565ee","fromSide":"right","toNode":"9d71da539485d7e1","toSide":"right"},
@@ -78,6 +79,7 @@
 		{"id":"5da7a345513ed445","fromNode":"5a60d83a9faf6c67","fromSide":"bottom","toNode":"1ee7a468ac55c8a5","toSide":"top"},
 		{"id":"82dca2937861699c","fromNode":"1ee7a468ac55c8a5","fromSide":"bottom","toNode":"21f7e7c6b4f24727","toSide":"right"},
 		{"id":"49fc1fb98942599f","fromNode":"7042a1364f8d5c35","fromSide":"bottom","toNode":"1ee7a468ac55c8a5","toSide":"right"},
-		{"id":"3e8bd5365b947b8c","fromNode":"5a60d83a9faf6c67","fromSide":"left","toNode":"5ebb4f1fae5faac6","toSide":"right"}
+		{"id":"3e8bd5365b947b8c","fromNode":"5a60d83a9faf6c67","fromSide":"left","toNode":"5ebb4f1fae5faac6","toSide":"right"},
+		{"id":"e4581e580474aea9","fromNode":"5a60d83a9faf6c67","fromSide":"right","toNode":"404edc5bf484c463","toSide":"left"}
 	]
 }

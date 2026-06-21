@@ -50,7 +50,7 @@
 - [[strategy/questions-for-salvatore]] — foglio domande aperte per Salvatore (VaR, overfitting, opzioni, fattori) 📈
 
 **Indicatori:**
-- [[strategy/indicators/macro-indicators]] — framework indicatori macroeconomici (PIL, inflazione, lavoro, politica monetaria, liquidità, obbligazioni, credito, valute, volatilità, flussi, driver azionari) — 12 categorie, draft Salvatore in corso 📈
+- [[strategy/indicators/macro-indicators]] — framework indicatori macroeconomici (PIL, inflazione, lavoro, politica monetaria, liquidità, obbligazioni, credito, valute, volatilità, flussi, driver azionari) — 12 categorie complete 📈
 
 *(metrics/ si popola man mano)*
 
@@ -63,6 +63,7 @@
 - [[prior-art/tradingagents/graph-schema]] — schema del grafo TradingAgents (nodi/edge/state)
 
 ### Librerie / progetti riusabili
+- [[prior-art/libraries/datapizza-ai]] — **✅ Framework principale** — Datapizza AI (agenti + RAG + pipeline, multi-provider, MCP, structured output) — sostituisce LangGraph dal 2026-06-17 🛠
 - [[prior-art/libraries/cvx-portfolio-optimizer]] — cvx-portfolio-optimizer / `portopt` (libreria quant + piattaforma full-stack: FastAPI, Angular, CLI, scheduler, LLM-views via BAML, broker sync)
 - [[prior-art/libraries/rizzo-trading-agent]] — Rizzo AI Academy: agente LLM di trading funzionante (GPT JSON strict, multi-sorgente, Postgres) — codice riusabile MIT
 - [[prior-art/libraries/sfc-portfolio-tracker]] — SFC: tracker/dashboard fondo in Streamlit (analytics, NAV history, performance/benchmark attribution, PyPortfolioOpt)
@@ -73,13 +74,13 @@
 - [[prior-art/papers/notion-trading-concepts]] — export Notion su trading e investimenti (concetti fondamentali)
 
 ## Syntheses — Analisi trasversali
-- [[syntheses/notebooklm-research-2026-05-13]] — ricerca su TradingAgents, MarketSenseAI, Alpha Arena, Simone Rizzo
+- [[notebooklm-research-2026-05-13]] — ricerca su TradingAgents, MarketSenseAI, Alpha Arena, Simone Rizzo
 
 ## Artifacts — Canvas e board
 
 **Canvas di design**
 - [[architettura.canvas]] — **design corrente del sistema** (topologia 2026-05-29: DB-hub + extraction · PM orchestratore · Analyst Research/Technical · Risk Analyst · Investment State · Trade)
-- [[Architettura langchain.canvas]] — schema concettuale LangGraph (agente = system prompt + LLM + tool) — in `artifacts/architecture/`
+- [[idea-grafi.canvas]] — schema concettuale LangGraph (agente = system prompt + LLM + tool) — in `artifacts/architecture/`
 - [[trading-floor.canvas]] — schema trading floor (versione precedente) — in `artifacts/architecture/`
 - [[tradingagents-graph-finance.canvas]] — vista business del sistema TradingAgents
 

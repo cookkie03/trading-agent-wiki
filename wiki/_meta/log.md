@@ -2,6 +2,15 @@
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-06-15] MIGRAZIONE — LangGraph → Datapizza AI (branch feat/datapizza-migration)
+
+- **Branch**: `feat/datapizza-migration` su `trading-agent/`
+- **Framework**: [Datapizza AI](https://docs.datapizza.ai/0.1.0/) — agenti + RAG + pipeline, multi-provider (OpenAI, VertexAI, Ollama), MCP, structured output, multi-agent patterns (handoffs, agents-as-tools)
+- **Wiki page**: [[prior-art/libraries/datapizza-ai]]
+- **Stato**: documentazione studiata, analisi mapping LangGraph ↔ Datapizza avviata, PoC da implementare
+- **Motivazione**: semplificazione dell'orchestrazione, meno boilerplate, structured output nativo, migliore osservabilità
+- **Prossimo passo**: implementazione PoC di `brain/analyst_research` e `brain/pm` come Datapizza agents
+
 ## [2026-06-08] CODICE — Universo + Watchlist + Benchmark + Gerarchia agenti (branch feat/universe-watchlist)
 
 - **Cambio di paradigma** (Luca+Salvatore): autonomia sugli asset + benchmark. Piano approvato (`adaptive-nibbling-puzzle.md`). 5 fasi committate, 190 test verdi.
@@ -480,12 +489,12 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 
 ## [2026-05-13] artifact | Canvas + Glossario — artifact duraturi per il team
 - **Pages created**: [[artifacts/mvp-system-cycle.canvas]], [[artifacts/dev-roadmap.canvas]], [[ops/glossario]]
-- **Pages updated**: [[syntheses/notebooklm-research-2026-05-13]] (aggiunti riferimenti precisi ai paper), [[_meta/index]]
+- **Pages updated**: [[notebooklm-research-2026-05-13]] (aggiunti riferimenti precisi ai paper), [[_meta/index]]
 - **Notes**: canvas del ciclo operativo e roadmap di sviluppo per spiegare a Salvatore; glossario aggiornabile in italiano; tabella riferimenti ai paper nella synthesis
 
 ## [2026-05-13] synthesis | Ricerca NotebookLM — Approcci da progetti simili AI+Finance
 - **Type**: research session (NotebookLM query su 43 fonti)
-- **Pages created**: [[syntheses/notebooklm-research-2026-05-13]]
+- **Pages created**: [[notebooklm-research-2026-05-13]]
 - **Pages updated**: [[system/mvp]], [[decisions/decision-log]], [[_meta/index]]
 - **Decisioni chiuse**:
   - Framework backtesting: **VectorBT** (usato da MarketSenseAI)
@@ -606,3 +615,32 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Conflicts**: nessuna perdita. Verificato che DST non conteneva alcun deliverable di sessione; che la kanban-project-status cancellata era la versione generica (nessun item unico); che le board DST erano più recenti delle versioni di Downloads (→ ricostruzione da DST).
 - **Skipped**: NON migrati gli altri file divergenti tra le due copie (decision-log, stack, system-map, tradingagents-*, ecc.): appartengono al lineage e non fanno parte di questa sessione.
 - **Notes**: i raw non archiviati (sorgenti = URL GitHub). La copia Downloads resta intatta come riferimento.
+
+## [2026-06-20] update | Sync wiki dal codice + rebuild grafo unificato
+
+- **Type**: project-sync + graphify rebuild
+- **Contesto**: aggiornamento wiki per riflettere i cambiamenti al codice dal 2026-06-14 (ultimo graphify rebuild). 12+ commit di refactor sul branch `feat/refactor-pipeline`.
+- **Graphify**: rebuild grafo codice (`trading-agent/`: 1366 nodi, 3403 edge, 74 communities) + grafo wiki (`trading-agent-wiki/`: 2451 nodi, 2271 edge, 325 communities) → merge → **3817 nodi, 5674 edges** in `graphify-out/graph.json`.
+- **Pages updated**:
+  - [[system/architecture]] — sezione "Sequenza di sviluppo" aggiornata (track 1-3 ✅), rimosso riferimento LangGraph, aggiunto framework Datapizza AI
+  - [[system/architecture]] — "Protocollo di comunicazione": LangGraph → Datapizza AI graph
+  - [[system/stack]] — sezione "AI Agent Framework" riscritta: Datapizza AI al posto di LangChain/LangGraph/LangSmith; aggiunta struttura moduli completa e dipendenze pyproject.toml
+  - [[system/modules/agents]] — box stato aggiornato: Datapizza AI al posto di LangGraph; riferimenti file aggiornati
+  - [[prior-art/libraries/datapizza-ai]] — da draft a active; rimossa mappatura "ipotetica"; aggiunta implementazione effettiva con file chiave e mappatura reale
+  - [[_meta/index]] — riga datapizza-ai: "PoC in corso" → "✅ Framework principale"
+- **Cambiamenti chiave documentati**:
+  - Migrazione completa LangGraph → Datapizza AI (2026-06-17)
+  - Rimossi: `llm_clients/`, `structured.py`, LangChain/LangGraph/LangSmith deps
+  - Refactor: `storage/models.py` → `storage/models/` submodules, `storage/repository.py` → `storage/repository/` submodules
+  - Refactor: `dashboard/app.py` → `dashboard/pages/` + `dashboard/components/`
+  - Nuovi moduli: `universe/`, `indicators/`, `benchmark.py`, `performance.py`, `daemon.py`
+- **Notes**: grafo unificato ricostruito. Report HTML aggiornato.
+
+## [2026-06-20] ingest | Ingest indicatori macroeconomici (Salvatore definitivo)
+
+- **Type**: document / note
+- **Pages created**: nessuna
+- **Pages updated**: [[strategy/indicators/macro-indicators]], [[_meta/index]], [[_meta/hot-cache]]
+- **Contradictions**: nessuna
+- **Notes**: Ingestite le sezioni da 2 a 12 del documento `I Driver di Mercato (definitivo).md` redatto da Salvatore, completando così il framework degli indicatori macroeconomici del vault. Il file sorgente è stato archiviato in `raw/archived/`.
+- **Archiviazione**: Archiviate le note giornaliere vecchie (2026-06-03 fino al 2026-06-06) e i file audio `.opus` in `raw/archived/` per mantenere la cartella `raw/` pulita.

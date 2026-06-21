@@ -37,6 +37,7 @@ related:
 - Indicatori tecnici per rilevare il trend (MACD, RSI, medie mobili, [[_meta/glossario#Pivot Points|Pivot Points]])
 - Segnali di conferma del breakout (volume anomalo, rottura livelli chiave)
 - SL/TP definiti per limitare il rischio di falsi segnali
+- Capire quali sono effettivamente gli indicatori utilizzati oppure individuare i segnali che permettono di capire quando gli istituzionali stanno entrando o uscendo dal mercato (es: analisi sui volumi di scambio, che però non sono sempre disponibili in quanto gli istituzonali fanno spesso trade su mercati OTC e non pubblici)
 
 ---
 
@@ -46,6 +47,7 @@ related:
 - Non richiede previsioni sui fondamentali
 - Funziona su qualsiasi asset liquido (crypto, equity)
 - La strategia più immediata come punto di partenza
+%%proprio perché facile da implementare seocndo me va incluso come tool/feature%%
 
 ## Limiti
 
@@ -62,6 +64,7 @@ related:
 - MACD
 - RSI
 - Pivot Points (riferimenti spaziali per capire dove siamo nel movimento)
+%%non ha senso fare riferimento direttamente a [[macro-indicators]] e la loro cartella indicators%%
 
 ---
 

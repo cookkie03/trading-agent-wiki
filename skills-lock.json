@@ -156,6 +156,12 @@
       "sourceType": "github",
       "skillPath": "wiki-save/SKILL.md",
       "computedHash": "35b6e7f3ae29e9a3a00302826410858bdd01d06c2906ae690ce85a235101d7eb"
+    },
+    "workspace-setup": {
+      "source": "cookkie03/skills",
+      "sourceType": "github",
+      "skillPath": "workspace-setup/SKILL.md",
+      "computedHash": "7f1f324032f445ac1efbd589389d102626148cfa81960fe0ac780151dea2fea1"
     }
   }
 }
