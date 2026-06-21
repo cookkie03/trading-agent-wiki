@@ -30,6 +30,8 @@ Il componente fondante. Costruisce la pipe vuota su cui poggia tutto il resto: i
 
 > 🟢 **Connettori dati implementati (alpha v0, 2026-06-06)** — pacchetto `tradingagents/ingestion/` (branch `feat/data-ingestion`): `price_ingest.py` con `PriceFetcher` (protocol) + `YFinanceFetcher` (adapter reale) + `ingest_price_bars()` **DB-first** (check-presenza: non riscarica lo storico immutabile · write-through su `price_bars`); `screening.py` con `compute_screening_signals()` deterministico (no LLM, Quick Thinker) + `screen_ticker()` che scrive `ticker_card.screening_score` → input della coda di priorità del funnel ([[system/parallelism-design]]). 5 test unit (fake fetcher offline) + 1 integration yfinance reale, verdi. **NB**: i `dataflows/` del fork restituiscono testo per gli LLM; questa è la via *strutturata* che popola il DB (le due convivono).
 
+%%nel nuovo tree di progetti mi immagino dei subfolder simili a: connectors (fetcher, per i collegamenti a software esterni), capabilities (come tool che trattano i dati, es per calcolare indicatori complessi)..., database (per schemas, apis, ecc...), agents (con tutti gli schema degli agent, i prompt, i grafi, ecc...)...%%
+
 > 🟢 **Esteso (2026-06-06) — tutte le famiglie dati dei desk wired**: oltre ai prezzi, si ingeriscono **news** (`NewsItem`/`ingest_news`/`YFinanceNewsFetcher`), **fondamentali** (`FundamentalSnapshot`/`ingest_fundamentals`/`YFinanceFundamentalsFetcher`), **macro** (`MacroPoint`/`ingest_macro`/`FredFetcher`, `DEFAULT_MACRO_SERIES`), **social** (`SocialPost`/`ingest_social`/`StockTwitsFetcher` keyless). Tutti DB-first con dedup. **I 4 desk leggono dati reali dal DB**: Market (macro+news), Sentiment (news+social), Technical (indicatori da `price_bars`), Fondamentali (metrics). Mancano ancora: queue + adaptive extractor (rate-limit), mantainer, Reddit/X come fonti social aggiuntive.
 
 ---
@@ -44,22 +46,22 @@ Il componente fondante. Costruisce la pipe vuota su cui poggia tutto il resto: i
 
 ## DB centrale — il blocco sempre acceso
 
-Unico punto di verità del sistema: tutti i moduli/extractor scrivono qui, gli agenti leggono da qui (solo i campi che servono). Ispirato alla dashboard **Streamlit di SFC**; obiettivo dichiarato: una **replica custom di Yahoo Finance** specifica per il progetto.
+Unico punto di verità del sistema: tutti i moduli/extractor scrivono qui, gli agenti ricevono sempre dai moduli/extractor, ma se servono info non live leggono da qui (solo i campi che servono). Ispirato alla dashboard **Streamlit di SFC**; obiettivo dichiarato: una **replica custom di Yahoo Finance** specifica per il progetto.
 
 Le **5 tabelle core** sono la base SQL minima; il design organizza i dati in **4 aree logiche** (i quattro sotto-gruppi del blocco DB nel canvas):
 
-| Area logica | Contenuto (nodi canvas) | Tabella core |
-|-------------|-------------------------|--------------|
-| **1. Rendicontazione portafoglio** | Liquidità corrente/investita · distribuzione con più filtri (geo, asset class, **settore**, **duration**) · P/L e metriche di performance. Modello a **oggetti** (riga = posizione, colonna = caratteristica). | `portfolio_state` (esteso) |
-| **2. Dati live** (aggiornati di continuo) | Prezzi di mercato · calendario economico · news · indicatori macro · **insider trading** (institutional positions) · **tassi di cambio** | `market_data` (esteso) |
-| **3. Costituzione / Statuto** | Regole deterministiche del fondo, al **centro** (base di rendicontazione e dati live) → la logica vive in [[system/modules/agents]] (Statuto del Fondo) | *(nuova)* `charter` / parametri |
-| **4. Log** | `log`, `states`, `report`, `transactions` — storico completo | `logs` + `trades` |
-
+| Area logica                               | Contenuto (nodi canvas)                                                                                                                                                                                        | Tabella core                    |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| **1. Rendicontazione portafoglio**        | Liquidità corrente/investita · distribuzione con più filtri (geo, asset class, **settore**, **duration**) · P/L e metriche di performance. Modello a **oggetti** (riga = posizione, colonna = caratteristica). | `portfolio_state` (esteso)      |
+| **2. Dati live** (aggiornati di continuo) | Prezzi di mercato · calendario economico · news · indicatori macro · **insider trading** (institutional positions) · **tassi di cambio**                                                                       | `market_data` (esteso)          |
+| **3. Costituzione / Statuto**             | Regole deterministiche del fondo, al **centro** (base di rendicontazione e dati live) → la logica vive in [[system/modules/agents]] (Statuto del Fondo)                                                        | *(nuova)* `charter` / parametri |
+| **4. Log**                                | `log`, `states`, `report`, `transactions` — storico completo                                                                                                                                                   | `logs` + `trades`               |
+%%diciamo che ogni dato grezzo, ogni indicatore calcolato, ogni cosa, va tenuta e gli va dato uno spazio nel db, con logica e testa, quindi per esempio nel db tengo principalmetne dati grezzi e adotto funzoni python che calcolano al momento indicatori complessi sui dati grezzi; in generale il prinicpio cardine è non perdere nessun dato fondamentale%%
 > `module_outputs` (5ª core) resta come buffer degli output strutturati per ciclo, confluendo nell'area Log (`states`/`report`).
 
 ### Retention / clustering
 La memoria cresce troppo → niente troncamento secco: **clusterizzare + riassumere + cancellare progressivamente** tenendo i riassunti. Ipotesi: ~5 anni giornaliero, 5-10 settimanale, 10-30 mensile. Hardware: hard disk esterni (es. 20TB ~500€). Molti dati vecchi sono recuperabili online (Yahoo Finance; Reuters ora a pagamento).
-
+%%siccome vorrei una retention quanto più alta possibile, sicuramente vorrei tenere quante più info possibili anche oltre i 5 anni, eliminando prima le informazioni pubbliche facilmente accessibli (es: yahoo finance), poi passando per la compressione di testo in linguaggio naturale e poi con la clusterizzazione dei dati se proprio necessario, ma eviterei e cercherei di tenere quanti più dati possibili (l'ottica èq uella di raccogliere dati sufficienti per tot anni per costruirici modelli fine tunati sulle esegienze, quindi piu dati ho meglio è%%
 ### Forma di storage (decisione 2026-06-02)
 **Principalmente [[_meta/glossario#Time-series DB|time-series]]**, ma con DB e **architetture a oggetti internamente** (Luca: *"qualcosa di time-series, ma con db e architetture anche ad oggetti internamente al db"*). Lettura per area:
 - **Dati live / prezzi / macro** → time-series (cuore del sistema);
@@ -76,19 +78,19 @@ Resta aperta solo la **forma fine per i singoli stati annidati** (orientamento 2
 
 Primo set di tool degli agenti. Si agganciano al DB (**DB-first**), non ai vendor direttamente: ogni dato è scritto nel DB prima di essere reso disponibile agli agenti.
 
-| Componente (nodo canvas) | Funzione |
-|--------------------------|----------|
-| **Extractors set** | Estraggono le info di mercato e le scrivono **sia nel DB sia verso gli agenti**. |
-| **Adaptive extractor** | Frequenza **adattiva** in base alla vicinanza al target (entro ~30% dal target → alta frequenza/"modalità rischio"; lontano → daily). Risparmia compute e rispetta i **rate limit** delle API. |
-| **Market Alert** | Riceve dagli adaptive extractor; unico tool = **calendar tool** che scrive eventi nel **calendario economico** (es. data uscita prodotto, trimestrali). |
-| **calendar tool** | Scrive/legge gli eventi del calendario economico; alla corrispondenza data/ora scatta l'**alert** (solo numerico/prezzo) verso il Portfolio Manager. |
+| Componente (nodo canvas) | Funzione                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Extractors set**       | Estraggono le info di mercato e le scrivono **sia nel DB sia verso gli agenti**.                                                                                                                                                                                                                                                                                                                                                    |
+| **Adaptive extractor**   | Frequenza **adattiva** in base alla vicinanza al target (entro ~30% dal target → alta frequenza/"modalità rischio"; lontano → daily). Risparmia compute e rispetta i **rate limit** delle API. %%utili per tenere sempre aggiornato il db con dati a frequenza costante%%                                                                                                                                                           |
+| **Market Alert**         | Riceve dagli adaptive extractor; unico tool = **calendar tool** che scrive eventi nel **calendario economico** (es. data uscita prodotto, trimestrali). %% un po' contorto e poco chiaro, diciamo che mi immagino un layer addetto alla vigilanza con alert che richiamano il PM, gli alert possono essere variazioni di prezzo oltre tot, eventi di calendario economico, next check date di analisi precedenti che scattano..."%% |
+| **calendar tool**        | Scrive/legge gli eventi del calendario economico; alla corrispondenza data/ora scatta l'**alert** (solo numerico/prezzo) verso il Portfolio Manager. %%come prima, da centralizzare%%                                                                                                                                                                                                                                               |
 
 #### Tipi di alert / trigger di attivazione del PM (alternative — da decidere con Salvatore)
-Luca: *«come si attivano gli alert lo decidiamo io e Salvatore»*. Alternative da valutare (combinabili):
+Luca: *«come si attivano gli alert lo decidiamo io e Salvatore»*. Alternative da valutare (combinabili e componibili):
 1. **Alert di prezzo/target**: il prezzo di una posizione si avvicina al target → l'adaptive extractor entra in "modalità rischio" (alta frequenza) e notifica il PM. *(già previsto)*
 2. **Periodical synthesis**: stato sintetico a intervalli fissi (rendicontazione + market) → il PM si attiva comunque a cadenza regolare. *(già previsto)*
 3. **Soglia di variazione**: variazione di prezzo oltre ±X% o ±N deviazioni standard (definizione di "prezzo anomalo").
-4. **News anomale**: una news rilevante dal blocco `market` come *miccia* dell'origination → terzo trigger ("idea valida, valutala").
+4. **News anomale**: una news rilevante dal blocco `market` come *miccia* dell'origination → terzo trigger ("idea valida, valutala"). %% qui ha senso avere un agent specializzato in news e in condizioni macro che dialoga a tu per tu con il PM, che chiama il PM se trova news importanti e fa le analisi macro per il PM quando gli viene chiesto%%
 5. **Evento da calendario**: trimestrali, dati macro, eventi schedulati → alert alla scadenza.
 6. **`next_check_date` scaduto**: una posizione chiede di essere rivalutata (Dynamic Temporal Checkpoint).
 | **mantainer** | Processo di manutenzione (non-LLM, blocco verde/technical sul canvas) che **trasforma i dati `technical`/`transactions` in `rendicontazione`** (portfolio accounting) e la tiene aggiornata nel DB. *Ruolo confermato in call 2026-06-02*: «un mantainer che trasforma i technical in rendicontazione». È il ponte deterministico transazioni → metriche di portafoglio. |
@@ -97,11 +99,12 @@ Luca: *«come si attivano gli alert lo decidiamo io e Salvatore»*. Alternative 
 
 **Indicatori calcolati dal DB**: nessun calcolo on-the-fly — gli indicatori si calcolano con formule che richiamano i dati grezzi già nel DB.
 
-### Queue system + check presenza (decisione 2026-06-02)
+### Queue system + check presenza (decisione 2026-06-02) %%fondamentale questa parte, molto rilevante%%
 Gli extractor si chiamano **solo se l'informazione non è già nel DB**. Flusso:
 1. **Check preventivo nel DB**: se il dato c'è → si legge da lì, fine (nessuna richiesta esterna).
 2. Se manca → la richiesta entra in una **coda (queue)**; **un extractor per vendor** consuma la sua coda e **autogestisce i rate limit** di estrazione.
 3. Il check avviene *prima* di accodare, per non riempire la coda di richieste inutili.
+
 
 Si estraggono dai vendor **solo le osservazioni grezze**; le metriche derivate (P/E, ratio, ecc.) si **calcolano internamente** dai dati grezzi già nel DB (vedi [[system/modules/quant-backtesting]]).
 
