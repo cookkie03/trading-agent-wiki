@@ -50,9 +50,7 @@ Nota di riallineamento: la distinzione tra `research_state` e `investment_state`
 
 Nessun trade finché l'`investment_state` non è **completo** (forza il passaggio per tutti i desk analisti + gate Risk). Si **resetta automaticamente** quando il blocco Trade rileva la transazione: *state pieno → estrae trade → reset*. Schema in [[system/modules/agents]] (TypedDict/Pydantic).
 
-> **Validazione collettiva (opzione, 2026-06-04)**: oltre al gate deterministico di completezza e al gate bear del Risk, si valuta un sign-off di **tutti gli agenti** che garantiscono completezza · correttezza · esaustività delle fonti dello state; se uno segnala una lacuna → `send_back` prima del sealing. Dettaglio in [[system/state-schemas]].
-
-%%questa parte di sign off è valida ma va fatta bene ed efficiente, quindi questo signoff va fatto per esempio quando il pm manda il reasearch_state, in quel caso si apre un nnuovo thread per ogni agent, specifico, con tutta la conversazione passata o un "compact" della conversazione per sign off%%
+> **Validazione collettiva (opzione, 2026-06-04)**: oltre al gate deterministico di completezza e al gate bear del Risk, si valuta un sign-off di **tutti gli agenti** che garantiscono completezza · correttezza · esaustività delle fonti dello state; se uno segnala una lacuna → `send_back` prima del sealing. Dettaglio in [[system/state-schemas]]. Se si tiene questa opzione, il sign-off va progettato in modo efficiente: richiesta per-agente con conversazione passata o suo compact, non duplicazione cieca del contesto.
 
 ---
 
@@ -70,28 +68,28 @@ Una parte del disinvestimento è **deterministica e automatica**: TP, SL e **[[_
 
 **Logging del meccanismo di uscita**: ogni chiusura registra in `transactions` il campo **`exit_reason`** (`take_profit`/`stop_loss`/`trailing_stop`/`rating_based`/`manual_override`/`option_expiry`). È il prerequisito per il feedback post-trade segmentato per tipo di uscita → [[system/rating-scoring]] §4.
 
-%% devo ancora leggere le informazioni sulla memoria degli agenti, ma sicuramente questa exit Reason potrebbe essere qualcosa di iniettato automaticamente nel momento in cui si analizzano ticker in cui siamo già stati investiti idealmente%%
+`exit_reason` si collega naturalmente alla memoria inter-task: quando si rianalizza un ticker già trattato, questa informazione va resa disponibile in modo automatico.
 
 ---
 
 ## Exchange (paper trading) — broker intercambiabili
 
 **Design deciso (2026-06-02)**: un **file-adapter ([[_meta/glossario#Adapter / Wrapper (broker)|wrapper]]) per ogni broker** che traduce le API del servizio in un'**interfaccia interna standardizzata** e leggibile dal programma. Il broker si cambia esattamente come in TradingAgents si cambia il provider LLM (Luca: *«io devo poter cambiare facilmente il broker del progetto»*).
-%%così come abbiamo pensato ai wrapper per gli exchange/broer, dobbiamo pensare ai wrapper anche per i tool e l'estrazione dati da vendor diversi, per aumentare la scalabilità ed evitare duplicazioni, stndardizzando le informaizoni e i loro formati, unificando i dati di vendor diversi con i wrapper%% 
+Lo stesso principio dei broker wrapper va applicato anche a tool e vendor di dati: standardizzare formati e interfacce fuori dagli agenti.
 
 ```
         ┌─ alpaca_adapter.py ─┐
 core  ──┤  ibkr_adapter.py    ├── interfaccia interna standard (place_order, get_positions, get_fees…)
         └─ ..._adapter.py    ─┘
 ```
-%%i wrapper chiaramente dovranno essere extra llm/agents, gli agenti non si dovranno mai preoccupare del broker o del data vendor o niente, gli agents devono fare solamente la richiesta del dato o l'immissione del trade, nient'altro, al resto deve pensarci l'infrastruttura%%
+I wrapper devono restare **extra agent / extra LLM**: gli agenti chiedono dati o inviano intent di trade, l'infrastruttura si occupa dei dettagli broker/vendor.
 - **MVP**: **Alpaca** (paper US equity, developer-first, gratuito).
 - **Produzione**: **IBKR** — la transizione deve essere **facile**, i due broker **intercambiabili** (stesso contratto I/O, cambia solo l'adapter attivo).
 - Espone un'interfaccia identica per il backend **backtest** ([[system/modules/quant-backtesting]]): stessa logica del codice live, replay su dati storici.
 - Logga ogni evento in `transactions` (area Log del DB → [[system/modules/data-layer]]).
 - [[_meta/glossario#CCXT|CCXT]] resta candidato come layer per il futuro multi-asset, ma per l'equity gli SDK ufficiali (Alpaca/`ib_insync`) sono più adatti. Provider in [[system/data-providers]].
 
-### Transaction cost auto-adattivo (decisione 2026-06-02, %%sperimentale, da implementare post alpha version%%)
+### Transaction cost auto-adattivo (decisione 2026-06-02)
 Niente costo hardcodato. L'adapter del broker **espone le commissioni reali applicate sul momento**, in funzione di broker, tipo di asset, size e quant'altro. Il costo (più il costo token del ciclo) è sottratto dal profitto atteso per ottenere la **net performance**. Così il backtest e il live usano lo stesso modello di costo, sempre aggiornato. Vedi [[system/modules/quant-backtesting]].
 
 ---

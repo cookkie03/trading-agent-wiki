@@ -15,7 +15,9 @@ related:
 
 # Tech Stack
 
-Scelte tecnologiche confermate per il progetto. Ogni voce ha una motivazione o una fonte.
+Scelte tecnologiche, orientamenti e snapshot storici del progetto. Ogni voce ha una motivazione o una fonte.
+
+> **Nota editoriale 2026-06-23**: alcune sezioni sotto descrivono una build precedente del repo. Restano utili come **reference design**, ma non vanno lette come inventario affidabile del codice corrente finché la nuova codebase non viene ricostruita.
 
 ---
 
@@ -82,15 +84,15 @@ Scelte tecnologiche confermate per il progetto. Ogni voce ha una motivazione o u
 
 | Componente | Scelta | Motivazione |
 |------------|--------|-------------|
-| Framework agenti | **Datapizza AI** (`datapizza-ai>=0.1.0`) | Confermato 2026-06-17. Migrazione completa da LangGraph. Multi-provider, MCP, structured output, RAG, pipeline. Vedi [[prior-art/libraries/datapizza-ai]] |
-| Workflow / grafi | **Datapizza AI Graph** | Grafo agenti in `brain/datapizza_graph.py` con `datapizza_director.py` (orchestratore) e `datapizza_llm.py` (LLM wrapper) |
-| LLM router | **Datapizza LLM layer** | Supporto multi-provider (OpenRouter, DeepSeek, Anthropic, Google…) con interfaccia unificata |
+| Framework agenti | **Datapizza AI** (`datapizza-ai>=0.1.0`) | Snapshot storico della build precedente. Resta candidato forte, ma la scelta per il nuovo build è da riconfermare. Vedi [[prior-art/libraries/datapizza-ai]] |
+| Workflow / grafi | **Datapizza AI Graph** | Snapshot storico della build precedente |
+| LLM router | **Datapizza LLM layer** | Supporto multi-provider; da valutare se tenere questa forma anche nella nuova build |
 | Debug/Evaluation | *Da definire* | LangSmith rimosso con LangGraph; valutare opzioni Datapizza-native |
 | Verifica grafi | *Da definire* | Mermaid LangGraph non più disponibile |
 
-**Rimosso (2026-06-17)**: LangGraph, LangChain, `llm_clients/`, `structured.py`, `LangSmith`. Il grafo è ora 100% Datapizza AI.
+**Contesto storico (2026-06-17)**: una build precedente aveva rimosso LangGraph, LangChain, `llm_clients/`, `structured.py`, `LangSmith` e portato il grafo su Datapizza AI. Questa wiki ora tratta quel passaggio come storia di progetto, non come stato presente garantito.
 
-### Dipendenze principali (pyproject.toml, 2026-06-20)
+### Dipendenze principali (snapshot storico 2026-06-20)
 
 ```
 datapizza-ai>=0.1.0    # Orchestrazione agenti (al posto di LangGraph)
@@ -107,7 +109,7 @@ typer>=0.21.0          # CLI
 rich>=14.0             # Output terminale
 ```
 
-### Struttura moduli (2026-06-20)
+### Struttura moduli (snapshot storico 2026-06-20)
 
 ```
 tradingagents/

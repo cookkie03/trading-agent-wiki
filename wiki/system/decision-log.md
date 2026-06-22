@@ -22,6 +22,8 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 
 | Data | Decisione | Motivazione |
 |------|-----------|-------------|
+| 2026-06-23 | **La wiki deve descrivere il progetto attuale, non i branch storici come stato corrente** | Le pagine con `🟢 Implementato` o `✅` restano utili come contesto storico/reference design, ma non devono far credere che il codice esista oggi in quella forma. |
+| 2026-06-23 | **Codebase planning first** — prima il tree e l'harness, poi agenti e grafo | Input diretto di Luca: ingegnerizzare la struttura del codice e i contratti prima di costruire il layer agentico. |
 | 2026-04-30 | **From scratch** — non fare fork di progetti esistenti | Chi parte da un fork deve comunque studiare il codice altrui; meglio costruire con piena comprensione. **Contraddizione 2026-05-19**: dopo lettura del Code Wiki di TradingAgents, Luca rivaluta — probabile fork come punto di partenza. Decisione da formalizzare. |
 | 2026-04-30 | **Crypto come mercato iniziale** — Binance come exchange | Accesso dati migliore, liquidità, semplicità API rispetto all'equity |
 | 2026-04-30 | **Limit order + SL/TP obbligatori**, tutti i trade in leva | Ogni trade deve avere tre numeri definiti: entry, SL, TP. Senza SL/TP, win rate 66% porta comunque a drawdown devastanti |

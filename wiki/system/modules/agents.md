@@ -89,7 +89,7 @@ Non solo l'idea, ma: `buy/hold/sell` + **target price entrata + uscita + stop lo
 
 > **[[_meta/glossario#Conviction Level|Conviction level]]** assegnato dal **Portfolio Manager** date le info degli analisti (decisione 2026-06-02). Fa parte del più ampio [[system/rating-scoring]] (conviction sul trade · scoring del lavoro degli agenti · rating asset per il disinvestimento).
 
->  **Aggregazione `direction` + `conviction`**  %%da capire se implementare%% 
+>  **Aggregazione `direction` + `conviction`**
 > (deciso 2026-06-04): ogni desk lascia nello state la **propria proposta** (`suggested_direction` + `suggested_conviction`); il **PM raccoglie tutte le opinioni e decide** quella finale — l'aggregazione vive nel nodo PM, non in un nodo desk separato. In prospettiva i **pesi** con cui il PM fida ciascun desk vengono dalla hit-rate storica calcolata dal backtesting → [[system/learning-feedback-loop]] §4. Vedi schema in [[system/state-schemas]].
 
 > **Head of Analyst eliminato**: il moderatore anti-bias era ridondante. Gli analisti sono la tesi bullish, il Risk Analyst è l'antitesi bearish.
@@ -98,7 +98,7 @@ Non solo l'idea, ma: `buy/hold/sell` + **target price entrata + uscita + stop lo
 
 ## Risk Analyst — gate bear + guardrail da Statuto
 
-Posizionato come **gate unico** tra il `research_state` e il Trade. %% da definire meglio, perché nella mia idea personale e in quella di salvatore, all'inizio il risk analyst aveva lo stesso ruolo degli altri analyst desks e si posizionava in quell'ottica li, ma anche come viene descritta di seguito è una buona idea, valutare%%
+Posizionato come **gate unico** tra il `research_state` e il Trade. Resta comunque aperta una decisione di design: quanto il Risk Analyst debba stare come desk pari agli altri nella fase esplorativa e quanto invece come gate finale separato.
 
 - Gli analisti sono per natura **bullish**; il Risk Analyst è l'**antitesi bearish** che cerca di smontare ogni tesi. *"Quando acqua e fuoco si mettono d'accordo, la strategia è davvero buona."*
 - Riceve il `research_state` e dà **`approved` / `declined` + razionale**. Se approva → si va **direttamente** a Investment State → Trade.
@@ -157,14 +157,14 @@ Obiettivo: **pochi schema potenti e dettagliati**, non tanti frammentati. Patter
 
 ---
 
-## Orchestrazione e Tracciamento: LangGraph + LangSmith %%obsoleto, ora siamo a datapizza AI come framewrok, langchain ecosystem dismesso%% 
+## Orchestrazione e Tracciamento
 
-- **LangGraph** orchestra i workflow multi-agente, **LangChain** definisce nodi/agenti (fork da TradingAgents). `StateGraph` (nodi = agenti, edge = logica condizionale), `ConditionalLogic` per routing dinamico, `Propagator` per inizializzare lo state, checkpointing SQLite per-ticker.
-- **LangSmith (UI/CLI)** come interfaccia centrale per debug, logging, monitoring ed **evaluation**: configurare metriche e raffinare i prompt visualmente prima di consolidarli nel codice.
+- **Storico recente**: una build precedente aveva migrato il grafo verso Datapizza AI e dismesso il blocco LangChain/LangGraph/LangSmith.
+- **Stato attuale del progetto**: il framework concreto del nuovo build va considerato **decisione ancora aperta**, non dato acquisito. Questa pagina descrive il comportamento atteso degli agenti; la scelta definitiva del framework vive in [[system/stack]] e in board.
 
 ### Provider LLM: OpenRouter con DeepSeek V4 Pro
 **OpenRouter** come router unico verso tutti i provider (agilità). **[[_meta/glossario#DeepSeek|DeepSeek V4 Pro]]** modello principale: sul report NVDA reale (163k input + 20k output token) costa **~$0,09**, contro ~10× di Claude Sonnet 4.6. Vedi [[system/decision-log]] e [[system/stack]].
-%% anche se alla fine, per quanto riguarda il PM, utilizzerei comunque un modello claude di frontiera, tenendo Deep seek per gli altri agent%%
+Nota emersa dai commenti di Luca: resta sul tavolo un assetto **multi-modello**, con un modello frontier per il PM e modelli più economici per i desk. Decisione ancora aperta.
 
 ---
 

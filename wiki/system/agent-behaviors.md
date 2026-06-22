@@ -52,7 +52,8 @@ Ogni agente è definito da: **Input** (cosa riceve) · **Tool** (quali tool dell
 - **Output**: `technical_view` — trend, momentum, supporti/resistenze, picchi di volume. **Fornisce l'ATR** che alimenta `entry_price`/`stop_loss`/`take_profit` ([[system/state-schemas]]) e il volatility-adjustment del [[system/position-sizing]]. Riga in `agent_opinions` (contributo primario: **i livelli di entry/stop/target**).
 - **Ragionamento**: trend-following + livelli tecnici; **quantifica la volatilità** (è il fornitore dei numeri ATR per tutto il resto della pipeline).
 - **Stop**: coperti trend + momentum + volatilità (ATR) + livelli chiave.
-  %% qui per ogni output e ragionamento dell'agent, bisognerà definire i tool adatti per velocizzare ed efficientare nel produrre questi calcoli e questi valori in modo deterministico%%
+
+Per ogni output tecnico vanno definiti tool deterministici dedicati, così da velocizzare i calcoli e ridurre al minimo numeri “inventati” dall'LLM.
 
 ### Fondamentali (financials) — salute & valuation (bottom-up)
 - **Input**: `ticker`.
@@ -63,7 +64,13 @@ Ogni agente è definito da: **Input** (cosa riceve) · **Tool** (quali tool dell
 
 ---
 
-%% qui manca il risk analista, definito e descritto come tutti gli altri agent%%
+## Risk Analyst — gate bear, sizing e guardrail
+
+- **Input**: `agent_opinions`, livelli tecnici, contesto portafoglio, regole dello Statuto.
+- **Tool**: G `inject_portfolio_state` · G `get_open_positions_risk` · H `get_options_chain` quando la leva è ammessa · I guardrail deterministici lato risk engine.
+- **Output**: `risk_view` / `risk_gate` — approvazione o rifiuto motivato, limiti di sizing, violazioni di guardrail, richieste di approfondimento.
+- **Ragionamento**: prende il lato **antitesi bear** della proposta e verifica se l'idea resta valida quando la si passa attraverso vincoli di rischio, concentrazione, costi, drawdown, leva e coerenza col portafoglio.
+- **Stop**: la proposta è approvata, respinta o rimandata al PM con un elenco chiaro di informazioni mancanti o vincoli rotti.
 
 ---
 
@@ -88,4 +95,3 @@ Ogni agente è definito da: **Input** (cosa riceve) · **Tool** (quali tool dell
 
 ## Prossimo passo collegato
 Una volta fissato il comportamento, si scrive il **system prompt** di ciascun agente che lo realizza (Prompt Builder) → [[system/modules/agents]] (decisione aperta).
-

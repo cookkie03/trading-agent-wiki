@@ -54,7 +54,7 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 Il backtesting è la risposta alla domanda: *"se avessimo applicato questa strategia dal 2004 al 2025, com'è andata?"*
 
 Si costruiscono **script Python con regole deterministiche** di entrata/uscita (es. "entra se succede X, esci se succede Y"), li si fa girare su serie storiche del DB interno (yfinance / Alpha Vantage) — con VectorBT come motore (vettorizzato, veloce, molte combinazioni in parallelo). Si fanno girare molte simulazioni in stile Monte Carlo per ottenere la distribuzione dei rendimenti. L'AI **non gira durante la simulazione** — il processo è puramente Python deterministico.
-%%a questo punto il backtest di strategie deterministiche uò essere un modulo aggiuntivo come tool agli agents%%
+Il backtest di strategie deterministiche può diventare anche un **modulo/tool richiamabile dagli agenti**, purché resti separato dalla decisione live.
 
 L'output (hit-rate, rendimento medio, drawdown per configurazione e per agente) alimenta poi: la taratura delle soglie operative + i pesi degli agenti nel learning loop → [[system/learning-feedback-loop]].
 
@@ -113,7 +113,7 @@ Il backtesting **non è un'attività una-tantum** che si fa prima di partire: è
 ## Tech
 
 - **VectorBT**: framework Python di backtesting **vettorizzato** (lavora su intere serie storiche con pandas/numpy, molto veloce — testa molte combinazioni di parametri in poco tempo). Usato da MarketSenseAI. Spiegazione nel [[_meta/glossario]].
-- **Costi di transazione**: niente più "10bps fisso" → modello **auto-adattivo** che usa le commissioni reali esposte dall'[[_meta/glossario#Adapter / Wrapper (broker)|adapter]] del broker ([[system/modules/execution]]). %%sperimentale, da implementare successivamente, per ora definiamo tutte le tipologie di costi e permettiamo all'utente di configurarne i valori tramite file di config%%
+- **Costi di transazione**: niente più "10bps fisso" → modello **auto-adattivo** che usa le commissioni reali esposte dall'[[_meta/glossario#Adapter / Wrapper (broker)|adapter]] del broker ([[system/modules/execution]]). Finché non esiste il modello reale, conviene almeno definire tutte le tipologie di costo e permettere configurazione via file di config.
 - **Dati**: da `market_data` nel DB di [[system/modules/data-layer]] (OHLCV stock, timeframe 4h/daily)
 - **Metriche obbligatorie**: Sharpe ratio, Sortino ratio, Max Drawdown, Win Rate, Calmar ratio
 - **Insidie da evitare**: [[_meta/glossario#Look-Ahead Bias|look-ahead bias]]; **[[_meta/glossario#Overfitting|overfitting]]** e **significatività statistica vs benchmark** → da definire con Salvatore in [[strategy/questions-for-salvatore]].

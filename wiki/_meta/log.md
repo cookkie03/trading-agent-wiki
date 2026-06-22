@@ -644,3 +644,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contradictions**: nessuna
 - **Notes**: Ingestite le sezioni da 2 a 12 del documento `I Driver di Mercato (definitivo).md` redatto da Salvatore, completando così il framework degli indicatori macroeconomici del vault. Il file sorgente è stato archiviato in `raw/archived/`.
 - **Archiviazione**: Archiviate le note giornaliere vecchie (2026-06-03 fino al 2026-06-06) e i file audio `.opus` in `raw/archived/` per mantenere la cartella `raw/` pulita.
+
+## [2026-06-23] ingest | Commenti wiki + daily notes 2026-06-20/21/22
+
+- **Type**: mixed editorial ingest / wiki realignment
+- **Pages created**: [[system/codebase-architecture]], [[system/data-sources-tool-map]], [[system/system-wiki-reorganization]], [[system/frontend-module]], [[prior-art/papers/kronos-foundation-model]]
+- **Pages updated**: [[artifacts/project-board]], [[system/modules/data-layer]], [[system/modules/agents]], [[system/modules/execution]], [[system/tools-inventory]], [[system/agent-behaviors]], [[system/stack]], [[system/decision-log]], [[strategy/questions-for-salvatore]], [[strategy/index]], [[strategy/methods/factor-investing]], [[strategy/methods/trend-following]], [[strategy/methods/mean-reversion-stat-arb]], [[prior-art/libraries/cvx-portfolio-optimizer]], [[artifacts/trading-floor]], [[_meta/glossario]], [[_meta/index]], [[_meta/hot-cache]]
+- **Contradictions**: risolta la contraddizione tra pagine che descrivevano codice "implementato" e il framing attuale del progetto come codebase da riprogettare. I claim storici sono stati degradati a context/reference design.
+- **Notes**: Il backlog `raw/articles/` resta pending ingest. Questo run ha trasformato task e idee dai commenti `%%...%%` e dalle daily notes in board, pagine target e policy editoriali esplicite.

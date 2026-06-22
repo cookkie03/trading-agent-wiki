@@ -75,6 +75,7 @@
 ### Paper e articoli
 - [[prior-art/papers/alpha-arena]] — benchmark LLM su trading
 - [[prior-art/papers/brenndoerfer-quant-trading]] — articolo quant trading: alpha, backtesting, metriche (con codice Python)
+- [[prior-art/papers/kronos-foundation-model]] — Kronos come candidato prior-art per sequence modeling / market language 🛠
 - [[prior-art/papers/notion-trading-concepts]] — export Notion su trading e investimenti (concetti fondamentali)
 
 ## Syntheses — Analisi trasversali

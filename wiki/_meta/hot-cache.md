@@ -2,6 +2,15 @@
 
 > Contesto di sessione recente. Aggiornare a fine sessione. Tenere entro 300 righe.
 
+## Sessione 2026-06-23 — Ingest editoriale commenti wiki + daily notes
+- **Operazione**: ingest mirato delle daily notes 2026-06-20/21/22 + commenti `%%...%%` dentro `wiki/`, con archiviazione finale in `raw/archived/daily-notes/`.
+- **Risolta la contraddizione principale**: i claim `🟢 Implementato` / `✅ codice fatto` non rappresentano più lo stato corrente del progetto; restano come **storia / reference design** nelle pagine tecniche.
+- **Board rifatta**: [[artifacts/project-board]] ora è più corta e centrata su backlog reale, con task espliciti per codebase architecture, fonti/tool, reorg `wiki/system/`, frontend modulare, meeting con Salvatore, Kronos/OpenBB/FinRL.
+- **Nuove pagine create**: [[system/codebase-architecture]], [[system/data-sources-tool-map]], [[system/system-wiki-reorganization]], [[system/frontend-module]], [[prior-art/papers/kronos-foundation-model]].
+- **Pagine aggiornate**: [[system/modules/data-layer]], [[system/modules/agents]], [[system/modules/execution]], [[system/tools-inventory]], [[system/agent-behaviors]], [[system/stack]], [[strategy/questions-for-salvatore]], [[strategy/index]], [[strategy/methods/factor-investing]], [[strategy/methods/trend-following]], [[strategy/methods/mean-reversion-stat-arb]], [[prior-art/libraries/cvx-portfolio-optimizer]], [[artifacts/trading-floor]], [[_meta/glossario]], [[system/decision-log]], [[_meta/index]].
+- **Pending ingest rimasto aperto**: backlog documentale in `raw/articles/` (Datapizza AI, optimizer docs, AlphaArena, TradingAgents, CorpBondThesis, Kronos source raw). Non processato in profondità in questo run.
+- **Nota di metodo**: questo run ha privilegiato il riallineamento della wiki al nuovo framing **design/codebase first** rispetto alla narrativa dei branch storici.
+
 ## Sessione 2026-06-08 — Universo/Watchlist/Benchmark/Agenti (branch feat/universe-watchlist)
 - **Cambio di paradigma** (Luca+Salvatore): sistema autonomo anche sugli asset + benchmark da battere. Piano in `/Users/luca/.claude/plans/adaptive-nibbling-puzzle.md`.
 - **3 insiemi**: universo (broker-tradable, riconciliato via `list_assets`/`sync_universe`, inattivi marcati) ⊇ watchlist dinamica (ibrida, seed S&P500∩broker, ingressi da alert/news) ⊇ portfolio. Scheda ticker = hub; `ticker_events`→trigger (auto-scheduling).

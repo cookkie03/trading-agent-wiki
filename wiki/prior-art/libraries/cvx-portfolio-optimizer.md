@@ -21,7 +21,8 @@ related:
 # Portfolio Optimizer ([cvx-portfolio-optimizer](https://github.com/cvxgrp/cvxportfolio) )
 
 Libreria Python per la costruzione e l'ottimizzazione di portafogli quantitativi, basata su `skfolio` e `scikit-learn`.
-%% per esempio, devo ricordarmi e segnarmi come task di studiare questa libreria o perlomeno di imparare ad utilizzarla e sfruttarla per questo progetto%%
+
+Resta un riferimento da **studiare e sfruttare**, non solo da archiviare come prior-art.
 
 ## Architettura e Design
 
@@ -55,7 +56,7 @@ Motore di calcolo candidato per il **Portfolio Allocator** (post-MVP). Implement
 
 ## ★ Il repo non è solo una libreria: è una piattaforma full-stack (ingest 2026-05-29 dal codice)
 
-L'analisi del **repository GitHub** (https://github.com/SilvioBaratto/optimizer (%% TASK: documentazione](https://silviobaratto.github.io/optimizer/) su cui fare crawl e inserire dentro raw/articles%%)), pacchetto PyPI `portopt`, BSD-3) rivela che la pagina precedente — basata solo sui docs — copriva **solo la libreria**. Il repo è in realtà una **piattaforma completa** con backend API, frontend, CLI, scheduler, DB e **integrazione LLM strutturata**. È il riferimento architetturale più maturo e completo che abbiamo, **molto vicino al sistema che vogliamo costruire**. %%molto interessante%%
+L'analisi del **repository GitHub** (https://github.com/SilvioBaratto/optimizer, pacchetto PyPI `portopt`, BSD-3) rivela che la pagina precedente — basata solo sui docs — copriva **solo la libreria**. Il repo è in realtà una **piattaforma completa** con backend API, frontend, CLI, scheduler, DB e **integrazione LLM strutturata**. È il riferimento architetturale più maturo e completo che abbiamo, molto vicino al sistema che vogliamo costruire.
 
 ### Stack del progetto
 - **Libreria** `optimizer/` (Python, sklearn API): moduli `preprocessing`, `pre_selection`, `moments`, `views`, `optimization`, `validation`, `scoring`, `factors`, `rebalancing`, `synthetic`, `universe`, `tuning`, `fx`, `pipeline`, `exceptions`. Dipende da `skfolio`, `scikit-learn`, `numpy`, `pandas`, `scipy`, `hmmlearn`, `arch` (+ opzionale `torch`/`pyro-ppl` per DMM).
@@ -67,7 +68,6 @@ L'analisi del **repository GitHub** (https://github.com/SilvioBaratto/optimizer 
 
 ### ★ Integrazione LLM via BAML — il pattern "LLM genera views → ottimizzazione matematica"
 La cartella `api/baml_src/` definisce **funzioni LLM tipizzate** con [BAML](https://boundaryml.com) (output strutturato garantito, client configurabile — incl. **Ollama locale**). È **esattamente il ponte LLM↔Quant** che cerchiamo, implementato in modo production-grade:
-%% molto interessante %%
 
 | Funzione BAML                            | Scopo                                                                                                                          |
 | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -80,8 +80,10 @@ La cartella `api/baml_src/` definisce **funzioni LLM tipizzate** con [BAML](http
 | `CalibrateDelta` / `CalibrateRiskBudget` | calibrazione parametri di ottimizzazione                                                                                       |
 | `AdaptFactorWeights`                     | adatta i pesi dei fattori                                                                                                      |
 | `DesignStressScenarios`                  | genera scenari di stress                                                                                                       |
-%% queste funzioni possono essere molto utili, si potrebbero o replicare per avere tanta maneggevoleza e grado di personalizzazione oppure utilizzarle nel codice perosnale come pacchetto incluso se già professional-grade%% 
-Pattern chiave (in `GenerateViews.baml`): l'LLM riceve **fattori quantitativi per asset** (P/E, P/B, momentum 12-1m, RSI, ROE, debt/equity, growth, distanza da 52w high/low, consenso analisti) e produce views con **confidence calibrata mappata su Idzorek alpha %%aggiungi Idzorek alpha al [[glossario]]%%** → fed deterministicamente nel modello Black-Litterman. **Da studiare e adattare**: è il modo "giusto" di far produrre all'LLM opinioni che la matematica integra, anziché lasciare all'LLM la decisione finale di trade (allineato al nostro principio deterministico, [[system/modules/agents]]). 
+
+Queste funzioni sono candidate sia per **replica interna** sia per eventuale riuso diretto, se il package si dimostra abbastanza maturo.
+
+Pattern chiave (in `GenerateViews.baml`): l'LLM riceve **fattori quantitativi per asset** (P/E, P/B, momentum 12-1m, RSI, ROE, debt/equity, growth, distanza da 52w high/low, consenso analisti) e produce views con **confidence calibrata mappata su Idzorek alpha** → fed deterministicamente nel modello Black-Litterman. **Da studiare e adattare**: è il modo "giusto" di far produrre all'LLM opinioni che la matematica integra, anziché lasciare all'LLM la decisione finale di trade (allineato al nostro principio deterministico, [[system/modules/agents]]).
 
 ### Servizi backend riutilizzabili come riferimento (`api/app/services/`)
 `view_generation`, `entropy_pooling_service`, `opinion_pooling`, `optimization_service`, `backtest_service`, `rebalancing_service`, `risk_analytics_service`, `risk_budget_service`, `factor_*_service`, `macro_regime_service`, `macro_news_summary`, `sentiment`, `stress_scenarios`, `synthetic_service`, `tuning_service`, `universe_screening_service`, `validation_service`, `reference_index_seeder`, `report_service`, `scheduler`, **`broker_sync_service`** + **`trading212/`** (sincronizzazione broker), `yfinance_data_service`, `notifications`. I router `api/v1/` espongono ognuno di questi (`optimize`, `views`, `opinion_pooling`, `risk`, `factors`, `rebalance`, `backtest`, `tune`, `synthetic`, `stress_scenarios`, `macro_regime`, `attribution`, `dashboard`, `jobs`, `trading212`, ...).
@@ -92,4 +94,4 @@ Pattern chiave (in `GenerateViews.baml`): l'LLM riceve **fattori quantitativi pe
 3. **`broker_sync_service` + `trading212`** = riferimento per il modulo Exchange (anche se equity europeo).
 4. **Background jobs + scheduler + Alembic + docker-compose** = infrastruttura operativa già risolta.
 5. La **libreria `optimizer/`** resta il motore quant candidato (vedi sopra) — ora sappiamo che esiste anche tutto il "contorno" applicativo a cui guardare.
-6. **Confronto con gli altri due riferimenti**: [[prior-art/libraries/rizzo-trading-agent]] dà il ciclo agente LLM→esecuzione end-to-end (semplice, crypto); questo optimizer dà il motore quant + LLM-views production-grade; [[prior-art/libraries/sfc-portfolio-tracker]] dà analytics/dashboard/reporting. Insieme coprono tutto lo spettro del nostro sistema. %% anche quest'ultimo concetto è molto importante e rappresentativo, quindi vale la pena valorizzarlo come concetto chiave%%
+6. **Confronto con gli altri due riferimenti**: [[prior-art/libraries/rizzo-trading-agent]] dà il ciclo agente LLM→esecuzione end-to-end (semplice, crypto); questo optimizer dà il motore quant + LLM-views production-grade; [[prior-art/libraries/sfc-portfolio-tracker]] dà analytics/dashboard/reporting. Insieme coprono tutto lo spettro del nostro sistema.

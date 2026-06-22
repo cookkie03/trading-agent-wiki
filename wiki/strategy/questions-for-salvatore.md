@@ -21,6 +21,8 @@ confidence: high
 # Domande aperte per Salvatore
 
 > Foglio di lavoro per la prossima call con Salvatore. Raccoglie tutti i temi che richiedono la sua competenza di mercato (raccolti dalla risposta di Luca, 2026-06-02). Ognuno è anche tracciato come card in [[artifacts/project-board]].
+>
+> Aggiornamento 2026-06-23: Luca ha chiesto esplicitamente di **rivederle una per una insieme**, perché oggi non le sente ancora abbastanza chiare. Questa pagina va quindi usata come **agenda del meeting**, non solo come lista di domande sparse.
 
 ---
 

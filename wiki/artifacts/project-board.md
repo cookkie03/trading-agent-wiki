@@ -12,66 +12,89 @@ status: active
 related:
   - "[[system/architecture]]"
   - "[[system/decision-log]]"
+  - "[[system/stack]]"
   - "[[system/ideas-log]]"
-  - "[[system/codebase-architecture]]"
   - "[[strategy/questions-for-salvatore]]"
 confidence: high
 priority: high
 area: ops
 kanban-plugin: board
+sources:
+  - "[[prior-art/papers/notion-trading-concepts]]"
+  - "[[artifacts/trading-floor]]"
 ---
 
-# Project Board — Trading Agent
+## 🛠 Coding Agent — Da fare
 
-Board unica di progetto. Tiene solo backlog operativo, decisioni aperte e stato reale del lavoro. I dettagli vivono nelle pagine linkate.
+- [ ] 🛠 **Ripulire i claim di codice implementato dalla wiki operativa** — trasformare `🟢 Implementato`/branch/test in contesto storico o reference design, senza perdere l'informazione utile → [[system/system-wiki-reorganization]]
+- [ ] 🛠 **Progettare la codebase reale prima di scrivere agenti** — tree alto livello, package boundaries, contratti I/O e ordine di build: harness → moduli core → tool → agenti → job asincroni → [[system/codebase-architecture]]
+- [ ] 🛠 **Disegnare l'harness broker/vendor/storage con test** — prima tranche implementativa: adapter broker, wrapper data vendor, DB/repository, contratti e test end-to-end minimi → [[system/codebase-architecture]]
+- [ ] 🛠 **Mappare fonti dati e tool per vendor** — Yahoo/yfinance, FRED, Alpaca, IBKR, OpenBB, fonti news/social/options: cosa offrono, wrapper interno, freshness, write-through, dedup → [[system/data-sources-tool-map]]
+- [ ] 🛠 **Riorganizzare `wiki/system/` in sottodomini** — proporre struttura ordinata per agents/data/execution/frontend/orchestration/quant, aggiornando taxonomy solo se la migrazione viene fatta → [[system/system-wiki-reorganization]]
+- [ ] 🛠 **Centralizzare prompt e linguaggio umano nel futuro codice** — system prompt, istruzioni agenti, schema output e policy operative devono vivere in file dedicati/versionabili → [[system/system-prompts]]
+- [ ] 🛠 **Formalizzare error handling dell'execution** — se lo state è incompleto o il trade viene bloccato, il PM riceve feedback strutturato; conferme trade e failure recovery non restano implicite → [[system/modules/execution]]
+- [ ] 🛠 **Esplicitare wrapper extra-LLM per broker e vendor** — gli agenti chiedono dati o intent di trade; infrastruttura e adapter gestiscono provider, formati e duplicati → [[system/data-sources-tool-map]]
+- [ ] 🛠 **Preparare backlog subtask per eventuali subagent** — trasformare i commenti rimasti e le aree wiki sporche in unità indipendenti assegnabili → [[system/system-wiki-reorganization]]
 
-## 💡 Idee
+## 👤 Luca — Da fare
 
-- [ ] 🛠 **Desk macro separato dal ticker flow** — usare un agente o desk dedicato per report macro e impatto sul portafoglio, separato dall'analisi sul singolo ticker → [[system/modules/agents]]
-- [ ] 🛠 **Frontend intercambiabile** — modulo frontend sostituibile senza toccare il core (Streamlit oggi, TypeScript domani) → [[system/frontend-module]]
-- [ ] 🛠 **LLM views + motore quant** — sfruttare pattern Black-Litterman / opinion pooling come ponte tra giudizio LLM e allocazione matematica → [[prior-art/libraries/cvx-portfolio-optimizer]]
-- [ ] 📈 **Integrare il meglio dei metodi** — trend following, mean reversion, factor investing e dual portfolio come mattoni componibili, non come alternative monolitiche → [[strategy/index]]
-- [ ] 🔀 **Programma di crawl prior-art continuo** — sniff/crawl sistematico di repo e docs utili (OpenBB, FinRL, optimizer, altri) come backlog di ricerca permanente → [[system/data-sources-tool-map]]
+- [ ] 🛠 **Validare il tree della codebase prima dell'implementazione** — scegliere con il coding agent i rami di alto livello e cosa deve restare stabile nel tempo → [[system/codebase-architecture]]
+- [ ] 🛠 **Decidere quanto riusare della build storica Datapizza/branch precedenti** — reference design, codice da copiare, o solo materiale da ripensare → [[system/stack]]
+- [ ] 🛠 **Scegliere il primo slice software da costruire** — harness broker/vendor/storage con test, prima di grafo e agenti → [[system/codebase-architecture]]
+- [ ] 🛠 **Rivedere le pagine `system/` dopo la pulizia dei claim storici** — controllare se la wiki descrive davvero il progetto che vuoi costruire ora → [[system/system-wiki-reorganization]]
+- [ ] 🛠 **Definire il ruolo del frontend come modulo sostituibile** — Streamlit come prima UI, TypeScript futuro, stesso core e contratti di lettura → [[system/frontend-module]]
 
-## 🔴 Da fare
+## 👤 Luca — In corso
 
-- [ ] 🛠 **Definire l'architettura della codebase da zero** — tree alto livello, responsabilità dei package, ordine di build e invarianti del codice → [[system/codebase-architecture]]
-- [ ] 🛠 **Mappare fonti dati, vendor wrapper e tool layer** — separare chiaramente connectors, capabilities e contratti di estrazione → [[system/data-sources-tool-map]]
-- [ ] 🛠 **Riorganizzare `wiki/system/`** — proporre una tassonomia più ordinata per sottodomini (agents, data, execution, frontend, orchestration, quant) senza perdere storia → [[system/system-wiki-reorganization]]
-- [ ] 🛠 **Pulire i claim di implementazione residui** — degradare le sezioni che descrivono branch o codice come se fossero stato attuale, mantenendo il contesto storico nei log → [[system/system-wiki-reorganization]]
-- [ ] 🛠 **Definire l'harness completo prima degli agenti** — broker, vendor, storage, contracts e test come prima tranche di implementazione reale → [[system/codebase-architecture]]
-- [ ] 🛠 **Formalizzare l'handling errori e i feedback al PM** — trade saltato, state incompleto, conferma esecuzione, failure recovery → [[system/modules/execution]]
-- [ ] 🛠 **Strutturare il layer tool del coding agent** — backlog operativo specifico per lavoro di implementazione e refactor guidati dall'AI → [[system/codebase-architecture]]
-- [ ] 📈 **Rivedere una per una le domande per Salvatore** — Luca vuole trasformarle in agenda esplicita del prossimo meeting → [[strategy/questions-for-salvatore]]
-- [ ] 📈 **Produrre una pagina “Metriche (definitivo)”** — rileggere papers e prior-art strategy per consolidare le metriche di valutazione → [[strategy/index]]
-- [ ] 📈 **Chiarire factor investing tramite la tesi corporate bond** — usare la tesi di Luca come materiale guida per fattori, fonti e possibili modelli ML/DL → [[strategy/methods/factor-investing]]
-- [ ] 🔀 **Studiare Kronos come modulo candidato** — capire se usarlo per il linguaggio dei mercati / time series nel progetto → [[prior-art/papers/kronos-foundation-model]]
-- [ ] 🔀 **Studiare OpenBB e FinRL** — backlog di scouting per librerie e repo da cui estrarre moduli o pattern riusabili → [[system/data-sources-tool-map]]
+- [ ] 🛠 **Rilettura critica della wiki con commenti inline** — i commenti `%%...%%` sono input progettuali da assorbire in pagine e task, non testo da riscrivere superficialmente → [[system/system-wiki-reorganization]]
+
+## 📈 Salvatore — Da fare
+
+- [ ] 📈 **Rileggere prior-art/papers e creare “Metriche (definitivo)”** — consolidare metriche di valutazione e performance come fatto per i driver macro → [[strategy/index]]
+- [ ] 📈 **Pulire la cartella methods strategy** — chiarire ruolo di dual portfolio, value, trend following e mean reversion come strategie componibili → [[strategy/index]]
+- [ ] 📈 **Definire indicatori codificabili per trend following e mean reversion** — quali indicatori usare, come parametrizzarli e come backtestarli → [[strategy/methods/trend-following]]
+- [ ] 📈 **Portare gli indicatori di valuation stock** — documento dell'associazione: cosa analizzare in una stock e come spiegarlo agli agenti → [[strategy/questions-for-salvatore]]
+- [ ] 📈 **Chiarire factor investing usando la tesi corporate bond** — fattori, fonti affidabili, ML/deep learning e limiti pratici → [[strategy/methods/factor-investing]]
+
+## 📈 Salvatore — In corso
+
+- [ ] 📈 **Studio wiki in autonomia** — leggere la wiki e segnalare dubbi o priorità di mercato da portare in meeting → [[_meta/index]]
+
+## 🔀 Meeting Luca + Salvatore
+
+- [ ] 🔀 **Rivedere una per una le domande per Salvatore** — Luca non le considera ancora chiare: trasformarle in decisioni o task comprensibili → [[strategy/questions-for-salvatore]]
+- [ ] 🔀 **Decidere come combinare i metodi strategy** — trend following, mean reversion, factor investing e dual portfolio: ordine di implementazione e composizione → [[strategy/index]]
+- [ ] 🔀 **Decidere se serve un desk/agent macro separato** — alert macro e report sul portafoglio separati dall'analisi ticker-specifica → [[system/modules/agents]]
+- [ ] 🔀 **Stabilire la frequenza operativa come event-driven** — PM attivato da alert e condizioni, non da cadenza rigida come vincolo primario → [[system/trigger-engine]]
+- [ ] 🔀 **Chiarire Risk Analyst: desk pari agli altri o gate finale** — mantenere l'idea originaria di Luca/Salvatore o il gate bear separato → [[system/agent-behaviors]]
+- [ ] 🔀 **Validare la strategia di metriche e benchmark** — cosa significa davvero battere benchmark e quali test statistici servono → [[strategy/questions-for-salvatore]]
+
+## 🧪 Ricerca / Futuro
+
+- [ ] 🔀 **Studiare OpenBB come libreria fondamentale** — capire se usarla come fonte dati, SDK di ricerca o riferimento architetturale → [[system/data-sources-tool-map]]
+- [ ] 🔀 **Studiare FinRL** — valutare parti sperimentali e moduli riusabili per RL/quant research → [[system/data-sources-tool-map]]
+- [ ] 🔀 **Studiare Kronos** — capire se il foundation model per financial markets può diventare modulo o riferimento per time-series/market language → [[prior-art/papers/kronos-foundation-model]]
+- [ ] 🛠 **Approfondire `optimizer` come piattaforma full-stack** — BAML views, FastAPI layer, scheduler, broker sync e optimizer quant come riferimento per la nostra architettura → [[prior-art/libraries/cvx-portfolio-optimizer]]
+- [ ] 🛠 **Valutare SFC come base della dashboard osservabilità** — leggere DB e stato sistema in sola lettura, senza mescolare UI e core → [[system/observability-dashboard]]
+- [ ] 🔀 **Crawl periodico di repo e documentazioni prior-art** — mantenere una pipeline di scouting per evitare di reinventare componenti già maturi → [[system/data-sources-tool-map]]
 
 ## 🟡 In corso
 
-- [ ] 🛠 **Ingest editoriale commenti wiki + daily notes** — trasformare commenti `%%...%%` e note 2026-06-20/21/22 in board, pagine target e correzioni di stato → [[system/system-wiki-reorganization]]
-- [ ] 🛠 **Allineamento della wiki al nuovo framing “design/codebase first”** — la wiki deve descrivere il progetto attuale, non i branch storici come stato corrente → [[system/decision-log]]
-- [ ] 🔀 **Raccolta task per coding agent e meeting** — centralizzare in board i task emersi dalla rilettura completa della wiki da parte di Luca → [[artifacts/project-board]]
-
-## 🟠 Decisioni da prendere
-
-- [ ] 🛠 **Framework del nuovo build reale** — quanto riusare della build Datapizza storica e quanto invece tenere solo come reference design → [[system/stack]]
-- [ ] 🛠 **Modello del PM** — tenere un frontier model dedicato al PM e modelli più economici per gli altri agenti, oppure uniformare lo stack LLM → [[system/modules/agents]]
-- [ ] 🛠 **Separazione macro vs ticker analysis** — macro-desk separato, funzione specializzata o estensione del Market agent → [[system/modules/agents]]
-- [ ] 🛠 **Granularità della futura struttura `wiki/system/`** — quanto spingere la scomposizione in sottocartelle senza perdere navigabilità umana → [[system/system-wiki-reorganization]]
-- [ ] 📈 **Quali metodi portare per primi a codice** — scegliere il primo set di strategie da codificare e backtestare davvero → [[strategy/index]]
+- [ ] 🛠 **Allineamento wiki al framing “codebase da costruire”** — separare stato attuale, storia dei branch e design valido nelle pagine più dense → [[system/system-wiki-reorganization]]
+- [ ] 🛠 **Ingest commenti wiki + daily notes** — assorbire i commenti come task/decisioni/idee integrate nel sistema, non come frasi riscritte → [[system/system-wiki-reorganization]]
 
 ## ✅ Fatto
 
-- [x] 🔀 **Policy editoriale 2026-06-23** — i claim “implementato / ✅ codice fatto” non descrivono più il presente del progetto: restano come storia o reference design, non come stato attuale → [[system/decision-log]]
-- [x] 🛠 **Board ricondotta a hub minimo** — task, idee e decisioni ora puntano a pagine dedicate invece di duplicare dettagli sparsi → [[artifacts/project-board]]
-- [x] 🛠 **Ingest delle daily notes 2026-06-20/21/22 avviato** — commenti e appunti convertiti in backlog esplicito di wiki e codebase → [[system/system-wiki-reorganization]]
+- [x] 🔀 **Policy editoriale 2026-06-23** — i claim di implementazione storici non descrivono più lo stato corrente; diventano reference design o storia del progetto → [[system/decision-log]]
+- [x] 🛠 **Daily notes 2026-06-20/21/22 archiviate dopo ingest** — source spostate in `raw/archived/daily-notes/` → [[_meta/log]]
+- [x] 🛠 **Creata pagina codebase architecture** — punto di partenza per progettare tree, harness e ordine di build → [[system/codebase-architecture]]
+- [x] 🛠 **Creata pagina data sources & tool map** — punto di raccordo per vendor, wrapper, tool e capability layer → [[system/data-sources-tool-map]]
+- [x] 🛠 **Creata pagina frontend module** — frontend come modulo intercambiabile, non logica core → [[system/frontend-module]]
 
 
 
 %% kanban:settings
-```json
-{"kanban-plugin":"board","list-collapse":[false,false,false,false,false]}
+```
+{"kanban-plugin":"board","list-collapse":[false,false,false,false,false,false,false,false]}
 ```
 %%
