@@ -1,0 +1,282 @@
+{
+  "main": {
+    "id": "28aaa744b9e6e2e5",
+    "type": "split",
+    "children": [
+      {
+        "id": "d5cd0b77720fee0c",
+        "type": "tabs",
+        "dimension": 54.957356076759055,
+        "children": [
+          {
+            "id": "15beadbd647f3585",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/_meta/glossario.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "glossario"
+            }
+          },
+          {
+            "id": "53487a30f80ad756",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "wiki/artifacts/architettura.canvas",
+                "viewState": {
+                  "x": -419.4601422463385,
+                  "y": 327.05046153415014,
+                  "zoom": -1.5521861957683096
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "architettura"
+            }
+          }
+        ]
+      },
+      {
+        "id": "30cf1566f09991af",
+        "type": "tabs",
+        "dimension": 45.04264392324094,
+        "children": [
+          {
+            "id": "99ac61057d894e30",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "raw/daily-notes/2026-06-22.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "2026-06-22"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e0c85057e6fe0512",
+    "type": "split",
+    "children": [
+      {
+        "id": "e4c9e72f59288568",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4f92b1befe2dbbbc",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Esplora risorse"
+            }
+          },
+          {
+            "id": "29a47fa4c8da9698",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "github.com",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "byModifiedTime"
+              },
+              "icon": "lucide-search",
+              "title": "Ricerca"
+            }
+          },
+          {
+            "id": "ec7aa3000a5ba01f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Segnalibri"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 271.5
+  },
+  "right": {
+    "id": "0243e23c25a45fa5",
+    "type": "split",
+    "children": [
+      {
+        "id": "12ef4afbb4cafa4e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9a31c5d400dfe880",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "conflict-files-obsidian-git.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Riferimenti a conflict-files-obsidian-git"
+            }
+          },
+          {
+            "id": "e6800a45ecde1a6c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "raw/articles/TradingAgents Code Wiki.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Collegamenti in uscita da TradingAgents Code Wiki"
+            }
+          },
+          {
+            "id": "1b0828e92f3e39b9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etichette"
+            }
+          },
+          {
+            "id": "f62cc57e8be0b90d",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Tutte le proprietà"
+            }
+          },
+          {
+            "id": "fa79f8e33a8ae6d1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "raw/articles/TradingAgents Code Wiki.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Struttura di TradingAgents Code Wiki"
+            }
+          },
+          {
+            "id": "6111cfaec54bdf52",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 281.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "daily-notes:Apri nota del giorno": false,
+      "switcher:Apri selezione rapida": false,
+      "graph:Apri vista grafo": false,
+      "canvas:Crea nuova lavagna": false,
+      "templates:Inserisci modello": false,
+      "command-palette:Apri riquadro comandi": false,
+      "bases:Crea nuova Base": false,
+      "obsidian-kanban:Create new board": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "99ac61057d894e30",
+  "lastOpenFiles": [
+    "wiki/_meta/glossario.md",
+    "raw/daily-notes/2026-06-22.md",
+    "wiki/artifacts/architettura.canvas",
+    "wiki/system/modules/quant-backtesting.md",
+    "wiki/system/modules/execution.md",
+    "raw/articles/Datapiza AI/API Reference/Agents/agent.md",
+    "raw/articles/Datapiza AI/API Reference/Modules/Parsers/azure_parser.md",
+    "wiki/prior-art/libraries/rizzo-trading-agent.md",
+    "raw/daily-notes/2026-06-21.md",
+    "wiki/system/modules/data-layer.md",
+    "conflict-files-obsidian-git.md",
+    "raw/daily-notes/2026-06-20.md",
+    "wiki/prior-art/tradingagents/tradingagents-graph-finance.canvas",
+    "wiki/prior-art/notebooklm-research-2026-05-13.md",
+    "wiki/prior-art/libraries/datapizza-ai.md",
+    "wiki/artifacts/architecture/idea-grafi.canvas",
+    "raw/articles/shiyu-coderKronos Kronos A Foundation Model for the Language of Financial Markets.md",
+    "raw/articles/CorpBondThesis.pdf",
+    "raw/archived/daily-notes/2026-06-06.md",
+    "raw/archived/daily-notes/2026-06-05.md",
+    "raw/archived/daily-notes/2026-06-04.md",
+    "raw/archived/daily-notes/2026-06-03.md",
+    "raw/archived/audio/discussione 26 06 12.md",
+    "wiki/artifacts/architecture/Architettura langchain.canvas",
+    "raw/articles/TradingAgents Code Wiki.md",
+    "raw/articles/TradingAgents.md",
+    "raw/articles/TradingAgents.pdf",
+    "raw/articles/Datapiza AI/index.md",
+    "raw/articles/Datapiza AI",
+    "raw/audio/discussione 26 06 12.md",
+    "raw/articles/Datapiza AI/API Reference/Modules/Splitters.md",
+    "raw/articles/Datapiza AI/API Reference/Modules/Rerankers.md",
+    "raw/articles/Datapiza AI/API Reference/Agents",
+    "raw/articles/Datapiza AI/Guides/RAG",
+    "raw/articles/Datapiza AI/Guides/Monitoring",
+    "raw/articles/Datapiza AI/Guides/Pipeline",
+    "raw/articles/Datapiza AI/Guides/Agents",
+    "raw/articles/Datapiza AI/Guides/Clients",
+    "raw/articles/Datapiza AI/Guides"
+  ]
+}
