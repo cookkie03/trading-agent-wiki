@@ -54,6 +54,7 @@ Il componente che incorpora la strategia. Contiene tutta la logica quantitativa:
 Il backtesting è la risposta alla domanda: *"se avessimo applicato questa strategia dal 2004 al 2025, com'è andata?"*
 
 Si costruiscono **script Python con regole deterministiche** di entrata/uscita (es. "entra se succede X, esci se succede Y"), li si fa girare su serie storiche del DB interno (yfinance / Alpha Vantage) — con VectorBT come motore (vettorizzato, veloce, molte combinazioni in parallelo). Si fanno girare molte simulazioni in stile Monte Carlo per ottenere la distribuzione dei rendimenti. L'AI **non gira durante la simulazione** — il processo è puramente Python deterministico.
+%%a questo punto il backtest di strategie deterministiche uò essere un modulo aggiuntivo come tool agli agents%%
 
 L'output (hit-rate, rendimento medio, drawdown per configurazione e per agente) alimenta poi: la taratura delle soglie operative + i pesi degli agenti nel learning loop → [[system/learning-feedback-loop]].
 
