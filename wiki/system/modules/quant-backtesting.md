@@ -113,7 +113,7 @@ Il backtesting **non è un'attività una-tantum** che si fa prima di partire: è
 ## Tech
 
 - **VectorBT**: framework Python di backtesting **vettorizzato** (lavora su intere serie storiche con pandas/numpy, molto veloce — testa molte combinazioni di parametri in poco tempo). Usato da MarketSenseAI. Spiegazione nel [[_meta/glossario]].
-- **Costi di transazione**: niente più "10bps fisso" → modello **auto-adattivo** che usa le commissioni reali esposte dall'[[_meta/glossario#Adapter / Wrapper (broker)|adapter]] del broker ([[system/modules/execution]]).
+- **Costi di transazione**: niente più "10bps fisso" → modello **auto-adattivo** che usa le commissioni reali esposte dall'[[_meta/glossario#Adapter / Wrapper (broker)|adapter]] del broker ([[system/modules/execution]]). %%sperimentale, da implementare successivamente, per ora definiamo tutte le tipologie di costi e permettiamo all'utente di configurarne i valori tramite file di config%%
 - **Dati**: da `market_data` nel DB di [[system/modules/data-layer]] (OHLCV stock, timeframe 4h/daily)
 - **Metriche obbligatorie**: Sharpe ratio, Sortino ratio, Max Drawdown, Win Rate, Calmar ratio
 - **Insidie da evitare**: [[_meta/glossario#Look-Ahead Bias|look-ahead bias]]; **[[_meta/glossario#Overfitting|overfitting]]** e **significatività statistica vs benchmark** → da definire con Salvatore in [[strategy/questions-for-salvatore]].
