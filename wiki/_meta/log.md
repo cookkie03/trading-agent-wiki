@@ -652,3 +652,12 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Pages updated**: [[artifacts/project-board]], [[system/modules/data-layer]], [[system/modules/agents]], [[system/modules/execution]], [[system/tools-inventory]], [[system/agent-behaviors]], [[system/stack]], [[system/decision-log]], [[strategy/questions-for-salvatore]], [[strategy/index]], [[strategy/methods/factor-investing]], [[strategy/methods/trend-following]], [[strategy/methods/mean-reversion-stat-arb]], [[prior-art/libraries/cvx-portfolio-optimizer]], [[artifacts/trading-floor]], [[_meta/glossario]], [[_meta/index]], [[_meta/hot-cache]]
 - **Contradictions**: risolta la contraddizione tra pagine che descrivevano codice "implementato" e il framing attuale del progetto come codebase da riprogettare. I claim storici sono stati degradati a context/reference design.
 - **Notes**: Il backlog `raw/articles/` resta pending ingest. Questo run ha trasformato task e idee dai commenti `%%...%%` e dalle daily notes in board, pagine target e policy editoriali esplicite.
+
+## [2026-06-23] fix | Review board + integrazione hub dopo feedback Luca
+
+- **Type**: correction / wiki integration
+- **Pages updated**: [[artifacts/project-board]], [[system/codebase-architecture]], [[system/data-sources-tool-map]], [[system/frontend-module]], [[system/system-wiki-reorganization]], [[_meta/hot-cache]]
+- **Fix tecnico**: corretti i settings Kanban della board: numero colonne e `list-collapse` allineati, nessun fence `json` nei settings del plugin.
+- **Fix editoriale**: mantenuta la struttura board scelta da Luca, ma collegata a pagine hub operative invece che a riscritture cosmetiche dei commenti.
+- **LightRAG**: tentata query sulla KB `trading-agent-wiki`; risultato `no-context`, quindi non usata come fonte per decisioni di contenuto in questo fix.
+- **Notes**: [[system/system-wiki-reorganization]] ora contiene mapping commenti → destinazioni, priorità di pulizia e regola esplicita per i claim storici.
