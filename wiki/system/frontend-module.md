@@ -13,27 +13,62 @@ area: software
 related:
   - "[[system/codebase-architecture]]"
   - "[[system/observability-dashboard]]"
+  - "[[prior-art/libraries/sfc-portfolio-tracker]]"
   - "[[artifacts/project-board]]"
 ---
 
 # Frontend Module
 
-Vincolo architetturale emerso dalle daily notes: il frontend deve essere **un modulo a sé, intercambiabile**, così da poter passare in futuro da Streamlit a un frontend TypeScript senza toccare il core del sistema.
+Vincolo architetturale emerso dalle daily notes: il frontend deve essere **un modulo sostituibile**. Streamlit puo' essere la prima UI, ma il core non deve dipendere da Streamlit; in futuro deve essere possibile passare a TypeScript cambiando il modulo frontend e i suoi adapter.
 
-## Requisiti
+## Boundary
 
-- Il core applicativo non deve dipendere da un framework UI specifico.
-- Il frontend legge stato, metriche, portfolio, log e decisioni tramite contratti stabili.
-- Streamlit può essere il primo adapter UI, non il vincolo definitivo.
-- Una futura UI TypeScript deve poter sostituire il modulo frontend con cambi minimi fuori dal suo boundary.
+Il frontend legge e visualizza. Non contiene:
 
-## Conseguenze per la codebase
+- logica di trading;
+- calcoli risk/quant;
+- chiamate dirette ai vendor;
+- submit ordini non mediati da API/servizi espliciti;
+- trasformazioni che cambiano lo stato finanziario.
 
-- Separare chiaramente `frontend/` dal resto della business logic.
-- Esporre interfacce di lettura semplici per dashboard e observability.
-- Evitare di nascondere logica critica dentro componenti Streamlit.
+Il frontend puo' contenere:
 
-## Collegamenti
+- componenti UI;
+- read models;
+- filtri e viste;
+- refresh/polling;
+- link a log, trace e pagine wiki;
+- eventuali controlli futuri solo se passano da contratti applicativi chiari.
 
-- Pianificazione codebase: [[system/codebase-architecture]]
-- Dashboard osservabilità: [[system/observability-dashboard]]
+## Contratti minimi
+
+La dashboard read-only deve consumare contratti stabili, non repository interni sparsi:
+
+- portfolio snapshot;
+- positions;
+- cash/liquidity;
+- trades e `exit_reason`;
+- watchlist/universe;
+- benchmark/alpha;
+- decision log;
+- trigger/events;
+- system health;
+- last run / daemon status.
+
+Questi contratti possono essere funzioni Python, API locali o query layer, ma devono restare indipendenti dal framework UI.
+
+## Prima versione
+
+Prima versione consigliata: **Streamlit read-only stile SFC**.
+
+Motivo: e' veloce per osservabilita', usa Python e si integra bene col DB. La pagina [[system/observability-dashboard]] resta il dettaglio funzionale; questa pagina definisce solo il confine architetturale.
+
+## Evoluzione futura
+
+Una UI TypeScript futura deve poter riusare gli stessi contratti:
+
+- o tramite API HTTP locale;
+- o tramite file/read model esportati;
+- o tramite un service layer condiviso.
+
+La scelta tecnica si decide quando la dashboard diventa prodotto, non nel primo harness.

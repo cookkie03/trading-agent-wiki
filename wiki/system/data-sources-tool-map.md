@@ -14,34 +14,87 @@ related:
   - "[[system/tools-inventory]]"
   - "[[system/data-providers]]"
   - "[[system/modules/data-layer]]"
+  - "[[system/modules/agents]]"
+  - "[[system/modules/execution]]"
+  - "[[system/modules/quant-backtesting]]"
   - "[[artifacts/project-board]]"
 ---
 
 # Data Sources & Tool Map
 
-Pagina di raccordo tra vendor, wrapper e tool. Nasce dai commenti di Luca: manca ancora un posto unico dove definire **fonti dati**, **insieme dei tool disponibili su ogni fonte** e il confine tra extraction, normalization e agent tools.
+Questa pagina collega tre livelli che prima erano separati:
 
-## Domande a cui deve rispondere
+- **provider/vendor**: chi fornisce dati o broker API;
+- **wrapper/connector**: come il codice normalizza quella fonte;
+- **tool/capability**: cosa vede l'agente o il modulo deterministico.
 
-- Quali vendor o librerie coprono prezzi, news, fundamentals, macro, social, options, broker state?
-- Quale wrapper interno standardizza ogni fonte?
-- Quali tool espone poi il sistema agli agenti o ai moduli deterministici?
-- Cosa resta live, cosa va in DB-first, cosa diventa cache o materialized view?
+La regola architetturale e': **vendor e broker stanno sotto wrapper, gli agenti vedono solo tool stabili**.
 
-## Direzione proposta
+## Mappa provider -> wrapper -> tool
 
-- **Vendor wrapper layer**: un adapter per ogni sorgente esterna, con output normalizzato.
-- **Tool layer**: tool stabili che usano i wrapper e nascondono all'agente i dettagli del vendor.
-- **Capability layer**: calcoli deterministici composti su dati normalizzati.
-- **Storage layer**: repository e tables che preservano dato grezzo, derivati e storico.
+| Dominio | Fonte primaria | Wrapper interno | Tool/capability esposta | Area DB |
+|---|---|---|---|---|
+| Broker MVP | Alpaca paper | broker adapter | `submit_order`, `get_positions`, `get_cash`, reconciliation | rendicontazione/log |
+| Broker prod | IBKR | broker adapter | ordini, posizioni, opzioni, account summary | rendicontazione/log |
+| Prezzi storici dev | yfinance | market data connector | `get_ohlcv_history` | market_data |
+| Prezzi prod/multi-asset | Twelve Data / Alpha Vantage | market data connector | `get_ohlcv_history`, quote fallback | market_data |
+| Quote live | Finnhub / Alpaca / IBKR | live quote connector | `get_realtime_quote` con write-through | market_data |
+| Macro | FRED | macro connector | `get_macro_series` | market_data |
+| Fondamentali | Alpha Vantage / yfinance | fundamentals connector | `get_financials`, `get_ratios`, `get_earnings` | market_data |
+| News/catalizzatori | Finnhub | news connector | `get_news` | market_data |
+| Sentiment | Finnhub / StockTwits / Reddit / X | sentiment connectors | `get_news_sentiment`, `get_social_sentiment` | market_data/log |
+| Calendario | Finnhub / FRED calendar sources | calendar connector | `get_calendar`, trigger events | market_data/trigger |
+| Opzioni | IBKR / Tradier | options connector | `get_options_chain`, `select_contract` | market_data/execution |
+| Aggregatore | OpenBB | meta-provider wrapper | fonte unificata o fallback router | dipende dal dato |
 
-## Backlog collegato
+Questa tabella non decide ancora i provider definitivi: definisce il **posto** in cui ogni provider entra nel sistema.
 
-- Studiare OpenBB come possibile meta-provider / research platform.
-- Studiare FinRL come riferimento per moduli RL o workflow quant sperimentali.
-- Continuare il crawl di `optimizer`, `datapizza-ai`, `TradingAgents`, `Rizzo`, `SFC` e altri prior-art.
-- Esplicitare per ogni fonte le policy di dedup, retention e freshness.
+## Policy per ogni fonte
 
-## Stato
+Ogni fonte deve avere una scheda minima:
 
-Documento seed. Va consolidato leggendo `[[system/tools-inventory]]`, `[[system/data-providers]]` e i prior-art già presenti in `wiki/prior-art/`.
+- dati coperti;
+- granularita' e freshness;
+- rate limit e costo;
+- stabilita' API;
+- chiave dedup;
+- mapping al DB;
+- fallback possibile;
+- se il dato e' storico DB-first o live real-time-first;
+- test offline con fake response.
+
+Senza questa scheda, la fonte resta research, non dipendenza di codice.
+
+## Relazione con `tools-inventory`
+
+[[system/tools-inventory]] descrive i tool dal punto di vista degli agenti. Questa pagina descrive cosa c'e' sotto quei tool.
+
+Esempio:
+
+- agente Technical chiama `compute_indicator`;
+- `compute_indicator` legge OHLCV normalizzati dal DB;
+- gli OHLCV arrivano da `yfinance` in dev o Twelve Data/Alpha Vantage in prod;
+- l'agente non vede mai la differenza.
+
+Questo evita duplicazioni, vendor lock-in e logica sparsa nei prompt.
+
+## Backlog di ricerca
+
+- **OpenBB**: da studiare come meta-provider o SDK di ricerca, non come dipendenza automatica.
+- **FinRL**: da valutare per moduli sperimentali RL/quant research, fuori dal core iniziale.
+- **Kronos**: da studiare come modello/fonte prior-art per time-series e linguaggio dei mercati.
+- **optimizer**: reference per BAML views, FastAPI layer, scheduler, broker sync e portfolio optimization.
+- **SFC**: reference per dashboard e analytics read-only.
+
+## Primo deliverable pratico
+
+Prima del codice agentico, produrre una tabella completa provider/tool con:
+
+- famiglia tool di [[system/tools-inventory]];
+- provider candidato;
+- wrapper da scrivere;
+- DB tables toccate;
+- test minimo;
+- rischio principale.
+
+Questa tabella diventa input diretto per il primo slice di [[system/codebase-architecture]].

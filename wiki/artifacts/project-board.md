@@ -1,4 +1,5 @@
 ---
+
 title: Project Board — Trading Agent
 type: artifact
 tags:
@@ -22,7 +23,46 @@ kanban-plugin: board
 sources:
   - "[[prior-art/papers/notion-trading-concepts]]"
   - "[[artifacts/trading-floor]]"
+
 ---
+
+## 🔀 Meeting Luca + Salvatore
+
+- [ ] 🔀 **Rivedere una per una le domande per Salvatore** — Luca non le considera ancora chiare: trasformarle in decisioni o task comprensibili → [[strategy/questions-for-salvatore]]
+- [ ] 🔀 **Decidere come combinare i metodi strategy** — trend following, mean reversion, factor investing e dual portfolio: ordine di implementazione e composizione → [[strategy/index]]
+- [ ] 🔀 **Decidere se serve un desk/agent macro separato** — alert macro e report sul portafoglio separati dall'analisi ticker-specifica → [[system/modules/agents]]
+- [ ] 🔀 **Stabilire la frequenza operativa come event-driven** — PM attivato da alert e condizioni, non da cadenza rigida come vincolo primario → [[system/trigger-engine]]
+- [ ] 🔀 **Chiarire Risk Analyst: desk pari agli altri o gate finale** — mantenere l'idea originaria di Luca/Salvatore o il gate bear separato → [[system/agent-behaviors]]
+- [ ] 🔀 **Validare la strategia di metriche e benchmark** — cosa significa davvero battere benchmark e quali test statistici servono → [[strategy/questions-for-salvatore]]
+
+
+## 📈 Salvatore — Da fare
+
+- [ ] 📈 **Rileggere prior-art/papers e creare “Metriche (definitivo)”** — consolidare metriche di valutazione e performance come fatto per i driver macro → [[strategy/index]]
+- [ ] 📈 **Pulire la cartella methods strategy** — chiarire ruolo di dual portfolio, value, trend following e mean reversion come strategie componibili → [[strategy/index]]
+- [ ] 📈 **Definire indicatori codificabili per trend following e mean reversion** — quali indicatori usare, come parametrizzarli e come backtestarli → [[strategy/methods/trend-following]]
+- [ ] 📈 **Portare gli indicatori di valuation stock** — documento dell'associazione: cosa analizzare in una stock e come spiegarlo agli agenti → [[strategy/questions-for-salvatore]]
+- [ ] 📈 **Chiarire factor investing usando la tesi corporate bond** — fattori, fonti affidabili, ML/deep learning e limiti pratici → [[strategy/methods/factor-investing]]
+
+
+## 📈 Salvatore — In corso
+
+- [ ] 📈 **Studio wiki in autonomia** — leggere la wiki e segnalare dubbi o priorità di mercato da portare in meeting → [[_meta/index]]
+
+
+## 👤 Luca — Da fare
+
+- [ ] 🛠 **Validare il tree della codebase prima dell'implementazione** — scegliere con il coding agent i rami di alto livello e cosa deve restare stabile nel tempo → [[system/codebase-architecture]]
+- [ ] 🛠 **Decidere quanto riusare della build storica Datapizza/branch precedenti** — reference design, codice da copiare, o solo materiale da ripensare → [[system/stack]]
+- [ ] 🛠 **Scegliere il primo slice software da costruire** — harness broker/vendor/storage con test, prima di grafo e agenti → [[system/codebase-architecture]]
+- [ ] 🛠 **Rivedere le pagine `system/` dopo la pulizia dei claim storici** — controllare se la wiki descrive davvero il progetto che vuoi costruire ora → [[system/system-wiki-reorganization]]
+- [ ] 🛠 **Definire il ruolo del frontend come modulo sostituibile** — Streamlit come prima UI, TypeScript futuro, stesso core e contratti di lettura → [[system/frontend-module]]
+
+
+## 👤 Luca — In corso
+
+- [ ] 🛠 **Rilettura critica della wiki con commenti inline** — i commenti `%%...%%` sono input progettuali da assorbire in pagine e task, non testo da riscrivere superficialmente → [[system/system-wiki-reorganization]]
+
 
 ## 🛠 Coding Agent — Da fare
 
@@ -36,38 +76,6 @@ sources:
 - [ ] 🛠 **Esplicitare wrapper extra-LLM per broker e vendor** — gli agenti chiedono dati o intent di trade; infrastruttura e adapter gestiscono provider, formati e duplicati → [[system/data-sources-tool-map]]
 - [ ] 🛠 **Preparare backlog subtask per eventuali subagent** — trasformare i commenti rimasti e le aree wiki sporche in unità indipendenti assegnabili → [[system/system-wiki-reorganization]]
 
-## 👤 Luca — Da fare
-
-- [ ] 🛠 **Validare il tree della codebase prima dell'implementazione** — scegliere con il coding agent i rami di alto livello e cosa deve restare stabile nel tempo → [[system/codebase-architecture]]
-- [ ] 🛠 **Decidere quanto riusare della build storica Datapizza/branch precedenti** — reference design, codice da copiare, o solo materiale da ripensare → [[system/stack]]
-- [ ] 🛠 **Scegliere il primo slice software da costruire** — harness broker/vendor/storage con test, prima di grafo e agenti → [[system/codebase-architecture]]
-- [ ] 🛠 **Rivedere le pagine `system/` dopo la pulizia dei claim storici** — controllare se la wiki descrive davvero il progetto che vuoi costruire ora → [[system/system-wiki-reorganization]]
-- [ ] 🛠 **Definire il ruolo del frontend come modulo sostituibile** — Streamlit come prima UI, TypeScript futuro, stesso core e contratti di lettura → [[system/frontend-module]]
-
-## 👤 Luca — In corso
-
-- [ ] 🛠 **Rilettura critica della wiki con commenti inline** — i commenti `%%...%%` sono input progettuali da assorbire in pagine e task, non testo da riscrivere superficialmente → [[system/system-wiki-reorganization]]
-
-## 📈 Salvatore — Da fare
-
-- [ ] 📈 **Rileggere prior-art/papers e creare “Metriche (definitivo)”** — consolidare metriche di valutazione e performance come fatto per i driver macro → [[strategy/index]]
-- [ ] 📈 **Pulire la cartella methods strategy** — chiarire ruolo di dual portfolio, value, trend following e mean reversion come strategie componibili → [[strategy/index]]
-- [ ] 📈 **Definire indicatori codificabili per trend following e mean reversion** — quali indicatori usare, come parametrizzarli e come backtestarli → [[strategy/methods/trend-following]]
-- [ ] 📈 **Portare gli indicatori di valuation stock** — documento dell'associazione: cosa analizzare in una stock e come spiegarlo agli agenti → [[strategy/questions-for-salvatore]]
-- [ ] 📈 **Chiarire factor investing usando la tesi corporate bond** — fattori, fonti affidabili, ML/deep learning e limiti pratici → [[strategy/methods/factor-investing]]
-
-## 📈 Salvatore — In corso
-
-- [ ] 📈 **Studio wiki in autonomia** — leggere la wiki e segnalare dubbi o priorità di mercato da portare in meeting → [[_meta/index]]
-
-## 🔀 Meeting Luca + Salvatore
-
-- [ ] 🔀 **Rivedere una per una le domande per Salvatore** — Luca non le considera ancora chiare: trasformarle in decisioni o task comprensibili → [[strategy/questions-for-salvatore]]
-- [ ] 🔀 **Decidere come combinare i metodi strategy** — trend following, mean reversion, factor investing e dual portfolio: ordine di implementazione e composizione → [[strategy/index]]
-- [ ] 🔀 **Decidere se serve un desk/agent macro separato** — alert macro e report sul portafoglio separati dall'analisi ticker-specifica → [[system/modules/agents]]
-- [ ] 🔀 **Stabilire la frequenza operativa come event-driven** — PM attivato da alert e condizioni, non da cadenza rigida come vincolo primario → [[system/trigger-engine]]
-- [ ] 🔀 **Chiarire Risk Analyst: desk pari agli altri o gate finale** — mantenere l'idea originaria di Luca/Salvatore o il gate bear separato → [[system/agent-behaviors]]
-- [ ] 🔀 **Validare la strategia di metriche e benchmark** — cosa significa davvero battere benchmark e quali test statistici servono → [[strategy/questions-for-salvatore]]
 
 ## 🧪 Ricerca / Futuro
 
@@ -78,10 +86,12 @@ sources:
 - [ ] 🛠 **Valutare SFC come base della dashboard osservabilità** — leggere DB e stato sistema in sola lettura, senza mescolare UI e core → [[system/observability-dashboard]]
 - [ ] 🔀 **Crawl periodico di repo e documentazioni prior-art** — mantenere una pipeline di scouting per evitare di reinventare componenti già maturi → [[system/data-sources-tool-map]]
 
+
 ## 🟡 In corso
 
 - [ ] 🛠 **Allineamento wiki al framing “codebase da costruire”** — separare stato attuale, storia dei branch e design valido nelle pagine più dense → [[system/system-wiki-reorganization]]
 - [ ] 🛠 **Ingest commenti wiki + daily notes** — assorbire i commenti come task/decisioni/idee integrate nel sistema, non come frasi riscritte → [[system/system-wiki-reorganization]]
+
 
 ## ✅ Fatto
 
@@ -93,8 +103,9 @@ sources:
 
 
 
+
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false,false,false,false,false,false,false]}
+{"kanban-plugin":"board","list-collapse":[null,null,null,null,null,null,true,null,true]}
 ```
 %%
