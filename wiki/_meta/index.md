@@ -31,6 +31,10 @@
 - [[system/observability-dashboard]] — dashboard read-only (stile SFC fund, Streamlit) per osservare il daemon — da fare dopo 🛠
 - [[system/trigger-engine]] — centralizzazione dei trigger (alert · next_check_date · calendario · synthesis) → coda del funnel 🛠
 - [[system/cost-accounting]] — gestione a runtime di commissioni + token cost (stima pre-trade · consuntivo · learning) 🛠
+- [[system/codebase-architecture]] — progettazione del tree reale della codebase: harness prima, agenti dopo 🛠
+- [[system/data-sources-tool-map]] — mappa di vendor, wrapper, tool e capability layer 🛠
+- [[system/system-wiki-reorganization]] — piano di riordino di `wiki/system/` e gestione dei claim storici 🛠
+- [[system/frontend-module]] — frontend come modulo intercambiabile (Streamlit oggi, TypeScript domani) 🛠
 
 ### Moduli — aree del sistema (da `architettura.canvas`)
 - [[system/modules/data-layer]] — DB centrale (4 aree logiche) + Extraction (extractors, adaptive, market alert, calendar tool, mantainer)

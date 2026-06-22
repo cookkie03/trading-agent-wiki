@@ -1,5 +1,4 @@
 ---
-
 title: Project Board — Trading Agent
 type: artifact
 tags:
@@ -8,196 +7,71 @@ tags:
   - execution
   - architecture
 created: 2026-04-30
-updated: 2026-06-04
+updated: 2026-06-23
 status: active
 related:
   - "[[system/architecture]]"
   - "[[system/decision-log]]"
-  - "[[system/stack]]"
   - "[[system/ideas-log]]"
+  - "[[system/codebase-architecture]]"
   - "[[strategy/questions-for-salvatore]]"
 confidence: high
 priority: high
 area: ops
 kanban-plugin: board
-sources:
-  - "[[prior-art/papers/notion-trading-concepts]]"
-  - "[[artifacts/trading-floor]]"
-
 ---
+
+# Project Board — Trading Agent
+
+Board unica di progetto. Tiene solo backlog operativo, decisioni aperte e stato reale del lavoro. I dettagli vivono nelle pagine linkate.
 
 ## 💡 Idee
 
-- [ ] 🛠 **Sistema di rating/scoring a livelli** — conviction trade + valutazione lavoro agenti + rating asset → [[system/rating-scoring]]
-- [ ] 🛠 **Scheda ticker auto-aggiornante nel DB** — ogni ticker ha la sua page con valutazione corrente, gestione staleness → [[system/parallelism-design]]
-- [ ] 🛠 **Layer di "valutatori" per ticker** — thread separato per ticker tra PM e desk → [[system/parallelism-design]]
-- [ ] 🛠 **"News anomale" come miccia dell'origination** — terzo tipo di alert che attiva il PM → [[system/ideas-log]]
-- [ ] 🛠 **"TV/dashboard del DB" (TG24)** — vista in stile news sullo stato del DB → [[system/ideas-log]] · [[prior-art/libraries/sfc-portfolio-tracker]]
-- [ ] 🛠 **Auto-finanziamento crediti OpenRouter** — ricarica API dai profitti → [[system/modules/agents]]
-- [ ] 🛠 **Volume Spike Detection** — rilevatore picchi anomali di volume (baseline rolling, z-score) → [[system/modules/quant-backtesting]]
-- [ ] 🛠 **Reportistica diagnostica "cosa va male"** — modulo Python (metriche) + narrazione LLM, agganciato alla periodical synthesis → [[system/learning-feedback-loop]]
-- [ ] 🛠 **Ponderazione dinamica dei pesi degli agenti** — l'agente che ci azzecca pesa di più (Opinion Pooling / Black-Litterman), post-MVP → [[system/learning-feedback-loop]]
-- [ ] 🛠 **Feedback post-trade per meccanismo di uscita** — `exit_reason` su ogni trade + sintesi nel `past_context` per gli agenti → [[system/rating-scoring]]
-- [ ] 🛠 **Disinvestimento come batch di trade coordinati** — il PM emette vendite+acquisto in un ciclo per far spazio, solo se tutto analizzato a sufficienza → [[system/rating-scoring]]
-- [ ] 🛠 **Intervento degli agenti sul position sizing** — idea da valutare (rischi: rompe determinismo, LLM debole sui numeri, sovraesposizione; benefici: contesto non catturato dalla formula; via di mezzo = fattore ±X% clampato dai cap) → [[system/position-sizing]]
-- [ ] 🛠 **Continuous Learning real-time** — fine-tuning su streaming (post-fine-tuning batch) → [[system/decision-log]]
-- [ ] 📈 **Strategia Sentiment degli Analisti** — replicare il pattern che genera il consenso e tradare prima della folla → [[system/ideas-log]]
-- [ ] 📈 **Stop loss istituzionali a domino** — sfruttare le soglie psicologiche degli SL → [[strategy/methods/trend-following]]
-- [ ] 📈 **Quantificazione eventi rari** — gestire eventi mai visti (categoria più vicina vs unknown) → [[strategy/questions-for-salvatore]]
-- [ ] 📈 **Analisi paper di finanza** — raccogliere e ingestare paper accademici sui fattori → [[strategy/index]]
-- [ ] 🔀 **Copy trading come canale di monetizzazione** — Darwinex (20% performance fee, FCA, Python→MT5→DARWIN, integrazione diretta IBKR). Da attivare dopo il paper trading → [[system/ideas-log]]
-- [ ] 🔀 **Coinvolgere collaboratori esterni per review** — Pipeline: Diego Zappa (primo, prof. statistico + trader), Trezzi (connector), traders SIM. Solo quando il sistema è funzionante → [[system/ideas-log]]
-
+- [ ] 🛠 **Desk macro separato dal ticker flow** — usare un agente o desk dedicato per report macro e impatto sul portafoglio, separato dall'analisi sul singolo ticker → [[system/modules/agents]]
+- [ ] 🛠 **Frontend intercambiabile** — modulo frontend sostituibile senza toccare il core (Streamlit oggi, TypeScript domani) → [[system/frontend-module]]
+- [ ] 🛠 **LLM views + motore quant** — sfruttare pattern Black-Litterman / opinion pooling come ponte tra giudizio LLM e allocazione matematica → [[prior-art/libraries/cvx-portfolio-optimizer]]
+- [ ] 📈 **Integrare il meglio dei metodi** — trend following, mean reversion, factor investing e dual portfolio come mattoni componibili, non come alternative monolitiche → [[strategy/index]]
+- [ ] 🔀 **Programma di crawl prior-art continuo** — sniff/crawl sistematico di repo e docs utili (OpenBB, FinRL, optimizer, altri) come backlog di ricerca permanente → [[system/data-sources-tool-map]]
 
 ## 🔴 Da fare
 
-- [ ] 🛠 **Strutturare lo schema dello state** (PROSSIMO PASSO 1) — raffinare campi/tipi di research_state/investment_state → [[system/state-schemas]]
-- [ ] 🛠 **Position sizing: tarare i numeri** — impianto risk-based approvato; restano base_risk_%, multiplier per conviction, heat_max_%, cap titolo/settore → backtest → [[system/position-sizing]]
-- [ ] 🛠 **Tool agenti: fissare i vendor** — impianto inventario approvato; restano solo i vendor dei dati live (candidato Finnhub) e il vendor opzioni (IBKR vs Tradier), da decidere a implementazione del data-layer → [[system/tools-inventory]]
-- [ ] 🔀 **Definire l'`investment_state` con Salvatore** — partire dal template-menu completo, potare/modificare insieme → [[system/investment-state-template]]
-- [ ] 🛠 **Tool di iniezione dello stato del portafoglio** — foto aggiornata (cassa, posizioni, P/L) nel contesto dell'agente → [[system/modules/agents]]
-- [ ] 🛠 **Backtesting continuo e asincrono come validatore delle soglie** — valida di continuo R:R, k_stop/k_tp e ogni rapporto tarato a monte → [[system/modules/quant-backtesting]]
-- [ ] 🛠 **Adapter broker: completare** — interfaccia + PaperBroker + Alpaca paper fatti (`feat/broker-adapter`); resta **IBKR** (prod), bracket completo, fill parziali → [[system/modules/execution]]
-- [ ] 🛠 **Progettare lo schema del DB esteso** — 4 aree (rendicontazione/dati live/statuto/log), storage time-series + oggetti; accesso/performance/forma fisica → [[system/modules/data-layer]] · [[system/db-access-performance]]
-- [ ] 🛠 **Implementare il queue system degli extractor** — un extractor per vendor, check presenza DB, autogestione rate limit → [[system/modules/data-layer]]
-- [ ] 🛠 **Riscrivere il grafo LangGraph** — node/edge/state/tool sulla topologia 2026-05-29 → [[system/modules/agents]]
-- [ ] 🛠 **Configurare OpenRouter + DeepSeek V4 Pro** — setup router e modello → [[system/stack]]
-- [ ] 🛠 **Studiare i corsi completi LangGraph e LangSmith** — finora solo Quickstart → [[system/stack]]
-- [ ] 🛠 **Implementare graceful shutdown & recovery** — design fatto (riconciliazione broker + intent log + client order id); resta da scrivere la routine di init → [[system/modules/data-layer]]
-- [ ] 🛠 **Predisporre il substrato di logging del learning loop** — chain-of-thought + match tesi-per-agente↔esito + `exit_reason`, **da subito** → [[system/learning-feedback-loop]]
-- [ ] 🛠 **Valutare canale Telegram "sala segnali"** — calendario, news, prezzi, trade, alert → [[system/architecture]]
-- [ ] 🛠 **Analizzare FinAgent / AlphaArena / NeuroEspresso (tecnico)** — struttura codice, agenti, comunicazione → [[prior-art/papers/alpha-arena]]
-- [ ] 🛠 **Studiare il Cornell Paper** — fonte citata, da reperire → [[notebooklm-research-2026-05-13]]
-- [ ] 📈 **Preparare il foglio "Domande per Salvatore"** — VaR, overfitting, test benchmark, opzioni, rating asset → [[strategy/questions-for-salvatore]]
-- [ ] 📈 **Preparare documento indicatori di valuation** — cosa analizzare nelle stock (associazione) → [[strategy/questions-for-salvatore]]
-- [ ] 📈 **Formalizzare i fondamentali** — es. i 5 tipi di P/E, trailing vs current → [[system/modules/quant-backtesting]]
-- [ ] 📈 **Lista di fattori candidati** — categoria, misurabilità, strumento impattato → [[system/modules/quant-backtesting]]
-- [ ] 📈 **Raccogliere e validare indicatori di analisi tecnica** — minimi/massimi 52w, range, drawdown, volumi → [[system/modules/quant-backtesting]]
-- [ ] 📈 **Descrivere la giornata tipo di un trader** — cosa il bot deve replicare → [[strategy/index]]
-- [ ] 📈 **Raccogliere casi reali eventi → impatto prezzi** — dataset grezzo per la factor quantification → [[strategy/index]]
-
+- [ ] 🛠 **Definire l'architettura della codebase da zero** — tree alto livello, responsabilità dei package, ordine di build e invarianti del codice → [[system/codebase-architecture]]
+- [ ] 🛠 **Mappare fonti dati, vendor wrapper e tool layer** — separare chiaramente connectors, capabilities e contratti di estrazione → [[system/data-sources-tool-map]]
+- [ ] 🛠 **Riorganizzare `wiki/system/`** — proporre una tassonomia più ordinata per sottodomini (agents, data, execution, frontend, orchestration, quant) senza perdere storia → [[system/system-wiki-reorganization]]
+- [ ] 🛠 **Pulire i claim di implementazione residui** — degradare le sezioni che descrivono branch o codice come se fossero stato attuale, mantenendo il contesto storico nei log → [[system/system-wiki-reorganization]]
+- [ ] 🛠 **Definire l'harness completo prima degli agenti** — broker, vendor, storage, contracts e test come prima tranche di implementazione reale → [[system/codebase-architecture]]
+- [ ] 🛠 **Formalizzare l'handling errori e i feedback al PM** — trade saltato, state incompleto, conferma esecuzione, failure recovery → [[system/modules/execution]]
+- [ ] 🛠 **Strutturare il layer tool del coding agent** — backlog operativo specifico per lavoro di implementazione e refactor guidati dall'AI → [[system/codebase-architecture]]
+- [ ] 📈 **Rivedere una per una le domande per Salvatore** — Luca vuole trasformarle in agenda esplicita del prossimo meeting → [[strategy/questions-for-salvatore]]
+- [ ] 📈 **Produrre una pagina “Metriche (definitivo)”** — rileggere papers e prior-art strategy per consolidare le metriche di valutazione → [[strategy/index]]
+- [ ] 📈 **Chiarire factor investing tramite la tesi corporate bond** — usare la tesi di Luca come materiale guida per fattori, fonti e possibili modelli ML/DL → [[strategy/methods/factor-investing]]
+- [ ] 🔀 **Studiare Kronos come modulo candidato** — capire se usarlo per il linguaggio dei mercati / time series nel progetto → [[prior-art/papers/kronos-foundation-model]]
+- [ ] 🔀 **Studiare OpenBB e FinRL** — backlog di scouting per librerie e repo da cui estrarre moduli o pattern riusabili → [[system/data-sources-tool-map]]
 
 ## 🟡 In corso
 
-- [ ] 🛠 Salvatore: **Studio wiki in autonomia** — leggere tutta la wiki prima della prossima sessione → [[_meta/index]]
-- [ ] 🛠 Luca: **Studio wiki in autonomia** — leggere tutta la wiki prima della prossima sessione → [[_meta/index]]
-- [ ] 🛠 **Roadmap di adattamento del fork** — gap analysis fatta (tengo/elimino/aggiungo); milestone M0→M6. Prossimo: M0 wiring OpenRouter+DeepSeek + run as-is, poi M1 grafo "nostro" → [[system/fork-gap-analysis]]
-- [ ] 🛠 **Progettazione architettura software** — design-first, I/O per ogni modulo, schema DB, flusso end-to-end → [[system/architecture]]
-- [ ] 🛠 **Modulo analisi documenti** — legge documenti ed estrae info strutturate → [[system/modules/data-layer]]
-- [ ] 📈 **Definire cosa replica il bot nel mondo reale** — workflow del trader tipo → [[strategy/index]]
-- [ ] 📈 **Raccolta di meccanismi di mercato** — ogni osservazione modellabile nel vault → [[strategy/index]]
-
+- [ ] 🛠 **Ingest editoriale commenti wiki + daily notes** — trasformare commenti `%%...%%` e note 2026-06-20/21/22 in board, pagine target e correzioni di stato → [[system/system-wiki-reorganization]]
+- [ ] 🛠 **Allineamento della wiki al nuovo framing “design/codebase first”** — la wiki deve descrivere il progetto attuale, non i branch storici come stato corrente → [[system/decision-log]]
+- [ ] 🔀 **Raccolta task per coding agent e meeting** — centralizzare in board i task emersi dalla rilettura completa della wiki da parte di Luca → [[artifacts/project-board]]
 
 ## 🟠 Decisioni da prendere
 
-- [ ] 🛠 **Dashboard read-only osservabilità (stile SFC fund, Streamlit)** (input Luca 2026-06-08) — dopo l'architettura a daemon, l'utente osserva il sistema *in sola lettura*: portafoglio/NAV, watchlist+universo, decisioni/trade, alpha vs benchmark, log. Legge dal DB (`~/.tradingagents/`), **non controlla mai**. Da fare in un secondo momento → [[system/observability-dashboard]]
-- [ ] 🛠 **Memoria inter-task degli agenti** (da progettare/discutere, input Luca 2026-06-07) — come ricordare/recuperare i casi passati tra task per imparare dagli errori: riassunto rolling nel system prompt · tool di recupero super-parametrici (ticker/condizione/momento/esito) · `past_context` popolato · embeddings. Fondazione: `decision_log`+`exit_reason`+`past_context` → [[system/agent-memory]]
-- [ ] 🛠 **Deduplicazione DB di OGNI informazione salvata** (da fare SUCCESSIVAMENTE, input Luca 2026-06-07) — ogni singola info scritta nel DB (prezzi, news, social, macro, fondamentali, rt, ecc.) deve avere una dedup robusta/uniforme. Oggi: check-presenza/dedup_key per famiglia, ma non sistematica su tutto → [[system/modules/data-layer]]
-- [ ] 🛠 **Trigger Engine centralizzato** — un unico componente che raccoglie alert·next_check_date·calendario·synthesis·news e li immette nella coda del funnel (input Luca 2026-06-06); da validare in fase di cycle runner → [[system/trigger-engine]]
-- [ ] 🛠 **Cost accounting a runtime** — commissioni broker + token cost: stima pre-trade (guardrail net-EV) · consuntivo post-fill · net performance al learning loop (input Luca 2026-06-06) → [[system/cost-accounting]]
-- [ ] 🛠 **Implementare lo slice MVP del parallelismo** — coda di priorità (D) + subgraph per-ticker (A); screening (E) e scheda DB (B/C) come strati successivi → [[system/parallelism-design]]
-- [ ] 🔀 **Criteri "info sufficienti" del PM + max iterazioni** — quando fare/non fare un trade → [[system/parallelism-design]]
-- [ ] 🛠 **Forma fine di storage per gli state annidati** — JSON/documentale dentro il time-series → [[system/modules/data-layer]]
-- [ ] 🔀 **Enumerare le fonti/tool di sentiment** — Reddit/StockTwits/X + news-sentiment + API dedicate, massima copertura; si interseca con "indicatori di sentiment" (Salvatore) → [[system/tools-inventory]] · [[strategy/questions-for-salvatore]]
-- [ ] 🛠 **System prompt PM: "nel dubbio, chiedi sempre"** — istruire il PM a interrogare di nuovo i desk a ogni incertezza (anche piccola); no-trade preferibile a basi incerte → [[system/modules/agents]] · [[system/parallelism-design]]
-- [ ] 🛠 **Validazione collettiva dell'`investment_state`** — tutti gli agenti validano completezza·correttezza·esaustività fonti prima del sealing (nodo esplicito o responsabilità nel system prompt?) → [[system/state-schemas]]
-- [ ] 🛠 **Includere il modulo TA?** — opzionale, test A/B con/senza → [[system/modules/quant-backtesting]]
-- [ ] 🛠 **Analisti: 2 o 4 agenti?** — accorpati o separati, da decidere a sviluppo → [[system/modules/agents]]
-- [ ] 🛠 **Consolidare il Prompt Builder** — tutti e 6 i system prompt scritti (bozze v0); resta l'assemblaggio prompt+contesto XML+schema strict + la rifinitura iterativa LangSmith → [[system/system-prompts]] · [[prior-art/libraries/rizzo-trading-agent]]
-- [ ] 🛠 **Token cost estimator** — tracciamento token + ricarica automatica → [[system/modules/agents]]
-- [ ] 🔀 **Frequenza ciclo** — 4h vs 24h, dipende dai backtest → [[system/modules/quant-backtesting]]
-- [ ] 🔀 **Desk di monitoring/evaluation** — design, partire da SFC Streamlit → [[system/modules/agents]]
-- [ ] 📈 **VaR: quale e come** — parametrico/storico/MonteCarlo, VaR vs CVaR, lookback → [[strategy/questions-for-salvatore]]
-- [ ] 📈 **Prevenzione overfitting** — walk-forward, in/out-of-sample, CPCV → [[strategy/questions-for-salvatore]]
-- [ ] 📈 **Test statistici sul benchmark** — significatività vs S&P/60-40 → [[strategy/questions-for-salvatore]]
-- [ ] 📈 **Base dei rating asset (disinvestimento)** — su cosa basarli e come aggiornarli → [[system/rating-scoring]]
-- [ ] 📈 **Strategia opzioni (leva)** — strike/scadenza/contratti/dati, fuori MVP → [[strategy/questions-for-salvatore]]
-- [ ] 📈 **Indicatori di sentiment** — da inventare, posizione ibrida col technical → [[strategy/questions-for-salvatore]]
-- [ ] 📈 **Regole dello Statuto** — capire quali info dargli e in quale forma (template/wireframe) → [[system/modules/agents]]
-- [ ] 📈 **Cash-out strategy: quale %?** — mensile su IBAN, a progetto finito → [[system/modules/agents]]
-
+- [ ] 🛠 **Framework del nuovo build reale** — quanto riusare della build Datapizza storica e quanto invece tenere solo come reference design → [[system/stack]]
+- [ ] 🛠 **Modello del PM** — tenere un frontier model dedicato al PM e modelli più economici per gli altri agenti, oppure uniformare lo stack LLM → [[system/modules/agents]]
+- [ ] 🛠 **Separazione macro vs ticker analysis** — macro-desk separato, funzione specializzata o estensione del Market agent → [[system/modules/agents]]
+- [ ] 🛠 **Granularità della futura struttura `wiki/system/`** — quanto spingere la scomposizione in sottocartelle senza perdere navigabilità umana → [[system/system-wiki-reorganization]]
+- [ ] 📈 **Quali metodi portare per primi a codice** — scegliere il primo set di strategie da codificare e backtestare davvero → [[strategy/index]]
 
 ## ✅ Fatto
 
-- [x] 🛠 **CODICE: ambiente unico = uv (`.venv`)** ✅ 2026-06-07 — pytest come dev-dep nel `pyproject`; `uv sync` provisiona un solo `.venv` (runtime+dev+ib_async); tutto via `uv run`. Risolto il mismatch venv↔pyenv (test che mentivano). Rimossi 2 test orfani del `cli/` fork → [[system/stack]]
-- [x] 🛠 **CODICE: broker Interactive Brokers via TWS API (`ib_async`)** ✅ 2026-06-07 — `broker/ibkr.py` (lo strumento IBKR più completo): connect/placeOrder/positions/accountSummary; config `[broker] provider=ibkr` + host/port/client_id (7497 paper/7496 live). Alpaca verificato sulle doc ufficiali. → [[system/modules/execution]] · [[system/data-providers]]
-- [x] 🛠 **CODICE: daemon background (start/stop/status)** ✅ 2026-06-08 — `python -m tradingagents.cli start|stop|status`; loop autonomo detached, PID+log in `~/.tradingagents/`, conferma a video → [[system/universe-watchlist]]
-- [x] 🛠 **CODICE: Universo + Watchlist + Benchmark + Gerarchia agenti** ✅ 2026-06-08 — branch `feat/universe-watchlist`: modello 3 insiemi (universo riconciliato col broker via `list_assets` · watchlist dinamica ibrida seed S&P500 · portfolio); benchmark dinamico (config, mai fisso) + alpha; gerarchia Direttore→Valutatore(parallelo)→4 desk + **Risk Analyst su 2 livelli** (titolo + portafoglio); `ticker_events`→trigger (auto-scheduling). 190 test verdi → [[system/universe-watchlist]]
-- [x] 🛠 **CODICE: config globale consolidato `config.toml`** ✅ 2026-06-07 — fonte **unica** dei parametri (llm·**broker** paper/live·risk·charter·screening·cycle·data·costs); **rimosso** l'override `TRADINGAGENTS_*` da `.env` (il `.env` ora è **solo segreti**). `default_config` prende il modello da `config.toml`. CLI configura anche il broker (paper/alpaca, paper/live) da lì. → [[system/stack]]
-- [x] 🛠 **CODICE: context state per-agente (finestra di contesto cucita ad hoc)** ✅ 2026-06-07 — `brain/agent_context.py`: ogni agente ha il suo `AgentContext` strutturato a sezioni sul proprio compito (market: macro/catalysts/price/portfolio · technical: price/indicators/volume · …); parte dal contesto iniettato (warm start) e **accumula** i risultati dei tool **mantenendo la struttura**, **automantenendosi** per tutto il task (round + revisioni). Prima la memoria conversazionale veniva scartata → [[system/modules/agents]]
-- [x] 🛠 **CODICE: warm start (1° contesto iniettato) + tool-calling coesistono** ✅ 2026-06-07 — state vuoto → extractor pre-lanciati (`brain/warmup.py`); durante l'analisi gli agenti chiamano i tool → [[system/canvas-code-mapping]]
-- [x] 🛠 **CODICE: tool-calling autonomo degli agenti (Extractors set, canvas)** ✅ 2026-06-07 — gli agenti **emettono le tool call da soli** (LangChain `bind_tools` loop in `brain/llm.py`); `build_desk_tools` dà a ogni agente tutti i tool utili (extract→risponde→write-through DB); `Extractors` bundle. Allineato al canvas → [[system/canvas-code-mapping]] · [[system/tools-inventory]]
-- [x] 🛠 **CODICE: mantainer (transactions→rendicontazione)** ✅ 2026-06-07 — marca le posizioni a mercato e aggiorna lo snapshot portafoglio dal broker, a fine ciclo → [[system/modules/data-layer]]
-- [x] 🛠 **CODICE: tool layer (real-time-first + write-through) + heat reale** ✅ 2026-06-07 — `tools/`: `get_realtime_quote` (real-time first→DB), `get_open_positions_risk` (heat), `volume_spike`, `get_options_chain`; brain usa prezzo real-time-first e sizing con heat reale → [[system/tools-inventory]]
-- [x] 🛠 **CODICE: Statuto VaR + diversificazione settore** ✅ 2026-06-07 — guardrail `portfolio_var` + `sector_concentration` nel Risk gate → [[system/modules/agents]]
-- [x] 🛠 **CODICE: disinvestimento rating-based** ✅ 2026-06-07 — `disinvest_weakest` vende il più debole (conviction+score) per far spazio → [[system/rating-scoring]]
-- [x] 🛠 **CODICE: tool catena opzioni + selezione contratto** ✅ 2026-06-07 — `get_options_chain` + `select_contract` (strike ATM) + adapter yfinance → [[system/modules/execution]]
-- [x] 🛠 **CODICE: leva via opzioni su segnali Strong** ✅ 2026-06-06 — la funzione Trade instrada Strong Buy→Call / Strong Sell→Put, standard→equity (no margine); `asset_type`/`option_type` fino al broker. Catena opzioni reale = follow-up → [[system/modules/execution]]
-- [x] 🛠 **CODICE: backtester deterministico (validatore soglie)** ✅ 2026-06-06 — `backtesting/` ATR long-only su barre storiche, riusa indicatori+risk engine; hit-rate/return/drawdown; VectorBT motore futuro → [[system/modules/quant-backtesting]]
-- [x] 🛠 **CODICE: gestione uscite (TP/SL) + lifecycle trade** ✅ 2026-06-06 — `execution/exits.py` `manage_exits` chiude le posizioni quando il prezzo tocca stop/target (`exit_reason`); il ciclo prima gestisce le uscite poi apre → [[system/modules/execution]]
-- [x] 🛠 **CODICE: learning-loop substrate** ✅ 2026-06-06 — `DecisionLog` (opinioni per-agente + esito + link al trade); ogni deep-dive logga la decisione → substrato per scoring/pesi → [[system/learning-feedback-loop]]
-- [x] 🛠 **CODICE: loop autonomo (periodical synthesis)** ✅ 2026-06-06 — `app.run_forever` + CLI `--loop`; tick ricorrente che rinfresca i dati e gira il ciclo → [[system/modules/agents]]
-- [x] 🛠 **CODICE: Statuto riserva 10% cash + DTC `next_check_date`** ✅ 2026-06-06 — guardrail cash-reserve nel Risk gate; il PM imposta `next_check_date`, il ciclo aggiorna la scheda ticker (loop checkpoint chiuso) → [[system/modules/agents]] · [[system/cost-accounting]]
-- [x] 🛠 **CODICE: provider full OpenRouter + DeepSeek** ✅ 2026-06-06 — default del progetto in `default_config.py` (base_url auto-risolto, serve solo `OPENROUTER_API_KEY`) → [[system/stack]]
-- [x] 🛠 **CODICE: Trigger Engine — price alert** ✅ 2026-06-06 — sorgente movimento anomalo `|Δ|>k·ATR` aggiunta a `collect_triggers` (checkpoint>price_alert>screening) → [[system/trigger-engine]]
-- [x] 🛠 **CODICE: TUTTI i desk leggono dati reali dal DB** ✅ 2026-06-06 — news + fondamentali + macro (FRED) + **social (StockTwits, keyless)** ingeriti DB-first; Market/Sentiment/Technical/Fondamentali wired. Nessun placeholder dati residuo → [[system/modules/data-layer]]
-- [x] 🛠 **CODICE: news → DB + desk Market/Sentiment reali** ✅ 2026-06-06 — `NewsItem` + `ingest_news` (DB-first dedup, `YFinanceNewsFetcher`); il brain legge le news dal DB (non più placeholder) → [[system/modules/data-layer]]
-- [x] 🛠 **CODICE: Statuto parametrico nel DB guida il Risk gate** ✅ 2026-06-06 — `charter` table + `seed_default_charter`/`load_charter`; il Risk gate carica le soglie dal DB; commissione/token-cost registrati sul trade (consuntivo) → [[system/cost-accounting]] · [[system/modules/agents]]
-- [x] 🛠 **CODICE: REBUILD del repo a nostra immagine** ✅ 2026-06-06 — branch `feat/rebuild`: rimossa la topologia TradingAgents (bull/bear, research manager, risk-debate a 3, trader-LLM, loro graph/state, cli/main), tenuta solo l'infra (`llm_clients`, `dataflows`, `structured`). → [[system/fork-gap-analysis]]
-- [x] 🛠 **CODICE: brain = grafo nostro (state/nodi/edge dal wiki)** ✅ 2026-06-06 — `tradingagents/brain/` LangGraph: 2 desk → PM aggrega → Risk-gate singolo → loop "nel dubbio chiedi"; `ResearchState` come state; 6 system prompt nostri; guardrail deterministici binding. 4 test offline (fake LLM) → [[system/modules/agents]] · [[system/system-prompts]]
-- [x] 🛠 **CODICE: entrypoint runnabile (app + cli)** ✅ 2026-06-06 — `python -m tradingagents.cli AAPL …`: ingest→screen→trigger→brain→cost gate→execute (paper). Test e2e offline verde → [[system/architecture]]
-- [x] 🛠 **CODICE: alpha-core unificato + cycle runner (alpha v0)** ✅ 2026-06-06 — branch `feat/alpha-core` (merge di tutto): `tradingagents/orchestration/` Trigger Engine (`collect_triggers`) + `run_cycle` (trigger→analyze hook→cost gate→execute) + `CommissionModel`/`assess_costs`. Stub `hold_analyzer` dove si innesta il grafo. **283 test verdi** (incl. ~239 del fork) → [[system/trigger-engine]] · [[system/cost-accounting]]
-- [x] 🛠 **CODICE: broker adapter + esecuzione (alpha v0)** ✅ 2026-06-06 — `tradingagents/broker/` branch `feat/broker-adapter`: `Broker` intercambiabile + `PaperBroker` (idempotente) + `AlpacaBroker` (paper REST); `submit_trade`/`execute_thesis`/`reconcile_open_trades` (broker=source of truth → graceful recovery). 5 unit + 1 integration Alpaca → [[system/modules/execution]]
-- [x] 🛠 **CODICE: indicatori + backbone E2E deterministica (alpha v0)** ✅ 2026-06-06 — `tradingagents/indicators/` branch `feat/indicators` (integra tutto): `compute_indicator` (ATR/RSI/SMA/EMA/52w/drawdown) + `atr_from_db`; **test E2E** ingest→ATR→livelli→sizing→trade (no LLM). 40 test "nostri" verdi → [[system/modules/quant-backtesting]] · [[system/modules/execution]]
-- [x] 🛠 **CODICE: connettori dati + screening (alpha v0)** ✅ 2026-06-06 — `tradingagents/ingestion/` branch `feat/data-ingestion`: `ingest_price_bars` DB-first (check-presenza + write-through) via `YFinanceFetcher`; `screen_ticker` deterministico → `ticker_card.screening_score` (coda funnel); 5 unit + 1 integration yfinance verdi → [[system/modules/data-layer]] · [[system/parallelism-design]]
-- [x] 🛠 **CODICE: Trade deterministico (alpha v0)** ✅ 2026-06-06 — `tradingagents/execution/` branch `feat/trade-execution`: state approvato → ordine via risk engine, `client_order_id` idempotente, `inject_portfolio_state`; 5 test integrazione. Trader = funzione Python (no LLM) → [[system/modules/execution]]
-- [x] 🛠 **CODICE: modello di dominio + risk engine (alpha v0)** ✅ 2026-06-06 — `tradingagents/domain/` branch `feat/domain-model`: enum Direction 5-livelli, schemi Pydantic `research_state` (+seal Opzione C), sizing risk-based + ATR levels + guardrail Statuto; 15 test → [[system/state-schemas]] · [[system/position-sizing]]
-- [x] 🛠 **CODICE: strato dati implementato (alpha v0)** ✅ 2026-06-06 — `tradingagents/storage/` branch `feat/storage-layer` (SQLAlchemy 2.0): 4 aree + scheda ticker + research_state JSON; SQLite→Timescale-ready; 7 test verdi → [[system/modules/data-layer]] · [[system/fork-gap-analysis]]
-- [x] 🛠 **Topologia parallelismo multi-ticker = architettura a imbuto** ✅ 2026-06-06 — funnel E(screening deterministico)→D(coda)→A(subgraph per-ticker)→B/C(scheda DB); subgraph come pattern; screening = modulo Python non-LLM che scrive `screening_score` nella scheda. MVP parte da D+A → [[system/parallelism-design]]
-- [x] 🛠 **Tutti e 6 i system prompt + metodo prompt-eng** ✅ 2026-06-06 — principio "separa comportamento/forma/tool" + 7 principi + scheletro a 7 blocchi + Technical/Market/Sentiment/Fondamentali + PM (orchestratore) + Risk (gate bear) scritti per intero, **in inglese** → [[system/system-prompts]]
-- [x] 🛠 **Decisione: comportamento per-agente del desk (impianto)** ✅ 2026-06-06 — Market/Sentiment/Technical/Fondamentali: input·tool·output·ragionamento·stop. News/sentiment per tipo di info (Market=catalizzatori · Sentiment=mood multi-fonte incl. social); tutti contribuiscono alla direzione; stop auto + PM richiama → [[system/agent-behaviors]]
-- [x] 🛠 **Decisione: inventario tool agenti (impianto)** ✅ 2026-06-06 — 9 famiglie (prezzi · indicatori · fondamentali · news/sentiment · macro · calendario · portafoglio · opzioni · guardrail) + 2 regole (parametrici · write-through); portfolio auto+richiamabile, `compute_indicator` parametrico; restano solo i vendor → [[system/tools-inventory]]
-- [x] 🛠 **Decisione: position sizing = risk-based (impianto)** ✅ 2026-06-05 — rischio % scalato per conviction → quantità dallo stop ATR + portfolio heat; numeri da tarare → [[system/position-sizing]]
-- [x] 🛠 **Decisione: state annidati = Opzione C (ibrido)** ✅ 2026-06-05 — piatto a runtime → annidato al sealing; da validare in fase di grafo → [[system/state-schemas]]
-- [x] 🛠 **Decisione: autonomia informativa real-time first + write-through** ✅ 2026-06-05 — gli agenti chiamano prima il tool real-time (anche più volte, per verificare); il tool consegna all'agente e copia nel DB (centro unico); check-presenza DB-first resta per lo storico → [[system/modules/agents]] · [[system/modules/data-layer]]
-- [x] 🛠 **Decisione: graceful shutdown & recovery (design)** ✅ 2026-06-04 — broker=verità + riconciliazione + intent log + client order id anti-doppione; recovery automatico e loggato (no intervento umano); analisi a metà → ricomincia pulita → [[system/modules/data-layer]]
-- [x] 🛠 **Decisione: motore DB = PostgreSQL + TimescaleDB** ✅ 2026-06-04 — un solo motore: hypertable time-series + relazionale/oggetti + JSONB per gli state → [[system/db-access-performance]]
-- [x] 🛠 **Decisione: cache in-process per l'MVP, Redis idea futura** ✅ 2026-06-04 — read-through in-process finché singolo processo; Redis solo se multi-processo → [[system/db-access-performance]]
-- [x] 🛠 **Decisione: pesi agenti = indicazione, non regola** ✅ 2026-06-04 — il backtest informa il PM (contesto/awareness) + diagnostica "cosa migliorare", non scavalca il giudizio; aggancio come input al PM → [[system/learning-feedback-loop]]
-- [x] 🛠 **Decisione: aggregazione `direction`/`conviction` al PM** ✅ 2026-06-04 — ogni desk propone, il PM aggrega e decide → [[system/state-schemas]]
-- [x] 🛠 **Decisione: struttura `entry_price`** ✅ 2026-06-04 — backbone ATR (k_entry scalato per conviction, guardrail R:R 1.5); numeri da tarare in backtest → [[system/state-schemas]]
-- [x] 🛠 **Decisione: conviction level = enum** ✅ 2026-06-04 — 5 livelli, non score 0-100 → [[system/rating-scoring]]
-- [x] 🛠 **Decisione: autonomia totale** ✅ 2026-06-04 — nessun input umano oltre l'accensione (auto-start timer + alert) → [[system/modules/agents]]
-- [x] 🛠 **Decisione: PM si attiva anche al `next_check_date` scaduto** ✅ 2026-06-04 — terzo trigger oltre alert + periodical synthesis → [[system/modules/agents]]
-- [x] 🔀 **Decisione: broker intercambiabili via adapter** ✅ 2026-06-02 — Alpaca MVP → IBKR prod → [[system/modules/execution]]
-- [x] 🔀 **Decisione: storage principalmente time-series + oggetti** ✅ 2026-06-02 → [[system/modules/data-layer]]
-- [x] 🔀 **Decisione: approccio incrementale (alpha-first)** ✅ 2026-06-02 → [[system/decision-log]]
-- [x] 🔀 **Decisione: extractor DB-first con queue + check presenza** ✅ 2026-06-02 → [[system/modules/data-layer]]
-- [x] 🔀 **Decisione: transaction cost auto-adattivo** ✅ 2026-06-02 → [[system/modules/execution]]
-- [x] 🔀 **Decisione: conviction level assegnato dal PM** ✅ 2026-06-02 → [[system/rating-scoring]]
-- [x] 🔀 **Conferma ruolo `mantainer`** ✅ 2026-06-02 — technical → rendicontazione → [[system/modules/data-layer]]
-- [x] 🔀 **Decisione: deploy su mini-server di casa 24/7 + .env locale** ✅ 2026-06-02 → [[system/modules/data-layer]]
-- [x] 🔀 **Decisione: portfolio / mid-term, no day trading** ✅ 2026-05-29 → [[system/decision-log]]
-- [x] 🔀 **Decisione: stock-only, poi multi-asset** ✅ 2026-05-23 → [[strategy/metrics/benchmark]]
-- [x] 🛠 **Decisione: framework = LangGraph (base TradingAgents)** ✅ 2026-05-29 → [[system/stack]]
-- [x] 🛠 **Decisione: provider LLM = OpenRouter + DeepSeek V4 Pro** ✅ 2026-05-29 → [[system/stack]]
-- [x] 🛠 **Decisione: design-first** → [[system/decision-log]]
-- [x] 🔀 **Decisione: backtesting = deterministico Python, non simulazione AI** ✅ 2026-06-04 sera — VectorBT su DB storico interno (yfinance/AlphaVantage); l'AI non gira durante la simulazione → [[system/modules/quant-backtesting]]
-- [x] 🔀 **Decisione: nessun investimento di capitale prima della prova** ✅ 2026-06-04 sera — solo reinvestimento dei guadagni → [[system/decision-log]]
-- [x] 🔀 **Decisione: feedback esterni solo a sistema finito** ✅ 2026-06-04 sera → [[system/ideas-log]]
-- [x] 📈 **Indicatori macro avanzati (PIL, consumi, inflazione…)** ✅ 2026-06-05 — primo draft Salvatore ingestato → [[strategy/indicators/macro-indicators]]
-- [x] 📈 **Convertire/ingestire file market driver (macro-indicatori)** ✅ 2026-06-20 — Ingestiti interamente i 12 macro-driver completati da Salvatore (definitivo) in [[strategy/indicators/macro-indicators]]
-- [x] 🛠 **Inizializzazione wiki + repository Git**
-- [x] 🔀 **Videochiamate 04-30, 05-06, 05-29** — architettura, TA, topologia agenti → [[system/architecture]]
-- [x] 📈 **Presentazione factor investing / meccanismi di esecuzione / benchmark settore** → [[strategy/methods/factor-investing]]
-- [x] 📈 **Allineamento: TA come segnali numerici (no grafico)** → [[system/modules/quant-backtesting]]
-- [x] 📈 **Framing come AI Investment Fund** → [[overview]]
-
+- [x] 🔀 **Policy editoriale 2026-06-23** — i claim “implementato / ✅ codice fatto” non descrivono più il presente del progetto: restano come storia o reference design, non come stato attuale → [[system/decision-log]]
+- [x] 🛠 **Board ricondotta a hub minimo** — task, idee e decisioni ora puntano a pagine dedicate invece di duplicare dettagli sparsi → [[artifacts/project-board]]
+- [x] 🛠 **Ingest delle daily notes 2026-06-20/21/22 avviato** — commenti e appunti convertiti in backlog esplicito di wiki e codebase → [[system/system-wiki-reorganization]]
 
 
 
 %% kanban:settings
-```
+```json
 {"kanban-plugin":"board","list-collapse":[false,false,false,false,false]}
 ```
 %%
