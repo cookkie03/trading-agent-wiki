@@ -47,7 +47,8 @@ related:
 - Non richiede previsioni sui fondamentali
 - Funziona su qualsiasi asset liquido (crypto, equity)
 - La strategia più immediata come punto di partenza
-%%proprio perché facile da implementare seocndo me va incluso come tool/feature%%
+
+Proprio perché è semplice da implementare, resta una candidata forte come **primo blocco codificabile** del layer quant/tooling.
 
 ## Limiti
 
@@ -64,7 +65,6 @@ related:
 - MACD
 - RSI
 - Pivot Points (riferimenti spaziali per capire dove siamo nel movimento)
-%%non ha senso fare riferimento direttamente a [[macro-indicators]] e la loro cartella indicators%%
 
 ---
 

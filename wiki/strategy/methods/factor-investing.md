@@ -12,8 +12,9 @@ area: strategy
 related:
   - "[[system/modules/quant-backtesting]]"
 ---
-%%a proposito di factor investing, ti ho caricato una tesi personale [[CorpBondThesis.pdf]], da cui puoi prendere spunto per avere le idee più chiare e capire cosa intendo per factor investing, quali factor esistono, citazioni a fonti affidabili sul factor investing (tecnica molto densa e difficile), che io ho in mente di sfruttare tramite modelli di ML o DeepLearning come nella tesi%%
 # Factor Investing
+
+> Nota di ingest 2026-06-23: Luca ha segnalato `raw/articles/CorpBondThesis.pdf` come materiale guida per chiarire cosa intende per factor investing, quali fattori esistono e come potrebbe innestare modelli ML/DeepLearning. Il PDF resta ancora pending ingest completo, ma da ora è riferimento esplicito di questa pagina.
 
 **Idea di base**: costruire un modello che quantifica l'impatto di "fattori" (eventi, dati fondamentali, variabili macro) sul prezzo di un asset. Ogni fattore ha un coefficiente empirico calcolato su serie storiche.
 

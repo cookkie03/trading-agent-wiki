@@ -162,7 +162,11 @@ Pattern architetturale: usa un modello LLM economico e veloce (es. DeepSeek smal
 
 **Black-Litterman**
 Metodo matematico per costruire un portafoglio ottimizzato. Il punto di forza: permette di "iniettare" le previsioni dell'LLM come vincoli matematici nell'ottimizzazione. L'LLM dice "penso che BTC salirà del 5% con confidenza 0.7"; Black-Litterman traduce questo in pesi di portafoglio ottimali. Il calcolo lo fa Python, non l'LLM.
-%%sarebbe interessante quale sia la traduzione matematica del metodo black-litterman che passa dal suo input all'output%%
+
+In pratica: si parte da rendimenti di equilibrio impliciti nel mercato, si convertono le *views* in vincoli quantitativi e si combina tutto pesando la **confidenza** della view contro la prior di mercato. L'output non è “il trade”, ma una nuova distribuzione attesa dei rendimenti e quindi nuovi pesi ottimali.
+
+**Idzorek alpha**
+Modo pratico di tradurre una **confidenza qualitativa o semi-quantitativa** su una view Black-Litterman in un peso numerico usabile dal modello. Serve a passare da “quanto credo a questa opinione” a “quanto questa opinione deve spostare i pesi del portafoglio”.
 
 **Entropy Pooling**
 Versione più potente di Black-Litterman. Permette viste non solo sui rendimenti attesi, ma su volatilità, correlazioni, scenari di stress. Utile quando si hanno più agenti con previsioni diverse: aggrega tutto con pesi di confidenza.

@@ -46,7 +46,7 @@ Ogni metodo descrive una strategia o un approccio: come funziona, quando funzion
 
 Un file per ogni indicatore: cosa misura, come si interpreta, quali parametri ha.
 
-*(Da popolare — Salvatore porta gli indicatori che usa)* %%TASK: aggiornare sezione%%
+Questa sezione va popolata in modo più sistematico. Oltre agli indicatori tecnici, servirà una pagina definitiva sulle **metriche** e una tassonomia più pulita dei metodi che vogliamo poi portare a codice.
 
 ---
 

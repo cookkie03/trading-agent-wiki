@@ -19,7 +19,8 @@ Questa nota riflette e contestualizza il file strutturato estratto da `raw/notes
 Il diagramma delinea una architettura di una "Trading Floor" basata su agenti specializzati, confermando la direzione multi-agente discussa nelle chiamate.
 
 ## Agenti e Responsabilità
-%%TASK: aggiornare questa lista di agenti con quelli di [[architettura.canvas]] e del resto del progetto%%
+
+> Nota 2026-06-23: questa pagina è ormai soprattutto **storica**. La lista agenti va letta come versione precedente del concetto; la source of truth operativa è `[[architettura.canvas]]` insieme a [[system/modules/agents]].
 1. **News Research Agent**
    - **Compito**: Analizza le news ed elabora un proprio sentiment (bullish/bearish).
 
@@ -43,4 +44,5 @@ Il diagramma delinea una architettura di una "Trading Floor" basata su agenti sp
 ## Tools (Strumenti Esterni / Moduli Informativi)
 - Dati per analisi: Tool volumetrici, ratio, market makers.
 - Dati per esecuzione: Commissioni, valutazione broker, liquidità dello strumento (spread).
-%%TASK: qui bisogna mettere l'elenco di tutti i tool a meno che non cis siano da altre parti, in particolare, guardare tutti i progetti dentro prior-art nel profonod, leggendo documentazioni, codice, ecc... e aggiungerli qui come .base%%
+
+L'inventario operativo dei tool ora vive in [[system/tools-inventory]]. Questa pagina non va più usata come contenitore primario dei tool.

@@ -22,17 +22,16 @@ related:
 # Data Layer — DB centrale + Extraction
 
 Il componente fondante. Costruisce la pipe vuota su cui poggia tutto il resto: il **DB centrale** (unico punto di verità) e il livello di **estrazione** che lo alimenta. Mappa le due aree sinistre di `architettura.canvas` ([[artifacts/trading-floor]] e i canvas in `artifacts/architecture/`): il grande gruppo **DB** e i tool di estrazione (`Extractors set`, `Adaptive extractor`, `Market Alert`, `calendar tool`, `mantainer`).
-%%tutta la parte di tool di estrazione sarà da riprogettare, centralizzare ed efficientare, separare per funzioni, ecc... ingenerizzarla bene%%
+
+> **Stato attuale della pagina (2026-06-23)**: il contenuto qui sotto va letto come **design target con note storiche**, non come descrizione affidabile del codice corrente. La direzione resta valida; i riferimenti a branch, pacchetti o test precedenti sono reference design.
+
+> **Direzione confermata da Luca**: la parte di tool di estrazione va **riprogettata, centralizzata ed efficientata**, separando meglio funzioni, wrapper e contratti.
 
 > L'esecuzione ordini e l'exchange sono trattati in [[system/modules/execution]]. Qui sta solo *come i dati entrano e vivono nel DB*.
 
-> 🟢 **Implementato (alpha v0, 2026-06-06)** — pacchetto `tradingagents/storage/` nel repo `/Users/luca/Desktop/trading-agent`: spina dorsale SQLAlchemy 2.0 che copre le **4 aree** + la **scheda ticker** + la persistenza dello `research_state`. SQLite di default (zero setup), pronto per PostgreSQL+TimescaleDB (`price_bars` → hypertable) . 7 test di accettazione verdi (`tests/test_storage.py`). Dettaglio in [[system/fork-gap-analysis]] (milestone M2). Tabelle: `instruments`, `ticker_card`, `price_bars` (double-date anti look-ahead), `research_states` (JSON), `portfolio_snapshots`, `trades` (con `client_order_id` idempotente), `charter` (Statuto parametrico). Helper di accesso in `storage/repository.py` = il **contratto** che grafo/agenti useranno.
+> **Contesto storico utile**: una build precedente aveva già esplorato `storage/`, `ingestion/` e una prima copertura di prezzi/news/fondamentali/macro/social. Quelle scelte restano interessanti come benchmark interno, ma non vanno assunte come implementazione esistente.
 
-> 🟢 **Connettori dati implementati (alpha v0, 2026-06-06)** — pacchetto `tradingagents/ingestion/` (branch `feat/data-ingestion`): `price_ingest.py` con `PriceFetcher` (protocol) + `YFinanceFetcher` (adapter reale) + `ingest_price_bars()` **DB-first** (check-presenza: non riscarica lo storico immutabile · write-through su `price_bars`); `screening.py` con `compute_screening_signals()` deterministico (no LLM, Quick Thinker) + `screen_ticker()` che scrive `ticker_card.screening_score` → input della coda di priorità del funnel ([[system/parallelism-design]]). 5 test unit (fake fetcher offline) + 1 integration yfinance reale, verdi. **NB**: i `dataflows/` del fork restituiscono testo per gli LLM; questa è la via *strutturata* che popola il DB (le due convivono).
-
-%%nel nuovo tree di progetti mi immagino dei subfolder simili a: connectors (fetcher, per i collegamenti a software esterni), capabilities (come tool che trattano i dati, es per calcolare indicatori complessi)..., database (per schemas, apis, ecc...), agents (con tutti gli schema degli agent, i prompt, i grafi, ecc...)...%%
-
-> 🟢 **Esteso (2026-06-06) — tutte le famiglie dati dei desk wired**: oltre ai prezzi, si ingeriscono **news** (`NewsItem`/`ingest_news`/`YFinanceNewsFetcher`), **fondamentali** (`FundamentalSnapshot`/`ingest_fundamentals`/`YFinanceFundamentalsFetcher`), **macro** (`MacroPoint`/`ingest_macro`/`FredFetcher`, `DEFAULT_MACRO_SERIES`), **social** (`SocialPost`/`ingest_social`/`StockTwitsFetcher` keyless). Tutti DB-first con dedup. **I 4 desk leggono dati reali dal DB**: Market (macro+news), Sentiment (news+social), Technical (indicatori da `price_bars`), Fondamentali (metrics). Mancano ancora: queue + adaptive extractor (rate-limit), mantainer, Reddit/X come fonti social aggiuntive.
+> **Nuova tassonomia di codebase da esplorare**: `connectors` per i fetcher esterni, `capabilities` per i calcoli/tool deterministici, `database` per schema e API, `agents` per prompt e orchestrazione. Vedi [[system/codebase-architecture]].
 
 ---
 
@@ -56,7 +55,8 @@ Le **5 tabelle core** sono la base SQL minima; il design organizza i dati in **4
 | **2. Dati live** (aggiornati di continuo) | Prezzi di mercato · calendario economico · news · indicatori macro · **insider trading** (institutional positions) · **tassi di cambio**                                                                       | `market_data` (esteso)          |
 | **3. Costituzione / Statuto**             | Regole deterministiche del fondo, al **centro** (base di rendicontazione e dati live) → la logica vive in [[system/modules/agents]] (Statuto del Fondo)                                                        | *(nuova)* `charter` / parametri |
 | **4. Log**                                | `log`, `states`, `report`, `transactions` — storico completo                                                                                                                                                   | `logs` + `trades`               |
-%%diciamo che ogni dato grezzo, ogni indicatore calcolato, ogni cosa, va tenuta e gli va dato uno spazio nel db, con logica e testa, quindi per esempio nel db tengo principalmetne dati grezzi e adotto funzoni python che calcolano al momento indicatori complessi sui dati grezzi; in generale il prinicpio cardine è non perdere nessun dato fondamentale%%
+
+Principio emerso dai commenti di Luca: **non perdere nessun dato fondamentale**. Dove possibile si conservano dati grezzi e si calcolano i derivati in modo deterministico, invece di sostituire il grezzo con la sola sintesi.
 > `module_outputs` (5ª core) resta come buffer degli output strutturati per ciclo, confluendo nell'area Log (`states`/`report`).
 
 ### Retention / clustering

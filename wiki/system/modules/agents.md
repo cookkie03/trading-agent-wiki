@@ -21,16 +21,15 @@ related:
 
 # Agents — Portfolio Manager, Desk analisti, Risk Analyst
 
-> 🟢 **Implementato (2026-06-20)** — `tradingagents/brain/`, grafo **Datapizza AI** (migrazione completa da LangGraph, 2026-06-17): `brain/datapizza_graph.py` (grafo agenti), `brain/datapizza_director.py` (orchestratore), `brain/datapizza_llm.py` (LLM wrapper), `brain/datapizza_tools.py` (tool binding). Topologia: `START → desk (market/sentiment/technical/fundamentals) → PM → Risk → (loop "nel dubbio chiedi", capped) → END`. State = `ResearchState`; PM aggrega `agent_opinions` → direction/conviction + coefficienti ATR; Risk = **gate bear singolo** con `check_guardrails` deterministici **binding**. 6 system prompt in `brain/prompts.py`. Si innesta nel `run_cycle` via `orchestration/datapizza_analyze.py`. Vedi [[system/system-prompts]] · [[system/fork-gap-analysis]] · [[prior-art/libraries/datapizza-ai]].
->
-> **Tool-calling autonomo (2026-06-07)** — ogni agente emette le tool call da sé; `datapizza_tools.py` dà a ciascun agente tutti i tool utili (quote real-time-first, prices/news/fundamentals/macro/social = extractor che fetch→rispondono→write-through DB, indicators, volume, portfolio_risk).
+> **Stato attuale della pagina (2026-06-23)**: questa è la **spec concettuale** del layer agenti. Le note su Datapizza, branch o file Python precedenti restano utili come **storia / reference design**, ma non descrivono automaticamente il codice attuale del progetto.
+
+> **Direzione invariata**: PM orchestratore, desk specializzati, Risk come gate e agenti fortemente tool-centrici. Il problema aperto non è più “se esiste codice”, ma **quale architettura agente costruire sopra il nuovo harness reale**.
 
 ^01280b
 
 Il cuore di ragionamento del sistema: gli agenti LLM che producono la tesi di investimento (`research_state`) e la sottopongono al gate del rischio. Mappa il gruppo **desk (workflow)** di `[[architettura.canvas]]` più il nodo **Portfolio Manager**. La conversione finale in trade è deterministica e vive in [[system/modules/execution]].
 
 Topologia (canvas):
-%%questa parte e topologia è molto rappresentativa, vale la pena valorizzarla%%
 ```
 Portfolio Manager (agente orchestratore / CEO)
   │  ◄── attivato da: alert numerico | periodical synthesis
@@ -42,15 +41,14 @@ Portfolio Manager (agente orchestratore / CEO)
   └─► Risk Analyst (antitesi bear + guardrail da Statuto) → approve (~60-70%) / decline+razionale
                                                            │
                                                            ▼  (se approve)
-                %%  %%                          Investment State → Trade  →  [[system/modules/execution]]
+                                            Investment State → Trade  →  [[system/modules/execution]]
 ```
 
 ---
 
 ## Riferimenti di codice (repo esterni)
 
-- **Prompt Builder + LLM JSON strict**: [[prior-art/libraries/rizzo-trading-agent]] — `main.py` assembla il contesto multi-sorgente con tag XML (`<indicatori>`, `<news>`, `<sentiment>`, `<forecast>`) iniettato in `system_prompt.txt`; `trading_agent.py` usa Structured Output JSON Schema **strict** (template del nostro contratto decisione→ordine), con regole anti-overtrading e attenzione ai costi.
-  %%ha senso ispriarsi a [[rizzo-trading-agent]] per l'engine che inietta i prompt e come prompt builder, ma come knowledge e engineering dei prompt vale la pena riferirsi al codice della repo di  [[code-wiki]]%%
+- **Prompt Builder + LLM JSON strict**: [[prior-art/libraries/rizzo-trading-agent]] — utile come riferimento per l'engine che assembla il contesto e per il prompt builder; per la parte di prompt engineering e pattern agentici va confrontato con [[prior-art/tradingagents/code-wiki]].
 - **LLM → views ([[_meta/glossario#Black-Litterman|Black-Litterman]])**: [[prior-art/libraries/cvx-portfolio-optimizer]] — `api/baml_src/GenerateViews.baml`: pattern "fattori per asset → views con confidence → Idzorek alpha". L'LLM produce opinioni, la matematica decide i pesi entro i vincoli.
 - **Tool ispirazione**: sezione "Data Retrieval Tools and Utilities" di [[prior-art/tradingagents/code-wiki]] (Fundamental Data, News/Insider Transactions tools).
 
@@ -63,14 +61,14 @@ Il PM è un **agente LLM** con potere decisionale ed esecutivo (il "CEO" / "GOAT
 - **Trigger di attivazione**: Le casistiche di attivazione (elenco di riferimento in [[system/modules/data-layer]]) sono: (a) **alert** numerico/prezzo (target/calendario); (b) **periodical synthesis** (state sintetico a intervalli fissi, rendicontazione + market); (c) **`next_check_date` scaduto** di un investimento precedente → il Dynamic Temporal Checkpoint richiama il PM per rivalutare quella posizione *(input di Luca 2026-06-04)*; (d) news anomale / soglia di variazione (alternative ancora da decidere). Per il resto resta libero e orchestra: chiama agenti → li fa ragionare → genera trade → scrive nel DB.
 - **Override**: news contro l'idea → cancella/ribalta la posizione.
 - **Istruzione "nel dubbio, chiedi sempre"** (input di Luca 2026-06-04): essendo il decisore finale, il system prompt del PM deve imporgli di **non risolvere mai un dubbio da solo** — in caso di incertezza, *anche minima*, **interroga di nuovo i desk** per più informazioni, **sempre**, prima di chiudere la tesi. Default verso l'approfondimento; i tetti anti-loop ([[system/parallelism-design]]) sono solo rete di sicurezza, e l'**astensione (no-trade)** è preferibile a un trade su basi incerte.
-- **Desk di origination** (i due desk analisti) chiamati dal PM come tool. Serve anche un **desk di monitoring/evaluation** che sorveglia le posizioni esistenti e rifà il processo quando le news cambiano la tesi (evita target obsoleti o posizioni di segno opposto sullo stesso titolo). **Punto di partenza per il design: la dashboard SFC Streamlit** ([[prior-art/libraries/sfc-portfolio-tracker]]) — decisione 2026-06-02. %%????? non ho capito%%
+- **Desk di origination** (i due desk analisti) chiamati dal PM come tool. Serve anche un **desk di monitoring/evaluation** che sorveglia le posizioni esistenti e rifà il processo quando le news cambiano la tesi (evita target obsoleti o posizioni di segno opposto sullo stesso titolo). **Punto di partenza per il design**: prendere dalla dashboard SFC il lato osservabilità/reporting, non la logica di decisione.
 - **Orchestrazione multi-ticker** (come il PM analizza N ticker in parallelo senza mescolare gli state) e **criteri di "info sufficienti"** (quando decidere di fare/non fare un trade, evitando loop infiniti): alternative di design in **[[system/parallelism-design]]**.
 
 ### Autonomia totale: nessun input umano oltre l'accensione (input di Luca 2026-06-04)
 Il sistema **non deve richiedere alcun intervento umano** se non l'**accensione del software**. All'avvio il programma fa partire **da solo** i timer della *periodical synthesis* e il *meccanismo di alert*; da lì in poi il PM si auto-attiva sui trigger sopra e opera senza supervisione. L'override umano resta come *possibilità* nelle prime fasi (finché il sistema non è affidabile), non come *requisito* operativo. → decisione in [[system/decision-log]].
 
 ### Attivazione e mercati efficienti
-Le **API funzionano solo a richiesta** (no push news). Risoluzione via **teoria dei mercati efficienti**: i prezzi riflettono le informazioni → un **prezzo anomalo** attiva il monitoring, che poi cerca la spiegazione (news, tassi). Coerente col mid-term: non serve reazione istantanea. Lo **switch di autonomia** si dà nel **system prompt**: "rendere ogni agente quanto più autonomo possibile" è il vero valore aggiunto.%% non ho capito quest'ultima frase%%
+Le **API funzionano solo a richiesta** (no push news). Risoluzione via **teoria dei mercati efficienti**: i prezzi riflettono le informazioni → un **prezzo anomalo** attiva il monitoring, che poi cerca la spiegazione (news, tassi). Coerente col mid-term: non serve reazione istantanea. L'autonomia va poi tradotta in prompt, tool policy e trigger, non lasciata come slogan astratto.
 
 
 ---

@@ -21,12 +21,11 @@ related:
 
 La coda deterministica del sistema: dal `research_state` approvato all'ordine eseguito sull'exchange. Mappa i nodi `Investment State`, `Trade` e l'uscita verso `transactions` di `architettura.canvas`. **Niente LLM qui**: tutto è Python puro.
 
-> 🟢 **Trade deterministico implementato (alpha v0, 2026-06-06)** — `tradingagents/execution/trade.py` (branch `feat/trade-execution`): `can_trade` (gate: approvato·completo·azionabile·prezzato) → `build_trade` (state → `OrderProposal` via risk engine + ATR levels) → `persist_trade` (con `client_order_id` idempotente) → `inject_portfolio_state` (tool G) → `propose_and_record` end-to-end. 5 test integrazione.
+> **Stato attuale della pagina (2026-06-23)**: questa è una **spec di design con contesto storico**. I riferimenti a moduli Python o branch precedenti non descrivono automaticamente il codice attuale.
 
-%%qui manca una parte relativa all'errore, cioè, se can_trade non va perché research_state non è completo, bisogna avvisare un agent, tendenzialmente il pm, dicendogli che il trade è saltato perché non sono stati interpellati tutti gli agent, in questo modo si può procedere con le conversazioni tra agent e procedere no? idem una notifica al pm che gli manda la conferma di trade
-in generale pensare sempre ai meccanismi di error handling%%
+> **Direzione confermata**: trade deterministico, broker adapter, recovery idempotente e separazione netta tra agenti e infrastruttura.
 
-> 🟢 **Broker adapter implementato (alpha v0, 2026-06-06)** — pacchetto `tradingagents/broker/` (branch `feat/broker-adapter`): interfaccia `Broker` intercambiabile + `PaperBroker` (simulatore in-process, fill istantanei, **idempotente su `client_order_id`**, traccia cassa/posizioni) + `AlpacaBroker` (REST paper via `requests`, integration). In `execution/submit.py`: `submit_trade`, `execute_thesis` (size+record+submit), `reconcile_open_trades` (**broker = source of truth → graceful recovery**). 5 test unit + 1 integration Alpaca gated. **Manca ancora**: IBKR adapter (prod), esecuzione bracket completa, gestione fill parziali. Vedi [[system/fork-gap-analysis]] (M4).
+> **Nuovo requisito esplicito dai commenti di Luca**: l'execution deve gestire bene gli **errori e i feedback verso il PM**. Se `can_trade` fallisce per state incompleto o guardrail, il PM deve ricevere un ritorno strutturato e il trade non deve semplicemente morire in silenzio.
 
 ```
 research_state (approvato dal Risk Analyst)
@@ -35,7 +34,7 @@ research_state (approvato dal Risk Analyst)
          → Exchange (paper) → transactions (DB)
 ```
 
-%%errore, research_state è lo State, Investment State corrisponde ad research_state, che coincide come ruolo nel file [[architettura.canvas]]%%
+Nota di riallineamento: la distinzione tra `research_state` e `investment_state` va chiarita in fase di implementazione reale, perché in alcuni documenti i due nomi sono stati usati in modo sovrapposto.
 
 ---
 

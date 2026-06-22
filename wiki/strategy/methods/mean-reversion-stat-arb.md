@@ -53,7 +53,8 @@ Strategia quantitativa che sfrutta la tendenza di asset correlati a tornare alla
 - **Non richiede velocità elevatissima**: compatibile con orizzonte [[_meta/glossario#Swing Trading|swing trading]] (4h/daily)
 - **Non usa derivati**: si può implementare con posizioni long/short su equity o crypto
 - **Identificabile con funzioni Python semplici**: calcolo spread, z-score, soglie
-%%proprio per questo secondo me va aggiunta come feature/tool%%
+
+Proprio per questo resta candidata come **feature/tool** da valutare presto nel layer quant.
 ### Filtri di Salvatore (strategie scartate)
 
 Salvatore ha esplicitamente scartato:
