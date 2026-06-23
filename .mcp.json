@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "lightrag-trading-agent-wiki": {
+      "type": "stdio",
+      "command": "/Users/luca/Documents/lightrag-kb/.venv-mcp/bin/python",
+      "args": [
+        "/Users/luca/Documents/lightrag-kb/mcp/lightrag_mcp.py",
+        "--kb",
+        "trading-agent-wiki"
+      ],
+      "env": {}
+    }
+  }
+}
