@@ -29,9 +29,8 @@ __pycache__/
 # Obsidian Git conflict files
 conflict-files-obsidian-git.md
 
-# Graphify cache
-graphify-out/cache/
+# Graphify output (rigenerato, cambia di continuo → manda in loop Obsidian Git)
+graphify-out/
 
-
-
-/graphify-out/last_hook_run.log
+# LightRAG KB (log e storage enormi e in continua scrittura + .env)
+.lightrag/
