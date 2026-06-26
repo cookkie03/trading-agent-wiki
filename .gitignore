@@ -34,3 +34,86 @@ graphify-out/
 
 # LightRAG KB (log e storage enormi e in continua scrittura + .env)
 .lightrag/
+
+# ============================================================
+# SEGRETI E CREDENZIALI — non committare MAI nulla di questo.
+# (Causa fuga dati: storage_state.json con cookie Google finito su repo pubblico, giu 2026)
+# ============================================================
+
+# --- File di ambiente / config con segreti ---
+.env
+.env.*
+*.env
+!.env.example
+!.env.sample
+!.env.template
+
+# --- Stato sessione / automazione browser (Playwright, Puppeteer, Selenium) ---
+storage_state.json
+*storage_state*.json
+*.storage_state.json
+auth_state.json
+*auth*state*.json
+playwright/.auth/
+.auth/
+cookies.json
+*cookies*.json
+session.json
+*session*.json
+browser_state.json
+
+# --- Credenziali / token / chiavi generiche ---
+credentials.json
+*credentials*.json
+client_secret*.json
+*client_secret*
+token.json
+*token*.json
+*.token
+tokens.json
+service-account*.json
+*service_account*.json
+gcp-*.json
+.netrc
+.npmrc
+.pypirc
+
+# --- Chiavi crittografiche / certificati ---
+*.pem
+*.key
+*.keyfile
+*.p12
+*.pfx
+*.cer
+*.crt
+*.der
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+*.ppk
+
+# --- Cloud / provider credentials ---
+.aws/
+aws-credentials*
+*.aws.json
+.azure/
+.gcloud/
+secrets.json
+*secrets*.json
+secrets.y*ml
+*secret*.y*ml
+
+# --- API key files comuni ---
+apikey*
+*apikey*
+api_key*
+*api_key*
+*.apikey
+
+# --- Altri stati agenti / cache locali ---
+.gemini/
+.codex/
+.cursor/
+storage_state*
+*.session
