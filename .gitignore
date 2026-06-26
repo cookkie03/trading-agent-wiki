@@ -117,3 +117,27 @@ api_key*
 .cursor/
 storage_state*
 *.session
+
+# ============================================================
+# FILE AUDIO / VIDEO — mai su GitHub (troppo pesanti, gonfiano il repo).
+# Restano in locale / OneDrive, fuori da git. (rimossi giu 2026)
+# ============================================================
+*.mp3
+*.m4a
+*.wav
+*.aac
+*.flac
+*.ogg
+*.opus
+*.wma
+*.aiff
+*.aif
+*.amr
+*.mp4
+*.mov
+*.m4v
+*.avi
+*.mkv
+*.webm
+*.wmv
+*.flv
