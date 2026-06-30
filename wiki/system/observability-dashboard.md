@@ -85,3 +85,11 @@ uv run streamlit run tradingagents/dashboard/app.py \
 ### Dashboard bianca / errore
 - Controllare log: `journalctl -u trading-agent-dashboard` o output del processo
 - Verificare che il DB esista: `ls -la ~/.tradingagents/trading_agent.db`
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%codice riparte da zero quindi non implementato%%
+

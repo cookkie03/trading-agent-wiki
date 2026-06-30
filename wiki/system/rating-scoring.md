@@ -92,3 +92,15 @@ Tutti e tre sono **score categorizzati** che rendono il sistema *interpretabile 
 ---
 
 *Tracciato come tema da discutere con Salvatore in [[artifacts/project-board]] e [[strategy/questions-for-salvatore]].*
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%assolutamente, bisogna raccogliere OGNI SINGOLA COSA prodotta dal software%%
+
+%% i rating di cui sopra penso possano essere considerati anche quei valori monitorati e che fanno scattare alert qual ora si abbiano sbalzi tali da dover richiamare una valutazione (indaga il collegamento e valuta)%%
+
+%% da lasciare ad un post mvp%%
+

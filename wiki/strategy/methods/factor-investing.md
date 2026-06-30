@@ -70,3 +70,11 @@ Nel sistema multi-agente, il **Factor Investigation Agent** è il modulo dedicat
 
 → [[system/modules/quant-backtesting]] — il Quant Agent integrerà factor signals come input
 → [[system/architecture]] — Factor Investigation Agent nel layer Research & Intelligence (post-MVP)
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%a proposito di factor investing, ti ho caricato una tesi personale [[CorpBondThesis.pdf]], da cui puoi prendere spunto per avere le idee più chiare e capire cosa intendo per factor investing, quali factor esistono, citazioni a fonti affidabili sul factor investing (tecnica molto densa e difficile), che io ho in mente di sfruttare tramite modelli di ML o DeepLearning come nella tesi%%
+

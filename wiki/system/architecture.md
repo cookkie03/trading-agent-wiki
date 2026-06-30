@@ -184,3 +184,15 @@ Dare a ogni agente solo l'informazione necessaria evita sia l'effetto "telefono 
 ---
 
 *Per le decisioni tecniche vedere [[system/decision-log]]. Per il piano MVP vedere [[system/mvp]]. Per idee e brainstorming: [[system/ideas-log]].*
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%come filosofia, tutto quello che viene, estratto, calcolato, dedotto, prodotto deve essere salvato sul db (inclusi bilanci altri documenti raccolti per analisi)%%
+
+%%è un po in dubbio il ruolo degli agent nel desk analyst research, all’inizio io pensavo che il market analyst guardasse sia new del ticker sia news di mercato macro, lasciando al sentiment la ricerca del puro sentiment, ovvero della propensione del mercato al ticker, imposta questa distinzione dei ruoli come task da definire insieme Luca e Salvatore%%
+
+%%di nuovo, nulla di tutto quello che c’è nella tabella sopra è stato “fatto” sul codice%%
+

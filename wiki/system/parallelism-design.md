@@ -154,3 +154,13 @@ Equilibrio con l'anti-loop: i tetti sopra (budget iterazioni, stabilità tesi) s
 ---
 
 *Tracciato in [[artifacts/project-board]] come decisione da prendere con Salvatore. Vedi [[system/modules/agents]] per il ruolo del PM.*
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%questa idea è quella che ho scelto per questo progetto, di fatto si configura come l’opzione A iniettando in ogni valitatore la scheda ticker fino a quel molento%%
+
+%%bisognerà fare molta attenzione nel cercare un equilibrio che faccia valutare il ok con tutte le informazioni utili ma che non chieda informazioni in loop senza mai eseguire%%
+

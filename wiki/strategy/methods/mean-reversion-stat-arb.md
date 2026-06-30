@@ -163,3 +163,11 @@ Giorni/settimane. Richiede risk management sofisticato (da Brenndoerfer).
 - **Opposta al trend following**: trend following scommette sulla persistenza del trend, mean reversion scommette sul ritorno alla media
 - **Complementare**: un fondo che usa entrambe (idea dual portfolio di Salvatore) ha diversificazione naturale
 - Vedere [[strategy/methods/dual-portfolio]] per l'idea del dual portfolio
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%proprio per questo secondo me va aggiunta come feature/tool%%
+

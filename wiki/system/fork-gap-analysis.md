@@ -99,3 +99,11 @@ Ogni milestone lascia un sistema che gira. Ordine pensato per **validare presto*
 - ~~**Ordine M1 vs M2**~~ → **risolto in parallelo (2026-06-06)**: Luca prende **M1 (grafo)** in autonomia, Claude costruisce **M2 (strato dati)** — i due procedono in parallelo perché lo storage è il contratto su cui il grafo poggia, non collide. Divisione del lavoro: il pezzo strutturale più rischioso (topologia) resta umano.
 - Verificare il dettaglio di `graph/trading_graph.py`, `propagation.py`, `analyst_execution.py` prima di toccare la topologia (lato M1, Luca).
 - **Metodo di sviluppo** (discusso 2026-06-06): la visione "wiki-come-spec → agenti paralleli finché il codice combacia" è valida come nord, ma va resa convergente con: contratti congelati (lo storage è il primo) + test di accettazione come oracolo + slice verticali incrementali + review umana ai confini. Il parallelo serve sulle parti larghe e indipendenti *dietro contratti congelati*, non sul tutto in un colpo.
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%% non più così tanto utile visto che parto da zero col progetto, questo file non l’ho letto%%
+

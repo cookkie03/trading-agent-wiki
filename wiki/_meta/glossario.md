@@ -199,3 +199,11 @@ Benchmark competitivo in cui 6 LLM di frontiera hanno operato con 10.000$ reali 
 ---
 
 *Aggiornare questo glossario ogni volta che si introduce un nuovo termine nel progetto.*
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%sarebbe interessante quale sia la traduzione matematica del metodo black-litterman che passa dal suo input all'output%%
+

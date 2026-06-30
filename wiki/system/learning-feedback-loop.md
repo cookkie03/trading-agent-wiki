@@ -100,3 +100,11 @@ L'agente che storicamente ci azzecca **pesa di più** nell'aggregazione della te
 ---
 
 *Le metriche numeriche vivono in [[system/modules/quant-backtesting]]; gli score categorizzati in [[system/rating-scoring]]; la vista umana nel Layer 5 di [[system/architecture]].*
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%da implementare post mvp in gran parte%%
+

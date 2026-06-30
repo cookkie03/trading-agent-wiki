@@ -8,7 +8,7 @@ tags:
   - execution
   - architecture
 created: 2026-04-30
-updated: 2026-06-23
+updated: 2026-07-01
 status: active
 related:
   - "[[system/architecture]]"
@@ -66,6 +66,7 @@ sources:
 
 ## 🛠 Coding Agent — Da fare
 
+- [ ] 🛠 **Ingestire il recupero iCloud 2026-07-01** — trasformare i commenti `%%...%%` reinseriti e le daily notes 2026-06-25/26/29 in task, decisioni e pagine pulite → [[system/system-wiki-reorganization]]
 - [ ] 🛠 **Ripulire i claim di codice implementato dalla wiki operativa** — trasformare `🟢 Implementato`/branch/test in contesto storico o reference design, senza perdere l'informazione utile → [[system/system-wiki-reorganization]]
 - [ ] 🛠 **Progettare la codebase reale prima di scrivere agenti** — tree alto livello, package boundaries, contratti I/O e ordine di build: harness → moduli core → tool → agenti → job asincroni → [[system/codebase-architecture]]
 - [ ] 🛠 **Disegnare l'harness broker/vendor/storage con test** — prima tranche implementativa: adapter broker, wrapper data vendor, DB/repository, contratti e test end-to-end minimi → [[system/codebase-architecture]]

@@ -95,3 +95,23 @@ Pattern chiave (in `GenerateViews.baml`): l'LLM riceve **fattori quantitativi pe
 4. **Background jobs + scheduler + Alembic + docker-compose** = infrastruttura operativa già risolta.
 5. La **libreria `optimizer/`** resta il motore quant candidato (vedi sopra) — ora sappiamo che esiste anche tutto il "contorno" applicativo a cui guardare.
 6. **Confronto con gli altri due riferimenti**: [[prior-art/libraries/rizzo-trading-agent]] dà il ciclo agente LLM→esecuzione end-to-end (semplice, crypto); questo optimizer dà il motore quant + LLM-views production-grade; [[prior-art/libraries/sfc-portfolio-tracker]] dà analytics/dashboard/reporting. Insieme coprono tutto lo spettro del nostro sistema.
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%% per esempio, devo ricordarmi e segnarmi come task di studiare questa libreria o perlomeno di imparare ad utilizzarla e sfruttarla per questo progetto%%
+
+%% TASK: documentazione](https://silviobaratto.github.io/optimizer/) su cui fare crawl e inserire dentro raw/articles%%
+
+%%molto interessante%%
+
+%% molto interessante %%
+
+%% queste funzioni possono essere molto utili, si potrebbero o replicare per avere tanta maneggevoleza e grado di personalizzazione oppure utilizzarle nel codice perosnale come pacchetto incluso se già professional-grade%%
+
+%%aggiungi Idzorek alpha al [[glossario]]%%
+
+%% anche quest'ultimo concetto è molto importante e rappresentativo, quindi vale la pena valorizzarlo come concetto chiave%%
+

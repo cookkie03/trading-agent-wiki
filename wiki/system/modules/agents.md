@@ -193,3 +193,25 @@ Nota emersa dai commenti di Luca: resta sul tavolo un assetto **multi-modello**,
 - Regole dello **Statuto**: capire quali info dargli e in quale forma (template/wireframe) — vedi [[system/decision-log]].
 
 *Vedi [[system/decision-log]] per le decisioni aperte e [[system/architecture]] per la vista d'insieme.*
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%questa parte e topologia è molto rappresentativa, vale la pena valorizzarla%%
+
+%%ha senso ispriarsi a [[rizzo-trading-agent]] per l'engine che inietta i prompt e come prompt builder, ma come knowledge e engineering dei prompt vale la pena riferirsi al codice della repo di  [[code-wiki]]%%
+
+%%????? non ho capito%%
+
+%% non ho capito quest'ultima frase%%
+
+%%da capire se implementare%%
+
+%% da definire meglio, perché nella mia idea personale e in quella di salvatore, all'inizio il risk analyst aveva lo stesso ruolo degli altri analyst desks e si posizionava in quell'ottica li, ma anche come viene descritta di seguito è una buona idea, valutare%%
+
+%%obsoleto, ora siamo a datapizza AI come framewrok, langchain ecosystem dismesso%%
+
+%% anche se alla fine, per quanto riguarda il PM, utilizzerei comunque un modello claude di frontiera, tenendo Deep seek per gli altri agent%%
+

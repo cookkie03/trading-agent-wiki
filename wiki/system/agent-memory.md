@@ -49,3 +49,14 @@ Quindi il *substrato dati* esiste; manca il **layer di recupero/sintesi** sopra.
 
 ## Stato
 **Aperto / da discutere.** Card in [[artifacts/project-board]]; decisione aperta in [[system/decision-log]]. Prerequisito comodo: la **deduplicazione DB** (anch'essa da fare) per una memoria pulita.
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%questa parte della memoria intra task è molto interessante anche svilupparla poi a livello di codice
+Tra l’altro, ricordati che qui si cita di nuovo al fatto di implementare già qualcosa e di averla già implementata, Ecco, ricordati che noi partiamo da Zero per il codice%%
+
+%%un altro tipo di memoria semantica è in architettura. a grafi, la quale comincia a risuonarmi molto interessante. individuiamo magari delle librerie che fanno rag e grafi tutto insieme%%
+

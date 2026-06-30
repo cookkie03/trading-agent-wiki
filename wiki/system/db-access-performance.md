@@ -123,3 +123,15 @@ Perché Timescale: è il "matrimonio" naturale tra l'orientamento *«principalme
 ---
 
 *Vedi [[system/modules/data-layer]] per le aree del DB e l'extraction, [[system/decision-log]] per lo storico decisioni.*
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%langgraph è stato dismesso, salviamo structured output%%
+
+%%???%%
+
+%% valutare bene cosa fare subito in v alpha e cosa in post mvp o comunque in futuro come ottimizzazioni%%
+

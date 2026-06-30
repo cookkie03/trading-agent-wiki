@@ -81,3 +81,11 @@ area: software
 
 ## Sintesi
 La spina dorsale del canvas è rispettata: **DB a 4 aree**, **desk → PM → Risk → Investment State → Trade**, e soprattutto **gli agenti chiamano l'Extractors set da soli** (tool-calling LLM-driven) che scrive nel DB. Restano 🔴 minori: tabelle dati FX/insider/calendario/report, adaptive extractor (rate-limit), Market Alert/calendar trigger.
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%il ruolo di questo file code mapping è fondamentale per me per capire come leggere il codice, scrivimelo da qualche parte, dopodiché considera che tutta questa cosa è proprio una delle parti che voglio rifare e prestabilire per costruire un codice estremamente personalizzato%%
+

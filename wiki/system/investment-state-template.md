@@ -164,3 +164,11 @@ confidence: low
 ---
 
 *Pagina-compagna di [[system/state-schemas]] (schema vivo). Da consumare in una sessione dedicata con Salvatore; ogni decisione presa torna a raffinare lo schema vivo e migra nel [[system/decision-log]].*
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%aggiungi a [[project-board]] come task mio e di salvatore di leggere insieme questo file %%
+

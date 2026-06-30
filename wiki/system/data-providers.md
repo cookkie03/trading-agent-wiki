@@ -206,3 +206,15 @@ Il [[system/modules/data-layer]] dovrà implementare i connector verso i provide
 | `market_data` — calendario economico | Finnhub (earnings calendar) | — |
 | `market_data` — tassi di cambio | Alpha Vantage / Twelve Data | — |
 | Esecuzione ordini | Alpaca (MVP) → IBKR (prod) | — |
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%super interessante, implementarlo come primo layer di informazioni e configurarlo per massimo wide di estrazione dati, poi integrare con dati del broker (alpaca/ibkr) e poi fonti esterne%%
+
+%%stack di data vendor e popolazione del db da rivalutare alla luce della preferenza per openbb%%
+
+%%da rivalutare, soprattutto alla luce della preferenza per openbb, per altro se possiamo scaricare anche dal broker, forse preferirei, quindi per esempio per i prezzi usare dati real time in flusso continuo web socket usando alpaca/ibkr%%
+

@@ -146,3 +146,11 @@ Il modello v1 è **deterministico** (Python calcola la quantità dal rischio e d
 ---
 
 *Il campo vive in [[system/state-schemas]]; lo consuma la funzione Trade in [[system/modules/execution]]; i cap derivano dallo Statuto in [[system/modules/agents]].*
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%% sposta nel glossario%%
+

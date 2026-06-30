@@ -222,3 +222,13 @@ Si aggancia all'Opzione C sopra (sealing → documento JSON). Decisione di forma
 ---
 
 *Vedi [[system/modules/agents]] per gli agenti che compilano questi campi, [[system/modules/execution]] per chi li consuma, [[system/position-sizing]] per il campo `position_sizing`.*
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%il passaggio di check da parte di tutti gli agenti deve avvenire prima del sigillo in investments state, e deve essere contestuale alle ricerche, al massimo l’ultima validazione completa può venir fatta dal pm, ma da valutare%%
+
+%%idea da valutare: questo genere di controllo a db può essere fatto tramite modello locale molto piccolo e con poco contesto, per risparmio di token, anche perché continui controlli diminuiscono inutilmente la velocità di esecuzione%%
+

@@ -95,3 +95,13 @@ Per ogni output tecnico vanno definiti tool deterministici dedicati, così da ve
 
 ## Prossimo passo collegato
 Una volta fissato il comportamento, si scrive il **system prompt** di ciascun agente che lo realizza (Prompt Builder) → [[system/modules/agents]] (decisione aperta).
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%% qui per ogni output e ragionamento dell'agent, bisognerà definire i tool adatti per velocizzare ed efficientare nel produrre questi calcoli e questi valori in modo deterministico%%
+
+%% qui manca il risk analista, definito e descritto come tutti gli altri agent%%
+

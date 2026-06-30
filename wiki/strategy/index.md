@@ -66,3 +66,11 @@ Un file per ogni metrica: come si calcola, cosa misura, quando è utile.
 2. L'agente ingesta e crea/aggiorna file qui
 3. Salvatore può anche modificare direttamente i file esistenti
 4. Luca traduce i metodi validati in tool Python in [[system/modules/quant-backtesting]]
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%TASK: aggiornare sezione%%
+

@@ -183,3 +183,19 @@ tradingagents/
 |------------|-----------|--------|
 | Portfolio optimizer | cvx-portfolio-optimizer (skfolio) | Dopo che i componenti core girano |
 | Fine-tuning | LoRA/QLoRA su modello open-source | Dopo anni di storico |
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%% diciamo che la predisposizione degli alert e i next check date ci permette di non inserire dei cron statici periodici %%
+
+%% sto anche pensando di realizzare il solo frontend in typescript %%
+
+%% il modulo di back test vorrei che sia disponibile anche come strumenti per l’utente sul frontend per permettergli di fare backest personalizzati fino a se stessi ma persistenti (quindi con meccanismo di salvataggio sul db%%
+
+%% proprio perche datapizza AI è un po acerbo e poco completo, in lido di nuovo la scelta tra langgraph e datapizza AI come da prendere %%
+
+%% struttura completamente da rifare %%
+

@@ -671,3 +671,13 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Problema risolto**: la copia iCloud era su una history locale non collegata alla history riscritta di GitHub (`ahead/behind` senza merge-base), mentre OneDrive era allineata al remoto.
 - **Conservazione modifiche**: creato commit `vault backup: 2026-06-30 00:00:00`; salvata la vecchia linea iCloud in `backup/icloud-main-before-realign-2026-06-30` e tag `backup-icloud-main-before-realign-2026-06-30`.
 - **Prevenzione**: riallineato `main` iCloud a `origin/main`; confermato `.gitignore` corrente per `graphify-out/`, `.lightrag/`, `storage_state*`, audio/video e cache locali.
+
+## [2026-07-01] merge | Recupero contenuti umani dalla vecchia iCloud
+
+- **Type**: git merge / source recovery
+- **Fonte**: commit iCloud salvato `70548271453f789cf60f8866a4fd056e2b330370`.
+- **Daily notes recuperate**: `raw/daily-notes/2026-06-25.md`, `raw/daily-notes/2026-06-26.md`, `raw/daily-notes/2026-06-29.md`.
+- **Commenti Obsidian recuperati**: 57 commenti `%%...%%` presenti nella vecchia iCloud risultano ora presenti nel vault corrente; i commenti mancanti sono stati reinseriti nei rispettivi file wiki sotto sezioni "Commenti recuperati da iCloud (2026-07-01)".
+- **Pages updated**: [[artifacts/project-board]], [[_meta/glossario]], [[artifacts/trading-floor]], [[prior-art/libraries/cvx-portfolio-optimizer]], [[strategy/index]], [[strategy/methods/factor-investing]], [[strategy/methods/mean-reversion-stat-arb]], [[strategy/methods/trend-following]], [[system/agent-behaviors]], [[system/agent-memory]], [[system/architecture]], [[system/canvas-code-mapping]], [[system/cost-accounting]], [[system/data-providers]], [[system/db-access-performance]], [[system/fork-gap-analysis]], [[system/investment-state-template]], [[system/learning-feedback-loop]], [[system/modules/agents]], [[system/observability-dashboard]], [[system/parallelism-design]], [[system/position-sizing]], [[system/rating-scoring]], [[system/stack]], [[system/state-schemas]].
+- **Non reinserito volutamente**: `graphify-out/`, `storage_state.json`, audio/video e cache locali della vecchia history iCloud, perché sono artefatti pesanti/sensibili o rigenerabili già esclusi da `.gitignore`.
+- **Stato editoriale**: materiale umano recuperato ma non ancora completamente normalizzato; la board contiene il task di ingest/pulizia successivo.

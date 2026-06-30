@@ -57,3 +57,13 @@ confidence: medium
 > 🟢 **Prima implementazione (alpha v0, 2026-06-06)** — `tradingagents/broker/commission.py` (`CommissionModel`: Zero/PerTrade/PerShare/Percent) + `tradingagents/execution/costs.py` (`expected_reward`/`expected_risk`, `assess_costs` = **guardrail net-EV**); integrato nel `run_cycle` ([[system/trigger-engine]]): prima di eseguire, se la ricompensa potenziale non copre commissione + token cost → **no-trade** (`skipped_cost`). **Mancano ancora**: consuntivo post-fill (campi `commission`/`token_cost` sul `trade`), token metering reale da OpenRouter, fee auto-adattiva dal broker live.
 
 Resto **aperto / da progettare**. Card in [[artifacts/project-board]]; decisione in [[system/decision-log]].
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%feature, un meccanismo di accounting reale va poi a costituire i dati per la stima dei costi per token e delle commissioni dei trade successivi %%
+
+%%in generale, questi meccanismi di stima dei costi sarà qualcosa di post mvp, qualcosa di futuro, che non fa parte della prima versione%%
+

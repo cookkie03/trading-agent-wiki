@@ -46,3 +46,13 @@ Il diagramma delinea una architettura di una "Trading Floor" basata su agenti sp
 - Dati per esecuzione: Commissioni, valutazione broker, liquidità dello strumento (spread).
 
 L'inventario operativo dei tool ora vive in [[system/tools-inventory]]. Questa pagina non va più usata come contenitore primario dei tool.
+
+---
+## Commenti recuperati da iCloud (2026-07-01)
+
+> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
+
+%%TASK: aggiornare questa lista di agenti con quelli di [[architettura.canvas]] e del resto del progetto%%
+
+%%TASK: qui bisogna mettere l'elenco di tutti i tool a meno che non cis siano da altre parti, in particolare, guardare tutti i progetti dentro prior-art nel profonod, leggendo documentazioni, codice, ecc... e aggiungerli qui come .base%%
+

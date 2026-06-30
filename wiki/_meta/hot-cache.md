@@ -20,6 +20,13 @@
 - **Stato finale atteso**: `main` di OneDrive, `main` di iCloud e `origin/main` puntano allo stesso commit; le modifiche utente sono committate con notazione `vault backup: ...`.
 - **Nota preventiva**: `graphify-out/`, `.lightrag/`, `storage_state*`, audio/video e cache locali devono restare fuori da Git; se ricompaiono nello status, controllare `.gitignore` prima di committare.
 
+## Sessione 2026-07-01 — Merge semantico dalla vecchia iCloud
+- **Correzione di interpretazione**: la vecchia punta iCloud `7054827` era semanticamente l'ultima versione utente, anche se tecnicamente fuori dalla history pulita GitHub.
+- **Recuperato**: daily notes `2026-06-25`, `2026-06-26`, `2026-06-29` in `raw/daily-notes/`.
+- **Recuperato**: tutti i 57 commenti Obsidian `%%...%%` trovati in `7054827` sono presenti nel vault corrente; quelli mancanti sono stati reinseriti nei file wiki originali in sezioni di recupero iCloud.
+- **Non recuperato su Git**: `graphify-out/`, `storage_state.json`, audio/video e cache locali, perché artefatti pesanti/sensibili o rigenerabili.
+- **Prossimo passo operativo**: ingest editoriale del recupero iCloud, trasformando commenti e daily notes in task/decisioni/pagine pulite; card aggiunta in [[artifacts/project-board]].
+
 ## Sessione 2026-06-08 — Universo/Watchlist/Benchmark/Agenti (branch feat/universe-watchlist)
 - **Cambio di paradigma** (Luca+Salvatore): sistema autonomo anche sugli asset + benchmark da battere. Piano in `/Users/luca/.claude/plans/adaptive-nibbling-puzzle.md`.
 - **3 insiemi**: universo (broker-tradable, riconciliato via `list_assets`/`sync_universe`, inattivi marcati) ⊇ watchlist dinamica (ibrida, seed S&P500∩broker, ingressi da alert/news) ⊇ portfolio. Scheda ticker = hub; `ticker_events`→trigger (auto-scheduling).
