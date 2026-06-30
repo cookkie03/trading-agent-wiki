@@ -661,3 +661,13 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Fix editoriale**: mantenuta la struttura board scelta da Luca, ma collegata a pagine hub operative invece che a riscritture cosmetiche dei commenti.
 - **LightRAG**: tentata query sulla KB `trading-agent-wiki`; risultato `no-context`, quindi non usata come fonte per decisioni di contenuto in questo fix.
 - **Notes**: [[system/system-wiki-reorganization]] ora contiene mapping commenti → destinazioni, priorità di pulizia e regola esplicita per i claim storici.
+
+## [2026-06-30] git | Riallineamento copie locali OneDrive/iCloud
+
+- **Type**: git maintenance / vault backup
+- **Path coinvolti**:
+  - `/Users/luca/Library/CloudStorage/OneDrive-Personale/trading-agent-wiki`
+  - `/Users/luca/Library/Mobile Documents/iCloud~md~obsidian/Documents/trading-agent-wiki`
+- **Problema risolto**: la copia iCloud era su una history locale non collegata alla history riscritta di GitHub (`ahead/behind` senza merge-base), mentre OneDrive era allineata al remoto.
+- **Conservazione modifiche**: creato commit `vault backup: 2026-06-30 00:00:00`; salvata la vecchia linea iCloud in `backup/icloud-main-before-realign-2026-06-30` e tag `backup-icloud-main-before-realign-2026-06-30`.
+- **Prevenzione**: riallineato `main` iCloud a `origin/main`; confermato `.gitignore` corrente per `graphify-out/`, `.lightrag/`, `storage_state*`, audio/video e cache locali.

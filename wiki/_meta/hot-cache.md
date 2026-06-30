@@ -13,6 +13,13 @@
 - **Pending ingest rimasto aperto**: backlog documentale in `raw/articles/` (Datapizza AI, optimizer docs, AlphaArena, TradingAgents, CorpBondThesis, Kronos source raw). Non processato in profondità in questo run.
 - **Nota di metodo**: questo run ha privilegiato il riallineamento della wiki al nuovo framing **design/codebase first** rispetto alla narrativa dei branch storici.
 
+## Sessione 2026-06-30 — Manutenzione Git copie locali OneDrive/iCloud
+- **Operazione**: riconciliate le due copie locali del repo `cookkie03/trading-agent-wiki`: OneDrive e iCloud.
+- **Problema principale**: iCloud era su una history locale non collegata alla history riscritta di GitHub (`ahead 123, behind 123`, senza merge-base). OneDrive era il checkout pulito e allineato al remoto.
+- **Conservazione**: prima del riallineamento, la linea iCloud è stata salvata come branch `backup/icloud-main-before-realign-2026-06-30` e tag `backup-icloud-main-before-realign-2026-06-30`.
+- **Stato finale atteso**: `main` di OneDrive, `main` di iCloud e `origin/main` puntano allo stesso commit; le modifiche utente sono committate con notazione `vault backup: ...`.
+- **Nota preventiva**: `graphify-out/`, `.lightrag/`, `storage_state*`, audio/video e cache locali devono restare fuori da Git; se ricompaiono nello status, controllare `.gitignore` prima di committare.
+
 ## Sessione 2026-06-08 — Universo/Watchlist/Benchmark/Agenti (branch feat/universe-watchlist)
 - **Cambio di paradigma** (Luca+Salvatore): sistema autonomo anche sugli asset + benchmark da battere. Piano in `/Users/luca/.claude/plans/adaptive-nibbling-puzzle.md`.
 - **3 insiemi**: universo (broker-tradable, riconciliato via `list_assets`/`sync_universe`, inattivi marcati) ⊇ watchlist dinamica (ibrida, seed S&P500∩broker, ingressi da alert/news) ⊇ portfolio. Scheda ticker = hub; `ticker_events`→trigger (auto-scheduling).
