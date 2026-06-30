@@ -193,6 +193,7 @@ A runtime lo state lavora **piatto** (i nodi mutano i campi facilmente); quando 
 
 > 🟢 **In parole semplici** (spiegato a voce a Luca 2026-06-05): pensa allo state come a un **modulo da compilare**. Opzione A = un unico foglio lungo. Opzione B = un raccoglitore con sezioni etichettate. Opzione C = mentre lavori riempi un **foglio di brutta** veloce (A), e solo alla fine lo **archivi ordinato nel raccoglitore** (B) per conservarlo. "Validare la scelta C" vuol dire solo questo: **non ci impegniamo adesso** — partiamo dalla brutta, e se vediamo che serve il raccoglitore lo aggiungiamo dopo. Cambiare idea costa poco perché "l'archiviazione" è **un solo pezzo di codice** da scrivere (la *funzione di sealing*). Tutto qui — niente di più complicato.
 
+%%ho cambiato idea, adottiamo uno state schema annidato con campi specifici e predeterminati, ottimizzandolo al massimo sin da subito (usare l’opzione C mi sembra solo un casino inutile)%%
 **Come validare la scelta** (a basso costo): l'Opzione C ha il pregio che il confine *piatto-a-runtime → annidato-in-storage* è una singola **funzione di sealing**. Quindi si può:
 1. partire con lo state piatto (A) durante l'engineering del grafo;
 2. introdurre il sealing verso il documento annidato (B) quando si persiste;
