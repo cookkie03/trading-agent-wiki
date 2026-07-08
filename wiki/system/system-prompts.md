@@ -93,8 +93,11 @@ If a critical datum is missing or inconsistent, flag it instead of inventing it.
 
 ## I 4 system prompt del desk (bozze in inglese)
 
+%% questi system prompt li leggiamo insieme io e Salvatore, segnalo come task%%
+
 > Istanze concrete dello scheletro, una per agente ([[system/agent-behaviors]]). Sono **bozze v0** da rifinire iterativamente con LangSmith; l'impianto (struttura + contenuti) è approvato.
 
+%%ultimo aggiornamento, più recente, sulla scelta datapizza vs langgraph: scelgo langgraph con langsmith%%
 ### Technical
 
 ```
