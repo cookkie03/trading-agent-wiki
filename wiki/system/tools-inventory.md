@@ -38,13 +38,13 @@ Ogni tool è definito da cinque attributi:
 
 ### Due regole trasversali (proposte come vincolanti)
 - **Parametrici, mai hardcoded**: `get_ohlcv_history(ticker, start, end, interval)`, non "ultimi 30 giorni" (già nello stack, [[system/data-providers]]).
-- **Adaptive extractor come rete**: ogni tool live passa per i guardrail di frequenza/rate-limit dell'adaptive extractor ([[system/modules/data-layer]]).
+- **Adaptive extractor come rete**%%rete o layer? quale termine si addice di più? valutiamo insieme io e il coding agent%%: ogni tool live passa per i guardrail di frequenza/rate-limit dell'adaptive extractor ([[system/modules/data-layer]]).
 
 ### Eredità dal fork TradingAgents
 Molti tool esistono già come `dataflows` di TradingAgents (sezione "Data Retrieval Tools and Utilities", [[prior-art/tradingagents/code-wiki]]) e vanno **tenuti / potenziati / riscritti**. In tabella: **grassetto** = ereditabile quasi diretto; *normale* = da costruire ex-novo per il progetto.
 
 ---
-
+%%tutto l'inventario va ricostruito sulla base di OpenBB e dei dati che già quell'aggregatore offre%%
 ## Inventario per famiglie
 
 ### A — Prezzi & quote
@@ -67,7 +67,7 @@ Molti tool esistono già come `dataflows` di TradingAgents (sezione "Data Retrie
 | **`get_financials(ticker, statement, period)`** — balance / income / cashflow | storico (DB-first, `publication_date`) | n/a           | Fondamentali | Alpha Vantage · yfinance |
 | `get_ratios(ticker)` — P/E (trailing vs current), P/B, ROE, margini           | semi-storico                           | —             | Fondamentali | Alpha Vantage · yfinance |
 | **`get_earnings(ticker)`** — storico + prossimi earnings                      | semi-live                              | ✅ (prossimo)  | Fondamentali | Finnhub · AV             |
-
+%%perché qui non c'è il compute indicator? anche alcuni ratios potrebbero richiedere il calcolo a partire da ratios piu semplici%%
 ### D — News & sentiment
 > **Divisione per tipo di informazione** (Luca 2026-06-06): **Market** usa le news come *catalizzatori* macro/settore; **Sentiment** copre il *mood/posizionamento* attingendo a **quante più fonti possibili** — vendor di notizie **+ social/forum** (Reddit, StockTwits, X) **+ piattaforme di sentiment dedicate**. L'elenco dei tool/fonti sentiment è un **sotto-lavoro aperto** (vedi sotto), legato all'aperto *"indicatori di sentiment"* con Salvatore.
 
@@ -88,18 +88,20 @@ Molti tool esistono già come `dataflows` di TradingAgents (sezione "Data Retrie
 > Mappa sugli indicatori macro che Salvatore sta definendo → [[strategy/indicators/macro-indicators]].
 
 ### F — Calendario
-| Tool | Live/Storico | Write-through | Agente | Vendor |
-|------|--------------|---------------|--------|--------|
-| `get_calendar(type, window)` — earnings + calendario economico | semi-live | ✅ | Market, PM (alimenta i trigger di alert) | Finnhub |
-
+| Tool                                                           | Live/Storico | Write-through | Agente                                   | Vendor  |
+| -------------------------------------------------------------- | ------------ | ------------- | ---------------------------------------- | ------- |
+| `get_calendar(type, window)` — earnings + calendario economico | semi-live    | ✅             | Market, PM (alimenta i trigger di alert) | Finnhub |
+%%ci sono altri vendor? includiamoli, includiamo sempre tutti i vendor posibili che possono offrire quel dato, teniamo openbb come fonte princiapale ma includiao tutte le altre%%
 ### G — Portafoglio & conto (interni, area rendicontazione del DB)
-| Tool | Live/Storico | Write-through | Agente | Vendor |
-|------|--------------|---------------|--------|--------|
-| **`inject_portfolio_state()`** — foto portafoglio: cassa, posizioni, distribuzione, P/L · **OBBLIGATORIO** · auto a ogni ciclo + richiamabile | DB rendicontazione | lettura | PM, Risk | interno |
-| `get_open_positions_risk()` — **portfolio heat** corrente (somma rischi aperti) per sizing/Risk | DB rendicontazione | lettura | PM, Risk | interno |
+| Tool                                                                                                                                          | Live/Storico       | Write-through | Agente   | Vendor  |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ------------- | -------- | ------- |
+| **`inject_portfolio_state()`** — foto portafoglio: cassa, posizioni, distribuzione, P/L · **OBBLIGATORIO** · auto a ogni ciclo + richiamabile | DB rendicontazione | lettura       | PM, Risk | interno |
+| `get_open_positions_risk()` — **portfolio heat** corrente (somma rischi aperti) per sizing/Risk                                               | DB rendicontazione | lettura       | PM, Risk | interno |
+|                                                                                                                                               |                    |               |          |         |
 
 > `inject_portfolio_state` è il tool deciso da Luca 2026-06-04 ([[system/modules/agents]]); `get_open_positions_risk` serve al cap di portfolio heat del [[system/position-sizing]].
 
+%%i check al portafoglio DEVONO essere periodici e costanti%%
 ### H — Opzioni (leva)
 | Tool | Live/Storico | Write-through | Agente | Vendor |
 |------|--------------|---------------|--------|--------|
@@ -119,7 +121,7 @@ I controlli dello Statuto (max % per area, VaR di portafoglio, diversificazione,
 2. ✅ **`compute_indicator` = un tool unico parametrico**: `compute_indicator(ticker, indicator, params)`, l'indicatore si sceglie via parametro. Più scalabile e meno superficie da mantenere; i nomi degli indicatori disponibili vanno elencati nel system prompt / docstring del tool.
 
 **Ancora aperti:**
-3. **Vendor dei dati live** (famiglie A/D/F — news, quote, calendario): da fissare **quando si implementa il data-layer**. Candidato naturale Finnhub (60 req/min free, copre news+sentiment+insider+earnings+real-time con una sola integrazione), ma non lo blocchiamo ora. Lo storico resta yfinance/FRED.
+3. **Vendor dei dati live** (famiglie A/D/F — news, quote, calendario): da fissare **quando si implementa il data-layer**. Candidato naturale Finnhub (60 req/min free, copre news+sentiment+insider+earnings+real-time con una sola integrazione), ma non lo blocchiamo ora. Lo storico resta yfinance/FRED. %%potremmo realizzare un pagina solamente per i datavendor in cui facciamo il prospetto COMPLETO di tutti i vendor, tutti i tool, tutti i dati a disposizione, ecc...%%
 4. **Vendor opzioni** (famiglia H): IBKR (già broker prod) vs Tradier — da decidere quando si entra nelle opzioni (post-MVP).
 
 ## Prossimo passo collegato

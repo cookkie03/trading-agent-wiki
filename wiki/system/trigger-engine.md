@@ -31,16 +31,16 @@ confidence: medium
 ```
 
 Il PM / cycle runner **non interroga 5 sorgenti diverse**: consuma una sola coda. Vantaggi: dedup, priorità, rate-limit, e un **audit unico** di *perché* è partito ogni ciclo.
-
+%% chiaramente, se il pm ha ricevuto un alert da spento e per l'alert si è acceso e mentre lavora con il team di agenti riceve un ulteriore alert dalla coda allora quell'alert rientrerà all'interno della conversazione del PM se ci fosse continuità diciamo tra le tra gli alert in un unico Run; includendo sempre il contesto sull'origine dell'alert, quindi permettere al pm di capire se l'alert è una periodica Synthesis o un Next check date o un allarme di prezzo, cioè scriverglielo all'interno del contesto affiancato all'alert di trigger%%
 ## Le sorgenti di trigger (tutte centralizzate)
 
-| Sorgente | Cos'è | Come genera l'evento |
-|----------|-------|----------------------|
-| **Periodical synthesis** | intervallo fisso (time-based) | scheduler a cadenza fissa → enqueue scan larga |
-| **Dynamic Temporal Checkpoint** | `next_check_date` scaduto | query su `ticker_card`/`research_states` con data ≤ oggi |
-| **Price alert** | prezzo vs target o movimento anomalo | confronto prezzo corrente vs `entry/stop/tp` salvati o vs soglia ATR (mercati efficienti) |
-| **Calendario economico** | earnings / dati macro imminenti | `get_calendar` → enqueue i ticker/macro impattati prima/dopo l'evento |
-| **News anomale** (futuro) | terzo tipo di alert | rilevatore news → enqueue il ticker |
+| Sorgente                           | Cos'è                                | Come genera l'evento                                                                      |
+| ---------------------------------- | ------------------------------------ | ----------------------------------------------------------------------------------------- |
+| **Periodical synthesis**           | intervallo fisso (time-based)        | scheduler a cadenza fissa → enqueue scan larga                                            |
+| **Dynamic Temporal Checkpoint**    | `next_check_date` scaduto            | query su `ticker_card`/`research_states` con data ≤ oggi                                  |
+| **Price alert**                    | prezzo vs target o movimento anomalo | confronto prezzo corrente vs `entry/stop/tp` salvati o vs soglia ATR (mercati efficienti) |
+| **Calendario economico**           | earnings / dati macro imminenti      | `get_calendar` → enqueue i ticker/macro impattati prima/dopo l'evento                     |
+| **News anomale** (futuro, PostMVP) | terzo tipo di alert                  | rilevatore news → enqueue il ticker                                                       |
 
 ## `TriggerEvent` (forma normalizzata)
 

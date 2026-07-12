@@ -19,7 +19,7 @@ related:
   - "[[system/modules/execution]]"
   - "[[system/tools-inventory]]"
 ---
-
+%%tutta questa pagina mi sembra già la conseguenza di alcuni commenti inseriti in giro per la wiki, buona base di partenza per eventuali ristrutturazioni, contiene informazioni molto utili sul come voglio che sia questa wiki%%
 # System Wiki Reorganization
 
 Pagina di lavoro per ripulire `wiki/system/` senza perdere informazione.
@@ -50,14 +50,14 @@ Rendere `wiki/system/` leggibile e ordinata per un umano che deve progettare o i
 
 I commenti inline e le daily notes non vanno riscritti in prosa piu' pulita: vanno smistati nel punto che governa davvero il comportamento futuro.
 
-| Tipo di input | Destinazione primaria | Effetto richiesto |
-|---|---|---|
-| Task per coding agent | [[artifacts/project-board]] + pagina tecnica collegata | Card azionabile con owner e link; dettaglio nella pagina target |
-| Task per Luca | [[artifacts/project-board]] + pagina decisionale | Validazione o scelta esplicita, non task tecnico nascosto |
-| Task/domanda per Salvatore | [[strategy/questions-for-salvatore]] o pagina `strategy/` pertinente | Domanda formulata come decisione di mercato o dato da fornire |
-| Idea architetturale | [[system/codebase-architecture]], [[system/data-sources-tool-map]], [[system/frontend-module]] o pagina modulo | Vincolo o backlog tecnico, non nota sparsa |
-| Correzione di stato | Pagina che contiene il claim errato | Nota di stato corrente + contesto storico, senza cancellare storia utile |
-| Prior-art da studiare | `wiki/prior-art/` o backlog `raw/articles/` | Resta research finche' non produce una decisione o un task |
+| Tipo di input              | Destinazione primaria                                                                                          | Effetto richiesto                                                        |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Task per coding agent      | [[artifacts/project-board]] + pagina tecnica collegata                                                         | Card azionabile con owner e link; dettaglio nella pagina target          |
+| Task per Luca              | [[artifacts/project-board]] + pagina decisionale                                                               | Validazione o scelta esplicita, non task tecnico nascosto                |
+| Task/domanda per Salvatore | [[strategy/questions-for-salvatore]] o pagina `strategy/` pertinente                                           | Domanda formulata come decisione di mercato o dato da fornire            |
+| Idea architetturale        | [[system/codebase-architecture]], [[system/data-sources-tool-map]], [[system/frontend-module]] o pagina modulo | Vincolo o backlog tecnico, non nota sparsa                               |
+| Correzione di stato        | Pagina che contiene il claim errato                                                                            | Nota di stato corrente + contesto storico, senza cancellare storia utile |
+| Prior-art da studiare      | `wiki/prior-art/` o backlog `raw/articles/`                                                                    | Resta research finche' non produce una decisione o un task               |
 
 ## Priorita' di pulizia
 
@@ -91,7 +91,7 @@ La riorganizzazione fisica delle cartelle si fa solo se Luca la approva e aggior
 | `system/frontend/` | [[system/frontend-module]], [[system/observability-dashboard]] |
 | `system/orchestration/` | [[system/parallelism-design]], [[system/trigger-engine]], [[system/universe-watchlist]] |
 | `system/quant/` | [[system/modules/quant-backtesting]], [[system/rating-scoring]], [[system/learning-feedback-loop]] |
-
+%%ottima disposizione, creerei direttamente i sottodomini e sposterei subito i file nei sottodomini%%
 ## Deliverable di questo ingest
 
 - board riallineata come hub operativo con colonne per meeting, Salvatore, Luca, coding agent, ricerca, in corso e fatto;
@@ -102,6 +102,6 @@ La riorganizzazione fisica delle cartelle si fa solo se Luca la approva e aggior
 ## Cosa resta da fare
 
 - Passare una seconda volta su [[system/architecture]] e [[system/canvas-code-mapping]], perche' contengono molte tabelle `✅` nate da sync codice.
-- Decidere se [[prior-art/libraries/datapizza-ai]] resta "framework principale" o diventa candidato/reference da riconfermare.
+- Decidere se [[prior-art/libraries/datapizza-ai]] resta "framework principale" o diventa candidato/reference da riconfermare. %%alla fine ho deciso di usare langgrpah con langsmith%%
 - Pulire le pagine strategy senza perdere il lavoro di Salvatore: qui il problema non e' stato software, ma trasformare appunti in decisioni codificabili.
 - Dopo ogni pulizia, aggiornare [[artifacts/project-board]], [[_meta/index]], [[_meta/hot-cache]] e [[_meta/log]].
