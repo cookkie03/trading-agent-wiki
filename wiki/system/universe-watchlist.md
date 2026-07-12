@@ -47,7 +47,7 @@ L'efficienza: ingestione/deep-dive costosi solo su **watchlist + portfolio + tri
 ## Benchmark dinamico (codice: `benchmark.py`, `performance.py`)
 - Simboli **solo da config** (`[benchmark] symbols=["SPY"]`, lista, cambiabile). Mai hardcoded.
 - `performance_vs_benchmarks()` → rendimento portafoglio vs ciascun benchmark = **alpha**.
-
+%% bisogna trovare il modo di rendere sempre noto al PM il rendimento del benchmark o comunque capire come fare in modo che il pm abbia come obiettivo il benchmark, per esempio lo si può iniettare ogni tot, o si possono calcolare in qualche modo, questa cosa del banchmark andrà fatta postmvp, per l'mvp lavoriamo senza nessun benchmark; eventualmente il benchmark può essere anche fisso, quindi un rendimento ad una certa frequenza mensile annuale giornaliero fisso e costante ad una certa quantità percentuale oltre ai classici benchmark come gli indici%%
 ## Gerarchia agenti (tre livelli) — codice: `brain/director.py` + `brain/graph.py`
 ```
 DIRETTORE (Portfolio Manager, uno) — decide cosa analizzare, gestisce watchlist,
