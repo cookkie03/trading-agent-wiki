@@ -15,8 +15,8 @@ Le skill wiki-* non usano mai path hardcodati: leggono sempre questa tabella.
 |-------------|-----------------------------|--------|------|
 | `overview`  | `wiki/`                     | sì     | `overview.md` unico, entry point |
 | `meta`      | `wiki/_meta/`               | sì     | Navigazione del vault (index, log, hot-cache, taxonomy, glossario, onboarding) |
-| `system`    | `wiki/system/`              | sì     | Spec del software: architettura, moduli, stack, decisioni, idee, MVP (dominio Luca) |
-| `module`    | `wiki/system/modules/`      | sì     | Un file per **area** del sistema, allineato ad `architettura.canvas`: `data-layer`, `agents`, `execution`, `quant-backtesting` |
+| `system`    | `wiki/system/`              | sì     | Spec del software (dominio Luca), organizzata in `foundation/`, `data/`, `tools/`, `agents/`, `orchestration/`, `investment/`, `execution/`, `quant/`, `interface/` e `_reference/` |
+| `module`    | `wiki/system/`              | sì     | Ruolo distribuito nei sottodomini di `system/`; non esiste più la cartella `modules/` |
 | `strategy`  | `wiki/strategy/`            | sì     | Conoscenza di mercato e trading: metodi, indicatori, metriche (dominio Salvatore) |
 | `prior-art` | `wiki/prior-art/`           | sì     | Sistemi, paper e librerie esterni studiati o forkati: `tradingagents/`, `libraries/`, `papers/` |
 | `synthesis` | `wiki/syntheses/`           | sì     | Analisi trasversali, ricerca multi-fonte |
@@ -28,7 +28,7 @@ Le skill wiki-* non usano mai path hardcodati: leggono sempre questa tabella.
 | `entity`    | `wiki/agents/`              | no     | Eliminato — contenuto migrato in `prior-art/` |
 | `knowledge` | `wiki/theory/`              | no     | Eliminato — contenuto migrato in `system/` |
 | `operation` | `wiki/ops/`                 | no     | Eliminato — contenuto migrato in `system/` e `artifacts/` |
-| `decision`  | `wiki/decisions/`           | no     | Eliminato — migrato in `system/decision-log.md` |
+| `decision`  | `wiki/decisions/`           | no     | Eliminato — migrato in `system/foundation/decision-log.md` |
 | `question`  | `wiki/questions/`           | no     | Eliminato — domande inline nei module files e nelle board |
 
 ## Cartelle raw → Path

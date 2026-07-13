@@ -5,7 +5,7 @@ tags:
   - overview
   - strategy
 created: 2026-04-30
-updated: 2026-05-29
+updated: 2026-07-13
 status: active
 related: []
 confidence: high
@@ -21,7 +21,7 @@ Wiki operativa del progetto `trading-agent`. Raccoglie fonti, documenta il softw
 
 Un sistema multi-agente che replica e automatizza il workflow di un trader professionale: raccogliere informazioni, analizzare segnali quantitativi, decidere con un LLM, eseguire ordini deterministicamente.
 
-**Fase attuale**: design dell'architettura multi-agente **stock-only** ([[_meta/glossario#Paper Trading / Testnet|paper trading]] equity). Topologia 2026-05-29: analisti → research_state → Risk Analyst (gate bear) → Trade deterministico, con un Portfolio Manager orchestratore e un DB esteso. Stack: LangGraph + OpenRouter/DeepSeek V4 Pro. Si riscrive il grafo partendo dalla base di TradingAgents.
+**Fase attuale**: specificazione ordinata dell'architettura multi-agente **stock-only / USD-only** per paper trading equity. La wiki definisce requisiti, decisioni e priorità; il repository è esterno e il suo stato non viene attestato qui. Framework documentato: LangGraph + LangSmith; topologia e confini restano in revisione con Luca e Salvatore.
 
 ---
 
@@ -29,11 +29,11 @@ Un sistema multi-agente che replica e automatizza il workflow di un trader profe
 
 | Vuoi... | Vai a... |
 |---------|----------|
-| Capire come funziona il sistema | [[system/architecture]] |
+| Capire come funziona il sistema | [[system/foundation/architecture]] |
 | Vedere cosa si sta costruendo ora | [[artifacts/project-board]] |
-| Vedere il piano MVP completo | [[system/mvp]] |
+| Vedere il piano MVP completo | [[system/foundation/mvp]] |
 | Trovare un termine che non conosci | [[_meta/glossario]] |
-| Vedere tutte le decisioni prese | [[system/decision-log]] |
+| Vedere tutte le decisioni prese | [[system/foundation/decision-log]] |
 | Trovare una fonte o un paper | [[_meta/index]] |
 
 ---
@@ -42,8 +42,10 @@ Un sistema multi-agente che replica e automatizza il workflow di un trader profe
 
 ```
 wiki/
-├── system/         ← spec software (Luca): architettura, moduli, stack, decisioni, MVP
-│   └── modules/    ← data-layer · agents · execution · quant-backtesting
+├── system/         ← spec software (Luca)
+│   ├── foundation/ · data/ · tools/ · agents/ · orchestration/
+│   ├── investment/ · execution/ · quant/ · interface/
+│   └── _reference/ ← snapshot e pattern storici
 ├── strategy/       ← conoscenza di mercato (Salvatore): metodi, indicatori, metriche
 ├── prior-art/      ← sistemi/paper/librerie esterni studiati e forkati
 │   ├── tradingagents/ · libraries/ · papers/
@@ -64,9 +66,9 @@ raw/           → wiki-ingest →  prior-art/     (sistemi/paper esterni)
 artifacts/     → project-board                 (task e decisioni)
 ```
 
-I record grezzi delle call restano in `raw/archived/`; la loro sostanza è dissolta nelle pagine tematiche (decisioni datate in `system/decision-log`).
+I record grezzi delle call restano in `raw/archived/`; la loro sostanza è dissolta nelle pagine tematiche (decisioni datate in `system/foundation/decision-log`).
 
-**Luca**: carica materiale tecnico in `raw/`, aggiorna i moduli in `system/modules/`, aggiorna la board.
+**Luca**: carica materiale tecnico in `raw/`, aggiorna le pagine del dominio pertinente in `system/`, aggiorna la board.
 **Salvatore**: carica in `raw/` indicatori, strategie, meccanismi di mercato, casi reali. L'agente struttura il materiale in `strategy/`.
 
 ---

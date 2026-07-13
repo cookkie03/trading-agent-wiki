@@ -5,12 +5,12 @@ tags:
   - strategy
   - market-structure
 created: 2026-05-14
-updated: 2026-05-29
+updated: 2026-07-13
 status: active
 area: strategy
 related:
-  - "[[system/modules/quant-backtesting]]"
-  - "[[system/decision-log]]"
+  - "[[system/quant/quant-backtesting]]"
+  - "[[system/foundation/decision-log]]"
 ---
 
 # Strategy
@@ -26,7 +26,7 @@ Questa sezione è il dominio di Salvatore. Ogni elemento qui dentro è distillat
 Ogni file in `strategy/` dovrebbe linkare:
 - i **metodi** che lo usano (es. `rsi.md` → `trend-following.md`)
 - le **metriche** con cui si valuta (es. `trend-following.md` → `sharpe-ratio.md`)
-- il **modulo software** che lo implementa (es. `trend-following.md` → `[[system/modules/quant-backtesting]]`)
+- il **modulo software** che lo implementa (es. `trend-following.md` → `[[system/quant/quant-backtesting]]`)
 
 ---
 
@@ -37,6 +37,15 @@ Ogni metodo descrive una strategia o un approccio: come funziona, quando funzion
 - [[strategy/methods/trend-following]] — seguire il trend degli istituzionali (approccio attuale Salvatore)
 - [[strategy/methods/factor-investing]] — investire basandosi su fattori fondamentali e quantitativi
 - [[strategy/methods/mean-reversion-stat-arb]] — mean reversion e statistical arbitrage / pairs trading (candidata per Modulo C, da Salvatore)
+
+## Decisione strategica da prendere
+
+La wiki conserva più metodi perché devono poter diventare componenti componibili, non perché vadano tutti implementati insieme. Luca e Salvatore devono scegliere una **strategia MVP unica**, i suoi indicatori codificabili e il suo protocollo di backtest. Orientamenti emersi dalla rilettura:
+
+- value/single strategies per semplicità e stabilità;
+- trend following e mean reversion come candidati iniziali con indicatori da definire;
+- factor investing e la tesi corporate bond come riferimento più denso, con ML/deep learning fuori MVP;
+- dual portfolio come architettura di composizione, non come requisito iniziale.
 
 *Aggiungere un file per ogni nuovo approccio studiato, anche se poi si decide di non usarlo.*
 
@@ -65,12 +74,5 @@ Un file per ogni metrica: come si calcola, cosa misura, quando è utile.
 1. Carica in `raw/` tutto quello che trova: articoli, note, audio, casi reali
 2. L'agente ingesta e crea/aggiorna file qui
 3. Salvatore può anche modificare direttamente i file esistenti
-4. Luca traduce i metodi validati in tool Python in [[system/modules/quant-backtesting]]
-
----
-## Commenti recuperati da iCloud (2026-07-01)
-
-> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
-
-%%TASK: aggiornare sezione%%
+4. Luca traduce i metodi validati in tool Python in [[system/quant/quant-backtesting]]
 

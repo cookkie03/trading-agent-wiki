@@ -12,9 +12,9 @@ status: active
 priority: high
 area: software
 related:
-  - "[[system/modules/agents]]"
-  - "[[system/architecture]]"
-  - "[[system/stack]]"
+  - "[[system/agents/agents]]"
+  - "[[system/foundation/architecture]]"
+  - "[[system/foundation/stack]]"
 ---
 
 # Datapizza AI Framework
@@ -87,6 +87,6 @@ START
 
 ## Vedi anche
 
-- [[system/modules/agents]] — dettaglio agenti e tool-calling
-- [[system/architecture]] — architettura completa
-- [[system/stack]] — tech stack e dipendenze
+- [[system/agents/agents]] — dettaglio agenti e tool-calling
+- [[system/foundation/architecture]] — architettura completa
+- [[system/foundation/stack]] — tech stack e dipendenze

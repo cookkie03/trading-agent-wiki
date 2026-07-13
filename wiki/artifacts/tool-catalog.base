@@ -1,0 +1,27 @@
+filters:
+  or:
+    - 'file.path == "wiki/system/tools/tools-inventory.md"'
+    - 'file.path == "wiki/system/data/data-vendors.md"'
+    - 'file.path == "wiki/system/data/data-sources-tool-map.md"'
+
+properties:
+  file.name:
+    displayName: "Spec"
+  file.path:
+    displayName: "Percorso"
+  updated:
+    displayName: "Aggiornato"
+  area:
+    displayName: "Owner"
+  status:
+    displayName: "Stato"
+
+views:
+  - type: table
+    name: "Tool e vendor"
+    order:
+      - file.name
+      - area
+      - status
+      - updated
+      - file.path

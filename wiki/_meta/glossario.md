@@ -5,7 +5,7 @@ tags:
   - glossary
   - reference
 created: 2026-05-13
-updated: 2026-06-04
+updated: 2026-07-13
 status: active
 area: ops
 ---
@@ -31,7 +31,7 @@ Ordini automatici che chiudono una posizione quando il prezzo raggiunge un certo
 → Obbligatori nel nostro sistema. Senza di essi, anche con un win rate del 66% si può subire un drawdown devastante (evidenza: progetto Simone Rizzo).
 
 **Trailing Stop Loss**
-Stop loss "dinamico" che segue il prezzo quando va a favore: se il prezzo sale, lo stop sale con lui (mantenendo una distanza fissa); se il prezzo scende, lo stop resta fermo. Blocca progressivamente il profitto e chiude in automatico se il trend si inverte. È uno dei meccanismi di **disinvestimento automatico** (vedi [[system/rating-scoring]]).
+Stop loss "dinamico" che segue il prezzo quando va a favore: se il prezzo sale, lo stop sale con lui (mantenendo una distanza fissa); se il prezzo scende, lo stop resta fermo. Blocca progressivamente il profitto e chiude in automatico se il trend si inverte. È uno dei meccanismi di **disinvestimento automatico** (vedi [[system/investment/rating-scoring]]).
 
 **Long / Short**
 - **Long**: scommetto che il prezzo salirà (compro)
@@ -60,7 +60,7 @@ Il cuore del sistema. Tutti i moduli scrivono qui i loro risultati; il Prompt Bu
 Formato di output obbligatorio per il Trader Agent. Il modello LLM deve rispondere sempre in un formato fisso (es. `{"azione": "open", "asset": "BTCUSDT", "direzione": "long", "leva": 3, "reasoning": "..."}`). Il codice Python può leggerlo automaticamente senza interpretarlo.
 
 **Cron Job**
-Task programmato che si esegue automaticamente a intervalli regolari. Il nostro sistema gira ogni 4h o 24h come cron job.
+Task programmato che si esegue automaticamente a intervalli regolari. Nella spec corrente serve per health check e controllo portafoglio; le analisi profonde si attivano invece su alert, calendario e `next_check_date`.
 
 **CCXT**
 Libreria Python che ti permette di parlare con quasi tutti gli exchange (Binance, Hyperliquid, ecc.) con lo stesso codice. Cambi exchange cambiando una riga di configurazione.
@@ -69,22 +69,22 @@ Libreria Python che ti permette di parlare con quasi tutti gli exchange (Binance
 Un modulo/funzione che accetta parametri in input invece di avere valori hardcodati. Es: non "calcola media mobile a 50" ma "calcola media mobile con period=N". L'AI può sperimentare diversi parametri senza toccare il codice.
 
 **Adapter / Wrapper (broker)**
-Un file che "traduce" l'API di un servizio esterno (es. Alpaca, IBKR) in un'interfaccia interna standard usata dal programma. Cambiare broker = cambiare adapter, senza toccare il resto del codice — come si cambia provider LLM in TradingAgents. Vedi [[system/modules/execution]].
+Un file che "traduce" l'API di un servizio esterno (es. Alpaca, IBKR) in un'interfaccia interna standard usata dal programma. Cambiare broker = cambiare adapter, senza toccare il resto del codice — come si cambia provider LLM in TradingAgents. Vedi [[system/execution/execution]].
 
 **Time-series DB**
-Database ottimizzato per dati indicizzati nel tempo (prezzi, indicatori, serie macro): scrittura/lettura efficiente di sequenze temporali. Forma di storage prevalente scelta per il progetto, affiancata da strutture a oggetti per la rendicontazione. Vedi [[system/modules/data-layer]].
+Database ottimizzato per dati indicizzati nel tempo (prezzi, indicatori, serie macro): scrittura/lettura efficiente di sequenze temporali. Forma di storage prevalente scelta per il progetto, affiancata da strutture a oggetti per la rendicontazione. Vedi [[system/data/data-layer]].
 
 **Subgraph (LangGraph)**
-Un grafo annidato dentro un altro, con il proprio state isolato, che restituisce al grafo padre solo il risultato. Utile per analizzare più ticker in parallelo senza mescolarne gli state. Vedi [[system/parallelism-design]].
+Un grafo annidato dentro un altro, con il proprio state isolato, che restituisce al grafo padre solo il risultato. Utile per analizzare più ticker in parallelo senza mescolarne gli state. Vedi [[system/orchestration/parallelism-design]].
 
 **Transazione (DB) / Atomicità**
-Un blocco di scritture nel database trattato come **una cosa sola**: o si salva tutto, o non si salva niente. Non esistono "mezze scritture". È la proprietà che protegge il sistema da un crash a metà salvataggio. Motivo per cui si usa un database serio (Postgres) e non un file. Vedi [[system/modules/data-layer]].
+Un blocco di scritture nel database trattato come **una cosa sola**: o si salva tutto, o non si salva niente. Non esistono "mezze scritture". È la proprietà che protegge il sistema da un crash a metà salvataggio. Motivo per cui si usa un database serio (Postgres) e non un file. Vedi [[system/data/data-layer]].
 
 **Riconciliazione**
-Confrontare lo stato registrato nel DB con la **realtà sul broker** (posizioni, ordini aperti, cassa) e allineare il DB a quest'ultima. Il broker è la *source of truth* sui soldi; il DB ne è lo specchio. Si esegue al riavvio (recovery) e per gli stop-loss esterni. Vedi [[system/modules/data-layer]].
+Confrontare lo stato registrato nel DB con la **realtà sul broker** (posizioni, ordini aperti, cassa) e allineare il DB a quest'ultima. Il broker è la *source of truth* sui soldi; il DB ne è lo specchio. Si esegue al riavvio (recovery) e per gli stop-loss esterni. Vedi [[system/data/data-layer]].
 
 **Idempotenza / Client order id**
-Un'operazione è *idempotente* se eseguirla due volte produce lo stesso effetto di eseguirla una volta. In pratica: a ogni ordine si assegna un **id univoco generato da noi** (client order id); se dopo un crash l'ordine viene re-inviato, il broker riconosce l'id e **non lo esegue due volte**. Protegge dal comprare/vendere in doppio durante il recovery. Vedi [[system/modules/data-layer]].
+Un'operazione è *idempotente* se eseguirla due volte produce lo stesso effetto di eseguirla una volta. In pratica: a ogni ordine si assegna un **id univoco generato da noi** (client order id); se dopo un crash l'ordine viene re-inviato, il broker riconosce l'id e **non lo esegue due volte**. Protegge dal comprare/vendere in doppio durante il recovery. Vedi [[system/data/data-layer]].
 
 ---
 
@@ -130,7 +130,7 @@ TR = max(
 )
 ATR = media( TR ) su N periodi   (tipicamente N = 14)
 ```
-Titolo "nervoso" → ATR alto; tranquillo → ATR basso. È solo volatilità (non dice la direzione). Nel progetto è l'**unità di misura comune** per entry/stop/take-profit: "1 ATR sotto" significa lo stesso *in termini di rischio* su titoli diversi. Vedi [[system/state-schemas]].
+Titolo "nervoso" → ATR alto; tranquillo → ATR basso. È solo volatilità (non dice la direzione). Nel progetto è l'**unità di misura comune** per entry/stop/take-profit: "1 ATR sotto" significa lo stesso *in termini di rischio* su titoli diversi. Vedi [[system/investment/state-schemas]].
 
 **Risk/Reward Ratio (R:R)**
 Rapporto tra quanto puoi **guadagnare** e quanto **rischi** su un singolo trade:
@@ -139,16 +139,16 @@ Rischio = entry − stop_loss     = k_stop · ATR
 Reward  = take_profit − entry   = k_tp   · ATR
 R:R     = Reward / Rischio       = k_tp / k_stop
 ```
-Es: `k_stop=2`, `k_tp=3` → R:R = 1.5 (rischi 1 per puntare a 1.5). Nel progetto un **guardrail deterministico** scarta i trade con R:R sotto soglia (default ≥ 1.5): con un buon R:R si è profittevoli anche con win rate < 50% — è il `b` (payoff) del [[#Kelly Criterion]]. Vedi [[system/state-schemas]].
+Es: `k_stop=2`, `k_tp=3` → R:R = 1.5 (rischi 1 per puntare a 1.5). Nel progetto un **guardrail deterministico** scarta i trade con R:R sotto soglia (default ≥ 1.5): con un buon R:R si è profittevoli anche con win rate < 50% — è il `b` (payoff) del [[#Kelly Criterion]]. Vedi [[system/investment/state-schemas]].
 
 **Kelly Criterion**
-Formula che dice quale **frazione del capitale** puntare su un'operazione per massimizzare la crescita nel lungo periodo: `f* = p − q/b` (p = prob. vincita, q = prob. perdita, b = rapporto vincita/perdita). Es: 60% di vincita con payoff 1:1 → punta il 20%. Nel progetto lega la **size alla qualità del segnale** (conviction + storico). In pratica si usa *frazionario* (half-Kelly) perché è molto aggressivo e dipende da stime affidabili. Dettagli in [[system/position-sizing]].
+Formula che dice quale **frazione del capitale** puntare su un'operazione per massimizzare la crescita nel lungo periodo: `f* = p − q/b` (p = prob. vincita, q = prob. perdita, b = rapporto vincita/perdita). Es: 60% di vincita con payoff 1:1 → punta il 20%. Nel progetto lega la **size alla qualità del segnale** (conviction + storico). In pratica si usa *frazionario* (half-Kelly) perché è molto aggressivo e dipende da stime affidabili. Dettagli in [[system/investment/position-sizing]].
 
 **Overfitting**
 Quando una strategia è "cucita" così bene sui dati storici che funziona solo sul passato e fallisce sul futuro. Si combatte con walk-forward, split in/out-of-sample, CPCV e pochi parametri liberi. Tema aperto da affrontare con Salvatore.
 
 **Conviction Level**
-Quanto il sistema è convinto di un'idea (`Strong Buy`/`Buy`/`Hold`/`Sell`/`Strong Sell`, eventualmente con score numerico). Assegnato dal Portfolio Manager. Scala il position sizing e sblocca la leva via opzioni sui segnali `Strong`. Vedi [[system/rating-scoring]].
+Quanto il sistema è convinto di un'idea (`Strong Buy`/`Buy`/`Hold`/`Sell`/`Strong Sell`, eventualmente con score numerico). Assegnato dal Portfolio Manager. Scala il position sizing e sblocca la leva via opzioni sui segnali `Strong`. Vedi [[system/investment/rating-scoring]].
 
 ---
 
@@ -161,12 +161,12 @@ Meccanismo che evita l'overtrading (aprire e chiudere posizioni continuamente). 
 Pattern architetturale: usa un modello LLM economico e veloce (es. DeepSeek small) per le operazioni frequenti di raccolta dati e analisi di superficie. Usa un modello più capace (ma costoso) solo per la decisione finale del Trader. Riduce il costo token senza sacrificare qualità sulla decisione critica.
 
 **Black-Litterman**
-Metodo matematico per costruire un portafoglio ottimizzato. Il punto di forza: permette di "iniettare" le previsioni dell'LLM come vincoli matematici nell'ottimizzazione. L'LLM dice "penso che BTC salirà del 5% con confidenza 0.7"; Black-Litterman traduce questo in pesi di portafoglio ottimali. Il calcolo lo fa Python, non l'LLM.
+Metodo matematico per costruire un portafoglio ottimizzato. Parte dall'equilibrio di mercato `π`, aggiunge views espresse come `Pμ = Q` e la loro incertezza `Ω`, quindi ottiene rendimenti posteriori `μ_BL`. Un ottimizzatore usa poi `μ_BL` e la covarianza `Σ` per ricavare i pesi. L'LLM può proporre una view e una confidenza, ma traduzione, calibrazione e ottimizzazione sono deterministiche.
 
 In pratica: si parte da rendimenti di equilibrio impliciti nel mercato, si convertono le *views* in vincoli quantitativi e si combina tutto pesando la **confidenza** della view contro la prior di mercato. L'output non è “il trade”, ma una nuova distribuzione attesa dei rendimenti e quindi nuovi pesi ottimali.
 
 **Idzorek alpha**
-Modo pratico di tradurre una **confidenza qualitativa o semi-quantitativa** su una view Black-Litterman in un peso numerico usabile dal modello. Serve a passare da “quanto credo a questa opinione” a “quanto questa opinione deve spostare i pesi del portafoglio”.
+Modo pratico di tradurre una **confidenza qualitativa o semi-quantitativa** su una view Black-Litterman in incertezza `Ω`/peso numerico usabile dal modello. Serve a passare da “quanto credo a questa opinione” a “quanto questa opinione deve spostare i pesi del portafoglio”.
 
 **Entropy Pooling**
 Versione più potente di Black-Litterman. Permette viste non solo sui rendimenti attesi, ma su volatilità, correlazioni, scenari di stress. Utile quando si hanno più agenti con previsioni diverse: aggrega tutto con pesi di confidenza.
@@ -199,11 +199,4 @@ Benchmark competitivo in cui 6 LLM di frontiera hanno operato con 10.000$ reali 
 ---
 
 *Aggiornare questo glossario ogni volta che si introduce un nuovo termine nel progetto.*
-
----
-## Commenti recuperati da iCloud (2026-07-01)
-
-> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
-
-%%sarebbe interessante quale sia la traduzione matematica del metodo black-litterman che passa dal suo input all'output%%
 

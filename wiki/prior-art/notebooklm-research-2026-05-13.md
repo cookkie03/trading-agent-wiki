@@ -21,9 +21,9 @@ confidence: high
 priority: high
 area: research
 related:
-  - "[[system/mvp]]"
-  - "[[system/architecture]]"
-  - "[[system/decision-log]]"
+  - "[[system/foundation/mvp]]"
+  - "[[system/foundation/architecture]]"
+  - "[[system/foundation/decision-log]]"
   - "[[prior-art/tradingagents/paper]]"
   - "[[prior-art/papers/alpha-arena]]"
 ---

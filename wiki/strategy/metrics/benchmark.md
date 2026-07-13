@@ -5,20 +5,20 @@ tags:
   - strategy
   - market-structure
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-13
 status: active
 area: strategy
 confidence: medium
 related:
   - "[[strategy/index]]"
-  - "[[system/modules/agents]]"
+  - "[[system/agents/agents]]"
 ---
 
 # Benchmark
 
 Una gestione **attiva** ha **sempre un benchmark**: un indice di riferimento, "un numero da superare" (principio del fondo attivo, ricordato da Salvatore da "Trezzi"). Senza benchmark non c'è un target misurabile né senso nell'investire attivamente (altrimenti meglio comprare un ETF passivo).
 
-> 🟢 **Implementato (2026-06-08)** — benchmark **dinamico** (`tradingagents/benchmark.py` + `performance.py`): simboli **solo da config** (`[benchmark] symbols`, lista cambiabile; default **SPY**), mai hardcoded; si calcola l'**alpha** (rendimento portafoglio − benchmark). L'**universo investibile** è ora di prima classe (catalogo broker riconciliato) con la **watchlist dinamica** come working set → [[system/universe-watchlist]].
+> **Scope 2026-07-13:** benchmark dinamico e alpha sono Post-MVP. L'MVP non usa il benchmark per guidare il PM; un eventuale riferimento fisso potrà essere deciso più avanti. Vedi [[system/orchestration/universe-watchlist]].
 
 ## Scelta per il progetto (2026-05-29)
 - **S&P 500** — US, pubbliche, trasparenti, in inglese, info facilmente raggiungibili.

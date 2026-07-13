@@ -12,8 +12,8 @@ status: active
 confidence: high
 related:
   - "[[prior-art/tradingagents/paper]]"
-  - "[[system/architecture]]"
-  - "[[system/modules/agents]]"
+  - "[[system/foundation/architecture]]"
+  - "[[system/agents/agents]]"
 sources:
   - "https://codewiki.google/github.com/tauricresearch/tradingagents"
 ---

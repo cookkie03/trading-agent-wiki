@@ -12,7 +12,7 @@ updated: 2026-05-21
 confidence: high
 status: reviewed
 related:
-  - "[[system/architecture]]"
+  - "[[system/foundation/architecture]]"
   - "[[prior-art/tradingagents/code-wiki]]"
 ---
 

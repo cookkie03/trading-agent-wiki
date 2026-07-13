@@ -11,7 +11,7 @@ updated: 2026-05-12
 confidence: high
 status: reviewed
 related:
-  - "[[system/architecture]]"
+  - "[[system/foundation/architecture]]"
 ---
 
 # Alpha Arena & Six Frontier LLMs Trading Competition

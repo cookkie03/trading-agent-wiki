@@ -15,10 +15,10 @@ confidence: high
 priority: high
 area: software
 related:
-  - "[[system/modules/agents]]"
-  - "[[system/modules/data-layer]]"
-  - "[[system/modules/quant-backtesting]]"
-  - "[[system/modules/agents]]"
+  - "[[system/agents/agents]]"
+  - "[[system/data/data-layer]]"
+  - "[[system/quant/quant-backtesting]]"
+  - "[[system/agents/agents]]"
   - "[[prior-art/papers/alpha-arena]]"
   - "[[notebooklm-research-2026-05-13]]"
 ---
@@ -61,7 +61,7 @@ Pipeline lineare a ogni esecuzione (pensata per girare su cron/scheduler):
     (eccezione globale → db_utils.log_error con contesto completo)
 ```
 
-**Pattern chiave riusabile**: il contesto multi-sorgente è assemblato in un'unica stringa con **tag XML** (`<indicatori>`, `<news>`, `<sentiment>`, `<forecast>`) e iniettato in `system_prompt.txt` via `.format()`. È esattamente il nostro **Prompt Builder** ([[system/modules/agents]]) — qui implementato nel modo più semplice possibile.
+**Pattern chiave riusabile**: il contesto multi-sorgente è assemblato in un'unica stringa con **tag XML** (`<indicatori>`, `<news>`, `<sentiment>`, `<forecast>`) e iniettato in `system_prompt.txt` via `.format()`. È esattamente il nostro **Prompt Builder** ([[system/agents/agents]]) — qui implementato nel modo più semplice possibile.
 
 ---
 
@@ -80,10 +80,10 @@ Cuore della decisione. Usa la **OpenAI Responses API** con `text.format` di tipo
 | `stop_loss_percent` | number | 1–3 |
 | `reason` | string | 1–300 char |
 
-Usa anche `reasoning={"effort":"medium","summary":"auto"}` e `include=["reasoning.encrypted_content", ...]`. **Da riusare**: lo schema JSON strict è il modello esatto del nostro contratto "decisione LLM → ordine deterministico". Adattare gli enum a equity e rimuovere `leverage` (o sostituirlo con opzioni Call/Put, vedi [[system/decision-log]]).
+Usa anche `reasoning={"effort":"medium","summary":"auto"}` e `include=["reasoning.encrypted_content", ...]`. **Da riusare**: lo schema JSON strict è il modello esatto del nostro contratto "decisione LLM → ordine deterministico". Adattare gli enum a equity e rimuovere `leverage` (o sostituirlo con opzioni Call/Put, vedi [[system/foundation/decision-log]]).
 
 ### `indicators.py` — Analisi tecnica (★ da estrarre, classe `CryptoTechnicalAnalysisHL`)
-Calcolo indicatori con la libreria `ta` su candele dell'exchange. Da riusare per il **Quant Agent** ([[system/modules/quant-backtesting]]) — i metodi sono indipendenti dalla sorgente dati:
+Calcolo indicatori con la libreria `ta` su candele dell'exchange. Da riusare per il **Quant Agent** ([[system/quant/quant-backtesting]]) — i metodi sono indipendenti dalla sorgente dati:
 - `calculate_ema(data, period)` — `ta.trend.EMAIndicator`
 - `calculate_macd(data)` — `ta.trend.MACD` → (macd, signal, diff)
 - `calculate_rsi(data, period)` — `ta.momentum.RSIIndicator` (usa RSI 7 e 14)
@@ -109,7 +109,7 @@ Chiama l'API CoinMarketCap `v3/fear-and-greed/historical` (header `X-CMC_PRO_API
 Scraping di `whale-alert.io/data.json` per movimenti significativi on-chain. **Non applicabile all'equity** (disattivato anche nel loro `main.py`), ma documenta il pattern "segnale di flusso ordini grandi → feature".
 
 ### `hyperliquid_trader.py` — Esecuzione ordini (★ logica preziosa, classe `HyperLiquidTrader`)
-Gestione completa dell'esecuzione su exchange. Anche se l'exchange è diverso, la **logica di esecuzione è il template del nostro modulo Exchange** ([[system/modules/data-layer]]):
+Gestione completa dell'esecuzione su exchange. Anche se l'exchange è diverso, la **logica di esecuzione è il template del nostro modulo Exchange** ([[system/data/data-layer]]):
 - `_validate_order_input()` — valida i campi obbligatori del segnale JSON prima di eseguire
 - `_round_price()` / `_round_size()` — **arrotondamento per tick-size / szDecimals** letti dai metadata dell'exchange (`meta()["universe"]`); evita reject per troppi decimali
 - `set_leverage_for_symbol()` — imposta leva cross/isolated
@@ -124,7 +124,7 @@ Gestione completa dell'esecuzione su exchange. Anche se l'exchange è diverso, l
 `check_stop_loss(account_status)`: confronta lo snapshot precedente (`account_status_old.json`) con quello attuale; se un simbolo è **sparito** dalle posizioni aperte → lo SL è scattato lato exchange → registra un'operazione `close` con `reason: "Stop loss"` e logga il PnL. **Pattern di reconciliation**: deduce le chiusure avvenute fuori dal controllo dell'agente confrontando gli stati. Utile per il nostro DB centrale che deve restare allineato all'exchange.
 
 ### `db_utils.py` — Logging su Postgres (★ schema da studiare per il nostro DB)
-883 righe. `DATABASE_URL` env, `psycopg2`, `init_db()` crea tutto lo schema. **Schema relazionale completo** che è un'ottima base per il nostro **DB centrale** ([[system/modules/data-layer]]):
+883 righe. `DATABASE_URL` env, `psycopg2`, `init_db()` crea tutto lo schema. **Schema relazionale completo** che è un'ottima base per il nostro **DB centrale** ([[system/data/data-layer]]):
 
 | Tabella | Scopo |
 |---------|-------|
@@ -149,14 +149,14 @@ Definisce il ruolo ("cryptocurrency trading AI"), inietta `Portfolio Data` e `<c
 - **"Pay a lot of attention to the fees, don't open/close frequently"** (controllo costi via prompt)
 - **"Be very careful when you see that in the previous 15 minutes you have taken the stop loss on a position"** (memoria dello SL recente come guardia anti-overtrading)
 
-`formatted_system_prompt.txt` è un esempio reale renderizzato (utile come riferimento del formato finale). Nota: molte di queste regole nel nostro design sono **deterministiche a monte (Statuto Python)** anziché affidate al prompt — vedi [[system/modules/agents]].
+`formatted_system_prompt.txt` è un esempio reale renderizzato (utile come riferimento del formato finale). Nota: molte di queste regole nel nostro design sono **deterministiche a monte (Statuto Python)** anziché affidate al prompt — vedi [[system/agents/agents]].
 
 ---
 
 ## Takeaway per il progetto
 
 1. **Lo scheletro end-to-end del nostro MVP esiste già qui** e si può clonare adattandolo: raccolta feature → prompt builder con tag XML → LLM JSON strict → esecuzione validata → logging completo su Postgres.
-2. **Structured Output JSON Schema strict** (OpenAI) è il meccanismo per garantire output parsabile dall'LLM — equivalente al nostro vincolo "output JSON obbligatorio" (noi su [[_meta/glossario#DeepSeek|DeepSeek]], vedi [[system/stack]]).
+2. **Structured Output JSON Schema strict** (OpenAI) è il meccanismo per garantire output parsabile dall'LLM — equivalente al nostro vincolo "output JSON obbligatorio" (noi su [[_meta/glossario#DeepSeek|DeepSeek]], vedi [[system/foundation/stack]]).
 3. **Schema DB context→operation con FK** = tracciabilità totale e dataset di training/eval già strutturato.
 4. **Esecuzione**: validazione input → size dal balance → market order + SL trigger `reduce_only` è il template del modulo Exchange.
 5. **Reconciliation degli stop-loss esterni** via diff di snapshot è un pattern da adottare.

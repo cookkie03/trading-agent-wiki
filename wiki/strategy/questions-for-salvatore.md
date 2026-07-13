@@ -11,10 +11,10 @@ status: active
 priority: high
 area: strategy
 related:
-  - "[[system/modules/quant-backtesting]]"
-  - "[[system/rating-scoring]]"
-  - "[[system/position-sizing]]"
-  - "[[system/modules/execution]]"
+  - "[[system/quant/quant-backtesting]]"
+  - "[[system/investment/rating-scoring]]"
+  - "[[system/investment/position-sizing]]"
+  - "[[system/execution/execution]]"
 confidence: high
 ---
 
@@ -62,7 +62,7 @@ Come dimostrare che la strategia **batte il benchmark (S&P / 60-40) in modo stat
 
 > Luca: *«salva tutto in un foglio per Salvatore, se lo sbologna lui o ne parliamo nella prossima call; non è urgente per mettere il tutto in funzione»*. → **fuori MVP**, ma da chiarire prima di abilitare la leva.
 
-> **Perché opzioni e non margine** (chiarimento per Luca, 2026-06-04 — da confermare con Salvatore): rispetto alla leva a margine (debito), le opzioni *long* hanno **perdita massima limitata al premio** e **nessun rischio di margin call / liquidazione forzata** — cruciale per un sistema autonomo 24/7. In cambio si paga il decadimento temporale (theta) e serve azzeccare il timing: per questo la leva è ammessa **solo sui segnali `Strong`**, dove la convinzione giustifica il premio. Vedi anche [[system/modules/agents]] (Gestione Leva con Opzioni). Resta da confermare con Salvatore che questa sia la motivazione e non ce ne siano altre (es. fiscali/operative).
+> **Perché opzioni e non margine** (chiarimento per Luca, 2026-06-04 — da confermare con Salvatore): rispetto alla leva a margine (debito), le opzioni *long* hanno **perdita massima limitata al premio** e **nessun rischio di margin call / liquidazione forzata** — cruciale per un sistema autonomo 24/7. In cambio si paga il decadimento temporale (theta) e serve azzeccare il timing: per questo la leva è ammessa **solo sui segnali `Strong`**, dove la convinzione giustifica il premio. Vedi anche [[system/agents/agents]] (Gestione Leva con Opzioni). Resta da confermare con Salvatore che questa sia la motivazione e non ce ne siano altre (es. fiscali/operative).
 
 La decisione "leva solo via opzioni Call/Put su segnali `Strong`" è presa, ma mancano i parametri operativi:
 - **Strike**: at-the-money? out-of-the-money? Come si sceglie?
@@ -75,7 +75,7 @@ La decisione "leva solo via opzioni Call/Put su segnali `Strong`" è presa, ma m
 
 ## 5. Su cosa basare i rating degli asset (per il disinvestimento)
 
-Vedi [[system/rating-scoring]] §3. Il dilemma di Luca: serve un punteggio per decidere quale asset vendere, ma *«non so su cosa basarlo e come tenerlo aggiornato»*.
+Vedi [[system/investment/rating-scoring]] §3. Il dilemma di Luca: serve un punteggio per decidere quale asset vendere, ma *«non so su cosa basarlo e come tenerlo aggiornato»*.
 
 Domanda a Salvatore: nella pratica di gestione, **come si decide quale posizione chiudere** per far spazio a una nuova idea? Quali criteri usa un gestore (forza relativa del segnale, distanza dal target, decadimento della tesi, contributo al rischio)?
 
@@ -87,13 +87,13 @@ Salvatore sta preparando (con l'associazione) due documenti che diventeranno *il
 - **Market driver** (4 macro-categorie + driver dal sito Federal Reserve da monitorare) — PPT→PDF→TXT, da arricchire con descrizioni accurate.
 - **Indicatori di valuation delle stock** — cosa analizzare in una stock; ognuno dell'associazione ne cura uno.
 
-Principio (Luca): all'agente si dà *«questa metrica ti indica questo»*, **non** *«usa questa metrica per questo»* — è l'agente a imparare come combinarle. Vedi i 5 tipi di P/E (trailing vs current) come esempio già emerso → [[system/modules/quant-backtesting]].
+Principio (Luca): all'agente si dà *«questa metrica ti indica questo»*, **non** *«usa questa metrica per questo»* — è l'agente a imparare come combinarle. Vedi i 5 tipi di P/E (trailing vs current) come esempio già emerso → [[system/quant/quant-backtesting]].
 
 ---
 
 ## 7. Indicatori di sentiment — da inventare
 
-Il sentiment non ha indicatori standard propri (solo indici di paura). Posizione ibrida col technical. Da definire insieme cosa misurare e come (vedi [[system/modules/quant-backtesting]]).
+Il sentiment non ha indicatori standard propri (solo indici di paura). Posizione ibrida col technical. Da definire insieme cosa misurare e come (vedi [[system/quant/quant-backtesting]]).
 
 ---
 

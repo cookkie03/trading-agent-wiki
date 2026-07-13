@@ -15,7 +15,7 @@ status: active
 related:
   - "[[strategy/index]]"
   - "[[strategy/methods/trend-following]]"
-  - "[[system/modules/quant-backtesting]]"
+  - "[[system/quant/quant-backtesting]]"
   - "[[strategy/methods/dual-portfolio]]"
 ---
 

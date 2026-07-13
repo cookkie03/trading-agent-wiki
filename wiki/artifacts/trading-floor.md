@@ -6,11 +6,11 @@ tags:
   - architecture
 raw_source_path: "wiki/artifacts/trading-floor.canvas"
 created: 2026-05-06
-updated: 2026-05-06
+updated: 2026-07-13
 confidence: high
 status: active
 related:
-  - "[[system/architecture]]"
+  - "[[system/foundation/architecture]]"
 ---
 
 # Trading Floor Canvas
@@ -18,9 +18,15 @@ related:
 Questa nota riflette e contestualizza il file strutturato estratto da `raw/notes/Trading Floor.canvas`.
 Il diagramma delinea una architettura di una "Trading Floor" basata su agenti specializzati, confermando la direzione multi-agente discussa nelle chiamate.
 
-## Agenti e Responsabilità
+## Mappa corrente
 
-> Nota 2026-06-23: questa pagina è ormai soprattutto **storica**. La lista agenti va letta come versione precedente del concetto; la source of truth operativa è `[[architettura.canvas]]` insieme a [[system/modules/agents]].
+La mappa operativa corrente è: Portfolio Manager → desk Market, Sentiment, Technical e Fondamentali → Risk Analyst → esecuzione deterministica. Dettaglio e decisioni aperte vivono in [[system/agents/agent-behaviors]] e [[system/foundation/architecture]].
+
+L'inventario completo dei tool è [[system/tools/tools-inventory]]; la vista navigabile richiesta è [[artifacts/tool-catalog.base]].
+
+## Agenti e Responsabilità — storico del canvas
+
+> Nota 2026-06-23: questa pagina è ormai soprattutto **storica**. La lista agenti va letta come versione precedente del concetto; la source of truth operativa è `[[architettura.canvas]]` insieme a [[system/agents/agents]].
 1. **News Research Agent**
    - **Compito**: Analizza le news ed elabora un proprio sentiment (bullish/bearish).
 
@@ -45,14 +51,5 @@ Il diagramma delinea una architettura di una "Trading Floor" basata su agenti sp
 - Dati per analisi: Tool volumetrici, ratio, market makers.
 - Dati per esecuzione: Commissioni, valutazione broker, liquidità dello strumento (spread).
 
-L'inventario operativo dei tool ora vive in [[system/tools-inventory]]. Questa pagina non va più usata come contenitore primario dei tool.
-
----
-## Commenti recuperati da iCloud (2026-07-01)
-
-> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
-
-%%TASK: aggiornare questa lista di agenti con quelli di [[architettura.canvas]] e del resto del progetto%%
-
-%%TASK: qui bisogna mettere l'elenco di tutti i tool a meno che non cis siano da altre parti, in particolare, guardare tutti i progetti dentro prior-art nel profonod, leggendo documentazioni, codice, ecc... e aggiungerli qui come .base%%
+Questa pagina non è un contenitore primario di tool né una source of truth degli agenti.
 

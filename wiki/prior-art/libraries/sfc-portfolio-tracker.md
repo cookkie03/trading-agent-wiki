@@ -14,11 +14,11 @@ confidence: high
 priority: medium
 area: software
 related:
-  - "[[system/modules/quant-backtesting]]"
-  - "[[system/modules/data-layer]]"
+  - "[[system/quant/quant-backtesting]]"
+  - "[[system/data/data-layer]]"
   - "[[prior-art/libraries/cvx-portfolio-optimizer]]"
-  - "[[system/data-providers]]"
-  - "[[system/architecture]]"
+  - "[[system/data/data-providers]]"
+  - "[[system/foundation/architecture]]"
 ---
 
 # SFC Portfolio Tracker (Sbirrondi)
@@ -37,14 +37,14 @@ Tracker/dashboard di un **fondo reale in EUR** ("SFC fund") costruito in **Strea
 
 ## Modello dati (`data/`)
 
-`fund_transactions.csv` (verità) → da cui si calcolano `fund_positions.csv`, `fund_cash.json`, `fund_nav_history.csv`, `fund_asset_allocation.csv`. Più `isin_map.json` (ISIN→ticker), `overrides.json` / `position_overrides.json` (metadati manuali), `fund_info.json`. **Pattern da adottare**: derivare lo stato dalle transazioni invece di salvarlo direttamente → ricostruibilità e audit totali (concettualmente vicino al nostro DB event-sourced, [[system/modules/data-layer]]).
+`fund_transactions.csv` (verità) → da cui si calcolano `fund_positions.csv`, `fund_cash.json`, `fund_nav_history.csv`, `fund_asset_allocation.csv`. Più `isin_map.json` (ISIN→ticker), `overrides.json` / `position_overrides.json` (metadati manuali), `fund_info.json`. **Pattern da adottare**: derivare lo stato dalle transazioni invece di salvarlo direttamente → ricostruibilità e audit totali (concettualmente vicino al nostro DB event-sourced, [[system/data/data-layer]]).
 
 ---
 
 ## Moduli e codice da cui estrarre / ispirarsi
 
 ### `analytics.py` — Metriche di performance e rischio (★ da estrarre)
-Modulo puro pandas/numpy, **direttamente riusabile** nel nostro **Quant/Backtesting** ([[system/modules/quant-backtesting]]). Funzioni:
+Modulo puro pandas/numpy, **direttamente riusabile** nel nostro **Quant/Backtesting** ([[system/quant/quant-backtesting]]). Funzioni:
 - `detect_frequency(prices)` — deduce daily/weekly/monthly e i `periods_per_year`
 - `calculate_returns`, `cumulative_returns`, `total_return`
 - `annualized_return`, `annualized_volatility`
@@ -67,7 +67,7 @@ Integra **QuantStats** e **PyPortfolioOpt** (lazy import per non rompere se manc
 - `generate_html_report(...)` — **report HTML** (QuantStats tearsheet) generabile on-demand
 
 ### `data_fetcher.py` — Recupero dati di mercato (★ multi-sorgente, da studiare)
-Gestione dati con **cache in memoria**. Rilevante per il confronto provider in [[system/data-providers]]:
+Gestione dati con **cache in memoria**. Rilevante per il confronto provider in [[system/data/data-providers]]:
 - `get_ticker_info`, `get_historical_prices`, `get_current_prices` — via **yfinance**
 - `get_benchmark_prices(benchmark_key, ...)` — serie del benchmark
 - `get_fx_rate` / `get_fx_history` — conversione valutaria (fondo in EUR)
@@ -187,7 +187,7 @@ Performance/rischio: **Total/Annualized Return, Volatility, Sharpe, Sortino, Cal
 1. **`analytics.py` è quasi copia-incollabile** nel Quant/Backtesting: tutte le metriche standard (Sharpe, Sortino, Calmar, max DD, VaR, CVaR, alpha/beta) in pandas puro.
 2. **`build_nav_history.py`** = template per ricostruire la curva di equity giornaliera da uno storico di operazioni → base del backtesting e della valutazione.
 3. **Modello transaction-based** (posizioni derivate dalle transazioni) = pattern robusto per il DB centrale e l'audit.
-4. **`data_fetcher.py`** documenta il fallback multi-provider per **asset europei** (Euronext, Borsa Italiana) dove yfinance è lacunoso — rilevante avendo scelto equity (vedi [[system/data-providers]]).
+4. **`data_fetcher.py`** documenta il fallback multi-provider per **asset europei** (Euronext, Borsa Italiana) dove yfinance è lacunoso — rilevante avendo scelto equity (vedi [[system/data/data-providers]]).
 5. **QuantStats + PyPortfolioOpt** (`analytics_plus.py`) = alternativa leggera/complementare a [[prior-art/libraries/cvx-portfolio-optimizer]] per metriche e ottimizzazione, più i **report HTML** pronti.
 6. **Performance attribution** e **NAV/dashboard** sono il lato "reporting" che a Rizzo e all'optimizer manca: completa il quadro per la valutazione del fondo.
 7. **Limite**: niente esecuzione/automazione e niente DB (persistenza su file+GitHub). È un tracker/dashboard, non un agente — utile per analytics e UI, non per il ciclo di trading.

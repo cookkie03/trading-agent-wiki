@@ -11,7 +11,7 @@ updated: 2026-05-28
 status: active
 related:
   - "[[prior-art/tradingagents/code-wiki]]"
-  - "[[system/architecture]]"
+  - "[[system/foundation/architecture]]"
   - "[[trading-floor]]"
 confidence: high
 source: estrazione diretta da `tradingagents/` + graphify-out (2026-05-26)

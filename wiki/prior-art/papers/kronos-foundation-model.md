@@ -13,7 +13,7 @@ confidence: low
 area: research
 related:
   - "[[artifacts/project-board]]"
-  - "[[system/data-sources-tool-map]]"
+  - "[[system/data/data-sources-tool-map]]"
 ---
 
 # Kronos — Foundation Model for the Language of Financial Markets

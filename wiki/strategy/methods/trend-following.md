@@ -10,7 +10,7 @@ status: active
 confidence: medium
 area: strategy
 related:
-  - "[[system/modules/quant-backtesting]]"
+  - "[[system/quant/quant-backtesting]]"
 ---
 
 # Trend Following
@@ -80,14 +80,5 @@ Proprio perché è semplice da implementare, resta una candidata forte come **pr
 
 ## Implementazione software
 
-→ [[system/modules/quant-backtesting]] — il modulo che implementa e backtesta questa strategia
-
----
-## Commenti recuperati da iCloud (2026-07-01)
-
-> Commenti Obsidian `%%...%%` presenti nella vecchia copia iCloud (`7054827`) e reinseriti senza sovrascrivere il contenuto corrente.
-
-%%proprio perché facile da implementare seocndo me va incluso come tool/feature%%
-
-%%non ha senso fare riferimento direttamente a [[macro-indicators]] e la loro cartella indicators%%
+→ [[system/quant/quant-backtesting]] — il modulo che implementa e backtesta questa strategia
 

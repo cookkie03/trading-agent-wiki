@@ -12,10 +12,10 @@ area: strategy
 confidence: high
 raw_source_path: "raw/archived/I Driver di Mercato (definitivo).md"
 related:
-  - "[[system/modules/quant-backtesting]]"
+  - "[[system/quant/quant-backtesting]]"
   - "[[strategy/questions-for-salvatore]]"
   - "[[strategy/index]]"
-  - "[[system/modules/data-layer]]"
+  - "[[system/data/data-layer]]"
 ---
 
 # Indicatori per Analisi Macroeconomica
@@ -724,4 +724,4 @@ I trade affollati si invertono violentemente. CFTC + flussi = il livello di gest
 
 Questi indicatori definiscono il **regime macro** che il desk Analyst Research deve interpretare. Principio (Luca): all'agente si dà *"questa metrica ti indica questo"*, **non** *"usa questa metrica per questo"* — è l'agente a imparare come combinarle. Vedi [[strategy/questions-for-salvatore]] §6.
 
-**Fonte dati**: FRED (gratuito, 800k+ serie storiche) per PIL, tassi, inflazione, occupazione, M2. Alpha Vantage per dati macro US. Vedi [[system/data-providers]] per la mappatura completa.
+**Fonte dati**: FRED (gratuito, 800k+ serie storiche) per PIL, tassi, inflazione, occupazione, M2. Alpha Vantage per dati macro US. Vedi [[system/data/data-providers]] per la mappatura completa.
