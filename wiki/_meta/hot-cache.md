@@ -2,6 +2,13 @@
 
 > Contesto di sessione recente. Il repository è esterno al vault: qui vivono spec, decisioni e priorità, non lo stato verificato del codice.
 
+## Sessione 2026-09-02 — Piano Operativo Sviluppo & Risoluzione Git
+
+- **Allineamento Git**: Configurato `core.filemode = false` per azzerare 623 falsi positivi di permessi dovuti al filesystem Synology Drive; verificata l'integrità del repo.
+- **Skill Hermes Sbloccate**: Attivate `codebase-design`, `to-spec`, `to-tickets` in `software-development`, con `arxiv` e `competitor-news-monitor` per la ricerca.
+- **Piano Operativo Integrato**: Creato [[artifacts/piano-operativo-trading-agent]], documento guida completo per lo sviluppo della codebase da zero con approccio TDD, architettura a imbuto (funnel), data layer OpenBB-first e orchestrazione LangGraph.
+- **Project Board**: Aggiornata [[artifacts/project-board]] con i nuovi riferimenti di ricerca (incluso *OpenAlice*) e collegamento diretto al piano operativo.
+
 ## Sessione 2026-07-13 — Ingest editoriale integrale della rilettura
 
 - **Input elaborati**: daily note dal 2026-06-06 al 2026-07-12 e tutte le annotazioni Obsidian `%%…%%` presenti nella wiki; le daily note/raw non sono state modificate.

@@ -691,3 +691,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Structural change**: `wiki/system/` riorganizzata in sottodomini; wikilink aggiornati. Le analisi di fork/mapping storico sono sotto [[system/_reference]].
 - **Contradictions resolved**: framework LangGraph + LangSmith; state annidato a campi fissi; MVP USD-only senza benchmark dinamico; analisi event-driven con health check periodico; repository esterno non attestato dal vault.
 - **Notes**: commenti rimossi dalle pagine operative dopo assorbimento nel ledger; decisioni umane e ricerca residue sono nella board.
+
+## [2026-09-02] update | Creazione Piano Operativo Sviluppo & Risoluzione Git
+
+- **Type**: architecture plan / git maintenance
+- **Pages created**: [[artifacts/piano-operativo-trading-agent]]
+- **Pages updated**: [[artifacts/project-board]], [[_meta/index]], [[_meta/hot-cache]]
+- **Git status**: allineamento `core.filemode = false` per ignorare i permessi del filesystem Synology Drive.
+- **Skills**: sbloccate in Hermes `codebase-design`, `to-spec`, `to-tickets` sotto `software-development`.

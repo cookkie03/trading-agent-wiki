@@ -30,11 +30,12 @@ kanban-plugin: board
 
 ## 🔴 Da fare
 
+- [ ] 🛠 **Avviare lo scaffolding Fase 0 / Fase 1 della codebase** — configurazione repo, data layer OpenBB-first e harness di test TDD → [[artifacts/piano-operativo-trading-agent]]
 - [ ] 🛠 **Completare le schede di copertura data vendor** — capacità, freshness, limiti, costo, licenza, fallback, chiave dedup e fake test per ogni fonte → [[system/data/data-vendors]]
 - [ ] 🛠 **Allineare le pagine legacy alla policy di stato** — rimuovere gli ultimi claim non verificabili e spostare gli snapshot nel reference design → [[system/foundation/implementation-status]]
 - [ ] 📈 **Consolidare metriche e metodi** — creare “Metriche (definitivo)” e collegare indicatori, metodo e backtest senza duplicazioni → [[strategy/index]]
 - [ ] 📈 **Definire fonti e indicatori di sentiment** — copertura, affidabilità, limiti e interpretazione di news/social/insider → [[strategy/questions-for-salvatore]]
-- [ ] 🔀 **Studiare optimizer come reference quant** — documentazione, Black–Litterman/Idzorek e criterio riuso vs replica → [[prior-art/libraries/cvx-portfolio-optimizer]]
+- [ ] 🔀 **Studiare optimizer e OpenAlice come reference** — analisi architettura multi-asset e paper quantitativi → [[artifacts/piano-operativo-trading-agent]]
 
 ## 🟡 In corso
 

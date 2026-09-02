@@ -74,6 +74,7 @@
 ## Artifacts
 
 - [[artifacts/project-board]] — board unica di progetto
+- [[artifacts/piano-operativo-trading-agent]] — piano operativo e roadmap di sviluppo codebase
 - [[artifacts/tool-catalog.base]] — vista delle spec tool/vendor
 - [[architettura.canvas]] — canvas di design
 - [[artifacts/trading-floor]] — canvas trading floor storico
