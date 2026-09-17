@@ -23,7 +23,6 @@ confidence: high
 priority: high
 area: software
 ---
-
 # Piano Operativo di Sviluppo — Trading Agent
 
 > **Documento Guida Ufficiale per lo Sviluppo della Codebase e l'Orchestrazione Multi-Agent**  
