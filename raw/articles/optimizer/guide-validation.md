@@ -1,3 +1,10 @@
+---
+tags:
+  - validation-strategy
+  - cross-validation
+  - data-preprocessing
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/guide/validation/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/guide/validation/#validation)

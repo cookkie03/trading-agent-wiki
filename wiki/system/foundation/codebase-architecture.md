@@ -1,23 +1,23 @@
 ---
-title: "Codebase Architecture"
+title: Codebase Architecture
 type: build
 tags:
+  - codebase-design
   - architecture
   - software
-  - roadmap
-created: 2026-06-23
-updated: 2026-07-13
+created: 2026-06-23T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 confidence: medium
 area: software
 related:
-  - "[[artifacts/project-board]]"
-  - "[[system/foundation/architecture]]"
-  - "[[system/data/data-layer]]"
-  - "[[system/agents/agents]]"
-  - "[[system/execution/execution]]"
-  - "[[system/quant/quant-backtesting]]"
-  - "[[system/data/data-sources-tool-map]]"
+  - '[[artifacts/project-board]]'
+  - '[[system/foundation/architecture]]'
+  - '[[system/data/data-layer]]'
+  - '[[system/agents/agents]]'
+  - '[[system/execution/execution]]'
+  - '[[system/quant/quant-backtesting]]'
+  - '[[system/data/data-sources-tool-map]]'
 ---
 
 # Codebase Architecture

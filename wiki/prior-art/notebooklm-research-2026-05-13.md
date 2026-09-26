@@ -2,11 +2,11 @@
 title: Ricerca NotebookLM — Approcci da Progetti Simili AI+Finance (con riferimenti)
 type: synthesis
 tags:
+  - multi-agent-system
+  - portfolio-management
   - architecture
   - backtesting
   - strategy
-  - infrastructure
-  - research
 sources:
   - TradingAgents (TauricResearch)
   - MarketSenseAI 2.0 (arXiv 2502.00415)
@@ -14,18 +14,18 @@ sources:
   - AlpacaTradingAgent
   - cvx-portfolio-optimizer
   - Creo il mio Trading AI Agent (Simone Rizzo, 4 video)
-created: 2026-05-13
-updated: 2026-05-13
+created: 2026-05-13T00:00:00.000Z
+updated: 2026-05-13T00:00:00.000Z
 status: active
 confidence: high
 priority: high
 area: research
 related:
-  - "[[system/foundation/mvp]]"
-  - "[[system/foundation/architecture]]"
-  - "[[system/foundation/decision-log]]"
-  - "[[prior-art/tradingagents/paper]]"
-  - "[[prior-art/papers/alpha-arena]]"
+  - '[[system/foundation/mvp]]'
+  - '[[system/foundation/architecture]]'
+  - '[[system/foundation/decision-log]]'
+  - '[[prior-art/tradingagents/paper]]'
+  - '[[prior-art/papers/alpha-arena]]'
 ---
 
 # Ricerca NotebookLM — Approcci da Progetti Simili AI+Finance

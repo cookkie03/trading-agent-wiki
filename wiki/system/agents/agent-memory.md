@@ -1,20 +1,21 @@
 ---
-title: "Memoria degli agenti — intra-task e inter-task"
+title: Memoria degli agenti — intra-task e inter-task
 type: build
 tags:
+  - intra-task-memory
+  - inter-task-learning
   - multi-agent
   - architecture
-  - learning
-created: 2026-06-07
-updated: 2026-07-13
+created: 2026-06-07T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: draft
 priority: medium
 area: software
 related:
-  - "[[system/agents/agents]]"
-  - "[[system/quant/learning-feedback-loop]]"
-  - "[[system/investment/state-schemas]]"
-  - "[[system/_reference/canvas-code-mapping]]"
+  - '[[system/agents/agents]]'
+  - '[[system/quant/learning-feedback-loop]]'
+  - '[[system/investment/state-schemas]]'
+  - '[[system/_reference/canvas-code-mapping]]'
 confidence: medium
 ---
 

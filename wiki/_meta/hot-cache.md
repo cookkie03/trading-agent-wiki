@@ -1,3 +1,10 @@
+---
+tags:
+  - langgraph-orchestration
+  - trading-agent
+  - codebase-design
+---
+
 # Hot Cache — Trading Agent
 
 > Contesto di sessione recente. Il repository è esterno al vault: qui vivono spec, decisioni e priorità, non lo stato verificato del codice.

@@ -1,11 +1,12 @@
 ---
-title: "Ideas Log"
+title: Ideas Log
 type: build
 tags:
+  - position-sizing
   - build
   - roadmap
-created: 2026-05-21
-updated: 2026-07-13
+created: 2026-05-21T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 area: software
 ---

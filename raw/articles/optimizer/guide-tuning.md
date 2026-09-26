@@ -1,3 +1,10 @@
+---
+tags:
+  - walk-forward-validation
+  - temporal-cross-validation
+  - hyperparameter-tuning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/guide/tuning/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/guide/tuning/#tuning)

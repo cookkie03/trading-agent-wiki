@@ -1,5 +1,7 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/Guides/Clients/local_model/
+tags:
+  - local-model
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/API%20Reference/Type/block/#blocks)

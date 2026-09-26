@@ -2,22 +2,24 @@
 title: Quant Agent + Backtesting
 type: build
 tags:
+  - quant-agent
+  - backtesting
   - build
   - strategy
   - software
-created: 2026-05-13
-updated: 2026-07-13
+created: 2026-05-13T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 priority: high
 area: software
 related:
-  - "[[system/foundation/architecture]]"
-  - "[[system/foundation/stack]]"
-  - "[[system/foundation/mvp]]"
-  - "[[strategy/index]]"
-  - "[[strategy/methods/trend-following]]"
-  - "[[strategy/methods/factor-investing]]"
-  - "[[notebooklm-research-2026-05-13]]"
+  - '[[system/foundation/architecture]]'
+  - '[[system/foundation/stack]]'
+  - '[[system/foundation/mvp]]'
+  - '[[strategy/index]]'
+  - '[[strategy/methods/trend-following]]'
+  - '[[strategy/methods/factor-investing]]'
+  - '[[notebooklm-research-2026-05-13]]'
 ---
 
 # Quant Agent + Backtesting

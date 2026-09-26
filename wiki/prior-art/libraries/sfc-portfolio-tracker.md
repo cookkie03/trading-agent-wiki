@@ -1,24 +1,23 @@
 ---
-title: "SFC Portfolio Tracker (Sbirrondi)"
+title: SFC Portfolio Tracker (Sbirrondi)
 type: source
 tags:
   - quant
   - software
   - backtesting
-  - infrastructure
-raw_source_path: "https://github.com/Sbirrondi/sfc-portfolio-tracker"
-created: 2026-05-29
-updated: 2026-05-29
+raw_source_path: https://github.com/Sbirrondi/sfc-portfolio-tracker
+created: 2026-05-29T00:00:00.000Z
+updated: 2026-05-29T00:00:00.000Z
 status: active
 confidence: high
 priority: medium
 area: software
 related:
-  - "[[system/quant/quant-backtesting]]"
-  - "[[system/data/data-layer]]"
-  - "[[prior-art/libraries/cvx-portfolio-optimizer]]"
-  - "[[system/data/data-providers]]"
-  - "[[system/foundation/architecture]]"
+  - '[[system/quant/quant-backtesting]]'
+  - '[[system/data/data-layer]]'
+  - '[[prior-art/libraries/cvx-portfolio-optimizer]]'
+  - '[[system/data/data-providers]]'
+  - '[[system/foundation/architecture]]'
 ---
 
 # SFC Portfolio Tracker (Sbirrondi)

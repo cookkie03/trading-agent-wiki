@@ -1,17 +1,18 @@
 ---
-title: "Benchmark"
+title: Benchmark
 type: synthesis
 tags:
+  - benchmark-management
   - strategy
   - market-structure
-created: 2026-05-29
-updated: 2026-07-13
+created: 2026-05-29T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 area: strategy
 confidence: medium
 related:
-  - "[[strategy/index]]"
-  - "[[system/agents/agents]]"
+  - '[[strategy/index]]'
+  - '[[system/agents/agents]]'
 ---
 
 # Benchmark

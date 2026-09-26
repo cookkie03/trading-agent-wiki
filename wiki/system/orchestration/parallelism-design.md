@@ -1,21 +1,21 @@
 ---
-title: "Parallelismo & Orchestrazione multi-ticker"
+title: Parallelismo & Orchestrazione multi-ticker
 type: build
 tags:
+  - multi-agent
   - build
   - architecture
-  - multi-agent
-created: 2026-06-03
-updated: 2026-07-13
+created: 2026-06-03T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 priority: high
 area: software
 related:
-  - "[[system/agents/agents]]"
-  - "[[system/investment/state-schemas]]"
-  - "[[system/foundation/architecture]]"
-  - "[[system/investment/rating-scoring]]"
-  - "[[system/data/data-layer]]"
+  - '[[system/agents/agents]]'
+  - '[[system/investment/state-schemas]]'
+  - '[[system/foundation/architecture]]'
+  - '[[system/investment/rating-scoring]]'
+  - '[[system/data/data-layer]]'
 confidence: medium
 ---
 

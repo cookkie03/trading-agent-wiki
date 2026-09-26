@@ -1,24 +1,21 @@
 ---
-title: "Piano Operativo di Sviluppo — Trading Agent"
+title: Piano Operativo di Sviluppo — Trading Agent
 type: artifact
 tags:
+  - multi-agent
   - architecture
   - roadmap
-  - execution
-  - multi-agent
-  - quant
-  - software
-created: 2026-09-02
-updated: 2026-09-02
+created: 2026-09-02T00:00:00.000Z
+updated: 2026-09-02T00:00:00.000Z
 status: active
 related:
-  - "[[artifacts/project-board]]"
-  - "[[system/foundation/architecture]]"
-  - "[[system/foundation/codebase-architecture]]"
-  - "[[system/foundation/stack]]"
-  - "[[system/foundation/mvp]]"
-  - "[[system/foundation/implementation-status]]"
-  - "[[_meta/comment-resolution-2026-07-13]]"
+  - '[[artifacts/project-board]]'
+  - '[[system/foundation/architecture]]'
+  - '[[system/foundation/codebase-architecture]]'
+  - '[[system/foundation/stack]]'
+  - '[[system/foundation/mvp]]'
+  - '[[system/foundation/implementation-status]]'
+  - '[[_meta/comment-resolution-2026-07-13]]'
 confidence: high
 priority: high
 area: software

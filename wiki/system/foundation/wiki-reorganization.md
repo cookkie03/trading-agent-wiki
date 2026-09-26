@@ -1,23 +1,23 @@
 ---
-title: "System Wiki Reorganization"
+title: System Wiki Reorganization
 type: build
 tags:
   - architecture
   - roadmap
   - software
-created: 2026-06-23
-updated: 2026-07-13
+created: 2026-06-23T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: done
 confidence: medium
 area: ops
 related:
-  - "[[artifacts/project-board]]"
-  - "[[system/foundation/codebase-architecture]]"
-  - "[[system/foundation/decision-log]]"
-  - "[[system/data/data-layer]]"
-  - "[[system/agents/agents]]"
-  - "[[system/execution/execution]]"
-  - "[[system/tools/tools-inventory]]"
+  - '[[artifacts/project-board]]'
+  - '[[system/foundation/codebase-architecture]]'
+  - '[[system/foundation/decision-log]]'
+  - '[[system/data/data-layer]]'
+  - '[[system/agents/agents]]'
+  - '[[system/execution/execution]]'
+  - '[[system/tools/tools-inventory]]'
 ---
 # System Wiki Reorganization
 

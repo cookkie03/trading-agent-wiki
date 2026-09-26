@@ -1,16 +1,17 @@
 ---
-title: "Trading Floor Canvas"
+title: Trading Floor Canvas
 type: source
 tags:
-  - source
+  - trading-floor
   - architecture
-raw_source_path: "wiki/artifacts/trading-floor.canvas"
-created: 2026-05-06
-updated: 2026-07-13
+  - source
+raw_source_path: wiki/artifacts/trading-floor.canvas
+created: 2026-05-06T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 confidence: high
 status: active
 related:
-  - "[[system/foundation/architecture]]"
+  - '[[system/foundation/architecture]]'
 ---
 
 # Trading Floor Canvas

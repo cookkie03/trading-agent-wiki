@@ -1,22 +1,22 @@
 ---
-title: "Investment State — template completo (menu di definizione con Salvatore)"
+title: Investment State — template completo (menu di definizione con Salvatore)
 type: build
 tags:
+  - investment-state
   - build
   - architecture
-  - multi-agent
-created: 2026-06-04
-updated: 2026-07-13
+created: 2026-06-04T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: draft
 priority: high
 area: software
 related:
-  - "[[system/investment/state-schemas]]"
-  - "[[system/investment/position-sizing]]"
-  - "[[system/investment/rating-scoring]]"
-  - "[[system/agents/agents]]"
-  - "[[system/execution/execution]]"
-  - "[[strategy/questions-for-salvatore]]"
+  - '[[system/investment/state-schemas]]'
+  - '[[system/investment/position-sizing]]'
+  - '[[system/investment/rating-scoring]]'
+  - '[[system/agents/agents]]'
+  - '[[system/execution/execution]]'
+  - '[[strategy/questions-for-salvatore]]'
 confidence: low
 ---
 

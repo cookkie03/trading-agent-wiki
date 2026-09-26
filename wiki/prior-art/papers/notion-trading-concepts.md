@@ -1,18 +1,18 @@
 ---
-title: "Notion Export - Investimento e Trading"
+title: Notion Export - Investimento e Trading
 type: source
 tags:
-  - source
+  - trading-system
   - strategy
   - market-structure
-raw_source_path: "raw/articles/"
-created: 2026-05-06
-updated: 2026-05-06
+raw_source_path: raw/articles/
+created: 2026-05-06T00:00:00.000Z
+updated: 2026-05-06T00:00:00.000Z
 confidence: high
 status: active
 related:
-  - "[[system/foundation/architecture]]"
-  - "[[strategy/index]]"
+  - '[[system/foundation/architecture]]'
+  - '[[strategy/index]]'
 ---
 
 # Notion Export - Investimento e Trading

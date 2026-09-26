@@ -1,19 +1,19 @@
 ---
-title: "Risoluzione commenti wiki — 2026-07-13"
+title: Risoluzione commenti wiki — 2026-07-13
 type: artifact
 tags:
+  - wiki-reorganization
   - architecture
   - roadmap
   - strategy
-  - infrastructure
-created: 2026-07-13
-updated: 2026-07-13
+created: 2026-07-13T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: done
 related:
-  - "[[artifacts/project-board]]"
-  - "[[system/foundation/implementation-status]]"
-  - "[[system/foundation/wiki-reorganization]]"
-  - "[[system/data/data-vendors]]"
+  - '[[artifacts/project-board]]'
+  - '[[system/foundation/implementation-status]]'
+  - '[[system/foundation/wiki-reorganization]]'
+  - '[[system/data/data-vendors]]'
 confidence: high
 area: ops
 ---

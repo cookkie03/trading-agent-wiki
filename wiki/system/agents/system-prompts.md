@@ -1,19 +1,19 @@
 ---
-title: "System Prompts — metodo + scheletro + esempi per gli agenti"
+title: System Prompts — metodo + scheletro + esempi per gli agenti
 type: synthesis
 tags:
+  - system-prompts
   - multi-agent
   - architecture
-  - prompt-engineering
-created: 2026-06-06
-updated: 2026-07-13
+created: 2026-06-06T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 related:
-  - "[[system/agents/agent-behaviors]]"
-  - "[[system/tools/tools-inventory]]"
-  - "[[system/investment/state-schemas]]"
-  - "[[system/agents/agents]]"
-  - "[[prior-art/libraries/rizzo-trading-agent]]"
+  - '[[system/agents/agent-behaviors]]'
+  - '[[system/tools/tools-inventory]]'
+  - '[[system/investment/state-schemas]]'
+  - '[[system/agents/agents]]'
+  - '[[prior-art/libraries/rizzo-trading-agent]]'
 confidence: medium
 area: software
 ---

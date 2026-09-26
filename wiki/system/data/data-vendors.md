@@ -1,18 +1,19 @@
 ---
-title: "Data Vendors & Coverage Policy"
+title: Data Vendors & Coverage Policy
 type: build
 tags:
+  - data-vendors
+  - coverage-policy
   - infrastructure
   - architecture
-  - roadmap
-created: 2026-07-13
-updated: 2026-07-13
+created: 2026-07-13T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 related:
-  - "[[system/data/data-sources-tool-map]]"
-  - "[[system/tools/tools-inventory]]"
-  - "[[artifacts/tool-catalog.base]]"
-  - "[[artifacts/project-board]]"
+  - '[[system/data/data-sources-tool-map]]'
+  - '[[system/tools/tools-inventory]]'
+  - '[[artifacts/tool-catalog.base]]'
+  - '[[artifacts/project-board]]'
 confidence: medium
 area: software
 ---

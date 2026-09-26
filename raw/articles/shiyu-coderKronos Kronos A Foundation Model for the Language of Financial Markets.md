@@ -1,12 +1,18 @@
 ---
-title: "shiyu-coder/Kronos: Kronos: A Foundation Model for the Language of Financial Markets"
-source: "https://github.com/shiyu-coder/Kronos"
-author:
-published:
-created: 2026-06-20
-description: "Kronos: A Foundation Model for the Language of Financial Markets - shiyu-coder/Kronos"
+title: >-
+  shiyu-coder/Kronos: Kronos: A Foundation Model for the Language of Financial
+  Markets
+source: https://github.com/shiyu-coder/Kronos
+author: null
+published: null
+created: 2026-06-20T00:00:00.000Z
+description: >-
+  Kronos: A Foundation Model for the Language of Financial Markets -
+  shiyu-coder/Kronos
 tags:
-  - "clippings"
+  - financial-model
+  - k-line
+  - clippings
 ---
 ## Kronos: A Foundation Model for the Language of Financial Markets
 

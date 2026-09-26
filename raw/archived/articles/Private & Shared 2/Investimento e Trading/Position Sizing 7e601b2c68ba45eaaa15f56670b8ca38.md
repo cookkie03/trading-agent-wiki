@@ -1,3 +1,12 @@
+---
+tags:
+  - position-sizing
+  - kelly-criterion
+  - risk-management
+  - compounding-wins
+  - cutting-losses
+---
+
 # Position Sizing
 
 Quantità di asset che andrai ad acquistare/vendere ad ogni trade.

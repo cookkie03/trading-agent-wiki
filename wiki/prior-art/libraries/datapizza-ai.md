@@ -1,20 +1,20 @@
 ---
-title: "Datapizza AI Framework"
+title: Datapizza AI Framework
 type: source
 tags:
+  - ai-framework
   - source
   - multi-agent
   - architecture
-  - infrastructure
-created: 2026-06-15
-updated: 2026-06-20
+created: 2026-06-15T00:00:00.000Z
+updated: 2026-06-20T00:00:00.000Z
 status: active
 priority: high
 area: software
 related:
-  - "[[system/agents/agents]]"
-  - "[[system/foundation/architecture]]"
-  - "[[system/foundation/stack]]"
+  - '[[system/agents/agents]]'
+  - '[[system/foundation/architecture]]'
+  - '[[system/foundation/stack]]'
 ---
 
 # Datapizza AI Framework

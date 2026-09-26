@@ -1,3 +1,10 @@
+---
+tags:
+  - synthetic-portfolio
+  - vine-copula
+  - data-preprocessing
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/guide/synthetic/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/guide/synthetic/#synthetic-data)

@@ -1,3 +1,8 @@
+---
+tags:
+  - trading-agent
+---
+
 # Wiki Log — Trading Agent
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`

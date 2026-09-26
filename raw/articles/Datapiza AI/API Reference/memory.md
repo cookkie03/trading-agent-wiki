@@ -1,5 +1,8 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/API%20Reference/memory/
+tags:
+  - api-reference
+  - embedders
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/API%20Reference/Embedders/ollama_embedder/#ollamaembedder)

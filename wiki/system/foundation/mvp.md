@@ -2,18 +2,17 @@
 title: MVP Prototype Design
 type: build
 tags:
+  - prototype-design
   - build
   - architecture
-  - mvp
-  - design
-created: 2026-05-13
-updated: 2026-07-13
+created: 2026-05-13T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 related:
-  - "[[system/foundation/architecture]]"
-  - "[[system/foundation/decision-log]]"
-  - "[[system/foundation/stack]]"
-  - "[[trading-floor.canvas]]"
+  - '[[system/foundation/architecture]]'
+  - '[[system/foundation/decision-log]]'
+  - '[[system/foundation/stack]]'
+  - '[[trading-floor.canvas]]'
 confidence: high
 priority: high
 area: software

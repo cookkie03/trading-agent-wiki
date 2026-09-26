@@ -1,3 +1,8 @@
+---
+tags:
+  - rebalancing
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/api/rebalancing/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/api/rebalancing/#rebalancing)

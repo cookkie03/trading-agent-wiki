@@ -1,3 +1,10 @@
+---
+tags:
+  - portfolio-evaluation
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/guide/scoring/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/guide/scoring/#scoring)

@@ -1,17 +1,17 @@
 ---
-title: "Onboarding Wiki e Workflow Progettuale"
+title: Onboarding Wiki e Workflow Progettuale
 type: source
 tags:
-  - source
-  - meta
+  - progettuale
   - workflow
-raw_source_path: "raw/audio/così ce l'abbiamo...txt"
-created: 2026-05-10
-updated: 2026-05-12
+  - source
+raw_source_path: raw/audio/così ce l'abbiamo...txt
+created: 2026-05-10T00:00:00.000Z
+updated: 2026-05-12T00:00:00.000Z
 confidence: high
 status: reviewed
 related:
-  - "[[overview]]"
+  - '[[overview]]'
 ---
 
 # Onboarding Wiki e Workflow Progettuale

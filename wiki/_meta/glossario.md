@@ -1,11 +1,13 @@
 ---
-title: "Glossario del Progetto"
+title: Glossario del Progetto
 type: ops
 tags:
+  - trading-strategy
+  - software-architecture
   - glossary
   - reference
-created: 2026-05-13
-updated: 2026-07-13
+created: 2026-05-13T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 area: ops
 ---

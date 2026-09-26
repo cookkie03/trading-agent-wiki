@@ -1,18 +1,17 @@
 ---
-title: "TradingAgents — Schema completo grafo, nodi, agenti, tool, stato"
+title: TradingAgents — Schema completo grafo, nodi, agenti, tool, stato
 type: reference
 tags:
-  - reference
+  - graph-schema
   - architecture
-  - langgraph
   - agents
-created: 2026-05-28
-updated: 2026-05-28
+created: 2026-05-28T00:00:00.000Z
+updated: 2026-05-28T00:00:00.000Z
 status: active
 related:
-  - "[[prior-art/tradingagents/code-wiki]]"
-  - "[[system/foundation/architecture]]"
-  - "[[trading-floor]]"
+  - '[[prior-art/tradingagents/code-wiki]]'
+  - '[[system/foundation/architecture]]'
+  - '[[trading-floor]]'
 confidence: high
 source: estrazione diretta da `tradingagents/` + graphify-out (2026-05-26)
 ---

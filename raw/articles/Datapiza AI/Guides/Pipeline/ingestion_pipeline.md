@@ -1,5 +1,9 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/Guides/Pipeline/ingestion_pipeline/
+tags:
+  - datapizza-guide
+  - pipeline
+  - data
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/API%20Reference/Modules/Splitters/node_splitter/#nodesplitter)

@@ -1,5 +1,7 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/Guides/Pipeline/functional_pipeline/
+tags:
+  - functional-pipeline
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/API%20Reference/Clients/clients/#clients)

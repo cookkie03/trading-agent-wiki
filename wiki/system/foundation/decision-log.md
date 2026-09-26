@@ -1,15 +1,16 @@
 ---
-title: "Decision Log"
+title: Decision Log
 type: build
 tags:
+  - decision-logging
   - architecture
   - roadmap
-created: 2026-04-30
-updated: 2026-07-13
+created: 2026-04-30T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 related:
-  - "[[system/foundation/architecture]]"
-  - "[[system/foundation/mvp]]"
+  - '[[system/foundation/architecture]]'
+  - '[[system/foundation/mvp]]'
 ---
 
 # Decision Log

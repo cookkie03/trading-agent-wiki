@@ -1,5 +1,9 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/Guides/Clients/chatbot/
+tags:
+  - data-prep
+  - code-tools
+  - cli
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/Guides/Clients/chatbot/#real-example-chatbot)

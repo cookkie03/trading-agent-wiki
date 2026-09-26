@@ -1,5 +1,9 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/
+tags:
+  - datapizza-ai
+  - data-preprocessing
+  - data-cleaning
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/#datapizza-ai)

@@ -1,17 +1,17 @@
 ---
-title: "Alpha Arena & Six Frontier LLMs Trading Competition"
+title: Alpha Arena & Six Frontier LLMs Trading Competition
 type: source
 tags:
-  - source
-  - research
+  - alpha-arena-trading
   - llm-benchmarking
-raw_source_path: "raw/articles/AlphaArena/"
-created: 2026-05-12
-updated: 2026-05-12
+  - research
+raw_source_path: raw/articles/AlphaArena/
+created: 2026-05-12T00:00:00.000Z
+updated: 2026-05-12T00:00:00.000Z
 confidence: high
 status: reviewed
 related:
-  - "[[system/foundation/architecture]]"
+  - '[[system/foundation/architecture]]'
 ---
 
 # Alpha Arena & Six Frontier LLMs Trading Competition

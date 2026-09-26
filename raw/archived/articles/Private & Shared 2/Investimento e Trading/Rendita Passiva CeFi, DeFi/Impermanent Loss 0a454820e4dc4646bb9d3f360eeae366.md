@@ -1,3 +1,12 @@
+---
+tags:
+  - impermanent-loss
+  - liquidity-pools
+  - automated-market-makers
+  - ethereum
+  - stablecoin-pools
+---
+
 # Impermanent Loss:
 
 **Definizione**: **la perdita che potremmo subire fornendo liquidità rispetto al semplice hold**. Il prezzo dei singoli token nel periodo di detenzione (da quando facciamo stake a unstake del token LP) impatta la quantità di token che avremmo avuto nel wallet se avessimo holdato gli stessi token.

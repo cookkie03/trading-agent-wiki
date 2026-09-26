@@ -1,3 +1,10 @@
+---
+tags:
+  - asset-pipeline
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/api/pre_selection/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/api/pre_selection/#pre_selection)

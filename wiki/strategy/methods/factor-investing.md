@@ -1,16 +1,18 @@
 ---
-title: "Factor Investing"
+title: Factor Investing
 type: synthesis
 tags:
+  - factor-signals
+  - asset-selection
   - strategy
   - market-structure
-created: 2026-05-14
-updated: 2026-05-14
+created: 2026-05-14T00:00:00.000Z
+updated: 2026-05-14T00:00:00.000Z
 status: draft
 confidence: medium
 area: strategy
 related:
-  - "[[system/quant/quant-backtesting]]"
+  - '[[system/quant/quant-backtesting]]'
 ---
 # Factor Investing
 

@@ -1,16 +1,17 @@
 ---
-title: "Trend Following"
+title: Trend Following
 type: synthesis
 tags:
+  - trend-following
   - strategy
   - market-structure
-created: 2026-05-14
-updated: 2026-05-14
+created: 2026-05-14T00:00:00.000Z
+updated: 2026-05-14T00:00:00.000Z
 status: active
 confidence: medium
 area: strategy
 related:
-  - "[[system/quant/quant-backtesting]]"
+  - '[[system/quant/quant-backtesting]]'
 ---
 
 # Trend Following

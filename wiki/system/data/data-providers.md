@@ -1,19 +1,19 @@
 ---
-title: "Tool Set, Provider Dati, Exchange"
+title: Tool Set, Provider Dati, Exchange
 type: source
 tags:
   - source
   - infrastructure
   - market-structure
-raw_source_path: "raw/archived/notes/Tool Set, Provider dati, Exchange.md"
-created: 2026-05-22
-updated: 2026-07-13
+raw_source_path: raw/archived/notes/Tool Set, Provider dati, Exchange.md
+created: 2026-05-22T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 confidence: high
 status: active
 related:
-  - "[[system/data/data-layer]]"
-  - "[[system/foundation/stack]]"
-  - "[[system/foundation/architecture]]"
+  - '[[system/data/data-layer]]'
+  - '[[system/foundation/stack]]'
+  - '[[system/foundation/architecture]]'
 ---
 
 # Tool Set, Provider Dati, Exchange

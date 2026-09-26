@@ -1,22 +1,24 @@
 ---
-title: "Agents — Portfolio Manager, Desk analisti, Risk Analyst"
+title: Agents — Portfolio Manager, Desk analisti, Risk Analyst
 type: build
 tags:
+  - portfolio-management
+  - risk-gateway
   - build
   - multi-agent
   - architecture
-created: 2026-05-13
-updated: 2026-07-13
+created: 2026-05-13T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 priority: high
 area: software
 related:
-  - "[[system/foundation/architecture]]"
-  - "[[system/data/data-layer]]"
-  - "[[system/execution/execution]]"
-  - "[[system/quant/quant-backtesting]]"
-  - "[[prior-art/tradingagents/code-wiki]]"
-  - "[[prior-art/tradingagents/paper]]"
+  - '[[system/foundation/architecture]]'
+  - '[[system/data/data-layer]]'
+  - '[[system/execution/execution]]'
+  - '[[system/quant/quant-backtesting]]'
+  - '[[prior-art/tradingagents/code-wiki]]'
+  - '[[prior-art/tradingagents/paper]]'
 ---
 
 # Agents — Portfolio Manager, Desk analisti, Risk Analyst

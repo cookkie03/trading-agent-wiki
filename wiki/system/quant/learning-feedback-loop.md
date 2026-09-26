@@ -1,21 +1,21 @@
 ---
-title: "Learning & Feedback Loop — valutazione e auto-miglioramento del sistema"
+title: Learning & Feedback Loop — valutazione e auto-miglioramento del sistema
 type: build
 tags:
+  - feedback-loop
   - build
   - architecture
-  - multi-agent
-created: 2026-06-03
-updated: 2026-07-13
+created: 2026-06-03T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: draft
 priority: medium
 area: software
 related:
-  - "[[system/investment/rating-scoring]]"
-  - "[[system/agents/agents]]"
-  - "[[system/execution/execution]]"
-  - "[[system/data/data-layer]]"
-  - "[[system/foundation/architecture]]"
+  - '[[system/investment/rating-scoring]]'
+  - '[[system/agents/agents]]'
+  - '[[system/execution/execution]]'
+  - '[[system/data/data-layer]]'
+  - '[[system/foundation/architecture]]'
 confidence: low
 ---
 

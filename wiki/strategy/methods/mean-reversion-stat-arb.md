@@ -1,20 +1,19 @@
 ---
-title: "Mean Reversion e Statistical Arbitrage"
+title: Mean Reversion e Statistical Arbitrage
 type: synthesis
 tags:
+  - statistical-arbitrage
   - strategy
-  - quant
   - mean-reversion
-  - backtesting
-created: 2026-05-22
-updated: 2026-05-22
+created: 2026-05-22T00:00:00.000Z
+updated: 2026-05-22T00:00:00.000Z
 status: draft
 related:
-  - "[[strategy/index]]"
-  - "[[strategy/methods/trend-following]]"
-  - "[[system/quant/quant-backtesting]]"
-  - "[[strategy/methods/dual-portfolio]]"
-  - "[[prior-art/papers/brenndoerfer-quant-trading]]"
+  - '[[strategy/index]]'
+  - '[[strategy/methods/trend-following]]'
+  - '[[system/quant/quant-backtesting]]'
+  - '[[strategy/methods/dual-portfolio]]'
+  - '[[prior-art/papers/brenndoerfer-quant-trading]]'
 confidence: medium
 area: strategy
 ---

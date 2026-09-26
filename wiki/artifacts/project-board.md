@@ -1,17 +1,18 @@
 ---
-title: "Project Board — Trading Agent"
+title: Project Board — Trading Agent
 type: artifact
 tags:
+  - trading-agent
   - roadmap
   - execution
   - architecture
-created: 2026-04-30
-updated: 2026-07-13
+created: 2026-04-30T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 related:
-  - "[[system/foundation/decision-log]]"
-  - "[[system/foundation/implementation-status]]"
-  - "[[_meta/comment-resolution-2026-07-13]]"
+  - '[[system/foundation/decision-log]]'
+  - '[[system/foundation/implementation-status]]'
+  - '[[_meta/comment-resolution-2026-07-13]]'
 confidence: high
 priority: high
 area: ops

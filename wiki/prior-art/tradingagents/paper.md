@@ -1,19 +1,18 @@
 ---
-title: "TradingAgents: Multi-Agents LLM Financial Trading Framework"
+title: 'TradingAgents: Multi-Agents LLM Financial Trading Framework'
 type: source
 tags:
-  - source
+  - trading-framework
   - architecture
   - multi-agent
-  - research
-raw_source_path: "raw/articles/TradingAgents.md"
-created: 2026-05-12
-updated: 2026-05-21
+raw_source_path: raw/articles/TradingAgents.md
+created: 2026-05-12T00:00:00.000Z
+updated: 2026-05-21T00:00:00.000Z
 confidence: high
 status: reviewed
 related:
-  - "[[system/foundation/architecture]]"
-  - "[[prior-art/tradingagents/code-wiki]]"
+  - '[[system/foundation/architecture]]'
+  - '[[prior-art/tradingagents/code-wiki]]'
 ---
 
 # TradingAgents: Multi-Agents LLM Financial Trading Framework

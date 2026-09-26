@@ -1,3 +1,10 @@
+---
+tags:
+  - data-modeling
+  - portfolio-optimization
+  - optimization
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/guide/optimization/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/guide/optimization/#optimization)

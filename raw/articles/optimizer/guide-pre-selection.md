@@ -1,3 +1,10 @@
+---
+tags:
+  - pre-selection-pipeline
+  - data-cleaning
+  - asset-filtering
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/guide/pre-selection/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/guide/pre-selection/#pre-selection)

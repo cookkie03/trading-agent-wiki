@@ -1,3 +1,10 @@
+---
+tags:
+  - asset-return-validation
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/guide/preprocessing/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/guide/preprocessing/#preprocessing)

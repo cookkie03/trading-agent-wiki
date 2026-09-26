@@ -1,3 +1,10 @@
+---
+tags:
+  - model-selection
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/api/scoring/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/api/scoring/#scoring)

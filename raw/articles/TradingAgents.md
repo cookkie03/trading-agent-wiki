@@ -1,3 +1,10 @@
+---
+tags:
+  - llm-finance
+  - trading
+  - multi-agent
+---
+
 TradingAgents: Multi-Agents LLM Financial Trading Framework
 
 Yijia Xiao 1,2, Edward Sun 1,3, Di Luo 1,2, Wei Wang 1,3

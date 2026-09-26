@@ -1,3 +1,10 @@
+---
+tags:
+  - portfolio-optimization
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/guide/views/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/guide/views/#view-integration)

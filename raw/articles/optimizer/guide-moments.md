@@ -1,3 +1,10 @@
+---
+tags:
+  - moment-estimation
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/guide/moments/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/guide/moments/#moment-estimation)

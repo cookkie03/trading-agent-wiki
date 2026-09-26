@@ -1,5 +1,9 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/Guides/Agents/mcp/
+tags:
+  - datapizza-guide
+  - agents
+  - mcp
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/API%20Reference/Modules/Parsers/text_parser/#textparser)

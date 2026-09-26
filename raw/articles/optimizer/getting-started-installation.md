@@ -1,3 +1,10 @@
+---
+tags:
+  - installation
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/getting-started/installation/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/getting-started/installation/#installation)

@@ -1,3 +1,10 @@
+---
+tags:
+  - portfolio-optimization
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/guide/pipeline/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/guide/pipeline/#pipeline-overview)

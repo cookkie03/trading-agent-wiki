@@ -1,17 +1,19 @@
 ---
-title: "Agent Behaviors — comportamento per-agente del desk"
+title: Agent Behaviors — comportamento per-agente del desk
 type: synthesis
 tags:
+  - agent-behaviors
+  - desk-analytics
   - multi-agent
   - architecture
-created: 2026-06-06
-updated: 2026-07-13
+created: 2026-06-06T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 related:
-  - "[[system/agents/agents]]"
-  - "[[system/tools/tools-inventory]]"
-  - "[[system/investment/state-schemas]]"
-  - "[[system/quant/quant-backtesting]]"
+  - '[[system/agents/agents]]'
+  - '[[system/tools/tools-inventory]]'
+  - '[[system/investment/state-schemas]]'
+  - '[[system/quant/quant-backtesting]]'
 confidence: medium
 area: software
 ---

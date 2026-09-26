@@ -1,22 +1,26 @@
 ---
-title: "Quantitative Trading Strategies: Alpha, Backtesting & Performance (Brenndoerfer)"
+title: >-
+  Quantitative Trading Strategies: Alpha, Backtesting & Performance
+  (Brenndoerfer)
 type: source
 tags:
-  - source
+  - alpha-strategy
+  - performance-metrics
   - quant
   - backtesting
   - strategy
-  - research
-raw_source_path: "raw/archived/articles/quant strategy/Quantitative Trading Strategies Alpha, Backtesting & Performance - Interactive.md"
-created: 2026-05-22
-updated: 2026-05-22
+raw_source_path: >-
+  raw/archived/articles/quant strategy/Quantitative Trading Strategies Alpha,
+  Backtesting & Performance - Interactive.md
+created: 2026-05-22T00:00:00.000Z
+updated: 2026-05-22T00:00:00.000Z
 confidence: high
 status: active
 related:
-  - "[[strategy/index]]"
-  - "[[strategy/methods/trend-following]]"
-  - "[[system/quant/quant-backtesting]]"
-  - "[[strategy/methods/dual-portfolio]]"
+  - '[[strategy/index]]'
+  - '[[strategy/methods/trend-following]]'
+  - '[[system/quant/quant-backtesting]]'
+  - '[[strategy/methods/dual-portfolio]]'
 ---
 
 # Quantitative Trading Strategies: Alpha, Backtesting & Performance (Brenndoerfer)

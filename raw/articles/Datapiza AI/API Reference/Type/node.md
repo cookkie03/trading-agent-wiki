@@ -1,5 +1,9 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/API%20Reference/Type/node/
+tags:
+  - datapizza
+  - api-reference
+  - cli
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/API%20Reference/Vectorstore/qdrant_vectorstore/#qdrant)

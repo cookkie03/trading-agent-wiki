@@ -1,21 +1,21 @@
 ---
-title: "Portfolio Optimizer (cvx-portfolio-optimizer)"
+title: Portfolio Optimizer (cvx-portfolio-optimizer)
 type: source
 tags:
+  - optimization
   - quant
   - software
-  - optimization
-raw_source_path: "raw/articles/optimizer/ + https://github.com/SilvioBaratto/optimizer"
-created: 2026-05-12
-updated: 2026-07-13
+raw_source_path: raw/articles/optimizer/ + https://github.com/SilvioBaratto/optimizer
+created: 2026-05-12T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 confidence: high
 related:
-  - "[[system/agents/agents]]"
-  - "[[system/agents/agents]]"
-  - "[[system/foundation/architecture]]"
-  - "[[prior-art/libraries/rizzo-trading-agent]]"
-  - "[[prior-art/libraries/sfc-portfolio-tracker]]"
+  - '[[system/agents/agents]]'
+  - '[[system/agents/agents]]'
+  - '[[system/foundation/architecture]]'
+  - '[[prior-art/libraries/rizzo-trading-agent]]'
+  - '[[prior-art/libraries/sfc-portfolio-tracker]]'
 ---
 
 # Portfolio Optimizer ([cvx-portfolio-optimizer](https://github.com/cvxgrp/cvxportfolio) )

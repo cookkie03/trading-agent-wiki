@@ -1,17 +1,19 @@
 ---
-title: "Canvas → Codice — mappa di allineamento"
+title: Canvas → Codice — mappa di allineamento
 type: synthesis
 tags:
+  - code-alignment
+  - trading-agent
   - architecture
   - software
-created: 2026-06-07
-updated: 2026-07-13
+created: 2026-06-07T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 related:
-  - "[[artifacts/architettura.canvas]]"
-  - "[[system/_reference/fork-gap-analysis]]"
-  - "[[system/agents/agents]]"
-  - "[[system/data/data-layer]]"
+  - '[[artifacts/architettura.canvas]]'
+  - '[[system/_reference/fork-gap-analysis]]'
+  - '[[system/agents/agents]]'
+  - '[[system/data/data-layer]]'
 confidence: high
 area: software
 ---

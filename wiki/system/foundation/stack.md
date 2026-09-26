@@ -1,16 +1,17 @@
 ---
-title: "Tech Stack"
+title: Tech Stack
 type: build
 tags:
+  - tech-stack
   - build
   - infrastructure
-created: 2026-05-13
-updated: 2026-07-13
+created: 2026-05-13T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 area: software
 related:
-  - "[[system/foundation/architecture]]"
-  - "[[system/data/data-layer]]"
+  - '[[system/foundation/architecture]]'
+  - '[[system/data/data-layer]]'
 ---
 
 # Tech Stack

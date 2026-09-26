@@ -1,23 +1,23 @@
 ---
-title: "Data Sources & Tool Map"
+title: Data Sources & Tool Map
 type: build
 tags:
   - infrastructure
   - software
   - architecture
-created: 2026-06-23
-updated: 2026-07-13
+created: 2026-06-23T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 confidence: medium
 area: software
 related:
-  - "[[system/tools/tools-inventory]]"
-  - "[[system/data/data-providers]]"
-  - "[[system/data/data-layer]]"
-  - "[[system/agents/agents]]"
-  - "[[system/execution/execution]]"
-  - "[[system/quant/quant-backtesting]]"
-  - "[[artifacts/project-board]]"
+  - '[[system/tools/tools-inventory]]'
+  - '[[system/data/data-providers]]'
+  - '[[system/data/data-layer]]'
+  - '[[system/agents/agents]]'
+  - '[[system/execution/execution]]'
+  - '[[system/quant/quant-backtesting]]'
+  - '[[artifacts/project-board]]'
 ---
 
 # Data Sources & Tool Map

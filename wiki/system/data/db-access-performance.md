@@ -1,22 +1,22 @@
 ---
-title: "DB — Accesso, performance e minimizzazione delle query"
+title: DB — Accesso, performance e minimizzazione delle query
 type: build
 tags:
   - build
   - infrastructure
   - software
-created: 2026-06-04
-updated: 2026-07-13
+created: 2026-06-04T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 priority: high
 area: software
 related:
-  - "[[system/data/data-layer]]"
-  - "[[system/agents/agents]]"
-  - "[[system/execution/execution]]"
-  - "[[system/quant/quant-backtesting]]"
-  - "[[system/investment/state-schemas]]"
-  - "[[system/foundation/decision-log]]"
+  - '[[system/data/data-layer]]'
+  - '[[system/agents/agents]]'
+  - '[[system/execution/execution]]'
+  - '[[system/quant/quant-backtesting]]'
+  - '[[system/investment/state-schemas]]'
+  - '[[system/foundation/decision-log]]'
 ---
 
 # DB — Accesso, performance e minimizzazione delle query

@@ -1,3 +1,10 @@
+---
+tags:
+  - copula-modeling
+  - vine-copula
+  - data-preprocessing
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/api/synthetic/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/api/synthetic/#synthetic)

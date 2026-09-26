@@ -1,5 +1,8 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/Guides/Clients/structured_responses/
+tags:
+  - data-tooling
+  - cli
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/API%20Reference/Tools/mcp/#mcpclient)

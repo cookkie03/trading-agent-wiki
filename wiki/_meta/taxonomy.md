@@ -1,7 +1,11 @@
 ---
 vault_type: hybrid
-vault_name: "trading-agent-wiki"
+vault_name: trading-agent-wiki
 language: it
+tags:
+  - trading-agent-wiki
+  - strategy
+  - artifacts
 ---
 
 # Taxonomy

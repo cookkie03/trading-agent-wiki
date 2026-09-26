@@ -1,3 +1,10 @@
+---
+tags:
+  - factor-validation
+  - factor-research
+  - data-preprocessing
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/guide/factors/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/guide/factors/#factor-research)

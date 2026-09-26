@@ -1,20 +1,21 @@
 ---
-title: "Position Sizing — dimensionamento delle posizioni"
+title: Position Sizing — dimensionamento delle posizioni
 type: build
 tags:
+  - position-sizing
   - build
   - strategy
   - execution
-created: 2026-06-03
-updated: 2026-07-13
+created: 2026-06-03T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 priority: high
 area: software
 related:
-  - "[[system/investment/state-schemas]]"
-  - "[[system/execution/execution]]"
-  - "[[system/agents/agents]]"
-  - "[[system/investment/rating-scoring]]"
+  - '[[system/investment/state-schemas]]'
+  - '[[system/execution/execution]]'
+  - '[[system/agents/agents]]'
+  - '[[system/investment/rating-scoring]]'
 confidence: medium
 ---
 

@@ -1,3 +1,10 @@
+---
+tags:
+  - optimization-pipeline
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/getting-started/quickstart/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/getting-started/quickstart/#quickstart)

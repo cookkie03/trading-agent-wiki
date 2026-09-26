@@ -1,3 +1,10 @@
+---
+tags:
+  - portfolio-optimization
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/api/optimization/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/api/optimization/#optimization)

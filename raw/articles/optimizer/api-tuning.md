@@ -1,3 +1,10 @@
+---
+tags:
+  - financial-model-optimization
+  - temporal-cross-validation
+  - hyperparameter-tuning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/api/tuning/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/api/tuning/#tuning)

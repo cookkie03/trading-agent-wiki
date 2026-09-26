@@ -1,21 +1,21 @@
 ---
-title: "State Schemas — research_state e investment_state"
+title: State Schemas — research_state e investment_state
 type: build
 tags:
+  - state-schemas
   - build
   - architecture
-  - multi-agent
-created: 2026-06-03
-updated: 2026-07-13
+created: 2026-06-03T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: draft
 priority: high
 area: software
 related:
-  - "[[system/agents/agents]]"
-  - "[[system/execution/execution]]"
-  - "[[system/foundation/architecture]]"
-  - "[[system/investment/position-sizing]]"
-  - "[[system/investment/rating-scoring]]"
+  - '[[system/agents/agents]]'
+  - '[[system/execution/execution]]'
+  - '[[system/foundation/architecture]]'
+  - '[[system/investment/position-sizing]]'
+  - '[[system/investment/rating-scoring]]'
 confidence: medium
 ---
 

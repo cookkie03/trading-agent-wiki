@@ -1,3 +1,10 @@
+---
+tags:
+  - portfolio-strategy
+  - investability-screen
+  - hysteresis
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/guide/universe/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/guide/universe/#universe-screening)

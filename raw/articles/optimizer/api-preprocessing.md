@@ -1,3 +1,10 @@
+---
+tags:
+  - preprocessing-transformers
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/api/preprocessing/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/api/preprocessing/#preprocessing)

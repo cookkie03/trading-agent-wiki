@@ -1,21 +1,23 @@
 ---
-title: "Universo investibile, Watchlist dinamica, Gerarchia agenti"
+title: Universo investibile, Watchlist dinamica, Gerarchia agenti
 type: build
 tags:
+  - agentic-design
+  - portfolio-management
   - architecture
   - multi-agent
   - software
-created: 2026-06-08
-updated: 2026-07-13
+created: 2026-06-08T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 priority: high
 area: software
 related:
-  - "[[system/agents/agents]]"
-  - "[[system/orchestration/parallelism-design]]"
-  - "[[strategy/metrics/benchmark]]"
-  - "[[system/data/data-layer]]"
-  - "[[system/_reference/canvas-code-mapping]]"
+  - '[[system/agents/agents]]'
+  - '[[system/orchestration/parallelism-design]]'
+  - '[[strategy/metrics/benchmark]]'
+  - '[[system/data/data-layer]]'
+  - '[[system/_reference/canvas-code-mapping]]'
 confidence: high
 ---
 

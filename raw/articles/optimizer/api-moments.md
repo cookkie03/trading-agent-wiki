@@ -1,3 +1,10 @@
+---
+tags:
+  - prior-construction
+  - moments
+  - data-preprocessing
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/api/moments/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/api/moments/#moments)

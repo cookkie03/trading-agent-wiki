@@ -1,13 +1,18 @@
 ---
-title: "Code Wiki"
-source: "https://codewiki.google/github.com/tauricresearch/tradingagents"
+title: Code Wiki
+source: https://codewiki.google/github.com/tauricresearch/tradingagents
 author:
-  - "[[615220]]"
-published: 2026-05-18
-created: 2026-05-18
-description: "Automatically generated, up-to-date documentation for tauricresearch/tradingagents. Stop wasting time on manual docs and explore codebase insights, API references, and architecture overviews instantly."
+  - '[[615220]]'
+published: 2026-05-18T00:00:00.000Z
+created: 2026-05-18T00:00:00.000Z
+description: >-
+  Automatically generated, up-to-date documentation for
+  tauricresearch/tradingagents. Stop wasting time on manual docs and explore
+  codebase insights, API references, and architecture overviews instantly.
 tags:
-  - "clippings"
+  - trading-agent
+  - financial-analytics
+  - clippings
 ---
 ## tauricresearch/tradingagentsPowered by Gemini
 

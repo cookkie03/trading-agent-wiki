@@ -1,5 +1,8 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/Guides/Pipeline/retrieval_pipeline/
+tags:
+  - pipeline
+  - retrieval-pipeline
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/API%20Reference/Clients/Avaiable_Clients/openai/#openai)

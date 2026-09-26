@@ -1,3 +1,10 @@
+---
+tags:
+  - composite-scoring
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/api/factors/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/api/factors/#factors)

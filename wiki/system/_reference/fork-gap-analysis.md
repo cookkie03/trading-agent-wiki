@@ -1,21 +1,21 @@
 ---
-title: "Fork Gap Analysis — TradingAgents fork ↔ il nostro design"
+title: Fork Gap Analysis — TradingAgents fork ↔ il nostro design
 type: synthesis
 tags:
   - architecture
   - multi-agent
   - infrastructure
-created: 2026-06-06
-updated: 2026-07-13
+created: 2026-06-06T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 related:
-  - "[[system/agents/agents]]"
-  - "[[system/agents/system-prompts]]"
-  - "[[system/orchestration/parallelism-design]]"
-  - "[[system/investment/state-schemas]]"
-  - "[[system/data/data-layer]]"
-  - "[[system/execution/execution]]"
-  - "[[prior-art/tradingagents/code-wiki]]"
+  - '[[system/agents/agents]]'
+  - '[[system/agents/system-prompts]]'
+  - '[[system/orchestration/parallelism-design]]'
+  - '[[system/investment/state-schemas]]'
+  - '[[system/data/data-layer]]'
+  - '[[system/execution/execution]]'
+  - '[[prior-art/tradingagents/code-wiki]]'
 confidence: high
 area: software
 ---

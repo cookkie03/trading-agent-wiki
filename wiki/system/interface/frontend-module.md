@@ -1,20 +1,20 @@
 ---
-title: "Frontend Module"
+title: Frontend Module
 type: build
 tags:
+  - frontend-module
   - architecture
   - software
-  - roadmap
-created: 2026-06-23
-updated: 2026-07-13
+created: 2026-06-23T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 confidence: medium
 area: software
 related:
-  - "[[system/foundation/codebase-architecture]]"
-  - "[[system/interface/observability-dashboard]]"
-  - "[[prior-art/libraries/sfc-portfolio-tracker]]"
-  - "[[artifacts/project-board]]"
+  - '[[system/foundation/codebase-architecture]]'
+  - '[[system/interface/observability-dashboard]]'
+  - '[[prior-art/libraries/sfc-portfolio-tracker]]'
+  - '[[artifacts/project-board]]'
 ---
 
 # Frontend Module

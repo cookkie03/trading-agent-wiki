@@ -1,21 +1,21 @@
 ---
-title: "Sistema di Rating & Scoring"
+title: Sistema di Rating & Scoring
 type: build
 tags:
+  - multi-agent-system
   - build
   - architecture
-  - multi-agent
-created: 2026-06-03
-updated: 2026-07-13
+created: 2026-06-03T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: draft
 priority: medium
 area: software
 related:
-  - "[[system/investment/state-schemas]]"
-  - "[[system/investment/position-sizing]]"
-  - "[[system/agents/agents]]"
-  - "[[system/execution/execution]]"
-  - "[[system/quant/learning-feedback-loop]]"
+  - '[[system/investment/state-schemas]]'
+  - '[[system/investment/position-sizing]]'
+  - '[[system/agents/agents]]'
+  - '[[system/execution/execution]]'
+  - '[[system/quant/learning-feedback-loop]]'
 confidence: low
 ---
 

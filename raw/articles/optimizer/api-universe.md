@@ -1,3 +1,10 @@
+---
+tags:
+  - stock-universe
+  - investability-screen
+  - data-preprocessing
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/api/universe/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/api/universe/#universe)

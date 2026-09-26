@@ -1,3 +1,10 @@
+---
+tags:
+  - portfolio-strategy
+  - portfolio-optimization
+  - data-preprocessing
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/#portfolio-optimizer)

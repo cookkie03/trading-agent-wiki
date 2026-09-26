@@ -1,20 +1,20 @@
 ---
-title: "Domande aperte per Salvatore"
+title: Domande aperte per Salvatore
 type: synthesis
 tags:
+  - portfolio-risk
   - strategy
   - quant
-  - roadmap
-created: 2026-06-03
-updated: 2026-06-04
+created: 2026-06-03T00:00:00.000Z
+updated: 2026-06-04T00:00:00.000Z
 status: active
 priority: high
 area: strategy
 related:
-  - "[[system/quant/quant-backtesting]]"
-  - "[[system/investment/rating-scoring]]"
-  - "[[system/investment/position-sizing]]"
-  - "[[system/execution/execution]]"
+  - '[[system/quant/quant-backtesting]]'
+  - '[[system/investment/rating-scoring]]'
+  - '[[system/investment/position-sizing]]'
+  - '[[system/execution/execution]]'
 confidence: high
 ---
 

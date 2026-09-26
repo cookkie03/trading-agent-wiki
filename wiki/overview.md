@@ -1,11 +1,12 @@
 ---
-title: "Trading Agent — Overview"
+title: Trading Agent — Overview
 type: overview
 tags:
+  - multi-agent
   - overview
   - strategy
-created: 2026-04-30
-updated: 2026-07-13
+created: 2026-04-30T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 related: []
 confidence: high

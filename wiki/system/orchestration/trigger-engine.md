@@ -1,19 +1,19 @@
 ---
-title: "Trigger Engine — centralizzazione dei trigger"
+title: Trigger Engine — centralizzazione dei trigger
 type: build
 tags:
+  - trigger-engine
   - build
   - architecture
-  - multi-agent
-created: 2026-06-06
-updated: 2026-07-13
+created: 2026-06-06T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: draft
 priority: high
 area: software
 related:
-  - "[[system/orchestration/parallelism-design]]"
-  - "[[system/agents/agents]]"
-  - "[[system/data/data-layer]]"
+  - '[[system/orchestration/parallelism-design]]'
+  - '[[system/agents/agents]]'
+  - '[[system/data/data-layer]]'
 confidence: medium
 ---
 

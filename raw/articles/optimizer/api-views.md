@@ -1,3 +1,10 @@
+---
+tags:
+  - view-integration
+  - data-preprocessing
+  - data-cleaning
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/api/views/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/api/views/#views)

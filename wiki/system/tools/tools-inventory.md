@@ -1,19 +1,19 @@
 ---
-title: "Tools Inventory — i tool che gli agenti possono chiamare"
+title: Tools Inventory — i tool che gli agenti possono chiamare
 type: synthesis
 tags:
+  - tool-inventory
   - multi-agent
   - architecture
-  - infrastructure
-created: 2026-06-06
-updated: 2026-07-13
+created: 2026-06-06T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 related:
-  - "[[system/agents/agents]]"
-  - "[[system/data/data-layer]]"
-  - "[[system/data/data-providers]]"
-  - "[[system/investment/state-schemas]]"
-  - "[[prior-art/tradingagents/code-wiki]]"
+  - '[[system/agents/agents]]'
+  - '[[system/data/data-layer]]'
+  - '[[system/data/data-providers]]'
+  - '[[system/investment/state-schemas]]'
+  - '[[prior-art/tradingagents/code-wiki]]'
 confidence: medium
 area: software
 ---

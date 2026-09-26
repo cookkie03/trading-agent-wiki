@@ -1,16 +1,18 @@
 ---
-title: "Strategy — Indice"
+title: Strategy — Indice
 type: overview
 tags:
+  - trading-approach
+  - backtesting
   - strategy
   - market-structure
-created: 2026-05-14
-updated: 2026-07-13
+created: 2026-05-14T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 area: strategy
 related:
-  - "[[system/quant/quant-backtesting]]"
-  - "[[system/foundation/decision-log]]"
+  - '[[system/quant/quant-backtesting]]'
+  - '[[system/foundation/decision-log]]'
 ---
 
 # Strategy

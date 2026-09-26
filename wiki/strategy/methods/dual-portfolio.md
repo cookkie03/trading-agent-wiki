@@ -1,16 +1,17 @@
 ---
-title: "Dual Portfolio — Value + Quant"
+title: Dual Portfolio — Value + Quant
 type: synthesis
 tags:
+  - dual-portfolio
+  - portfolio-management
   - strategy
-  - quant
-created: 2026-05-22
-updated: 2026-05-29
+created: 2026-05-22T00:00:00.000Z
+updated: 2026-05-29T00:00:00.000Z
 status: draft
 related:
-  - "[[strategy/index]]"
-  - "[[strategy/methods/mean-reversion-stat-arb]]"
-  - "[[strategy/methods/factor-investing]]"
+  - '[[strategy/index]]'
+  - '[[strategy/methods/mean-reversion-stat-arb]]'
+  - '[[strategy/methods/factor-investing]]'
 confidence: low
 area: strategy
 ---

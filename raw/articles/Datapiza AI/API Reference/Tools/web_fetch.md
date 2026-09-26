@@ -1,5 +1,9 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/API%20Reference/Tools/web_fetch/
+tags:
+  - web-fetch-tools
+  - api-reference
+  - clients
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/API%20Reference/Clients/Avaiable_Clients/mistral/#mistral)

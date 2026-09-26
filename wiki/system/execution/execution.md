@@ -1,20 +1,21 @@
 ---
-title: "Execution — Investment State, Trade, Exchange"
+title: Execution — Investment State, Trade, Exchange
 type: build
 tags:
+  - execution-state
   - build
   - infrastructure
   - software
-created: 2026-05-13
-updated: 2026-07-13
+created: 2026-05-13T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 priority: high
 area: software
 related:
-  - "[[system/foundation/architecture]]"
-  - "[[system/agents/agents]]"
-  - "[[system/data/data-layer]]"
-  - "[[system/data/data-providers]]"
+  - '[[system/foundation/architecture]]'
+  - '[[system/agents/agents]]'
+  - '[[system/data/data-layer]]'
+  - '[[system/data/data-providers]]'
 ---
 
 # Execution — Investment State, Trade, Exchange

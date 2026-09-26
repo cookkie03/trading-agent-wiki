@@ -1,5 +1,9 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/Guides/RAG/rag/
+tags:
+  - datapizza-tools
+  - rag
+  - data-preprocessing
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/API%20Reference/Type/tool/#datapizza.tools.Tool)

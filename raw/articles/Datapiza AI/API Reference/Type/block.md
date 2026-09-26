@@ -1,5 +1,8 @@
 ---
 source: https://docs.datapizza.ai/0.1.0/API%20Reference/Type/block/
+tags:
+  - api-reference
+  - datapizza
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/API%20Reference/Modules/Splitters/recursive_splitter/#recursivesplitter)

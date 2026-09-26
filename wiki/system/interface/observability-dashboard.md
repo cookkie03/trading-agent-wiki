@@ -1,22 +1,19 @@
 ---
-title: "Dashboard di osservabilità"
+title: Dashboard di osservabilità
 type: build
 tags:
+  - dashboard-design
   - architecture
   - software
-  - ux
-  - streamlit
-  - nas
-  - deploy
-created: 2026-06-08
-updated: 2026-07-13
+created: 2026-06-08T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 priority: high
 area: software
 related:
-  - "[[system/orchestration/universe-watchlist]]"
-  - "[[system/data/data-layer]]"
-  - "[[prior-art/libraries/sfc-portfolio-tracker]]"
+  - '[[system/orchestration/universe-watchlist]]'
+  - '[[system/data/data-layer]]'
+  - '[[prior-art/libraries/sfc-portfolio-tracker]]'
 confidence: high
 ---
 

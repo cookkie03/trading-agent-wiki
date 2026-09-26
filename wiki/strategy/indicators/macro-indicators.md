@@ -1,21 +1,21 @@
 ---
-title: "Indicatori per Analisi Macroeconomica"
+title: Indicatori per Analisi Macroeconomica
 type: synthesis
 tags:
+  - macro-indicators
   - strategy
   - market-structure
-  - quant
-created: 2026-06-05
-updated: 2026-06-20
+created: 2026-06-05T00:00:00.000Z
+updated: 2026-06-20T00:00:00.000Z
 status: active
 area: strategy
 confidence: high
-raw_source_path: "raw/archived/I Driver di Mercato (definitivo).md"
+raw_source_path: raw/archived/I Driver di Mercato (definitivo).md
 related:
-  - "[[system/quant/quant-backtesting]]"
-  - "[[strategy/questions-for-salvatore]]"
-  - "[[strategy/index]]"
-  - "[[system/data/data-layer]]"
+  - '[[system/quant/quant-backtesting]]'
+  - '[[strategy/questions-for-salvatore]]'
+  - '[[strategy/index]]'
+  - '[[system/data/data-layer]]'
 ---
 
 # Indicatori per Analisi Macroeconomica

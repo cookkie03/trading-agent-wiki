@@ -1,5 +1,9 @@
 ---
-source: https://docs.datapizza.ai/0.1.0/API%20Reference/Vectorstore/qdrant_vectorstore/
+source: >-
+  https://docs.datapizza.ai/0.1.0/API%20Reference/Vectorstore/qdrant_vectorstore/
+tags:
+  - vector-store
+  - datapizza
 ---
 
 [ Skip to content ](https://docs.datapizza.ai/0.1.0/API%20Reference/Pipelines/functional/#datapizza.pipeline.functional_pipeline.FunctionalPipeline)

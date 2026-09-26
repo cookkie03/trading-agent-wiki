@@ -1,21 +1,22 @@
 ---
-title: "Architettura del sistema"
+title: Architettura del sistema
 type: build
 tags:
+  - system-design
   - build
   - architecture
-created: 2026-04-30
-updated: 2026-07-13
+created: 2026-04-30T00:00:00.000Z
+updated: 2026-07-13T00:00:00.000Z
 status: active
 priority: high
 area: software
 related:
-  - "[[system/foundation/mvp]]"
-  - "[[system/foundation/stack]]"
-  - "[[system/data/data-layer]]"
-  - "[[system/quant/quant-backtesting]]"
-  - "[[system/agents/agents]]"
-  - "[[system/execution/execution]]"
+  - '[[system/foundation/mvp]]'
+  - '[[system/foundation/stack]]'
+  - '[[system/data/data-layer]]'
+  - '[[system/quant/quant-backtesting]]'
+  - '[[system/agents/agents]]'
+  - '[[system/execution/execution]]'
 ---
 
 # System Map

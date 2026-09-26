@@ -1,3 +1,10 @@
+---
+tags:
+  - backtesting
+  - validation
+  - cross-validation
+---
+
 <!-- source: https://silviobaratto.github.io/optimizer/api/validation/ -->
 
 [ Skip to content ](https://silviobaratto.github.io/optimizer/api/validation/#validation)

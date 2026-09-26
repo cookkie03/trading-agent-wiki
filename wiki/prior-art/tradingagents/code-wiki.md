@@ -1,21 +1,21 @@
 ---
-title: "TradingAgents Code Wiki"
+title: TradingAgents Code Wiki
 type: source
 tags:
+  - trading-agents
   - architecture
   - multi-agent
-  - research
-raw_source_path: "raw/articles/TradingAgents Code Wiki.md"
-created: 2026-05-21
-updated: 2026-05-21
+raw_source_path: raw/articles/TradingAgents Code Wiki.md
+created: 2026-05-21T00:00:00.000Z
+updated: 2026-05-21T00:00:00.000Z
 status: active
 confidence: high
 related:
-  - "[[prior-art/tradingagents/paper]]"
-  - "[[system/foundation/architecture]]"
-  - "[[system/agents/agents]]"
+  - '[[prior-art/tradingagents/paper]]'
+  - '[[system/foundation/architecture]]'
+  - '[[system/agents/agents]]'
 sources:
-  - "https://codewiki.google/github.com/tauricresearch/tradingagents"
+  - https://codewiki.google/github.com/tauricresearch/tradingagents
 ---
 
 # TradingAgents Code Wiki
