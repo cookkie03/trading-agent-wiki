@@ -21,7 +21,7 @@ related:
 ---
 # System Wiki Reorganization
 
-Riorganizzazione completata il 2026-07-13, senza perdere informazione. Il dettaglio di lettura e assorbimento dei commenti è [[_meta/comment-resolution-2026-07-13]].
+Riorganizzazione completata il 2026-07-13, senza perdere informazione. Il dettaglio di lettura e assorbimento dei commenti è [[comment-resolution-2026-07-13]].
 
 ## Obiettivo
 

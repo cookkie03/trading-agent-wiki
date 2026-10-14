@@ -691,7 +691,7 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 
 - **Type**: editorial ingest / structural reorganization
 - **Sources**: daily note 2026-06-06, 2026-06-20/21/22/25/26/29, 2026-07-12 e tutte le annotazioni `%%…%%` presenti in `wiki/`; i raw non sono stati modificati.
-- **Pages created**: [[_meta/comment-resolution-2026-07-13]], [[system/foundation/implementation-status]], [[system/data/data-vendors]], [[artifacts/tool-catalog.base]].
+- **Pages created**: [[comment-resolution-2026-07-13]], [[system/foundation/implementation-status]], [[system/data/data-vendors]], [[artifacts/tool-catalog.base]].
 - **Pages updated**: [[overview]], [[artifacts/project-board]], [[_meta/index]], [[_meta/taxonomy]], [[_meta/hot-cache]], [[_meta/glossario]], [[system/foundation/decision-log]] e le pagine di system/ collegate ai commenti.
 - **Structural change**: `wiki/system/` riorganizzata in sottodomini; wikilink aggiornati. Le analisi di fork/mapping storico sono sotto [[system/_reference]].
 - **Contradictions resolved**: framework LangGraph + LangSmith; state annidato a campi fissi; MVP USD-only senza benchmark dinamico; analisi event-driven con health check periodico; repository esterno non attestato dal vault.
@@ -704,3 +704,9 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Pages updated**: [[artifacts/project-board]], [[_meta/index]], [[_meta/hot-cache]]
 - **Git status**: allineamento `core.filemode = false` per ignorare i permessi del filesystem Synology Drive.
 - **Skills**: sbloccate in Hermes `codebase-design`, `to-spec`, `to-tickets` sotto `software-development`.
+
+## [2026-10-14] lookup | Recupero del task di rilettura integrale
+
+- **Esito**: ritrovato il risultato persistito in [[comment-resolution-2026-07-13]]; [[artifacts/project-board]] lo marca completato.
+- **Ambito**: daily note dal 2026-06-06 al 2026-07-12 e annotazioni `%%…%%` allora presenti in `wiki/`; il registro conserva le destinazioni e le decisioni risultanti.
+- **Limite del recupero**: la conversazione originale non è stata trovata tra le conversazioni recenti o archiviate consultate.

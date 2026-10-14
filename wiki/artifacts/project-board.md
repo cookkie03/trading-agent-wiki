@@ -10,9 +10,9 @@ created: 2026-04-30T00:00:00.000Z
 updated: 2026-07-13T00:00:00.000Z
 status: active
 related:
-  - '[[system/foundation/decision-log]]'
-  - '[[system/foundation/implementation-status]]'
-  - '[[_meta/comment-resolution-2026-07-13]]'
+  - "[[system/foundation/decision-log]]"
+  - "[[system/foundation/implementation-status]]"
+  - "[[comment-resolution-2026-07-13]]"
 confidence: high
 priority: high
 area: ops
@@ -53,7 +53,7 @@ kanban-plugin: board
 
 ## ✅ Fatto
 
-- [x] 🛠 **Assorbiti i commenti Obsidian e le daily note rilevanti** — ogni annotazione ha una destinazione; le pagine operative non contengono più commenti nascosti → [[_meta/comment-resolution-2026-07-13]]
+- [x] 🛠 **Assorbiti i commenti Obsidian e le daily note rilevanti** — ogni annotazione ha una destinazione; le pagine operative non contengono più commenti nascosti → [[comment-resolution-2026-07-13]]
 - [x] 🛠 **Riorganizzato `wiki/system/` per dominio** — spostati i file, aggiornati i wikilink e separato il reference design → [[system/foundation/wiki-reorganization]]
 - [x] 🛠 **Stabilita la policy di stato del vault** — la wiki descrive requisiti; il repository esterno non viene attestato senza verifica → [[system/foundation/implementation-status]]
 - [x] 🛠 **Scelta framework consolidata** — LangGraph + LangSmith; Datapizza AI resta prior-art storico → [[system/foundation/stack]]
