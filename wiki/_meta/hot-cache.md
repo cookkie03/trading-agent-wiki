@@ -9,6 +9,13 @@ tags:
 
 > Contesto di sessione recente. Il repository è esterno al vault: qui vivono spec, decisioni e priorità, non lo stato verificato del codice.
 
+## Sessione 2026-10-31 — Workspace ripulito
+
+- Rimosse dal repository codice le copie duplicate `code/` e `wiki/`.
+- Stato canonico confermato: codice in `/home/luca/trading-agent/`, wiki in `/home/luca/trading-agent-wiki/`.
+- Verificata la presenza dei file entry point della wiki e l'assenza delle due copie eliminate.
+
+
 ## Sessione 2026-10-14 — Recupero della rilettura integrale
 
 - **Esito**: ritrovato il registro della rilettura del 2026-07-13 in [[comment-resolution-2026-07-13]]; la board la marca completata. Il task originale non è stato individuato tra le conversazioni recenti o archiviate consultate.

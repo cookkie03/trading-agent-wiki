@@ -7,6 +7,15 @@ tags:
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-10-31] WORKSPACE — Rimozione copie duplicate nel repository codice
+
+- **Type**: workspace cleanup + verification
+- **Repository codice**: rimosse le copie annidate non canoniche `trading-agent/code/` e `trading-agent/wiki/`.
+- **Decisione**: il codice operativo resta nella root di `trading-agent/`; la wiki canonica resta nel repository adiacente `trading-agent-wiki/`.
+- **Verifica**: `code/` e `wiki/` non esistono più; la root contiene il codice attivo; `trading-agent-wiki/wiki/_meta/hot-cache.md` e `overview.md` sono presenti.
+- **Nota**: i riferimenti trovati in `claude-chats/` sono transcript storici, non configurazioni operative.
+
+
 ## [2026-06-15] MIGRAZIONE — LangGraph → Datapizza AI (branch feat/datapizza-migration)
 
 - **Branch**: `feat/datapizza-migration` su `trading-agent/`
