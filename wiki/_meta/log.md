@@ -7,6 +7,15 @@ tags:
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-10-31] DECISIONE — Convenzione Git e workspace minimale
+
+- **Type**: decision + documentation
+- **Owner**: 🛠 Luca (software)
+- **Decisione**: lavoro ordinario su `main`; worktree solo su richiesta o per modifiche radicali, sperimentali o incerte; push sempre su GitHub; merge a cura di Luca; PR aperte dall'agente quando il lavoro è su branch separato.
+- **Documentazione**: `docs/git-workflow.md` nel repository codice; [[system/foundation/git-workflow]] nella wiki.
+- **Motivazione**: mantenere il codice monitorabile da VS Code e riservare l'isolamento ai casi in cui è realmente utile.
+
+
 ## [2026-10-31] WORKSPACE — Rimozione copie duplicate nel repository codice
 
 - **Type**: workspace cleanup + verification
@@ -15,6 +24,14 @@ tags:
 - **Verifica**: `code/` e `wiki/` non esistono più; la root contiene il codice attivo; `trading-agent-wiki/wiki/_meta/hot-cache.md` e `overview.md` sono presenti.
 - **Nota**: i riferimenti trovati in `claude-chats/` sono transcript storici, non configurazioni operative.
 
+## [2026-10-31] CODICE — Ingestion OHLCV guidata
+
+- **Type**: implementation + verification
+- **Repository**: worktree `worktree-market-data-ingestion`
+- **Implementazione**: `scripts/ingest_market_data.py` per Yahoo Finance e Alpaca; `tests/test_ingest_market_data.py` per mapping provenance e deduplicazione idempotente SQLite.
+- **Verifica**: `uv run pytest` → 42 passed, 1 skipped; Ruff check/format passati; CLI `--help` passato.
+- **Limite**: nessuna chiamata reale ai provider e nessuna credenziale usata; runtime smoke test ancora opt-in.
+- **Pagina**: [[artifacts/mvp-database-2026-10-31]]
 
 ## [2026-06-15] MIGRAZIONE — LangGraph → Datapizza AI (branch feat/datapizza-migration)
 
@@ -719,3 +736,68 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Esito**: ritrovato il risultato persistito in [[comment-resolution-2026-07-13]]; [[artifacts/project-board]] lo marca completato.
 - **Ambito**: daily note dal 2026-06-06 al 2026-07-12 e annotazioni `%%…%%` allora presenti in `wiki/`; il registro conserva le destinazioni e le decisioni risultanti.
 - **Limite del recupero**: la conversazione originale non è stata trovata tra le conversazioni recenti o archiviate consultate.
+
+## [2026-10-30] setup | Workspace GitHub e wiki prima dello sviluppo
+
+- **Richiesta**: Luca avvia il lavoro sul progetto Python; collegare le cartelle locali ai repository omonimi, scaricare la wiki e consultarla prima di ogni attività sul progetto.
+- **Operazione**: clone completo di `cookkie03/trading-agent` e `cookkie03/trading-agent-wiki` sotto `/Users/luca/Documents/Projects/`; `main` con tracking `origin/main` in entrambi.
+- **Evidenza**: HEAD iniziali `20bf209` (codice) e `1d11798` (wiki); remote, tracking e working tree verificati dopo il clone.
+- **Istruzioni**: aggiunti `AGENTS.md` nei due repository per rendere esplicito il flusso di consultazione della wiki.
+- **Pages updated**: [[_meta/hot-cache]], [[artifacts/project-board]], [[system/foundation/implementation-status]].
+- **Questione aperta**: codice precedente presente contro piano di ripartenza da zero; preservato il codice, destinazione da definire con Luca.
+- **Limiti**: nessun avvio dell'applicazione, suite di test, commit o push; modifiche documentali locali.
+
+## [2026-10-30] reset | Ripartenza e recupero appunti sulle classi
+
+- **Autorizzazione**: Luca richiede rimozione codice e commit di ripartenza, con eccezione per le skill di Matt Pocock e preferenza per il loro utilizzo.
+- **Esito verificato**: commit locale `88ca413` nel repo codice; conservate skill, collegamenti, lockfile e istruzioni; cronologia preservata, nessun push.
+- **Recupero fonti**: lista esatta delle classi nella pagina Notion `4012e441-b0e5-81fc-b942-c109716dfb1f`; Todoist task `6hgrJWVFhfGcGpmX` e sottotask `6hjx2hxw8GVvgW45` indicano semplicità e leggibilità, senza lista classi.
+- **Pages updated**: [[system/foundation/codebase-architecture]], [[system/foundation/decision-log]], [[system/foundation/implementation-status]], [[artifacts/project-board]], [[_meta/hot-cache]].
+- **Limiti**: nessuna nuova classe o suite di test; proposta Provider/Data Broker da discutere con Luca.
+
+## [2026-10-30] design | Alberatura modulare, Broker e consulenti dedicati
+
+- **Richiesta Luca**: studiare l'organizzazione repository prima delle classi; iniziare dal broker Alpaca; creare consulente wiki riutilizzabile e sub-agent documentazione.
+- **Attività**: studio wiki con consulente a fonti locali, ricerca documentazione ufficiale Alpaca delegata secondo skill Matt Pocock `research`; proposta di struttura in `docs/architecture.md` del codice.
+- **Documentazione**: agente dedicato incaricato di trovare e usare skill setup documentazione; README e routine di manutenzione in preparazione. Regola di aggiornamento registrata in `AGENTS.md` del codice.
+- **Stato**: struttura e primo contratto Broker proposti, non implementati; nessun ordine, dipendenza prodotto, commit o push di questa fase.
+- **Pages updated**: [[system/foundation/codebase-architecture]], [[artifacts/project-board]], [[_meta/hot-cache]].
+
+## [2026-10-30] docs | Ricerca Alpaca e setup documentazione completati
+
+- **Artefatti locali nel repository codice**: `README.md`, `docs/architecture.md` (proposta), `docs/documentation.md` (routine), `docs/research/alpaca-broker.md` (ricerca ufficiale datata).
+- **Skill**: installate project-local e applicate `find-skills` da `vercel-labs/skills` e `readme-blueprint-generator` da `github/awesome-copilot`; preservate 27 skill di Matt Pocock e aggiornato il relativo lockfile.
+- **Review wiki**: consulente a fonti esclusivamente wiki non rileva omissioni materiali nella proposta di struttura; nomi e contratto restano da concordare.
+- **Risultati ricerca esterna**: Trading API distinta da Broker API; esiti timeout da riconciliare senza retry cieco; bracket attiva uscite dopo fill completo; fonti ufficiali discordanti sui frazionali, da verificare prima di includerli.
+- **Verifiche**: documenti e stato Git letti; `git diff --check` passa. Nessuna nuova implementazione, chiamata autenticata, operazione broker, suite prodotto, commit o push.
+
+## [2026-10-30] scaffold | Alberatura approvata e requisito Docker
+
+- **Richiesta**: Luca approva la struttura, chiede salvataggio wiki e avvio applicazione; requisito deploy produzione Docker.
+- **Operazione**: creati package vuoti con docstring in `src/trading_agent`, directory test, `pyproject.toml`, `.gitignore`, `.dockerignore`; aggiornati README e architettura locale.
+- **Wiki**: albero salvato in [[system/foundation/codebase-architecture]], decisione in [[system/foundation/decision-log]], aggiornati board e hot-cache.
+- **Limiti**: nessuna classe Broker, suite funzionale, build Docker, deploy, commit o push in questo step. Dockerfile e runtime rimangono attività esplicite.
+
+## [2026-10-31] build | Broker read-only, adapter Alpaca e test
+
+- **Richiesta Luca**: scrivere Broker valutabile, compatibilità Alpaca e test usando skill Matt Pocock; Luca dispone di conto Alpaca.
+- **Attività**: TDD progressivo (conto → posizioni → ordini → errori), SDK reale con HTTP simulato; consulenza wiki, revisione tecnica indipendente e agente documentazione.
+- **Regressioni corrette**: timeout HTTP mancante nello SDK (adapter con connect/read 5/30 secondi) e JSON malformato classificato come errore di rete. Entrambe riprodotte da test falliti prima del fix.
+- **Risultato**: 25 offline passati, 1 paper opt-in saltato; mypy senza errori sul modulo. Nessun ordine, chiamata autenticata, commit o push. Dettagli verificabili in [[system/foundation/implementation-status#Broker read-only — verifica 2026-10-31]].
+- **Documentazione**: README, `docs/brokers.md`, architettura, stato, hot-cache e board aggiornati. Requisito Docker resta da completare col runtime.
+
+
+## [2026-10-31] docs | Direzione MVP e quattro chat
+
+- **Richiesta**: accelerare con guida operativa; scelte delegate e quattro filoni vendor/schema, DB, OpenBB e dashboard. Studio codice non è gate.
+- **Scelte registrate**: SQLite MVP condizionato a singolo writer; cache esclusa ma dedup/persistenza conservate; React/TypeScript/Vite con backend Python read-only; vendor agnostic, OpenBB-first in riesame.
+- **Pagine**: [[artifacts/mvp-parallel-work-2026-10-31]], [[artifacts/mvp-database-2026-10-31]], [[artifacts/mvp-openbb-2026-10-31]], [[artifacts/mvp-dashboard-2026-10-31]]. Pagina vendor affidata alla relativa chat: [[system/data/vendor-selection-2026-10-31]].
+- **Allineamenti**: board, index, hot-cache e decision-log; sostituita card Broker già completato offline. Pagine filoni sono incarichi, non prove di funzionamento.
+- **Limiti**: nessun codice modificato dal consulente documentazione, chiamata broker, servizio avviato, commit o push; verifiche nuovi filoni da registrare dopo esecuzione.
+
+## [2026-10-31] ops | Configurazione MCP Mempalace
+
+- **Richiesta Luca**: configurare Mempalace come server MCP Claude Code tramite Docker.
+- **Operazione**: aggiunto a configurazione utente `/home/luca/.claude.json` il server `mempalace`, con volume persistente `mempalace-data:/data` e mount read-only `/home/luca/.claude/projects:/transcripts:ro`.
+- **Verifica**: Docker Engine disponibile; `claude mcp get mempalace` riconosce il server ma il test di connessione va in timeout perché l'immagine `ghcr.io/mempalace/mempalace:latest` non è presente localmente. Nessun pull o avvio persistente eseguito.
+- **Scope**: configurazione personale utente, non repository condiviso; nessun commit o push.

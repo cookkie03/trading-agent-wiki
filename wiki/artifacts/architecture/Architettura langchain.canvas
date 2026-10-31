@@ -1,0 +1,32 @@
+{
+	"nodes":[
+		{"id":"60d13a6d7e3a307e","type":"text","text":"Agent 1 (node): market analyst","x":-720,"y":405,"width":250,"height":60},
+		{"id":"0d579fcafd552a19","type":"text","text":"STATE: investment plan (template)","x":-150,"y":545,"width":360,"height":60},
+		{"id":"3497adb4cfaeb42a","type":"text","text":"Agent 3 (node): risk analyst","x":-730,"y":645,"width":250,"height":60},
+		{"id":"fa4d4f57e5950a6f","type":"text","text":"Agent 2 (node): trader","x":-730,"y":905,"width":250,"height":60},
+		{"id":"7cf1beeceecebc19","type":"text","text":"tool (fai una transazione)","x":-390,"y":1025,"width":250,"height":60},
+		{"id":"06f4bf1b542a147a","type":"text","text":"input","x":-688,"y":230,"width":250,"height":60},
+		{"id":"b1b825f2ee85d866","type":"text","text":"input","x":-317,"y":-480,"width":250,"height":60},
+		{"id":"e82d6004b8623d7c","type":"text","text":"llm","x":-730,"y":-370,"width":250,"height":60},
+		{"id":"61a2e0cdcde67391","type":"text","text":"risposta","x":10,"y":-120,"width":250,"height":60},
+		{"id":"193c8dc214b9a53e","type":"text","text":"tool:\n- name\n- description","x":-605,"y":-60,"width":310,"height":120},
+		{"id":"a7b54b61fb3b129e","type":"text","text":"AGENTE (reasoning)","x":-310,"y":-310,"width":250,"height":60},
+		{"id":"3ee8e4c6c8221ad2","type":"text","text":"system prompt","x":-730,"y":-250,"width":250,"height":60}
+	],
+	"edges":[
+		{"id":"d3c8a8c66b8a834e","fromNode":"a7b54b61fb3b129e","fromSide":"bottom","toNode":"193c8dc214b9a53e","toSide":"top","label":"loop"},
+		{"id":"bc1ecb4bd2c7fbfe","fromNode":"193c8dc214b9a53e","fromSide":"right","toNode":"a7b54b61fb3b129e","toSide":"bottom","label":"loop"},
+		{"id":"03af8983b689de1f","fromNode":"a7b54b61fb3b129e","fromSide":"right","toNode":"61a2e0cdcde67391","toSide":"top"},
+		{"id":"a76ebf0a34558fa3","fromNode":"b1b825f2ee85d866","fromSide":"bottom","toNode":"a7b54b61fb3b129e","toSide":"top"},
+		{"id":"d69decb80c5fca15","fromNode":"3ee8e4c6c8221ad2","fromSide":"right","toNode":"a7b54b61fb3b129e","toSide":"left"},
+		{"id":"05160a7c628704f6","fromNode":"e82d6004b8623d7c","fromSide":"right","toNode":"a7b54b61fb3b129e","toSide":"left"},
+		{"id":"6fd9fab25438fd62","fromNode":"3497adb4cfaeb42a","fromSide":"bottom","toNode":"fa4d4f57e5950a6f","toSide":"top","label":"edge"},
+		{"id":"7375f0fb6075fc15","fromNode":"60d13a6d7e3a307e","fromSide":"bottom","toNode":"3497adb4cfaeb42a","toSide":"top","label":"edge"},
+		{"id":"4abbbdb8d7850d98","fromNode":"06f4bf1b542a147a","fromSide":"bottom","toNode":"60d13a6d7e3a307e","toSide":"top"},
+		{"id":"b434451d8897463a","fromNode":"60d13a6d7e3a307e","fromSide":"right","toNode":"0d579fcafd552a19","toSide":"left","label":"scrive"},
+		{"id":"1e858253e1f20496","fromNode":"0d579fcafd552a19","fromSide":"bottom","toNode":"3497adb4cfaeb42a","toSide":"top","label":"input"},
+		{"id":"cda4a95775fda972","fromNode":"3497adb4cfaeb42a","fromSide":"right","toNode":"0d579fcafd552a19","toSide":"bottom","label":"output"},
+		{"id":"a41b06216e104331","fromNode":"fa4d4f57e5950a6f","fromSide":"bottom","toNode":"7cf1beeceecebc19","toSide":"left"},
+		{"id":"c7f89435fd94a0e3","fromNode":"fa4d4f57e5950a6f","fromSide":"right","toNode":"0d579fcafd552a19","toSide":"bottom"}
+	]
+}

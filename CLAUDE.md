@@ -80,3 +80,7 @@ Valori canonici per `type` e `tags` → `wiki/_meta/taxonomy.md`.
 - Skill cita `daily-notes/` → flusso non operativo in questo vault
 - In conflitto skill ↔ CLAUDE.md → vince CLAUDE.md
 - In conflitto CLAUDE.md ↔ taxonomy.md sui path → vince taxonomy.md
+
+## Consultazione prima del lavoro sul codice
+
+Per ogni richiesta relativa al Trading Agent, consulta prima questa wiki e le pagine pertinenti, anche quando il lavoro riguarda il codice nel repository adiacente `../trading-agent/`. La procedura condivisa è in `../trading-agent/AGENTS.md`.

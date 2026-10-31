@@ -15,6 +15,8 @@
 - [[system/foundation/stack]] — stack e framework scelti
 - [[system/foundation/implementation-status]] — convenzione tra spec wiki e repository esterno
 - [[system/foundation/decision-log]] — decisioni chiuse e aperte
+- [[system/foundation/git-workflow]] — convenzione Git, push, PR, merge e worktree
+- [[system/foundation/python-commenting-conventions]] — metodo e regole per i commenti Python
 - [[system/foundation/ideas-log]] — idee storiche di progetto
 - [[system/foundation/wiki-reorganization]] — riordino editoriale completato
 
@@ -74,6 +76,10 @@
 ## Artifacts
 
 - [[artifacts/project-board]] — board unica di progetto
+- [[artifacts/mvp-parallel-work-2026-10-31]] — coordinamento quattro chat MVP e decisioni SQLite/frontend
+- [[artifacts/mvp-database-2026-10-31]] — dettaglio incarico
+- [[artifacts/mvp-openbb-2026-10-31]] — dettaglio incarico
+- [[artifacts/mvp-dashboard-2026-10-31]] — dettaglio incarico
 - [[artifacts/piano-operativo-trading-agent]] — piano operativo e roadmap di sviluppo codebase
 - [[artifacts/tool-catalog.base]] — vista delle spec tool/vendor
 - [[architettura.canvas]] — canvas di design

@@ -29,6 +29,9 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 | 2026-07-13 | **MVP USD-only senza benchmark dinamico** | FX, benchmark/alpha dinamici, opzioni e multi-asset sono Post-MVP. → [[system/foundation/mvp]] |
 | 2026-07-13 | **Analisi event-driven, health check periodico** | Alert, calendario e `next_check_date` attivano il deep-dive; portafoglio e integrità sono controllati con regolarità. → [[system/orchestration/trigger-engine]] |
 | 2026-07-13 | **OpenBB-first per catalogo, multi-vendor per runtime** | Broker per conto/quote quando opportuno; provider dietro wrapper e valutati per capacità/fallback. → [[system/data/data-vendors]] |
+| 2026-10-31 | **OpenBB come primo vendor con adapter sostituibili** | Il core espone contratti propri; `OpenBBProvider` e adapter diretti implementano lo stesso seam. OpenBB è il percorso iniziale di raccolta, non il contratto né la policy di fallback. Alpaca data-vendor resta da analizzare oltre il broker. → [[system/data/data-vendors]] |
+| 2026-10-31 | **Commenti Python pragmatici e why-first** | Il codice spiega il cosa; docstring brevi spiegano l'interfaccia pubblica; commenti inline spiegano motivazioni, invarianti e vincoli non ovvi. Commenti algoritmici e sulle ratio economiche entrano con le feature quantitative; commenti temporali/storici solo per vincoli esterni attuali e verificabili. → [[system/foundation/python-commenting-conventions]] |
+| 2026-10-31 | **Convenzione Git e workspace minimale** | Il lavoro ordinario resta su `main` per consentire il monitoraggio da VS Code; si usa un worktree solo su richiesta di Luca o per modifiche radicali/sperimentali/incerte. Ogni lavoro completato viene pushato su GitHub; Luca esegue il merge e l'agente apre la PR quando serve. Le decisioni e gli avanzamenti rilevanti aggiornano anche documentazione e wiki. → [[system/foundation/git-workflow]] |
 
 Le righe successive sono cronologia e reference decisionale: non vanno lette come stato attuale quando una riga di questa tabella le supera.
 
@@ -179,3 +182,22 @@ Le righe successive sono cronologia e reference decisionale: non vanno lette com
 | Comportamento per-agente del desk (impianto) | **CHIUSA 2026-06-06**: 5 dimensioni per i 4 agenti; news/sentiment per tipo di info, tutti contribuiscono alla direzione, stop auto+PM-richiama. Resta da scrivere i system prompt → [[system/agents/agent-behaviors]] |
 | Parallelismo multi-ticker (topologia) | **CHIUSA 2026-06-06**: architettura a imbuto E→D→A→B/C (screening deterministico + coda + subgraph per-ticker + scheda DB); MVP da D+A. Restano solo i numeri/soglie → [[system/orchestration/parallelism-design]] |
 | Frequenza invocazione (vincolo tecnico) | Confluita in "Frequenza ciclo" + transaction/token cost |
+
+## 2026-10-30 — Ripartenza della codebase
+
+Luca conferma di eliminare il codice precedente e ripartire per step dall'ideazione delle classi. Eccezione esplicita: conservare e usare per quanto possibile le skill di Matt Pocock. Codice rimosso nel commit locale `88ca413`; restano skill, collegamenti, lockfile delle skill e `AGENTS.md`. Cronologia precedente conservata; nessun push. Appunti e proposta da discutere in [[system/foundation/codebase-architecture#Avvio per classi — 2026-10-30]].
+
+## 2026-10-30 — Alberatura approvata e deploy Docker
+
+Luca approva l'alberatura `src/trading_agent` del monolite modulare e chiede di applicarla. Conferma come requisito il deploy produzione con Docker. Responsabilità e albero in [[system/foundation/codebase-architecture#Alberatura approvata e requisito Docker — 2026-10-30]]. L'approvazione riguarda struttura e vincolo di deploy; contratti Broker e runtime si sviluppano per step.
+
+
+## 2026-10-31 — Accelerazione MVP, SQLite e dashboard React
+
+Owner: 🛠 Luca (software). Luca chiede guida operativa, delega le scelte e autorizza quattro chat: vendor/schema con primo adapter, database, spiegazione OpenBB, dashboard. Studio del codice non è un gate.
+
+SQLite per l'MVP se adeguato a singolo servizio writer; repository e migrazioni preparano futura evoluzione PostgreSQL/TimescaleDB senza garantire portabilità automatica. Questo aggiorna per l'MVP la precedente divisione SQLite-dev/Postgres-prod. Cache fuori dal lavoro corrente; persistono dedup, provenienza e persistenza.
+
+Frontend MVP React + TypeScript + Vite/npm con backend Python read-only, superando la preferenza iniziale Streamlit. Sezioni senza dati dichiarate non disponibili/demo; HMR distinto da dati live e servizio persistente. Vendor agnostic confermato; OpenBB-first in riesame, nessun vendor sostitutivo ancora deciso.
+
+Docker resta requisito. Queste sono decisioni e incarichi, non implementazioni o verifiche runtime. Ownership, motivazioni e criteri in [[artifacts/mvp-parallel-work-2026-10-31]]. Execution/intent/recovery restano separati; nessun ordine, commit o push richiesto.
