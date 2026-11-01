@@ -9,6 +9,121 @@ tags:
 
 > Contesto di sessione recente. Il repository è esterno al vault: qui vivono spec, decisioni e priorità, non lo stato verificato del codice.
 
+## Sessione 2026-11-01 — Formule tecniche su main
+
+- Portato su `main` il commit `02db44e` (`feat: add standard technical indicator formulas`), originato dal branch tecnico `worktree-standard-indicators`.
+- `analysis.indicators` espone SMA, EMA, RSI Wilder, MACD, ATR Wilder e Pivot Points classici come funzioni pure testate.
+- La materializzazione persistente resta SMA v1: nessuna estensione del worker o della dashboard è stata introdotta senza parametri MVP e versioni formula chiusi.
+- Verifica del branch tecnico: suite **64 passed, 1 skipped**; Ruff check e format passati.
+
+## Sessione 2026-11-01 — Verifica coordinatore dello stato repository
+
+- Verificato `/home/luca/trading-agent` su `main`: suite offline **64 passed, 1 skipped** con `uv run pytest`.
+- Il repository contiene e verifica il flusso provider → SQLite deduplicato/provenienza → outbox/SMA materializzata → dashboard read-only; agenti, LangGraph, strategia/backtest e execution ordini non sono ancora implementati.
+- Rilevato lavoro locale non committato per il bridge Telegram (`telegram-claude/`, test dedicato, extra `telegram` in `pyproject.toml`/`uv.lock`); bridge verificato solo offline, nessuna prova Telegram reale.
+- Prossimo ordine raccomandato: chiudere decisioni MVP su strategia/Risk Analyst/Market-Sentiment, consolidare policy vendor/freshness/retention e verificare un flusso end-to-end prima di costruire orchestration agentica.
+
+## Sessione 2026-11-01 — Verifica end-to-end Alpaca paper
+
+- Verificato direttamente con credenziali locali via `uv run --env-file .env`, senza ordini: integration test Alpaca paper **1 passed**.
+- Flusso reale su database temporaneo: Alpaca Market Data AAPL/feed IEX → ingestion **84 barre** → SQLite → outbox → **65 SMA materializzate e leggibili** → snapshot portfolio Alpaca → dashboard read model/API; `source=alpaca`.
+- Corretto `data/providers/alpaca_market_data.py`: l'SDK restituisce oggetti `Bar`, non solo mapping. Il parser ora supporta entrambi i formati. Verifica Ruff passata.
+- Nota operativa: il worker rispetta `available_at`; con un timestamp futuro può materializzare zero eventi immediatamente. È comportamento atteso.
+
+## Sessione 2026-11-01 — Strategia MVP e state generico
+
+- Luca ha corretto/confermato trend following su barre hourly, long-only, azioni USA, USD-only, swing trading.
+- Implementato e verificato il primo contratto generico `analysis.strategy_state`: definizione strategia versionata con parametri, contesto mercato con feature/watermark, segnale, piano rischio e readiness; supporta future strategie senza fissare SMA o formule nella forma base.
+- Verifica repository: **70 passed, 1 skipped**; Ruff passata. Documentazione nel repository: `docs/strategy-state.md`.
+- Definita nella wiki la baseline strategica v0.1: hourly, breakout 20, EMA50, volume relativo 20, ATR14 stop 2x/trailing 3x, uscita EMA20 o stop, ingresso barra successiva, rischio 0.5% e cap posizione 10%; proposta da validare con backtest, non ancora codice di produzione.
+
+## Sessione 2026-11-01 — Implementazione pipeline indicatori SMA
+
+- Implementata nel repository la prima pipeline production-grade per SMA v1: `price_bars` + outbox nella stessa transazione, `indicator_values`, worker idempotente e rebuild deterministico.
+- Migration SQLite 004: `indicator_values` con chiave `(symbol, interval, timestamp, indicator_name, parameters, formula_version)` e `outbox_events` con `event_key`, claim atomico, retry e `processed_at`.
+- `SQLiteDashboardReadModel.sma()` legge solo derivati `ready`; il calcolo on-the-fly è fuori dal percorso production.
+- Comando development: `uv run --env-file .env python -m scripts.materialize_indicators --database data/trading-agent.db --window 20`.
+- Verifica repository: `59 passed, 1 skipped`; Ruff check/format attivi passati. Implementazione non estesa agli indicatori wiki RSI/MACD/ATR/Pivot perché formule e parametri MVP non sono ancora chiusi.
+- Catalogo canonico: [[system/quant/quant-backtesting]].
+
+## Sessione 2026-11-01 — Decisione sulla materializzazione dei derivati
+
+- **Decisione consolidata di design:** raw normalizzati persistiti nella stessa transazione che determina il source watermark; evento/outbox dopo commit transazionale; worker incrementale idempotente.
+- Il contratto `indicator_values` richiede provenance, source watermark, formula_version, parameters e status; il rebuild deve essere deterministico.
+- Job schedulati solo per backfill, recovery e reconciliation. In production si leggono derivati `ready`; il calcolo on-the-fly resta fuori dal percorso production.
+- **Implementazione:** non attestata. La pagina di dettaglio è [[system/db-access-performance]]; la decisione è registrata in [[system/foundation/decision-log]].
+
+## Sessione 2026-11-01 — SMA collegata alla capability read-only
+
+- Riferimento wiki applicato: DB centrale come source of truth; indicatori deterministici e pre-calcolati sono la direzione consolidata, ma la persistenza dei derivati richiede uno schema dedicato.
+- Implementata la seam `SQLiteDashboardReadModel.sma(symbol, window, interval)`: legge le chiusure OHLCV persistite, usa `analysis.indicators.simple_moving_average` e restituisce timestamp finale + valore.
+- Aggiunto `MarketDataRepository.history()` per concentrare la query ordinata nel repository; nessuna query SQLite nel chiamante e nessuna chiamata vendor.
+- Verifica: test SMA dedicati e suite offline passati; capability read-only confermata senza introdurre ancora una tabella per indicatori derivati.
+- Prossimo step coerente con la wiki: decidere e implementare eventualmente il compute-once-store degli indicatori con migrazione e provenance, prima di usarli come output persistente per agenti.
+
+## Sessione 2026-11-01 — MemPalace persistente e verifica operativa
+
+- Dichiarata la dipendenza runtime `mempalace>=3.11,<4` in `pyproject.toml` e `uv.lock`; `uv run mempalace --version` restituisce `3.11.0`.
+- README aggiornato con palace condiviso, comandi di ricerca/verifica e procedura MCP.
+- Palace verificato: 128.771 drawer, indice entro la flush-lag tolerance, MCP `Connected`.
+- Pulizia storica non applicata: `sync` trova 93.254 drawer unresolved e li conserva; l’API MCP espone il basename `source_file`, non un path completo affidabile. Cancellare per basename sarebbe ambiguo e non sicuro.
+- Reload: dopo commit/push, riavviare la sessione Claude Code o fare reload del plugin MCP; poi verificare `claude mcp get mempalace` e una ricerca semantica MCP.
+- Dettaglio operativo: [[_meta/log]]
+
+## Sessione 2026-11-01 — Ripristino Mempalace MCP
+
+- Causa: l'eseguibile `/home/luca/trading-agent/.venv/bin/mempalace-mcp` non esisteva; venv e palace persistente erano presenti, ma il pacchetto `mempalace` mancava.
+- Azione locale: installato `mempalace` (versione PyPI risolta `3.11.0`) nel venv esistente, senza modificare `pyproject.toml` o il codice del repository.
+- Configurazione già corretta: `~/.claude.json` punta all'eseguibile ripristinato e a `/home/luca/.config/mempalace/palace`; il palace esiste con database Chroma/SQLite.
+- Verifica: `mempalace-mcp --help`, avvio stdio locale con `--palace` e `claude mcp get mempalace` riusciti; ultimo stato `Connected`.
+- Dettaglio operativo: [[_meta/log]]
+
+## Sessione 2026-11-01 — Bridge Telegram project-scoped
+
+- Implementato `trading-agent/telegram-claude/`: adapter Telegram con `python-telegram-bot`, SQLite per sessioni e invocazione di `claude-my-combo` nella root del progetto.
+- Configurazione: `TELEGRAM_BOT_TOKEN` e `TELEGRAM_ALLOWED_USER_ID` in `~/.config/trading-agent/telegram.env`; token non committato.
+- Comandi dedicati: new/sessions/resume/model/effort/goal/rewind/status/stop/help; default effort `high`; modelli ammessi `my-combo`, `gpt`, `gemini`.
+- Verifica offline: suite completa `46 passed, 1 skipped`; prova Telegram reale non eseguita.
+- Limiti correnti: `/stop` non interrompe subprocess; `/rewind` è inoltrato alla CLI; autocomplete argomenti non disponibile oltre al menu Bot API.
+- Dettaglio: [[system/interface/telegram-claude-bridge]]
+
+## Sessione 2026-11-01 — Baseline development e primo indicatore
+
+- Convenzione development confermata: usare `uv run --env-file .env ...`; nessun `direnv`, auto-export shell o Docker aggiunto.
+- Suite riallineata alla seam corrente `data.ingestion.ingest_ohlcv` / `to_stored_price_bar`; verifica: `51 passed, 1 skipped`.
+- Capability read-only già coperta da `SQLiteDashboardReadModel`, che legge portfolio snapshot e latest market data senza duplicazione.
+- Slice provider normalizzato → SQLite deduplicato → dashboard read model già verificata dai test offline.
+- Aggiunto `analysis.indicators.simple_moving_average`, funzione pura su `Decimal`, con due test dedicati.
+- Ruff check/format passati sui package attivi; il legacy `openbb-ui` resta escluso dai controlli globali.
+
+## Sessione 2026-11-01 — Loader `.env` per sync portfolio
+
+- Corretto `scripts/sync_portfolio.py` per caricare automaticamente `.env` dalla directory corrente o dalla root del progetto.
+- Sono supportate le sole chiavi `ALPACA_API_KEY`, `ALPACA_SECRET_KEY` e `ALPACA_TRADING_URL`; le variabili già esportate nell'ambiente hanno precedenza.
+- Test offline aggiunto in `tests/test_sync_portfolio.py`; verifica: 29 test pertinenti passati, Ruff check/format passati.
+- Verifica reale read-only su `main`: `uv run python -m scripts.sync_portfolio --database data/trading-agent.db` → `Portfolio snapshot: inserted`.
+- Commit su `main`: `934f670`; il database locale generato resta non tracciato.
+
+## Sessione 2026-11-01 — Launcher dashboard locale
+
+- Aggiunto nel repository codice `scripts/run_dashboard_dev.sh` e wrapper root `run_dashboard.sh`: dalla root si avvia tutto con `./run_dashboard.sh`; gestisce Ctrl+C e non avvia `openbb-ui`.
+- Documentazione aggiornata in `README.md` e `docs/dashboard.md` con il comando breve.
+- Verifiche: sintassi Bash e `git diff --check` passati; prova end-to-end non eseguita nel worktree perché mancano `frontend/node_modules` e il virtualenv ignorato. Installare con `npm ci --prefix frontend`; il launcher usa `.venv/bin/python`, poi `python3`.
+
+## Sessione 2026-11-01 — Convenzioni test antirez / Redis / DS4
+
+- Ricerca primaria consolidata in [[prior-art/libraries/redis-testing-practices]].
+- Regole da applicare ai test: seam pubblico, expected indipendente, casi guidati dal failure mode, stati pass/skip/fail/incomplete distinti, fixture con provenienza, trace solo diagnostiche e misure riproducibili.
+- Adattato `tests/data/test_yahoo_finance.py`: expected costruito con `PriceBar` pubblico invece di `bars[0].__class__`.
+- Verifica: 1 test isolato passato; suite completa `42 passed, 1 skipped`; Ruff e `git diff --check` passati.
+
+## Sessione 2026-10-31 — OpenBB yfinance operativo
+
+- OpenBB 4.6.0 installato con `uv sync --extra openbb` nel worktree di configurazione.
+- Prove reali riuscite: OHLCV e fundamentals AAPL via yfinance; serie GDP via FRED con 319 osservazioni; news yfinance ha restituito dati vuoti.
+- `OpenBBProvider` espone `FundamentalMetrics` e `MacroObservation` oltre a `PriceBar`; 44 test passano.
+- Fix e adapter sul branch `worktree-configure-openbb`, commit da consultare nel repository codice.
+
 ## Sessione 2026-10-31 — Convenzione Git e workspace
 
 - Decisione Luca: il lavoro ordinario resta su `main` per il monitoraggio da VS Code. Worktree solo su richiesta o per modifiche radicali, sperimentali o incerte.

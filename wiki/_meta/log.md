@@ -7,6 +7,135 @@ tags:
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-11-01] VERIFICA — Formule tecniche portate su main
+
+- **Type**: integration + verification
+- **Owner**: 🛠 Luca (software)
+- **Repository**: cherry-pick del commit `a8338e0` su `main`, nuovo commit `02db44e` (`feat: add standard technical indicator formulas`).
+- **Contenuto**: SMA, EMA, RSI Wilder, MACD, ATR Wilder e Pivot Points classici disponibili in `analysis.indicators`; test e lint/format verificati.
+- **Confine**: worker, persistenza `indicator_values` e dashboard restano SMA-only; nessuna strategia MVP o parametro operativo è stato dedotto dalle formule.
+
+
+## [2026-11-01] DECISIONE + IMPLEMENTAZIONE — Strategia MVP e state generico
+
+- **Type**: decision + implementation + verification
+- **Owner**: 🔀 Luca (decisione), 🛠 Luca (software)
+- **Decisione**: trend following su barre hourly, long-only, azioni USA, USD-only, swing trading. Short, pairs trading, multi-leg, FX, opzioni e ML/deep learning restano fuori dallo scope iniziale.
+- **Design**: lo state comune non incorpora finestre o formule specifiche; `StrategyDefinition` porta famiglia/versione/parametri, `MarketContext` porta feature e watermark, `Signal` porta direzione/score/rationale e `RiskPlan` porta sizing/stop.
+- **Implementazione**: `analysis/strategy_state.py`, test `tests/analysis/test_strategy_state.py`, documentazione `docs/strategy-state.md`.
+- **Verifica**: suite repository **70 passed, 1 skipped**; Ruff su `analysis` e test passata.
+- **Limite**: il contratto non serializza ancora LangGraph/SQLite e non autorizza ordini.
+
+## [2026-11-01] DECISIONE — Strategia trend following hourly v0.1
+
+- **Type**: strategy specification
+- **Owner**: 🔀 Luca + Salvatore da validare
+- **Decisione/proposta**: barre 1h, azioni USA liquide, long-only, swing trading; breakout 20 barre precedenti + close sopra EMA50 + volume >= 1.2x media 20; ATR14, stop 2x e trailing 3x; exit su stop o close sotto EMA20; ingresso open della barra successiva.
+- **Sizing baseline**: rischio 0.5% dell'equity, cap posizione 10%, quantità intera; costi/slippage espliciti.
+- **Protocollo**: regular hours, provenance Alpaca, split temporale train/validation/test, walk-forward, benchmark SPY buy-and-hold, baseline senza volume.
+- **Stato**: baseline congelata per il primo backtest; non va ottimizzata dopo aver visto i risultati. Dettaglio → [[strategy/methods/trend-following]].
+
+## [2026-11-01] IMPLEMENTAZIONE + VERIFICA — Formule tecniche pure
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Implementazione**: `analysis.indicators` ora espone SMA, EMA, RSI con smoothing Wilder, MACD, ATR con smoothing Wilder e Pivot Points classici; tutte le funzioni usano `Decimal`, parametri espliciti e output deterministici.
+- **Verifica**: test indipendenti sulle formule tecniche passati; lint in corso di verifica finale.
+- **Ambito**: `indicator_worker` e `indicator_values` restano SMA-only. Le nuove formule non vengono materializzate né esposte dalla dashboard finché non sono chiusi parametri MVP, versioni formula e fonti normative.
+- **Separazione**: Sharpe, win rate e drawdown restano metriche di backtest, non indicatori di prezzo; non sono stati aggiunti a questo modulo.
+
+
+## [2026-11-01] IMPLEMENTAZIONE + VERIFICA — Pipeline SMA materializzata
+
+- **Type**: implementation + migration + worker + read-model verification
+- **Owner**: 🛠 Luca (software)
+- **Implementazione**: migration SQLite 004 con `indicator_values` e `outbox_events`; ingestion atomica raw+outbox; claim atomico, retry e deduplication; worker SMA v1; rebuild deterministico; capability dashboard limitata ai derivati `ready`.
+- **Provenance**: parametri canonici, `source_watermark` sulla barra finale della finestra, `formula_version`, `calculated_at`, `status`.
+- **Development**: `scripts/materialize_indicators.py` drena l’outbox esplicitamente; nessun job schedulato aggiunto.
+- **Verifica**: `59 passed, 1 skipped`; Ruff check/format passati sui package attivi.
+- **Ambito**: gli indicatori RSI/MACD/ATR/Pivot nominati nella pagina Quant restano non implementati perché la wiki non fissa ancora formule e parametri MVP.
+
+## [2026-11-01] DECISIONE — Materializzazione production-grade dei derivati
+
+- **Type**: architectural decision / data pipeline design
+- **Owner**: 🛠 Luca (software)
+- **Decisione consolidata**: raw normalizzati e provenance nella stessa transazione DB; outbox/evento dopo commit; worker incrementale idempotente; `indicator_values` con provenance, source watermark, formula version, parameters e status; rebuild deterministico.
+- **Operational policy**: scheduling solo per backfill, recovery e reconciliation; lettura production da valori materializzati `ready`; calcolo on-the-fly solo fuori dal percorso production (preview, test o analisi esplorative).
+- **Implementazione**: non attestata; nessuna migrazione, worker o verifica di runtime è dichiarata da questa registrazione.
+- **Riferimento**: [[system/db-access-performance]]; decisione corrente in [[system/foundation/decision-log]].
+
+## [2026-11-01] CODICE + VERIFICA — SMA nella capability read-only
+
+- **Type**: capability integration + deterministic read verification
+- **Owner**: 🛠 Luca (software)
+- **Wiki basis**: DB centrale come source of truth; indicatori deterministici; direzione compute-once-store, senza introdurre una tabella derivata non ancora progettata.
+- **Codice**: `MarketDataRepository.history()` centralizza la lettura ordinata; `SQLiteDashboardReadModel.sma(symbol, window, interval)` calcola la SMA sulle chiusure persistite e restituisce timestamp finale + valore.
+- **Test**: coperti valori, DB mancante e finestra non positiva; suite offline e Ruff sui moduli attivi passati.
+- **Limite esplicito**: la SMA è ora una capability read-only di verifica; la persistenza degli indicatori richiede una decisione/migrazione separata.
+
+## [2026-11-01] CODICE + VERIFICA — MemPalace persistente
+
+- **Type**: dependency + documentation + operations verification
+- **Owner**: 🛠 Luca (software)
+- **Codice**: aggiunta dipendenza runtime `mempalace>=3.11,<4` in `pyproject.toml`; lock aggiornato con `uv`.
+- **Documentazione**: README aggiornato con palace condiviso `/home/luca/.config/mempalace/palace`, comandi `uv run mempalace` e verifica MCP.
+- **Verifica**: `uv run mempalace --version` → `MemPalace 3.11.0`; `uv lock --check` passato; `claude mcp get mempalace` → `Connected`.
+- **Pulizia**: preview `sync` sui wing: `trading_agent` 109.762 drawer, 16.508 risolvibili, 93.254 unresolved; `trading_agent_wiki` 19.009 risolvibili. Nessuna cancellazione applicata: il basename `source_file` non identifica in modo univoco i path storici.
+- **Reload**: richiesto dopo commit/push per ricaricare dipendenza e configurazione; verificare status e ricerca semantica MCP nella nuova sessione.
+
+## [2026-11-01] CODICE + VERIFICA — Baseline development e primo indicatore
+
+- **Type**: test alignment + capability verification + deterministic quantitative module
+- **Owner**: 🛠 Luca (software)
+- **Development**: confermata la convenzione esplicita `uv run --env-file .env ...`; Docker e auto-loading globale restano fuori dal ciclo dev.
+- **Suite**: riallineato `tests/test_ingest_market_data.py` alle interfacce correnti di `data.ingestion`; verifica `51 passed, 1 skipped`.
+- **Capability**: `SQLiteDashboardReadModel` è stato confermato come seam read-only esistente per portfolio state e latest market data; nessun modulo duplicato aggiunto.
+- **Quant**: aggiunto `analysis.indicators.simple_moving_average` con `Decimal`, finestre complete e validazione della finestra; test dedicati passati.
+- **Lint**: Ruff check/format passati sui package attivi; `openbb-ui` legacy resta fuori scope.
+
+## [2026-11-01] CODICE + VERIFICA — Loader `.env` per sync portfolio
+
+- **Type**: implementation + test + read-only integration verification
+- **Owner**: 🛠 Luca (software)
+- **Codice**: `scripts/sync_portfolio.py` carica le sole variabili Alpaca da `.env` cercato nella directory corrente o nella root del progetto; non sovrascrive variabili già presenti nell'ambiente.
+- **Test**: aggiunto `tests/test_sync_portfolio.py` con credenziali fittizie; 29 test pertinenti passati; Ruff check e format passati.
+- **Verifica reale**: su `main`, `uv run python -m scripts.sync_portfolio --database data/trading-agent.db` ha prodotto `Portfolio snapshot: inserted`; nessun ordine inviato.
+- **Commit**: `934f670`.
+- **Nota**: la suite globale resta bloccata da un errore preesistente e non correlato in `tests/test_ingest_market_data.py`, che importa `ingest` e `to_storage_bar` non presenti nel modulo corrente.
+
+## [2026-11-01] OPERATIONS — Ripristino Mempalace MCP
+
+- **Type**: operations + verification
+- **Owner**: 🛠 Luca (software)
+- **Causa**: `~/.claude.json` era configurato correttamente, ma il comando `/home/luca/trading-agent/.venv/bin/mempalace-mcp` era assente; il virtualenv e il palace persistente esistevano.
+- **Azione**: installato il pacchetto PyPI `mempalace` versione `3.11.0` nel virtualenv esistente. Nessuna modifica a `pyproject.toml`, al codice del repository o alla configurazione MCP persistente.
+- **Verifica**: `mempalace-mcp --help`; avvio locale stdio con `--palace /home/luca/.config/mempalace/palace`; `claude mcp get mempalace` → `Status: ✔ Connected`.
+- **Esito**: ripristino completato; non è stato necessario riavviare host/sessione nella verifica corrente.
+
+## [2026-11-01] CODICE + DOCUMENTAZIONE — Launcher dashboard locale
+
+- **Type**: implementation + documentation
+- **Owner**: 🛠 Luca (software)
+- **Codice**: aggiunti `scripts/run_dashboard_dev.sh` e wrapper root `run_dashboard.sh`; dalla root il comando è `./run_dashboard.sh` e avvia insieme `scripts/run_dashboard.py` e `npm --prefix frontend run dev`; gestione di `Ctrl+C`, verifica di `python3`/`npm` e nessun avvio di `openbb-ui`.
+- **Documentazione**: aggiornati `README.md` e `docs/dashboard.md` con installazione dipendenze, URL locali e comando breve.
+- **Verifica**: `bash -n` e `git diff --check` passati; end-to-end non eseguito nel worktree perché mancano `frontend/node_modules` e il virtualenv ignorato.
+
+## [2026-11-01] RICERCA + CODICE — Pratiche di testing antirez/Redis/DS4
+
+- **Type**: research + test adaptation
+- **Owner**: 🛠 Luca (software)
+- **Nota**: aggiornata `[[prior-art/libraries/redis-testing-practices]]` con fonti primarie DS4 e regole operative persistenti: seam pubblico, expected indipendente, failure-mode coverage, stati espliciti, fixture/provenienza, trace diagnostiche e misure riproducibili.
+- **Codice**: `tests/data/test_yahoo_finance.py` ora costruisce l'atteso con il modello pubblico `PriceBar`, non con `bars[0].__class__`.
+- **Verifica**: test Yahoo isolato passato; suite completa da eseguire dopo l'adattamento.
+
+## [2026-10-31] RICERCA — Pratiche di testing antirez/Redis
+
+- **Type**: research + documentation
+- **Owner**: 🛠 Luca (software)
+- **Nota**: aggiunta `[[prior-art/libraries/redis-testing-practices]]` con fonti primarie Redis/antirez, distinzione tra fatti osservati e proposte per `trading-agent`, e verifica della struttura/test config corrente.
+- **Verifica**: nessun codice modificato; nota indicizzata in `wiki/_meta/index.md`.
+
+
 ## [2026-10-31] DECISIONE — Convenzione Git e workspace minimale
 
 - **Type**: decision + documentation
