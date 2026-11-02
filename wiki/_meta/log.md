@@ -51,6 +51,14 @@ tags:
 - **Verifica**: suite **95 passed, 1 skipped**, Ruff core e build frontend passati; commit `2876992`, `e5899b6`, `9281587`, `37ed2c6`.
 - **Limite**: persistenza decisioni/audit, adapter Alpaca ordini e orchestrazione multi-desk LangGraph restano da implementare.
 
+## [2026-11-02] IMPLEMENTAZIONE — Research builder deterministico
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Repository**: `agents/research.py` e relativo test.
+- **Contenuto**: assembly pura di `ResearchInputs` in `ResearchState` draft; nessun LLM, broker o side effect, con provenance quantitativa preservata.
+- **Verifica**: suite **101 passed, 1 skipped**; commit `9143683` su `main`.
+
 ## [2026-11-02] CORREZIONE ARCHITETTURALE — Strategia non equivale ad automazione deterministica
 
 - **Type**: architecture correction + plan update
