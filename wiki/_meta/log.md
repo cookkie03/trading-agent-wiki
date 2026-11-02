@@ -42,6 +42,15 @@ tags:
 - **Verifica**: suite locale per state/risk/execution verde; i commit su `main` sono `4530eec`, `bda05e1`, `5c41502`.
 - **Limite**: broker Alpaca order adapter, persistenza audit e orchestrazione LangGraph restano da implementare.
 
+## [2026-11-02] INTEGRAZIONE — Trade cycle deterministico
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Repository**: `workflows/trade_cycle.py`, `interface/dashboard.py`, frontend cockpit.
+- **Contenuto**: il ciclo approvato converte `InvestmentState` in sizing ATR, costruisce l’ordine, applica il risk veto e invia al paper executor idempotente; la dashboard espone una coda decisioni read-only, vuota quando la sorgente non è collegata.
+- **Verifica**: suite **95 passed, 1 skipped**, Ruff core e build frontend passati; commit `2876992`, `e5899b6`, `9281587`, `37ed2c6`.
+- **Limite**: persistenza decisioni/audit, adapter Alpaca ordini e orchestrazione multi-desk LangGraph restano da implementare.
+
 ## [2026-11-02] CORREZIONE ARCHITETTURALE — Strategia non equivale ad automazione deterministica
 
 - **Type**: architecture correction + plan update
