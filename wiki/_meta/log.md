@@ -33,6 +33,15 @@ tags:
 - **Verifica**: slice test e Ruff passati; commit `0cd321a` su `main`.
 - **Limite**: sizing ATR, audit trail e submit paper sono slice successive.
 
+## [2026-11-02] IMPLEMENTAZIONE — State, sizing e paper execution
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Repository**: `analysis/strategy_state.py`, `execution/risk.py`, `execution/paper.py` e relativi test.
+- **Contenuto**: `StrategyProfile`, `QuantitativeEvaluation`, `ResearchState`, conversione a `InvestmentState`, sizing risk-based con ATR e executor paper idempotente con audit log.
+- **Verifica**: suite locale per state/risk/execution verde; i commit su `main` sono `4530eec`, `bda05e1`, `5c41502`.
+- **Limite**: broker Alpaca order adapter, persistenza audit e orchestrazione LangGraph restano da implementare.
+
 ## [2026-11-02] CORREZIONE ARCHITETTURALE — Strategia non equivale ad automazione deterministica
 
 - **Type**: architecture correction + plan update
