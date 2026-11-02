@@ -7,6 +7,42 @@ tags:
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-11-02] IMPLEMENTAZIONE — Configurazione centrale validate
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Repository**: `config/settings.py`, `tests/test_config.py`, dipendenza `pydantic-settings`.
+- **Contenuto**: default locali per DB/dashboard, parsing dell’ambiente, segreti Alpaca mascherati e rifiuto di credenziali parziali.
+- **Verifica**: `uv run pytest -q` → 77 passed, 1 skipped; `uv run ruff check config tests/test_config.py` → passed.
+- **Stato**: implementato; integrazione progressiva nei launcher ancora da fare.
+
+## [2026-11-02] INTEGRAZIONE — Dashboard usa Settings centrale
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Repository**: `scripts/run_dashboard.py`.
+- **Contenuto**: il launcher dashboard usa `config.Settings` invece di leggere variabili d’ambiente separatamente.
+- **Verifica**: test interfaccia/configurazione e Ruff passati; commit `15d7e08` su `main`.
+
+## [2026-11-02] IMPLEMENTAZIONE — Risk gate deterministico
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Repository**: `execution/risk.py`, `tests/execution/test_risk_gate.py`.
+- **Contenuto**: `TradeIntent` long-only, controlli di cash reserve, concentrazione per simbolo e portfolio heat; il gate restituisce un veto strutturato senza chiamare il broker.
+- **Verifica**: slice test e Ruff passati; commit `0cd321a` su `main`.
+- **Limite**: sizing ATR, audit trail e submit paper sono slice successive.
+
+## [2026-11-02] CORREZIONE ARCHITETTURALE — Strategia non equivale ad automazione deterministica
+
+- **Type**: architecture correction + plan update
+- **Owner**: 🛠 Luca
+- **Decisione**: una pipeline fissa di indicatori/soglie è baseline quantitativa, non il cuore del Trading Agent. Gli agenti raccolgono/interpretano evidenze, formulano ipotesi, gestiscono conflitti e incertezza; i moduli deterministici calcolano numeri, applicano guardrail e trasformano solo una proposta approvata in execution.
+- **State**: `StrategyProfile` → `QuantitativeEvaluation` → `ResearchState` → `InvestmentState` → `TradeIntent`.
+- **MVP**: trend following hourly resta il contesto di ragionamento, non una formula unica di entry/exit. Il profilo definisce obiettivo, domande, tool, evidenze attese e vincoli.
+- **Documentazione**: integrato nel piano operativo senza cancellare contenuti compatibili; aggiornati ruoli PM/desk/Risk e Fase 2/3/4.
+
+
 ## [2026-11-01] VERIFICA — Formule tecniche portate su main
 
 - **Type**: integration + verification
