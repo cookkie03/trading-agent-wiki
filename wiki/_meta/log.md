@@ -77,6 +77,15 @@ tags:
 - **Verifica**: test workflow passato; suite completa da rieseguire dopo l’integrazione.
 - **Limite**: desk multipli, routing PM, checkpoint e tracing LangSmith restano da implementare.
 
+## [2026-11-02] IMPLEMENTAZIONE — Grafo tecnico/risk/decision
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Repository**: `workflows/langgraph_workflow.py` e test.
+- **Contenuto**: il `StateGraph` esegue nodi espliciti di completezza tecnica, Risk Analyst e decisione; il ramo veto è verificato e non produce approvazione.
+- **Verifica**: suite **105 passed, 1 skipped**, Ruff core e build frontend passati; commit `3d54cd8`, `2e7ab98`.
+- **Limite**: desk Market/Fundamentals/Sentiment, PM routing, checkpoint e tracing LangSmith restano da implementare.
+
 ## [2026-11-02] CORREZIONE ARCHITETTURALE — Strategia non equivale ad automazione deterministica
 
 - **Type**: architecture correction + plan update
