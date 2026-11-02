@@ -59,6 +59,15 @@ tags:
 - **Contenuto**: assembly pura di `ResearchInputs` in `ResearchState` draft; nessun LLM, broker o side effect, con provenance quantitativa preservata.
 - **Verifica**: suite **101 passed, 1 skipped**; commit `9143683` su `main`.
 
+## [2026-11-02] IMPLEMENTAZIONE — Risk Analyst deterministico
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Repository**: `agents/risk.py` e relativo test.
+- **Contenuto**: il Risk Analyst applica il veto numerico al TradeIntent, approva solo state completi entro i limiti e aggiunge il motivo del veto alla contro-tesi senza side effect.
+- **Verifica**: suite **103 passed, 1 skipped**; commit `479cc3b` su `main`.
+- **Limite**: routing multi-desk/LangGraph e policy di sizing parametrizzata dal profilo restano da implementare.
+
 ## [2026-11-02] CORREZIONE ARCHITETTURALE — Strategia non equivale ad automazione deterministica
 
 - **Type**: architecture correction + plan update
