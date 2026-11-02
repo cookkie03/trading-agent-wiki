@@ -68,6 +68,15 @@ tags:
 - **Verifica**: suite **103 passed, 1 skipped**; commit `479cc3b` su `main`.
 - **Limite**: routing multi-desk/LangGraph e policy di sizing parametrizzata dal profilo restano da implementare.
 
+## [2026-11-02] IMPLEMENTAZIONE — Adapter LangGraph minimo
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Repository**: `workflows/langgraph_workflow.py`, dipendenza `langgraph`, test dedicato.
+- **Contenuto**: `StateGraph` esplicito per il passaggio `ResearchState → RiskAnalyst`, mantenendo risk/execution deterministici fuori dal grafo.
+- **Verifica**: test workflow passato; suite completa da rieseguire dopo l’integrazione.
+- **Limite**: desk multipli, routing PM, checkpoint e tracing LangSmith restano da implementare.
+
 ## [2026-11-02] CORREZIONE ARCHITETTURALE — Strategia non equivale ad automazione deterministica
 
 - **Type**: architecture correction + plan update
