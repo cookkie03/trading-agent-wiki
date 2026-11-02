@@ -7,6 +7,15 @@ tags:
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-11-02] CORREZIONE — Contratto bracket paper completo
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Repository**: `execution/paper.py`, `workflows/trade_cycle.py`, `tests/execution/test_paper.py`.
+- **Contenuto**: `OrderRequest` richiede un `take_profit_price` distinto dall'entry; il contratto verifica stop sotto entry e take-profit sopra entry. `TradeCycle` deriva il target da `entry + 3 * ATR`, coerentemente con la formula documentata nella wiki; il gateway riceve quindi sempre un bracket completo.
+- **Verifica**: test mirati **7 passed**; suite completa **110 passed, 1 skipped**; Ruff core passato; build frontend passata. Commit repository `6c965e9` su `main`.
+- **Stato**: implementato e verificato; l'adapter Alpaca mantiene il proprio seam write-only e resta da collegare al ciclo reale di esecuzione.
+
 ## [2026-11-02] IMPLEMENTAZIONE — Configurazione centrale validate
 
 - **Type**: implementation + verification
