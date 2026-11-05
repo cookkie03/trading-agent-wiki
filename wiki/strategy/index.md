@@ -40,14 +40,15 @@ Ogni metodo descrive una strategia o un approccio: come funziona, quando funzion
 - [[strategy/methods/factor-investing]] — investire basandosi su fattori fondamentali e quantitativi
 - [[strategy/methods/mean-reversion-stat-arb]] — mean reversion e statistical arbitrage / pairs trading (candidata per Modulo C, da Salvatore)
 
-## Decisione strategica da prendere
+## Decisione strategica MVP — 2026-11-01
 
-La wiki conserva più metodi perché devono poter diventare componenti componibili, non perché vadano tutti implementati insieme. Luca e Salvatore devono scegliere una **strategia MVP unica**, i suoi indicatori codificabili e il suo protocollo di backtest. Orientamenti emersi dalla rilettura:
+L'MVP adotta **trend following su barre hourly, long-only, azioni USA, USD-only, con swing trading**. La scelta è confermata da Luca; non implica che il modello software venga costruito solo per questa strategia.
 
-- value/single strategies per semplicità e stabilità;
-- trend following e mean reversion come candidati iniziali con indicatori da definire;
-- factor investing e la tesi corporate bond come riferimento più denso, con ML/deep learning fuori MVP;
-- dual portfolio come architettura di composizione, non come requisito iniziale.
+La wiki conserva più metodi perché devono poter diventare strategie componibili, non perché vadano tutti implementati insieme. Il primo protocollo di backtest e le prime capability quantitative vengono quindi definiti sul trend following, mantenendo un contratto di stato riusabile per strategie future.
+
+- **In scope MVP:** una strategia trend following su barre hourly, segnali deterministici, sizing e risk gate verificabili, backtest con costi/slippage e benchmark statico.
+- **Fuori scope iniziale:** short, pairs trading, multi-leg, FX, opzioni, ML/deep learning e composizione di più strategie.
+- **Vincolo di design:** lo state non deve codificare `SMA20` o una singola formula nei campi strutturali; indicatori e parametri appartengono alla definizione/versione della strategia e alla provenance del segnale.
 
 *Aggiungere un file per ogni nuovo approccio studiato, anche se poi si decide di non usarlo.*
 

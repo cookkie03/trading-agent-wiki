@@ -52,6 +52,17 @@ Verifica esterna eseguita il 2026-10-31 nel worktree isolato `worktree-dashboard
 - `GET /api/control-surface` → HTTP 200, `source: "not connected"`, runtime `unavailable`; nessuna configurazione è modificabile dalla UI.
 - `curl http://localhost:5173/` → HTML con titolo `Trading Agent / cockpit` e root React.
 
+### Aggiornamento 2026-11-01 — DB, stati e Docker
+
+- Il read model persistente ora legge le ultime barre OHLCV SQLite per simbolo nella watchlist; portfolio resta indisponibile finché non viene integrato il broker snapshot.
+- `frontend/src/App.tsx` distingue loading, errore dashboard, errore control-surface e conserva l'ultimo snapshot in stato stale; il Retry è esplicito e accessibile.
+- `npm ci --prefix frontend` e `npm --prefix frontend run build` → passati.
+- `Dockerfile` e `compose.yaml` aggiunti: build Docker riuscita; smoke runtime su porta temporanea ha verificato `GET /api/health` con `read_only: true` e `GET /api/dashboard` con stato vuoto esplicito. Container e volume smoke rimossi dopo la verifica.
+
+### Aggiornamento portfolio Alpaca — 2026-11-01
+
+Il dashboard read model legge ora lo snapshot `alpaca` dal DB centrale e popola cash, equity, posizioni e ordini; in assenza di snapshot mantiene `portfolio.available=false`. La UI non interroga direttamente il broker e non scrive dati. Per sviluppo usare il launcher locale senza Docker; Docker resta il percorso di deployment persistente.
+
 ### Limiti dichiarati
 
 - Il read model persistente/DB non è ancora collegato: portfolio, watchlist, decisioni, trigger e run restano vuoti/non disponibili senza fingere dati.

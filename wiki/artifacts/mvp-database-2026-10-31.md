@@ -48,6 +48,18 @@ Coordinamento: [[artifacts/mvp-parallel-work-2026-10-31]]. Nessun ordine, commit
 
 **Verifica runtime Yahoo — 2026-10-31:** eseguito due volte nel database temporaneo `/Users/luca/.claude/jobs/8611f365/tmp/real-ingestion.sqlite` su `AAPL`, `MSFT`, `SPY`, intervallo `2026-10-01T00:00:00Z`–`2026-11-01T00:00:00Z`: primo run 22 barre per simbolo, secondo run idempotente; query finale `source=yahoo_finance` → 66 righe totali. Sono comparsi solo warning di deprecazione interni a yfinance. Alpaca non eseguito perché il worktree non contiene credenziali locali configurate.
 
-**Limiti:** non sono stati avviati PostgreSQL/TimescaleDB, servizi autenticati o broker; nessun ordine è stato inviato. L’ingestion Alpaca resta un’azione opt-in da eseguire con credenziali locali e va registrata separatamente come evidenza runtime.
+**Ingestion OpenBB + read model — verifica esterna 2026-10-31.** Nel worktree isolato `worktree-openbb-ingestion` è stato implementato il bridge puro `data.PriceBar → storage.PriceBar` in `data/ingestion.py`, senza introdurre un terzo modello. Il runner `ingest_ohlcv()` usa `MarketDataProvider`, transazione SQLite e contatori `fetched`/`inserted`/`duplicates`; il comando `scripts/ingest_market_data.py` usa `OpenBBProvider` lazy. `SQLiteDashboardReadModel` espone l’ultima barra per simbolo nella watchlist, mentre `scripts/run_dashboard.py` usa `TRADING_AGENT_DB` e mantiene il caso DB assente esplicito.
+
+**Verifiche ingestion OpenBB:** il primo smoke test reale ha rilevato che OpenBB 4.6.0 restituisce la data OHLCV nell'indice/come `date`, `Date`, `datetime` o `date`; l'adapter è stato corretto per normalizzare tutte le forme senza esporre pandas/OpenBB al core. Regressioni e suite: `uv run pytest -q` → **45 passed, 1 skipped**; `uv run ruff check .` e `uv run ruff format --check .` → **passati**; `uv run mypy --explicit-package-bases brokers` → **passato**.
+
+**Smoke test OpenBB reale — 2026-11-01:** installato l'extra `openbb`; eseguito `scripts/ingest_market_data.py AAPL` con provider `yfinance`, intervallo `2026-10-01`–`2026-10-31`, database temporaneo. Primo run: **22 fetched, 22 inserted, 0 duplicates**, source `openbb:yfinance`; secondo run: **22 fetched, 0 inserted, 22 duplicates**. Nessuna credenziale usata.
+
+**Policy MVP:** `collected_at` è evidenza di raccolta, non SLA live; `publication_date` e `reference_date` restano distinte; nessuna retention automatica viene applicata a SQLite e nessun dato viene cancellato implicitamente. Retry/fallback, run ID e SLA provider-specifici restano follow-up espliciti.
+
+**Smoke test Alpaca paper — 2026-11-01:** con `ALPACA_API_KEY` e `ALPACA_SECRET_KEY` presenti nel `.env` locale, `tests/integration/test_alpaca_paper.py --alpaca-paper` è passato (`1 passed`), eseguendo solo letture di account, posizioni e ordini. `scripts/sync_portfolio.py` ha salvato lo snapshot nel DB centrale temporaneo; due sync identiche hanno prodotto `inserted` poi `duplicate`. Il read model dashboard ha restituito `source: alpaca`, `cash: 100000`, `equity: 100000`, posizioni e ordini vuoti.
+
+**Portfolio persistence:** aggiunta migrazione `003_create_broker_snapshots` e repository SQLite unico per snapshot broker. Il payload canonico deduplica account/posizioni/ordini indipendentemente da `observed_at`; il read model legge solo il DB e non interroga il broker.
+
+**Limiti:** non sono stati avviati PostgreSQL/TimescaleDB o ordini; l'adapter Alpaca resta read-only. Il launcher dev è locale e senza Docker; Docker è riservato a deployment persistente/local-production.
 
 **Decisione implementata:** SQLite è sufficiente per MVP single-host/single-writer. La futura evoluzione PostgreSQL/TimescaleDB richiederà un adapter e migrazioni revisionate; non è garantita la portabilità cambiando soltanto una URL. Questa pagina iniziale non attesta software funzionante.

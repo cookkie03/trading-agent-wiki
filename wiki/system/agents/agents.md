@@ -25,7 +25,7 @@ related:
 
 > **Stato attuale della pagina (2026-06-23)**: questa è la **spec concettuale** del layer agenti. Le note su Datapizza, branch o file Python precedenti restano utili come **storia / reference design**, ma non descrivono automaticamente il codice attuale del progetto.
 
-> **Direzione invariata**: PM orchestratore, desk specializzati, Risk come gate e agenti fortemente tool-centrici. Il problema aperto non è più “se esiste codice”, ma **quale architettura agente costruire sopra il nuovo harness reale**.
+> **Decisione Luca 2026-11-05:** sei agenti separati: Market, Sentiment, Technical, Fundamental, Risk e Portfolio Manager. I gruppi Research e Technical sono solo visivi; routing e ruolo preciso del Risk restano aperti. Priorità alla verifica del codice residuo e alla definizione degli agenti, non all'harness-first. Il grafo agentico sta sotto `agents`; trigger, grafo e tool sono distinti → [[system/foundation/codebase-architecture#Decisione e confini — 2026-11-05]]. Le rappresentazioni storiche sotto non prevalgono su questa decisione.
 
 ^01280b
 
@@ -77,7 +77,7 @@ Le **API funzionano solo a richiesta** (no push news). Risoluzione via **teoria 
 
 ## Desk analisti
 
-Due desk (decisione consolidata dal canvas, chiude il dubbio "2 vs 4 agenti"):
+Raggruppamenti visivi del canvas, non due agenti aggregati (decisione 2026-11-05):
 
 | Desk | Agenti interni | Funzione |
 |------|----------------|----------|

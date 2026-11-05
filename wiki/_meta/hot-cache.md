@@ -9,6 +9,61 @@ tags:
 
 > Contesto di sessione recente. Il repository è esterno al vault: qui vivono spec, decisioni e priorità, non lo stato verificato del codice.
 
+## Sessione 2026-11-05 — Riconciliazione wiki
+
+- Documentazione preesistente e log storici conservati; la board resta l'unica sequenza attiva della ripartenza. Il bridge Telegram è codice locale non tracciato, non una funzionalità pubblicata; nessuna verifica Telegram reale attestata. → [[artifacts/project-board]] · [[system/interface/telegram-claude-bridge]]
+
+## Sessione 2026-11-05 — Sei agenti e confini
+
+- Luca decide sei agenti distinti: Market, Sentiment, Technical, Fundamental, Risk e Portfolio Manager; i gruppi canvas sono solo visivi. Prima verificare il codice residuo e definire gli agenti. Il grafo sta sotto `agents`; trigger, grafo e tool sono distinti. Nomi e collocazione dei trigger/workflow esterni e cartelle `orchestration`/`steps` aperti fino alla valutazione del codice, non crearle ora. Portabilità LangGraph/Hermes/Pi/Claude Code da ricercare dopo, non acquisita. → [[artifacts/project-board]] · [[system/agents/agent-behaviors]] · [[system/foundation/codebase-architecture#Decisione e confini — 2026-11-05]] · [[system/foundation/decision-log]]
+
+## Sessione 2026-11-04 — Canvas e confini (superata per numero agenti e distinzione concettuale)
+
+- Luca sceglie [[artifacts/architettura.canvas]] come fonte di verità prioritaria del design nei dubbi; altri canvas sono idee/reference. Le interpretazioni due desk/quattro aree vanno chiarite, senza fissare il numero di agenti. Provider organizzati per funzione broker/dati/modelli, non vendor; tree e distinzione steps/grafi/trigger restano in discussione. Reviewer PM sperimentale interamente accantonato: il PM del canvas resta; destinazione del codice da decidere, nessuna cancellazione richiesta. → [[system/foundation/decision-log]] · [[system/foundation/architecture]]
+
+## Sessione 2026-11-04 — Priorità di ripartenza (contesto precedente)
+
+- Luca sostituisce la priorità harness-first: unica sequenza operativa nella [[artifacts/project-board#Priorità operative correnti — 2026-11-04]]. Tree/componenti da definire insieme, canvas prioritario scelto, poi workflow agentico testato con fake, tool, adapter/provider e dati reali, frontend. Altri filoni sospesi, non cancellati. Risk/safety deterministici, nessuna esecuzione reale; nessun tree approvato. → [[system/foundation/codebase-architecture#Proposta da discutere — 2026-11-04]] · [[system/foundation/decision-log]]
+
+## Sessione 2026-11-04 — Chiarimento dati di mercato
+
+- Luca conferma OpenBB SDK come percorso principale per dati di mercato, non Yahoo diretto prioritario; Alpaca fornisce i dati di portafoglio. Il provider sottostante a OpenBB va distinto e tracciato; nessuna esclusività implicita, policy fallback ancora aperta. → [[system/data/data-vendors]] · [[system/foundation/decision-log]]
+
+## Sessione 2026-11-02 — Review PM sperimentale
+
+- Workspace non committato: reviewer OmniRoute locale `my-combo` e gate PM sperimentale. Verificato provider simulato → OmniRoute reale → risk → dashboard: pending, nessun submit al broker simulato. Retry e riconciliazione verificati offline. Suite: 157 passati, 1 saltato; Ruff pulito. Le citazioni non certificano la qualità della tesi; non usare il percorso con broker operativo.
+
+## Sessione 2026-11-02 — Provenance desk tecnico
+
+- Il desk tecnico espone nome, fonte, versione formula e istante delle valutazioni quantitative ricevute invece di evidenze segnaposto. Non verifica la qualità delle fonti e non abilita il gate PM. Test mirati dashboard: 15 passati; Ruff pulito.
+
+## Sessione 2026-11-02 — Audit PM pending
+
+- L'audit delle decisioni pending dichiara la review PM non disponibile, senza presentare come accertate eventuali lacune tecniche o dei desk. Test offline su dashboard e paper: 22 passati; Ruff pulito. Nessuna nuova autorizzazione di trading.
+
+## Sessione 2026-11-02 — Verifica baseline
+
+- Sul workspace corrente: `uv run pytest -q -rs` → 144 passati, 1 saltato (letture Alpaca paper opzionali, `--alpaca-paper`), 2 warning di deprecazione. Il conteggio include test locali non tracciati preesistenti. Ruff e build frontend passati.
+- Nessuna nuova review PM o prova E2E completa: il gate resta intenzionalmente pending. Le modifiche locali preesistenti restano da preservare.
+
+## Sessione 2026-11-02 — Coerenza rischio paper
+
+- Il desk market può ricevere una quotazione di un proxy indipendente; non equivale a un'analisi macro. Il PM rimane intenzionalmente pending anche con evidenze in tutti i desk: la sola presenza di dati non è una decisione.
+- Il desk fundamentals può ricevere capitalizzazione corrente da Yahoo con tempo di osservazione; verificati test offline e una richiesta AAPL reale. Non è point-in-time per backtest né analisi completa; persistenza ancora aperta.
+- Adapter Alpaca news opzionale alimenta il desk sentiment con titoli attribuiti; non deduce automaticamente sentiment. Verifica di disponibilità provider reale e test offline di normalizzazione; paginazione, audit delle fonti e sintesi LLM restano aperti.
+- `run_provider_research_cycle` usa la chiusura di una barra persistita nel contesto del desk tecnico e come prezzo della review; test offline provider simulato → SQLite → desk → dashboard. L'ATR Wilder a 14 periodi è calcolato dalle barre di una sola fonte; storico insufficiente o timestamp duplicati vengono rifiutati. La freschezza è verificata rispetto a `as_of` e `max_age` espliciti; le barre mancanti sono rifiutate rispetto a timestamp attesi forniti dal chiamante. Per barre giornaliere Alpaca la sequenza può provenire dal calendario Alpaca; verifica offline delle festività e controllo puntuale dei timestamp reali Alpaca. Per hourly genera le etichette intere che sovrappongono la sessione regolare, gestendo chiusure anticipate; le barre del feed possono includere extended-hours. Le fonti per gli altri desk restano aperte. Non è un ciclo automatico di trading pronto.
+- Il grafo di ricerca mantiene `pending` le decisioni con desk senza evidenze; `run_research_cycle` non invia ordini se la decisione non è approvata. I desk provider-backed restano da implementare e il ciclo diretto rimane accessibile separatamente.
+- La composizione `workflows.paper_runtime` collega ciclo, gateway Alpaca e SQLite; factory configurata per il solo endpoint paper. Il 2026-11-02 un bracket AAPL non marketable è stato inviato attraverso il ciclo al paper broker, cancellato e riconciliato `CANCELLED`; broker: quantità eseguita 0. State e portfolio erano fixture controllate: non è una verifica provider→decisione. Audit isolato in `/tmp/trading-agent-smoke-96edecf66fcf497b.db`.
+- Nel repository la review Risk Analyst e il trade cycle condividono la policy provvisoria di sizing ATR; il ciclo rivaluta comunque il rischio prima dell'invio. Parametri da validare in backtest.
+- Test offline mirato: review → ciclo con gateway simulato → SQLite → dashboard HTTP. Non dimostra un ordine Alpaca né una pipeline provider completa. Dettagli verificabili nel repository, `docs/architecture.md`.
+
+## Sessione 2026-11-02 — Roadmap centralizzata quantitativa e RAG
+
+- Luca ha chiesto di centralizzare la roadmap in [[artifacts/piano-operativo-trading-agent]].
+- Aggiunti alla roadmap: studio/adozione di Qlib e `caalopezgo/quantlab` dietro un modulo proprio di quantitative research; adapter vectorbt per backtesting accessibile a umano e agenti; riuso selettivo di codice compatibile da `TauricResearch/TradingAgents`; studio/implementazione futura di PostgreSQL, pgvector, FTS e RAG, con RAG come feature futura prioritaria.
+- Stato: **decisione/roadmap, non implementazione**. SQLite resta il primo adapter verificato; nessuna migrazione a PostgreSQL è autorizzata senza benchmark e schema review.
+- Board e decision log aggiornati con link alla roadmap centrale.
+
 ## Sessione 2026-11-01 — Formule tecniche su main
 
 - Portato su `main` il commit `02db44e` (`feat: add standard technical indicator formulas`), originato dal branch tecnico `worktree-standard-indicators`.
@@ -29,6 +84,13 @@ tags:
 - Flusso reale su database temporaneo: Alpaca Market Data AAPL/feed IEX → ingestion **84 barre** → SQLite → outbox → **65 SMA materializzate e leggibili** → snapshot portfolio Alpaca → dashboard read model/API; `source=alpaca`.
 - Corretto `data/providers/alpaca_market_data.py`: l'SDK restituisce oggetti `Bar`, non solo mapping. Il parser ora supporta entrambi i formati. Verifica Ruff passata.
 - Nota operativa: il worker rispetta `available_at`; con un timestamp futuro può materializzare zero eventi immediatamente. È comportamento atteso.
+
+## Sessione 2026-11-02 — Correzione modello strategia vs agent system
+
+- Luca ha chiarito che una sequenza deterministica fissa di indicatori/soglie non è il Trading Agent ma solo una baseline quantitativa; il sistema deve essere agentico e tool-centric.
+- Integrato nel piano operativo: separazione `QuantitativeEvaluation` → `ResearchState` → `InvestmentState` → `TradeIntent`; gli agenti interpretano evidenze e conflitti, il codice deterministico calcola numeri, applica guardrail e converte solo una proposta approvata in execution.
+- Il trend following hourly resta il contesto MVP, non una formula unica: indicatori e capability sono interrogabili dagli agenti; il profilo strategico definisce domande, tool, evidenze e vincoli.
+- Aggiornato `wiki/artifacts/piano-operativo-trading-agent.md` senza rimuovere contenuti non in conflitto.
 
 ## Sessione 2026-11-01 — Strategia MVP e state generico
 

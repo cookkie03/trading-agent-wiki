@@ -48,6 +48,7 @@
 - [[system/quant/learning-feedback-loop]] — logging e learning Post-MVP
 - [[system/interface/frontend-module]] — confine del frontend sostituibile
 - [[system/interface/observability-dashboard]] — requisito dashboard read-only
+- [[system/interface/telegram-claude-bridge]] — bridge Telegram project-scoped per Claude Code
 
 ### Reference design
 
@@ -68,7 +69,9 @@
 ## Prior-art
 
 - [[prior-art/tradingagents/paper]] · [[prior-art/tradingagents/code-wiki]] · [[prior-art/tradingagents/graph-schema]] — TradingAgents come reference
+- [[prior-art/benchmark-trading-agent-repositories]] — benchmark repository GitHub per multi-agent trading, LangGraph, data layer, risk, execution e dashboard
 - [[prior-art/libraries/datapizza-ai]] — reference storica, non framework corrente
+- [[prior-art/libraries/redis-testing-practices]] — harness, tag e livelli di verifica Redis/antirez
 - [[prior-art/libraries/cvx-portfolio-optimizer]] — ottimizzazione quant/Post-MVP
 - [[prior-art/libraries/rizzo-trading-agent]] · [[prior-art/libraries/sfc-portfolio-tracker]] — reference mirate
 - [[prior-art/papers/alpha-arena]] · [[prior-art/papers/brenndoerfer-quant-trading]] · [[prior-art/papers/kronos-foundation-model]] · [[prior-art/papers/notion-trading-concepts]]

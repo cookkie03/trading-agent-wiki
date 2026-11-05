@@ -6,7 +6,7 @@ tags:
   - infrastructure
   - software
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-11-01
 status: active
 priority: high
 area: software
@@ -95,6 +95,20 @@ Principio: **una lettura per ciclo, non N**. Leve (dalla più al meno già decis
 4. **Read-through cache** per i dati "caldi" letti spessissimo e che cambiano poco: prezzo corrente, **Statuto/`charter`** (cambia raramente). In-process per l'MVP, eventualmente **Redis** se il carico cresce → *decisione aperta*.
 5. **Evitare N+1**: una query che porta tutto il necessario per tutti i ticker del ciclo, non una query per ticker.
 6. **Compute-once-store**: ogni metrica derivata (P/E, ratio, indicatori) si calcola una volta dai grezzi e si persiste; le letture successive sono semplici `SELECT`.
+
+### Decisione architetturale — materializzazione incrementale dei derivati (2026-11-01)
+
+**Stato: decisione consolidata di design; implementazione non attestata.** La materializzazione dei derivati è una pipeline affidabile, non una query calcolata al bisogno.
+
+1. **Commit atomico dei grezzi.** Il dato raw normalizzato e la sua provenance vengono persistiti nella transazione DB che ne determina il `source_watermark`. Il watermark identifica la versione/finestra sorgente osservata, non l'orario di esecuzione del worker.
+2. **Evento dopo commit.** Solo dopo il commit transazionale viene pubblicato o accodato l'evento/outbox relativo ai dati divenuti disponibili. L'outbox appartiene alla stessa transazione dei grezzi; il relay può ritentare senza perdere l'evento e non deve esporre ai worker dati non committati.
+3. **Worker incrementale.** Un worker consuma gli eventi e calcola solo le finestre rese potenzialmente obsolete dal nuovo watermark. Il processamento è **idempotente**: retry, duplicati e riavvii producono lo stesso risultato e non duplicano righe né avanzano il watermark in modo regressivo. Claim, lease e ack sono separati dal commit del risultato; un evento resta recuperabile finché il risultato non è committato.
+4. **Contratto `indicator_values`.** Ogni valore materializzato deve conservare almeno: chiave del soggetto/serie e timestamp di riferimento; nome e versione dell'indicatore; valore e unità quando applicabile; `provenance`; `source_watermark`; `formula_version`; `parameters`; `status` (almeno `pending`, `ready`, `invalid`/`error`, `stale`). La chiave di idempotenza deve includere la serie, la finestra temporale, l'indicatore, `formula_version`, i parametri canonici e il watermark sorgente. Un risultato non `ready` non è un output valido per agenti o decisioni.
+5. **Rebuild deterministico.** Un rebuild parte da raw persistiti e da un insieme esplicito di `formula_version` e parametri, ricostruisce in ordine deterministico e produce gli stessi valori e metadati a parità di input. Il rebuild può scrivere una nuova generazione/versione e sostituirla solo in modo atomico; non modifica i grezzi.
+6. **Ruolo dei job.** Scheduling e job periodici sono riservati a backfill, recovery e reconciliation (incluso il controllo tra raw, outbox e `indicator_values`). Il percorso normale è event-driven e incrementale; il job non è la fonte primaria di freschezza.
+7. **Percorso di lettura.** In production si leggono valori `ready` materializzati. Il calcolo on-the-fly resta fuori dal percorso production e può esistere solo per analisi esplorative, preview, test o fallback operativo esplicitamente dichiarato, senza diventare una lettura implicitamente persistente.
+
+**Confini e responsabilità:** `database/` governa schema, transazioni, outbox, dedup e repository; `capabilities/` implementa formule pure e versionate; `orchestration/` gestisce relay, worker, lease e job di recovery. Questa decisione non introduce ancora migrazioni o codice verificato.
 
 ---
 

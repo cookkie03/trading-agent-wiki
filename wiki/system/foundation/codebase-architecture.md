@@ -24,9 +24,21 @@ related:
 
 Pagina guida per progettare la **nuova codebase reale**. Nasce da un cambio di stato deciso da Luca: il progetto va costruito in modo leggibile da zero, con codice che Luca possa seguire mentre cresce. Le implementazioni e i branch storici restano reference design, non baseline da assumere.
 
-## Principio operativo
+## Decisione e confini — 2026-11-05
 
-La sequenza corretta non parte dagli agenti. Parte dai contratti e dall'harness:
+Luca decide sei agenti separati: Market, Sentiment, Technical, Fundamental, Risk e Portfolio Manager. Priorità: verificare il codice residuo e definire agenti e contratti, senza presumere che siano già implementati. Il grafo agentico appartiene a `agents`; trigger di attivazione, grafo degli agenti e tool sono concetti distinti. I nomi e la collocazione dei trigger e dei workflow esterni, come pure l'eventuale esistenza delle cartelle `orchestration` e `steps`, restano aperti fino alla valutazione del codice residuo: non crearle ora. Il resto del tree non è approvato.
+
+La portabilità tra backend agentici LangGraph, Hermes, Pi e Claude Code è un obiettivo da ricercare successivamente, non una compatibilità acquisita né una migrazione decisa. LangGraph + LangSmith resta la scelta documentata finché non venga rivalutata. → [[system/foundation/decision-log]] · [[artifacts/project-board]]
+
+## Proposta da discutere — 2026-11-04
+
+> La decisione del 2026-11-05 sopra prevale sui confini e sulla priorità ancora aperti in questa proposta e negli slice storici sotto.
+
+**Proposta, non approvata**: definire insieme tree e responsabilità delle aree `agents/`, `steps/` (nome e ruolo da chiarire), `tools/`, `providers/` (broker, dati e possibili modelli), `storage/`, `config/`, `tests/`, `docs/` e `frontend/`. Non prescrive spostamenti né cancella il lavoro preesistente. La distinzione fra steps, grafi e trigger resta in discussione, non è una decisione. Luca sceglie di organizzare i provider per funzione — broker, dati e modelli — anziché per nome vendor; il tree concreto resta da definire. Il riferimento di design prioritario nei dubbi è [[artifacts/architettura.canvas]]; gli altri canvas sono idee o reference. Le priorità operative sono nella [[artifacts/project-board#Priorità operative correnti — 2026-11-04]].
+
+## Principio operativo storico — priorità superata
+
+Il seguente ordine harness-first è conservato come storico, non come sequenza corrente:
 
 1. **Tree e confini dei package**
 2. **Harness broker + data vendor + DB + test**

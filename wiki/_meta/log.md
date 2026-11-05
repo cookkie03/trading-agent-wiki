@@ -7,6 +7,27 @@ tags:
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-11-05] DECISIONE — Sei agenti e confini
+
+- **Type**: decision clarification
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: sei agenti separati Market, Sentiment, Technical, Fundamental, Risk e Portfolio Manager; gruppi canvas soltanto visivi. Prima verificare codice residuo e definire agenti. Grafo sotto `agents`; trigger, grafo e tool distinti; nomi/collocazione dei trigger e workflow esterni e cartelle `orchestration`/`steps` aperti fino alla valutazione del codice, senza crearle ora. Portabilità LangGraph/Hermes/Pi/Claude Code da ricercare successivamente, non acquisita.
+- **Pagine**: [[artifacts/project-board]], [[system/agents/agents]], [[system/agents/agent-behaviors]], [[system/foundation/architecture]], [[system/foundation/codebase-architecture]], [[system/foundation/decision-log]], [[_meta/hot-cache]]. Nessuna modifica o verifica di canvas e codice; decisione di design, non attestazione di implementazione.
+
+## [2026-11-04] DECISIONE — Canvas, provider e reviewer PM
+
+- **Type**: decision clarification
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: [[artifacts/architettura.canvas]] prioritario nei dubbi di design, altri canvas idee/reference; provider per funzione broker/dati/modelli, non vendor. Reviewer PM sperimentale interamente accantonato, senza eliminare il PM del canvas né richiedere cancellazione del codice; destinazione del codice da decidere. Tree e distinzione steps/grafi/trigger restano in discussione; interpretazioni due desk/quattro aree da chiarire senza fissare il numero di agenti.
+- **Pagine**: [[system/foundation/decision-log]], [[system/foundation/architecture]], [[system/foundation/codebase-architecture]], [[artifacts/project-board]], [[artifacts/piano-operativo-trading-agent]], [[_meta/hot-cache]]. Nessuna modifica a canvas o codice.
+
+## [2026-11-04] CHIARIMENTO — OpenBB e dati di portafoglio
+
+- **Type**: decision clarification
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: confermato OpenBB SDK come percorso principale per dati di mercato, non Yahoo diretto prioritario; Alpaca per i dati di portafoglio. Provider sottostante distinto e tracciato, senza esclusività implicita; fallback ancora da decidere.
+- **Pagine**: [[system/data/data-vendors]], [[system/foundation/decision-log]], [[artifacts/project-board]], [[_meta/hot-cache]]. Nessuna verifica o modifica del codice.
+
 ## [2026-11-02] CORREZIONE — Contratto bracket paper completo
 
 - **Type**: implementation + verification
@@ -1028,3 +1049,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Operazione**: aggiunto a configurazione utente `/home/luca/.claude.json` il server `mempalace`, con volume persistente `mempalace-data:/data` e mount read-only `/home/luca/.claude/projects:/transcripts:ro`.
 - **Verifica**: Docker Engine disponibile; `claude mcp get mempalace` riconosce il server ma il test di connessione va in timeout perché l'immagine `ghcr.io/mempalace/mempalace:latest` non è presente localmente. Nessun pull o avvio persistente eseguito.
 - **Scope**: configurazione personale utente, non repository condiviso; nessun commit o push.
+
+## [2026-11-04] DECISIONE — Priorità tree e workflow agentico
+
+- **Type**: decision + planning
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: sostituita la priorità harness-first; board indice operativo unico. Tree e canvas da concordare, workflow testato con fake prima di tool e infrastruttura reale; frontend successivo. Altri filoni sospesi, non cancellati; risk/safety deterministici e nessuna esecuzione reale.
+- **Pagine**: [[artifacts/project-board]], [[artifacts/piano-operativo-trading-agent]], [[system/foundation/codebase-architecture]], [[system/foundation/decision-log]], [[_meta/hot-cache]]. Nessuna modifica o verifica del codice.

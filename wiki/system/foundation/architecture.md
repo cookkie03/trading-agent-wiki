@@ -23,6 +23,10 @@ related:
 
 Architettura di design del `trading-agent`. Il sistema deve raccogliere informazioni, analizzare, decidere, eseguire e imparare. Per non confondere design e repository esterno, vedi [[system/foundation/implementation-status]].
 
+**Decisione Luca 2026-11-05:** sei agenti separati — Market, Sentiment, Technical, Fundamental, Risk e Portfolio Manager. I gruppi Research e Technical nel canvas sono soltanto visivi, non agenti aggregati. [[artifacts/architettura.canvas]] resta riferimento prioritario nei dubbi di design; gli altri canvas sono idee o reference. Il grafo agentico sta sotto `agents`; trigger, grafo e tool sono distinti, mentre collocazione e nomi dei workflow/trigger esterni restano aperti. Dettagli e verifica del codice residuo → [[system/foundation/codebase-architecture#Decisione e confini — 2026-11-05]]. Il reviewer PM sperimentale resta accantonato, senza eliminare il PM né decidere il destino del codice.
+
+> La topologia del 2026-05-29 sotto è reference storica: la rappresentazione come due agenti aggregati è superata dalla decisione del 2026-11-05; routing e posizione del Risk restano da definire.
+
 ---
 
 ## Principi fondanti

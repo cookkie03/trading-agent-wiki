@@ -20,7 +20,7 @@ area: software
 
 # Agent Behaviors — comportamento per-agente del desk
 
-> **Stato:** specifica di lavoro. Market/Sentiment/Technical/Fondamentali hanno cinque dimensioni esplicite; il Risk Analyst ha una sezione equivalente. Restano decisioni condivise il suo posizionamento esatto e l'elenco delle fonti sentiment. Prima il comportamento, poi il prompt che lo realizza.
+> **Decisione Luca 2026-11-05:** Market, Sentiment, Technical, Fundamental, Risk e Portfolio Manager sono sei agenti separati; i gruppi Research e Technical sotto sono solo visuali. Questa pagina descrive comportamenti di lavoro, non implementazioni verificate. Priorità: verificare il codice residuo e definire i sei agenti, inclusi input, tool, output, ragionamento e stop del Portfolio Manager → [[system/agents/agents#Portfolio Manager — agente orchestratore (CEO)]]. Restano aperti routing e posizionamento del Risk e le fonti sentiment. Prima il comportamento, poi il prompt.
 
 ## Le 5 dimensioni di ogni agente
 
