@@ -177,6 +177,12 @@ tradingagents/
     └── pages/              # Overview, ticker, trades, decisions, watchlist, system
 ```
 
+## Time-Series Foundation Models & Quantitative Forecasting
+
+| Componente | Scelta | Motivazione |
+|------------|--------|-------------|
+| Forecasting probabilistico | **Timestral** (Mistral AI) | Famiglia open-weight (Modified MIT) di Time-Series Foundation Models (5M, 28M, 123M, 209M). Previsione multivariata zero-shot su OHLCV/volatilità con contesto 32k step e 21 quantili. Inferenza CPU ultra-rapida (17-113ms) a supporto del Desk Technical e del System One gating (Jev/CLM). Vedi [[system/quant/timestral-forecasting]] |
+
 ## Post-MVP (non decidere ora)
 
 | Componente | Candidato | Quando |
