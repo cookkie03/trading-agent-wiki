@@ -114,6 +114,7 @@ Il backtesting **non è un'attività una-tantum** che si fa prima di partire: è
 
 ## Tech
 
+- **Forecasting probabilistico TSFM**: [[system/quant/timestral-forecasting|Timestral (Mistral AI)]] per previsioni multivariate zero-shot (21 quantili) su prezzi, volatilità e covariate, integrato nei segnali quantitativi deterministici.
 - **VectorBT**: framework Python di backtesting **vettorizzato** (lavora su intere serie storiche con pandas/numpy, molto veloce — testa molte combinazioni di parametri in poco tempo). Usato da MarketSenseAI. Spiegazione nel [[_meta/glossario]].
 - **Costi di transazione**: niente più "10bps fisso" → modello **auto-adattivo** che usa le commissioni reali esposte dall'[[_meta/glossario#Adapter / Wrapper (broker)|adapter]] del broker ([[system/execution/execution]]). Finché non esiste il modello reale, conviene almeno definire tutte le tipologie di costo e permettere configurazione via file di config.
 - **Dati**: da `market_data` nel DB di [[system/data/data-layer]] (OHLCV stock, timeframe 4h/daily)

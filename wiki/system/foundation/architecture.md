@@ -112,7 +112,7 @@ Due **desk** compilano lo `research_state` (decisione consolidata dal canvas, ch
 | **Market** | Contesto di mercato, macro | LLM + tool |
 | **Sentiment** | Sentiment news/social (indicatori da definire) → aggrega su Market | LLM + tool |
 | **Fondamentali** | Financials, ratio (es. P/E trailing vs current) | LLM + tool |
-| **Technical** | Segnali tecnici/quantitativi → [[system/quant/quant-backtesting]]; aggrega su Fondamentali | LLM + tool (calcoli deterministici) |
+| **Technical** | Segnali tecnici/quantitativi e forecasting quantilico via [[system/quant/timestral-forecasting|Timestral]] → [[system/quant/quant-backtesting]]; aggrega su Fondamentali | LLM + tool (calcoli deterministici e TSFM) |
 
 Output: `research_state` versionato (`alpha`/v1) con esiti `approved`/`declined`.
 
