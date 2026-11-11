@@ -27,6 +27,8 @@ Luca chiede di accelerare con guida operativa e quattro chat. Lo studio del codi
 
 ## Filoni, ownership e coordinamento
 
+**Promemoria UI:** prima di riprendere il filone dashboard, chiedere a **Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI del Trading Agent su GitHub.
+
 | Chat | Obiettivo e file assegnati | Dettaglio wiki |
 | --- | --- | --- |
 | Vendor/schema | Inventario completo delle capacità wiki, priorità valore/difficoltà e primo adapter con classi neutrali. Possiede `src/trading_agent/data/`, `tests/data/`, `docs/research/vendor-selection.md`, `docs/data-model.md`. | [[system/data/vendor-selection-2026-10-31]] |
