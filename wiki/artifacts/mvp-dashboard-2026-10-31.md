@@ -11,6 +11,9 @@ area: software
 
 # MVP — dashboard read-only
 
+> [!important] Promemoria prima di riprendere la UI
+> **Chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI del Trading Agent su GitHub prima di riprendere design e implementazione frontend.
+
 Owner: 🛠 Luca (software); aggiornamento della pagina affidato alla chat dedicata. Stato: incarico autorizzato, implementazione e verifiche da registrare.
 
 ## Obiettivo
