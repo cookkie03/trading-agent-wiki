@@ -19,6 +19,9 @@ related:
 
 # Frontend Module
 
+> [!important] Promemoria per la UI
+> Prima di riprendere la progettazione o l'implementazione della UI del Trading Agent su GitHub, **chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI.
+
 Vincolo architetturale emerso dalle daily notes: il frontend deve essere **un modulo sostituibile**. Streamlit puo' essere la prima UI, ma il core non deve dipendere da Streamlit; in futuro deve essere possibile passare a TypeScript cambiando il modulo frontend e i suoi adapter.
 
 ## Boundary
