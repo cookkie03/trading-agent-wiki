@@ -21,6 +21,9 @@ kanban-plugin: board
 
 ## Priorità operative correnti — 2026-11-04
 
+> [!important] Promemoria UI da non dimenticare
+> Prima di progettare o implementare la UI del Trading Agent su GitHub, **chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto.
+
 La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [[artifacts/piano-operativo-trading-agent]] sono riferimento storico, non una roadmap concorrente. **Solo questa sezione è attiva**: tutte le card e i filoni nelle sezioni successive, inclusi quelli indicati come «In corso» (chat/vendor/UI e catalogo provider), sono sospesi, conservati e non cancellati, finché non rientrano nella sequenza seguente.
 
 1. [ ] 🔀 **Verificare e definire i sei agenti** — Market, Sentiment, Technical, Fundamental, Risk e Portfolio Manager separati; valutare il codice residuo, ruoli, contratti e comportamenti prima di deciderne la destinazione → [[system/agents/agent-behaviors]]
