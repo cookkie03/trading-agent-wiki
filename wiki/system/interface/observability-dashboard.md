@@ -19,6 +19,9 @@ confidence: high
 
 # Dashboard di osservabilità (read-only)
 
+> [!important] Promemoria prima di riprendere la UI
+> Prima di riprendere design o implementazione della dashboard del Trading Agent su GitHub, **chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI.
+
 Pagina di **spec**, non di stato del repository esterno. L'obiettivo è rendere osservabile il sistema senza inserire logica di investimento nel frontend; vedi anche [[system/interface/frontend-module]].
 
 ## Boundary
