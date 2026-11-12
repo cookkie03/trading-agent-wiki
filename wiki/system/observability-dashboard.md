@@ -20,7 +20,7 @@ related:
 confidence: high
 ---
 
-# Dashboard di osservabilità (read-only)
+# Cockpit operativo e osservabilità
 
 > ✅ **Implementata e in produzione** (2026-06-13). Streamlit app multi-pagina, dark theme SFC, accessibile su `https://trading.lucamanca.synology.me`.
 
