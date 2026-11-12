@@ -1,5 +1,5 @@
 ---
-title: Dashboard di osservabilità
+title: Cockpit operativo e osservabilità
 type: build
 tags:
   - dashboard-design
@@ -17,16 +17,25 @@ related:
 confidence: high
 ---
 
-# Dashboard di osservabilità (read-only)
+# Cockpit operativo e osservabilità
 
 > [!important] Promemoria prima di riprendere la UI
 > Prima di riprendere design o implementazione della dashboard del Trading Agent su GitHub, **chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI.
 
-Pagina di **spec**, non di stato del repository esterno. L'obiettivo è rendere osservabile il sistema senza inserire logica di investimento nel frontend; vedi anche [[system/interface/frontend-module]].
+Pagina di **spec**, non di stato del repository esterno. L'obiettivo è fornire un cockpit completo per osservare e governare il sistema, mantenendo la logica di dominio nel backend; vedi anche [[system/interface/frontend-module]].
 
-## Boundary
+## Principi architetturali
 
-La dashboard legge read model o contratti applicativi espliciti. Non chiama vendor direttamente, non esegue ordini e non calcola regole di rischio/strategia.
+Il cockpit legge e modifica risorse tramite API e contratti applicativi espliciti. Non chiama vendor direttamente e non implementa nel frontend logica di trading, calcoli risk/quant o regole di strategia. Le azioni operative sono mediate dal backend e sottoposte a validazione, autorizzazioni e audit.
+
+## Superfici funzionali
+
+1. **Overview e osservabilità:** portfolio snapshot, liquidità, posizioni, watchlist, stato agenti/workflow, decisioni, trigger, trades, health, freshness, trace e audit.
+2. **Configurazione e personalizzazione:** parametri applicativi, preferenze utente, profili, strategie, limiti, pianificazioni e state modificabili.
+3. **Provider e integrazioni:** catalogo provider, capability, stato connessione, configurazione, priorità e fallback; gestione credenziali tramite secret store sicuro.
+4. **Controllo operativo:** avvio/arresto/pausa dei workflow autorizzati, gestione job, retry, refresh, approvazioni e stato delle operazioni.
+5. **Ricerca e analisi:** schede ticker, evidenze, decision log, backtest, metriche, storico e confronto tra strategie.
+6. **Audit e versioni:** cronologia delle modifiche, autore, motivazione, diff, esito e ripristino quando supportato.
 
 ## Informazioni da esporre
 
@@ -37,6 +46,14 @@ La dashboard legge read model o contratti applicativi espliciti. Non chiama vend
 5. health del sistema e staleness dei dati;
 6. benchmark/alpha solo quando il benchmark sarà introdotto Post-MVP.
 
+## Configuration & State Agent
+
+Il cockpit include un agente conversazionale che traduce richieste in linguaggio naturale in modifiche a configurazioni personali, strategie, parametri, state e provider collegati. L'agente opera solo su risorse e azioni esposte da un catalogo allowlist con schemi tipizzati; non modifica codice, file sorgente, prompt di sistema protetti o segreti.
+
+Flusso minimo: interpretazione → identificazione risorse → anteprima/diff → validazione schema e invarianti → conferma proporzionata al rischio → applicazione tramite API → audit trail → eventuale rollback. Le credenziali sono gestite da un secret manager e non vengono restituite al modello.
+
+Le azioni che possono generare ordini o effetti finanziari hanno autorizzazioni, conferme e controlli separati dalla normale gestione della configurazione.
+
 ## Evoluzione
 
-Una prima UI può usare Streamlit come reference SFC; una UI TypeScript futura deve riusare gli stessi contratti di lettura. Dettagli di deploy, URL, daemon e database appartengono al repository/infrastruttura esterni e non vengono mantenuti qui come stato corrente.
+React + TypeScript deve riusare contratti API stabili per lettura e scrittura, con service layer disaccoppiato dal framework UI. La struttura visuale e la gerarchia delle schermate restano da definire dopo la discovery UX.
