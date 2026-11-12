@@ -50,7 +50,7 @@ La dashboard non è solo una specifica API: il deliverable comprende il **build 
 
 ## Criteri di completamento
 
-Concordare contratti con vendor/DB; verificare avvio, API read-only, vuoto/errore/caricamento e fonte/data. Distinguere HMR, dati live e servizio persistente. Coordinare dipendenze Python con DB senza scrivere pyproject/lock.
+Concordare contratti con vendor/DB; verificare avvio, API applicative, vuoto/errore/caricamento e fonte/data. Distinguere HMR, dati live e servizio persistente. Coordinare dipendenze Python con DB senza scrivere pyproject/lock.
 
 Coordinamento: [[artifacts/mvp-parallel-work-2026-10-31]]. Nessun ordine, commit o push richiesto. Credenziali locali, mai in chat.
 
@@ -60,7 +60,7 @@ Verifica esterna eseguita il 2026-10-31 nel worktree isolato `worktree-dashboard
 
 ### Scelte e file prodotti
 
-- Scelta corrente applicata: React + TypeScript + Vite/npm, backend Python stdlib read-only; Streamlit resta riferimento storico e non prevale sulla decisione MVP corrente.
+- Scelta corrente applicata: React + TypeScript + Vite/npm, backend Python stdlib con API applicative; Streamlit resta riferimento storico e non prevale sulla decisione MVP corrente.
 - Contratto Python in `src/trading_agent/interface/dashboard.py`: `DashboardReadModel`, snapshot JSON, adapter vuoto esplicito senza persistenza duplicata.
 - Server in `src/trading_agent/interface/server.py`: `GET /api/dashboard`, `GET /api/control-surface`, `GET /api/health`; POST/PUT/PATCH/DELETE non espongono scritture e restituiscono 404; bind locale con porta configurabile (default 8000).
 - Primo slice control surface: `ControlSurfaceSnapshot` osserva moduli, runtime, configurazione non sensibile, eventi, source e freshness; `EmptyControlSurfaceReadModel` mantiene il caso senza DB esplicito e non introduce persistenza.
