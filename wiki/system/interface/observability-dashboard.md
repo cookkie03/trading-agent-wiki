@@ -46,11 +46,13 @@ Il cockpit legge e modifica risorse tramite API e contratti applicativi esplicit
 5. health del sistema e staleness dei dati;
 6. benchmark/alpha solo quando il benchmark sarà introdotto Post-MVP.
 
-## Configuration & State Agent
+## Evoluzione Post-MVP — Configuration & State Agent
 
-Il cockpit include un agente conversazionale che traduce richieste in linguaggio naturale in modifiche a configurazioni personali, strategie, parametri, state e provider collegati. L'agente opera solo su risorse e azioni esposte da un catalogo allowlist con schemi tipizzati; non modifica codice, file sorgente, prompt di sistema protetti o segreti.
+L'agente conversazionale non è richiesto per il completamento del cockpit MVP. Nel MVP le modifiche alle risorse sono eseguite attraverso controlli UI strutturati e API applicative.
 
-Flusso minimo: interpretazione → identificazione risorse → anteprima/diff → validazione schema e invarianti → conferma proporzionata al rischio → applicazione tramite API → audit trail → eventuale rollback. Le credenziali sono gestite da un secret manager e non vengono restituite al modello.
+In una fase Post-MVP, il cockpit potrà includere un agente conversazionale che traduce richieste in linguaggio naturale in modifiche a configurazioni personali, strategie, parametri, state e provider collegati. L'agente opera solo su risorse e azioni esposte da un catalogo allowlist con schemi tipizzati; non modifica codice, file sorgente, prompt di sistema protetti o segreti.
+
+Flusso minimo Post-MVP: interpretazione → identificazione risorse → anteprima/diff → validazione schema e invarianti → conferma proporzionata al rischio → applicazione tramite API → audit trail → eventuale rollback. Le credenziali sono gestite da un secret manager e non vengono restituite al modello.
 
 Le azioni che possono generare ordini o effetti finanziari hanno autorizzazioni, conferme e controlli separati dalla normale gestione della configurazione.
 
