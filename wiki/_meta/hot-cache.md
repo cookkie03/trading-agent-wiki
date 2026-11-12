@@ -12,7 +12,7 @@ tags:
 ## Sessione 2026-11-12 — Direzione cockpit UI
 
 - La UI è una console operativa completa, non una dashboard in sola consultazione. React + TypeScript + Vite/npm; struttura visuale ancora da definire. Deve includere gestione di configurazioni personali, state, strategie, provider collegati, agenti, workflow, osservabilità, audit e controlli operativi.
-- Previsto un Configuration & State Agent conversazionale: interpreta richieste in linguaggio naturale, propone diff, valida, chiede conferma, applica tramite API tipizzate e registra audit. Può modificare solo risorse esplicitamente autorizzate, mai codice sorgente, prompt protetti o segreti; credenziali tramite secret store. Azioni finanziarie e ordini mantengono gate separati.
+- Evoluzione **Post-MVP**: Configuration & State Agent conversazionale per modificare in linguaggio naturale configurazioni, state, strategie e provider autorizzati. Richiede preview/diff, validazione, conferma, API tipizzate e audit; non interviene su codice sorgente, prompt protetti o segreti. Nel MVP le modifiche si fanno tramite controlli UI strutturati; azioni finanziarie e ordini mantengono gate separati.
 
 ## Sessione 2026-11-05 — Riconciliazione wiki
 
