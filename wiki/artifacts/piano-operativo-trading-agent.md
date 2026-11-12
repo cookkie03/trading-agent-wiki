@@ -312,12 +312,12 @@ Lo schema resta annidato e a campi espliciti, come già deciso nella wiki; l'est
 
 - [ ] **5.1 LangSmith Tracing & Observability**:
   - Tracciamento end-to-end di ogni run di LangGraph (token spesi, latenza, prompt usati, decisioni PM).
-- [ ] **5.2 Dashboard Streamlit (MVP Read-Only)**:
+- [ ] **5.2 Cockpit operativo React/TypeScript (MVP)**:
   - Visualizzazione portafoglio attivo, P&L, allocazione e storico ordini.
   - Scheda Ticker interattiva: lettura dell'`InvestmentState` generato dagli agenti.
   - Visualizzazione della lista di attesa e scadenze `next_check_date`.
 - [ ] **5.3 Architettura Disaccoppiata per Futuro Frontend**:
-  - Interfaccia basata su API interne / contratti JSON stabili, consentendo in futuro la sostituzione trasparente con frontend React/TypeScript.
+  - Interfaccia basata su API interne e contratti JSON stabili per lettura e modifica delle risorse autorizzate, con frontend React/TypeScript. Il cockpit include configurazioni, strategie, state, provider, agenti, workflow e osservabilità.
 
 ---
 
