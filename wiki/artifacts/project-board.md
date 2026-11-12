@@ -30,7 +30,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 2. [ ] 🛠 **Definire grafo e confini dopo la verifica** — grafo sotto `agents`; distinguere trigger, grafo e tool. Nomi e collocazione dei trigger/workflow esterni e cartelle `orchestration`/`steps` restano aperti; nessuna creazione ora. Testare il workflow con fake prima dell'infrastruttura reale → [[system/foundation/codebase-architecture#Decisione e confini — 2026-11-05]]
 3. [ ] 🛠 **Definire e realizzare i tool** — dopo il workflow → [[system/tools/tools-inventory]]
 4. [ ] 🛠 **Collegare adapter, provider e dati reali** — dopo i tool; mantenere risk e safety deterministici, senza attivare esecuzione reale → [[system/data/data-vendors]]
-5. [ ] 🛠 **Riprendere il frontend** — dopo i livelli precedenti → [[artifacts/piano-operativo-trading-agent#Priorità correnti — 2026-11-04]]
+5. [ ] 🛠 **Progettare e costruire il cockpit UI end-to-end** — dopo i livelli precedenti; prima chiedere a **Giuseppe (vedi lista contatti)** un confronto sulla UI. Usare **[21st.dev](https://21st.dev/)** per ricerca/selezione e integrazione di componenti React/shadcn e la skill **[Impeccable](https://github.com/pbakaus/impeccable)** per shape, design direction, critique, audit e polish. Realizzare le schermate e gli stati previsti dalla spec, integrandoli con i contratti read-only reali e verificando responsive, accessibilità e interazioni → [[system/interface/frontend-module]] · [[system/interface/observability-dashboard]] · [[artifacts/mvp-dashboard-2026-10-31]]
 
 ## 🟠 Decisioni da prendere
 
