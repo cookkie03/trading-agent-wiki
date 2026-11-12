@@ -207,6 +207,6 @@ Owner: 🛠 Luca (software). Luca chiede guida operativa, delega le scelte e aut
 
 SQLite per l'MVP se adeguato a singolo servizio writer; repository e migrazioni preparano futura evoluzione PostgreSQL/TimescaleDB senza garantire portabilità automatica. Questo aggiorna per l'MVP la precedente divisione SQLite-dev/Postgres-prod. Cache fuori dal lavoro corrente; persistono dedup, provenienza e persistenza.
 
-Frontend MVP React + TypeScript + Vite/npm con backend Python read-only, superando la preferenza iniziale Streamlit. Sezioni senza dati dichiarate non disponibili/demo; HMR distinto da dati live e servizio persistente. Vendor agnostic confermato; il riesame OpenBB-first qui riportato è superato dal chiarimento del 2026-11-04 nello stato corrente.
+Frontend MVP React + TypeScript + Vite/npm con backend Python e API applicative, superando la preferenza iniziale Streamlit. Il cockpit include osservabilità e controllo di configurazioni, state, strategie e provider; HMR resta distinto dai dati live e dal servizio persistente. Vendor agnostic confermato; il riesame OpenBB-first qui riportato è superato dal chiarimento del 2026-11-04 nello stato corrente.
 
 Docker resta requisito. Queste sono decisioni e incarichi, non implementazioni o verifiche runtime. Ownership, motivazioni e criteri in [[artifacts/mvp-parallel-work-2026-10-31]]. Execution/intent/recovery restano separati; nessun ordine, commit o push richiesto.
