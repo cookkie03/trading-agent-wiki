@@ -30,7 +30,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 2. [ ] 🛠 **Definire grafo e confini dopo la verifica** — grafo sotto `agents`; distinguere trigger, grafo e tool. Nomi e collocazione dei trigger/workflow esterni e cartelle `orchestration`/`steps` restano aperti; nessuna creazione ora. Testare il workflow con fake prima dell'infrastruttura reale → [[system/foundation/codebase-architecture#Decisione e confini — 2026-11-05]]
 3. [ ] 🛠 **Definire e realizzare i tool** — dopo il workflow → [[system/tools/tools-inventory]]
 4. [ ] 🛠 **Collegare adapter, provider e dati reali** — dopo i tool; mantenere risk e safety deterministici, senza attivare esecuzione reale → [[system/data/data-vendors]]
-5. [ ] 🛠 **Progettare e costruire il cockpit UI end-to-end** — dopo i livelli precedenti; prima chiedere a **Giuseppe (vedi lista contatti)** un confronto sulla UI. Usare **[21st.dev](https://21st.dev/)** per ricerca/selezione e integrazione di componenti React/shadcn e la skill **[Impeccable](https://github.com/pbakaus/impeccable)** per shape, design direction, critique, audit e polish. Realizzare le schermate e gli stati previsti dalla spec, integrandoli con i contratti read-only reali e verificando responsive, accessibilità e interazioni → [[system/interface/frontend-module]] · [[system/interface/observability-dashboard]] · [[artifacts/mvp-dashboard-2026-10-31]]
+5. [ ] 🛠 **Progettare e costruire il cockpit UI end-to-end** — dopo i livelli precedenti; prima chiedere a **Giuseppe (vedi lista contatti)** un confronto sulla UI. Usare **[21st.dev](https://21st.dev/)** per ricerca/selezione e integrazione di componenti React/shadcn e la skill **[Impeccable](https://github.com/pbakaus/impeccable)** per shape, design direction, critique, audit e polish. Realizzare le schermate e gli stati previsti dalla spec, integrandoli con API e contratti applicativi reali e verificando responsive, accessibilità e interazioni → [[system/interface/frontend-module]] · [[system/interface/observability-dashboard]] · [[artifacts/mvp-dashboard-2026-10-31]]
 
 ## 🟠 Decisioni da prendere
 
@@ -46,13 +46,13 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🔴 Da fare
 
-- [x] 🛠 **Completare e verificare il runtime Docker MVP** — Dockerfile, lock dipendenze, volume SQLite, healthcheck e smoke read-only verificati; il dev launcher resta locale e senza Docker → [[system/foundation/codebase-architecture#Alberatura approvata e requisito Docker — 2026-10-30]]
+- [x] 🛠 **Completare e verificare il runtime Docker MVP** — Dockerfile, lock dipendenze, volume SQLite, healthcheck e smoke test verificati; il dev launcher resta locale e senza Docker → [[system/foundation/codebase-architecture#Alberatura approvata e requisito Docker — 2026-10-30]]
 
 - [x] 🛠 **Analizzare Alpaca come vendor dati oltre il broker** — catalogo iniziale completato; equities, crypto, options, news, corporate actions, feed, limiti e licensing documentati. Fundamentals non confermati come prodotto API dedicato; adapter diretto avviato con OHLCV storico equities → [[system/data/data-vendors]]
 - [ ] 🛠 **Costruire raccolta dati multi-vendor controllata** — capability catalog, schema normalizzato, provenance, rate limits, licensing e job opt-in per OpenBB, Alpaca e adapter diretti; niente scraping massivo implicito → [[system/data/data-vendors]]
 - [ ] 🛠 **Verificare il flusso end-to-end provider → SQLite → outbox/SMA → dashboard** — fixture deterministica, freshness/source visibili e caso vuoto/errore; coordinare vendor, storage e read model → [[artifacts/mvp-parallel-work-2026-10-31]]
 - [ ] 🛠 **Decidere il destino del bridge Telegram locale** — validare confini di sicurezza, packaging e test; poi committare o rimuovere il lavoro non tracciato → [[system/interface/telegram-claude-bridge]]
-- [x] 🛠 **Completare smoke test runtime Yahoo/Alpaca/OpenBB** — OpenBB reale e Alpaca paper read-only verificati con configurazione locale; evidenze separate dai test offline → [[artifacts/mvp-database-2026-10-31]]
+- [x] 🛠 **Completare smoke test runtime Yahoo/Alpaca/OpenBB** — OpenBB reale e Alpaca paper in modalità di consultazione verificata con configurazione locale; evidenze separate dai test offline → [[artifacts/mvp-database-2026-10-31]]
 
 - [ ] 🛠 **Completare Fase 0 / Fase 1 della codebase** — filone sospeso, non cancellato; configurazione e harness saranno rivalutati secondo la priorità corrente; OpenBB percorso principale per dati di mercato → [[artifacts/piano-operativo-trading-agent]]
 - [ ] 🛠 **Completare le schede di copertura data vendor** — capacità, freshness, limiti, costo, licenza, fallback, chiave dedup e fake test per ogni fonte → [[system/data/data-vendors]]
@@ -66,7 +66,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🟡 In corso
 
-- [ ] 🛠 **MVP in quattro chat: vendor/schema, database, OpenBB e dashboard** — guida operativa, SQLite MVP e frontend React/TypeScript read-only; nuove implementazioni da verificare → [[artifacts/mvp-parallel-work-2026-10-31]]
+- [ ] 🛠 **MVP in quattro chat: vendor/schema, database, OpenBB e dashboard** — guida operativa, SQLite MVP e frontend React/TypeScript operativo; nuove implementazioni da verificare → [[artifacts/mvp-parallel-work-2026-10-31]]
 - [x] 🛠 **Implementare la materializzazione incrementale dei derivati — SMA v1** — migration `indicator_values`/outbox, ingestion atomica, worker idempotente, watermark, status, retry e rebuild verificati; estendere agli altri indicatori solo dopo chiusura delle formule/parametri MVP → [[system/db-access-performance]]
 - [x] 🛠 **Formalizzare le formule tecniche pure iniziali** — EMA, RSI Wilder, MACD, ATR Wilder e Pivot Points classici disponibili e testati in `analysis.indicators`; la materializzazione resta SMA-only finché la strategia MVP non chiude i parametri → [[system/quant/quant-backtesting]]
 
