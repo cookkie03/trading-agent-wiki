@@ -79,7 +79,7 @@ tags:
 ## Sessione 2026-11-01 — Verifica coordinatore dello stato repository
 
 - Verificato `/home/luca/trading-agent` su `main`: suite offline **64 passed, 1 skipped** con `uv run pytest`.
-- Il repository contiene e verifica il flusso provider → SQLite deduplicato/provenienza → outbox/SMA materializzata → dashboard read-only; agenti, LangGraph, strategia/backtest e execution ordini non sono ancora implementati.
+- Il repository contiene e verifica il flusso provider → SQLite deduplicato/provenienza → outbox/SMA materializzata → cockpit con osservabilità; agenti, LangGraph, strategia/backtest e execution ordini non sono ancora implementati.
 - Rilevato lavoro locale non committato per il bridge Telegram (`telegram-claude/`, test dedicato, extra `telegram` in `pyproject.toml`/`uv.lock`); bridge verificato solo offline, nessuna prova Telegram reale.
 - Prossimo ordine raccomandato: chiudere decisioni MVP su strategia/Risk Analyst/Market-Sentiment, consolidare policy vendor/freshness/retention e verificare un flusso end-to-end prima di costruire orchestration agentica.
 
@@ -222,7 +222,7 @@ tags:
 
 - **Richiesta Luca**: guida operativa e avanzamento parallelo; lettura codice non è un gate. Filoni: vendor/schema e primo adapter, database, spiegazione OpenBB, dashboard.
 - **Scelte delegate MVP**: SQLite se adeguato al singolo servizio writer; futura PostgreSQL/Timescale tramite repository/migrazioni senza portabilità automatica. Cache esclusa; persistenza/dedup/provenienza restano.
-- **Frontend**: React + TypeScript + Vite/npm con backend Python read-only; parti non implementate non disponibili/demo. HMR, dati live e servizio persistente distinti.
+- **Frontend**: React + TypeScript + Vite/npm con backend Python e API applicative; parti non implementate non disponibili/demo. HMR, dati live e servizio persistente distinti.
 - **Vendor**: contratti neutrali confermati; OpenBB è il primo vendor operativo dietro un adapter interno, con adapter diretti mantenuti come sostituti. Ricerca ufficiale Alpaca market-data completata; `AlpacaMarketDataProvider` implementa OHLCV storico equities con feed esplicito. Docker rimane requisito.
 - **Layout codice**: merge consolidato su `main`; package applicativi spostati dalla gerarchia `src/trading_agent/` alla root (`data/`, `brokers/`, `storage/`, ecc.). 39 test focalizzati passati il 2026-10-31.
 - **Coordinamento**: [[artifacts/mvp-parallel-work-2026-10-31]]. Sono decisioni/incarichi: nuove implementazioni, test e runtime devono ancora essere attestati. Execution e ordini fuori da questi incarichi.
