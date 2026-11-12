@@ -1,5 +1,5 @@
 ---
-title: "MVP — dashboard read-only"
+title: "MVP — cockpit operativo"
 type: artifact
 tags: [architecture, infrastructure, roadmap]
 created: 2026-10-31
@@ -9,7 +9,7 @@ confidence: high
 area: software
 ---
 
-# MVP — dashboard read-only
+# MVP — cockpit operativo
 
 > [!important] Promemoria prima di riprendere la UI
 > **Chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI del Trading Agent su GitHub prima di riprendere design e implementazione frontend.
@@ -18,18 +18,21 @@ Owner: 🛠 Luca (software); aggiornamento della pagina affidato alla chat dedic
 
 ## Obiettivo
 
-React + TypeScript + Vite/npm e backend Python read-only. Mappa completa con sezioni non disponibili/demo esplicite.
+React + TypeScript + Vite/npm e backend Python tramite API applicative. Cockpit completo e interattivo, con sezioni non disponibili/demo esplicite e funzionalità di configurazione e controllo.
 
 ## UI design e build
 
-La dashboard non è solo una specifica API: il deliverable comprende il **build completo del cockpit frontend**, con schermate, navigazione, componenti riusabili, stati operativi e integrazione con i contratti read-only.
+La dashboard non è solo una specifica API: il deliverable comprende il **build completo del cockpit frontend**, con schermate, navigazione, componenti riusabili, stati operativi e integrazione con API e contratti applicativi di lettura e scrittura.
 
 - Prima di riprendere il lavoro UI, **chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI del Trading Agent su GitHub.
 - Usare **[21st.dev](https://21st.dev/)** come libreria di riferimento per cercare, valutare e integrare componenti React/shadcn e pattern visuali. Skill: [21st-dev/skill](https://github.com/21st-dev/skill), installazione `npx @21st-dev/cli install-skill`.
 - Usare la skill **[Impeccable](https://github.com/pbakaus/impeccable)** per progettazione UX/UI, definizione della direzione visuale, critique, audit e polish. Installazione: `npx skills add pbakaus/impeccable --skill impeccable`.
 - Adattare il codice al progetto React + TypeScript + Vite e al suo design system; non introdurre dipendenze superflue o componenti non verificati.
-- Costruire un cockpit coerente end-to-end: overview, portfolio, watchlist, attività agenti/workflow, decision log, trades e system health, con stati loading/empty/error/stale e disponibilità esplicita dei dati.
-- Verificare responsive desktop/mobile, accessibilità, interazioni, performance e fedeltà ai dati reali. UI read-only: nessuna azione di trading o scrittura implicita.
+- Costruire un cockpit coerente end-to-end: overview, portfolio, watchlist, strategie, configurazioni, state, provider e connessioni, attività agenti/workflow, decision log, trades, system health, audit e controlli operativi, con stati loading/empty/error/stale e feedback delle operazioni.
+- Includere un Configuration & State Agent conversazionale per modificare configurazioni personali, state, strategie e provider autorizzati tramite API tipizzate; l'agente non modifica codice, file sorgente o segreti.
+- Ogni modifica deve prevedere anteprima/diff, validazione, conferma secondo il livello di rischio, applicazione, audit trail e possibilità di rollback quando supportata.
+- Le azioni di trading e quelle finanziariamente rilevanti richiedono workflow e autorizzazioni separati: non sono implicitamente abilitate dalla gestione delle configurazioni.
+- Verificare responsive desktop/mobile, accessibilità, sicurezza, interazioni, performance e fedeltà ai dati reali.
 
 ## Proprietà dei file
 
@@ -39,7 +42,9 @@ La dashboard non è solo una specifica API: il deliverable comprende il **build 
 
 - [ ] Direzione UX/UI definita e documentata dopo il confronto con Giuseppe.
 - [ ] Componenti/pattern selezionati da 21st.dev e adattati al progetto; dipendenze e provenienza annotate.
-- [ ] Cockpit completo implementato, con schermate e stati coerenti con le capability effettivamente disponibili.
+- [ ] Cockpit completo implementato, con schermate per tutte le capability del sistema e controlli di modifica delle risorse autorizzate.
+- [ ] Configuration & State Agent implementato con preview/diff, validazione, conferma, audit e rollback ove supportato.
+- [ ] Confine verificato: l'agente può modificare solo risorse configurabili esplicite e non può intervenire su codice sorgente o segreti.
 - [ ] Review Impeccable completata (critique/audit/polish) e problemi bloccanti risolti.
 - [ ] Test funzionali e verifica visuale responsive/accessibilità superati.
 
