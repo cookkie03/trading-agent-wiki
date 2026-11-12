@@ -3,7 +3,7 @@ title: "MVP — lavoro parallelo del 2026-10-31"
 type: artifact
 tags: [architecture, infrastructure, roadmap]
 created: 2026-10-31
-updated: 2026-10-31
+updated: 2026-11-12
 status: active
 confidence: high
 area: software
@@ -34,9 +34,16 @@ Luca chiede di accelerare con guida operativa e quattro chat. Lo studio del codi
 | Vendor/schema | Inventario completo delle capacità wiki, priorità valore/difficoltà e primo adapter con classi neutrali. Possiede `src/trading_agent/data/`, `tests/data/`, `docs/research/vendor-selection.md`, `docs/data-model.md`. | [[system/data/vendor-selection-2026-10-31]] |
 | Database | SQLite e migrazioni con confini per futura PostgreSQL/Timescale. Possiede `src/trading_agent/storage/`, `tests/storage/`, `pyproject.toml`, `uv.lock`, `docs/storage.md`; integra per ultimo `README.md` e `docs/architecture.md`. | [[artifacts/mvp-database-2026-10-31]] |
 | OpenBB | Spiegazione comprensibile e valutazione del ruolo rispetto agli adapter diretti; solo ricerca in `docs/research/openbb-assessment.md`. | [[artifacts/mvp-openbb-2026-10-31]] |
-| Dashboard | Frontend e API Python read-only. Possiede `frontend/`, `src/trading_agent/interface/`, relativi test, `docs/dashboard.md`. | [[artifacts/mvp-dashboard-2026-10-31]] |
+| Dashboard | Build completo del cockpit UI, oltre alle API Python read-only: React + TypeScript + Vite, componenti e pattern da 21st.dev, skill Impeccable per design/critique/audit/polish. Prima di riprendere la UI, chiedere a **Giuseppe (vedi lista contatti)** un confronto. Possiede `frontend/`, `src/trading_agent/interface/`, relativi test, `docs/dashboard.md`. | [[artifacts/mvp-dashboard-2026-10-31]] |
 
 Ogni chat aggiorna la propria pagina; board e file wiki comuni hanno come riferimento unico questo coordinamento. Le dipendenze Python sono comunicate al database, unico writer di pyproject e lock. Il coordinatore verifica l'integrazione finale: controlli separati non dimostrano da soli un flusso end-to-end.
+
+## UI build: strumenti e aspettative
+
+- [21st.dev](https://21st.dev/) è il riferimento primario per cercare e integrare componenti React/shadcn, adattandoli al progetto e verificandone qualità e dipendenze. Skill ufficiali: [21st-dev/skill](https://github.com/21st-dev/skill), setup `npx @21st-dev/cli install-skill`.
+- [Impeccable](https://github.com/pbakaus/impeccable) guida design direction e UX/UI planning, poi critique, audit e polish. Setup `npx skills add pbakaus/impeccable --skill impeccable`.
+- Il risultato atteso è un cockpit completo, non una raccolta di widget: navigazione e overview, portfolio, watchlist, attività degli agenti/workflow, decision log, trades e health, con stati vuoti/errore/loading/stale e dati non disponibili esplicitati.
+- La UI rimane read-only e consuma i contratti API concordati. Componenti importati devono essere adattati, verificati e mantenuti nel repository.
 
 ## Criteri di completamento
 
