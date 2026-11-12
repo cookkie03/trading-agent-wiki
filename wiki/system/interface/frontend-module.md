@@ -22,30 +22,26 @@ related:
 > [!important] Promemoria per la UI
 > Prima di riprendere la progettazione o l'implementazione della UI del Trading Agent su GitHub, **chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI.
 
-Il frontend è un modulo sostituibile e disaccoppiato dal core. La decisione MVP corrente è **React + TypeScript + Vite/npm**, con backend Python read-only; la precedente ipotesi Streamlit è superata.
+Il frontend è un modulo sostituibile e disaccoppiato dal core. La decisione MVP corrente è **React + TypeScript + Vite/npm**, con backend Python esposto tramite API applicative. La precedente ipotesi Streamlit è superata.
 
-## Boundary
+## Boundary e responsabilità
 
-Il frontend legge e visualizza. Non contiene:
+Il frontend è una console operativa completa. Può leggere dati e modificare, attraverso API e servizi applicativi espliciti, le configurazioni, gli state e le risorse che l'utente è autorizzato a gestire. Non incorpora direttamente la logica di dominio né contiene credenziali o segreti.
 
-- logica di trading;
-- calcoli risk/quant;
-- chiamate dirette ai vendor;
-- submit ordini non mediati da API/servizi espliciti;
-- trasformazioni che cambiano lo stato finanziario.
+Le operazioni sono eseguite dal backend tramite contratti tipizzati, validazione server-side, autorizzazioni, audit e gestione degli errori. Le azioni che incidono su capitale o invio ordini mantengono workflow e conferme distinti: la possibilità di configurare il sistema non equivale ad autorizzare automaticamente l'esecuzione di trade.
 
-Il frontend puo' contenere:
+Il frontend può includere:
 
-- componenti UI;
-- read models;
-- filtri e viste;
-- refresh/polling;
-- link a log, trace e pagine wiki;
-- eventuali controlli futuri solo se passano da contratti applicativi chiari.
+- componenti UI, navigazione, viste analitiche e read model;
+- editor per configurazioni, strategie, parametri, preferenze e state utente;
+- gestione dei provider disponibili, connessioni, capability e stato delle integrazioni;
+- controlli operativi per agenti, workflow, job e runtime;
+- interazioni con API applicative per applicare modifiche e avviare azioni autorizzate;
+- log, trace, audit trail, cronologia modifiche e ripristino delle versioni precedenti.
 
 ## Contratti minimi
 
-La dashboard read-only deve consumare contratti stabili, non repository interni sparsi:
+Il cockpit deve consumare e aggiornare risorse tramite contratti applicativi stabili, non accedere direttamente a repository interni sparsi:
 
 - portfolio snapshot;
 - positions;
@@ -62,7 +58,7 @@ Questi contratti possono essere funzioni Python, API locali o query layer, ma de
 
 ## MVP corrente
 
-**React + TypeScript + Vite/npm** con backend Python read-only. La UI deve essere un cockpit completo e coerente, non una semplice pagina di metriche: mostrare le capacità effettivamente implementate, gli stati operativi e le fonti, distinguendo sempre dati reali, demo, vuoti, errori e funzionalità non disponibili. La pagina [[system/interface/observability-dashboard]] definisce il dettaglio funzionale.
+**React + TypeScript + Vite/npm** con backend Python e API applicative. La UI deve essere un cockpit completo e coerente, non una semplice pagina di metriche: deve coprire tutte le funzionalità del sistema, rendere comprensibili stati operativi e fonti, e distinguere dati reali, demo, vuoti, errori e funzionalità non disponibili. Deve inoltre permettere di configurare e governare il sistema senza intervenire sul codice sorgente. La pagina [[system/interface/observability-dashboard]] definisce il dettaglio funzionale.
 
 ## UI design & build workflow
 
@@ -81,14 +77,28 @@ La costruzione della UI è un vero workstream del progetto, non un'attività acc
 ### Sequenza di lavoro UI
 
 1. Raccogliere il confronto con Giuseppe e definire obiettivi, utenti, casi d'uso e direzione visuale.
-2. Esaminare la codebase e i contratti read-only esistenti; definire le superfici del cockpit e le priorità informative prima del codice.
+2. Esaminare codebase, API e modelli di dominio; definire le superfici del cockpit, le risorse modificabili, i permessi e le priorità informative prima del codice.
 3. Usare Impeccable per strutturare la direzione e il piano UX/UI; documentare decisioni e token condivisi.
 4. Usare 21st.dev per cercare e selezionare componenti/pattern utili, poi adattarli e integrarli nel progetto React/TypeScript.
-5. Costruire il cockpit end-to-end: navigazione, overview, portfolio, watchlist, agent/workflow observability, decision log, trades, system health e stati vuoti/errore/loading, nei limiti dei dati realmente disponibili.
+5. Costruire il cockpit end-to-end: navigazione e overview, portfolio, watchlist, agent/workflow observability, decision log, trades, system health, gestione provider, configurazioni, strategie, state e controlli operativi; includere stati vuoti/errore/loading e feedback delle operazioni.
 6. Verificare desktop e mobile, accessibilità, interazioni, performance, coerenza e stati edge; usare Impeccable per critique/audit/polish e test automatici/manuali.
 7. Registrare componenti riusati, dipendenze aggiunte, scelte visuali e limiti. Il codice finale deve restare nel repository, comprensibile e modificabile, senza dipendere da un servizio remoto per renderizzare componenti già installati.
 
-21st.dev e Impeccable sono strumenti di supporto al design/build, non vincoli architetturali né sostituti dei contratti API, dei test o della verifica del prodotto. La UI resta read-only finché non viene approvata una distinta specifica per eventuali azioni operative.
+### Agent conversazionale per configurazione e state
+
+Il cockpit deve includere un agente con cui l'utente interagisce in linguaggio naturale per modificare le risorse di propria competenza, senza modificare il codice sorgente. Ambito previsto:
+
+- configurazioni personali e preferenze operative;
+- parametri, profili e strategie selezionabili;
+- state utente e state applicativi esplicitamente modificabili;
+- provider disponibili, connessioni, capability e priorità/fallback;
+- impostazioni degli agenti, workflow e pianificazioni, entro schemi e limiti autorizzati.
+
+Workflow obbligatorio: interpretare la richiesta, identificare le risorse coinvolte, mostrare un piano/diff comprensibile, validare schema e invarianti, richiedere conferma quando la modifica ha effetti rilevanti, applicare tramite API tipizzate e registrare autore, motivazione, valori precedenti/nuovi, timestamp ed esito. Supportare annullamento o ripristino quando tecnicamente possibile. Non consentire scritture arbitrarie su file, codice, prompt di sistema protetti o segreti. Le credenziali devono essere gestite da un secret manager/credential store e non restituite al modello.
+
+L'agente conversazionale non è un terminale generico né un coding agent: può operare esclusivamente su un catalogo esplicito di azioni e risorse configurabili. Le azioni di trading e quelle finanziariamente rilevanti richiedono autorizzazioni e conferme separate.
+
+21st.dev e Impeccable sono strumenti di supporto al design/build, non vincoli architetturali né sostituti dei contratti API, dei test o della verifica del prodotto.
 
 ## Evoluzione futura
 
