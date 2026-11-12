@@ -3,7 +3,7 @@ title: "MVP — dashboard read-only"
 type: artifact
 tags: [architecture, infrastructure, roadmap]
 created: 2026-10-31
-updated: 2026-10-31
+updated: 2026-11-12
 status: active
 confidence: high
 area: software
@@ -20,9 +20,28 @@ Owner: 🛠 Luca (software); aggiornamento della pagina affidato alla chat dedic
 
 React + TypeScript + Vite/npm e backend Python read-only. Mappa completa con sezioni non disponibili/demo esplicite.
 
+## UI design e build
+
+La dashboard non è solo una specifica API: il deliverable comprende il **build completo del cockpit frontend**, con schermate, navigazione, componenti riusabili, stati operativi e integrazione con i contratti read-only.
+
+- Prima di riprendere il lavoro UI, **chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI del Trading Agent su GitHub.
+- Usare **[21st.dev](https://21st.dev/)** come libreria di riferimento per cercare, valutare e integrare componenti React/shadcn e pattern visuali. Skill: [21st-dev/skill](https://github.com/21st-dev/skill), installazione `npx @21st-dev/cli install-skill`.
+- Usare la skill **[Impeccable](https://github.com/pbakaus/impeccable)** per progettazione UX/UI, definizione della direzione visuale, critique, audit e polish. Installazione: `npx skills add pbakaus/impeccable --skill impeccable`.
+- Adattare il codice al progetto React + TypeScript + Vite e al suo design system; non introdurre dipendenze superflue o componenti non verificati.
+- Costruire un cockpit coerente end-to-end: overview, portfolio, watchlist, attività agenti/workflow, decision log, trades e system health, con stati loading/empty/error/stale e disponibilità esplicita dei dati.
+- Verificare responsive desktop/mobile, accessibilità, interazioni, performance e fedeltà ai dati reali. UI read-only: nessuna azione di trading o scrittura implicita.
+
 ## Proprietà dei file
 
 `frontend/`, `src/trading_agent/interface/`, relativi test, `docs/dashboard.md`.
+
+## Criteri di completamento UI
+
+- [ ] Direzione UX/UI definita e documentata dopo il confronto con Giuseppe.
+- [ ] Componenti/pattern selezionati da 21st.dev e adattati al progetto; dipendenze e provenienza annotate.
+- [ ] Cockpit completo implementato, con schermate e stati coerenti con le capability effettivamente disponibili.
+- [ ] Review Impeccable completata (critique/audit/polish) e problemi bloccanti risolti.
+- [ ] Test funzionali e verifica visuale responsive/accessibilità superati.
 
 ## Criteri di completamento
 
