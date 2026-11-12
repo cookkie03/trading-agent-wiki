@@ -29,7 +29,7 @@ La dashboard non è solo una specifica API: il deliverable comprende il **build 
 - Usare la skill **[Impeccable](https://github.com/pbakaus/impeccable)** per progettazione UX/UI, definizione della direzione visuale, critique, audit e polish. Installazione: `npx skills add pbakaus/impeccable --skill impeccable`.
 - Adattare il codice al progetto React + TypeScript + Vite e al suo design system; non introdurre dipendenze superflue o componenti non verificati.
 - Costruire un cockpit coerente end-to-end: overview, portfolio, watchlist, strategie, configurazioni, state, provider e connessioni, attività agenti/workflow, decision log, trades, system health, audit e controlli operativi, con stati loading/empty/error/stale e feedback delle operazioni.
-- Includere un Configuration & State Agent conversazionale per modificare configurazioni personali, state, strategie e provider autorizzati tramite API tipizzate; l'agente non modifica codice, file sorgente o segreti.
+- Gestire configurazioni personali, state, strategie e provider autorizzati tramite controlli UI strutturati e API tipizzate. Non includere l'agente conversazionale nel perimetro MVP.
 - Ogni modifica deve prevedere anteprima/diff, validazione, conferma secondo il livello di rischio, applicazione, audit trail e possibilità di rollback quando supportata.
 - Le azioni di trading e quelle finanziariamente rilevanti richiedono workflow e autorizzazioni separati: non sono implicitamente abilitate dalla gestione delle configurazioni.
 - Verificare responsive desktop/mobile, accessibilità, sicurezza, interazioni, performance e fedeltà ai dati reali.
@@ -43,8 +43,8 @@ La dashboard non è solo una specifica API: il deliverable comprende il **build 
 - [ ] Direzione UX/UI definita e documentata dopo il confronto con Giuseppe.
 - [ ] Componenti/pattern selezionati da 21st.dev e adattati al progetto; dipendenze e provenienza annotate.
 - [ ] Cockpit completo implementato, con schermate per tutte le capability del sistema e controlli di modifica delle risorse autorizzate.
-- [ ] Configuration & State Agent implementato con preview/diff, validazione, conferma, audit e rollback ove supportato.
-- [ ] Confine verificato: l'agente può modificare solo risorse configurabili esplicite e non può intervenire su codice sorgente o segreti.
+- [ ] Gestione delle risorse configurabili tramite UI strutturata, con validazione server-side, autorizzazioni e audit delle modifiche.
+- [ ] Il Configuration & State Agent conversazionale è escluso dal MVP e pianificato come evoluzione Post-MVP in [[system/interface/frontend-module]].
 - [ ] Review Impeccable completata (critique/audit/polish) e problemi bloccanti risolti.
 - [ ] Test funzionali e verifica visuale responsive/accessibilità superati.
 
