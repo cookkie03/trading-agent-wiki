@@ -84,9 +84,11 @@ La costruzione della UI è un vero workstream del progetto, non un'attività acc
 6. Verificare desktop e mobile, accessibilità, interazioni, performance, coerenza e stati edge; usare Impeccable per critique/audit/polish e test automatici/manuali.
 7. Registrare componenti riusati, dipendenze aggiunte, scelte visuali e limiti. Il codice finale deve restare nel repository, comprensibile e modificabile, senza dipendere da un servizio remoto per renderizzare componenti già installati.
 
-### Agent conversazionale per configurazione e state
+### Evoluzione Post-MVP — Configuration & State Agent
 
-Il cockpit deve includere un agente con cui l'utente interagisce in linguaggio naturale per modificare le risorse di propria competenza, senza modificare il codice sorgente. Ambito previsto:
+L'agente conversazionale è **esplicitamente fuori dallo scope MVP**. Il cockpit MVP deve poter gestire le risorse configurabili tramite interfacce UI strutturate e API tipizzate; l'interazione in linguaggio naturale sarà una feature Post-MVP.
+
+In una fase successiva, il cockpit potrà includere un agente con cui l'utente interagisce in linguaggio naturale per modificare le risorse di propria competenza, senza modificare il codice sorgente. Ambito previsto:
 
 - configurazioni personali e preferenze operative;
 - parametri, profili e strategie selezionabili;
@@ -94,7 +96,7 @@ Il cockpit deve includere un agente con cui l'utente interagisce in linguaggio n
 - provider disponibili, connessioni, capability e priorità/fallback;
 - impostazioni degli agenti, workflow e pianificazioni, entro schemi e limiti autorizzati.
 
-Workflow obbligatorio: interpretare la richiesta, identificare le risorse coinvolte, mostrare un piano/diff comprensibile, validare schema e invarianti, richiedere conferma quando la modifica ha effetti rilevanti, applicare tramite API tipizzate e registrare autore, motivazione, valori precedenti/nuovi, timestamp ed esito. Supportare annullamento o ripristino quando tecnicamente possibile. Non consentire scritture arbitrarie su file, codice, prompt di sistema protetti o segreti. Le credenziali devono essere gestite da un secret manager/credential store e non restituite al modello.
+Workflow obbligatorio per la fase Post-MVP: interpretare la richiesta, identificare le risorse coinvolte, mostrare un piano/diff comprensibile, validare schema e invarianti, richiedere conferma quando la modifica ha effetti rilevanti, applicare tramite API tipizzate e registrare autore, motivazione, valori precedenti/nuovi, timestamp ed esito. Supportare annullamento o ripristino quando tecnicamente possibile. Non consentire scritture arbitrarie su file, codice, prompt di sistema protetti o segreti. Le credenziali devono essere gestite da un secret manager/credential store e non restituite al modello.
 
 L'agente conversazionale non è un terminale generico né un coding agent: può operare esclusivamente su un catalogo esplicito di azioni e risorse configurabili. Le azioni di trading e quelle finanziariamente rilevanti richiedono autorizzazioni e conferme separate.
 
