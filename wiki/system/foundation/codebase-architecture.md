@@ -58,7 +58,7 @@ Questa sequenza tiene insieme tre decisioni gia' presenti nella wiki: DB come hu
 | `tools/` | Interfacce stabili offerte agli agenti o al PM: quote, macro, sentiment, portfolio state, backtest query | `capabilities/`, `database/`, `connectors/` | Dettagli vendor visibili agli agenti |
 | `agents/` | Prompt, schemas, context, routing, policy di richiamo tool, PM/desk/Risk | `tools/`, schemas condivisi | Calcoli numerici a mano, SDK broker/vendor |
 | `execution/` | Trade deterministico, submit, recovery, costi, exit management, broker intent log | `database/`, `connectors/brokers`, risk capabilities | LLM decision-making |
-| `frontend/` | UI read-only o controllata tramite contratti espliciti | API/query layer, read models | Business logic critica |
+| `frontend/` | Cockpit operativo con lettura e modifica delle risorse autorizzate | API applicative, query/command layer, read models | Business logic critica e accesso diretto ai vendor |
 | `orchestration/` | Cycle runner, trigger engine, job scheduling, daemon | tutti i package tramite interfacce | Logica di dominio nascosta |
 
 I nomi sono orientativi. La decisione da prendere non e' il nome esatto, ma il confine: **gli agenti non devono sapere quale broker o vendor sta dietro una richiesta**.
@@ -128,7 +128,7 @@ Owner: 🛠 Luca (software). Stato: ideazione, nessuna nuova classe implementata
 
 Fonte: [Notion — Projects → Trading Agent](https://www.notion.so/4012e441b0e581fcb942c109716dfb1f), letta il 2026-10-30, ultima modifica riportata 2026-10-23.
 
-Luca elenca: `Agent`, `Tool`, `Provider`, `Data Broker`, `Broker`, documenti da compilare per azienda/mercato/strategia e `Strategy`. Propone un primo esempio concreto per provider, data broker, agente, tool e broker, con test robusti attorno a questi esempi. Annota anche una futura UI di monitoraggio e un chatbot per orientare la strategia: il rapporto con la UI read-only e l'autonomia va chiarito prima di implementarlo.
+Luca elenca: `Agent`, `Tool`, `Provider`, `Data Broker`, `Broker`, documenti da compilare per azienda/mercato/strategia e `Strategy`. Propone un primo esempio concreto per provider, data broker, agente, tool e broker, con test robusti attorno a questi esempi. Annota anche una futura UI di monitoraggio e un chatbot per orientare la strategia: il rapporto tra cockpit, chatbot conversazionale e autonomia va definito prima di implementarli.
 
 Su Todoist è stato trovato [Trading-Agent](https://app.todoist.com/app/task/6hgrJWVFhfGcGpmX), con il sottotask [trasformare la wiki in una codebase semplice, modulare e leggibile da un principiante Python](https://app.todoist.com/app/task/6hjx2hxw8GVvgW45). Il task e i sottotask letti non contengono la lista di classi: la fonte esatta è Notion.
 
