@@ -75,6 +75,8 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 💡 Idee / Post-MVP
 
+- [ ] 🛠 **Configuration & State Agent conversazionale** — evoluzione Post-MVP del cockpit: permettere modifiche in linguaggio naturale a configurazioni personali, state, strategie e provider autorizzati tramite preview/diff, validazione, conferma, API tipizzate, audit e rollback ove supportato. Nessuna modifica a codice sorgente, prompt protetti o segreti → [[system/interface/frontend-module]] · [[system/interface/observability-dashboard]]
+
 - [ ] 🛠 **Ricercare la portabilità tra backend agentici** — valutare successivamente LangGraph, Hermes, Pi e Claude Code; nessuna compatibilità è acquisita → [[system/foundation/codebase-architecture#Decisione e confini — 2026-11-05]]
 
 - [ ] 🔀 **Sintesi strutturata dello storico news** — tool parametrico per date/parole chiave e recap di competizione/mercato → [[system/data/data-vendors]]
