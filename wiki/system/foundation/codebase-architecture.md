@@ -109,7 +109,7 @@ Gli output agentici devono essere verificabili: ogni numero importante viene da 
 - Schema definitivo dello state e rapporto `research_state` / `investment_state` → [[system/investment/state-schemas]]
 - Risk Analyst: desk pari agli altri o gate finale? → [[system/agents/agent-behaviors]]
 - Primo set strategy da codificare: trend following, mean reversion, factor/value, dual portfolio → [[strategy/index]]
-- Livello minimo di frontend nel primo harness: nessuno, CLI, o dashboard read-only → [[system/interface/frontend-module]]
+- Livello e perimetro del frontend nel primo harness: nessuno, CLI o cockpit operativo completo → [[system/interface/frontend-module]]
 
 ## Collegamenti operativi
 
