@@ -47,7 +47,7 @@
 - [[system/quant/quant-backtesting]] — backtesting e indicatori
 - [[system/quant/learning-feedback-loop]] — logging e learning Post-MVP
 - [[system/interface/frontend-module]] — confine del frontend sostituibile
-- [[system/interface/observability-dashboard]] — requisito dashboard read-only
+- [[system/interface/observability-dashboard]] — spec del cockpit operativo completo
 - [[system/interface/telegram-claude-bridge]] — bridge Telegram project-scoped per Claude Code
 
 ### Reference design
