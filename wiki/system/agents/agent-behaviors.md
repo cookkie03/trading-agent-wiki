@@ -71,6 +71,8 @@ Per ogni output tecnico vanno definiti tool deterministici dedicati, così da ve
 ## Risk Analyst — gate bear, sizing e guardrail
 
 > **Deciso da Luca 2026-11-18 — due livelli:** il **Risk Analyst** (LLM) è un Analyst pari agli altri e porta l'antitesi bear prima della decisione del PM, senza veto. Il **Risk Gate** è un controllo deterministico, non un agente: dopo la decisione del PM verifica limiti e guardrail e può solo bloccare. Il resto della sezione descrive il comportamento del Risk Analyst; vincoli e veto appartengono al Risk Gate.
+>
+> **Aggiornamento 2026-11-18:** il Risk Analyst propone anche il **prezzo di entrata** del bracket order; size, take profit e stop loss sono deterministici; **il PM valida l'ordine**, il Risk Gate controlla solo i limiti rigidi. L'output «approvazione o rifiuto» sotto è superato.
 
 - **Input**: `agent_opinions`, livelli tecnici, contesto portafoglio, regole dello Statuto.
 - **Tool**: G `inject_portfolio_state` · G `get_open_positions_risk` · H `get_options_chain` quando la leva è ammessa · I guardrail deterministici lato risk engine.
