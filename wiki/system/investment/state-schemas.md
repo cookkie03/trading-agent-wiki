@@ -146,6 +146,8 @@ take_profit  = entry_price   + k_tp    · ATR
 ### Ciclo di vita dell'ordine (limit che non viene colpito)
 Se il prezzo non raggiunge mai `entry_price`, l'ordine **non è eterno**: scade alla `next_check_date` (il Dynamic Temporal Checkpoint già nello state). Alla scadenza la posizione mancata torna in valutazione — non resta un limit appeso a tempo indeterminato. La gestione concreta (cancel & rivaluta) vive nella funzione Trade → [[system/execution/execution]].
 
+> **Aggiornamento 2026-11-18:** la conversione è una **bozza automatica** calcolata appena gli input minimi sono nello state; `k_entry` e % di rischio sono responsabilità del Risk Analyst, `k_stop`/`k_tp` del Technical; il PM accetta o rimanda → [[system/foundation/decision-log]].
+
 ### Cosa cambia nello schema (Sezione C)
 `entry_price`, `stop_loss`, `take_profit` restano campi-prezzo nello state (ciò che Trade consuma), ma **a monte** l'agente compila i coefficienti `k_entry / k_stop / k_tp` e la funzione Python deterministica li converte in prezzi usando `current_price` e `ATR`. Da decidere se persistere anche i `k_*` nello state (utile per il feedback post-trade: capire se gli sconti richiesti erano troppo aggressivi).
 
