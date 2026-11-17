@@ -12,7 +12,7 @@ tags:
 ## Sessione 2026-11-18 — Ripresa e intervista sui sei agenti
 
 - Scartata una traduzione automatica in inglese, mai committata, che aveva rovinato 102 pagine locali; wiki riallineata a origin. Ripristinato nel repository il codice cancellato per errore (branch `docs/agent-restart`, 200 test passati).
-- Decisioni Luca: agenti pari con scambio di messaggi; PM riceve gli alert, avvia, valida e decide; Risk a due livelli (Risk Analyst + Risk Gate deterministico); routing MVP con richiamo a tetto, pronto per PM libero; confine Market/Sentiment confermato; «Analyst» al posto di «desk»; `pm_omniroute` da eliminare. Glossario in `GLOSSARY.md` del repository. → [[system/foundation/decision-log]] · [[system/agents/agent-behaviors]]
+- Decisioni Luca: agenti pari con scambio di messaggi; PM riceve gli alert, avvia, valida e decide; Risk a due livelli (Risk Analyst + Risk Gate deterministico); routing MVP con richiamo a tetto, pronto per PM libero; confine Market/Sentiment confermato; «Analyst» al posto di «desk»; `pm_omniroute` da eliminare; chat separate per agente e argomento con tool di messaggistica e compattazione a ogni ciclo; il ciclo lo chiude solo il PM (tetto globale); termini Alert / Trigger engine / Ciclo di analisi; Analyst = LLM + tool deterministici. Aperti: architettura dell'ufficio a messaggi, sizing con Risk Analyst. Glossario in `GLOSSARY.md` del repository. → [[system/foundation/decision-log]] · [[system/agents/agent-behaviors]]
 
 ## Sessione 2026-11-12 — Direzione cockpit UI
 
