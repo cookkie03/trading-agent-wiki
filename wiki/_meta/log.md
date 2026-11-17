@@ -1056,3 +1056,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: sostituita la priorità harness-first; board indice operativo unico. Tree e canvas da concordare, workflow testato con fake prima di tool e infrastruttura reale; frontend successivo. Altri filoni sospesi, non cancellati; risk/safety deterministici e nessuna esecuzione reale.
 - **Pagine**: [[artifacts/project-board]], [[artifacts/piano-operativo-trading-agent]], [[system/foundation/codebase-architecture]], [[system/foundation/decision-log]], [[_meta/hot-cache]]. Nessuna modifica o verifica del codice.
+
+## [2026-11-18] DECISIONE — Sei agenti: parità, PM, Risk, routing
+
+- **Type**: decision
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: agenti pari con scambio di messaggi; PM punto d'ingresso degli alert e decisore; Risk a due livelli; routing MVP con richiamo a tetto; confine Market/Sentiment confermato; termine «Analyst»; rimozione codice reviewer PM decisa.
+- **Pagine**: [[system/foundation/decision-log]], [[system/agents/agent-behaviors]], [[artifacts/project-board]], [[_meta/hot-cache]]. Nessuna modifica al codice oltre a glossario, ADR e AGENTS.md.

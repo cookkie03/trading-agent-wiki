@@ -20,7 +20,9 @@ area: software
 
 # Agent Behaviors — comportamento per-agente del desk
 
-> **Decisione Luca 2026-11-05:** Market, Sentiment, Technical, Fundamental, Risk e Portfolio Manager sono sei agenti separati; i gruppi Research e Technical sotto sono solo visuali. Questa pagina descrive comportamenti di lavoro, non implementazioni verificate. Priorità: verificare il codice residuo e definire i sei agenti, inclusi input, tool, output, ragionamento e stop del Portfolio Manager → [[system/agents/agents#Portfolio Manager — agente orchestratore (CEO)]]. Restano aperti routing e posizionamento del Risk e le fonti sentiment. Prima il comportamento, poi il prompt.
+> **Decisione Luca 2026-11-05:** Market, Sentiment, Technical, Fundamental, Risk e Portfolio Manager sono sei agenti separati; i gruppi Research e Technical sotto sono solo visuali. Questa pagina descrive comportamenti di lavoro, non implementazioni verificate. Priorità: verificare il codice residuo e definire i sei agenti, inclusi input, tool, output, ragionamento e stop del Portfolio Manager → [[system/agents/agents#Portfolio Manager — agente orchestratore (CEO)]]. Prima il comportamento, poi il prompt.
+
+> **Decisioni Luca 2026-11-18:** gli agenti sono **pari** e possono scambiarsi messaggi come colleghi in un unico ufficio; il **PM** si distingue solo perché riceve gli alert, avvia il processo di analisi, valida e decide. I cinque specialisti si chiamano **Analyst**; «desk» non si usa più. Routing MVP: tutti gli Analyst chiamati, il PM può richiamarli con un tetto di giri (architettura pronta per un PM che sceglie liberamente). Risk a due livelli (sotto). Confine Market/Sentiment confermato (snodo 1). Restano aperte le fonti sentiment e il protocollo di messaggi fra agenti → [[system/foundation/decision-log]].
 
 ## Le 5 dimensioni di ogni agente
 
@@ -68,7 +70,7 @@ Per ogni output tecnico vanno definiti tool deterministici dedicati, così da ve
 
 ## Risk Analyst — gate bear, sizing e guardrail
 
-> **Decisione ancora da chiudere con Luca e Salvatore:** questa sezione descrive il comportamento minimo comune. Il Risk può essere desk pari, gate finale oppure operare a due livelli (titolo e portafoglio); la scelta modifica il routing, non i suoi strumenti o vincoli.
+> **Deciso da Luca 2026-11-18 — due livelli:** il **Risk Analyst** (LLM) è un Analyst pari agli altri e porta l'antitesi bear prima della decisione del PM, senza veto. Il **Risk Gate** è un controllo deterministico, non un agente: dopo la decisione del PM verifica limiti e guardrail e può solo bloccare. Il resto della sezione descrive il comportamento del Risk Analyst; vincoli e veto appartengono al Risk Gate.
 
 - **Input**: `agent_opinions`, livelli tecnici, contesto portafoglio, regole dello Statuto.
 - **Tool**: G `inject_portfolio_state` · G `get_open_positions_risk` · H `get_options_chain` quando la leva è ammessa · I guardrail deterministici lato risk engine.

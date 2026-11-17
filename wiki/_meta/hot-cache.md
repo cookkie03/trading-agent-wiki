@@ -9,6 +9,11 @@ tags:
 
 > Contesto di sessione recente. Il repository è esterno al vault: qui vivono spec, decisioni e priorità, non lo stato verificato del codice.
 
+## Sessione 2026-11-18 — Ripresa e intervista sui sei agenti
+
+- Scartata una traduzione automatica in inglese, mai committata, che aveva rovinato 102 pagine locali; wiki riallineata a origin. Ripristinato nel repository il codice cancellato per errore (branch `docs/agent-restart`, 200 test passati).
+- Decisioni Luca: agenti pari con scambio di messaggi; PM riceve gli alert, avvia, valida e decide; Risk a due livelli (Risk Analyst + Risk Gate deterministico); routing MVP con richiamo a tetto, pronto per PM libero; confine Market/Sentiment confermato; «Analyst» al posto di «desk»; `pm_omniroute` da eliminare. Glossario in `GLOSSARY.md` del repository. → [[system/foundation/decision-log]] · [[system/agents/agent-behaviors]]
+
 ## Sessione 2026-11-12 — Direzione cockpit UI
 
 - La UI è una console operativa completa, non una dashboard in sola consultazione. React + TypeScript + Vite/npm; struttura visuale ancora da definire. Deve includere gestione di configurazioni personali, state, strategie, provider collegati, agenti, workflow, osservabilità, audit e controlli operativi.
