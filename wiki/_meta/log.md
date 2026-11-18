@@ -1063,3 +1063,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: agenti pari con scambio di messaggi; PM punto d'ingresso degli alert e decisore; Risk a due livelli; routing MVP con richiamo a tetto; confine Market/Sentiment confermato; termine «Analyst»; rimozione codice reviewer PM decisa.
 - **Pagine**: [[system/foundation/decision-log]], [[system/agents/agent-behaviors]], [[artifacts/project-board]], [[_meta/hot-cache]]. Nessuna modifica al codice oltre a glossario, ADR e AGENTS.md.
+
+## [2026-11-18] DECISIONE — Tool, cicli, ordini (Q28–Q45) e reference OpenAlice
+
+- **Type**: decision + ingest
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: tool per agente con parametri; Valutatore post-MVP; Market Analyst fuori dai cicli; cicli paralleli; watchlist del PM; Alert ripetuti come messaggio o fusione; trailing stop deterministico; sforzo per agente; agenti ignari di paper/live; coda di approvazione umana; kill switch; costi su DB; MCP post-MVP. Studiati OpenAlice e l'optimizer di Silvio Baratto (Neuroespresso).
+- **Pagine**: [[system/agents/agent-tools]], [[prior-art/libraries/openalice]], [[prior-art/libraries/cvx-portfolio-optimizer]], [[system/foundation/decision-log]], [[_meta/hot-cache]].

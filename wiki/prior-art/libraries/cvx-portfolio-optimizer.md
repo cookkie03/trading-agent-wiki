@@ -20,6 +20,8 @@ related:
 
 # Portfolio Optimizer ([cvx-portfolio-optimizer](https://github.com/cvxgrp/cvxportfolio) )
 
+> **Nota 2026-11-18:** è il "portfolio optimizer di Neuroespresso" citato da Luca: l'autore Silvio Baratto pubblica come *neuroespresso* (Instagram). Repo: https://github.com/SilvioBaratto/optimizer. Spunti per l'MVP: funzioni LLM tipizzate (BAML) che producono *views* poi trasformate in pesi da codice deterministico (stesso principio dei nostri Coefficienti: l'LLM sceglie parametri, il codice calcola); config immutabili e salvabili; scheduler di fetch dati separato. Il Portfolio Allocator resta post-MVP.
+
 Libreria Python per la costruzione e l'ottimizzazione di portafogli quantitativi, basata su `skfolio` e `scikit-learn`.
 
 Resta un riferimento da **studiare e sfruttare**, non solo da archiviare come prior-art.

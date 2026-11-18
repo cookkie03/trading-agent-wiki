@@ -59,7 +59,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 - [ ] 🛠 **Allineare le pagine legacy alla policy di stato** — rimuovere gli ultimi claim non verificabili e spostare gli snapshot nel reference design → [[system/foundation/implementation-status]]
 - [ ] 📈 **Consolidare metriche e metodi** — creare “Metriche (definitivo)” e collegare indicatori, metodo e backtest senza duplicazioni → [[strategy/index]]
 - [ ] 📈 **Definire fonti e indicatori di sentiment** — copertura, affidabilità, limiti e interpretazione di news/social/insider → [[strategy/questions-for-salvatore]]
-- [ ] 🔀 **Studiare optimizer e OpenAlice come reference** — analisi architettura multi-asset e paper quantitativi → [[artifacts/piano-operativo-trading-agent]]
+- [x] 🔀 **Studiare optimizer e OpenAlice come reference** — fatto 2026-11-18 → [[prior-art/libraries/openalice]], [[prior-art/libraries/cvx-portfolio-optimizer]]
 - [ ] 🛠 **Studiare Qlib e QuantLab** — scheda comparativa, licenze, dipendenze, codice riusabile e compatibilità col modulo quantitative research → [[artifacts/piano-operativo-trading-agent]]
 - [ ] 🛠 **Studiare e integrare vectorbt** — adapter di backtesting accessibile a umano e agenti, con risultati versionati e riproducibili → [[artifacts/piano-operativo-trading-agent]]
 - [ ] 🛠 **Definire riuso da TradingAgents** — per feature coincidenti, verificare upstream/licenza/test e riusare il codice compatibile con contratti locali → [[artifacts/piano-operativo-trading-agent]]

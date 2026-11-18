@@ -33,6 +33,7 @@
 
 - [[system/agents/agents]] — ruoli e topologia agentica
 - [[system/agents/agent-behaviors]] — input, tool, output, ragionamento e stop per ruolo
+- [[system/agents/agent-tools]] — bozza MVP dei tool per agente con parametri
 - [[system/agents/system-prompts]] — prompt engineering e prompt v0
 - [[system/agents/agent-memory]] — memoria intra/inter-task e ricerca RAG+grafi
 - [[system/orchestration/parallelism-design]] — funnel e isolamento per ticker
@@ -69,6 +70,7 @@
 ## Prior-art
 
 - [[prior-art/tradingagents/paper]] · [[prior-art/tradingagents/code-wiki]] · [[prior-art/tradingagents/graph-schema]] — TradingAgents come reference
+- [[prior-art/libraries/openalice]] — OpenAlice: Trading as Git, approvazione umana, UTA, guard deterministiche
 - [[prior-art/benchmark-trading-agent-repositories]] — benchmark repository GitHub per multi-agent trading, LangGraph, data layer, risk, execution e dashboard
 - [[prior-art/libraries/datapizza-ai]] — reference storica, non framework corrente
 - [[prior-art/libraries/redis-testing-practices]] — harness, tag e livelli di verifica Redis/antirez
