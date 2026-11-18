@@ -1091,3 +1091,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: Scheduled task come unico richiamo degli agenti con traduttori deterministici; DB come cache dei dati; deploy Docker sul Minisforum; limiti del Risk Gate con 30 posizioni; Inbox; log completo dei Trade; schema DB da riprogettare.
 - **Pagine**: [[system/foundation/decision-log]], [[system/agents/agent-tools]], [[_meta/hot-cache]].
+
+## [2026-11-18] DECISIONE — Log su DB, dati finanziari, downsampling, vendite, test
+
+- **Type**: decision
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: log completo su DB; dati finanziari in tabelle per tipo con fonte e data; downsampling dei prezzi; vendite a specchio degli acquisti; strategia di test a tre livelli. Intervista di design chiusa.
+- **Pagine**: [[system/foundation/decision-log]], [[_meta/hot-cache]].
