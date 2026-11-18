@@ -1185,3 +1185,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: la cache dati sceglie il provider prezzi da `DATA_PRICES_PROVIDER` (`yahoo` di default, `openbb` opzionale) e ripiega sull'altro se l'inizializzazione fallisce. Test scritti da `claude -p` con `my-combo` (3 offline). Resti del prototipo riverificati: `storage/sqlite.py` e la dashboard sono usati solo da dashboard, script legacy e ingestione, mai dal motore; la spec tiene la dashboard fuori fino al cockpit. Deploy: il motore gira su questo host (Debian/Tailscale) come indicato da Luca, non sul Minisforum.
 - **Verifica**: 282 test offline passati. L'immagine Docker include l'extra `openbb`: provato nel container con `DATA_PRICES_PROVIDER=openbb`, `bootstrap` sceglie `OpenBBProvider` e restituisce barre AAPL reali (correzione di una nota precedente che lo dava non installato).
 - **Pagine**: [[artifacts/project-board]].
+
+## [2026-11-18] CODICE — Bug del Market Analyst e pulizia ruff
+
+- **Type**: implementation
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: la pulizia ruff di `execution`, `tools`, `workflows`, `storage` e `bootstrap.py`, delegata a `claude -p` con `my-combo`, ha portato alla luce un bug reale: `workflows/office.py` usava `OutgoingMessage` senza importarlo, quindi un `send_message` del Market Analyst fatto come chiamata a tool lanciava `NameError`. Corretto l'import e aggiunto un test di regressione (fallisce senza l'import). `TaskSource` diventa `StrEnum` (nessun uso di `str()` sul valore).
+- **Verifica**: 283 test offline passati, ruff pulito sui percorsi indicati, motore ridistribuito.
+- **Pagine**: [[artifacts/project-board]].
