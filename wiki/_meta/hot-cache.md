@@ -11,6 +11,7 @@ tags:
 
 ## Sessione 2026-11-18 — Ripresa e intervista sui sei agenti
 
+- Luca valuta un fork o il riuso completo di OpenAlice; confronto in [[prior-art/openalice-vs-trading-agent]]. Domande Q46–Q56 in attesa di risposta.
 - **Direzione in valutazione (Luca):** allinearsi alle idee di OpenAlice, cioè laboratorio, ambiente e «sistema operativo per la finanza» (workspace, issue con schedule, inbox, entità tracciate, Trading as Git). Da tradurre in decisioni concrete prima dello spec → [[prior-art/libraries/openalice]].
 - Round Q28–Q45 deciso: tool per agente con parametri ([[system/agents/agent-tools]]); Valutatore post-MVP; Market Analyst fuori dai cicli; cicli paralleli; watchlist del PM; Alert ripetuti come messaggio o fusione; trailing stop deterministico; sforzo di ragionamento per agente; agenti ignari di paper/live; coda di approvazione umana degli ordini; kill switch; costi su DB. Nuova reference [[prior-art/libraries/openalice]]; il "Neuroespresso optimizer" è [[prior-art/libraries/cvx-portfolio-optimizer]].
 - Scartata una traduzione automatica in inglese, mai committata, che aveva rovinato 102 pagine locali; wiki riallineata a origin. Ripristinato nel repository il codice cancellato per errore (branch `docs/agent-restart`, 200 test passati).

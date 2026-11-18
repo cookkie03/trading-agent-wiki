@@ -1070,3 +1070,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: tool per agente con parametri; Valutatore post-MVP; Market Analyst fuori dai cicli; cicli paralleli; watchlist del PM; Alert ripetuti come messaggio o fusione; trailing stop deterministico; sforzo per agente; agenti ignari di paper/live; coda di approvazione umana; kill switch; costi su DB; MCP post-MVP. Studiati OpenAlice e l'optimizer di Silvio Baratto (Neuroespresso).
 - **Pagine**: [[system/agents/agent-tools]], [[prior-art/libraries/openalice]], [[prior-art/libraries/cvx-portfolio-optimizer]], [[system/foundation/decision-log]], [[_meta/hot-cache]].
+
+## [2026-11-18] INGEST — Confronto OpenAlice vs Trading Agent
+
+- **Type**: ingest + synthesis
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: confronto punto per punto tra le decisioni del progetto e le funzionalità di OpenAlice (repo clonato, docs), per valutare un fork.
+- **Pagine**: [[prior-art/openalice-vs-trading-agent]], [[prior-art/libraries/openalice]], [[_meta/hot-cache]].

@@ -70,6 +70,7 @@
 ## Prior-art
 
 - [[prior-art/tradingagents/paper]] · [[prior-art/tradingagents/code-wiki]] · [[prior-art/tradingagents/graph-schema]] — TradingAgents come reference
+- [[prior-art/openalice-vs-trading-agent]] — confronto: cosa copre OpenAlice delle nostre idee, costo di un fork
 - [[prior-art/libraries/openalice]] — OpenAlice: Trading as Git, approvazione umana, UTA, guard deterministiche
 - [[prior-art/benchmark-trading-agent-repositories]] — benchmark repository GitHub per multi-agent trading, LangGraph, data layer, risk, execution e dashboard
 - [[prior-art/libraries/datapizza-ai]] — reference storica, non framework corrente

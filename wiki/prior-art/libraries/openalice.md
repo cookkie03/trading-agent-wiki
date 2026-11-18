@@ -20,6 +20,8 @@ related:
 
 Reference principale indicata da Luca (2026-11-18). Monorepo TypeScript (pnpm/turbo), licenza **AGPL-3.0**: si copiano idee e forme, non codice. Ospita agenti nativi esistenti (Claude Code, Codex, OpenCode, Pi) invece di avere un suo loop: utile per la ricerca sulla portabilità.
 
+Confronto punto per punto con le nostre decisioni: [[prior-art/openalice-vs-trading-agent]].
+
 ## Idee rilevanti per noi
 
 **Trading as Git.** Ogni mutazione del conto segue `stage → commit (messaggio + hash) → push`. Il push di default attende l'**approvazione umana** (Web UI o Telegram `/uta`); un interruttore esplicito, spento di default, permette all'AI di eseguire da sola. Esiti per operazione: `submitted`, `filled`, `rejected`, `cancelled`, `user-rejected`. `tradingSync` riconcilia i fill come commit di sync. I rifiuti restano nello storico e l'agente li rilegge.
