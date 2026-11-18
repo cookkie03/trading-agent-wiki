@@ -18,7 +18,7 @@ related:
 
 # OpenAlice (TraderAlice)
 
-Reference principale indicata da Luca (2026-11-18). Monorepo TypeScript (pnpm/turbo), licenza **AGPL-3.0**: si copiano idee e forme, non codice. Ospita agenti nativi esistenti (Claude Code, Codex, OpenCode, Pi) invece di avere un suo loop: utile per la ricerca sulla portabilità.
+Reference principale indicata da Luca (2026-11-18). Monorepo TypeScript (pnpm/turbo), licenza **AGPL-3.0**: fork e riuso sono permessi, ma un derivato offerto in rete ad altri deve pubblicare il sorgente con la stessa licenza. Ospita agenti nativi esistenti (Claude Code, Codex, OpenCode, Pi) invece di avere un suo loop: utile per la ricerca sulla portabilità.
 
 Confronto punto per punto con le nostre decisioni: [[prior-art/openalice-vs-trading-agent]].
 
