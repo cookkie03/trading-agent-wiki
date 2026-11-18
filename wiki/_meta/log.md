@@ -1169,3 +1169,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: motore deployato su questo host (Debian/Tailscale) con `compose.engine.yaml`: `OFFICE_LLM_ENDPOINT` punta a OmniRoute sulla rete docker `omniroute_default`. Cicli di produzione reali (`my-combo`, dati live, broker paper) hanno fatto emergere e corretto: `send_message` a destinatari inesistenti (ora validato), decisione del ciclo precedente ereditata (ora azzerata a inizio ciclo), risposte degli Analyst non recapitate al PM (relay + prompt), modifica di stop/TP sul parent invece che sulle gambe del bracket (Alpaca 42210000), prezzi sub-penny rifiutati dal broker (ora arrotondati al centesimo in `build_order_draft` e al caricamento di bozze salvate), errore del broker che lasciava ordine `pending` e ciclo `open` (ora l'ordine va `rejected` e il ciclo chiude in "rimando"). Ciclo #7 su AAPL: PM → Analyst → bozza → Risk Gate → bracket reale (26 azioni, limit 350,04, TP 369,25, stop 338,51) accettato da Alpaca paper; poi cancellato (autorizzato da Luca).
 - **Verifica**: 278 test offline passati. **Aperti**: l'ordine cancellato lato broker resta `submitted` nel DB (manca riconciliazione dello stato ordini), revisione prompt a cura di Luca, OpenBB solo come provider, endpoint di default obsoleto in `config/office.toml`.
 - **Pagine**: [[artifacts/project-board]].
+
+## [2026-11-18] CODICE + VERIFICA — Sync dello stato ordini dal broker
+
+- **Type**: implementation
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: `OrderFlow.sync_broker_orders()` allinea gli ordini locali `submitted` allo stato reale del broker (filled/cancelled/expired/rejected, evento `reconciled`); eseguito ogni 30 s dal loop del motore e a mano con `trading-agent orders sync`. Endpoint di default portato a `http://localhost:20128/v1` (il vecchio IP Tailscale era obsoleto). Pulizia E501 di `workflows/cycle.py` delegata a `claude -p` con `my-combo` (diff verificato, comportamento invariato).
+- **Verifica**: 279 test offline passati; `orders sync` provato sul vero ordine cancellato su Alpaca paper (ordine #3: `submitted` → `cancelled`).
+- **Pagine**: [[artifacts/project-board]].
