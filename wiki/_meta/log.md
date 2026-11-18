@@ -1201,3 +1201,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: su richiesta di Luca eliminati `storage/sqlite.py`, `portfolio.py`, `data/ingestion.py`, `analysis/indicator_worker.py`, `interface/dashboard.py`, `interface/server.py`, la cartella `scripts/`, il vecchio `compose.yaml` della dashboard, il `Dockerfile` radice e i test collegati (−2646 righe). Il motore non importava nessuno di questi moduli. Mappatura dell'analisi e lista dei file prodotte da `claude -p` (`my-combo`); la cancellazione l'ho eseguita io perché il delegato non aveva permesso per `git rm`; README e `docs/architecture.md` aggiornati da `my-combo`. `frontend/`, `openbb-ui/` e `telegram-claude/` restano (app separate, non toccate). Chiarito con Luca: il Minisforum è questo stesso host Debian (ambiente SSH), quindi il deploy è già quello in produzione.
 - **Verifica**: 247 test offline passati (calo dovuto ai test rimossi), motore ricostruito e CLI funzionante sul DB di produzione.
 - **Pagine**: [[artifacts/project-board]].
+
+## [2026-11-18] PROMPT + VERIFICA — Regola d'ingaggio del PM e limiti del Risk Gate
+
+- **Type**: implementation
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: prompt aggiornati (restano bozze per la revisione di Luca): il PM ha una "Regola d'Ingaggio" (primo turno solo messaggi ai quattro Analyst, decisione solo dopo le risposte di Technical e Risk) e le note sugli argomenti dei tool decisionali; il Risk Analyst conosce i limiti deterministici del Risk Gate (rischio 1%, notional 10%, settore 30%, cassa 5%, R:R 1,5) e deve rileggere la bozza dopo `set_coefficients`; tutti gli specialisti sanno che il subagent legge solo stato e portafoglio. Revisione di coerenza prompt/tool prodotta da `claude -p` (`my-combo`), 12 punti, applicati quelli rilevanti.
+- **Verifica**: ciclo di produzione su MSFT: PM → quattro richieste → quattro risposte tutte recapitate → Risk Analyst segnala la bozza fuori limite e la ricalibra → esito `deferred` con controllo futuro programmato (consenso HOLD di tre Analyst su quattro). 247 test offline passati.
+- **Pagine**: [[artifacts/project-board]].
