@@ -1193,3 +1193,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: la pulizia ruff di `execution`, `tools`, `workflows`, `storage` e `bootstrap.py`, delegata a `claude -p` con `my-combo`, ha portato alla luce un bug reale: `workflows/office.py` usava `OutgoingMessage` senza importarlo, quindi un `send_message` del Market Analyst fatto come chiamata a tool lanciava `NameError`. Corretto l'import e aggiunto un test di regressione (fallisce senza l'import). `TaskSource` diventa `StrEnum` (nessun uso di `str()` sul valore).
 - **Verifica**: 283 test offline passati, ruff pulito sui percorsi indicati, motore ridistribuito.
 - **Pagine**: [[artifacts/project-board]].
+
+## [2026-11-18] PULIZIA — Rimossi i resti del prototipo
+
+- **Type**: implementation
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: su richiesta di Luca eliminati `storage/sqlite.py`, `portfolio.py`, `data/ingestion.py`, `analysis/indicator_worker.py`, `interface/dashboard.py`, `interface/server.py`, la cartella `scripts/`, il vecchio `compose.yaml` della dashboard, il `Dockerfile` radice e i test collegati (−2646 righe). Il motore non importava nessuno di questi moduli. Mappatura dell'analisi e lista dei file prodotte da `claude -p` (`my-combo`); la cancellazione l'ho eseguita io perché il delegato non aveva permesso per `git rm`; README e `docs/architecture.md` aggiornati da `my-combo`. `frontend/`, `openbb-ui/` e `telegram-claude/` restano (app separate, non toccate). Chiarito con Luca: il Minisforum è questo stesso host Debian (ambiente SSH), quindi il deploy è già quello in produzione.
+- **Verifica**: 247 test offline passati (calo dovuto ai test rimossi), motore ricostruito e CLI funzionante sul DB di produzione.
+- **Pagine**: [[artifacts/project-board]].
