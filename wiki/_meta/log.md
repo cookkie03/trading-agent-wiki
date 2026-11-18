@@ -1183,5 +1183,5 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Type**: implementation
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: la cache dati sceglie il provider prezzi da `DATA_PRICES_PROVIDER` (`yahoo` di default, `openbb` opzionale) e ripiega sull'altro se l'inizializzazione fallisce. Test scritti da `claude -p` con `my-combo` (3 offline). Resti del prototipo riverificati: `storage/sqlite.py` e la dashboard sono usati solo da dashboard, script legacy e ingestione, mai dal motore; la spec tiene la dashboard fuori fino al cockpit. Deploy: il motore gira su questo host (Debian/Tailscale) come indicato da Luca, non sul Minisforum.
-- **Verifica**: 282 test offline passati. OpenBB non è installato nell'immagine Docker: con `openbb` selezionato il motore ripiega su Yahoo.
+- **Verifica**: 282 test offline passati. L'immagine Docker include l'extra `openbb`: provato nel container con `DATA_PRICES_PROVIDER=openbb`, `bootstrap` sceglie `OpenBBProvider` e restituisce barre AAPL reali (correzione di una nota precedente che lo dava non installato).
 - **Pagine**: [[artifacts/project-board]].
