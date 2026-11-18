@@ -1137,3 +1137,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: ciclo reale (`my-combo`) con dati live: prezzi Yahoo e news Alpaca (sola lettura, chiavi dal `.env` del progetto) tramite cache DB-first; broker ancora finto. Corretto il `limit` ignorato in news/insiders/calendario dell'adapter. Opzione `OFFICE_SMOKE_LIVE_DATA=1` nello smoke test.
 - **Verifica**: 267 test offline + smoke live passato. **Non** provati: OpenBB (extra opzionale non installato), Alpaca paper con ordini reali, deploy Minisforum.
 - **Pagine**: [[artifacts/project-board]].
+
+## [2026-11-18] VERIFICA — Lettura reale su Alpaca paper
+
+- **Type**: verification
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: adapter reale (`AlpacaBracketAdapter` + `SafeBrokerReader`) provato in sola lettura sul conto paper: account (equity 100000, cash 100000), nessuna posizione, nessun ordine aperto. Nessun ordine inviato.
+- **Verifica**: lettura ok. **Non** provato: invio e cancellazione di un bracket reale (passo di Luca), deploy Minisforum, OpenBB.
+- **Pagine**: [[artifacts/project-board]].
