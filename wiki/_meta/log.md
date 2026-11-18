@@ -1098,3 +1098,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: log completo su DB; dati finanziari in tabelle per tipo con fonte e data; downsampling dei prezzi; vendite a specchio degli acquisti; strategia di test a tre livelli. Intervista di design chiusa.
 - **Pagine**: [[system/foundation/decision-log]], [[_meta/hot-cache]].
+
+## [2026-11-18] SPEC — MVP dell'ufficio di agenti
+
+- **Type**: planning
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: spec MVP con 126 user story, decisioni di implementazione, test e fuori scope, nel repository in `.scratch/agent-mvp/spec.md`. Tracker locale scelto da Luca; punto di test principale: il motore con adapter finti.
+- **Pagine**: [[_meta/hot-cache]].
