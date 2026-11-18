@@ -1153,3 +1153,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: nelle prove reali il PM scriveva a un analista e chiamava `defer` nello stesso passo, chiudendo il ciclo prima della risposta. Il `CycleRunner` ora rifiuta `accept_order`/`defer` finché gli Analyst contattati nel ciclo non hanno avuto il loro turno (errore restituito al PM, che decide al turno dopo). Test di regressione aggiunto. Prompt del PM reso più esplicito. Osservazione per la revisione dei prompt: in alcune prove `my-combo` rimanda senza mai contattare gli Analyst (richiesta "smoke test" senza dati): da valutare se il prompt di apertura deve essere più direttivo.
 - **Verifica**: 268 test offline + due smoke live passati.
 - **Pagine**: [[artifacts/project-board]].
+
+## [2026-11-18] VERIFICA — OpenBB live
+
+- **Type**: verification
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: installato l'extra `openbb` e provato `OpenBBProvider` live: 8 barre giornaliere AAPL (ultima chiusura 352,30, fonte `openbb:yfinance`), in linea con Yahoo diretto. Nessuna modifica a `pyproject.toml` o `uv.lock`.
+- **Verifica**: lettura ok. Il motore usa Yahoo diretto per i prezzi; OpenBB resta provider alternativo.
+- **Pagine**: [[artifacts/project-board]].
