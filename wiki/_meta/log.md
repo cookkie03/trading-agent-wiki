@@ -1145,3 +1145,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: adapter reale (`AlpacaBracketAdapter` + `SafeBrokerReader`) provato in sola lettura sul conto paper: account (equity 100000, cash 100000), nessuna posizione, nessun ordine aperto. Nessun ordine inviato.
 - **Verifica**: lettura ok. **Non** provato: invio e cancellazione di un bracket reale (passo di Luca), deploy Minisforum, OpenBB.
 - **Pagine**: [[artifacts/project-board]].
+
+## [2026-11-18] CODICE + VERIFICA — Guardia sulla decisione del PM
+
+- **Type**: implementation
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: nelle prove reali il PM scriveva a un analista e chiamava `defer` nello stesso passo, chiudendo il ciclo prima della risposta. Il `CycleRunner` ora rifiuta `accept_order`/`defer` finché gli Analyst contattati nel ciclo non hanno avuto il loro turno (errore restituito al PM, che decide al turno dopo). Test di regressione aggiunto. Prompt del PM reso più esplicito. Osservazione per la revisione dei prompt: in alcune prove `my-combo` rimanda senza mai contattare gli Analyst (richiesta "smoke test" senza dati): da valutare se il prompt di apertura deve essere più direttivo.
+- **Verifica**: 268 test offline + due smoke live passati.
+- **Pagine**: [[artifacts/project-board]].
