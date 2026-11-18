@@ -1077,3 +1077,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: confronto punto per punto tra le decisioni del progetto e le funzionalità di OpenAlice (repo clonato, docs), per valutare un fork.
 - **Pagine**: [[prior-art/openalice-vs-trading-agent]], [[prior-art/libraries/openalice]], [[_meta/hot-cache]].
+
+## [2026-11-18] DECISIONE — Q46–Q56: runtime, Controllo programmato, approvazione
+
+- **Type**: decision
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: nostro codice e non fork di OpenAlice; `schedule_task` al posto di `next_check_date`; flusso di approvazione con Rimando su blocco o rifiuto e bypass attivo per ora; trailing stop a formula ATR; Market Analyst a orari con visione per settore; sforzo, `.env`, CLI dati, concorrenza.
+- **Pagine**: [[system/foundation/decision-log]], [[system/agents/agent-tools]], [[_meta/hot-cache]].

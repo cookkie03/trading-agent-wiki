@@ -26,6 +26,7 @@ Principi:
 - Nessun agente ha un tool che invia ordini al broker. L'ordine nasce solo da `decide(accept)` del PM, passa per Bozza → Risk Gate → coda di approvazione umana → broker (codice).
 - I tool di dati sono deterministici e in sola lettura; i numeri arrivano da qui, mai dall'LLM.
 - Gli agenti non sanno se il broker è paper o live (Q36): nessun tool espone quell'informazione.
+- Market Analyst: lavora a orari fissi (pre-market ed eventi macro), aggiorna una visione di mercato per settore nello state, che ogni ciclo riceve in automatico per il settore del ticker (Q47). Può scrivere al PM: il messaggio vale come Alert sui ticker toccati, un ciclo per ticker (Q48).
 - Nessun parametro `as_of` (Q41): il trading è in tempo reale, ogni dato ricevuto vale per quello che è.
 - Ogni chiamata (tool, LLM, subagent) salva su DB token, costo, latenza ed esito; queste metriche non tornano agli agenti (Q42).
 
@@ -95,9 +96,17 @@ Fonti social: post-MVP.
 
 | Tool | Parametri |
 |------|-----------|
-| `decide` | `ticker: str`, `action: Literal["accept","defer"]`, `next_check_date: date`, `rationale: str` |
+| `decide` | `ticker: str`, `action: Literal["accept","defer"]`, `rationale: str` (richiede un `schedule_task` sul ticker nello stesso ciclo) |
 | `read_watchlist` | — |
 | `update_watchlist` | `op: Literal["add","remove"]`, `ticker: str`, `reason: str` (Q30) |
 | `get_order_draft` | come Risk |
 
-`next_check_date` è limitata tra un minimo e un massimo configurabili (Q33).
+`schedule_task` (Q56) sostituisce la `next_check_date`: è il Controllo programmato, limitato tra un minimo e un massimo configurabili in giorni di borsa (Q33). Il bracket order scade al Controllo programmato.
+
+## Tool di programmazione (PM e Market Analyst)
+
+| Tool | Parametri |
+|------|-----------|
+| `schedule_task` | `when: datetime` (limitato tra min e max), `chat: ChatRef` (ticker per il PM, tema per il Market), `note: str` (cosa verificare) → sostituisce l'eventuale controllo già programmato sulla stessa chat |
+
+Alla scadenza il Trigger engine genera un Alert per il PM (ticker) o riattiva il Market Analyst (tema).
