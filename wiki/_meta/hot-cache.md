@@ -11,6 +11,7 @@ tags:
 
 ## Sessione 2026-11-18 — Ripresa e intervista sui sei agenti
 
+- **Implementazione MVP avviata (branch `docs/agent-restart`)**: motore, CLI `trading-agent`, DB, tool, flusso ordine, prompt in bozza; 376 test offline. Non ancora fatti: smoke test reale (LLM + Alpaca paper), revisione prompt, pulizia prototipo. Per le chiamate delegate usare solo `my-combo`, mai `free`.
 - Q57–Q68 quasi tutte decise: *Scheduled task* unico richiamo degli agenti; DB come cache; Docker sul Minisforum; 30 posizioni massime; Inbox; log completo di ogni Trade; schema DB da riprogettare. Poi decise anche Q59 (log e dati finanziari organizzati per tipo), downsampling, vendite a specchio, test. Intervista chiusa. **Spec MVP scritto** nel repository: `.scratch/agent-mvp/spec.md` (branch `docs/agent-restart`), tracker locale in `.scratch/agent-mvp/`. Prossimo: `/to-tickets`.
 - Q46–Q56 decise: resta il nostro codice (OpenAlice come reference, workspace per ticker post-MVP; confronto in [[prior-art/openalice-vs-trading-agent]]); `schedule_task` sostituisce `next_check_date`; approvazione automatica attiva per ora sul paper; trailing stop a formula ATR. Prossimo passo: conferma comprensione condivisa, poi spec.
 - **Direzione (Luca):** ispirarsi alle idee di OpenAlice, cioè laboratorio, ambiente e «sistema operativo per la finanza» (workspace, issue con schedule, inbox, entità tracciate, Trading as Git). Da tradurre in decisioni concrete prima dello spec → [[prior-art/libraries/openalice]].

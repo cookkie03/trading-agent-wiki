@@ -1105,3 +1105,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: spec MVP con 126 user story, decisioni di implementazione, test e fuori scope, nel repository in `.scratch/agent-mvp/spec.md`. Tracker locale scelto da Luca; punto di test principale: il motore con adapter finti.
 - **Pagine**: [[_meta/hot-cache]].
+
+## [2026-11-18] CODICE + VERIFICA — Motore dell'ufficio di agenti (MVP, implementazione iniziale)
+
+- **Type**: implementation
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: nel repository (branch `docs/agent-restart`) implementati, delegando a `claude -p` con `my-combo` e rivedendo il risultato: Bozza dell'ordine, trailing stop, Risk Gate a guard, Scheduled task (fusione, limiti, traduttori), conservazione/downsampling, DB dell'ufficio con migrazioni e registro asincrono, backend agenti sostituibile (+ finto a copione), impostazioni `config/office.toml`, tool per ruolo, cache dati DB-first, flusso ordine con coda di approvazione e invio seriale idempotente, trade manager, motore `Office`/`CycleRunner`, CLI `trading-agent`, bootstrap, servizio Docker `engine`, prompt in bozza. Rimosso `agents/pm_omniroute.py`.
+- **Verifica**: 376 test passati offline (broker, LLM e dati finti). **Non** eseguiti: smoke test con LLM reali e Alpaca paper, deploy Docker sul Minisforum. Il codice prototipo restante (desks, graph, storage/sqlite, dashboard) non è ancora migrato né eliminato.
+- **Pagine**: [[artifacts/project-board]], [[system/foundation/decision-log]], [[_meta/hot-cache]].
