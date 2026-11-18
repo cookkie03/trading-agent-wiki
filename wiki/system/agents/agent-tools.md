@@ -101,7 +101,7 @@ Fonti social: post-MVP.
 | `update_watchlist` | `op: Literal["add","remove"]`, `ticker: str`, `reason: str` (Q30) |
 | `get_order_draft` | come Risk |
 
-`schedule_task` (Q56) sostituisce la `next_check_date`: è il Controllo programmato, limitato tra un minimo e un massimo configurabili in giorni di borsa (Q33). Il bracket order scade al Controllo programmato.
+`schedule_task` (Q56, Q57) sostituisce la `next_check_date`: crea uno *Scheduled task*, l'unico modo in cui un agente viene richiamato, limitato tra un minimo e un massimo configurabili in giorni di borsa (Q33). Il bracket order scade al Controllo programmato.
 
 ## Tool di programmazione (PM e Market Analyst)
 
@@ -109,4 +109,4 @@ Fonti social: post-MVP.
 |------|-----------|
 | `schedule_task` | `when: datetime` (limitato tra min e max), `chat: ChatRef` (ticker per il PM, tema per il Market), `note: str` (cosa verificare) → sostituisce l'eventuale controllo già programmato sulla stessa chat |
 
-Alla scadenza il Trigger engine genera un Alert per il PM (ticker) o riattiva il Market Analyst (tema).
+Alla scadenza il Trigger engine consegna lo Scheduled task al PM (ticker) o al Market Analyst (tema). Anche gli Alert delle fonti esterne diventano Scheduled task immediati, passando da un traduttore deterministico.

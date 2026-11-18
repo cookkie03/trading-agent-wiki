@@ -1084,3 +1084,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: nostro codice e non fork di OpenAlice; `schedule_task` al posto di `next_check_date`; flusso di approvazione con Rimando su blocco o rifiuto e bypass attivo per ora; trailing stop a formula ATR; Market Analyst a orari con visione per settore; sforzo, `.env`, CLI dati, concorrenza.
 - **Pagine**: [[system/foundation/decision-log]], [[system/agents/agent-tools]], [[_meta/hot-cache]].
+
+## [2026-11-18] DECISIONE — Scheduled task, dati, deploy, limiti (Q57–Q68)
+
+- **Type**: decision
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: Scheduled task come unico richiamo degli agenti con traduttori deterministici; DB come cache dei dati; deploy Docker sul Minisforum; limiti del Risk Gate con 30 posizioni; Inbox; log completo dei Trade; schema DB da riprogettare.
+- **Pagine**: [[system/foundation/decision-log]], [[system/agents/agent-tools]], [[_meta/hot-cache]].
