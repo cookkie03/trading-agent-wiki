@@ -1121,3 +1121,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: rimosso il prototipo (grafo di agenti, trade cycle, runtime paper, `agents/pm_omniroute.py`). Primo smoke test reale (`tests/integration/test_office_smoke.py`, LLM `my-combo` via OmniRoute, broker e dati finti) ha rivelato due difetti del `CycleRunner`: il PM non riceveva i risultati degli strumenti e girava senza system prompt. Corretti con ciclo multi-turno limitato dal budget `tool_turns` e caricamento dei prompt da `prompts/`; test di regressione aggiunto. Dopo la correzione il PM legge lo stato, chiede l'analisi, programma il prossimo controllo e chiude il ciclo.
 - **Verifica**: 285 test passati offline + smoke reale passato. **Non** eseguiti: Alpaca paper reale, deploy sul Minisforum, wiring dati live OpenBB/Alpaca, revisione dei prompt da parte di Luca.
 - **Pagine**: [[artifacts/project-board]], [[_meta/hot-cache]].
+
+## [2026-11-18] CODICE + VERIFICA — Dati live e pulizia del prototipo
+
+- **Type**: implementation
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: prova live su Yahoo Finance tramite cache DB-first: scoperto che `ohlcv(limit=N)` restituiva le barre più vecchie (1980) e che `quote()` ripiegava su un prezzo finto di 100; corretto (ultime N barre, errore se manca il dato), log al posto dei fallimenti silenziosi dei provider, client Alpaca news collegato da `ALPACA_API_KEY`/`ALPACA_SECRET_KEY`. Rimossi `execution/paper.py`, `execution/risk.py` e relativi test.
+- **Verifica**: 266 test passati offline; prezzi AAPL live verificati. **Non** provati: news Alpaca (servono chiavi), OpenBB, Alpaca paper reale, deploy Minisforum. `storage/sqlite.py` e dashboard restano (usati da ingestione/indicatori).
+- **Pagine**: [[artifacts/project-board]].
