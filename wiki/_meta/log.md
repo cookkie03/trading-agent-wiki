@@ -1129,3 +1129,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: prova live su Yahoo Finance tramite cache DB-first: scoperto che `ohlcv(limit=N)` restituiva le barre più vecchie (1980) e che `quote()` ripiegava su un prezzo finto di 100; corretto (ultime N barre, errore se manca il dato), log al posto dei fallimenti silenziosi dei provider, client Alpaca news collegato da `ALPACA_API_KEY`/`ALPACA_SECRET_KEY`. Rimossi `execution/paper.py`, `execution/risk.py` e relativi test.
 - **Verifica**: 266 test passati offline; prezzi AAPL live verificati. **Non** provati: news Alpaca (servono chiavi), OpenBB, Alpaca paper reale, deploy Minisforum. `storage/sqlite.py` e dashboard restano (usati da ingestione/indicatori).
 - **Pagine**: [[artifacts/project-board]].
+
+## [2026-11-18] VERIFICA — Dati live end-to-end con LLM reale
+
+- **Type**: verification
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: ciclo reale (`my-combo`) con dati live: prezzi Yahoo e news Alpaca (sola lettura, chiavi dal `.env` del progetto) tramite cache DB-first; broker ancora finto. Corretto il `limit` ignorato in news/insiders/calendario dell'adapter. Opzione `OFFICE_SMOKE_LIVE_DATA=1` nello smoke test.
+- **Verifica**: 267 test offline + smoke live passato. **Non** provati: OpenBB (extra opzionale non installato), Alpaca paper con ordini reali, deploy Minisforum.
+- **Pagine**: [[artifacts/project-board]].
