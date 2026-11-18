@@ -1113,3 +1113,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: nel repository (branch `docs/agent-restart`) implementati, delegando a `claude -p` con `my-combo` e rivedendo il risultato: Bozza dell'ordine, trailing stop, Risk Gate a guard, Scheduled task (fusione, limiti, traduttori), conservazione/downsampling, DB dell'ufficio con migrazioni e registro asincrono, backend agenti sostituibile (+ finto a copione), impostazioni `config/office.toml`, tool per ruolo, cache dati DB-first, flusso ordine con coda di approvazione e invio seriale idempotente, trade manager, motore `Office`/`CycleRunner`, CLI `trading-agent`, bootstrap, servizio Docker `engine`, prompt in bozza. Rimosso `agents/pm_omniroute.py`.
 - **Verifica**: 376 test passati offline (broker, LLM e dati finti). **Non** eseguiti: smoke test con LLM reali e Alpaca paper, deploy Docker sul Minisforum. Il codice prototipo restante (desks, graph, storage/sqlite, dashboard) non è ancora migrato né eliminato.
 - **Pagine**: [[artifacts/project-board]], [[system/foundation/decision-log]], [[_meta/hot-cache]].
+
+## [2026-11-18] VERIFICA — Smoke test con LLM reale e rimozione del prototipo
+
+- **Type**: verification
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: rimosso il prototipo (grafo di agenti, trade cycle, runtime paper, `agents/pm_omniroute.py`). Primo smoke test reale (`tests/integration/test_office_smoke.py`, LLM `my-combo` via OmniRoute, broker e dati finti) ha rivelato due difetti del `CycleRunner`: il PM non riceveva i risultati degli strumenti e girava senza system prompt. Corretti con ciclo multi-turno limitato dal budget `tool_turns` e caricamento dei prompt da `prompts/`; test di regressione aggiunto. Dopo la correzione il PM legge lo stato, chiede l'analisi, programma il prossimo controllo e chiude il ciclo.
+- **Verifica**: 285 test passati offline + smoke reale passato. **Non** eseguiti: Alpaca paper reale, deploy sul Minisforum, wiring dati live OpenBB/Alpaca, revisione dei prompt da parte di Luca.
+- **Pagine**: [[artifacts/project-board]], [[_meta/hot-cache]].

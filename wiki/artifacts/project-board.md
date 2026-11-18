@@ -66,7 +66,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🟡 In corso
 
-- [ ] 🛠 **Motore MVP dell'ufficio di agenti — implementazione iniziale fatta, verifica reale mancante** — moduli e CLI implementati e testati offline (376 test); mancano smoke test con LLM reali + Alpaca paper, revisione dei prompt da parte di Luca, migrazione/eliminazione del codice prototipo, wiring dati reali OpenBB/Alpaca → [[_meta/log]]
+- [ ] 🛠 **Motore MVP dell'ufficio di agenti — smoke test con LLM reale superato** — moduli e CLI testati offline (285 test) e ciclo reale con broker/dati finti verificato; prototipo (grafo agenti, trade cycle, paper runtime) rimosso; mancano Alpaca paper reale, deploy Minisforum, wiring dati live OpenBB/Alpaca, revisione dei prompt da parte di Luca, migrazione di storage/sqlite e dashboard → [[_meta/log]]
 - [ ] 🛠 **MVP in quattro chat: vendor/schema, database, OpenBB e dashboard** — guida operativa, SQLite MVP e frontend React/TypeScript operativo; nuove implementazioni da verificare → [[artifacts/mvp-parallel-work-2026-10-31]]
 - [x] 🛠 **Implementare la materializzazione incrementale dei derivati — SMA v1** — migration `indicator_values`/outbox, ingestion atomica, worker idempotente, watermark, status, retry e rebuild verificati; estendere agli altri indicatori solo dopo chiusura delle formule/parametri MVP → [[system/db-access-performance]]
 - [x] 🛠 **Formalizzare le formule tecniche pure iniziali** — EMA, RSI Wilder, MACD, ATR Wilder e Pivot Points classici disponibili e testati in `analysis.indicators`; la materializzazione resta SMA-only finché la strategia MVP non chiude i parametri → [[system/quant/quant-backtesting]]
