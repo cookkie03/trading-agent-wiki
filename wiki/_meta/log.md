@@ -1240,3 +1240,9 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: regola nuova in `AGENTS.md` (repo codice e wiki): a ogni task, pull all'inizio, commit e push alla fine, entrambi i repository senza `ahead` né `behind`. Le modifiche locali non riconosciute vanno su un branch `backup/…`. Wiki del Mac riallineata: le vecchie modifiche non committate sono su `backup/mac-wip-2026-11-20`, il commit Timestral è stato rebasato e pushato. Repo codice: `main` allineato e cinque branch `worktree-*` solo locali pushati. `docs/frontend.md` e `docs/architecture.md`: nessuna modalità paper/live, account selezionabili; paper o live dipende solo dalle credenziali (coerente con PRODUCT.md). Nuova decisione aperta in board: fonte dei prezzi per il trailing stop e per gli Alert di prezzo.
 - **Pagine**: [[artifacts/project-board]].
 
+## [2026-11-20] DECISIONE — Timeframe globale, trailing e Alert a chiusura barra
+
+- **Type**: decision
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: `bar_timeframe` globale (default 1h, configurabile), valido anche per l'ATR di ordini e trailing (coefficienti `k` da ritarare). Job a chiusura barra al posto di uno stream. Quattro condizioni di Alert di prezzo, cooldown di 3 ore, Alert trimestrali a 3 giorni solo per le posizioni. Fetta S9 aggiunta alla spec del Runtime come goal successivo a S1–S8.
+- **Pagine**: [[system/foundation/decision-log]], [[system/orchestration/trigger-engine]], [[artifacts/project-board]], [[_meta/hot-cache]]. Solo decisione: nessun codice.

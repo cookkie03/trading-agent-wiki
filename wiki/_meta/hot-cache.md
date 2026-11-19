@@ -14,6 +14,7 @@ tags:
 - **Decisione Luca**: prima del frontend si costruisce un *Runtime*: processo unico, unico writer del DB, client sottili via HTTP + SSE, audit nella tabella `events`, niente polling (scheduler a scadenza/evento, stream Alpaca `trade_updates`). Un Runtime per account; CLI a Runtime spento fallisce; niente Redis. → [[system/foundation/architecture#Runtime unico — 2026-11-20]] · [[system/foundation/decision-log]]
 - **Artefatti nel repository** (branch `docs/agent-restart`): ADR 0003, `.scratch/core-runtime/spec.md` (fette S1–S8 con criteri di accettazione), `.scratch/core-runtime/handoff-implementazione.md` per la chat `/goal`, termini Runtime/Client/Comando/Lettura/Evento/Event log in `GLOSSARY.md`.
 - **Gap rilevato**: fill → Trade, scadenza dei pending e rilascio degli ordini in coda non sono collegati in produzione; li collega la fetta S7.
+- **Deciso anche**: timeframe globale 1h (ATR degli ordini compreso, `k` da ritarare), trailing e Alert con job a chiusura barra, quattro condizioni di Alert, cooldown 3 ore, trimestrali solo per le posizioni → fetta S9, goal successivo. Repo allineati con GitHub; regola di sync in `AGENTS.md`.
 - **Prossimo**: implementazione nella chat `/goal`, poi review in questa linea di lavoro. Frontend in pausa.
 
 ## Sessione 2026-11-18 — Ripresa e intervista sui sei agenti

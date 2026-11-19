@@ -63,3 +63,12 @@ Tutte le sorgenti producono lo stesso oggetto → la coda è omogenea e ordinabi
 
 ## Stato
 > Gli esempi di `TriggerEvent` e priorità presenti nelle vecchie note sono reference design. La spec da consegnare è la forma normalizzata qui descritta, con dedup, audit dell'origine e policy per gli eventi che arrivano durante un run.
+
+## Alert e trailing a chiusura barra — decisione 2026-11-20
+
+- **Fonte prezzi**: nessuno stream. Il Runtime esegue un job alla chiusura di ogni barra `bar_timeframe` (default 1h, globale e configurabile) durante la seduta: barre REST di posizioni e watchlist, poi trailing stop e valutazione degli Alert.
+- **Alert di prezzo**: movimento ≥ 2·ATR14 dal close della seduta precedente; volume ≥ 2× la media della stessa fascia oraria (20 sedute); livelli della tesi (entrata proposta in un Rimando, oppure entro 0,5·ATR da SL/TP); gap in apertura ≥ 1·ATR. Soglie configurabili. Più condizioni sulla stessa barra producono un solo Alert composto.
+- **Cooldown**: 3 ore per ticker (configurabile), calcolato dall'Event log. Se il ticker è in analisi, l'Alert entra come messaggio (Q31).
+- **Trimestrali**: Alert al PM 3 giorni di borsa prima, solo per titoli in posizione. Il calendario macro resta al Market Analyst.
+- **ATR**: calcolato sul timeframe globale anche per ordini e trailing. Con 1h gli stop si stringono, quindi i coefficienti `k` vanno ritarati prima di ordini reali.
+- Stato: **deciso, non implementato** (fetta S9 della spec del Runtime nel repository codice).
