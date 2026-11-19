@@ -1232,3 +1232,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: prima del frontend serve un layer centrale. Scelto un *Runtime*: processo unico sempre acceso, unico writer del DB, client sottili (CLI, UI, Telegram) via HTTP + SSE. Comandi idempotenti con audit nella tabella append-only `events`, letture da read model, eventi dopo il commit. Niente polling: scheduler a scadenza/evento, stream Alpaca `trade_updates` con riconciliazione. Un Runtime per account; CLI a Runtime spento fallisce; niente Redis; migrazione incrementale in 8 fette. La verifica del codice (`6d228b3`) ha rilevato che `record_entry_fill`, `record_exit_fill`, `on_price`, `expire_pending`, `release_queued` e `ingest_external_alert` non sono chiamati in produzione: i fill non diventano Trade. La spec ne collega quattro; `on_price` e le fonti di Alert restano fuori perimetro.
 - **Pagine**: [[system/foundation/decision-log]], [[system/foundation/architecture]], [[artifacts/project-board]], [[_meta/hot-cache]]. Repo: `docs/adr/0003-runtime-unico-writer-event-driven.md`, `.scratch/core-runtime/spec.md`, `.scratch/core-runtime/handoff-implementazione.md`, `GLOSSARY.md`. Solo design: nessun codice implementato né testato.
+
+## [2026-11-20] OPERATIONS — Allineamento GitHub e account al posto di paper/live
+
+- **Type**: operations + decision clarification
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: regola nuova in `AGENTS.md` (repo codice e wiki): a ogni task, pull all'inizio, commit e push alla fine, entrambi i repository senza `ahead` né `behind`. Le modifiche locali non riconosciute vanno su un branch `backup/…`. Wiki del Mac riallineata: le vecchie modifiche non committate sono su `backup/mac-wip-2026-11-20`, il commit Timestral è stato rebasato e pushato. Repo codice: `main` allineato e cinque branch `worktree-*` solo locali pushati. `docs/frontend.md` e `docs/architecture.md`: nessuna modalità paper/live, account selezionabili; paper o live dipende solo dalle credenziali (coerente con PRODUCT.md). Nuova decisione aperta in board: fonte dei prezzi per il trailing stop e per gli Alert di prezzo.
+- **Pagine**: [[artifacts/project-board]].
+

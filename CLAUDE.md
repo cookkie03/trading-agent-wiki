@@ -81,6 +81,16 @@ Valori canonici per `type` e `tags` → `wiki/_meta/taxonomy.md`.
 - In conflitto skill ↔ CLAUDE.md → vince CLAUDE.md
 - In conflitto CLAUDE.md ↔ taxonomy.md sui path → vince taxonomy.md
 
+## Allineamento con GitHub — ogni task
+
+Vale per **qualsiasi** task, anche solo documentale, e per **entrambi** i repository: `trading-agent` e `trading-agent-wiki`.
+
+1. All'inizio: `git fetch` e `git pull --rebase` sul branch corrente di ciascun repository.
+2. Alla fine: committa le modifiche del task, rifai `git pull --rebase` e pusha. Non committare mai i file esclusi (DB locali, `.env`, `.serena/`, `graphify-out/`, `nohup.out`).
+3. Il task è finito solo quando `git status -sb` mostra il branch senza `ahead` né `behind` in entrambi i repository.
+
+Se trovi modifiche locali che non sono tue, non scartarle: salvale su un branch `backup/<macchina>-<data>`, pushalo e segnalalo a Luca.
+
 ## Consultazione prima del lavoro sul codice
 
 Per ogni richiesta relativa al Trading Agent, consulta prima questa wiki e le pagine pertinenti, anche quando il lavoro riguarda il codice nel repository adiacente `../trading-agent/`. La procedura condivisa è in `../trading-agent/AGENTS.md`.

@@ -34,6 +34,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🟠 Decisioni da prendere
 
+- [ ] 🛠 **Feed prezzi per trailing stop e Alert di prezzo** — formula trailing decisa (Q46) ma `TradeManager.on_price` non riceve prezzi: decidere la fonte (stream Alpaca o valutazione a chiusura barra), la granularità e la definizione di «prezzo anomalo» (soglia, universo, cooldown); poi una fetta nel Runtime → [[system/foundation/architecture#Runtime unico — 2026-11-20]]
 - [x] 🔀 **Definire il ruolo del Risk Analyst** — deciso 2026-11-18: due livelli (Risk Analyst pari + Risk Gate deterministico) → desk pari, gate finale o modello a due livelli; aggiornare routing e prompt dopo la decisione → [[system/agents/agent-behaviors]]
 - [x] 🔀 **Chiudere il confine Market / Sentiment** — confermato 2026-11-18, per tipo di informazione → Market: macro e catalizzatori; Sentiment: mood e posizionamento multi-fonte → [[system/agents/agent-behaviors]]
 - [x] 🔀 **Scegliere la strategia MVP** — trend following hourly, long-only, azioni USA, USD-only, swing trading; indicatori e protocollo di backtest da chiudere → [[strategy/index]]
