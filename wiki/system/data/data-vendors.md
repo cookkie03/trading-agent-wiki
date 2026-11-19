@@ -22,6 +22,12 @@ area: software
 
 Questa pagina separa la scelta di una **capacità** dalla scelta del suo provider. Il catalogo parte da OpenBB per esplorare copertura e integrazioni, ma il sistema mantiene wrapper interni e fallback: nessun agente o specifica dipende direttamente da un vendor.
 
+### Decisione implementativa — 2026-10-31
+
+Luca ha scelto di iniziare con un'architettura ibrida: OpenBB è il primo vendor operativo per la raccolta dati, mentre gli adapter diretti restano percorsi reali e sostituibili. Nel repository il seam è `MarketDataProvider`; `OpenBBProvider` normalizza verso i modelli propri e conserva il provider sottostante nella provenance, senza esporre namespace OpenBB al resto del sistema. Questo consente di spostarsi da OpenBB a un adapter diretto senza riscrivere storage, capability o agenti.
+
+**Stato verificato:** implementato e testato offline su `main` il 2026-10-31. Il package è stato appiattito alla root (`data/`, `brokers/`, `storage/`, ecc.); 40 test focalizzati passano. L'installazione OpenBB reale non è stata eseguita. La ricerca Alpaca come vendor dati è stata completata su fonti ufficiali e salvata in `docs/research/alpaca-data-vendor.md`; `AlpacaMarketDataProvider` implementa ora OHLCV storico equities con feed esplicito e provenance. News, corporate actions, options, crypto e fundamentals restano capability separate da progettare.
+
 ## Politica emersa dai commenti
 
 1. **OpenBB-first per catalogazione e ricerca**: mappare ciò che l'aggregatore già espone prima di inventare tool paralleli.

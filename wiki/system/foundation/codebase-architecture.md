@@ -6,7 +6,7 @@ tags:
   - architecture
   - software
 created: 2026-06-23T00:00:00.000Z
-updated: 2026-07-13T00:00:00.000Z
+updated: 2026-10-31
 status: active
 confidence: medium
 area: software
@@ -107,3 +107,83 @@ Gli output agentici devono essere verificabili: ogni numero importante viene da 
 - Execution: [[system/execution/execution]]
 - Quant/backtesting: [[system/quant/quant-backtesting]]
 - Agents: [[system/agents/agents]]
+
+## Avvio per classi — 2026-10-30
+
+Owner: 🛠 Luca (software). Stato: ideazione, nessuna nuova classe implementata.
+
+### Appunto originale recuperato
+
+Fonte: [Notion — Projects → Trading Agent](https://www.notion.so/4012e441b0e581fcb942c109716dfb1f), letta il 2026-10-30, ultima modifica riportata 2026-10-23.
+
+Luca elenca: `Agent`, `Tool`, `Provider`, `Data Broker`, `Broker`, documenti da compilare per azienda/mercato/strategia e `Strategy`. Propone un primo esempio concreto per provider, data broker, agente, tool e broker, con test robusti attorno a questi esempi. Annota anche una futura UI di monitoraggio e un chatbot per orientare la strategia: il rapporto con la UI read-only e l'autonomia va chiarito prima di implementarlo.
+
+Su Todoist è stato trovato [Trading-Agent](https://app.todoist.com/app/task/6hgrJWVFhfGcGpmX), con il sottotask [trasformare la wiki in una codebase semplice, modulare e leggibile da un principiante Python](https://app.todoist.com/app/task/6hjx2hxw8GVvgW45). Il task e i sottotask letti non contengono la lista di classi: la fonte esatta è Notion.
+
+### Proposta da discutere
+
+Prima slice: richiesta di prezzi storici → fonte dati → normalizzazione → persistenza → lettura, verificabile offline.
+
+| Nome provvisorio | Responsabilità proposta |
+|---|---|
+| `PriceBar` | Record OHLCV normalizzato, con strumento, valuta, date e provenienza |
+| `MarketDataProvider` | Contratto piccolo per recuperare prezzi; primo adapter concreto e fake offline |
+| `MarketDataRepository` | Scrittura idempotente e lettura dei dati persistiti |
+| `DataBroker` | Coordina presenza/freshness nel DB, fetch, persistenza e restituzione dei dati |
+
+Questa è una proposta, non una decisione di class design. Va chiarito se `Provider` nell'appunto significa provider LLM oppure fonte dati, e se `Data Broker` significa coordinatore interno oppure vendor esterno. In caso di provider LLM, `LLMProvider` resta distinto da `MarketDataProvider`. `Broker` riguarda conto/ordini; `Tool` espone una capacità agli agenti; `Agent`, documenti e `Strategy` seguono dopo la prima slice. Evitare una superclasse universale che mischi dati, LLM ed esecuzione.
+
+Per l'ideazione si applica la skill locale di Matt Pocock `codebase-design`: interfacce piccole, responsabilità profonde e dipendenze sostituibili; le classi non sono obbligatorie dove basta una funzione. Nomi, metodi e primo vendor restano da concordare con Luca.
+
+## Struttura modulare e partenza Broker — proposta 2026-10-30
+
+Owner: 🛠 Luca. Luca chiede di discutere prima l'alberatura della repository e poi il modulo Broker con ricerca Alpaca. La precedente slice prezzi/DataBroker è una proposta alternativa, non una priorità approvata.
+
+La proposta locale è `src/trading_agent/` con `brokers`, `data`, `storage`, `analysis`, `tools`, `agents`, `workflows`, `execution`, `interface`, più configurazione e composizione esplicita. Co-localizza contratto Broker e adapter in `brokers`; separa i comportamenti degli agenti dalla topologia dei workflow e le analisi complesse dai tool che le espongono. I nomi sono proposti: la wiki mantiene i confini canonici di responsabilità descritti sopra.
+
+Prima slice candidata: contratto di lettura conto/posizioni/ordini, fake offline e adapter Alpaca paper. Invio ordini con intent log, ricerca ID cliente, gestione esiti incerti e SL/TP in una slice successiva, prima del trading autonomo. Nessuna nuova classe o test prodotto è stata implementata in questa fase.
+
+Artefatti nel repository codice: `docs/architecture.md` (proposta da discutere) e `docs/research/alpaca-broker.md` (ricerca ufficiale). Non sono decisioni definitive sulla struttura. La ricerca esterna va distinta dai requisiti wiki; in particolare l'ID cliente non va interpretato senza verifica come garanzia automatica di exactly-once.
+
+Luca richiede un sub-agent consultabile che risponda esclusivamente dalla wiki e un sub-agent per la manutenzione della documentazione. Le istruzioni operative sono in `AGENTS.md` del repository codice; le skill di Matt Pocock restano preferite quando pertinenti.
+
+## Alberatura approvata e requisito Docker — 2026-10-30
+
+Owner: 🛠 Luca (software). Decisione esplicita: approvata l'alberatura del monolite modulare e autorizzato l'avvio dello scaffolding. Il progetto deve poter essere distribuito in produzione con Docker.
+
+```text
+trading-agent/
+├── .agents/skills/
+├── AGENTS.md
+├── README.md
+├── pyproject.toml
+├── config.toml
+├── docs/
+├── src/trading_agent/
+│   ├── brokers/       # conto, posizioni, ordini e adapter
+│   ├── data/          # fonti e coordinamento acquisizione
+│   ├── storage/       # DB, repository e migrazioni
+│   ├── analysis/      # capacità analitiche deterministiche
+│   ├── tools/         # strumenti esposti agli agenti
+│   ├── agents/        # comportamenti e prompt
+│   ├── workflows/     # topologia, trigger e scheduling
+│   ├── execution/     # guardrail, invio e recovery
+│   ├── interface/     # CLI e futura UI
+│   ├── config.py
+│   └── bootstrap.py
+└── tests/
+    ├── brokers/
+    ├── analysis/
+    ├── fakes/
+    └── integration/
+```
+
+Questa è la struttura di destinazione: `config.toml`, `config.py`, `bootstrap.py` e i contratti di classe si aggiungono quando ne viene definito il comportamento. Lo scheletro iniziale contiene i package e le directory dei test, senza implementare finte classi o servizi.
+
+Il requisito Docker implica packaging installabile, build riproducibile, segreti esterni all'immagine, persistenza esterna al container, log stdout/stderr e arresto corretto con recovery. Il DB può avere un container separato. Dockerfile e verifica immagine devono accompagnare il primo runtime eseguibile; lo scaffolding non attesta production readiness.
+
+La scelta rispetta le responsabilità sopra descritte: `analysis` corrisponde alle capabilities, `workflows` all'orchestration, `brokers` raccoglie contratto e adapter. Non modifica lo scope paper US equity USD-only né approva automaticamente tutti i metodi Broker. Vedi [[system/foundation/implementation-status]] per lo stato verificato.
+
+## Primo Broker di lettura implementato — 2026-10-31
+
+Owner: 🛠 Luca. Il contratto conto/posizioni/ordini e l'adapter Alpaca paper sono ora implementati nel repository codice su richiesta di Luca. Il contratto rimane indipendente dallo SDK; non include invio/cancellazione. Evidenza datata e limiti, senza duplicare stato dei test nelle specifiche: [[system/foundation/implementation-status#Broker read-only — verifica 2026-10-31]].

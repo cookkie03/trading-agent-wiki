@@ -9,6 +9,54 @@ tags:
 
 > Contesto di sessione recente. Il repository è esterno al vault: qui vivono spec, decisioni e priorità, non lo stato verificato del codice.
 
+## Sessione 2026-10-31 — Accelerazione MVP in quattro chat
+
+- **Richiesta Luca**: guida operativa e avanzamento parallelo; lettura codice non è un gate. Filoni: vendor/schema e primo adapter, database, spiegazione OpenBB, dashboard.
+- **Scelte delegate MVP**: SQLite se adeguato al singolo servizio writer; futura PostgreSQL/Timescale tramite repository/migrazioni senza portabilità automatica. Cache esclusa; persistenza/dedup/provenienza restano.
+- **Frontend**: React + TypeScript + Vite/npm con backend Python read-only; parti non implementate non disponibili/demo. HMR, dati live e servizio persistente distinti.
+- **Vendor**: contratti neutrali confermati; OpenBB è il primo vendor operativo dietro un adapter interno, con adapter diretti mantenuti come sostituti. Ricerca ufficiale Alpaca market-data completata; `AlpacaMarketDataProvider` implementa OHLCV storico equities con feed esplicito. Docker rimane requisito.
+- **Layout codice**: merge consolidato su `main`; package applicativi spostati dalla gerarchia `src/trading_agent/` alla root (`data/`, `brokers/`, `storage/`, ecc.). 39 test focalizzati passati il 2026-10-31.
+- **Coordinamento**: [[artifacts/mvp-parallel-work-2026-10-31]]. Sono decisioni/incarichi: nuove implementazioni, test e runtime devono ancora essere attestati. Execution e ordini fuori da questi incarichi.
+- **Avanzamento ingestion**: `scripts/ingest_market_data.py` implementato nel worktree `worktree-market-data-ingestion`; test offline 42 passati e deduplicazione verificata con fake provider. Yahoo/Alpaca reali non ancora eseguiti; resta task opt-in con credenziali locali → [[artifacts/mvp-database-2026-10-31]].
+
+## Sessione 2026-10-31 — Primo Broker read-only
+
+- **Implementato** nel repository codice il contratto Broker conto/posizioni/ordini, modelli del progetto e adapter Alpaca paper. SDK ufficiale 0.44.0 e dipendenze bloccate.
+- **Verifica**: 38 test offline focalizzati passati il 2026-10-31. Il test Paper read-only raggiunge `https://paper-api.alpaca.markets/v2` ma restituisce HTTP 401 `request is not authorized`; nessun ordine inviato. Le credenziali Paper nel `.env` vanno rigenerate/verificate localmente, mai in chat.
+- **Luca ha un conto Alpaca**: predisposto `.env.example` e test opzionale di lettura; chiavi paper da configurare localmente, mai in chat.
+- **Documentazione**: README, `docs/brokers.md` e architettura allineati; nessun nuovo commit/push.
+- **Indicazione precedente, aggiornata dal piano sopra**: lettura dei tre file e prova paper restano utili, ma non sono gate per i filoni MVP; intent/execution/recovery restano separati.
+
+## Sessione 2026-10-30 — Alberatura approvata, scaffolding e Docker
+
+- Luca approva l'alberatura `src/trading_agent` e richiede deploy produzione con Docker; decisione in [[system/foundation/codebase-architecture#Alberatura approvata e requisito Docker — 2026-10-30]].
+- Creati package per le dieci aree approvate, directory test, `pyproject.toml`, `.gitignore` e `.dockerignore`. Nessuna logica broker o runtime di trading ancora implementata.
+- Docker è un requisito; Dockerfile, lock dipendenze e prova container restano da completare con il primo flusso eseguibile. Nessun deploy eseguito.
+- Prossimo passo: definire e implementare il contratto Broker per lettura conto/posizioni/ordini. Modifiche locali senza commit/push.
+
+## Sessione 2026-10-30 — Struttura, Broker e documentazione (fase precedente)
+
+- **Priorità corrente Luca**: prima discutere struttura repository estremamente modulare, poi Broker e documentazione Alpaca; restare su passi leggibili e discutere il codice insieme.
+- **Deleghe**: consulente `wiki_consultant` con fonti esclusivamente wiki, ricerca Alpaca su fonti ufficiali, agente documentazione con ricerca/installazione skill dedicate.
+- **Proposta**: monolite modulare `src/trading_agent`, agenti separati dai workflow, analisi separate dai tool, broker intercambiabili. Bozza in `docs/architecture.md` del repo codice; ancora da discutere.
+- **Primo slice candidato**: lettura conto/posizioni/ordini con fake offline e Alpaca paper; invio/recovery dopo. Nessuna nuova implementazione.
+- **Documentazione**: creati README, `docs/architecture.md`, `docs/documentation.md` e ricerca Alpaca con fonti ufficiali; installate localmente `find-skills` e `readme-blueprint-generator`, preservate le 27 skill Matt Pocock. Routine di manutenzione in `AGENTS.md`; modifiche di questa fase non committate.
+
+## Sessione 2026-10-30 — Ripartenza confermata e classi
+
+- **Decisione Luca**: rimuovere la codebase precedente, conservare le skill di Matt Pocock e usarle per quanto possibile. Commit locale `88ca413`, working tree del codice pulita, nessun push.
+- **Fonte recuperata**: [Notion — Projects → Trading Agent](https://www.notion.so/4012e441b0e581fcb942c109716dfb1f): Agent, Tool, Provider, Data Broker, Broker, documenti e Strategy; primi esempi concreti e test robusti.
+- **Prossimo passo**: chiarire il significato di Provider e Data Broker, poi ideare insieme la prima slice infrastrutturale. Proposte non ancora approvate in [[system/foundation/codebase-architecture#Avvio per classi — 2026-10-30]].
+- **Codice storico**: leggibile nella cronologia al commit `20bf209`; nessuna nuova classe implementata.
+
+## Sessione 2026-10-30 — Collegamento workspace e consultazione wiki (precedente nella stessa sessione)
+
+- **Workspace locale**: `/Users/luca/Documents/Projects/trading-agent` e `/Users/luca/Documents/Projects/trading-agent-wiki`, clonati rispettivamente da `cookkie03/trading-agent` e `cookkie03/trading-agent-wiki`, su `main` con tracking `origin/main`.
+- **Istruzione di Luca**: per ogni richiesta sul progetto consultare prima la wiki, comprese le attività sulla codebase Python. Procedura in `AGENTS.md` dei due repository.
+- **Contesto letto**: overview, taxonomy, board, piano operativo, architettura, confini codebase, MVP, stack, decisioni e policy di stato.
+- **Punto aperto**: il repository scaricato contiene già codice Python precedente; il piano operativo richiede una ripartenza da zero. Il clone conserva quel codice; la strategia di ripartenza resta da definire, senza assumere il legacy come baseline verificata. Evidenze e limiti in [[system/foundation/implementation-status#Verifica workspace — 2026-10-30]].
+- **Limiti**: nessuna esecuzione del sistema o suite di test; nessun commit o push in questa sessione. Le modifiche documentali sono locali.
+
 ## Sessione 2026-10-14 — Recupero della rilettura integrale
 
 - **Esito**: ritrovato il registro della rilettura del 2026-07-13 in [[comment-resolution-2026-07-13]]; la board la marca completata. Il task originale non è stato individuato tra le conversazioni recenti o archiviate consultate.
