@@ -7,7 +7,7 @@ tags:
   - execution
   - architecture
 created: 2026-04-30T00:00:00.000Z
-updated: 2026-11-01
+updated: 2026-11-19
 status: active
 related:
   - "[[system/foundation/decision-log]]"
@@ -66,7 +66,6 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🟡 In corso
 
-- [ ] 🛠 **Motore MVP dell'ufficio di agenti — smoke test con LLM reale superato** — moduli e CLI testati offline (285 test) e ciclo reale con broker/dati finti verificato; prototipo (grafo agenti, trade cycle, paper runtime) rimosso; mancano Alpaca paper reale, deploy Minisforum, wiring dati live OpenBB/Alpaca, revisione dei prompt da parte di Luca, migrazione di storage/sqlite e dashboard → [[_meta/log]]
 - [ ] 🛠 **MVP in quattro chat: vendor/schema, database, OpenBB e dashboard** — guida operativa, SQLite MVP e frontend React/TypeScript operativo; nuove implementazioni da verificare → [[artifacts/mvp-parallel-work-2026-10-31]]
 - [x] 🛠 **Implementare la materializzazione incrementale dei derivati — SMA v1** — migration `indicator_values`/outbox, ingestion atomica, worker idempotente, watermark, status, retry e rebuild verificati; estendere agli altri indicatori solo dopo chiusura delle formule/parametri MVP → [[system/db-access-performance]]
 - [x] 🛠 **Formalizzare le formule tecniche pure iniziali** — EMA, RSI Wilder, MACD, ATR Wilder e Pivot Points classici disponibili e testati in `analysis.indicators`; la materializzazione resta SMA-only finché la strategia MVP non chiude i parametri → [[system/quant/quant-backtesting]]
@@ -88,6 +87,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## ✅ Fatto
 
+- [x] 🛠 **Motore MVP dell'ufficio di agenti completato e verificato** — chiusi e verificati i 9 gap residui della spec (US 12, 16, 62, 77, 85, 89, 101, 102, 117), 255 test offline passati, ruff pulito, motore distribuito su container Docker in produzione (`engine`), ciclo reale con LLM completato (esito accepted), stato ordini allineato al broker Alpaca paper → [[_meta/log]]
 - [x] 🛠 **Adottate le convenzioni pragmatiche per i commenti Python** — metodo why-first ispirato ad antirez; docstring per interfacce, invarianti e vincoli; commenti algoritmici per le future ratio economiche e commenti storici solo per vincoli esterni verificabili → [[system/foundation/python-commenting-conventions]]
 - [x] 🛠 **Primo Broker read-only con Alpaca e test offline** — conto, posizioni e finestra ordini; prova paper opt-in predisposta ma non eseguita sul conto di Luca → [[system/foundation/implementation-status#Broker read-only — verifica 2026-10-31]]
 

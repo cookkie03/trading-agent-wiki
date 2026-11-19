@@ -1209,3 +1209,19 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: prompt aggiornati (restano bozze per la revisione di Luca): il PM ha una "Regola d'Ingaggio" (primo turno solo messaggi ai quattro Analyst, decisione solo dopo le risposte di Technical e Risk) e le note sugli argomenti dei tool decisionali; il Risk Analyst conosce i limiti deterministici del Risk Gate (rischio 1%, notional 10%, settore 30%, cassa 5%, R:R 1,5) e deve rileggere la bozza dopo `set_coefficients`; tutti gli specialisti sanno che il subagent legge solo stato e portafoglio. Revisione di coerenza prompt/tool prodotta da `claude -p` (`my-combo`), 12 punti, applicati quelli rilevanti.
 - **Verifica**: ciclo di produzione su MSFT: PM → quattro richieste → quattro risposte tutte recapitate → Risk Analyst segnala la bozza fuori limite e la ricalibra → esito `deferred` con controllo futuro programmato (consenso HOLD di tre Analyst su quattro). 247 test offline passati.
 - **Pagine**: [[artifacts/project-board]].
+
+## [2026-11-19] CODICE + VERIFICA — Chiusura dei 9 gap residui dell'ufficio agenti (MVP)
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: chiusi e verificati con test automatici tutti i 9 gap residui identificati dall'audit della spec (`.scratch/agent-mvp/spec.md`):
+  1. **US 62**: `OrderFlow.reject()` registra l'evento, aggiorna l'ordine e scrive il Rimando con il motivo del rifiuto nella chat del PM per il ticker corrispondente.
+  2. **US 102 / 117**: `OfficeDB.check_db_size_alert()` e `Office.check_db_size()` verificano la dimensione del DB rispetto a `db_size_alert_mb` (inclusi file WAL e SHM) e accodano un avviso in Inbox (senza duplicare avvisi non letti).
+  3. **US 101**: `storage/retention.py` introduce `run_retention_job()` cablato in `Office.run_retention()`, eseguito settimanalmente nel loop: compattazione testo news (>90gg), compattazione blob prompt/risposte LLM (>180gg), downsampling barre orarie (>90gg) in giornaliere e barre giornaliere (>5a / >10a) in settimanali/mensili, ed esecuzione di `PRAGMA incremental_vacuum`.
+  4. **US 89**: `Office.refresh_data()` cablato nel loop di `Office.run()` per eseguire periodicamente il pre-fetch di watchlist e portafoglio tramite `refresh_watchlist_and_portfolio()`.
+  5. **US 12**: `workflows/scheduling.py` e `workflows/office.py` introducono `make_external_alert_task()` e `Office.ingest_external_alert()`, che trasformano allarmi esterni (prezzo, calendario, utili) in Scheduled task immediati per il PM.
+  6. **US 16**: `Office.ensure_fixed_market_analyst_activations()` genera automaticamente attivazioni fisse di base per il Market Analyst (pre-market alle 09:00 nei giorni di borsa e per eventi da `econ_calendar`) salvate con sorgente `fixed_base`.
+  7. **US 77**: Aggiunto il tool `set_sector_view` per il Market Analyst (`tools/schemas.py`, `tools/environment.py`, prompt aggiornato) che registra la visione di mercato in `sector_performance` e aggiorna lo state di tutti i titoli del settore.
+  8. **US 85**: `portfolio_risk` esteso per calcolare la correlazione di portafoglio (matrice di correlazione di Pearson sui rendimenti giornalieri a 30gg tra i titoli in posizione aperta) e il rischio aperto (`open_risk`).
+- **Verifica**: 255 test passati (0 falliti, 2 skipped), `ruff check` pulito su tutti i moduli, `graphify update .` sincronizzato. Container Docker `engine` ricreato e riavviato su host Debian (`trading-agent-engine-1` Up). Ciclo reale su AAPL eseguito via CLI `trading-agent task AAPL`, completato con successo (ciclo #9, esito `accepted`). Stato ordini sincronizzato con broker Alpaca paper (`positions: 0`, nessun ordine pendente aperto).
+- **Pagine**: [[artifacts/project-board]].
