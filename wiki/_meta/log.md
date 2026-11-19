@@ -1225,3 +1225,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
   8. **US 85**: `portfolio_risk` esteso per calcolare la correlazione di portafoglio (matrice di correlazione di Pearson sui rendimenti giornalieri a 30gg tra i titoli in posizione aperta) e il rischio aperto (`open_risk`).
 - **Verifica**: 255 test passati (0 falliti, 2 skipped), `ruff check` pulito su tutti i moduli, `graphify update .` sincronizzato. Container Docker `engine` ricreato e riavviato su host Debian (`trading-agent-engine-1` Up). Ciclo reale su AAPL eseguito via CLI `trading-agent task AAPL`, completato con successo (ciclo #9, esito `accepted`). Stato ordini sincronizzato con broker Alpaca paper (`positions: 0`, nessun ordine pendente aperto).
 - **Pagine**: [[artifacts/project-board]].
+
+## [2026-11-20] DECISIONE — Runtime unico single writer, event-driven
+
+- **Type**: decision + design
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: prima del frontend serve un layer centrale. Scelto un *Runtime*: processo unico sempre acceso, unico writer del DB, client sottili (CLI, UI, Telegram) via HTTP + SSE. Comandi idempotenti con audit nella tabella append-only `events`, letture da read model, eventi dopo il commit. Niente polling: scheduler a scadenza/evento, stream Alpaca `trade_updates` con riconciliazione. Un Runtime per account; CLI a Runtime spento fallisce; niente Redis; migrazione incrementale in 8 fette. La verifica del codice (`6d228b3`) ha rilevato che `record_entry_fill`, `record_exit_fill`, `on_price`, `expire_pending`, `release_queued` e `ingest_external_alert` non sono chiamati in produzione: i fill non diventano Trade. La spec ne collega quattro; `on_price` e le fonti di Alert restano fuori perimetro.
+- **Pagine**: [[system/foundation/decision-log]], [[system/foundation/architecture]], [[artifacts/project-board]], [[_meta/hot-cache]]. Repo: `docs/adr/0003-runtime-unico-writer-event-driven.md`, `.scratch/core-runtime/spec.md`, `.scratch/core-runtime/handoff-implementazione.md`, `GLOSSARY.md`. Solo design: nessun codice implementato né testato.

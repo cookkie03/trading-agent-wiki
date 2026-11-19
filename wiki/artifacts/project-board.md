@@ -66,6 +66,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🟡 In corso
 
+- [ ] 🛠 **Runtime unico (single writer, event-driven)** — progettato il 2026-11-20 (ADR 0003, `.scratch/core-runtime/spec.md`); implementazione a fette S1–S8 in una chat dedicata `/goal`, poi review. Il frontend riparte solo dopo → [[system/foundation/architecture#Runtime unico — 2026-11-20]]
 - [ ] 🛠 **MVP in quattro chat: vendor/schema, database, OpenBB e dashboard** — guida operativa, SQLite MVP e frontend React/TypeScript operativo; nuove implementazioni da verificare → [[artifacts/mvp-parallel-work-2026-10-31]]
 - [x] 🛠 **Implementare la materializzazione incrementale dei derivati — SMA v1** — migration `indicator_values`/outbox, ingestion atomica, worker idempotente, watermark, status, retry e rebuild verificati; estendere agli altri indicatori solo dopo chiusura delle formule/parametri MVP → [[system/db-access-performance]]
 - [x] 🛠 **Formalizzare le formule tecniche pure iniziali** — EMA, RSI Wilder, MACD, ATR Wilder e Pivot Points classici disponibili e testati in `analysis.indicators`; la materializzazione resta SMA-only finché la strategia MVP non chiude i parametri → [[system/quant/quant-backtesting]]

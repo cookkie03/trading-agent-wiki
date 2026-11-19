@@ -6,7 +6,7 @@ tags:
   - build
   - architecture
 created: 2026-04-30T00:00:00.000Z
-updated: 2026-07-13T00:00:00.000Z
+updated: 2026-11-20T00:00:00.000Z
 status: active
 priority: high
 area: software
@@ -141,6 +141,22 @@ Output: `research_state` versionato (`alpha`/v1) con esiti `approved`/`declined`
 | Fine-Tuning Module | Riaddestramento LLM su storico del progetto | Post-MVP avanzato |
 
 > Questi componenti fanno parte di un unico **loop di valutazione e auto-miglioramento** — substrato di logging, reportistica diagnostica, scoring agenti, ponderazione pesi, feedback post-trade: vedi [[system/quant/learning-feedback-loop]].
+
+---
+
+## Runtime unico — 2026-11-20
+
+> Decisione di Luca. Il principio «DB come hub centrale» resta valido per la **persistenza**: il DB è l'unica fonte di verità. Non è più il **canale** tra processi: ci scrive solo il Runtime.
+
+- **Runtime**: un solo processo sempre acceso, unico writer del DB. Contiene Trigger engine (scheduler), cicli di analisi, order flow, Trade e connessione broker.
+- **Client**: CLI, frontend (cockpit) e bridge Telegram. Non costruiscono un ufficio proprio, non aprono il DB, non hanno credenziali broker.
+- **Tre porte**: *Comandi* (tipizzati, validati, idempotenti per `command_id`, con conferma esplicita se toccano il capitale), *Letture* (read model) ed *Eventi* (pubblicati dopo il commit). Trasporto HTTP + SSE.
+- **Audit**: tabella append-only `events`, scritta nella stessa transazione della modifica; da qui i Client che si riconnettono recuperano gli eventi persi.
+- **Niente watcher**: lo scheduler dorme fino alla prossima scadenza o al prossimo evento; i fill arrivano dallo stream del broker; refresh dati e retention sono job a scadenza.
+- **Account**: un Runtime (con DB e porta propri) per account broker; la UI sceglie l'account scegliendo il Runtime.
+- **Scartato**: Redis come layer, perché crea una seconda verità senza risolvere i molti writer; IPC non HTTP, che il browser non parla; Runtime multi-account; letture offline dalla CLI.
+
+Coerente con [[system/interface/frontend-module]], che chiede contratti applicativi stabili e non accesso diretto ai repository interni. Stato: **progettato, non implementato**; spec e piano a fette nel repository codice (`.scratch/core-runtime/spec.md`). → [[system/foundation/decision-log]]
 
 ---
 

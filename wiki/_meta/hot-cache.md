@@ -9,6 +9,13 @@ tags:
 
 > Contesto di sessione recente. Il repository è esterno al vault: qui vivono spec, decisioni e priorità, non lo stato verificato del codice.
 
+## Sessione 2026-11-20 — Runtime unico (progettazione)
+
+- **Decisione Luca**: prima del frontend si costruisce un *Runtime*: processo unico, unico writer del DB, client sottili via HTTP + SSE, audit nella tabella `events`, niente polling (scheduler a scadenza/evento, stream Alpaca `trade_updates`). Un Runtime per account; CLI a Runtime spento fallisce; niente Redis. → [[system/foundation/architecture#Runtime unico — 2026-11-20]] · [[system/foundation/decision-log]]
+- **Artefatti nel repository** (branch `docs/agent-restart`): ADR 0003, `.scratch/core-runtime/spec.md` (fette S1–S8 con criteri di accettazione), `.scratch/core-runtime/handoff-implementazione.md` per la chat `/goal`, termini Runtime/Client/Comando/Lettura/Evento/Event log in `GLOSSARY.md`.
+- **Gap rilevato**: fill → Trade, scadenza dei pending e rilascio degli ordini in coda non sono collegati in produzione; li collega la fetta S7.
+- **Prossimo**: implementazione nella chat `/goal`, poi review in questa linea di lavoro. Frontend in pausa.
+
 ## Sessione 2026-11-18 — Ripresa e intervista sui sei agenti
 
 - **Implementazione MVP avviata (branch `docs/agent-restart`)**: motore, CLI `trading-agent`, DB, tool, flusso ordine, prompt in bozza; 376 test offline. Non ancora fatti: smoke test reale (LLM + Alpaca paper), revisione prompt, pulizia prototipo. Per le chiamate delegate usare solo `my-combo`, mai `free`.
