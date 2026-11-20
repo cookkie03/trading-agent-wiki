@@ -62,17 +62,18 @@ Questi contratti possono essere funzioni Python, API locali o query layer, ma de
 
 ## Pagine del cockpit — 2026-11-20
 
-Il motore lavora in autonomia al 100%; il cockpit è il posto di lavoro personale dell'ufficio, dove Luca entra come membro («collega jolly») quando vuole, da desktop o da telefono. Cinque pagine, un solo design system (React, TypeScript, Vite, Tailwind, shadcn/ui; strumenti standard, niente stack custom):
+Il motore lavora in autonomia al 100%; il cockpit è il posto di lavoro personale dell'ufficio, dove Luca entra come membro («collega jolly») quando vuole, da desktop o da telefono. Sei pagine, un solo design system. L'idea del **collega jolly** pervade tutta la UI: Luca lavora sullo stesso materiale degli agenti, con le stesse letture e scritture via Runtime (React, TypeScript, Vite, Tailwind, shadcn/ui; strumenti standard, niente stack custom):
 
-1. **Assistente** (home): chat in linguaggio naturale con il **Bridge agent**, pari di Luca: legge tutto, parla con ogni agente dell'ufficio e usa gli stessi comandi della UI, con conferma per ciò che tocca capitale.
+1. **Assistente** (home): chat in linguaggio naturale con il **Bridge agent**, pari di Luca: legge tutto, parla con ogni agente dell'ufficio e usa gli stessi comandi della UI, con conferma per ciò che tocca capitale. Ora si progetta la UI/UX; l'agente si implementa dopo nel Runtime.
 2. **Ufficio**: gli agenti, le loro chat (Luca le legge e ci scrive direttamente, anche senza Bridge) e lo stream dei tool che chiamano.
-3. **Terminale**: pagina unica alla maniera dei software finanziari professionali: grafico (TradingView lightweight-charts), quote/order book, ordini aperti e pendenti (approvazione per gli account in manuale), agenti attivi sullo strumento, **watchlist condivisa** con gli agenti e modificabile. Ciò che un agente disegna sul grafico (livelli, trend, indicatori) compare qui; ciò che disegna Luca lo leggono gli agenti.
-4. **Portafoglio**: come un'app bancaria desktop: statistiche, investito, allocazione, posizioni, trade, performance; sezione con le **metriche e i vincoli di rischio** che il portafoglio deve rispettare.
-5. **Configurazioni**: agenti, modelli, prompt, schedule, budget, provider, account broker, DB e retention, salute del Runtime.
+3. **Terminale**: pagina unica, moderna, alla maniera dei software finanziari professionali, su TradingView lightweight-charts come **ambiente principale del Technical Analyst**: prezzo, volumi, indicatori; niente order book; ordini aperti e pendenti (approvazione per gli account in manuale), agenti attivi sullo strumento, **watchlist condivisa** con gli agenti e modificabile. Ciò che un agente disegna sul grafico (livelli, trend, indicatori) compare qui; ciò che disegna Luca lo leggono gli agenti.
+4. **Notizie**: l'ambiente news degli agenti, con gli stessi tool: Luca legge, filtra, seleziona e invia notizie agli agenti.
+5. **Portafoglio**: come un'app bancaria desktop: statistiche, investito, allocazione, posizioni, trade, performance; sezione con le **metriche e i vincoli di rischio** che il portafoglio deve rispettare.
+6. **Configurazioni**: agenti, modelli, prompt, schedule, budget, provider, account broker, DB e retention, salute del Runtime.
 
 L'input di Luca (messaggi, notizie, disegni, watchlist) è un parere che gli agenti pesano e possono contestare; il Risk Gate resta sovrano. Direzione visiva: lo standard di ogni genere eseguito al livello dei migliori prodotti, senza metafore (scelta di Luca dopo due giri di direzioni Impeccable).
 
-**Gap di backend** da chiudere nel Runtime prima delle pagine che li usano: Bridge agent; annotazioni del grafico condivise (tabella, tool degli agenti, eventi); stream delle chiamate ai tool negli eventi; letture OHLCV e storico equity; vincoli di portafoglio e configurazione modificabili via comandi. Alpaca per le azioni USA dà quote (NBBO) e trade, non la profondità: l'«order book» è bid/ask più time & sales, salvo un vendor di profondità.
+**Gap di backend** da chiudere nel Runtime prima delle pagine che li usano: letture e scritture degli ambienti per il frontend (OHLCV, indicatori, news), come fanno gli agenti; annotazioni del grafico condivise; stream delle chiamate ai tool negli eventi; storico equity; vincoli di portafoglio e configurazione modificabili via comandi; più avanti il Bridge agent. lightweight-charts disegna serie ma non ha indicatori né strumenti di disegno integrati: indicatori dal Runtime o dal nostro codice, disegni tramite primitive del grafico.
 
 Questa decisione porta il Bridge agent (prima «Configuration & State Agent», post-MVP) dentro lo scope del cockpit.
 

@@ -48,7 +48,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 - [ ] 🛠 **Prova reale del Runtime su Minisforum** — container `engine` aggiornato, Alpaca paper + LLM reale: stream connesso, riconciliazione, un ciclo completo. Ultimo gate prima di ordini reali; Luca la rimanda a dopo il cockpit (frontend prima, per avere visibilità) → [[system/foundation/architecture#Runtime unico — 2026-11-20]]
 - [ ] 🛠 **S9 Runtime: timeframe globale, trailing e Alert a chiusura barra** — deciso il 2026-11-20; da implementare dopo la review di S1–S8 (spec §14). Prima di ordini reali: ritarare i coefficienti `k` sull'ATR orario → [[system/orchestration/trigger-engine]]
-- [ ] 🛠 **Cockpit: cinque pagine** — Assistente, Ufficio, Terminale, Portafoglio, Configurazioni; prima i gap di backend (Bridge agent, annotazioni condivise, stream tool, OHLCV/equity, vincoli e config modificabili), poi shell e pagine con workflow Impeccable → [[system/interface/frontend-module#Pagine del cockpit — 2026-11-20]]
+- [ ] 🛠 **Cockpit: sei pagine** — Assistente, Ufficio, Terminale, Notizie, Portafoglio, Configurazioni; collega jolly ovunque; prima i gap di backend per pagina (ambienti in lettura/scrittura per il frontend, annotazioni condivise, stream tool, equity, vincoli e config; Bridge agent dopo), poi shell e pagine con workflow Impeccable → [[system/interface/frontend-module#Pagine del cockpit — 2026-11-20]]
 - [ ] 🛠 **Collegamento browser → Runtime** — proxy same-origin (Vite in sviluppo) o CORS, e autenticazione dello stream SSE (`EventSource` non invia `Authorization`); da fare insieme al cockpit → [[system/interface/frontend-module]]
 - [ ] 🛠 **Pulizia del repo `trading-agent`** — eliminare i ~25 branch `worktree-*` obsoleti, PR/merge di `docs/agent-restart` su `main` (84 commit), `.gitignore` per `nohup.out` e `data/*.db*`, decidere se committare `.impeccable/config.json` → [[system/foundation/codebase-architecture]]
 - [x] 🛠 **Completare e verificare il runtime Docker MVP** — Dockerfile, lock dipendenze, volume SQLite, healthcheck e smoke test verificati; il dev launcher resta locale e senza Docker → [[system/foundation/codebase-architecture#Alberatura approvata e requisito Docker — 2026-10-30]]
@@ -80,6 +80,11 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 - [ ] 🛠 **Rendere leggibili le reference storiche** — distinguere pattern utili da snapshot non correnti, senza eliminare informazione → [[system/_reference/canvas-code-mapping]]
 
 ## 💡 Idee / Post-MVP
+
+- [ ] 💡 **Sezione Evaluation del cockpit** — da progettare anche a livello di idea: performance del portafoglio e degli agenti, costo per token, evaluation degli agenti specialisti → [[system/interface/frontend-module#Pagine del cockpit — 2026-11-20]]
+- [ ] 💡 **Repository unica «AI Fund», GitHub-friendly** — fondere `trading-agent` e `trading-agent-wiki` in un solo repo (cartelle `raw/`, `wiki/` e quelle del codice), sul modello di repo di servizi noti (es. OmniRoute): README, struttura, contributi, release. Posizionamento: piattaforma a 360° per gestire un portafoglio in autonomia, aumentata dall'apporto umano.
+- [ ] 💡 **MCP del grafico per l'agente Technical** — il grafico (TradingView lightweight-charts) come ambiente principale del Technical Analyst; un MCP o set di tool ottimizzato per l'uso da parte di agenti (letture compatte, disegni e indicatori come operazioni), sul modello dei tool dell'agente citato da Luca come «Dwarf Star» (da identificare).
+- [ ] 💡 **Bridge agent nel Runtime** — la UI/UX si progetta ora, l'implementazione nel backend dopo il cockpit.
 
 - [ ] 🛠 **Configuration & State Agent conversazionale** — evoluzione Post-MVP del cockpit: permettere modifiche in linguaggio naturale a configurazioni personali, state, strategie e provider autorizzati tramite preview/diff, validazione, conferma, API tipizzate, audit e rollback ove supportato. Nessuna modifica a codice sorgente, prompt protetti o segreti → [[system/interface/frontend-module]] · [[system/interface/observability-dashboard]]
 
