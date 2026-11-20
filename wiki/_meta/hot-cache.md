@@ -11,6 +11,7 @@ tags:
 
 ## Sessione 2026-11-20 — Runtime unico (implementato e verificato, S1–S8)
 
+- **Review (stessa data, chat di progettazione)**: verificati 304 test verdi, ruff pulito e lo smoke con Office di test (CLI → HTTP → task consegnato subito → SSE). **Non pronto per ordini reali**: lo stream broker non parte mai (`APCA_*` invece di `ALPACA_*`), quindi nessuna riconciliazione e nessun Trade dai fill; chiamate al broker dentro la transazione DB; la riconciliazione non crea Trade; lo stream non si riconnette; job ancora a intervalli fissi; eventi duplicati; Risk Gate non rieseguito all'approvazione. Elenco R1–R12 e handoff per il goal di fix in `.scratch/core-runtime/review.md`. Le righe sotto sono il resoconto della chat di implementazione.
 - **Implementazione completata (branch `docs/agent-restart`)**: completate e verificate tutte le fette S1–S8 di `.scratch/core-runtime/spec.md`. Suite di 304 test offline verde, `ruff check .` pulito.
 - **S1 (Event log + bus)**: migrazione 002 con tabella `events`, `OfficeDB.transaction()` re-entrante con hook `on_commit` transazionali, bus in-process con code e listener sincroni.
 - **S2 (Facade comandi e letture)**: comandi pydantic tipizzati con idempotenza su `command.accepted`, query DTO con connessioni SQLite `mode=ro`, logica `Say`→PM nei command handler di dominio.

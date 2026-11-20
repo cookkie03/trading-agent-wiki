@@ -1263,3 +1263,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: `bar_timeframe` globale (default 1h, configurabile), valido anche per l'ATR di ordini e trailing (coefficienti `k` da ritarare). Job a chiusura barra al posto di uno stream. Quattro condizioni di Alert di prezzo, cooldown di 3 ore, Alert trimestrali a 3 giorni solo per le posizioni. Fetta S9 aggiunta alla spec del Runtime come goal successivo a S1–S8.
 - **Pagine**: [[system/foundation/decision-log]], [[system/orchestration/trigger-engine]], [[artifacts/project-board]], [[_meta/hot-cache]]. Solo decisione: nessun codice.
+
+## [2026-11-20] REVIEW — Runtime S1–S8
+
+- **Type**: code review + verifica
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: rieseguiti test (304 passed, 2 skipped) e ruff (pulito); smoke con Office di test riuscito (comandi CLI via HTTP, consegna immediata del task, eventi SSE, lock contro il secondo Runtime). Trovati 4 problemi bloccanti (R1–R4: stream broker mai avviato per i nomi delle env, effetti broker dentro la transazione, riconciliazione senza Trade, stream senza riconnessione), 5 importanti (job a intervalli fissi e non persistiti, eventi duplicati, Risk Gate non rieseguito all'approvazione, race nel replay SSE, possibile busy-loop) e 3 minori. La board non marca più il Runtime come completato. Handoff per il goal di fix: `.scratch/core-runtime/review.md` (repo codice).
+- **Pagine**: [[artifacts/project-board]], [[_meta/hot-cache]].
