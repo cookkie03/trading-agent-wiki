@@ -7,7 +7,7 @@ tags:
   - execution
   - architecture
 created: 2026-04-30T00:00:00.000Z
-updated: 2026-11-19
+updated: 2026-11-20
 status: active
 related:
   - "[[system/foundation/decision-log]]"
@@ -48,6 +48,8 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 - [ ] 🛠 **Prova reale del Runtime su Minisforum** — container `engine` aggiornato, Alpaca paper + LLM reale: stream connesso, riconciliazione, un ciclo completo. Ultimo gate prima di ordini reali; Luca la rimanda a dopo il cockpit (frontend prima, per avere visibilità) → [[system/foundation/architecture#Runtime unico — 2026-11-20]]
 - [ ] 🛠 **S9 Runtime: timeframe globale, trailing e Alert a chiusura barra** — deciso il 2026-11-20; da implementare dopo la review di S1–S8 (spec §14). Prima di ordini reali: ritarare i coefficienti `k` sull'ATR orario → [[system/orchestration/trigger-engine]]
+- [ ] 🛠 **Collegamento browser → Runtime** — proxy same-origin (Vite in sviluppo) o CORS, e autenticazione dello stream SSE (`EventSource` non invia `Authorization`); da fare insieme al cockpit → [[system/interface/frontend-module]]
+- [ ] 🛠 **Pulizia del repo `trading-agent`** — eliminare i ~25 branch `worktree-*` obsoleti, PR/merge di `docs/agent-restart` su `main` (84 commit), `.gitignore` per `nohup.out` e `data/*.db*`, decidere se committare `.impeccable/config.json` → [[system/foundation/codebase-architecture]]
 - [x] 🛠 **Completare e verificare il runtime Docker MVP** — Dockerfile, lock dipendenze, volume SQLite, healthcheck e smoke test verificati; il dev launcher resta locale e senza Docker → [[system/foundation/codebase-architecture#Alberatura approvata e requisito Docker — 2026-10-30]]
 
 - [x] 🛠 **Analizzare Alpaca come vendor dati oltre il broker** — catalogo iniziale completato; equities, crypto, options, news, corporate actions, feed, limiti e licensing documentati. Fundamentals non confermati come prodotto API dedicato; adapter diretto avviato con OHLCV storico equities → [[system/data/data-vendors]]
