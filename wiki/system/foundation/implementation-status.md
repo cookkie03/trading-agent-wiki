@@ -49,6 +49,12 @@ Implementazione e verifica del **Runtime unico single-writer ed event-driven** s
 Verifica offline sul commit codice `9f0655d`: **336 passed**, 0 failed, 2 skipped; `uv run ruff check .` con 0 errori. Il test smoke riproduce un submit accettato dal broker seguito da timeout: l'ordine resta `submitting` e viene ritrovato tramite `client_order_id`. Gli errori definitivi non sono distinti da quelli ambigui e rimangono anch'essi in attesa di riconciliazione.
 Nessun import di `build_office` o `OfficeDB` al di fuori di `runtime/` e dei test; `poll_interval` e `order_sync_interval` eliminati dal codice operativo. Riconciliazione broker funzionante sia all'avvio che al reconnect o offline fill.
 
+## Secondo giro Runtime — 2026-11-20
+
+Verifica offline sul branch `docs/agent-restart`: **350 test passati, 2 saltati**, Ruff pulito. N1 (`0cc261a`, `7ba4e89`): una posizione aperta letta tramite `SafeBrokerReader` conserva il Trade aperto; senza fill di uscita attribuibile, il prezzo resta nullo e l'Inbox segnala `reconciled_unknown`. N2 (`356f9d0`, `f296161`): lookup immediato tramite `client_order_id`; solo un rifiuto strutturato e definitivo diventa `rejected`. N3 (`c285308`): effetto e audit dei comandi locali condividono la transazione. N4 (`b7df168`): risveglio sugli eventi ordine. N6 (`23e23cc`): percorso canonico condiviso da CLI e bootstrap nel wiring di produzione. N5 rinviato; rimane il backoff da 1 s.
+
+Dettagli in `.scratch/core-runtime/report.md` §«Secondo giro». Nessuna prova con Alpaca reale.
+
 ## Verifica workspace — 2026-10-30
 
 Owner: 🛠 Luca (software).
