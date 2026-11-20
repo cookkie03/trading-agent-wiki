@@ -6,7 +6,7 @@ tags:
   - architecture
   - software
 created: 2026-06-23T00:00:00.000Z
-updated: 2026-11-12
+updated: 2026-11-20
 status: active
 confidence: medium
 area: software
@@ -59,6 +59,22 @@ Questi contratti possono essere funzioni Python, API locali o query layer, ma de
 ## MVP corrente
 
 **React + TypeScript + Vite/npm** con backend Python e API applicative. La UI deve essere un cockpit completo e coerente, non una semplice pagina di metriche: deve coprire tutte le funzionalità del sistema, rendere comprensibili stati operativi e fonti, e distinguere dati reali, demo, vuoti, errori e funzionalità non disponibili. Deve inoltre permettere di configurare e governare il sistema senza intervenire sul codice sorgente. La pagina [[system/interface/observability-dashboard]] definisce il dettaglio funzionale.
+
+## Pagine del cockpit — 2026-11-20
+
+Il motore lavora in autonomia al 100%; il cockpit è il posto di lavoro personale dell'ufficio, dove Luca entra come membro («collega jolly») quando vuole, da desktop o da telefono. Cinque pagine, un solo design system (React, TypeScript, Vite, Tailwind, shadcn/ui; strumenti standard, niente stack custom):
+
+1. **Assistente** (home): chat in linguaggio naturale con il **Bridge agent**, pari di Luca: legge tutto, parla con ogni agente dell'ufficio e usa gli stessi comandi della UI, con conferma per ciò che tocca capitale.
+2. **Ufficio**: gli agenti, le loro chat (Luca le legge e ci scrive direttamente, anche senza Bridge) e lo stream dei tool che chiamano.
+3. **Terminale**: pagina unica alla maniera dei software finanziari professionali: grafico (TradingView lightweight-charts), quote/order book, ordini aperti e pendenti (approvazione per gli account in manuale), agenti attivi sullo strumento, **watchlist condivisa** con gli agenti e modificabile. Ciò che un agente disegna sul grafico (livelli, trend, indicatori) compare qui; ciò che disegna Luca lo leggono gli agenti.
+4. **Portafoglio**: come un'app bancaria desktop: statistiche, investito, allocazione, posizioni, trade, performance; sezione con le **metriche e i vincoli di rischio** che il portafoglio deve rispettare.
+5. **Configurazioni**: agenti, modelli, prompt, schedule, budget, provider, account broker, DB e retention, salute del Runtime.
+
+L'input di Luca (messaggi, notizie, disegni, watchlist) è un parere che gli agenti pesano e possono contestare; il Risk Gate resta sovrano. Direzione visiva: lo standard di ogni genere eseguito al livello dei migliori prodotti, senza metafore (scelta di Luca dopo due giri di direzioni Impeccable).
+
+**Gap di backend** da chiudere nel Runtime prima delle pagine che li usano: Bridge agent; annotazioni del grafico condivise (tabella, tool degli agenti, eventi); stream delle chiamate ai tool negli eventi; letture OHLCV e storico equity; vincoli di portafoglio e configurazione modificabili via comandi. Alpaca per le azioni USA dà quote (NBBO) e trade, non la profondità: l'«order book» è bid/ask più time & sales, salvo un vendor di profondità.
+
+Questa decisione porta il Bridge agent (prima «Configuration & State Agent», post-MVP) dentro lo scope del cockpit.
 
 ## UI design & build workflow
 
