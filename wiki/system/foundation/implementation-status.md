@@ -33,6 +33,26 @@ Il repository del progetto vive fuori da questo vault. La wiki è la spec condiv
 
 Le decisioni architetturali restano attive: monolite modulare, dati e tool con confini espliciti, output strutturati, guardrail deterministici, frontend sostituibile. I dettagli di branch o snapshot vengono consultati soltanto nelle pagine di [[system/_reference/fork-gap-analysis|reference design]] e [[system/_reference/canvas-code-mapping|mappatura storica]].
 
+## Verifica Runtime unico — 2026-11-20
+
+Owner: 🛠 Luca (software) / Agent Pair.
+
+Implementazione e verifica del **Runtime unico single-writer ed event-driven** sul branch `docs/agent-restart` del repository `trading-agent`, conforme ad [ADR 0003](system/foundation/architecture#Runtime unico — 2026-11-20) e `.scratch/core-runtime/spec.md`:
+
+| Fetta | Componenti | Evidenza / Test | Stato |
+|---|---|---|---|
+| S1 | `runtime/events.py`, migrazione `events`, `OfficeDB.transaction()` re-entrante | `tests/runtime/test_events.py` (5 test) | ✅ Verificato |
+| S2 | `runtime/commands.py`, `runtime/handlers.py`, `runtime/queries.py` | `tests/runtime/test_commands.py`, `test_queries.py` (22 test) | ✅ Verificato |
+| S3 | `runtime/scheduler.py`, `runtime/jobs.py`, `Waiter` fake | `tests/runtime/test_scheduler.py` (8 test) | ✅ Verificato |
+| S4 | Strumentazione eventi `Office`, `OrderFlow`, `Halt`, `CycleRunner` | `tests/runtime/test_internal_events.py` (6 test) | ✅ Verificato |
+| S5 | `runtime/http.py`, SSE, single-writer lock `fcntl.flock` | `tests/runtime/test_http.py` (8 test) | ✅ Verificato |
+| S6 | `interface/client.py`, CLI sottile `interface/cli.py` | `tests/interface/test_cli.py`, `test_client.py` (19 test) | ✅ Verificato |
+| S7 | `execution/alpaca_stream.py`, `apply_broker_update`, TradeManager | `tests/execution/test_broker_stream.py` (6 test) | ✅ Verificato |
+| S8 | `compose.engine.yaml`, `Dockerfile.engine`, docs e wiki | Smoke test compose, docs allineati | ✅ Verificato |
+
+Totale suite: **304 passed**, 0 failed, 2 skipped in 28.8s; `uv run ruff check .` con 0 errori.
+Nessun import di `build_office` o `OfficeDB` al di fuori di `runtime/` e dei test; `poll_interval` e `order_sync_interval` eliminati dal codice operativo.
+
 ## Verifica workspace — 2026-10-30
 
 Owner: 🛠 Luca (software).

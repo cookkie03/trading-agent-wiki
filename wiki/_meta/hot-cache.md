@@ -9,13 +9,19 @@ tags:
 
 > Contesto di sessione recente. Il repository è esterno al vault: qui vivono spec, decisioni e priorità, non lo stato verificato del codice.
 
-## Sessione 2026-11-20 — Runtime unico (progettazione)
+## Sessione 2026-11-20 — Runtime unico (implementato e verificato, S1–S8)
 
-- **Decisione Luca**: prima del frontend si costruisce un *Runtime*: processo unico, unico writer del DB, client sottili via HTTP + SSE, audit nella tabella `events`, niente polling (scheduler a scadenza/evento, stream Alpaca `trade_updates`). Un Runtime per account; CLI a Runtime spento fallisce; niente Redis. → [[system/foundation/architecture#Runtime unico — 2026-11-20]] · [[system/foundation/decision-log]]
-- **Artefatti nel repository** (branch `docs/agent-restart`): ADR 0003, `.scratch/core-runtime/spec.md` (fette S1–S8 con criteri di accettazione), `.scratch/core-runtime/handoff-implementazione.md` per la chat `/goal`, termini Runtime/Client/Comando/Lettura/Evento/Event log in `GLOSSARY.md`.
-- **Gap rilevato**: fill → Trade, scadenza dei pending e rilascio degli ordini in coda non sono collegati in produzione; li collega la fetta S7.
-- **Deciso anche**: timeframe globale 1h (ATR degli ordini compreso, `k` da ritarare), trailing e Alert con job a chiusura barra, quattro condizioni di Alert, cooldown 3 ore, trimestrali solo per le posizioni → fetta S9, goal successivo. Repo allineati con GitHub; regola di sync in `AGENTS.md`.
-- **Prossimo**: implementazione nella chat `/goal`, poi review in questa linea di lavoro. Frontend in pausa.
+- **Implementazione completata (branch `docs/agent-restart`)**: completate e verificate tutte le fette S1–S8 di `.scratch/core-runtime/spec.md`. Suite di 304 test offline verde, `ruff check .` pulito.
+- **S1 (Event log + bus)**: migrazione 002 con tabella `events`, `OfficeDB.transaction()` re-entrante con hook `on_commit` transazionali, bus in-process con code e listener sincroni.
+- **S2 (Facade comandi e letture)**: comandi pydantic tipizzati con idempotenza su `command.accepted`, query DTO con connessioni SQLite `mode=ro`, logica `Say`→PM nei command handler di dominio.
+- **S3 (Scheduler event-driven)**: loop a zero polling basato su `min(next_due_ts(), min(job.next_run()))` e `Waiter` astratto risvegliato da eventi di dominio (`task.enqueued`, `task.failed`, `halt.changed`, `runtime.stopped`). Registro job periodici (`data_refresh`, `retention`, `market_analyst_fixed`, `expire_pending`, `release_queued`). `Office.run(poll_interval)` eliminato.
+- **S4 (Eventi interni)**: instrumentation `event_log` in `SystemHalt` (`halt.changed`), `OrderFlow` (`order.created`, `order.approved`, `order.rejected`), `TradeManager` (`trade.opened`, `trade.closed`), `Office` (`task.delivered`, `cycle.opened`), `CycleRunner` (`cycle.closed`).
+- **S5 (HTTP + SSE + single-writer lock)**: server FastAPI (`/v1/health`, `/v1/commands/{name}`, `/v1/read/{name}`, `/v1/events` SSE con replay da `Last-Event-ID` / `?after=` e stream live), autenticazione Bearer obbligatoria su bind non-loopback, lock esclusivo OS `<db>.lock` via `fcntl.flock` contro istanze concorrenti.
+- **S6 (CLI client sottile)**: `interface/cli.py` migrato a client HTTP sottile tramite `RuntimeClient`; codice di uscita 2 esplicito a Runtime offline; zero import di `build_office` o `OfficeDB` in `interface/`; `tests/interface/test_cli.py` riscritto con `TestClient`.
+- **S7 (Broker stream + TradeManager)**: `AlpacaTradeUpdateStream` in thread background con riconciliazione automatica all'avvio e riconnessione; `OrderFlow.apply_broker_update` gestisce fill e collega `TradeManager.record_entry_fill` e `record_exit_fill`; rimosso `order_sync_interval`.
+- **S8 (Docker e documentazione)**: `compose.engine.yaml` con healthcheck su `/v1/health` e porta `8765`, `Dockerfile.engine` aggiornato con `COPY runtime`, documentazione e wiki allineate.
+- **Deciso anche per S9 (goal successivo)**: timeframe globale 1h (ATR degli ordini compreso, `k` da ritarare), trailing e Alert con job a chiusura barra, quattro condizioni di Alert, cooldown 3 ore, trimestrali solo per le posizioni → fetta S9, goal successivo. Repo allineati con GitHub; regola di sync in `AGENTS.md`.
+- **Prossimo**: Review e merge del Core Runtime, poi avvio della fetta S9.
 
 ## Sessione 2026-11-18 — Ripresa e intervista sui sei agenti
 

@@ -7,6 +7,23 @@ tags:
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-11-20] IMPLEMENTAZIONE — Runtime unico single-writer ed event-driven (S1–S8)
+
+- **Type**: implementation + verification
+- **Owner**: 🛠 Luca (software)
+- **Repository**: `trading-agent` (branch `docs/agent-restart`)
+- **Contenuto**: implementazione e verifica completa del Runtime unico conforme ad ADR 0003 e `.scratch/core-runtime/spec.md` fette S1–S8:
+  - S1: EventLog + EventBus in-process, migrazione `events`, transazioni SQLite re-entranti con hook `on_commit`.
+  - S2: Command e Read Model facade in-process (`Runtime.execute`, `ReadModel`) con idempotenza su `command.accepted`.
+  - S3: Scheduler a zero-polling orientato agli eventi e scadenze dei task/job; rimozione di `poll_interval`.
+  - S4: Strumentazione eventi interni del ciclo e degli ordini (`cycle.opened/closed`, `order.created/approved/rejected`, `halt.changed`).
+  - S5: Trasporto HTTP FastAPI e SSE (`/v1/health`, `/v1/commands/{name}`, `/v1/read/{name}`, `/v1/events`), lock OS esclusivo `fcntl.flock` su `<db>.lock`.
+  - S6: CLI sottile su `RuntimeClient` con codice di uscita 2 su Runtime offline, rimozione dipendenze dirette da DB in `interface/`.
+  - S7: Stream websocket Alpaca `trade_updates` in thread background, gestione fill con apertura/chiusura Trade in `TradeManager`, riconciliazione su start/reconnect, rimozione `order_sync_interval`.
+  - S8: Docker `compose.engine.yaml` con healthcheck su `/v1/health`, porta 8765, aggiornamento documentazione.
+- **Verifica**: 304 test offline superati (`uv run pytest`), linting superato (`uv run ruff check .`).
+- **Pagine**: [[system/foundation/architecture]], [[system/foundation/implementation-status]], [[artifacts/project-board]], [[_meta/hot-cache]].
+
 ## [2026-11-05] DECISIONE — Sei agenti e confini
 
 - **Type**: decision clarification
