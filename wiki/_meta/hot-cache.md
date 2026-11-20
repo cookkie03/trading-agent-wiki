@@ -11,6 +11,7 @@ tags:
 
 ## Sessione 2026-11-20 — Runtime unico (implementato, corretto e verificato, S1–S8 + R1–R12)
 
+- **Secondo giro di review (chat di progettazione)**: R1–R12 in gran parte risolte (336 test, smoke ok), ma **non pronto per ordini reali**. Nuovo bloccante N1, riprodotto: ogni riconciliazione chiude tutti i Trade aperti a prezzo di entrata con motivo «tp» (`qty` contro `quantity`). N2: un timeout all'invio può lasciare un ordine orfano al broker. N3: audit del comando non atomico. Goal di fix in `.scratch/core-runtime/review.md` §«Secondo giro».
 - **Review e correzioni (stessa data)**: verificati 304 test verdi iniziali e smoke con Office di test. Risolti test-first tutti i 12 problemi evidenziati in `.scratch/core-runtime/review.md` (R1–R12):
   - Centralizzazione credenziali Alpaca e riconciliazione automatica all'avvio e ad ogni reconnect.
   - Chiamate di rete del broker completamente isolate fuori dalle transazioni SQLite; submit ordini a 2 fasi (`submitting` con `client_order_id` -> broker -> `submitted`/`rejected`) a prova di crash e riconciliabile.
