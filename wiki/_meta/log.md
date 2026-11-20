@@ -7,6 +7,27 @@ tags:
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-11-20] CORREZIONI — Risolti problemi di review R1–R12 del Runtime unico
+
+- **Type**: fix + verification
+- **Owner**: 🛠 Luca (software) / Agent Pair
+- **Repository**: `trading-agent` (branch `docs/agent-restart`)
+- **Contenuto**: risoluzione test-first di tutti i problemi R1–R12 evidenziati in `.scratch/core-runtime/review.md`:
+  - R1: Credenziali Alpaca centralizzate (`ALPACA_API_KEY/SECRET_KEY`) e riconciliazione automatica all'avvio del runtime.
+  - R2: Chiamate di rete broker fuori dalle transazioni SQLite; submit bracket a 2 fasi con stato locale `submitting`; `RefreshData` asincrono con risposta 202.
+  - R3: Loop di riconnessione esponenziale per lo stream Alpaca, stato reale `connected`, paper mode da `ALPACA_TRADING_URL`.
+  - R4: Riconciliazione che crea i Trade per i fill offline o chiude trade aperti per posizioni broker chiuse.
+  - R5: Scadenze reali per job nello scheduler e tracciamento persistente `job.ran` nell'event log.
+  - R6: Eliminati eventi duplicati da command handler (`halt.changed`, `order.approved`, `order.rejected`).
+  - R7: Riesecuzione fresca del Risk Gate all'approvazione ordine.
+  - R8: Sottoscrizione SSE prima del replay storico, deduplicazione ID, bridge asincrono non bloccante e chiusura su coda piena.
+  - R9: Backoff scheduler di 1s per prevenire busy-loop su task scaduti non consegnabili.
+  - R10: Lock OS anticipato in `trading-agent run` prima del bootstrap; rimosso residuo `poll interval`.
+  - R11: Conferme interattive e flag `-y`/`--yes` per halt/resume/approval; autore messaggi Say come `user`.
+  - R12: Protocollo `BrokerUpdateStream` formalizzato; report e deviazioni documentati.
+- **Verifica**: 336 test superati, smoke test di verifica finale verde, ruff pulito.
+- **Pagine**: [[system/foundation/architecture]], [[system/foundation/implementation-status]], [[artifacts/project-board]], [[_meta/hot-cache]].
+
 ## [2026-11-20] IMPLEMENTAZIONE — Runtime unico single-writer ed event-driven (S1–S8)
 
 - **Type**: implementation + verification

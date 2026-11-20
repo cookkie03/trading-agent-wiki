@@ -9,10 +9,21 @@ tags:
 
 > Contesto di sessione recente. Il repository è esterno al vault: qui vivono spec, decisioni e priorità, non lo stato verificato del codice.
 
-## Sessione 2026-11-20 — Runtime unico (implementato e verificato, S1–S8)
+## Sessione 2026-11-20 — Runtime unico (implementato, corretto e verificato, S1–S8 + R1–R12)
 
-- **Review (stessa data, chat di progettazione)**: verificati 304 test verdi, ruff pulito e lo smoke con Office di test (CLI → HTTP → task consegnato subito → SSE). **Non pronto per ordini reali**: lo stream broker non parte mai (`APCA_*` invece di `ALPACA_*`), quindi nessuna riconciliazione e nessun Trade dai fill; chiamate al broker dentro la transazione DB; la riconciliazione non crea Trade; lo stream non si riconnette; job ancora a intervalli fissi; eventi duplicati; Risk Gate non rieseguito all'approvazione. Elenco R1–R12 e handoff per il goal di fix in `.scratch/core-runtime/review.md`. Le righe sotto sono il resoconto della chat di implementazione.
-- **Implementazione completata (branch `docs/agent-restart`)**: completate e verificate tutte le fette S1–S8 di `.scratch/core-runtime/spec.md`. Suite di 304 test offline verde, `ruff check .` pulito.
+- **Review e correzioni (stessa data)**: verificati 304 test verdi iniziali e smoke con Office di test. Risolti test-first tutti i 12 problemi evidenziati in `.scratch/core-runtime/review.md` (R1–R12):
+  - Centralizzazione credenziali Alpaca e riconciliazione automatica all'avvio e ad ogni reconnect.
+  - Chiamate di rete del broker completamente isolate fuori dalle transazioni SQLite; submit ordini a 2 fasi (`submitting` con `client_order_id` -> broker -> `submitted`/`rejected`) a prova di crash e riconciliabile.
+  - `RefreshData` asincrono con HTTP 202 ed emissione dell'evento `data.refreshed` al termine del download.
+  - Riconciliazione offline che rileva fill avvenuti a runtime spento e crea i relativi Trade (o chiude trade per posizioni broker chiuse), con idempotenza e generazione eventi.
+  - Scadenze reali per tutti i job nello scheduler e tracciamento persistente dell'ultima esecuzione tramite eventi `job.ran`.
+  - Eliminazione eventi duplicati (`halt.changed`, `order.approved`, `order.rejected`), emessi esclusivamente dal dominio.
+  - Riesecuzione del Risk Gate con contesto fresco all'approvazione manuale degli ordini.
+  - SSE conforme: subscribe prima del replay, deduplica ID, coda per client con chiusura su overflow per forzare il replay, bridge asincrono non bloccante.
+  - Prevenzione busy-loop con backoff di 1s su task scaduti non consegnabili.
+  - Acquisizione anticipata del lock OS esclusivo in CLI prima di toccare DB; conferme interattive con flag `--yes` per halt/resume/approval; token comparato con `hmac.compare_digest`.
+  - Protocollo `BrokerUpdateStream` formalizzato; 336 test offline verdi.
+- **Implementazione completata (branch `docs/agent-restart`)**: completate e verificate tutte le fette S1–S8 di `.scratch/core-runtime/spec.md`. Suite di 336 test offline verde, `ruff check .` pulito, smoke test finale verde.
 - **S1 (Event log + bus)**: migrazione 002 con tabella `events`, `OfficeDB.transaction()` re-entrante con hook `on_commit` transazionali, bus in-process con code e listener sincroni.
 - **S2 (Facade comandi e letture)**: comandi pydantic tipizzati con idempotenza su `command.accepted`, query DTO con connessioni SQLite `mode=ro`, logica `Say`→PM nei command handler di dominio.
 - **S3 (Scheduler event-driven)**: loop a zero polling basato su `min(next_due_ts(), min(job.next_run()))` e `Waiter` astratto risvegliato da eventi di dominio (`task.enqueued`, `task.failed`, `halt.changed`, `runtime.stopped`). Registro job periodici (`data_refresh`, `retention`, `market_analyst_fixed`, `expire_pending`, `release_queued`). `Office.run(poll_interval)` eliminato.

@@ -33,25 +33,21 @@ Il repository del progetto vive fuori da questo vault. La wiki è la spec condiv
 
 Le decisioni architetturali restano attive: monolite modulare, dati e tool con confini espliciti, output strutturati, guardrail deterministici, frontend sostituibile. I dettagli di branch o snapshot vengono consultati soltanto nelle pagine di [[system/_reference/fork-gap-analysis|reference design]] e [[system/_reference/canvas-code-mapping|mappatura storica]].
 
-## Verifica Runtime unico — 2026-11-20
+## Verifica Runtime unico e correzioni review — 2026-11-20
 
 Owner: 🛠 Luca (software) / Agent Pair.
 
-Implementazione e verifica del **Runtime unico single-writer ed event-driven** sul branch `docs/agent-restart` del repository `trading-agent`, conforme ad [ADR 0003](system/foundation/architecture#Runtime unico — 2026-11-20) e `.scratch/core-runtime/spec.md`:
+Implementazione e verifica del **Runtime unico single-writer ed event-driven** sul branch `docs/agent-restart` del repository `trading-agent`, conforme ad [ADR 0003](system/foundation/architecture#Runtime unico — 2026-11-20), `.scratch/core-runtime/spec.md` e `.scratch/core-runtime/review.md`:
 
-| Fetta | Componenti | Evidenza / Test | Stato |
+| Fetta / Review | Componenti | Evidenza / Test | Stato |
 |---|---|---|---|
-| S1 | `runtime/events.py`, migrazione `events`, `OfficeDB.transaction()` re-entrante | `tests/runtime/test_events.py` (5 test) | ✅ Verificato |
-| S2 | `runtime/commands.py`, `runtime/handlers.py`, `runtime/queries.py` | `tests/runtime/test_commands.py`, `test_queries.py` (22 test) | ✅ Verificato |
-| S3 | `runtime/scheduler.py`, `runtime/jobs.py`, `Waiter` fake | `tests/runtime/test_scheduler.py` (8 test) | ✅ Verificato |
-| S4 | Strumentazione eventi `Office`, `OrderFlow`, `Halt`, `CycleRunner` | `tests/runtime/test_internal_events.py` (6 test) | ✅ Verificato |
-| S5 | `runtime/http.py`, SSE, single-writer lock `fcntl.flock` | `tests/runtime/test_http.py` (8 test) | ✅ Verificato |
-| S6 | `interface/client.py`, CLI sottile `interface/cli.py` | `tests/interface/test_cli.py`, `test_client.py` (19 test) | ✅ Verificato |
-| S7 | `execution/alpaca_stream.py`, `apply_broker_update`, TradeManager | `tests/execution/test_broker_stream.py` (6 test) | ✅ Verificato |
-| S8 | `compose.engine.yaml`, `Dockerfile.engine`, docs e wiki | Smoke test compose, docs allineati | ✅ Verificato |
+| S1–S8 | Core Runtime (Event log, commands/read, scheduler, eventi interni, HTTP/SSE, CLI sottile, stream, docker) | `tests/runtime/`, `tests/interface/`, `tests/execution/` | ✅ Verificato |
+| R1–R4 | Stream broker (credenziali Alpaca, rete fuori da tx DB, riconnessione con backoff, creazione Trade da fill offline) | `test_r1_broker_config_startup.py`, `test_r2_network_outside_tx.py`, `test_r3_stream_robustness.py`, `test_r4_reconciliation_trades.py` | ✅ Verificato |
+| R5–R8 | Scadenze reali job, deduplicazione eventi, Risk Gate fresco su approval, SSE subscribe-before-replay con bridge asincrono | `test_r5_job_deadlines_persistence.py`, `test_r6_no_duplicate_events.py`, `test_r7_riskgate_on_approval.py`, `test_r8_sse_robustness.py` | ✅ Verificato |
+| R9–R12 | Anti busy-loop scheduler, early process lock in CLI, flag `--yes` e token HMAC, protocollo `BrokerUpdateStream` e report | `test_r9_scheduler_busy_loop.py`, `test_r10_early_lock_and_poll_log.py`, `test_r11_cli_confirmation_and_author.py`, `test_review_final_verification.py` | ✅ Verificato |
 
-Totale suite: **304 passed**, 0 failed, 2 skipped in 28.8s; `uv run ruff check .` con 0 errori.
-Nessun import di `build_office` o `OfficeDB` al di fuori di `runtime/` e dei test; `poll_interval` e `order_sync_interval` eliminati dal codice operativo.
+Totale suite: **336 passed**, 0 failed, 2 skipped in 14.5s; `uv run ruff check .` con 0 errori.
+Nessun import di `build_office` o `OfficeDB` al di fuori di `runtime/` e dei test; `poll_interval` e `order_sync_interval` eliminati dal codice operativo. Riconciliazione broker funzionante sia all'avvio che al reconnect o offline fill.
 
 ## Verifica workspace — 2026-10-30
 
