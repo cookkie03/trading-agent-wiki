@@ -6,7 +6,7 @@ tags:
   - tools
   - multi-agent
 created: 2026-11-18T00:00:00.000Z
-updated: 2026-11-18T00:00:00.000Z
+updated: 2026-11-20
 status: active
 confidence: medium
 area: software
@@ -75,6 +75,15 @@ Fonti social: post-MVP.
 | `get_quote` | `ticker: str` → ultimo prezzo, bid/ask, volume |
 | `get_ohlcv` | `ticker: str`, `interval: Literal["1d","1h"] = "1d"`, `lookback: int = 200` |
 | `compute_indicator` | `ticker: str`, `name: Literal["sma","ema","rsi","macd","atr","pivots"]`, `params: dict` (es. `{"window": 14}`), `interval = "1d"` |
+
+### Grafico TradingView come ambiente principale (visione, 2026-11-20)
+
+Il software di grafici offerto da TradingView per l'uso in software open source si integra nel progetto e diventa l'**ambiente principale del Technical Analyst**, condiviso con Luca: lo stesso grafico che Luca usa nel Terminale del cockpit, l'agente lo controlla tramite tool. L'obiettivo non è scrivere un MCP né reinventare un ambiente di analisi tecnica, ma sfruttare ciò che il motore di TradingView già offre (indicatori, navigazione tra titoli e grafici, timeframe, disegni) e dare all'agente il pieno controllo.
+
+Prossime versioni: un **toolset per il Technical Analyst estremamente efficiente nel consumo di token** (poche chiamate, letture compatte, operazioni ad alto livello), progettato con la cura di ottimizzazione software di [antirez/ds4](https://github.com/antirez/ds4). Libreria esatta da scegliere dopo la ricerca: `lightweight-charts` non include indicatori né strumenti di disegno.
+
+> [!note] Posizione di Luca sull'analisi tecnica
+> L'analisi tecnica non è un oracolo e la letteratura non la fonda in modo inequivocabile. Resta però molto utile per **confermare o mettere in dubbio un'ipotesi**, per **azzeccare il timing** di ingresso e uscita e per **affinare** posizioni particolari. Il Technical Analyst va usato e valutato in quest'ottica, non come generatore autonomo di segnali.
 
 ## Fundamental Analyst
 
