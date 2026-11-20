@@ -46,6 +46,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🔴 Da fare
 
+- [ ] 🛠 **Prova reale del Runtime su Minisforum** — container `engine` aggiornato, Alpaca paper + LLM reale: stream connesso, riconciliazione, un ciclo completo. È l'ultimo gate prima di ordini reali, poi S9 e frontend → [[system/foundation/architecture#Runtime unico — 2026-11-20]]
 - [ ] 🛠 **S9 Runtime: timeframe globale, trailing e Alert a chiusura barra** — deciso il 2026-11-20; da implementare dopo la review di S1–S8 (spec §14). Prima di ordini reali: ritarare i coefficienti `k` sull'ATR orario → [[system/orchestration/trigger-engine]]
 - [x] 🛠 **Completare e verificare il runtime Docker MVP** — Dockerfile, lock dipendenze, volume SQLite, healthcheck e smoke test verificati; il dev launcher resta locale e senza Docker → [[system/foundation/codebase-architecture#Alberatura approvata e requisito Docker — 2026-10-30]]
 
@@ -89,6 +90,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## ✅ Fatto
 
+- [x] 🛠 **Runtime unico (S1–S8 + review R1–R12, N1–N6)** — chiuso offline il 2026-11-20: 350 test verdi, smoke con Office di test, review terminata (`.scratch/core-runtime/review.md`) → [[system/foundation/architecture#Runtime unico — 2026-11-20]]
 - [x] 🛠 **Motore MVP dell'ufficio di agenti completato e verificato** — chiusi e verificati i 9 gap residui della spec (US 12, 16, 62, 77, 85, 89, 101, 102, 117), 255 test offline passati, ruff pulito, motore distribuito su container Docker in produzione (`engine`), ciclo reale con LLM completato (esito accepted), stato ordini allineato al broker Alpaca paper → [[_meta/log]]
 - [x] 🛠 **Adottate le convenzioni pragmatiche per i commenti Python** — metodo why-first ispirato ad antirez; docstring per interfacce, invarianti e vincoli; commenti algoritmici per le future ratio economiche e commenti storici solo per vincoli esterni verificabili → [[system/foundation/python-commenting-conventions]]
 - [x] 🛠 **Primo Broker read-only con Alpaca e test offline** — conto, posizioni e finestra ordini; prova paper opt-in predisposta ma non eseguita sul conto di Luca → [[system/foundation/implementation-status#Broker read-only — verifica 2026-10-31]]

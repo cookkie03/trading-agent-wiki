@@ -1305,3 +1305,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: 336 test verdi, ruff pulito; smoke con Office di test ok (eventi non duplicati, lock con messaggio pulito, consegna immediata). R1, R3, R5–R8 e R10–R12 risolte. Nuovi problemi: **N1 bloccante**, riprodotto (la riconciliazione legge `quantity` ma `SafeBrokerReader` restituisce `qty`, quindi a ogni avvio o riconnessione chiude tutti i Trade aperti a prezzo di entrata con motivo «tp»); **N2** (un timeout all'invio marca `rejected` un ordine forse vivo al broker); **N3** (audit del comando non più atomico); N4–N6 minori. Goal di fix nel repo: `.scratch/core-runtime/review.md` §«Secondo giro».
 - **Pagine**: [[artifacts/project-board]], [[_meta/hot-cache]].
+
+## [2026-11-20] REVIEW CHIUSA — Runtime unico
+
+- **Type**: verifica
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: verificato `e21532d`: 350 test, ruff pulito; N1 corretto (riproduzione superata), N2–N4 e N6 applicati, N5 rinviato. La review offline è chiusa. Prossimo gate: prova reale con Alpaca paper e LLM sul Minisforum, poi S9 e frontend.
+- **Pagine**: [[artifacts/project-board]].
+
