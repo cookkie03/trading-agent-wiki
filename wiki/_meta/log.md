@@ -1298,3 +1298,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: rieseguiti test (304 passed, 2 skipped) e ruff (pulito); smoke con Office di test riuscito (comandi CLI via HTTP, consegna immediata del task, eventi SSE, lock contro il secondo Runtime). Trovati 4 problemi bloccanti (R1–R4: stream broker mai avviato per i nomi delle env, effetti broker dentro la transazione, riconciliazione senza Trade, stream senza riconnessione), 5 importanti (job a intervalli fissi e non persistiti, eventi duplicati, Risk Gate non rieseguito all'approvazione, race nel replay SSE, possibile busy-loop) e 3 minori. La board non marca più il Runtime come completato. Handoff per il goal di fix: `.scratch/core-runtime/review.md` (repo codice).
 - **Pagine**: [[artifacts/project-board]], [[_meta/hot-cache]].
+
+## [2026-11-20] REVIEW — Correzioni R1–R12 del Runtime
+
+- **Type**: code review + verifica
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: 336 test verdi, ruff pulito; smoke con Office di test ok (eventi non duplicati, lock con messaggio pulito, consegna immediata). R1, R3, R5–R8 e R10–R12 risolte. Nuovi problemi: **N1 bloccante**, riprodotto (la riconciliazione legge `quantity` ma `SafeBrokerReader` restituisce `qty`, quindi a ogni avvio o riconnessione chiude tutti i Trade aperti a prezzo di entrata con motivo «tp»); **N2** (un timeout all'invio marca `rejected` un ordine forse vivo al broker); **N3** (audit del comando non più atomico); N4–N6 minori. Goal di fix nel repo: `.scratch/core-runtime/review.md` §«Secondo giro».
+- **Pagine**: [[artifacts/project-board]], [[_meta/hot-cache]].
