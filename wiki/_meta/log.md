@@ -7,6 +7,13 @@ tags:
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-11-20] CORREZIONE — Recupero submit con esito ambiguo
+
+- **Repository**: `trading-agent`, commit `9f0655d`.
+- **Contenuto**: un submit che genera un errore conserva `submitting`; la riconciliazione cerca il broker tramite `client_order_id`. Gli errori definitivi non sono ancora distinguibili e richiedono riconciliazione.
+- **Verifica offline**: test prima fallito sullo stato `rejected`, poi passato con broker che accetta e va in timeout; 336 test passati, 2 saltati, Ruff pulito. Nessuna prova Alpaca reale.
+- **Pagine**: [[system/foundation/implementation-status]], [[_meta/hot-cache]].
+
 ## [2026-11-20] CORREZIONI — Risolti problemi di review R1–R12 del Runtime unico
 
 - **Type**: fix + verification

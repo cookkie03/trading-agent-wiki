@@ -46,7 +46,7 @@ Implementazione e verifica del **Runtime unico single-writer ed event-driven** s
 | R5–R8 | Scadenze reali job, deduplicazione eventi, Risk Gate fresco su approval, SSE subscribe-before-replay con bridge asincrono | `test_r5_job_deadlines_persistence.py`, `test_r6_no_duplicate_events.py`, `test_r7_riskgate_on_approval.py`, `test_r8_sse_robustness.py` | ✅ Verificato |
 | R9–R12 | Anti busy-loop scheduler, early process lock in CLI, flag `--yes` e token HMAC, protocollo `BrokerUpdateStream` e report | `test_r9_scheduler_busy_loop.py`, `test_r10_early_lock_and_poll_log.py`, `test_r11_cli_confirmation_and_author.py`, `test_review_final_verification.py` | ✅ Verificato |
 
-Totale suite: **336 passed**, 0 failed, 2 skipped in 14.5s; `uv run ruff check .` con 0 errori.
+Verifica offline sul commit codice `9f0655d`: **336 passed**, 0 failed, 2 skipped; `uv run ruff check .` con 0 errori. Il test smoke riproduce un submit accettato dal broker seguito da timeout: l'ordine resta `submitting` e viene ritrovato tramite `client_order_id`. Gli errori definitivi non sono distinti da quelli ambigui e rimangono anch'essi in attesa di riconciliazione.
 Nessun import di `build_office` o `OfficeDB` al di fuori di `runtime/` e dei test; `poll_interval` e `order_sync_interval` eliminati dal codice operativo. Riconciliazione broker funzionante sia all'avvio che al reconnect o offline fill.
 
 ## Verifica workspace — 2026-10-30

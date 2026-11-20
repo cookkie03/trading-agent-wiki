@@ -13,7 +13,7 @@ tags:
 
 - **Review e correzioni (stessa data)**: verificati 304 test verdi iniziali e smoke con Office di test. Risolti test-first tutti i 12 problemi evidenziati in `.scratch/core-runtime/review.md` (R1–R12):
   - Centralizzazione credenziali Alpaca e riconciliazione automatica all'avvio e ad ogni reconnect.
-  - Chiamate di rete del broker completamente isolate fuori dalle transazioni SQLite; submit ordini a 2 fasi (`submitting` con `client_order_id` -> broker -> `submitted`/`rejected`) a prova di crash e riconciliabile.
+  - Submit ordini a 2 fasi: in caso di errore l'esito resta incerto in `submitting`; la riconciliazione cerca tramite `client_order_id` (codice `9f0655d`, smoke offline con broker che accetta e poi va in timeout). Anche i rifiuti definitivi restano in attesa, perché non sono distinti dagli errori ambigui.
   - `RefreshData` asincrono con HTTP 202 ed emissione dell'evento `data.refreshed` al termine del download.
   - Riconciliazione offline che rileva fill avvenuti a runtime spento e crea i relativi Trade (o chiude trade per posizioni broker chiuse), con idempotenza e generazione eventi.
   - Scadenze reali per tutti i job nello scheduler e tracciamento persistente dell'ultima esecuzione tramite eventi `job.ran`.
