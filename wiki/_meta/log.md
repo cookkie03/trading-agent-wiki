@@ -1313,3 +1313,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: verificato `e21532d`: 350 test, ruff pulito; N1 corretto (riproduzione superata), N2–N4 e N6 applicati, N5 rinviato. La review offline è chiusa. Prossimo gate: prova reale con Alpaca paper e LLM sul Minisforum, poi S9 e frontend.
 - **Pagine**: [[artifacts/project-board]].
 
+## [2026-11-20] CODICE — Account del Runtime e API per il cockpit
+
+- **Type**: codice + documentazione
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: `TRADING_AGENT_ACCOUNT_LABEL` rende configurabile l'etichetta dell'account mostrata da `/v1/health` (un Runtime per account). `docs/dashboard.md` allineato all'API reale, con i vincoli browser: nessun CORS, `EventSource` senza header del token, nessun registro dei Runtime nel backend. Verifica: 353 test, ruff pulito. Commit `b7c303b`. Il frontend può ripartire sul Facade del Runtime; la prova reale aspetta il cockpit, per scelta di Luca.
+- **Pagine**: [[artifacts/project-board]].
+

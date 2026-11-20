@@ -46,7 +46,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🔴 Da fare
 
-- [ ] 🛠 **Prova reale del Runtime su Minisforum** — container `engine` aggiornato, Alpaca paper + LLM reale: stream connesso, riconciliazione, un ciclo completo. È l'ultimo gate prima di ordini reali, poi S9 e frontend → [[system/foundation/architecture#Runtime unico — 2026-11-20]]
+- [ ] 🛠 **Prova reale del Runtime su Minisforum** — container `engine` aggiornato, Alpaca paper + LLM reale: stream connesso, riconciliazione, un ciclo completo. Ultimo gate prima di ordini reali; Luca la rimanda a dopo il cockpit (frontend prima, per avere visibilità) → [[system/foundation/architecture#Runtime unico — 2026-11-20]]
 - [ ] 🛠 **S9 Runtime: timeframe globale, trailing e Alert a chiusura barra** — deciso il 2026-11-20; da implementare dopo la review di S1–S8 (spec §14). Prima di ordini reali: ritarare i coefficienti `k` sull'ATR orario → [[system/orchestration/trigger-engine]]
 - [x] 🛠 **Completare e verificare il runtime Docker MVP** — Dockerfile, lock dipendenze, volume SQLite, healthcheck e smoke test verificati; il dev launcher resta locale e senza Docker → [[system/foundation/codebase-architecture#Alberatura approvata e requisito Docker — 2026-10-30]]
 
