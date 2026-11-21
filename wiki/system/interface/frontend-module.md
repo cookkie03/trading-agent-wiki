@@ -105,6 +105,14 @@ Il motore del grafico resta TradingView lightweight-charts con lightweight-chart
 
 **Backend del Terminale.** Già integrato su `docs/agent-restart` (commit `d5beacd` e `0bb0b99`): barre, indicatori, annotazioni condivise, autore delle righe della watchlist, timeframe configurabile in `config/office.toml` (`[market] bar_timeframe`), dev server con dati finti `scripts/dev_cockpit_server.py`.
 
+**Stile scelto: Legend.** Tra tre varianti — A Calma ispirata a Linear, B Legend ispirata a Robinhood Legend e C Borsa ispirata a macOS — Luca ha scelto B Legend. Ha approvato il risultato applicato: «così va bene». Il commit è `3167eac` sul branch `claude/cockpit-frontend-opus-54052e`, non ancora unito.
+
+Il fondo è quasi nero. I moduli sono tessere grafite separate da 10 px. Il prezzo è grande, a 30 px. I controlli sono segmentati, gli avatar degli autori sono pieni e il grafico è senza griglia.
+
+Il layout funziona come VS Code. La watchlist si nasconde con Ctrl/⌘ B, il pannello attività con Ctrl/⌘ Alt B e gli ordini con Ctrl/⌘ J. I pannelli si ridimensionano trascinando lo spazio tra le tessere. Il layout resta salvato nel browser.
+
+I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per l'elemento e 4 px per il tag. I cerchi sono riservati agli avatar e ai pallini di stato. Il sistema completo è descritto in `DESIGN.md` sul branch della build.
+
 ## UI design & build workflow
 
 La costruzione della UI è un vero workstream del progetto, non un'attività accessoria di styling. Prima di riprendere il frontend, **chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI del Trading Agent su GitHub.
