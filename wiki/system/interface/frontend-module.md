@@ -77,6 +77,34 @@ L'input di Luca (messaggi, notizie, disegni, watchlist) è un parere che gli age
 
 Questa decisione porta il Bridge agent (prima «Configuration & State Agent», post-MVP) dentro lo scope del cockpit.
 
+## Prima build e rifinitura — 2026-11-21
+
+**Gara tra modelli.** Claude Opus 5.5 e GPT 6.1 Terra hanno eseguito lo stesso handoff di shell e Terminale. Luca ha scelto la build di Opus (branch `claude/cockpit-frontend-opus-54052e`, non ancora unito a `docs/agent-restart`). È un terminale denso e completo: watchlist con autori, disegni firmati sul grafico, coefficienti dell'ordine, agenti sullo strumento, ordini pendenti con Approva e Rifiuta. La build di GPT era povera di dati e generica.
+
+**Giudizio di Luca.** La build è valida e professionale, ma non ancora bella. Serve una rifinitura molto più curata, "Apple-like", senza liquid glass. I difetti riconosciuti:
+
+- tutto è sullo stesso piano, grigio piatto con linee di 1 px: servono livelli (la barra laterale arretra, il contenuto avanza), meno linee e più spazio;
+- la tipografia è uniforme: il prezzo deve essere grande e protagonista, le etichette devono arretrare;
+- il grafico è rumoroso (etichette sovrapposte, tratteggi ovunque, griglia invadente): servono linee sottili, una griglia appena visibile e il colore solo dove serve;
+- manca il movimento: transizioni, hover, pannelli che si aprono con morbidezza;
+- i dettagli sono generici: pulsanti, tabelle e badge degli agenti sono quelli di default.
+
+**Riferimenti di rifinitura** (approvati da Luca, sono l'asticella e non un aspetto da copiare):
+
+- Robinhood Legend: terminale professionale con la cura di un'app consumer, il più vicino;
+- app Borsa di macOS: come trattare grafico e numeri;
+- Linear, redesign recente: densità con calma, livelli e tipografia;
+- Raycast e Things 3: dettagli, movimento, materiali;
+- Finder e pannelli di Xcode: barra laterale e pannelli.
+
+Il motore del grafico resta TradingView lightweight-charts con lightweight-charts-drawing: la rifinitura cambia lo stile del grafico, non la libreria.
+
+**Stato unico del grafico** (approvato). Quello che si vede sul grafico vive in un oggetto di dati salvato nel Runtime: ticker, timeframe, indicatori, disegni con autore e stato (attivo o barrato), note. Desktop, telefono e agenti leggono e scrivono lo stesso stato tramite comandi ed eventi. La libreria di grafici è solo una vista ed è sostituibile. Gli agenti leggono il grafico come testo compatto, non come immagine.
+
+**Flusso di rifinitura** (Impeccable). Prima la direzione: due o tre varianti dello stesso Terminale reale, servite a Luca sul Mac, tra cui sceglie o mescola. Poi la sessione Opus applica polish, tipografia, layout e animazioni a shell e Terminale, seguiti da critique, audit e aggiornamento di `DESIGN.md`.
+
+**Backend del Terminale.** Già integrato su `docs/agent-restart` (commit `d5beacd` e `0bb0b99`): barre, indicatori, annotazioni condivise, autore delle righe della watchlist, timeframe configurabile in `config/office.toml` (`[market] bar_timeframe`), dev server con dati finti `scripts/dev_cockpit_server.py`.
+
 ## UI design & build workflow
 
 La costruzione della UI è un vero workstream del progetto, non un'attività accessoria di styling. Prima di riprendere il frontend, **chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI del Trading Agent su GitHub.
