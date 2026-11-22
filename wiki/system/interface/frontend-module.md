@@ -113,6 +113,18 @@ Il layout funziona come VS Code. La watchlist si nasconde con Ctrl/⌘ B, il pan
 
 I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per l'elemento e 4 px per il tag. I cerchi sono riservati agli avatar e ai pallini di stato. Il sistema completo è descritto in `DESIGN.md` sul branch della build.
 
+## Ufficio — 2026-11-22
+
+**Cosa è.** La seconda pagina del cockpit, unita su `feat/cockpit-frontend` (ex `docs/agent-restart`) con i merge `b75a6db` (frontend) e `de6cb4b` (backend) e la correzione `6f75f78`. Scelte di Luca: panoramica più chat, più chat per agente, chiamate ai tool in blocchi espandibili, e la possibilità di scrivere agli agenti, assegnare task e vedere costi e token. Nessuna pausa degli agenti, nessun backend del Bridge, nessuna Evaluation.
+
+**Pagine.** `/ufficio` è la panoramica: una tessera per agente con avatar, ruolo, stato (al lavoro, in attesa, inattivo), task e ticker correnti, ultima attività, costo e token di oggi; sotto, costi e token per Oggi, 7 giorni e 30 giorni; a destra, le conversazioni recenti. `/ufficio/:agent` è la vista dell'agente: agenti e chat dell'agente a sinistra, conversazione e composer al centro, chiamate ai tool dal vivo a destra. Su telefono (390 px) la panoramica diventa una lista e la vista agente ha un selettore di chat e le schede Chat e Tool.
+
+**Contratto del Runtime.** Nuove letture `GET /v1/read/agents`, `chat_topics?agent=`, `tool_calls?agent=&cycle=&after=&limit=`, `usage?agent=&from=&to=`. Eventi SSE `chat.message`, `tool.called`, `agent.status`, scritti nella stessa transazione SQLite e pubblicati al commit, senza polling. Le chiamate ai tool hanno durata ed esito; quando la retention ne svuota il contenuto il flag `compacted` lo dichiara. `/v1/read/chat` con `limit` restituisce gli ultimi messaggi in ordine cronologico.
+
+**Fonti oneste.** Ogni lettura della pagina è reale, ricostruita da letture reali con una nota visibile, oppure dichiarata non disponibile. Le fixture di sviluppo si attivano solo con `COCKPIT_OFFICE_FIXTURES=1` sul server Vite e non entrano nella build.
+
+**Limiti noti.** Una chiamata ai tool compare solo quando è finita: lo stato "in corso" (`tool.started`) non è ancora emesso dal Runtime. Critique 34/40 e audit 18/20, senza P0 o P1, eseguiti in un solo contesto perché i subagenti non erano disponibili.
+
 ## UI design & build workflow
 
 La costruzione della UI è un vero workstream del progetto, non un'attività accessoria di styling. Prima di riprendere il frontend, **chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI del Trading Agent su GitHub.

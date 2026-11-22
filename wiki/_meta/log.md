@@ -1335,3 +1335,10 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: `TRADING_AGENT_ACCOUNT_LABEL` rende configurabile l'etichetta dell'account mostrata da `/v1/health` (un Runtime per account). `docs/dashboard.md` allineato all'API reale, con i vincoli browser: nessun CORS, `EventSource` senza header del token, nessun registro dei Runtime nel backend. Verifica: 353 test, ruff pulito. Commit `b7c303b`. Il frontend può ripartire sul Facade del Runtime; la prova reale aspetta il cockpit, per scelta di Luca.
 - **Pagine**: [[artifacts/project-board]].
 
+
+## [2026-11-22] CODICE + VERIFICA — Ufficio del cockpit
+
+- **Type**: codice + documentazione
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: pagina Ufficio (panoramica agenti, più chat per agente, tool dal vivo espandibili, scrivi, assegna task, costi e token) e read model del Runtime (`agents`, `chat_topics`, `tool_calls`, `usage`, eventi `chat.message`, `tool.called`, `agent.status`). Uniti su `feat/cockpit-frontend` (`b75a6db`, `de6cb4b`); correzione `6f75f78` per il task corrente e per la chat che restituiva i messaggi più vecchi. Verifica: 377 test, ruff pulito, typecheck e build verdi, prova con Playwright sul Runtime sintetico.
+- **Pagine**: [[system/interface/frontend-module]].
