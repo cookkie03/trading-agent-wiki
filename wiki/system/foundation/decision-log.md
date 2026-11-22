@@ -255,3 +255,12 @@ SQLite per l'MVP se adeguato a singolo servizio writer; repository e migrazioni 
 Frontend MVP React + TypeScript + Vite/npm con backend Python e API applicative, superando la preferenza iniziale Streamlit. Il cockpit include osservabilità e controllo di configurazioni, state, strategie e provider; HMR resta distinto dai dati live e dal servizio persistente. Vendor agnostic confermato; il riesame OpenBB-first qui riportato è superato dal chiarimento del 2026-11-04 nello stato corrente.
 
 Docker resta requisito. Queste sono decisioni e incarichi, non implementazioni o verifiche runtime. Ownership, motivazioni e criteri in [[artifacts/mvp-parallel-work-2026-10-31]]. Execution/intent/recovery restano separati; nessun ordine, commit o push richiesto.
+
+
+## 2026-11-22 — Agenti del ticker, scheda del ticker e Portafoglio
+
+Owner: 🛠 Luca (software). Riprende la decisione a imbuto del 2026-06-06 ([[system/orchestration/parallelism-design]]), rimandata dalla spec MVP di novembre. Un livello intermedio tra PM e specialist: un **Agente del ticker** persistente per ogni ticker in portafoglio o in analisi orchestra gli specialist e **propone**; il **Portfolio Manager decide** a livello di portafoglio (accetta, rimanda, ridimensiona, chiede altro); Bozza deterministica e Risk Gate sovrano restano invariati. L'investment state diventa la **Scheda del ticker**, versionata, con autore, data, confidenza e stato di ogni fatto ([[system/investment/investment-state-template]]), mostrata nella pagina `/ticker/:symbol` del cockpit; l'Ufficio viene riprogettato a due livelli. Brief e handoff in `.scratch/ticker-agents/` del repository.
+
+Portafoglio del cockpit: panoramica più schede (Posizioni, Operazioni, Performance con attribuzione per posizione, settore e agente, Rischio e vincoli). Vincoli del Risk Gate **modificabili subito** dal cockpit, con conferma, motivo, storico e intervalli di sicurezza; azioni: approva/rifiuta ordini, chiudi o riduci posizione, modifica stop e target, chiedi a un agente. Brief e handoff in `.scratch/cockpit/*-portafoglio.md`.
+
+Metodo di lavoro: il frontend parte in sessioni dedicate dalla chat principale; per il backend la chat principale scrive solo l'handoff e Luca lo esegue con `/goal` in una sessione Claude Code CLI con un modello diverso da Sonnet. Queste sono decisioni e incarichi, non implementazioni.
