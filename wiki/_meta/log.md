@@ -7,6 +7,21 @@ tags:
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-11-22] IMPLEMENTAZIONE — Backend del Runtime per l'Ufficio del cockpit
+
+- **Type**: feature + verification
+- **Owner**: 🛠 Luca (software) / Agent Pair
+- **Repository**: `trading-agent` (branch `worktree-backend-ufficio`)
+- **Contenuto**: implementazione test-first degli endpoint Read Model e degli eventi SSE per la nuova vista Ufficio:
+  - `/v1/read/agents`: panoramica agenti configurati (`config/office.toml` e tabella `agents`), stato (`working`/`waiting`/`idle`), task o ciclo corrente con ticker, ultima attività, costi e token della giornata UTC corrente.
+  - `/v1/read/chat_topics?agent=`: elenco dei canali/topic per agente con metadati completi, conteggio messaggi e anteprima ultimo messaggio.
+  - `/v1/read/tool_calls?agent=&cycle=&after=&limit=`: cronologia e stream chiamate tool con parametri, durata in ms, esito, errore e flag esplicito `compacted` (non null silenzioso).
+  - `/v1/read/usage?agent=&from=&to=`: aggregato chiamate LLM (`llm_calls`) per agente e periodo.
+  - Eventi SSE live nella tabella `events` emessi da transazione single-writer: `chat.message`, `tool.called`, `agent.status`.
+  - Estensione retention per compattazione tool calls e aggiornamento scenario `scripts/dev_cockpit_scenario.py` e `scripts/dev_cockpit_server.py`.
+- **Verifica**: 376 test passati, 0 falliti, 2 saltati, Ruff pulito; graphify aggiornato.
+
+
 ## [2026-11-20] CORREZIONE — Recupero submit con esito ambiguo
 
 - **Repository**: `trading-agent`, commit `9f0655d`.
