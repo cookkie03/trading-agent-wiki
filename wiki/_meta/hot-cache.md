@@ -9,6 +9,10 @@ tags:
 
 > Contesto di sessione recente. Il repository è esterno al vault: qui vivono spec, decisioni e priorità, non lo stato verificato del codice.
 
+## Sessione 2026-11-22 — Flusso GitHub
+
+- Issue → branch → PR → CI → merge manuale. Workflow CI e release SemVer da `main` preparati in locale; nessuna integrazione Linear o migrazione del vault. → [[system/foundation/git-workflow]]
+
 ## Sessione 2026-11-20 — Runtime unico (implementato, corretto e verificato, S1–S8 + R1–R12)
 
 - **Secondo giro di review**: corretti N1–N4 e il percorso DB di produzione (N6); N5 rinviato. Evidenze e limiti in [[system/foundation/implementation-status#Secondo giro Runtime — 2026-11-20]]. Nessuna prova con Alpaca reale.

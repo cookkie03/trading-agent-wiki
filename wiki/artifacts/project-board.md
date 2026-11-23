@@ -71,6 +71,8 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🟡 In corso
 
+- [x] 🛠 **Attivare il flusso GitHub per il codice** — CI e release manuale su `main` (2026-11-23); branch per pagina del cockpit. → [[system/foundation/git-workflow]]
+
 - [x] 🛠 **Runtime unico: secondo giro di correzioni** — N1–N4 verificati offline; N6 unifica il percorso del DB nel wiring di produzione. N5 rinviato; rimane il backoff da 1 s. Evidenze e limiti → [[system/foundation/implementation-status]].
 - [ ] 🛠 **MVP in quattro chat: vendor/schema, database, OpenBB e dashboard** — guida operativa, SQLite MVP e frontend React/TypeScript operativo; nuove implementazioni da verificare → [[artifacts/mvp-parallel-work-2026-10-31]]
 - [x] 🛠 **Implementare la materializzazione incrementale dei derivati — SMA v1** — migration `indicator_values`/outbox, ingestion atomica, worker idempotente, watermark, status, retry e rebuild verificati; estendere agli altri indicatori solo dopo chiusura delle formule/parametri MVP → [[system/db-access-performance]]

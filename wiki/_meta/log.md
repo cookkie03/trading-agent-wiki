@@ -7,6 +7,14 @@ tags:
 
 > Log append-only. Grep utile: `grep "^## \[" wiki/_meta/log.md | tail -10`
 
+## [2026-11-23] DECISIONE — Flusso GitHub su main, branch unite eliminate
+
+- **Type**: process
+- **Owner**: 🛠 Luca / Agent Pair
+- **Repository**: `trading-agent` (`main`, commit `db765d6`)
+- **Contenuto**: `.github/workflows/ci.yml` (test backend offline, build frontend su PR e push a `main`) e `release.yml` (release SemVer avviata a mano da `main`) portati su `main`. `AGENTS.md` adotta issue → branch → PR → check → merge con una branch per pagina del cockpit (`<pagina>-frontend`); il merge resta a Luca, l'agente unisce solo su sua richiesta. Eliminate in locale e su GitHub le otto branch già unite (cockpit, Ufficio, Portafoglio, agenti del ticker) e i loro worktree; gli artefatti Impeccable dei worktree sono stati copiati in `.impeccable/` del checkout principale.
+- **Pagine**: [[system/foundation/git-workflow]], [[system/foundation/decision-log]], [[artifacts/project-board]].
+
 ## [2026-11-22] IMPLEMENTAZIONE — Backend del Runtime per l'Ufficio del cockpit
 
 - **Type**: feature + verification

@@ -6,7 +6,7 @@ tags:
   - workflow
   - software
 created: 2026-10-31
-updated: 2026-10-31
+updated: 2026-11-23
 status: active
 related:
   - '[[system/foundation/decision-log]]'
@@ -16,17 +16,14 @@ area: software
 
 # Convenzione Git e Workspace
 
-Decisione condivisa da Luca il 2026-10-31. Le regole operative dettagliate vivono in `docs/git-workflow.md` nel repository del codice; questa pagina conserva la decisione e il motivo.
+La decisione del 2026-11-22 sostituisce il lavoro diretto su `main` deciso il 2026-10-31. La procedura operativa vive in `AGENTS.md` e `docs/git-workflow.md` del repository del codice.
 
-## Regole
+## Decisione
 
-- Il lavoro ordinario si svolge su `main`, così Luca può monitorare il codice da VS Code.
-- Si apre un worktree separato solo su richiesta di Luca o per modifiche radicali, sperimentali o ancora incerte.
-- Ogni lavoro completato viene pushato su GitHub.
-- Il merge su `main` lo esegue Luca.
-- Quando il lavoro usa un branch separato, l'agente apre autonomamente la Pull Request dopo il push e non esegue il merge.
-- Decisioni e avanzamenti rilevanti vengono sincronizzati con la documentazione del repository e con questa wiki.
+Il lavoro sul codice passa da issue → branch → PR → CI; Luca mantiene il merge manuale (l'agente unisce solo quando Luca lo chiede per quella PR). Per il cockpit si usa una branch per pagina, `<pagina>-frontend` (es. `settings-frontend`), con backend e frontend della pagina (decisione del 2026-11-23). La CI verifica test offline e build senza credenziali del broker. La release SemVer è un passaggio separato, avviato manualmente da `main`: produce un tag e note, non un deploy.
 
-## Motivazione
+La wiki conserva le decisioni e il contesto, mentre GitHub Issues tiene traccia del lavoro sul codice. Nessuna integrazione Linear o migrazione del vault è stata decisa.
 
-La regola privilegia la visibilità diretta del lavoro durante lo sviluppo quotidiano e riserva l'isolamento ai casi in cui riduce davvero il rischio o facilita una sperimentazione. La separazione delle responsabilità mantiene il merge sotto il controllo di Luca, senza rinunciare a push e PR automatici.
+## Stato
+
+Workflow `ci.yml` e `release.yml` su `main` dal 2026-11-23 (commit `db765d6`). Prima release non ancora pubblicata.
