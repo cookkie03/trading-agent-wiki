@@ -1342,3 +1342,9 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: pagina Ufficio (panoramica agenti, più chat per agente, tool dal vivo espandibili, scrivi, assegna task, costi e token) e read model del Runtime (`agents`, `chat_topics`, `tool_calls`, `usage`, eventi `chat.message`, `tool.called`, `agent.status`). Uniti su `feat/cockpit-frontend` (`b75a6db`, `de6cb4b`); correzione `6f75f78` per il task corrente e per la chat che restituiva i messaggi più vecchi. Verifica: 377 test, ruff pulito, typecheck e build verdi, prova con Playwright sul Runtime sintetico.
 - **Pagine**: [[system/interface/frontend-module]].
+
+## [2026-11-22] DECISIONE + CONFIGURAZIONE — Flusso GitHub
+
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: flusso issue → branch → PR → CI → merge manuale e criteri SemVer in `AGENTS.md`. CI e release manuale preparate su `chore/github-workflow`, senza deploy. Build pulita, 148 test offline e `actionlint` passano in locale; verifica GitHub ancora da fare.
+- **Pagine**: [[system/foundation/git-workflow]] · [[system/foundation/decision-log]].
