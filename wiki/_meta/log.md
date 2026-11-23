@@ -1348,3 +1348,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: flusso issue → branch → PR → CI → merge manuale e criteri SemVer in `AGENTS.md`. CI e release manuale preparate su `chore/github-workflow`, senza deploy. Build pulita, 148 test offline e `actionlint` passano in locale; verifica GitHub ancora da fare.
 - **Pagine**: [[system/foundation/git-workflow]] · [[system/foundation/decision-log]].
+
+## [2026-11-23] CODICE + VERIFICA — Cockpit e Runtime uniti su main
+
+- **Type**: codice + documentazione
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: uniti su `main` (`78c8917`) shell, Terminale, Ufficio a due livelli, Portafoglio, pagina `/ticker/:symbol` e i backend del Runtime per Portafoglio (metriche, attribuzione, vincoli versionati, `close_position`, `modify_exit`) e agenti del ticker (scheda versionata, proposte al PM). Correzioni in integrazione: in Halt non si allarga lo stop (`e008177`); prezzo della scheda dalla stessa fonte del Portafoglio (`78c8917`). Verifica: 465 test, ruff pulito, typecheck e build verdi, controllo nel browser di Portafoglio, Ufficio e pagina del ticker sul Runtime sintetico.
+- **Metodo**: da qui un branch per pagina (es. `settings-frontend`) che contiene backend e frontend della pagina, unito su `main` dopo le verifiche. `feat/cockpit-frontend` è superato.
+- **Pagine**: [[system/interface/frontend-module]], [[system/foundation/decision-log]].
