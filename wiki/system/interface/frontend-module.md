@@ -130,14 +130,17 @@ I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per 
 **Cosa è.** Migrazione e modernizzazione completa del frontend (`frontend/`) adottando lo standard ufficiale **shadcn-ui con Base UI (`@base-ui/react`)**, eliminando ogni residuo di Radix UI (`0` import, pacchetto `radix-ui` disinstallato).
 
 **Componenti, Blocchi e Architettura.**
-- Tutte le primitive Radix riscritte con le controparti `@base-ui/react`: `Button`, `Separator`, `Tooltip`, `Dialog`, `Sheet`, `AlertDialog`, `Popover`, `DropdownMenu` (Menu), `ScrollArea`, `Toggle`, `ToggleGroup`, `Tabs`, `PanelTabs`.
-- Installati i componenti ufficiali dal registry shadcn `base-nova`: `Card`, `Badge`, `Table`.
+- Tutte le primitive Radix riscritte con le controparti `@base-ui/react`: `Button`, `Separator`, `Tooltip`, `Dialog`, `Sheet`, `AlertDialog`, `Popover`, `DropdownMenu` (Menu), `ScrollArea`, `Toggle`, `ToggleGroup`, `Tabs`, `PanelTabs`, `Checkbox`, `Avatar`.
+- Installati e integrati i componenti ufficiali dal registry shadcn `base-nova`: `Card`, `Badge`, `Table`, `Input`, `Textarea`, `Label`, `Alert`, `Skeleton`.
 - Introdotto il blocco ufficiale **Sidebar** (`SidebarProvider`, `Sidebar`, `SidebarMenu`, `SidebarMenuButton`, `SidebarInset`, `SidebarTrigger`) per `AppShell` e navigazione Desktop/Mobile.
-- Riprogettate le viste di Terminale (`activity-panel`, `watchlist`), Ufficio (`overview`, `pm-seat`, `proposals`), e Portafoglio (`summary`, `positions`) con `Card` e `Badge` di shadcn.
+- Riprogettate tutte le viste dell'applicazione: Terminale (`chart-panel`, `activity-panel`, `watchlist`, `orders-dock`), Ufficio (`overview`, `pm-seat`, `proposals`, `conversation`, `desk`), e Portafoglio (`summary`, `positions`, `operations`, `risk`, `allocation`, `performance`) con blocchi `Card`, `Badge`, `Table`, `Alert` e `Skeleton`.
+- Sostituite tutte le tabelle HTML grezze con shadcn `Table` (`TableHeader`, `TableBody`, `TableFooter`, `TableHead`, `TableRow`, `TableCell`).
+- Eliminati tutti i controlli form nativi (`<input>`, `<textarea>`, `<checkbox>`) a favore di `Input`, `Textarea`, `Checkbox` di shadcn.
 - Eliminato ogni residuo di `asChild` a favore della prop nativa `render`.
+- **Palette unificata su scala di grigi**: rimossi colori casuali o sfondi ad-hoc; gerarchia visiva sobria ed elegante basata su grigi neutri, con colore riservato solo a semantiche di mercato (`up`/`down`), rischio (`destructive`/`warn`) e accento di fuoco. Iconografia unificata su `lucide-react`.
 - `components.json` configurato su stile `base-nova` con base `@base-ui/react`.
-- Audit tecnico Impeccable completato con punteggio **20/20 (Excellent, 0 P0/P1/P2/P3)**.
-- Build e typecheck completamente verdi (`tsc -b && vite build` in ~800ms).
+- Impeccable detect completato su 96 file con 0 difetti rilevati.
+- Build locale e GitHub CI completamente verdi (`Frontend build` + `Backend tests`).
 
 ## UI design & build workflow
 
