@@ -125,17 +125,19 @@ I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per 
 
 **Limiti noti.** Una chiamata ai tool compare solo quando è finita: lo stato "in corso" (`tool.started`) non è ancora emesso dal Runtime. Critique 34/40 e audit 18/20, senza P0 o P1, eseguiti in un solo contesto perché i subagenti non erano disponibili.
 
-## Migrazione a shadcn Base UI (`@base-ui/react`) — 2026-11-24
+## Migrazione a shadcn Base UI (`@base-ui/react`) e Blocchi Ufficiali — 2026-11-24
 
 **Cosa è.** Migrazione e modernizzazione completa del frontend (`frontend/`) adottando lo standard ufficiale **shadcn-ui con Base UI (`@base-ui/react`)**, eliminando ogni residuo di Radix UI (`0` import, pacchetto `radix-ui` disinstallato).
 
-**Componenti e primitive.**
-- Tutte le primitive Radix sono state riscritte con le controparti `@base-ui/react`: `Button`, `Separator`, `Tooltip`, `Dialog`, `Sheet`, `AlertDialog`, `Popover`, `DropdownMenu` (Menu), `ScrollArea`, `Toggle`, `ToggleGroup`, `Tabs`, `PanelTabs`.
-- Aggiunti i componenti ufficiali shadcn `Card`, `Badge` e `Table`.
-- Tutti i call-site che usavano la convenzione legacy `asChild` sono stati migrati alla prop standard `render` di Base UI.
-- L'architettura degli overlay e menu adotta la gerarchia canonica `Portal > Positioner > Popup`.
-- `components.json` configurato su `"base": "base"`.
-- Build e typecheck completamente verdi (`tsc -b && vite build` in ~800ms senza errori o warning).
+**Componenti, Blocchi e Architettura.**
+- Tutte le primitive Radix riscritte con le controparti `@base-ui/react`: `Button`, `Separator`, `Tooltip`, `Dialog`, `Sheet`, `AlertDialog`, `Popover`, `DropdownMenu` (Menu), `ScrollArea`, `Toggle`, `ToggleGroup`, `Tabs`, `PanelTabs`.
+- Installati i componenti ufficiali dal registry shadcn `base-nova`: `Card`, `Badge`, `Table`.
+- Introdotto il blocco ufficiale **Sidebar** (`SidebarProvider`, `Sidebar`, `SidebarMenu`, `SidebarMenuButton`, `SidebarInset`, `SidebarTrigger`) per `AppShell` e navigazione Desktop/Mobile.
+- Riprogettate le viste di Terminale (`activity-panel`, `watchlist`), Ufficio (`overview`, `pm-seat`, `proposals`), e Portafoglio (`summary`, `positions`) con `Card` e `Badge` di shadcn.
+- Eliminato ogni residuo di `asChild` a favore della prop nativa `render`.
+- `components.json` configurato su stile `base-nova` con base `@base-ui/react`.
+- Audit tecnico Impeccable completato con punteggio **20/20 (Excellent, 0 P0/P1/P2/P3)**.
+- Build e typecheck completamente verdi (`tsc -b && vite build` in ~800ms).
 
 ## UI design & build workflow
 
