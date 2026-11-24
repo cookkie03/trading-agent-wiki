@@ -131,6 +131,8 @@ I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per 
 
 **Componenti, Blocchi e Architettura.**
 - Tutte le primitive Radix riscritte con le controparti `@base-ui/react`: `Button`, `Separator`, `Tooltip`, `Dialog`, `Sheet`, `AlertDialog`, `Popover`, `DropdownMenu` (Menu), `ScrollArea`, `Toggle`, `ToggleGroup`, `Tabs`, `PanelTabs`, `Checkbox`, `Avatar`.
+- Pulizia totale delle dipendenze: rimosso `cmdk` e il componente Command non utilizzato, eliminando `@radix-ui/react-dialog` e `@radix-ui/primitive` anche dall'albero transitivo (`0` pacchetti Radix nel lockfile).
+- Controlli del Terminale rifiniti: selettore timeframe convertito a `ToggleGroup` Base UI, schede mobile adeguate a `TabsContent` con gestione accessibilità da tastiera (`Space`/`Enter`), e menu a tendina conformi al contratto `MenuGroupContext`.
 - Installati e integrati i componenti ufficiali dal registry shadcn `base-nova`: `Card`, `Badge`, `Table`, `Input`, `Textarea`, `Label`, `Alert`, `Skeleton`.
 - Introdotto il blocco ufficiale **Sidebar** (`SidebarProvider`, `Sidebar`, `SidebarMenu`, `SidebarMenuButton`, `SidebarInset`, `SidebarTrigger`) per `AppShell` e navigazione Desktop/Mobile.
 - Riprogettate tutte le viste dell'applicazione: Terminale (`chart-panel`, `activity-panel`, `watchlist`, `orders-dock`), Ufficio (`overview`, `pm-seat`, `proposals`, `conversation`, `desk`), e Portafoglio (`summary`, `positions`, `operations`, `risk`, `allocation`, `performance`) con blocchi `Card`, `Badge`, `Table`, `Alert` e `Skeleton`.
