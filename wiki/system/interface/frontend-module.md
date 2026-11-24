@@ -125,6 +125,18 @@ I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per 
 
 **Limiti noti.** Una chiamata ai tool compare solo quando è finita: lo stato "in corso" (`tool.started`) non è ancora emesso dal Runtime. Critique 34/40 e audit 18/20, senza P0 o P1, eseguiti in un solo contesto perché i subagenti non erano disponibili.
 
+## Migrazione a shadcn Base UI (`@base-ui/react`) — 2026-11-24
+
+**Cosa è.** Migrazione e modernizzazione completa del frontend (`frontend/`) adottando lo standard ufficiale **shadcn-ui con Base UI (`@base-ui/react`)**, eliminando ogni residuo di Radix UI (`0` import, pacchetto `radix-ui` disinstallato).
+
+**Componenti e primitive.**
+- Tutte le primitive Radix sono state riscritte con le controparti `@base-ui/react`: `Button`, `Separator`, `Tooltip`, `Dialog`, `Sheet`, `AlertDialog`, `Popover`, `DropdownMenu` (Menu), `ScrollArea`, `Toggle`, `ToggleGroup`, `Tabs`, `PanelTabs`.
+- Aggiunti i componenti ufficiali shadcn `Card`, `Badge` e `Table`.
+- Tutti i call-site che usavano la convenzione legacy `asChild` sono stati migrati alla prop standard `render` di Base UI.
+- L'architettura degli overlay e menu adotta la gerarchia canonica `Portal > Positioner > Popup`.
+- `components.json` configurato su `"base": "base"`.
+- Build e typecheck completamente verdi (`tsc -b && vite build` in ~800ms senza errori o warning).
+
 ## UI design & build workflow
 
 La costruzione della UI è un vero workstream del progetto, non un'attività accessoria di styling. Prima di riprendere il frontend, **chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI del Trading Agent su GitHub.
