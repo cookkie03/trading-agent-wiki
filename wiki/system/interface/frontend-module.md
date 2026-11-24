@@ -139,7 +139,7 @@ I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per 
 - Eliminato ogni residuo di `asChild` a favore della prop nativa `render`.
 - **Palette unificata su scala di grigi**: rimossi colori casuali o sfondi ad-hoc; gerarchia visiva sobria ed elegante basata su grigi neutri, con colore riservato solo a semantiche di mercato (`up`/`down`), rischio (`destructive`/`warn`) e accento di fuoco. Iconografia unificata su `lucide-react`.
 - `components.json` configurato su stile `base-nova` con base `@base-ui/react`.
-- Impeccable detect completato su 96 file con 0 difetti rilevati.
+- Audit tecnico Impeccable (live browser CDP + scansione statica) verificato con score **19/20 (0 P0/P1)**.
 - Build locale e GitHub CI completamente verdi (`Frontend build` + `Backend tests`).
 
 ## UI design & build workflow
