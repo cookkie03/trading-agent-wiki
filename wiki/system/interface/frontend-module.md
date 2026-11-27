@@ -155,6 +155,7 @@ I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per 
 - **Backend da aggiungere per la Home**: `open_risk` aggregato in `portfolio_summary`; route unica per il feed attività.
 - **Assistant**: il nome «Bridge» è dismesso; agente e pagina si chiamano Assistant.
 - **Deciso anche**: Q20 azioni dell'Assistant da confermare nella card Briefing di «Needs you»; Q26 Runtime irraggiungibile = tutto disattivato tranne la navigazione; Q27 Home vuota; Q28 Skeleton per sezione. Q25 Halt = Approve disattivato, Decide attivo (rimandare e rifiutare non mandano ordini).
+- **Q29**: «Needs you» diventa una sola lista inbox, la più urgente in cima, con Tabs e conteggi (All · To approve · To confirm · Alerts) e due azioni per riga; sostituisce card + Briefing.
 - **Bozza viva**: il canvas mostra la bozza della pagina in corso (Home), aggiornata a ogni round; niente pagina «Today».
 
 ## UI design & build workflow
