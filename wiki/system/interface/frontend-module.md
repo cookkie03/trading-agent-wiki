@@ -154,7 +154,7 @@ I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per 
 - **Home (decisa, da disegnare e validare)**: `/` apre la Home, l'Assistente passa a `/assistant`. Compito: come va il fondo. Cifra principale **Total value** (posizioni a valore di mercato + cassa, in USD, qualsiasi classe di strumento) con piccola curva e selettore 1D/1W/1M. Sezioni: StatCard (Unrealized P&L, Cash vs reserve, Open risk) · **Needs you** (contatori del Briefing, 3 proposte più vecchie con Approve/Decide in stile outline, elementi per gravità Critical/Review/Info, View all) · Activity con la fila degli agenti al lavoro. AccountSwitcher in sidebar, MarketClock in top bar, pannello «Sistema» nel Popover della freshness.
 - **Backend da aggiungere per la Home**: `open_risk` aggregato in `portfolio_summary`; route unica per il feed attività.
 - **Assistant**: il nome «Bridge» è dismesso; agente e pagina si chiamano Assistant.
-- **Deciso anche**: Q20 azioni dell'Assistant da confermare nella card Briefing di «Needs you»; Q26 Runtime irraggiungibile = tutto disattivato tranne la navigazione; Q27 Home vuota; Q28 Skeleton per sezione. Aperto: Q25 (Halt).
+- **Deciso anche**: Q20 azioni dell'Assistant da confermare nella card Briefing di «Needs you»; Q26 Runtime irraggiungibile = tutto disattivato tranne la navigazione; Q27 Home vuota; Q28 Skeleton per sezione. Q25 Halt = Approve disattivato, Decide attivo (rimandare e rifiutare non mandano ordini).
 - **Bozza viva**: il canvas mostra la bozza della pagina in corso (Home), aggiornata a ogni round; niente pagina «Today».
 
 ## UI design & build workflow
