@@ -159,6 +159,8 @@ I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per 
 - **Scroll**: scorre solo il contenuto della pagina (e i componenti interni scorrevoli); sidebar e top bar restano ferme, sul telefono anche la barra delle tab.
 - **Home telefono (P1–P7)**: stesso ordine del desktop in colonna; cifre in una card a righe; «Needs you» con tap che apre un Drawer con dettaglio e azioni; icona Assistant nella top bar mobile; orologio di mercato nel Popover della freshness.
 - **Struttura del canvas**: un solo canvas per tutto il prodotto, una pagina per sezione più la pagina Shell dei componenti condivisi; una tavola per schermata (desktop e telefono affiancati), collegate tra loro come prototipo cliccabile. La Home fa da modello.
+- **Portfolio (in corso)**: Total value con barra Investito/Cassa, striscia di 5 cifre, tab Positions · Performance · Risk; la riga apre la pagina Instrument (niente Sheet), menu ⋯ per Sell e Modify stop. Dialog di vendita e di modifica dei limiti da disegnare prima di decidere.
+- **Decisions** (ex Approvals): tab Needs you e History, ogni decisione con chi, cosa, perché ed esito (ordine, esecuzione, trade chiuso). Performance rimanda alla storia delle decisioni di ogni posizione.
 - **Bozza viva**: il canvas mostra la bozza della pagina in corso (Home), aggiornata a ogni round; niente pagina «Today».
 
 ## UI design & build workflow
