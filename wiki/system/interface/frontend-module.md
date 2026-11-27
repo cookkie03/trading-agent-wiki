@@ -160,7 +160,8 @@ I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per 
 - **Home telefono (P1–P7)**: stesso ordine del desktop in colonna; cifre in una card a righe; «Needs you» con tap che apre un Drawer con dettaglio e azioni; icona Assistant nella top bar mobile; orologio di mercato nel Popover della freshness.
 - **Struttura del canvas**: un solo canvas per tutto il prodotto, una pagina per sezione più la pagina Shell dei componenti condivisi; una tavola per schermata (desktop e telefono affiancati), collegate tra loro come prototipo cliccabile. La Home fa da modello.
 - **Portfolio (validata, desktop e telefono)**: barra del periodo unica per tutta la pagina (SPY + 1D…All); dialog Sell in azioni, importo o % della posizione; dialog Modify exits per stop e take profit insieme; Edit limits in due passi.
-- **Portfolio, struttura**: Total value con barra Investito/Cassa, striscia di 5 cifre, tab Positions · Performance · Risk; la riga apre la pagina Instrument (niente Sheet), menu ⋯ per Sell e Modify stop. Dialog di vendita e di modifica dei limiti da disegnare prima di decidere.
+- **Portfolio, struttura**: Total value con barra Investito/Cassa, striscia di 5 cifre, tab Positions · Performance · Risk; la riga apre la pagina Instrument (niente Sheet), menu ⋯ per Sell e Modify stop. Dialog disegnati: Sell (azioni, importo o % della posizione), Modify exits (stop e take profit insieme), Edit limits in due passi; barra del periodo unica per tutta la pagina.
+- **Telefono**: ogni Dialog e Popover diventa un bottom sheet; il badge della freshness apre il foglio System con il cambio mercato.
 - **Decisions** (ex Approvals): tab Needs you e History, ogni decisione con chi, cosa, perché ed esito (ordine, esecuzione, trade chiuso). Performance rimanda alla storia delle decisioni di ogni posizione.
 - **Bozza viva**: il canvas mostra la bozza della pagina in corso (Home), aggiornata a ogni round; niente pagina «Today».
 
