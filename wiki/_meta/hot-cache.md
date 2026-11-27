@@ -11,7 +11,7 @@ tags:
 
 ## Sessione 2026-11-27 — Pagine del cockpit disegnate con Luca
 
-- Il repository è ora `cookkie03/ai-fund` (ex `trading-agent`), con l'AI Fund Design System su `main`. Le pagine si disegnano ex ante **insieme a Luca**: intervista a round, canvas Design, validazione pagina per pagina. Home decisa (Q1–Q28), bozza viva nel canvas in revisione da Luca. «Bridge» si chiama ora **Assistant**.
+- Il repository è ora `cookkie03/ai-fund` (ex `trading-agent`), con l'AI Fund Design System su `main`. Le pagine si disegnano ex ante **insieme a Luca**: intervista a round, canvas Design, validazione pagina per pagina. Home desktop **validata** da Luca (Q1–Q29); prossimo: Home sul telefono, poi Portfolio. «Bridge» si chiama ora **Assistant**.
 - Il software non distingue paper e live: i conti hanno il nome dato da Luca. Popover = azioni rapide. → [[system/interface/frontend-module#AI Fund Design System e pagine disegnate ex ante — 2026-11-27]] · [[system/foundation/decision-log]]
 
 ## Sessione 2026-11-22 — Flusso GitHub
