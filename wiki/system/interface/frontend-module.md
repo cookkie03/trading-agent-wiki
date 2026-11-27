@@ -158,6 +158,7 @@ I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per 
 - **Q29**: «Needs you» diventa una sola lista inbox, la più urgente in cima, con Tabs e conteggi (All · To approve · To confirm · Alerts) e due azioni per riga; sostituisce card + Briefing.
 - **Scroll**: scorre solo il contenuto della pagina (e i componenti interni scorrevoli); sidebar e top bar restano ferme, sul telefono anche la barra delle tab.
 - **Home telefono (P1–P7)**: stesso ordine del desktop in colonna; cifre in una card a righe; «Needs you» con tap che apre un Drawer con dettaglio e azioni; icona Assistant nella top bar mobile; orologio di mercato nel Popover della freshness.
+- **Struttura del canvas**: un solo canvas per tutto il prodotto, una pagina per sezione più la pagina Shell dei componenti condivisi; una tavola per schermata (desktop e telefono affiancati), collegate tra loro come prototipo cliccabile. La Home fa da modello.
 - **Bozza viva**: il canvas mostra la bozza della pagina in corso (Home), aggiornata a ogni round; niente pagina «Today».
 
 ## UI design & build workflow
