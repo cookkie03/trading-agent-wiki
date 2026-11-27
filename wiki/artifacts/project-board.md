@@ -46,6 +46,8 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🔴 Da fare
 
+- [ ] 🛠 **Rinominare Bridge → Assistant nel codice** — backend (`runtime/bridge_runner.py`, read model `bridge_actions`, comandi) e frontend (`features/bridge`, `shell/bridge.tsx`), con migrazione dei nomi. → [[system/foundation/decision-log]]
+
 - [ ] 🛠 **Backend per la Home del cockpit** — `open_risk` aggregato in `portfolio_summary` e route unica del feed attività (ordini, trade, proposte, inbox). → [[system/interface/frontend-module#AI Fund Design System e pagine disegnate ex ante — 2026-11-27]]
 
 - [ ] 🛠 **Prova reale del Runtime su Minisforum** — container `engine` aggiornato, Alpaca paper + LLM reale: stream connesso, riconciliazione, un ciclo completo. Ultimo gate prima di ordini reali; Luca la rimanda a dopo il cockpit (frontend prima, per avere visibilità) → [[system/foundation/architecture#Runtime unico — 2026-11-20]]

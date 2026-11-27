@@ -1372,3 +1372,8 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: intervista sulla Home (Q1–Q24) per il cockpit AI Fund, decisioni registrate in `docs/design-system/DECISIONS.md` §8–§9 del repository (PR #38). Il software non distingue conti paper e live: l'utente li nomina; `AppSidebar` mostra il nome dell'account al posto di `mode`. Popover come superficie di azioni rapide.
 - **Pagine**: [[system/foundation/decision-log]] · [[system/interface/frontend-module]] · [[artifacts/project-board]].
 
+## [2026-11-27] DECISIONE — Assistant al posto di Bridge; bozza viva della Home
+
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: «Bridge» dismesso come nome: agente e pagina sono Assistant (UI e documenti aggiornati, codice da rinominare). Home: Q20, Q26–Q28 decise; il canvas mostra la bozza viva della pagina in disegno al posto della pagina «Today».
+- **Pagine**: [[system/foundation/decision-log]] · [[system/interface/frontend-module]] · [[artifacts/project-board]].
