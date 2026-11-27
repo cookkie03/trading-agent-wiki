@@ -164,6 +164,7 @@ I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per 
 - **Telefono**: ogni Dialog e Popover diventa un bottom sheet; il badge della freshness apre il foglio System con il cambio mercato.
 - **Decisions** (ex Approvals): tab Needs you e History, ogni decisione con chi, cosa, perché ed esito (ordine, esecuzione, trade chiuso). Performance rimanda alla storia delle decisioni di ogni posizione.
 - **Decisions (validata 2026-11-27)**: hub di tutte le decisioni, da far crescere in futuro in autovalutazione ([[system/rating-scoring]]); Sheet con la sequenza proposta → decisione → ordine → esecuzione → chiusura, salvata a DB. Gli alert non sono decisioni: vivono nelle notifiche (campanella); un alert che blocca una decisione compare anche sulla proposta come motivo.
+- **Instrument (in corso)**: una sola pagina per ogni classe di strumento che mostra solo i campi valorizzati (equity, bond…); investment state in testa; tab Overview · Analysis · Chart · Notes · History; dialog Sell e Modify exits condivisi con Portfolio (stesso componente, dialog su desktop e sheet su telefono).
 - **Bozza viva**: il canvas mostra la bozza della pagina in corso (Home), aggiornata a ogni round; niente pagina «Today».
 
 ## UI design & build workflow
