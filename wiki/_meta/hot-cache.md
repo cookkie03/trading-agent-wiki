@@ -9,6 +9,11 @@ tags:
 
 > Contesto di sessione recente. Il repository è esterno al vault: qui vivono spec, decisioni e priorità, non lo stato verificato del codice.
 
+## Sessione 2026-11-27 — Pagine del cockpit disegnate con Luca
+
+- Il repository è ora `cookkie03/ai-fund` (ex `trading-agent`), con l'AI Fund Design System su `main`. Le pagine si disegnano ex ante **insieme a Luca**: intervista a round, canvas Design, validazione pagina per pagina. Home decisa (Q1–Q24), prossimo passo: disegnarla e validarla. Aperto Q20.
+- Il software non distingue paper e live: i conti hanno il nome dato da Luca. Popover = azioni rapide. → [[system/interface/frontend-module#AI Fund Design System e pagine disegnate ex ante — 2026-11-27]] · [[system/foundation/decision-log]]
+
 ## Sessione 2026-11-22 — Flusso GitHub
 
 - Issue → branch → PR → CI → merge manuale. Workflow CI e release SemVer da `main` preparati in locale; nessuna integrazione Linear o migrazione del vault. → [[system/foundation/git-workflow]]

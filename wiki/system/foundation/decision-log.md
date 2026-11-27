@@ -6,7 +6,7 @@ tags:
   - architecture
   - roadmap
 created: 2026-04-30T00:00:00.000Z
-updated: 2026-11-01T00:00:00.000Z
+updated: 2026-11-27T00:00:00.000Z
 status: active
 related:
   - '[[system/foundation/architecture]]'
@@ -23,6 +23,8 @@ Storico delle decisioni rilevanti del progetto. Quando una scelta smette di esse
 
 | Data | Decisione | Effetto |
 |------|-----------|---------|
+| 2026-11-27 | **Conti nominati dall'utente: il software non distingue paper e live** | Un account = un conto broker, creato scegliendo broker (Alpaca, IBKR…), URL dell'endpoint in Avanzate (paper o live) e credenziali. Backend e frontend non hanno né mostrano alcun flag paper/live: Luca dà un nome ai conti per distinguerli e la UI mostra solo quel nome. Estende Q36 (agenti ignari di paper/live) a tutto il software. Repository: `docs/design-system/DECISIONS.md` §8. |
+| 2026-11-27 | **Pagine del cockpit disegnate ex ante con l'AI Fund Design System, insieme a Luca** | Ogni pagina si progetta con un'intervista (una decisione alla volta) prima del codice, nel canvas Design; si valida pagina per pagina. Home decisa (Q1–Q24): `/` = Home, compito «come va il fondo», cifra principale **Total value**, piccola curva 1D/1W/1M, StatCard × 3, sezione «Needs you» (ex Briefing + 3 proposte), Activity. Popover = azioni rapide. Dettaglio → [[system/interface/frontend-module#AI Fund Design System e pagine disegnate ex ante — 2026-11-27]]. |
 | 2026-11-22 | **Flusso GitHub e release manuali** | Il codice passa da issue, branch e PR con CI; il merge resta a Luca. Versioni SemVer pubblicate con workflow avviato manualmente dopo i check, senza deploy. Sostituisce la convenzione del 2026-10-31 sul lavoro diretto su `main`. → [[system/foundation/git-workflow]] |
 | 2026-11-20 | **Cockpit: sei pagine, autonomia, Bridge agent** | Il motore è autonomo al 100%; il cockpit non è una coda di approvazioni ma il posto di lavoro dell'ufficio, con Luca come membro. Pagine: Assistente (home, Bridge agent pari di Luca, UI ora e agente dopo), Ufficio (agenti, chat, stream dei tool), Terminale (lightweight-charts come ambiente del Technical, disegni condivisi agenti/utente, ordini, watchlist condivisa; niente order book), Notizie (ambiente news con gli stessi tool degli agenti), Portafoglio (stile app bancaria, vincoli di rischio), Configurazioni. Input di Luca = parere che gli agenti pesano. Direzione visiva: standard di categoria eseguito al meglio, niente metafore. Bridge agent entra nello scope (prima post-MVP). → [[system/interface/frontend-module#Pagine del cockpit — 2026-11-20]] |
 | 2026-11-21 | **Cockpit: build di Opus scelta, rifinitura in stile Apple** | Stesso handoff di shell e Terminale eseguito da Claude Opus 5.5 e GPT 6.1 Terra: Luca sceglie la build di Opus (branch `claude/cockpit-frontend-opus-54052e`, non ancora unito), densa e completa; quella di GPT era povera e generica. La build è professionale ma non ancora bella: segue una rifinitura "Apple-like", senza liquid glass, con riferimenti Robinhood Legend, Borsa di macOS, Linear, Raycast, Things 3, Finder e Xcode. Il grafico resta lightweight-charts: cambia solo lo stile. Approvato anche lo stato unico del grafico (ChartState nel Runtime). | Rifinitura in due fasi nella sessione Opus: varianti di direzione servite a Luca, poi applicazione, critique, audit e `DESIGN.md`. |

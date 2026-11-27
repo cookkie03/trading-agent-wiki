@@ -1364,3 +1364,11 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Contenuto**: uniti su `main` (`78c8917`) shell, Terminale, Ufficio a due livelli, Portafoglio, pagina `/ticker/:symbol` e i backend del Runtime per Portafoglio (metriche, attribuzione, vincoli versionati, `close_position`, `modify_exit`) e agenti del ticker (scheda versionata, proposte al PM). Correzioni in integrazione: in Halt non si allarga lo stop (`e008177`); prezzo della scheda dalla stessa fonte del Portafoglio (`78c8917`). Verifica: 465 test, ruff pulito, typecheck e build verdi, controllo nel browser di Portafoglio, Ufficio e pagina del ticker sul Runtime sintetico.
 - **Metodo**: da qui un branch per pagina (es. `settings-frontend`) che contiene backend e frontend della pagina, unito su `main` dopo le verifiche. `feat/cockpit-frontend` è superato.
 - **Pagine**: [[system/interface/frontend-module]], [[system/foundation/decision-log]].
+
+## [2026-11-27] DECISIONE — Design ex ante delle pagine e conti senza paper/live
+
+- **Type**: decisione + documentazione
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: intervista sulla Home (Q1–Q24) per il cockpit AI Fund, decisioni registrate in `docs/design-system/DECISIONS.md` §8–§9 del repository (PR #38). Il software non distingue conti paper e live: l'utente li nomina; `AppSidebar` mostra il nome dell'account al posto di `mode`. Popover come superficie di azioni rapide.
+- **Pagine**: [[system/foundation/decision-log]] · [[system/interface/frontend-module]] · [[artifacts/project-board]].
+

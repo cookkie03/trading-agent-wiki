@@ -145,6 +145,16 @@ I raggi sono concentrici: 12 px per la tessera, 8 px per il controllo, 6 px per 
 - Audit tecnico Impeccable (live browser CDP + scansione statica) verificato con score **19/20 (0 P0/P1)**.
 - Build locale e GitHub CI completamente verdi (`Frontend build` + `Backend tests`).
 
+## AI Fund Design System e pagine disegnate ex ante — 2026-11-27
+
+- **Design system**: `frontend/src/ds` (shadcn/ui vanilla su Base UI `base-vega`, blocchi AI Fund) e `docs/design-system/` nel repository `ai-fund` (ex `trading-agent`), unito su `main` con la PR #37. Regole, glossario inglese e contenuto delle pagine in `DECISIONS.md`.
+- **Metodo (Luca, 2026-11-27)**: le pagine le disegna Luca insieme all'agente, non il contrario. Intervista a round (`grilling`), poi disegno nel canvas Design «AI Fund Pages» (artifact privato), validazione, solo dopo la pagina successiva. Ogni informazione mostrata oggi resta visibile o va dietro un dettaglio su richiesta (Tabs, Sheet, Dialog, Popover).
+- **Conti**: il software non sa se un conto è paper o live; mostra il nome dato da Luca (→ [[system/foundation/decision-log]]).
+- **Popover = azioni rapide**: liste selezionabili per cambiare (mercati, account), pulsanti per aprire link, modificare sul posto, accettare. Motivo obbligatorio, anteprima o capitale → Dialog.
+- **Home (decisa, da disegnare e validare)**: `/` apre la Home, l'Assistente passa a `/assistant`. Compito: come va il fondo. Cifra principale **Total value** (posizioni a valore di mercato + cassa, in USD, qualsiasi classe di strumento) con piccola curva e selettore 1D/1W/1M. Sezioni: StatCard (Unrealized P&L, Cash vs reserve, Open risk) · **Needs you** (contatori del Briefing, 3 proposte più vecchie con Approve/Decide in stile outline, elementi per gravità Critical/Review/Info, View all) · Activity con la fila degli agenti al lavoro. AccountSwitcher in sidebar, MarketClock in top bar, pannello «Sistema» nel Popover della freshness.
+- **Backend da aggiungere per la Home**: `open_risk` aggregato in `portfolio_summary`; route unica per il feed attività.
+- **Aperto**: Q20 (azioni del Bridge da confermare dentro «Needs you»).
+
 ## UI design & build workflow
 
 La costruzione della UI è un vero workstream del progetto, non un'attività accessoria di styling. Prima di riprendere il frontend, **chiedere a Giuseppe (vedi lista contatti)** un confronto e un aiuto sulla UI del Trading Agent su GitHub.

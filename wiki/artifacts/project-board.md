@@ -46,6 +46,8 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🔴 Da fare
 
+- [ ] 🛠 **Backend per la Home del cockpit** — `open_risk` aggregato in `portfolio_summary` e route unica del feed attività (ordini, trade, proposte, inbox). → [[system/interface/frontend-module#AI Fund Design System e pagine disegnate ex ante — 2026-11-27]]
+
 - [ ] 🛠 **Prova reale del Runtime su Minisforum** — container `engine` aggiornato, Alpaca paper + LLM reale: stream connesso, riconciliazione, un ciclo completo. Ultimo gate prima di ordini reali; Luca la rimanda a dopo il cockpit (frontend prima, per avere visibilità) → [[system/foundation/architecture#Runtime unico — 2026-11-20]]
 - [ ] 🛠 **S9 Runtime: timeframe globale, trailing e Alert a chiusura barra** — deciso il 2026-11-20; da implementare dopo la review di S1–S8 (spec §14). Prima di ordini reali: ritarare i coefficienti `k` sull'ATR orario → [[system/orchestration/trigger-engine]]
 - [ ] 🛠 **Cockpit: sei pagine** — Assistente, Ufficio, Terminale, Notizie, Portafoglio, Configurazioni; collega jolly ovunque; prima i gap di backend per pagina (ambienti in lettura/scrittura per il frontend, annotazioni condivise, stream tool, equity, vincoli e config; Bridge agent dopo), poi shell e pagine con workflow Impeccable → [[system/interface/frontend-module#Pagine del cockpit — 2026-11-20]]
@@ -70,6 +72,8 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 - [ ] 🛠 **Definire riuso da TradingAgents** — per feature coincidenti, verificare upstream/licenza/test e riusare il codice compatibile con contratti locali → [[artifacts/piano-operativo-trading-agent]]
 
 ## 🟡 In corso
+
+- [ ] 🛠 **Disegnare ex ante le pagine del cockpit con l'AI Fund Design System** — intervista con Luca pagina per pagina, canvas Design, validazione; Home decisa (Q1–Q24), da disegnare. → [[system/interface/frontend-module#AI Fund Design System e pagine disegnate ex ante — 2026-11-27]]
 
 - [x] 🛠 **Attivare il flusso GitHub per il codice** — CI e release manuale su `main` (2026-11-23); branch per pagina del cockpit. → [[system/foundation/git-workflow]]
 
