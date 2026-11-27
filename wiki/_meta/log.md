@@ -1377,3 +1377,9 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: «Bridge» dismesso come nome: agente e pagina sono Assistant (UI e documenti aggiornati, codice da rinominare). Home: Q20, Q26–Q28 decise; il canvas mostra la bozza viva della pagina in disegno al posto della pagina «Today».
 - **Pagine**: [[system/foundation/decision-log]] · [[system/interface/frontend-module]] · [[artifacts/project-board]].
+
+## [2026-11-27] DESIGN — Notifiche, toggle Assistant, bozza pannello Assistant
+
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: Instrument v0.2 accettata (box dell'Overview trascinabili, versione phone allineata). TopBar: popover Notifications funzionante e toggle del pannello Assistant spostato nell'angolo destro. Prima bozza del blocco `AssistantPanel` (desktop e phone) sul canvas; Markets dopo il pannello.
+- **Pagine**: [[system/interface/frontend-module]] · [[artifacts/project-board]].
