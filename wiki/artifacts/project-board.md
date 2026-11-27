@@ -79,7 +79,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🟡 In corso
 
-- [ ] 🛠 **Disegnare ex ante le pagine del cockpit con l'AI Fund Design System** — intervista con Luca pagina per pagina, canvas Design, validazione; Home, Portfolio e Decisions validate; Instrument v0.2 accettata; in corso il pannello Assistant (sidebar destra), poi Markets. → [[system/interface/frontend-module#AI Fund Design System e pagine disegnate ex ante — 2026-11-27]]
+- [ ] 🛠 **Disegnare ex ante le pagine del cockpit con l'AI Fund Design System** — intervista con Luca pagina per pagina, canvas Design, validazione; Home, Portfolio e Decisions validate; Instrument v0.2 accettata; pannello Assistant e pagina Assistant in revisione; primi draft di Markets, Agents, Agent detail, News e Settings sul canvas, in attesa dei commenti di Luca. → [[system/interface/frontend-module#AI Fund Design System e pagine disegnate ex ante — 2026-11-27]]
 
 - [x] 🛠 **Attivare il flusso GitHub per il codice** — CI e release manuale su `main` (2026-11-23); branch per pagina del cockpit. → [[system/foundation/git-workflow]]
 

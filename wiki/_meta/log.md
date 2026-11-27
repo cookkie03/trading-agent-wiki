@@ -1389,3 +1389,9 @@ Lavoro autonomo sui pezzi 🔴 (gap codice↔wiki) dopo la mappa di completezza:
 - **Owner**: 🛠 Luca (software)
 - **Contenuto**: decisioni A1–A11 accettate come raccomandate (pannello ridimensionabile, sopra la pagina sotto 1280 px, ⌘J, contesto automatico, nessuna seconda chat, azioni da confermare come oggetto unico, pallino sul toggle, ultime 8 conversazioni, Trace per turno, pagina Assistant, sheet su telefono). A12: il pannello è costruito solo coi componenti del DS; modello ed effort si scelgono nel composer. Dettaglio in `DECISIONS.md` §14.
 - **Pagine**: [[system/interface/frontend-module]] · [[artifacts/project-board]].
+
+## [2026-11-27] DESIGN — Rush dei draft: Markets, Agents, Agent detail, News, Settings
+
+- **Owner**: 🛠 Luca (software)
+- **Contenuto**: per ogni pagina rimasta un set di domande con raccomandazione applicata al primo draft (desktop e telefono) sul canvas; Luca commenta e risponde. La coda delle task a livello app vive in Agents › Queue. Domande in `DECISIONS.md` §15–19. Renderer locale delle tavole per gli screenshot di verifica.
+- **Pagine**: [[system/interface/frontend-module]] · [[artifacts/project-board]].
