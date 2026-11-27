@@ -46,6 +46,8 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🔴 Da fare
 
+- [ ] 🛠 **Registro delle decisioni a DB** — per la pagina Decisions: ogni decisione (chi, cosa, perché) collegata a proposta, ordine, esecuzione e trade chiuso, interrogabile come storico con filtri. → [[system/interface/frontend-module]]
+
 - [ ] 🛠 **Rinominare Bridge → Assistant nel codice** — backend (`runtime/bridge_runner.py`, read model `bridge_actions`, comandi) e frontend (`features/bridge`, `shell/bridge.tsx`), con migrazione dei nomi. → [[system/foundation/decision-log]]
 
 - [ ] 🛠 **Backend per la Home del cockpit** — `open_risk` aggregato in `portfolio_summary` e route unica del feed attività (ordini, trade, proposte, inbox). → [[system/interface/frontend-module#AI Fund Design System e pagine disegnate ex ante — 2026-11-27]]
@@ -88,6 +90,8 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 - [ ] 🛠 **Rendere leggibili le reference storiche** — distinguere pattern utili da snapshot non correnti, senza eliminare informazione → [[system/_reference/canvas-code-mapping]]
 
 ## 💡 Idee / Post-MVP
+
+- [ ] 🛠 **Decisions → pagina di autovalutazione** — far crescere la pagina Decisions in valutazione di trade, decisioni e agenti (meta-valutazione e feedback post-trade per meccanismo di uscita che alimenta le lezioni in `past_context`; Valutatore post-MVP). → [[system/rating-scoring]]
 
 - [ ] 💡 **Sezione Evaluation del cockpit** — da progettare anche a livello di idea: performance del portafoglio e degli agenti, costo per token, evaluation degli agenti specialisti → [[system/interface/frontend-module#Pagine del cockpit — 2026-11-20]]
 - [ ] 💡 **Repository unica «AI Fund», GitHub-friendly** — fondere `trading-agent` e `trading-agent-wiki` in un solo repo (cartelle `raw/`, `wiki/` e quelle del codice), sul modello di repo di servizi noti (es. OmniRoute): README, struttura, contributi, release. Posizionamento: piattaforma a 360° per gestire un portafoglio in autonomia, aumentata dall'apporto umano.
