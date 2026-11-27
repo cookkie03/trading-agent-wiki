@@ -75,7 +75,7 @@ La board è l'unico indice canonico dei prossimi passi; le fasi precedenti nel [
 
 ## 🟡 In corso
 
-- [ ] 🛠 **Disegnare ex ante le pagine del cockpit con l'AI Fund Design System** — intervista con Luca pagina per pagina, canvas Design, validazione; Home desktop validata (Q1–Q29); in corso Home telefono. → [[system/interface/frontend-module#AI Fund Design System e pagine disegnate ex ante — 2026-11-27]]
+- [ ] 🛠 **Disegnare ex ante le pagine del cockpit con l'AI Fund Design System** — intervista con Luca pagina per pagina, canvas Design, validazione; Home desktop e telefono validate (Q1–Q29, P1–P7); prossima pagina Portfolio. → [[system/interface/frontend-module#AI Fund Design System e pagine disegnate ex ante — 2026-11-27]]
 
 - [x] 🛠 **Attivare il flusso GitHub per il codice** — CI e release manuale su `main` (2026-11-23); branch per pagina del cockpit. → [[system/foundation/git-workflow]]
 
